@@ -19,11 +19,11 @@ import {
 } from "three";
 import { FBXLoader, GLTFLoader, OrbitControls } from "three-stdlib";
 
-import cityGlb from "../assets/lowpoly_city.glb";
+import mapGlb from "../assets/island.glb";
 
 import NavMeshWorker from "./navmesh-worker?worker";
 import { Crowd, CrowdAgent, importNavMesh, init, NavMesh, NavMeshQuery } from "@recast-navigation/core";
-import { getPositionsAndIndices } from "@recast-navigation/three";
+import { DebugDrawer, getPositionsAndIndices } from "@recast-navigation/three";
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
@@ -146,7 +146,7 @@ export class Game {
     this.controls = new OrbitControls(this.camera, this.canvas);
     this.controls.target = this.player.position;
     this.controls.enableDamping = true;
-    this.controls.maxDistance = 100;
+    this.controls.maxDistance = 25;
     this.controls.enableZoom = false;
     this.controls.enablePan = true;
     this.controls.maxPolarAngle = Math.PI / 2;
@@ -154,10 +154,10 @@ export class Game {
   }
 
   async addMap() {
-    const cityGltf = await gltfLoader.loadAsync(cityGlb);
+    const cityGltf = await gltfLoader.loadAsync(mapGlb);
 
     this.mapScene = cityGltf.scene;
-    cityGltf.scene.position.set(30, 0, -25);
+    this.mapScene.scale.set(30, 30, 30);
     this.scene.add(cityGltf.scene);
 
     cityGltf.scene.traverse((child) => {
@@ -201,10 +201,10 @@ export class Game {
 
         this.navMesh = importNavMesh(navMeshExport).navMesh;
 
-        // const debugDrawer = new DebugDrawer();
-        // this.scene.add(debugDrawer);
-        // debugDrawer.clear();
-        // debugDrawer.drawNavMesh(this.navMesh);
+        const debugDrawer = new DebugDrawer();
+        this.scene.add(debugDrawer);
+        debugDrawer.clear();
+        debugDrawer.drawNavMesh(this.navMesh);
 
         resolve();
       };
