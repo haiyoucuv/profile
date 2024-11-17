@@ -23,7 +23,7 @@ import mapGlb from "../assets/game_map.glb";
 
 import NavMeshWorker from "./navmesh-worker?worker";
 import { Crowd, CrowdAgent, importNavMesh, init, NavMesh, NavMeshQuery } from "@recast-navigation/core";
-import { DebugDrawer, getPositionsAndIndices } from "@recast-navigation/three";
+import { getPositionsAndIndices } from "@recast-navigation/three";
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
