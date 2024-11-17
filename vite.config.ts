@@ -8,6 +8,7 @@ import legacy from "@vitejs/plugin-legacy";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "./",
   assetsInclude: [/\.(svga|gltf|fbx|glsl|glb)$/],
   server: {
     open: false,
@@ -32,9 +33,9 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    legacy({
-      targets: ["defaults", "not IE 11"],
-    }),
+    // legacy({
+    //   targets: ["defaults", "not IE 11"],
+    // }),
     viteMockServe({
       // default
       mockPath: "mock",
