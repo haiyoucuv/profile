@@ -19,7 +19,7 @@ import {
 } from "three";
 import { FBXLoader, GLTFLoader, OrbitControls } from "three-stdlib";
 
-import mapGlb from "../assets/island.glb";
+import mapGlb from "../assets/game_map.glb";
 
 import NavMeshWorker from "./navmesh-worker?worker";
 import { Crowd, CrowdAgent, importNavMesh, init, NavMesh, NavMeshQuery } from "@recast-navigation/core";
@@ -157,7 +157,7 @@ export class Game {
     const cityGltf = await gltfLoader.loadAsync(mapGlb);
 
     this.mapScene = cityGltf.scene;
-    this.mapScene.scale.set(30, 30, 30);
+    this.mapScene.scale.set(5, 5, 5);
     this.scene.add(cityGltf.scene);
 
     cityGltf.scene.traverse((child) => {
