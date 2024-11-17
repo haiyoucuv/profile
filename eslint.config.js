@@ -24,6 +24,7 @@ export default tseslint.config(
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-unused-expressions": "off",
       "prefer-rest-params": "off",
+      "no-async-promise-executor": "off",
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

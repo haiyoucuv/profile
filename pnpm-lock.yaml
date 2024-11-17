@@ -11,6 +11,15 @@ importers:
       '@csstools/normalize.css':
         specifier: ^12.1.1
         version: 12.1.1
+      '@recast-navigation/core':
+        specifier: ^0.35.2
+        version: 0.35.2
+      '@recast-navigation/generators':
+        specifier: ^0.35.2
+        version: 0.35.2
+      '@recast-navigation/three':
+        specifier: ^0.35.2
+        version: 0.35.2(@types/three@0.170.0)(three@0.170.0)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -29,6 +38,9 @@ importers:
       three:
         specifier: ^0.170.0
         version: 0.170.0
+      three-stdlib:
+        specifier: ^2.34.0
+        version: 2.34.0(three@0.170.0)
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0
@@ -839,6 +851,12 @@ packages:
   '@recast-navigation/generators@0.35.2':
     resolution: {integrity: sha512-DR8Rvea6U7CQA7msCVyb88jthctPBq0h9YcG/Plh0QXecrhK8aJWIBXB33zkc9x3YP2+W2/s0+xSXDKMraTGpg==}
 
+  '@recast-navigation/three@0.35.2':
+    resolution: {integrity: sha512-wCTkwyv4EmSD2sih3c5EtWT0rmktHpycmn6YwDp0SrDIdQ2jzcNJyLmJqNEZEBcyoxiAcR1cPU2rYyI1kgxZCg==}
+    peerDependencies:
+      '@types/three': 0.x.x
+      three: 0.x.x
+
   '@recast-navigation/wasm@0.35.2':
     resolution: {integrity: sha512-IpzRsWMKWf02iATYwb73Spslon5t8rVitFcDd1/gHKiQ14Mjzikojv59AJOu6w5oEMCIXgrVrWGfFdzzzEHwdQ==}
 
@@ -956,6 +974,9 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
+  '@types/draco3d@1.4.10':
+    resolution: {integrity: sha512-AX22jp8Y7wwaBgAixaSvkoG4M/+PlAcm3Qs4OW8yT9DM4xUpWKeFhLueTAyZF39pviAdcDdeJoACapiAceqNcw==}
+
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
@@ -964,6 +985,9 @@ packages:
 
   '@types/node@22.9.0':
     resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
+
+  '@types/offscreencanvas@2019.7.3':
+    resolution: {integrity: sha512-ieXiYmgSRXUDeOntE1InxjWyvEelZGP63M+cGuquuRLuIKKT1osnkXjxev9B7d1nXSug5vpunx+gNlbVxMlC9A==}
 
   '@types/postcss-pxtorem@6.1.0':
     resolution: {integrity: sha512-kHsYTjQgllOfhi3J+xunjMKUZ3APARV/JYeOOcIVLhvPVS162S8Ir8LsZwioFFyYCSnQp+aisupiSaRWVwKyDA==}
@@ -1229,6 +1253,9 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
+  draco3d@1.5.7:
+    resolution: {integrity: sha512-m6WCKt/erDXcw+70IJXnG7M3awwQPAsZvJGX5zY7beBqpELw6RDGkYVU0W43AFxye4pDZ5i2Lbyc/NNGqwjUVQ==}
+
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
@@ -1327,6 +1354,9 @@ packages:
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
+
+  fflate@0.6.10:
+    resolution: {integrity: sha512-IQrh3lEPM93wVCEczc9SaAOvkmcoQn/G8Bo1e8ZPlY3X3bnAxWaBdvTdvM1hP62iZp0BXWDy4vTAy4fF0+Dlpg==}
 
   fflate@0.8.2:
     resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
@@ -1645,6 +1675,9 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  potpack@1.0.2:
+    resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
+
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -1787,6 +1820,11 @@ packages:
     resolution: {integrity: sha512-IYV9eNMuFAV4THUspIRXkLakHnV6XO7FEdtKjf/mDyrnqUg9LnlOn6/RwRvM9SZjR4GUq8Nk8zj67FzVARr74w==}
     engines: {node: '>=10'}
     hasBin: true
+
+  three-stdlib@2.34.0:
+    resolution: {integrity: sha512-U5qJYWgUKBFJqr1coMSbczA964uvouzBjQbtJlaI9LfMwy7hr+kc1Mfh0gqi/2872KmGu9utgff6lj8Oti8+VQ==}
+    peerDependencies:
+      three: '>=0.128.0'
 
   three@0.170.0:
     resolution: {integrity: sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==}
@@ -2753,6 +2791,13 @@ snapshots:
       '@recast-navigation/core': 0.35.2
       '@recast-navigation/wasm': 0.35.2
 
+  '@recast-navigation/three@0.35.2(@types/three@0.170.0)(three@0.170.0)':
+    dependencies:
+      '@recast-navigation/core': 0.35.2
+      '@recast-navigation/generators': 0.35.2
+      '@types/three': 0.170.0
+      three: 0.170.0
+
   '@recast-navigation/wasm@0.35.2': {}
 
   '@rollup/rollup-android-arm-eabi@4.27.2':
@@ -2832,6 +2877,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
+  '@types/draco3d@1.4.10': {}
+
   '@types/estree@1.0.6': {}
 
   '@types/json-schema@7.0.15': {}
@@ -2839,6 +2886,8 @@ snapshots:
   '@types/node@22.9.0':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/offscreencanvas@2019.7.3': {}
 
   '@types/postcss-pxtorem@6.1.0':
     dependencies:
@@ -3149,6 +3198,8 @@ snapshots:
 
   dotenv@16.4.5: {}
 
+  draco3d@1.5.7: {}
+
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.62: {}
@@ -3283,6 +3334,8 @@ snapshots:
   fastq@1.17.1:
     dependencies:
       reusify: 1.0.4
+
+  fflate@0.6.10: {}
 
   fflate@0.8.2: {}
 
@@ -3560,6 +3613,8 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  potpack@1.0.2: {}
+
   prelude-ls@1.2.1: {}
 
   prr@1.0.1:
@@ -3705,6 +3760,16 @@ snapshots:
       acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
+
+  three-stdlib@2.34.0(three@0.170.0):
+    dependencies:
+      '@types/draco3d': 1.4.10
+      '@types/offscreencanvas': 2019.7.3
+      '@types/webxr': 0.5.20
+      draco3d: 1.5.7
+      fflate: 0.6.10
+      potpack: 1.0.2
+      three: 0.170.0
 
   three@0.170.0: {}
 

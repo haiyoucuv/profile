@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import legacy from '@vitejs/plugin-legacy'
-import autoprefixer from "autoprefixer"
-import postcssPxToRem from "postcss-pxtorem"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import legacy from "@vitejs/plugin-legacy";
+import autoprefixer from "autoprefixer";
+import postcssPxToRem from "postcss-pxtorem";
 import { viteMockServe } from "vite-plugin-mock";
 import * as path from "node:path";
 
@@ -17,13 +17,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     }
   },
+  // optimizeDeps: { exclude: ["recast-navigation"] },
   build: {
-    cssTarget: 'chrome61',
+    cssTarget: "chrome61",
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
+          if (id.includes("node_modules")) {
+            return "vendor";
           }
         },
       },
@@ -32,11 +33,11 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['defaults', 'not IE 11'],
+      targets: ["defaults", "not IE 11"],
     }),
     viteMockServe({
       // default
-      mockPath: 'mock',
+      mockPath: "mock",
       enable: true,
     }),
   ],
@@ -67,7 +68,7 @@ export default defineConfig({
       },
     },
     modules: {
-      localsConvention: 'camelCase'
+      localsConvention: "camelCase"
     }
   }
-})
+});

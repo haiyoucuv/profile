@@ -11,12 +11,16 @@
   },
   "dependencies": {
     "@csstools/normalize.css": "^12.1.1",
+    "@recast-navigation/core": "^0.35.2",
+    "@recast-navigation/generators": "^0.35.2",
+    "@recast-navigation/three": "^0.35.2",
     "classnames": "^2.5.1",
     "mobx": "^6.13.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recast-navigation": "^0.35.2",
-    "three": "^0.170.0"
+    "three": "^0.170.0",
+    "three-stdlib": "^2.34.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
