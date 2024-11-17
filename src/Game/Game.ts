@@ -146,8 +146,8 @@ export class Game {
     this.controls = new OrbitControls(this.camera, this.canvas);
     this.controls.target = this.player.position;
     this.controls.enableDamping = true;
-    this.controls.maxDistance = 25;
-    this.controls.enableZoom = false;
+    this.controls.maxDistance = 50;
+    this.controls.enableZoom = true;
     this.controls.enablePan = true;
     this.controls.maxPolarAngle = Math.PI / 2;
     this.controls.minPolarAngle = 0;
@@ -177,7 +177,7 @@ export class Game {
 
       const navMeshConfig = {
         cs: 0.2,
-        ch: 0.2,
+        ch: 0.5,
         tileSize: 64,
         walkableSlopeAngle: 35,
         walkableHeight: 1,
