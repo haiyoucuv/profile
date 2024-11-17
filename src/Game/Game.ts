@@ -201,10 +201,10 @@ export class Game {
 
         this.navMesh = importNavMesh(navMeshExport).navMesh;
 
-        const debugDrawer = new DebugDrawer();
-        this.scene.add(debugDrawer);
-        debugDrawer.clear();
-        debugDrawer.drawNavMesh(this.navMesh);
+        // const debugDrawer = new DebugDrawer();
+        // this.scene.add(debugDrawer);
+        // debugDrawer.clear();
+        // debugDrawer.drawNavMesh(this.navMesh);
 
         resolve();
       };
