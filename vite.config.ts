@@ -21,6 +21,7 @@ export default defineConfig({
     cssTarget: "chrome61",
     rollupOptions: {
       output: {
+        dir: "docs",
         manualChunks(id) {
           if (id.includes("node_modules")) {
             return "vendor";
