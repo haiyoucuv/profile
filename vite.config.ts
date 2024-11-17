@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import legacy from "@vitejs/plugin-legacy";
 import autoprefixer from "autoprefixer";
 import postcssPxToRem from "postcss-pxtorem";
 import { viteMockServe } from "vite-plugin-mock";
-import * as path from "node:path";
+import legacy from "@vitejs/plugin-legacy";
+
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,10 +12,9 @@ export default defineConfig({
   server: {
     open: false,
   },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    }
+  resolve: {},
+  worker: {
+    format: "es",
   },
   // optimizeDeps: { exclude: ["recast-navigation"] },
   build: {
