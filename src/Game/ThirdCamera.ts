@@ -87,7 +87,7 @@ export class ThirdPersonCamera {
       zoomSpeed = 1,
       touchRotationSensitivity = 0.5,
       touchZoomSensitivity = 0.2,
-      enableCollision = true,
+      enableCollision = false,
       collisionLayers = []
     } = config;
 

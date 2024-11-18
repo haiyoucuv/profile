@@ -26,6 +26,9 @@ importers:
       mobx:
         specifier: ^6.13.5
         version: 6.13.5
+      postprocessing:
+        specifier: ^6.36.4
+        version: 6.36.4(three@0.170.0)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -38,6 +41,9 @@ importers:
       three:
         specifier: ^0.170.0
         version: 0.170.0
+      three-mesh-bvh:
+        specifier: ^0.8.3
+        version: 0.8.3(three@0.170.0)
       three-stdlib:
         specifier: ^2.34.0
         version: 2.34.0(three@0.170.0)
@@ -1675,6 +1681,11 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  postprocessing@6.36.4:
+    resolution: {integrity: sha512-3fAyBGuLNR7Rg/q+f2SNlsVCI5mDrymvxhOif3tPKEej8M38z4TvwzNZm+RNpRY2tACE7qQUNE5IHyMcqgvlAg==}
+    peerDependencies:
+      three: '>= 0.157.0 < 0.171.0'
+
   potpack@1.0.2:
     resolution: {integrity: sha512-choctRBIV9EMT9WGAZHn3V7t0Z2pMQyl0EZE6pFc/6ml3ssw7Dlf/oAOvFwjm1HVsqfQN8GfeFyJ+d8tRzqueQ==}
 
@@ -1820,6 +1831,11 @@ packages:
     resolution: {integrity: sha512-IYV9eNMuFAV4THUspIRXkLakHnV6XO7FEdtKjf/mDyrnqUg9LnlOn6/RwRvM9SZjR4GUq8Nk8zj67FzVARr74w==}
     engines: {node: '>=10'}
     hasBin: true
+
+  three-mesh-bvh@0.8.3:
+    resolution: {integrity: sha512-4G5lBaF+g2auKX3P0yqx+MJC6oVt6sB5k+CchS6Ob0qvH0YIhuUk1eYr7ktsIpY+albCqE80/FVQGV190PmiAg==}
+    peerDependencies:
+      three: '>= 0.159.0'
 
   three-stdlib@2.34.0:
     resolution: {integrity: sha512-U5qJYWgUKBFJqr1coMSbczA964uvouzBjQbtJlaI9LfMwy7hr+kc1Mfh0gqi/2872KmGu9utgff6lj8Oti8+VQ==}
@@ -3613,6 +3629,10 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  postprocessing@6.36.4(three@0.170.0):
+    dependencies:
+      three: 0.170.0
+
   potpack@1.0.2: {}
 
   prelude-ls@1.2.1: {}
@@ -3760,6 +3780,10 @@ snapshots:
       acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
+
+  three-mesh-bvh@0.8.3(three@0.170.0):
+    dependencies:
+      three: 0.170.0
 
   three-stdlib@2.34.0(three@0.170.0):
     dependencies:
