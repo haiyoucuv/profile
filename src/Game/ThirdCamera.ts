@@ -233,7 +233,6 @@ export class ThirdPersonCamera {
         this.camera.near,
         this.maxDistance
       );
-      // raycaster.camera = this.camera;
 
       raycaster.layers.set(ELayers.Default);
       // 设置射线检测的层
