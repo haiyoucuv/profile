@@ -227,25 +227,25 @@ export class ThirdPersonCamera {
 
     if (this.enableCollision) {
       // 创建射线，从目标位置射向预期的相机位置
-      const raycaster = new Raycaster(
+      const rayCaster = new Raycaster(
         this.target.position.clone(),
         direction,
         this.camera.near,
         this.maxDistance
       );
 
-      raycaster.layers.set(ELayers.Default);
+      rayCaster.layers.set(ELayers.Default);
       // 设置射线检测的层
       if (this.collisionLayers.length > 0) {
         this.collisionLayers.forEach(layer => {
-          raycaster.layers.enable(layer);
+          rayCaster.layers.enable(layer);
         });
       }
 
-      raycaster.layers.disable(ELayers.DebugView);
+      rayCaster.layers.disable(ELayers.DebugView);
 
       // 获取场景中的碰撞物体
-      const intersects = raycaster.intersectObjects(
+      const intersects = rayCaster.intersectObjects(
         this.target.parent?.children || [],
         true
       ).filter(hit => hit.distance > 0);
