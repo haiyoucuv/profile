@@ -12,7 +12,6 @@ export class NavigationSystem {
 
   scene: Scene;
 
-
   constructor(scene: Scene) {
     this.pathLine = new Line(new BufferGeometry(), new LineBasicMaterial({
       color: 0x0000ff,
@@ -29,10 +28,10 @@ export class NavigationSystem {
   }
 
   async initNavMesh(mapScene: Group) {
-    return new Promise<void>(async (resolve) => {
-      console.time("init recast");
-      await init();
-      console.timeEnd("init recast");
+    console.time("init Recast");
+    await init();
+    console.timeEnd("init Recast");
+    return new Promise<void>((resolve) => {
 
       const navMeshConfig = {
         cs: 0.2,
@@ -91,7 +90,7 @@ export class NavigationSystem {
     });
   }
 
-  async getRandomPosition(position: Vector3Like = { x: 0, y: 0, z: 0 }) {
+  getRandomPosition(position: Vector3Like = { x: 0, y: 0, z: 0 }) {
     const radius = 2;
     const navMeshQuery = new NavMeshQuery(this.navMesh);
     const {
@@ -131,9 +130,9 @@ export class NavigationSystem {
   private updatePath() {
     if (!this.playerAgent) return;
 
-    const path = [this.playerAgent.position(), ...this.playerAgent.corners()];
     this.pathLine.geometry.dispose();
     this.pathLine.geometry = new BufferGeometry();
+    const path = [this.playerAgent.position(), ...this.playerAgent.corners()];
     this.pathLine.geometry.setFromPoints(path as Vector3[]);
   }
 

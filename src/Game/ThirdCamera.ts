@@ -1,5 +1,5 @@
 
-import { Camera, Object3D, PerspectiveCamera, Vector3, MathUtils, Spherical, Vector2 } from "three";
+import { Object3D, PerspectiveCamera, Vector3, MathUtils, Spherical, Vector2 } from "three";
 
 export interface ThirdPersonCameraConfig {
   // Distance settings
@@ -33,6 +33,7 @@ export interface ThirdPersonCameraConfig {
 export class ThirdPersonCamera {
   private camera: PerspectiveCamera;
   private target: Object3D;
+  private node: HTMLElement;
   private currentPosition = new Vector3();
   private currentLookAt = new Vector3();
   
@@ -64,19 +65,20 @@ export class ThirdPersonCamera {
 
   constructor(
     camera: PerspectiveCamera, 
-    target: Object3D, 
-    canvas: HTMLCanvasElement,
-    config?: ThirdPersonCameraConfig
+    target: Object3D,
+    node: HTMLElement,
+    config: ThirdPersonCameraConfig = {}
   ) {
     this.camera = camera;
     this.target = target;
+    this.node = node;
     
     const {
-      initialDistance = 15,
+      initialDistance = 20,
       minDistance = 5,
       maxDistance = 30,
-      initialRotationX = 0,
-      initialRotationY = 0,
+      initialRotationX = 45,
+      initialRotationY = 45,
       minRotationX = -60,
       maxRotationX = 60,
       smoothSpeed = 0.1,
@@ -87,7 +89,7 @@ export class ThirdPersonCamera {
       touchZoomSensitivity = 0.2,
       enableCollision = false,
       collisionLayers = []
-    } = config ?? {};
+    } = config;
 
     this.distance = initialDistance;
     this.minDistance = minDistance;
@@ -106,17 +108,36 @@ export class ThirdPersonCamera {
     this.collisionLayers = collisionLayers;
 
     this.updateCameraPosition();
-    this.initTouchControls(canvas);
+    this.initControlEvent(node);
   }
 
-  private initTouchControls(canvas: HTMLCanvasElement) {
-    canvas.addEventListener('pointerdown', this.onPointerDown);
-    canvas.addEventListener('pointermove', this.onPointerMove);
-    canvas.addEventListener('pointerup', this.onPointerUp);
-    canvas.addEventListener('pointercancel', this.onPointerUp);
-    canvas.addEventListener('touchstart', this.onTouchStart);
-    canvas.addEventListener('touchmove', this.onTouchMove);
-    canvas.addEventListener('touchend', this.onTouchEnd);
+  private onMouseWheel = (event: WheelEvent) => {
+    event.preventDefault();
+    const delta = event.deltaY * 0.01;
+    this.zoom(delta);
+  };
+
+  private initControlEvent(node: HTMLElement) {
+    node.addEventListener("pointerdown", this.onPointerDown);
+    node.addEventListener("pointermove", this.onPointerMove);
+    node.addEventListener("pointerup", this.onPointerUp);
+    node.addEventListener("pointercancel", this.onPointerUp);
+    node.addEventListener("touchstart", this.onTouchStart);
+    node.addEventListener("touchmove", this.onTouchMove);
+    node.addEventListener("touchend", this.onTouchEnd);
+    node.addEventListener("touchcancel", this.onTouchEnd);
+    node.addEventListener("wheel", this.onMouseWheel);
+  }
+
+  private removeControlEvent(node: HTMLElement) {
+    node.removeEventListener("pointerdown", this.onPointerDown);
+    node.removeEventListener("pointermove", this.onPointerMove);
+    node.removeEventListener("pointerup", this.onPointerUp);
+    node.removeEventListener("pointercancel", this.onPointerUp);
+    node.removeEventListener("touchstart", this.onTouchStart);
+    node.removeEventListener("touchmove", this.onTouchMove);
+    node.removeEventListener("touchend", this.onTouchEnd);
+    node.removeEventListener("wheel", this.onMouseWheel);
   }
 
   private onTouchStart = (event: TouchEvent) => {
@@ -252,19 +273,9 @@ export class ThirdPersonCamera {
   }
 
   dispose() {
-    const canvas = this.camera.userData.canvas;
-    if (!canvas) return;
-
-    canvas.removeEventListener('pointerdown', this.onPointerDown);
-    canvas.removeEventListener('pointermove', this.onPointerMove);
-    canvas.removeEventListener('pointerup', this.onPointerUp);
-    canvas.removeEventListener('pointercancel', this.onPointerUp);
-    canvas.removeEventListener('touchstart', this.onTouchStart);
-    canvas.removeEventListener('touchmove', this.onTouchMove);
-    canvas.removeEventListener('touchend', this.onTouchEnd);
+    this.removeControlEvent(this.node);
   }
 }
-
 
 
 

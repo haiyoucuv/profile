@@ -13,7 +13,7 @@ import {
   Vector2,
   WebGLRenderer,
 } from "three";
-import { FBXLoader, GLTFLoader, OrbitControls } from "three-stdlib";
+import { FBXLoader, GLTFLoader } from "three-stdlib";
 
 import mapGlb from "../assets/my_stardew_valley_farm.glb";
 import { NavigationSystem } from "./NavigationSystem";
@@ -42,7 +42,7 @@ export class Game {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
-    this.start();
+    // this.start();
   }
 
   async start() {
@@ -52,7 +52,7 @@ export class Game {
     this.navigationSystem = new NavigationSystem(this.scene);
     await this.navigationSystem.init(this.mapScene);
 
-    const initialPosition = await this.navigationSystem.getRandomPosition();
+    const initialPosition = this.navigationSystem.getRandomPosition();
     this.navigationSystem.addPlayer(initialPosition);
 
     this.renderer.setAnimationLoop(this.onUpdate);
