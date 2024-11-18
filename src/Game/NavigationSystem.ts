@@ -13,7 +13,9 @@ export class NavigationSystem {
 
   scene: Scene;
 
-  constructor(scene: Scene) {
+  debug = false;
+
+  constructor(scene: Scene, debug = false) {
     this.pathLine = new Line(new BufferGeometry(), new LineBasicMaterial({
       color: 0x0000ff,
       linewidth: 10,
@@ -21,6 +23,7 @@ export class NavigationSystem {
     scene.add(this.pathLine);
 
     this.scene = scene;
+    this.debug = debug;
   }
 
   async init(mapScene: Group) {
@@ -59,14 +62,16 @@ export class NavigationSystem {
         const navMeshExport = event.data;
         this.navMesh = importNavMesh(navMeshExport).navMesh;
 
-        this.debugDrawer = new DebugDrawer();
-        this.debugDrawer.layers.set(ELayers.DebugView);
-        this.scene.add(this.debugDrawer);
-        this.debugDrawer.clear();
-        this.debugDrawer.drawNavMesh(this.navMesh);
-        this.debugDrawer.children.forEach(child => {
-          child.layers.set(ELayers.DebugView);
-        });
+        if (this.debug) {
+          this.debugDrawer = new DebugDrawer();
+          this.debugDrawer.layers.set(ELayers.DebugView);
+          this.scene.add(this.debugDrawer);
+          this.debugDrawer.clear();
+          this.debugDrawer.drawNavMesh(this.navMesh);
+          this.debugDrawer.children.forEach(child => {
+            child.layers.set(ELayers.DebugView);
+          });
+        }
 
         resolve();
       };
