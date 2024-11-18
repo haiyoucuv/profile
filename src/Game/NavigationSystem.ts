@@ -2,6 +2,7 @@ import { Crowd, CrowdAgent, importNavMesh, init, NavMesh, NavMeshQuery } from "@
 import { DebugDrawer, getPositionsAndIndices } from "@recast-navigation/three";
 import { BufferGeometry, Group, Line, LineBasicMaterial, Mesh, Scene, Vector3, Vector3Like } from "three";
 import NavMeshWorker from "./navmesh-worker?worker";
+import { ELayers } from "./config";
 
 export class NavigationSystem {
   private navMesh: NavMesh;
@@ -59,9 +60,13 @@ export class NavigationSystem {
         this.navMesh = importNavMesh(navMeshExport).navMesh;
 
         this.debugDrawer = new DebugDrawer();
+        this.debugDrawer.layers.set(ELayers.DebugView);
         this.scene.add(this.debugDrawer);
         this.debugDrawer.clear();
         this.debugDrawer.drawNavMesh(this.navMesh);
+        this.debugDrawer.children.forEach(child => {
+          child.layers.set(ELayers.DebugView);
+        });
 
         resolve();
       };

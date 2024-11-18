@@ -1,5 +1,5 @@
-
-import { Object3D, PerspectiveCamera, Vector3, MathUtils, Spherical, Vector2 } from "three";
+import { Object3D, PerspectiveCamera, Vector3, MathUtils, Spherical, Vector2, Raycaster } from "three";
+import { ELayers } from "./config";
 
 export interface ThirdPersonCameraConfig {
   // Distance settings
@@ -87,7 +87,7 @@ export class ThirdPersonCamera {
       zoomSpeed = 1,
       touchRotationSensitivity = 0.5,
       touchZoomSensitivity = 0.2,
-      enableCollision = false,
+      enableCollision = true,
       collisionLayers = []
     } = config;
 
@@ -221,6 +221,49 @@ export class ThirdPersonCamera {
     
     const desiredPosition = new Vector3();
     desiredPosition.setFromSpherical(spherical);
+
+    // 计算从目标到相机的方向
+    const direction = desiredPosition.clone().normalize();
+
+    if (this.enableCollision) {
+      // 创建射线，从目标位置射向预期的相机位置
+      const raycaster = new Raycaster(
+        this.target.position.clone(),
+        direction,
+        this.camera.near,
+        this.maxDistance
+      );
+      // raycaster.camera = this.camera;
+
+      raycaster.layers.set(ELayers.Default);
+      // 设置射线检测的层
+      if (this.collisionLayers.length > 0) {
+        this.collisionLayers.forEach(layer => {
+          raycaster.layers.enable(layer);
+        });
+      }
+
+      raycaster.layers.disable(ELayers.DebugView);
+
+      // 获取场景中的碰撞物体
+      const intersects = raycaster.intersectObjects(
+        this.target.parent?.children || [],
+        true
+      ).filter(hit => hit.distance > 0);
+
+      // 如果发生碰撞，调整相机位置到碰撞点
+      if (intersects.length > 0) {
+        const collision = intersects[0];
+        const collisionDistance = Math.max(
+          this.minDistance,
+          collision.distance - 0.5 // 留出缓冲距离
+        );
+
+        // 调整相机位置到碰撞点
+        desiredPosition.copy(direction).multiplyScalar(collisionDistance);
+      }
+    }
+    
     desiredPosition.add(this.target.position);
 
     if (desiredPosition.y < this.minHeight) {

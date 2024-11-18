@@ -18,6 +18,7 @@ import { FBXLoader, GLTFLoader } from "three-stdlib";
 import mapGlb from "../assets/my_stardew_valley_farm.glb";
 import { NavigationSystem } from "./NavigationSystem";
 import { ThirdPersonCamera } from "./ThirdCamera";
+import { ELayers } from "./config";
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
@@ -126,7 +127,10 @@ export class Game {
     this.player.receiveShadow = true;
     this.scene.add(this.player);
 
-    this.thirdCamera = new ThirdPersonCamera(this.camera, this.player, this.canvas);
+    this.thirdCamera = new ThirdPersonCamera(this.camera, this.player, this.canvas, {
+      enableCollision: true,
+      collisionLayers: [ELayers.Default],
+    });
   }
 
   async addMap() {
