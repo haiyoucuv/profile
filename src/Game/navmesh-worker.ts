@@ -1,5 +1,5 @@
 import { exportNavMesh, init, RecastConfig } from "@recast-navigation/core";
-import { generateTiledNavMesh } from "@recast-navigation/generators";
+import { generateSoloNavMesh, generateTiledNavMesh } from "@recast-navigation/generators";
 
 self.onmessage = async (event: {
   data: {
@@ -12,7 +12,7 @@ self.onmessage = async (event: {
 
   const { positions, indices, config } = event.data;
 
-  const { success, navMesh } = generateTiledNavMesh(positions, indices, config);
+  const { success, navMesh } = generateSoloNavMesh(positions, indices, config);
 
   if (!success) return;
 

@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   return <div className="app">
-    <canvas className="gameCanvas" ref={canvasRef} />
+    <canvas className="gameCanvas" onContextMenu={(e) => e.preventDefault()} ref={canvasRef} />
   </div>;
 
 }
