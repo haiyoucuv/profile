@@ -183,7 +183,7 @@ export class ThirdPersonCamera {
     const deltaY = event.clientY - this.touchStart.y;
 
     this.rotate(
-      -deltaX * this.touchRotationSensitivity, // Negative deltaX to reverse left/right direction
+      deltaX * this.touchRotationSensitivity, // Negative deltaX to reverse left/right direction
       deltaY * this.touchRotationSensitivity
     );
 
