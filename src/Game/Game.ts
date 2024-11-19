@@ -10,18 +10,23 @@ import {
   HemisphereLight,
   LinearSRGBColorSpace,
   LinearToneMapping,
+  MathUtils,
   Mesh,
   MeshStandardMaterial,
   PCFSoftShadowMap,
   PerspectiveCamera,
+  PlaneGeometry,
   PMREMGenerator,
   Raycaster,
+  RepeatWrapping,
   Scene,
   SRGBColorSpace,
+  TextureLoader,
   Vector2,
+  Vector3,
   WebGLRenderer,
 } from "three";
-import { FBXLoader, GLTFLoader, RoomEnvironment } from "three-stdlib";
+import { FBXLoader, GLTFLoader, RoomEnvironment, Sky } from "three-stdlib";
 
 import mapGlb from "../assets/my_stardew_valley_farm.glb";
 import { NavigationSystem } from "./NavigationSystem";
@@ -30,8 +35,15 @@ import { ELayers } from "./config";
 import { BloomEffect, EffectPass, EffectComposer, RenderPass, KernelSize, BlendFunction, FXAAEffect, OverrideMaterialManager, OutlineEffect, SSAOEffect } from "postprocessing";
 import { calculateVerticalFoV } from "../utils/CameraUtils";
 
+import { Water } from "three-stdlib";
+
+import waterNormal from "../assets/textures/waternormals.png";
+import { DayPhase, TimeEvents, TimeSystem } from "./systems/TimeSystem";
+import { SkyLightingSystem } from "./systems/SkyLightingSystem";
+
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
+const textureLoader = new TextureLoader();
 
 
 export class Game {
@@ -55,12 +67,28 @@ export class Game {
 
   outlineEffect: OutlineEffect;
 
+  water: Water;
+  timeSystem: TimeSystem;
+  pmremGenerator: PMREMGenerator;
+
+  sky: Sky;
+  sun: Vector3 = new Vector3();
+
+  skyLightingSystem: SkyLightingSystem;
+
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     // this.start();
   }
 
   async start() {
+
+    this.timeSystem = new TimeSystem({
+      startHour: 6,     // 从早上6点开始
+      timeScale: 10,    // 60倍速（1秒现实时间 = 1分钟游戏时间）
+      pauseOnStart: false
+    });
+
     this.initScene();
 
     this.initPostProcessing();
@@ -175,39 +203,55 @@ export class Game {
     renderer.toneMapping = ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.0;
 
-    const pmremGenerator = new PMREMGenerator(this.renderer);
-    const envMap = pmremGenerator.fromScene(RoomEnvironment()).texture;
-    this.scene.environment = envMap;
-
-    const ambLight = new AmbientLight(0x404040, 0.1);
-    this.scene.add(ambLight);
-
-    const hemiLight = new HemisphereLight(0xffffff, 0x444444, 1);
-    hemiLight.position.set(0, 1, 0);
-    this.scene.add(hemiLight);
-
-    const light = new DirectionalLight(0xffffff, 3);
-    light.shadow.intensity = 2;
-    light.shadow.camera.top = 50;
-    light.shadow.camera.bottom = -50;
-    light.shadow.camera.left = -50;
-    light.shadow.camera.right = 50;
-    light.shadow.bias = -0.0001;
-    light.shadow.mapSize.set(4096, 4096);
-    light.shadow.radius = 100;
-    light.position.set(50, 100, 50);
-    light.castShadow = true;
-    this.scene.add(light);
-
-    this.scene.add(new CameraHelper(light.shadow.camera));
-
     this.player = new Mesh(new BoxGeometry(1, 1, 1), new MeshStandardMaterial());
     this.player.castShadow = true;
     this.player.receiveShadow = true;
     this.scene.add(this.player);
 
-    this.thirdCamera = new ThirdPersonCamera(this.camera, this.player, this.canvas);
+    this.thirdCamera = new ThirdPersonCamera(
+      this.camera, this.player, this.canvas,
+      {
+        maxDistance: 100,
+      }
+    );
+
+    const waterGeometry = new PlaneGeometry(10000, 10000);
+
+    const water = this.water = new Water(
+      waterGeometry,
+      {
+        textureWidth: 512,
+        textureHeight: 512,
+        waterNormals: textureLoader.load(waterNormal, function (texture) {
+          texture.wrapS = texture.wrapT = RepeatWrapping;
+        }),
+        sunDirection: new Vector3(),
+        sunColor: 0xffffff,
+        waterColor: 0x001e0f,
+        distortionScale: 3.7,
+        fog: this.scene.fog !== undefined
+      }
+    );
+
+    water.rotation.x = - Math.PI / 2;
+
+    this.scene.add(water);
+
+    this.skyLightingSystem = new SkyLightingSystem(
+      this.scene,
+      this.renderer,
+      this.timeSystem,
+      {
+        shadows: true,
+        shadowMapSize: 4096,
+        debug: process.env.NODE_ENV === 'development'
+      }
+    );
+
+    this.skyLightingSystem.setWater(this.water);
   }
+
+
 
   async addMap() {
     const cityGltf = await gltfLoader.loadAsync(mapGlb);
@@ -238,6 +282,10 @@ export class Game {
 
     this.thirdCamera.update();
 
+    this.water.material.uniforms['time'].value += dt;
+
+    this.timeSystem.update(dt);
+
   };
 
   destroy() {
@@ -245,6 +293,7 @@ export class Game {
     this.canvas.removeEventListener("mousedown", this.onMouseDown);
     this.renderer.dispose();
     this.navigationSystem?.dispose();
+    this.skyLightingSystem?.dispose();
   }
 
 }

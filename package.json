@@ -15,6 +15,8 @@
     "@recast-navigation/generators": "^0.35.2",
     "@recast-navigation/three": "^0.35.2",
     "classnames": "^2.5.1",
+    "emittery": "^1.0.3",
+    "lil-gui": "^0.20.0",
     "mobx": "^6.13.5",
     "postprocessing": "^6.36.4",
     "react": "^18.3.1",
