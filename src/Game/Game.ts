@@ -211,7 +211,8 @@ export class Game {
             powerPreference: "high-performance",
             antialias: false,
             stencil: false,
-            depth: false
+            depth: false,
+            logarithmicDepthBuffer: true,
         });
 
         renderer.setClearColor(0xffffff);
