@@ -1,5 +1,6 @@
 export class SafeArray<T> implements Iterable<T> {
 
+
     private array: T[];
     private addQueue: T[];
     private removeQueue: Set<T>;
@@ -59,6 +60,13 @@ export class SafeArray<T> implements Iterable<T> {
         this.removeQueue.clear();
     }
 
+    sort(compareFn: (a: T, b: T) => number) {
+        this._addQueued();
+        this._removeQueued();
+        this.array = this.array.filter(element => !this.removeQueue.has(element));
+        this.array.sort(compareFn);
+    }
+
     find(predicate: (element: T) => boolean): T | undefined {
         // 先检查主数组
         this._addQueued();
@@ -74,7 +82,7 @@ export class SafeArray<T> implements Iterable<T> {
     filter(predicate: (element: T) => boolean): T[] {
         this._addQueued();
         this._removeQueued();
-        return this.array.filter(element => 
+        return this.array.filter(element =>
             !this.removeQueue.has(element) && predicate(element)
         );
     }
@@ -91,13 +99,13 @@ export class SafeArray<T> implements Iterable<T> {
         this._addQueued();
         this._removeQueued();
         this.iterating = true;
-        
+
         for (const element of this.array) {
             if (!this.removeQueue.has(element)) {
                 fn(element);
             }
         }
-        
+
         this.iterating = false;
         this._removeQueued();
     }
@@ -116,7 +124,7 @@ export class SafeArray<T> implements Iterable<T> {
         }
     }
 
-     private _removeQueued() {
+    private _removeQueued() {
         if (!this.iterating && this.removeQueue.size) {
             this.array = this.array.filter(element => !this.removeQueue.has(element));
             this.removeQueue.clear();

@@ -20,6 +20,6 @@ export class GameObjectManager {
     }
 
     update(dt: number) {
-        this.gameObjects.forEach((gameObject: GameObject) => gameObject.update(dt));
+        this.gameObjects.forEach((gameObject: GameObject) => gameObject.onUpdate(dt));
     }
 }

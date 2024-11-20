@@ -26,7 +26,7 @@ export abstract class Component implements IComponent {
 
     }
 
-    update(dt: number) {
+    onUpdate(dt: number) {
 
     }
 

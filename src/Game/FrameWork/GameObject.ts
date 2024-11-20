@@ -3,19 +3,18 @@ import { Component } from "./Component.ts";
 import { SafeArray } from "./SafeArray.ts";
 
 
-export class GameObject {
-    readonly transform: Object3D;
+export class GameObject<T extends Object3D = Object3D> {
+    readonly node: T;
     name: string;
     private readonly components: SafeArray<Component> = new SafeArray<Component>();
 
-    constructor(parent: Object3D, name: string) {
+    constructor(transform: T, name: string = "GameObject") {
         this.name = name;
-        this.transform = new Object3D();
-        parent.add(this.transform);
+        this.node = transform;
     }
 
-    addComponent<T extends Component>(ComponentCls: Constructor<T>): T {
-        const component = new ComponentCls(this);
+    addComponent<T extends Component>(ComponentCls: Constructor<T>, ...args): T {
+        const component = new ComponentCls(this, ...args);
         this.components.add(component);
         return component;
     }
@@ -29,9 +28,9 @@ export class GameObject {
         return this.components.find(c => c instanceof ComponentType);
     }
 
-    update(dt: number) {
-        this.components.forEach((component) => {
-            component.update(dt);
+    onUpdate(dt: number) {
+        this.components.forEach((component: Component) => {
+            component.onUpdate(dt);
         });
     }
 }
