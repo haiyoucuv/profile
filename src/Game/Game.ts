@@ -39,11 +39,14 @@ import waterNormal from "../assets/textures/waternormals.png";
 import { TimeSystem } from "./systems/TimeSystem";
 import { SkyLightingSystem } from "./systems/SkyLightingSystem";
 import GUI from "lil-gui";
+import { GameObjectManager } from "./FrameWork/GameObjectManager.ts";
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
 const textureLoader = new TextureLoader();
 
+
+const gameObjectManager = new GameObjectManager();
 
 export class Game {
 
@@ -303,6 +306,8 @@ export class Game {
         this.water.material.uniforms["time"].value += dt;
 
         TimeSystem.ins.update(dt);
+
+        gameObjectManager.update(dt);
 
     };
 
