@@ -13,8 +13,8 @@ import {
     WebGLRenderer,
     Material,
     ShaderMaterial
-} from 'three';
-import { Sky, Water } from 'three-stdlib';
+} from "three";
+import { Sky, Water } from "three-stdlib";
 import { TimeEvents, TimeSystem, DayPhase } from "./TimeSystem";
 
 interface SkyLightingConfig {
@@ -33,15 +33,13 @@ export class SkyLightingSystem {
     private scene: Scene;
     private sceneEnv: Scene;
     private sky: Sky;
-    private sun: Vector3;
+    private readonly sun: Vector3;
     private debugHelpers: Object3D[] = [];
-    private timeSystem: TimeSystem;
     private pmremGenerator: PMREMGenerator;
     private water?: Water;
 
-    constructor(scene: Scene, renderer: WebGLRenderer, timeSystem: TimeSystem, config: SkyLightingConfig = {}) {
+    constructor(scene: Scene, renderer: WebGLRenderer, config: SkyLightingConfig = {}) {
         this.scene = scene;
-        this.timeSystem = timeSystem;
         this.sun = new Vector3();
         this.pmremGenerator = new PMREMGenerator(renderer);
 
@@ -68,12 +66,12 @@ export class SkyLightingSystem {
     }
 
     private createMainLight(config: SkyLightingConfig) {
-        const light = new DirectionalLight(0xffffff, 1.2); // 增加主光源强度
-        light.position.set(5, 5, 5);
+        const light = new DirectionalLight(0xffffff, 1.3);
+        light.position.set(50, 50, 50);
 
         if (config.shadows !== false) {
             light.castShadow = true;
-            light.shadow.intensity = 2.5; // 减弱阴影强度,让阴影更柔和
+            light.shadow.intensity = 1;
             light.shadow.mapSize.width = config.shadowMapSize || 2048;
             light.shadow.mapSize.height = config.shadowMapSize || 2048;
 
@@ -112,57 +110,62 @@ export class SkyLightingSystem {
         this.sky.scale.setScalar(10000);
         this.scene.add(this.sky);
 
-        this.sceneEnv = new Scene();
-        this.sceneEnv.add(this.sky);
-
         const skyMaterial = this.sky.material as ShaderMaterial;
         const skyUniforms = skyMaterial.uniforms;
-        skyUniforms['turbidity'].value = 8; // 减少浑浊度
-        skyUniforms['rayleigh'].value = 1; // 减少瑞利散射,让天空更蓝
-        skyUniforms['mieCoefficient'].value = 0.003; // 减少米氏散射
-        skyUniforms['mieDirectionalG'].value = 0.9; // 增加太阳光晕
+
+        skyUniforms.turbidity.value = 10; // 浑浊度
+        skyUniforms.rayleigh.value = 2; // 减少瑞利散射,让天空更蓝
+        skyUniforms.mieCoefficient.value = 0.005; // 米氏散射
+        skyUniforms.mieDirectionalG.value = 0.8;  // 太阳光晕
     }
 
     private setupTimeListeners() {
-        this.timeSystem.on(TimeEvents.TIME_UPDATED, (timeData) => {
-            this.updateSunPosition(timeData.hour, timeData.minute);
-            this.updateLightIntensities(timeData.hour + timeData.minute / 60);
+        TimeSystem.ins.on(TimeEvents.TIME_UPDATED, (timeData) => {
+            const timeInHours = timeData.hour + timeData.minute / 60 + timeData.seconds / 3600;
+            this.updateSunPosition(timeInHours);
+            this.updateLightIntensities(timeInHours);
+            // 确保初始化时也调用一次更新
         });
 
-        this.timeSystem.on(TimeEvents.DAY_NIGHT_CHANGED, (phase) => {
-            this.updateSkyParameters(phase);
-        });
+        // 立即进行一次初始更新
+        const currentTime = TimeSystem.ins.getTimeData();
+        const timeInHours = currentTime.hour + currentTime.minute / 60 + currentTime.seconds / 3600;
+        this.updateSunPosition(timeInHours);
+        this.updateLightIntensities(timeInHours);
     }
 
     private updateLightIntensities(timeInHours: number) {
-        // 使用余弦函数实现更平滑的过渡
-        const dayProgress = (timeInHours + 6) % 24 / 24;
+        // 计算日光强度
+        const dayProgress = ((timeInHours - 6) % 24) / 24; // 从早上6点开始计算
         const dayIntensity = Math.cos((dayProgress - 0.5) * Math.PI * 2);
 
-        // 基础光照参数 - 增加白天的光照强度
-        let mainIntensity = Math.max(0, dayIntensity) * 1.4;
+        // 基础光照参数
+        let mainIntensity = Math.max(0.2, dayIntensity) * 1.4; // 确保始终有最小强度
         let ambientIntensity = 0.3 + Math.max(0, dayIntensity) * 0.4;
 
         // 颜色计算
-        let skyColor = new Color();
-        let groundColor = new Color();
+        const skyColor = new Color();
+        const groundColor = new Color();
 
         if (timeInHours < 6 || timeInHours > 18) { // 夜晚
-            skyColor.setHSL(0.6, 0.3, 0.08); // 增加夜空亮度
+            skyColor.setHSL(0.6, 0.3, 0.08);
             groundColor.setHSL(0.6, 0.25, 0.04);
-            mainIntensity *= 0.08;
-            ambientIntensity = 0.08;
+            mainIntensity = 0; // 确保夜间有最小光照
+            ambientIntensity = Math.max(0.1, ambientIntensity); // 确保夜间有最小环境光
         } else if (timeInHours < 8) { // 日出
             const t = (timeInHours - 6) / 2;
-            skyColor.setHSL(0.1, 0.7, 0.6 + t * 0.3); // 更温暖的日出色调
+            skyColor.setHSL(0.1, 0.7, 0.6 + t * 0.3);
             groundColor.setHSL(0.1, 0.5, 0.3 + t * 0.2);
+            mainIntensity = Math.max(0.4, mainIntensity); // 确保日出时有足够光照
         } else if (timeInHours > 16) { // 日落
             const t = (18 - timeInHours) / 2;
-            skyColor.setHSL(0.07, 0.7, 0.6 + t * 0.3); // 更温暖的日落色调
+            skyColor.setHSL(0.07, 0.7, 0.6 + t * 0.3);
             groundColor.setHSL(0.07, 0.5, 0.3 + t * 0.2);
+            mainIntensity = Math.max(0.4, mainIntensity); // 确保日落时有足够光照
         } else { // 白天
-            skyColor.setHSL(0.55, 0.3, 0.9); // 更亮更蓝的天空
-            groundColor.setHSL(0.3, 0.4, 0.6); // 更鲜艳的地面色
+            skyColor.setHSL(0.55, 0.3, 0.9);
+            groundColor.setHSL(0.3, 0.4, 0.6);
+            mainIntensity = Math.max(0.6, mainIntensity); // 确保白天有足够光照
         }
 
         // 更新光照参数
@@ -172,78 +175,80 @@ export class SkyLightingSystem {
         this.lights.hemisphere.groundColor.copy(groundColor);
     }
 
-    private updateSkyParameters(phase: DayPhase) {
-        const skyMaterial = this.sky.material as ShaderMaterial;
-        const skyUniforms = skyMaterial.uniforms;
 
-        switch (phase) {
-            case DayPhase.DAWN:
-                skyUniforms['turbidity'].value = 6;
-                skyUniforms['rayleigh'].value = 3;
-                skyUniforms['mieCoefficient'].value = 0.004;
-                break;
-            case DayPhase.DAY:
-                skyUniforms['turbidity'].value = 8;
-                skyUniforms['rayleigh'].value = 1;
-                skyUniforms['mieCoefficient'].value = 0.003;
-                break;
-            case DayPhase.DUSK:
-                skyUniforms['turbidity'].value = 6;
-                skyUniforms['rayleigh'].value = 3;
-                skyUniforms['mieCoefficient'].value = 0.004;
-                break;
-            case DayPhase.NIGHT:
-                skyUniforms['turbidity'].value = 4;
-                skyUniforms['rayleigh'].value = 1;
-                skyUniforms['mieCoefficient'].value = 0.002;
-                break;
-        }
-    }
+    private updateSunPosition(timeInHours: number) {
+        // 计算太阳方位角和高度角
+        const { azimuth, elevation } = this.calculateSunAngles(timeInHours);
 
-    private updateSunPosition(hour: number, minute: number) {
-        const timeInHours = hour + minute / 60;
-        const angleOffset = -90;
-        const elevation = this.calculateSunElevation(timeInHours);
-        const azimuth = ((timeInHours - 6) * 15) + angleOffset;
-
+        // 将角度转换为弧度并设置太阳位置
         const phi = MathUtils.degToRad(90 - elevation);
         const theta = MathUtils.degToRad(azimuth);
 
+        // 重要：先创建太阳位置向量
         this.sun.setFromSphericalCoords(1, phi, theta);
 
-        // 更新天空和光照
+        // 更新天空
         const skyMaterial = this.sky.material as ShaderMaterial;
-        skyMaterial.uniforms['sunPosition'].value.copy(this.sun);
-        this.lights.main.position.copy(this.sun.multiplyScalar(100));
+        skyMaterial.uniforms.sunPosition.value.copy(this.sun);
+
+        // 重要：使用克隆的向量设置光源位置，避免修改原始sun向量
+        const lightPosition = this.sun.clone().multiplyScalar(100);
+        this.lights.main.position.copy(lightPosition);
 
         // 更新水面
         if (this.water) {
-            this.water.material.uniforms['sunDirection'].value.copy(this.sun).normalize();
+            this.water.material.uniforms.sunDirection.value.copy(this.sun).normalize();
         }
 
         // 更新环境贴图
         this.updateEnvironmentMap();
     }
 
-    private calculateSunElevation(timeInHours: number) {
-        // 创建一个正弦曲线来模拟太阳高度
-        // 在正午（12点）达到最高点,增加最大高度角使太阳更高
-        const amplitude = 95; // 最大高度角增加到95度
-        const period = 24;
+    private calculateSunAngles(timeInHours: number) {
+        // 调整时间范围使正午为最高点
+        const hourAngle = ((timeInHours - 12) * 15); // 每小时15度
 
-        return amplitude * Math.sin(((timeInHours - 6) / period) * Math.PI * 2);
+        // 计算高度角，使用余弦函数实现更平滑的过渡
+        const maxElevation = 75; // 最大高度角
+        const elevation = maxElevation * Math.cos(hourAngle * Math.PI / 180);
+
+        // 计算方位角，确保太阳从东向西移动
+        let azimuth = hourAngle;
+
+        // 确保方位角在合理范围内
+        if (timeInHours < 6 || timeInHours > 18) {
+            // 夜间保持太阳在地平线以下
+            return {
+                azimuth: azimuth,
+                elevation: Math.min(-10, elevation)
+            };
+        }
+
+        return {
+            azimuth: azimuth,
+            elevation: Math.max(-10, elevation)
+        };
     }
 
+
     private updateEnvironmentMap() {
-        
+        this.sceneEnv = new Scene();
+        this.sceneEnv.add(this.sky);
+
+        const skyMaterial = this.sky.material as ShaderMaterial;
+        skyMaterial.uniforms.sunPosition.value.copy(this.sun);
+
         const renderTarget = this.pmremGenerator.fromScene(this.sceneEnv);
         this.scene.environment = renderTarget.texture;
+        this.scene.background = renderTarget.texture; // 添加这行，将环境贴图同时设置为背景
         renderTarget.dispose();
+
+        this.scene.add(this.sky);
     }
 
     private createDebugHelpers() {
         // 添加光源辅助显示
-        const mainLightHelper = new DirectionalLightHelper(this.lights.main, 5);
+        const mainLightHelper = new DirectionalLightHelper(this.lights.main);
         const shadowCameraHelper = new CameraHelper(this.lights.main.shadow.camera);
 
         this.debugHelpers.push(mainLightHelper, shadowCameraHelper);
@@ -252,8 +257,8 @@ export class SkyLightingSystem {
 
     public dispose() {
         // 移除事件监听
-        this.timeSystem.off(TimeEvents.TIME_UPDATED, () => {});
-        this.timeSystem.off(TimeEvents.DAY_NIGHT_CHANGED, () => {});
+        TimeSystem.ins.off(TimeEvents.TIME_UPDATED, () => { });
+        TimeSystem.ins.off(TimeEvents.DAY_NIGHT_CHANGED, () => { });
 
         // 清理资源
         this.debugHelpers.forEach(helper => {
