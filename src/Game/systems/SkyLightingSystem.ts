@@ -213,7 +213,7 @@ export class SkyLightingSystem {
         const elevation = maxElevation * Math.cos(hourAngle * Math.PI / 180);
 
         // 计算方位角，确保太阳从东向西移动
-        let azimuth = hourAngle;
+        const azimuth = hourAngle;
 
         // 确保方位角在合理范围内
         if (timeInHours < 6 || timeInHours > 18) {
