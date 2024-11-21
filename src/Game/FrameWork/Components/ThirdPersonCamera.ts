@@ -1,327 +1,345 @@
-import { Object3D, PerspectiveCamera, Vector3, MathUtils, Spherical, Vector2, Raycaster, Camera } from "three";
+import { MathUtils, Object3D, PerspectiveCamera, Raycaster, Spherical, Vector2, Vector3 } from "three";
 import { ELayers } from "../../config";
 import { Component } from "../Component";
 import { GameObject } from "../GameObject";
+import { calculateVerticalFoV } from "../../../utils/CameraUtils.ts";
+import { CameraComponent } from "./CameraComponent.ts";
 
 export interface ThirdPersonCameraConfig {
-  // Distance settings
-  initialDistance?: number;
-  minDistance?: number; 
-  maxDistance?: number;
+    // Distance settings
+    initialDistance?: number;
+    minDistance?: number;
+    maxDistance?: number;
 
-  // Rotation limits
-  minRotationX?: number;
-  maxRotationX?: number;
-  initialRotationX?: number;
-  initialRotationY?: number;
+    // Rotation limits
+    minRotationX?: number;
+    maxRotationX?: number;
+    initialRotationX?: number;
+    initialRotationY?: number;
 
-  // Height settings
-  minHeight?: number;
+    // Height settings
+    minHeight?: number;
 
-  // Movement settings
-  smoothSpeed?: number;
-  rotationSpeed?: number;
-  zoomSpeed?: number;
+    // Movement settings
+    smoothSpeed?: number;
+    rotationSpeed?: number;
+    zoomSpeed?: number;
 
-  // Touch sensitivity
-  touchRotationSensitivity?: number;
-  touchZoomSensitivity?: number;
+    // Touch sensitivity
+    touchRotationSensitivity?: number;
+    touchZoomSensitivity?: number;
 
-  // Collision settings
-  enableCollision?: boolean;
-  collisionLayers?: number[];
+    // Collision settings
+    enableCollision?: boolean;
+    collisionLayers?: number[];
 }
 
 export class ThirdPersonCamera extends Component {
-  type: string = "ThirdPersonCamera";
+    type: string = "ThirdPersonCamera";
 
-  private camera: PerspectiveCamera;
-  private target: Object3D;
-  private node: HTMLElement;
-  private currentPosition = new Vector3();
-  private currentLookAt = new Vector3();
-  
-  // Configurable parameters with defaults
-  private distance: number;
-  private minDistance: number;
-  private maxDistance: number;
-  
-  private rotationX: number;
-  private rotationY: number;
-  private minRotationX: number;
-  private maxRotationX: number;
-  
-  private readonly smoothSpeed: number;
-  private readonly minHeight: number;
-  private readonly rotationSpeed: number;
-  private readonly zoomSpeed: number;
-  private readonly touchRotationSensitivity: number;
-  private readonly touchZoomSensitivity: number;
+    private target: Object3D;
+    private node: HTMLElement;
+    private currentPosition = new Vector3();
+    private currentLookAt = new Vector3();
 
-  private readonly enableCollision: boolean;
-  private readonly collisionLayers: number[];
+    // Configurable parameters with defaults
+    private distance: number;
+    private minDistance: number;
+    private maxDistance: number;
 
-  // Touch control
-  private touchStart = new Vector2();
-  private prevTouchDistance = 0;
-  private isPointerDown = false;
-  private isTwoFingerTouch = false;
+    private rotationX: number;
+    private rotationY: number;
+    private minRotationX: number;
+    private maxRotationX: number;
 
-  constructor(
-    gameObject: GameObject<PerspectiveCamera>,
-    target: Object3D,
-    node: HTMLElement,
-    config: ThirdPersonCameraConfig = {}
-  ) {
-    super(gameObject);
+    private readonly smoothSpeed: number;
+    private readonly minHeight: number;
+    private readonly rotationSpeed: number;
+    private readonly zoomSpeed: number;
+    private readonly touchRotationSensitivity: number;
+    private readonly touchZoomSensitivity: number;
 
-    this.target = target;
-    this.node = node;
-    
-    const {
-      initialDistance = 20,
-      minDistance = 5,
-      maxDistance = 30,
-      initialRotationX = 45,
-      initialRotationY = 45,
-      minRotationX = -60,
-      maxRotationX = 60,
-      smoothSpeed = 0.1,
-      minHeight = 0.5,
-      rotationSpeed = 0.5,
-      zoomSpeed = 1,
-      touchRotationSensitivity = 0.5,
-      touchZoomSensitivity = 0.2,
-      enableCollision = false,
-      collisionLayers = []
-    } = config;
+    private readonly enableCollision: boolean;
+    private readonly collisionLayers: number[];
 
-    this.distance = initialDistance;
-    this.minDistance = minDistance;
-    this.maxDistance = maxDistance;
-    this.rotationX = initialRotationX;
-    this.rotationY = initialRotationY;
-    this.minRotationX = minRotationX;
-    this.maxRotationX = maxRotationX;
-    this.smoothSpeed = smoothSpeed;
-    this.minHeight = minHeight;
-    this.rotationSpeed = rotationSpeed;
-    this.zoomSpeed = zoomSpeed;
-    this.touchRotationSensitivity = touchRotationSensitivity;
-    this.touchZoomSensitivity = touchZoomSensitivity;
-    this.enableCollision = enableCollision;
-    this.collisionLayers = collisionLayers;
+    // Touch control
+    private touchStart = new Vector2();
+    private prevTouchDistance = 0;
+    private isPointerDown = false;
+    private isTwoFingerTouch = false;
 
-    this.updateCameraPosition();
-    this.initControlEvent(node);
-  }
+    private cameraComp: CameraComponent;
 
-  private onMouseWheel = (event: WheelEvent) => {
-    event.preventDefault();
-    const delta = event.deltaY * 0.01;
-    this.zoom(delta);
-  };
+    constructor(
+        gameObject: GameObject,
+        target: Object3D,
+        node: HTMLElement,
+        config: ThirdPersonCameraConfig = {}
+    ) {
+        super(gameObject);
 
-  private initControlEvent(node: HTMLElement) {
-    node.addEventListener("pointerdown", this.onPointerDown);
-    node.addEventListener("pointermove", this.onPointerMove);
-    node.addEventListener("pointerup", this.onPointerUp);
-    node.addEventListener("pointercancel", this.onPointerUp);
-    node.addEventListener("touchstart", this.onTouchStart);
-    node.addEventListener("touchmove", this.onTouchMove);
-    node.addEventListener("touchend", this.onTouchEnd);
-    node.addEventListener("touchcancel", this.onTouchEnd);
-    node.addEventListener("wheel", this.onMouseWheel);
-  }
+        this.cameraComp = this.getComponent(CameraComponent);
 
-  private removeControlEvent(node: HTMLElement) {
-    node.removeEventListener("pointerdown", this.onPointerDown);
-    node.removeEventListener("pointermove", this.onPointerMove);
-    node.removeEventListener("pointerup", this.onPointerUp);
-    node.removeEventListener("pointercancel", this.onPointerUp);
-    node.removeEventListener("touchstart", this.onTouchStart);
-    node.removeEventListener("touchmove", this.onTouchMove);
-    node.removeEventListener("touchend", this.onTouchEnd);
-    node.removeEventListener("wheel", this.onMouseWheel);
-  }
+        const aspect = window.innerWidth / window.innerHeight;
+        this.cameraComp.aspect = aspect;
+        this.cameraComp.fov = calculateVerticalFoV(90, Math.max(aspect, 16 / 9));
 
-  private onTouchStart = (event: TouchEvent) => {
-    if (event.touches.length === 2) {
-      this.isTwoFingerTouch = true;
-      this.prevTouchDistance = this.getTouchDistance(event);
+        this.onResize();
+        window.addEventListener("resize", this.onResize);
+
+        this.target = target;
+        this.node = node;
+
+        const {
+            initialDistance = 20,
+            minDistance = 5,
+            maxDistance = 30,
+            initialRotationX = 45,
+            initialRotationY = 45,
+            minRotationX = -60,
+            maxRotationX = 60,
+            smoothSpeed = 0.1,
+            minHeight = 0.5,
+            rotationSpeed = 0.5,
+            zoomSpeed = 1,
+            touchRotationSensitivity = 0.5,
+            touchZoomSensitivity = 0.2,
+            enableCollision = false,
+            collisionLayers = []
+        } = config;
+
+        this.distance = initialDistance;
+        this.minDistance = minDistance;
+        this.maxDistance = maxDistance;
+        this.rotationX = initialRotationX;
+        this.rotationY = initialRotationY;
+        this.minRotationX = minRotationX;
+        this.maxRotationX = maxRotationX;
+        this.smoothSpeed = smoothSpeed;
+        this.minHeight = minHeight;
+        this.rotationSpeed = rotationSpeed;
+        this.zoomSpeed = zoomSpeed;
+        this.touchRotationSensitivity = touchRotationSensitivity;
+        this.touchZoomSensitivity = touchZoomSensitivity;
+        this.enableCollision = enableCollision;
+        this.collisionLayers = collisionLayers;
+
+        this.updateCameraPosition();
+        this.initControlEvent(node);
     }
-  };
 
-  private onTouchMove = (event: TouchEvent) => {
-    if (this.isTwoFingerTouch && event.touches.length === 2) {
-      const currentDistance = this.getTouchDistance(event);
-      const delta = (this.prevTouchDistance - currentDistance) * this.touchZoomSensitivity;
-      this.zoom(delta);
-      this.prevTouchDistance = currentDistance;
+    onResize = () => {
+        const aspect = window.innerWidth / window.innerHeight;
+        this.cameraComp.aspect = aspect;
+        this.cameraComp.fov = calculateVerticalFoV(90, Math.max(aspect, 16 / 9));
+    };
+
+    private onMouseWheel = (event: WheelEvent) => {
+        event.preventDefault();
+        const delta = event.deltaY * 0.01;
+        this.zoom(delta);
+    };
+
+    private initControlEvent(node: HTMLElement) {
+        node.addEventListener("pointerdown", this.onPointerDown);
+        node.addEventListener("pointermove", this.onPointerMove);
+        node.addEventListener("pointerup", this.onPointerUp);
+        node.addEventListener("pointercancel", this.onPointerUp);
+        node.addEventListener("touchstart", this.onTouchStart);
+        node.addEventListener("touchmove", this.onTouchMove);
+        node.addEventListener("touchend", this.onTouchEnd);
+        node.addEventListener("touchcancel", this.onTouchEnd);
+        node.addEventListener("wheel", this.onMouseWheel);
     }
-  };
 
-  private onTouchEnd = () => {
-    this.isTwoFingerTouch = false;
-  };
-
-  private getTouchDistance(event: TouchEvent): number {
-    const touch1 = event.touches[0];
-    const touch2 = event.touches[1];
-    return Math.hypot(
-      touch1.clientX - touch2.clientX,
-      touch1.clientY - touch2.clientY
-    );
-  }
-
-  private onPointerDown = (event: PointerEvent) => {
-    if (!this.isTwoFingerTouch) {
-      this.isPointerDown = true;
-      this.touchStart.set(event.clientX, event.clientY);
+    private removeControlEvent(node: HTMLElement) {
+        node.removeEventListener("pointerdown", this.onPointerDown);
+        node.removeEventListener("pointermove", this.onPointerMove);
+        node.removeEventListener("pointerup", this.onPointerUp);
+        node.removeEventListener("pointercancel", this.onPointerUp);
+        node.removeEventListener("touchstart", this.onTouchStart);
+        node.removeEventListener("touchmove", this.onTouchMove);
+        node.removeEventListener("touchend", this.onTouchEnd);
+        node.removeEventListener("wheel", this.onMouseWheel);
     }
-  };
 
-  private onPointerMove = (event: PointerEvent) => {
-    if (!this.isPointerDown || this.isTwoFingerTouch) return;
+    private onTouchStart = (event: TouchEvent) => {
+        if (event.touches.length === 2) {
+            this.isTwoFingerTouch = true;
+            this.prevTouchDistance = this.getTouchDistance(event);
+        }
+    };
 
-    const deltaX = event.clientX - this.touchStart.x;
-    const deltaY = event.clientY - this.touchStart.y;
+    private onTouchMove = (event: TouchEvent) => {
+        if (this.isTwoFingerTouch && event.touches.length === 2) {
+            const currentDistance = this.getTouchDistance(event);
+            const delta = (this.prevTouchDistance - currentDistance) * this.touchZoomSensitivity;
+            this.zoom(delta);
+            this.prevTouchDistance = currentDistance;
+        }
+    };
 
-    this.rotate(
-      deltaX * this.touchRotationSensitivity, // Negative deltaX to reverse left/right direction
-      deltaY * this.touchRotationSensitivity
-    );
+    private onTouchEnd = () => {
+        this.isTwoFingerTouch = false;
+    };
 
-    this.touchStart.set(event.clientX, event.clientY);
-  };
+    private getTouchDistance(event: TouchEvent): number {
+        const touch1 = event.touches[0];
+        const touch2 = event.touches[1];
+        return Math.hypot(
+            touch1.clientX - touch2.clientX,
+            touch1.clientY - touch2.clientY
+        );
+    }
 
-  private onPointerUp = () => {
-    this.isPointerDown = false;
-  };
+    private onPointerDown = (event: PointerEvent) => {
+        if (!this.isTwoFingerTouch) {
+            this.isPointerDown = true;
+            this.touchStart.set(event.clientX, event.clientY);
+        }
+    };
 
-  rotate(deltaX: number, deltaY: number) {
-    this.rotationY -= deltaX * this.rotationSpeed; // Negative to reverse direction
-    this.rotationX += deltaY * this.rotationSpeed;
-    this.rotationX = MathUtils.clamp(
-      this.rotationX, 
-      this.minRotationX, 
-      this.maxRotationX
-    );
-  }
+    private onPointerMove = (event: PointerEvent) => {
+        if (!this.isPointerDown || this.isTwoFingerTouch) return;
 
-  zoom(delta: number) {
-    this.distance = MathUtils.clamp(
-      this.distance + delta * this.zoomSpeed,
-      this.minDistance,
-      this.maxDistance
-    );
-  }
+        const deltaX = event.clientX - this.touchStart.x;
+        const deltaY = event.clientY - this.touchStart.y;
 
-  private updateCameraPosition() {
-    const spherical = new Spherical(
-      this.distance,
-      MathUtils.degToRad(90 - this.rotationX),
-      MathUtils.degToRad(this.rotationY)
-    );
-    
-    const desiredPosition = new Vector3();
-    desiredPosition.setFromSpherical(spherical);
-
-    // 计算从目标到相机的方向
-    const direction = desiredPosition.clone().normalize();
-
-    if (this.enableCollision) {
-      // 创建射线，从目标位置射向预期的相机位置
-      const rayCaster = new Raycaster(
-        this.target.position.clone(),
-        direction,
-        this.gameObject.node.near,
-        this.maxDistance
-      );
-
-      rayCaster.layers.set(ELayers.Default);
-      // 设置射线检测的层
-      if (this.collisionLayers.length > 0) {
-        this.collisionLayers.forEach(layer => {
-          rayCaster.layers.enable(layer);
-        });
-      }
-
-      rayCaster.layers.disable(ELayers.DebugView);
-
-      // 获取场景中的碰撞物体
-      const intersects = rayCaster.intersectObjects(
-        this.target.parent?.children || [],
-        true
-      ).filter(hit => hit.distance > 0);
-
-      // 如果发生碰撞，调整相机位置到碰撞点
-      if (intersects.length > 0) {
-        const collision = intersects[0];
-        const collisionDistance = Math.max(
-          this.minDistance,
-          collision.distance - 0.5 // 留出缓冲距离
+        this.rotate(
+            deltaX * this.touchRotationSensitivity, // Negative deltaX to reverse left/right direction
+            deltaY * this.touchRotationSensitivity
         );
 
-        // 调整相机位置到碰撞点
-        desiredPosition.copy(direction).multiplyScalar(collisionDistance);
-      }
-    }
-    
-    desiredPosition.add(this.target.position);
-
-    if (desiredPosition.y < this.minHeight) {
-      desiredPosition.y = this.minHeight;
-    }
-
-    this.currentPosition.lerp(desiredPosition, this.smoothSpeed);
-    this.currentLookAt.lerp(this.target.position, this.smoothSpeed);
-
-    this.gameObject.node.position.copy(this.currentPosition);
-    this.gameObject.node.lookAt(this.currentLookAt);
-  }
-
-  // Public methods for external control
-  setTarget(newTarget: Object3D) {
-    this.target = newTarget;
-  }
-
-  setDistance(distance: number) {
-    this.distance = MathUtils.clamp(distance, this.minDistance, this.maxDistance);
-  }
-
-  setRotation(x: number, y: number) {
-    this.rotationX = MathUtils.clamp(x, this.minRotationX, this.maxRotationX);
-    this.rotationY = y;
-  }
-
-  getConfig(): ThirdPersonCameraConfig {
-    return {
-      initialDistance: this.distance,
-      minDistance: this.minDistance,
-      maxDistance: this.maxDistance,
-      minRotationX: this.minRotationX,
-      maxRotationX: this.maxRotationX,
-      initialRotationX: this.rotationX,
-      initialRotationY: this.rotationY,
-      minHeight: this.minHeight,
-      smoothSpeed: this.smoothSpeed,
-      rotationSpeed: this.rotationSpeed,
-      zoomSpeed: this.zoomSpeed,
-      touchRotationSensitivity: this.touchRotationSensitivity,
-      touchZoomSensitivity: this.touchZoomSensitivity,
-      enableCollision: this.enableCollision,
-      collisionLayers: this.collisionLayers,
+        this.touchStart.set(event.clientX, event.clientY);
     };
-  }
 
-  onUpdate(dt) {
-    this.updateCameraPosition();
-  }
+    private onPointerUp = () => {
+        this.isPointerDown = false;
+    };
 
-  dispose() {
-    this.removeControlEvent(this.node);
-  }
+    rotate(deltaX: number, deltaY: number) {
+        this.rotationY -= deltaX * this.rotationSpeed; // Negative to reverse direction
+        this.rotationX += deltaY * this.rotationSpeed;
+        this.rotationX = MathUtils.clamp(
+            this.rotationX,
+            this.minRotationX,
+            this.maxRotationX
+        );
+    }
+
+    zoom(delta: number) {
+        this.distance = MathUtils.clamp(
+            this.distance + delta * this.zoomSpeed,
+            this.minDistance,
+            this.maxDistance
+        );
+    }
+
+    private updateCameraPosition() {
+        const spherical = new Spherical(
+            this.distance,
+            MathUtils.degToRad(90 - this.rotationX),
+            MathUtils.degToRad(this.rotationY)
+        );
+
+        const desiredPosition = new Vector3();
+        desiredPosition.setFromSpherical(spherical);
+
+        // 计算从目标到相机的方向
+        const direction = desiredPosition.clone().normalize();
+
+        if (this.enableCollision) {
+            // 创建射线，从目标位置射向预期的相机位置
+            const rayCaster = new Raycaster(
+                this.target.position.clone(),
+                direction,
+                this.cameraComp.near,
+                this.maxDistance
+            );
+
+            rayCaster.layers.set(ELayers.Default);
+            // 设置射线检测的层
+            if (this.collisionLayers.length > 0) {
+                this.collisionLayers.forEach(layer => {
+                    rayCaster.layers.enable(layer);
+                });
+            }
+
+            rayCaster.layers.disable(ELayers.DebugView);
+
+            // 获取场景中的碰撞物体
+            const intersects = rayCaster.intersectObjects(
+                this.target.parent?.children || [],
+                true
+            ).filter(hit => hit.distance > 0);
+
+            // 如果发生碰撞，调整相机位置到碰撞点
+            if (intersects.length > 0) {
+                const collision = intersects[0];
+                const collisionDistance = Math.max(
+                    this.minDistance,
+                    collision.distance - 0.5 // 留出缓冲距离
+                );
+
+                // 调整相机位置到碰撞点
+                desiredPosition.copy(direction).multiplyScalar(collisionDistance);
+            }
+        }
+
+        desiredPosition.add(this.target.position);
+
+        if (desiredPosition.y < this.minHeight) {
+            desiredPosition.y = this.minHeight;
+        }
+
+        this.currentPosition.lerp(desiredPosition, this.smoothSpeed);
+        this.currentLookAt.lerp(this.target.position, this.smoothSpeed);
+
+        this.cameraComp.camera.position.copy(this.currentPosition);
+        this.cameraComp.camera.lookAt(this.currentLookAt);
+    }
+
+    // Public methods for external control
+    setTarget(newTarget: Object3D) {
+        this.target = newTarget;
+    }
+
+    setDistance(distance: number) {
+        this.distance = MathUtils.clamp(distance, this.minDistance, this.maxDistance);
+    }
+
+    setRotation(x: number, y: number) {
+        this.rotationX = MathUtils.clamp(x, this.minRotationX, this.maxRotationX);
+        this.rotationY = y;
+    }
+
+    getConfig(): ThirdPersonCameraConfig {
+        return {
+            initialDistance: this.distance,
+            minDistance: this.minDistance,
+            maxDistance: this.maxDistance,
+            minRotationX: this.minRotationX,
+            maxRotationX: this.maxRotationX,
+            initialRotationX: this.rotationX,
+            initialRotationY: this.rotationY,
+            minHeight: this.minHeight,
+            smoothSpeed: this.smoothSpeed,
+            rotationSpeed: this.rotationSpeed,
+            zoomSpeed: this.zoomSpeed,
+            touchRotationSensitivity: this.touchRotationSensitivity,
+            touchZoomSensitivity: this.touchZoomSensitivity,
+            enableCollision: this.enableCollision,
+            collisionLayers: this.collisionLayers,
+        };
+    }
+
+    onUpdate(dt) {
+        this.updateCameraPosition();
+    }
+
+    dispose() {
+        this.removeControlEvent(this.node);
+    }
 }
 
 

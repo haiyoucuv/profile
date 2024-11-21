@@ -16,6 +16,7 @@ import { World } from "./FrameWork/World.ts";
 import { RenderComponent } from "./FrameWork/Components/RenderComponent.ts";
 import { GameObject } from "./FrameWork/GameObject.ts";
 import { ThirdPersonCamera } from "./FrameWork/Components/ThirdPersonCamera.ts";
+import { CameraComponent } from "./FrameWork/Components/CameraComponent.ts";
 
 const gltfLoader = new GLTFLoader();
 const fbxLoader = new FBXLoader();
@@ -35,9 +36,8 @@ export class Game {
 
         World.initialize(this.canvas);
 
-
-        const player = new GameObject(new Object3D());
-        World.ins.scene.add(player.node);
+        const player = new GameObject();
+        World.ins.scene.add(player);
         player.addComponent(RenderComponent, new BoxGeometry(), new MeshStandardMaterial());
         World.ins.addGameObject(player);
 
@@ -45,14 +45,14 @@ export class Game {
         light.position.set(10, 10, 10);
         World.ins.scene.add(light);
 
-        World.ins.camera.position.set(0, 0, 10);
-
-        const camera = new GameObject<PerspectiveCamera>(World.ins.camera, "camera");
-        camera.addComponent(ThirdPersonCamera, player.node, this.canvas, {
+        const camera = new GameObject();
+        camera.addComponent(CameraComponent);
+        camera.addComponent(ThirdPersonCamera, player, this.canvas, {
             maxDistance: 100,
+            initialDistance: 10,
         });
+        // World.ins.scene.add(camera);
         World.ins.addGameObject(camera);
-
 
         await this.addMap();
 
@@ -69,9 +69,12 @@ export class Game {
             }
         });
 
-        const map = new GameObject(cityGltf.scene, "map");
-        World.ins.scene.add(map.node);
+        const map = new GameObject();
+        map.add(cityGltf.scene);
+        World.ins.scene.add(map);
         World.ins.addGameObject(map);
+
+        console.log(World.ins.scene);
 
     }
 

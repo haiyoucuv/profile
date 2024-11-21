@@ -15,9 +15,7 @@ export abstract class Component implements IComponent {
     gameObject: GameObject;
     enabled: boolean;
 
-    constructor(
-        gameObject: GameObject
-    ) {
+    constructor(gameObject: GameObject) {
         this.gameObject = gameObject;
         this.onLoad();
     }
@@ -37,6 +35,10 @@ export abstract class Component implements IComponent {
 
     onDestroy() {
 
+    }
+
+    getComponent<T extends Component>(ComponentType: Constructor<T>): T {
+        return this.gameObject.getComponent<T>(ComponentType);
     }
 
 }

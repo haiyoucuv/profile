@@ -3,15 +3,9 @@ import { Component } from "./Component.ts";
 import { SafeArray } from "./SafeArray.ts";
 
 
-export class GameObject<T extends Object3D = Object3D> {
-    readonly node: T;
-    name: string;
-    private readonly components: SafeArray<Component> = new SafeArray<Component>();
+export class GameObject extends Object3D {
 
-    constructor(transform: T, name: string = "GameObject") {
-        this.name = name;
-        this.node = transform;
-    }
+    private readonly components: SafeArray<Component> = new SafeArray<Component>();
 
     addComponent<T extends Component>(ComponentCls: Constructor<T>, ...args): T {
         const component = new ComponentCls(this, ...args);
@@ -19,13 +13,13 @@ export class GameObject<T extends Object3D = Object3D> {
         return component;
     }
 
-    removeComponent(component) {
+    removeComponent(component: Component) {
         component.gameObject = null;
         this.components.remove(component);
     }
 
-    getComponent(ComponentType) {
-        return this.components.find(c => c instanceof ComponentType);
+    getComponent<T extends Component>(ComponentType: Constructor<T>): T {
+        return this.components.find(c => c instanceof ComponentType) as T;
     }
 
     onUpdate(dt: number) {

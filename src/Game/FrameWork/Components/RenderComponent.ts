@@ -9,7 +9,7 @@ export class RenderComponent extends Component {
     constructor(gameObject: GameObject, geometry: BufferGeometry, material: Material) {
         super(gameObject);
         this.mesh = new Mesh(geometry, material);
-        this.gameObject.node.add(this.mesh);
+        this.gameObject.add(this.mesh);
     }
 
     onLoad(): void {

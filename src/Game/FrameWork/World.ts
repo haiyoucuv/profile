@@ -1,8 +1,8 @@
-import { ACESFilmicToneMapping, Object3D, PCFSoftShadowMap, PerspectiveCamera, Scene, SRGBColorSpace, WebGLRenderer } from "three";
+import { ACESFilmicToneMapping, PCFSoftShadowMap, Scene, SRGBColorSpace, WebGLRenderer } from "three";
 import { SafeArray } from "./SafeArray";
 import { GameObject } from "./GameObject";
 import { System } from "./Systems/System";
-import { calculateVerticalFoV } from "../../utils/CameraUtils";
+import { CameraSystem } from "../systems/CameraSystem.ts";
 
 export class World {
 
@@ -31,7 +31,6 @@ export class World {
     canvas: HTMLCanvasElement;
     renderer: WebGLRenderer = null;
     scene: Scene;
-    camera: PerspectiveCamera;
 
 
     private constructor(canvas: HTMLCanvasElement) {
@@ -59,27 +58,8 @@ export class World {
 
         this.scene = new Scene();
 
-        const aspect = window.innerWidth / window.innerHeight;
-        const vFoV = calculateVerticalFoV(90, Math.max(aspect, 16 / 9));
-        this.camera = new PerspectiveCamera(vFoV, window.innerWidth / window.innerHeight, 0.1, 1000);
-
         this.renderer.setAnimationLoop(this.onUpdate);
-
-        this.onResize();
-        window.addEventListener("resize", this.onResize);
-
     }
-
-
-    onResize = () => {
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(window.devicePixelRatio);
-
-        this.camera.aspect = window.innerWidth / window.innerHeight;
-        const vFoV = calculateVerticalFoV(90, Math.max(this.camera.aspect, 16 / 9));
-        this.camera.fov = vFoV;
-        this.camera.updateProjectionMatrix();
-    };
 
     addGameObject(gameObject: GameObject) {
         this.gameObjects.add(gameObject);
@@ -107,7 +87,9 @@ export class World {
             gameObject.onUpdate(dt);
         });
 
-        this.renderer.render(this.scene, this.camera);
+        const camera = CameraSystem.ins.camera;
+        if (!camera) return;
+        this.renderer.render(this.scene, camera);
     }
 
     getScene(): Scene {
