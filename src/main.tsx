@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 
-import "@csstools/normalize.css";
+// import "@csstools/normalize.css";
 
 import "./index.less";
 import App from "./App.tsx";

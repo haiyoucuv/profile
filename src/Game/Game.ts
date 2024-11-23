@@ -135,7 +135,6 @@ export class Game {
 
     onMouseDown = (() => {
         const rayCaster = new Raycaster();
-        rayCaster.firstHitOnly = true;
         const mouse = new Vector2();
         return (event: MouseEvent) => {
             if (event.button !== 2) return;

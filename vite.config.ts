@@ -5,71 +5,50 @@ import postcssPxToRem from "postcss-pxtorem";
 import { viteMockServe } from "vite-plugin-mock";
 import legacy from "@vitejs/plugin-legacy";
 
-
 // https://vite.dev/config/
 export default defineConfig({
-  base: "./",
-  assetsInclude: [/\.(svga|gltf|fbx|glsl|glb)$/],
-  server: {
-    open: false,
-  },
-  resolve: {},
-  worker: {
-    format: "es",
-  },
-  // optimizeDeps: { exclude: ["recast-navigation"] },
-  build: {
-    cssTarget: "chrome61",
-    rollupOptions: {
-      output: {
-        dir: "docs",
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
+    base: "./",
+    assetsInclude: [/\.(svga|gltf|fbx|glsl|glb)$/],
+    server: {
+        open: false,
+    },
+    resolve: {},
+    worker: {
+        format: "es",
+    },
+    // optimizeDeps: { exclude: ["recast-navigation"] },
+    build: {
+        // cssTarget: "chrome61",
+        rollupOptions: {
+            output: {
+                dir: "docs",
+                manualChunks(id) {
+                    if (id.includes("node_modules")) {
+                        return "vendor";
+                    }
+                },
+            },
         },
-      },
     },
-  },
-  plugins: [
-    react(),
-    // legacy({
-    //   targets: ["defaults", "not IE 11"],
-    // }),
-    viteMockServe({
-      // default
-      mockPath: "mock",
-      enable: true,
-    }),
-  ],
-  css: {
-    postcss: {
-      plugins: [
-        autoprefixer({
-          overrideBrowserslist: [
-            "Android 4.1",
-            "iOS 7.1",
-            "Chrome > 31",
-            "ff > 31",
-            "ie >= 8",
-            "last 10 versions",
-          ],
-          grid: true
+    plugins: [
+        react(),
+        // legacy({
+        //   targets: ["defaults", "not IE 11"],
+        // }),
+        viteMockServe({
+            // default
+            mockPath: "mock",
+            enable: true,
         }),
-        postcssPxToRem({
-          rootValue: 100,
-          propList: ["*", "!border"],
-          selectorBlackList: [".noRem-"],
-        }),
-      ],
-    },
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-      },
-    },
-    modules: {
-      localsConvention: "camelCase"
+    ],
+    css: {
+        preprocessorOptions: {
+            less: {
+                javascriptEnabled: true,
+            },
+        },
+        modules: {
+            localsConvention: "camelCase"
+        }
     }
-  }
 });
