@@ -18,7 +18,6 @@ BatchedMesh.prototype.raycast = acceleratedRaycast;
 
 import "./App.less";
 import { Game } from "./Game/Game.ts";
-import { World } from "./Game/FrameWork/World.ts";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
