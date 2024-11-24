@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 
-import logo from "../assets/logo.svg";
+import logo from "../assets/H.svg";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 

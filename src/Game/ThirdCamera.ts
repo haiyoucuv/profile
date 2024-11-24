@@ -134,7 +134,7 @@ export class ThirdPersonCamera {
         node.addEventListener("touchmove", this.onTouchMove);
         node.addEventListener("touchend", this.onTouchEnd);
         node.addEventListener("touchcancel", this.onTouchEnd);
-        node.addEventListener("wheel", this.onMouseWheel);
+        // node.addEventListener("wheel", this.onMouseWheel);
     }
 
     private removeControlEvent(node: HTMLElement) {
@@ -145,7 +145,7 @@ export class ThirdPersonCamera {
         node.removeEventListener("touchstart", this.onTouchStart);
         node.removeEventListener("touchmove", this.onTouchMove);
         node.removeEventListener("touchend", this.onTouchEnd);
-        node.removeEventListener("wheel", this.onMouseWheel);
+        // node.removeEventListener("wheel", this.onMouseWheel);
     }
 
     private onTouchStart = (event: TouchEvent) => {

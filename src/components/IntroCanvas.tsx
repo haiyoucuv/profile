@@ -17,55 +17,28 @@ export const IntroCanvas = () => {
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const threeRef = useRef({
-        renderer: null,
-        scene: null,
-        camera: null,
-        cameraCtrl: null,
-    });
-
-    const onUpdate = useCallback(() => {
-        const { renderer, scene, camera, cameraCtrl } = threeRef.current!;
-        cameraCtrl.update();
-        renderer.render(scene, camera);
-    }, [threeRef]);
-
-    const onResize = useCallback(() => {
-        const canvas = canvasRef.current!;
-        const { renderer, scene, camera, cameraCtrl } = threeRef.current!;
-
-        const { clientWidth: width, clientHeight: height } = canvas.parentElement;
-
-
-        const aspect = width / height;
-        const vFoV = calculateHorizontalFoV(20, Math.max(aspect, 16 / 9));
-
-        renderer.setSize(width, height);
-        camera.aspect = aspect;
-        camera.fov = vFoV;
-        camera.updateProjectionMatrix();
-
-    }, [threeRef, canvasRef]);
-
     useEffect(() => {
         const canvas = canvasRef.current!;
 
         const { clientWidth: width, clientHeight: height } = canvas.parentElement;
 
-        const renderer = threeRef.current.renderer = new WebGLRenderer({
-            antialias: true,
+        const renderer = new WebGLRenderer({
+            // antialias: true,
             powerPreference: "high-performance",
             canvas,
         });
+        renderer.setClearColor(0x000000, 0);
         renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = PCFSoftShadowMap;
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMapping = ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.5;
 
-        const scene = threeRef.current.scene = new Scene();
+        const scene = new Scene();
 
-        const camera = threeRef.current.camera = new PerspectiveCamera(25, width / height, 0.1, 1000);
+        const camera = new PerspectiveCamera(25, width / height, 0.1, 1000);
         // camera.position.set(0, 10, 40);
 
         gltfLoader.load("./desktop_pc/scene.gltf", (gltf) => {
@@ -73,17 +46,36 @@ export const IntroCanvas = () => {
             gltf.scene.position.set(0.5, -2.5, -1.5);
         });
 
-        const pmermGenerator = new PMREMGenerator(renderer);
-        scene.environment = pmermGenerator.fromScene(RoomEnvironment(), 0.04).texture;
+        const pmremGenerator = new PMREMGenerator(renderer);
+        scene.environment = pmremGenerator.fromScene(RoomEnvironment(), 0.04).texture;
 
-        threeRef.current.cameraCtrl = new ThirdPersonCamera(camera, scene, document.body, {
+        const cameraCtrl = new ThirdPersonCamera(camera, scene, canvas, {
             maxDistance: 50,
             maxRotationY: 130,
             minRotationY: 50,
             zoomSpeed: 5,
         });
 
-        renderer.setAnimationLoop(onUpdate);
+        renderer.setAnimationLoop(() => {
+            cameraCtrl.update();
+            renderer.render(scene, camera);
+        });
+
+
+        const onResize =() => {
+            const canvas = canvasRef.current!;
+
+            const { clientWidth: width, clientHeight: height } = canvas.parentElement;
+
+            const aspect = width / height;
+            const vFoV = calculateHorizontalFoV(20, Math.max(aspect, 16 / 9));
+
+            renderer.setSize(width, height);
+            camera.aspect = aspect;
+            camera.fov = vFoV;
+            camera.updateProjectionMatrix();
+
+        }
 
         onResize();
         window.addEventListener("resize", onResize);
