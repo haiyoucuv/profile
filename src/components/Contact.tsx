@@ -3,10 +3,8 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
-// import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc/SectionWrapper.tsx";
 import { slideIn } from "../utils/motion";
-import { ContactCanvas } from "./ContactCanvas.tsx";
 
 const Contact = () => {
     const formRef = useRef();
@@ -99,7 +97,7 @@ const Contact = () => {
                             name="email"
                             value={form.email}
                             onChange={handleChange}
-                            placeholder="What's your web address?"
+                            placeholder="Emaikl"
                             className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                         />
                     </label>

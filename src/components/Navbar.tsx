@@ -8,7 +8,6 @@ import logo from "../assets/H.svg";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
 import github from "../assets/icon/github.svg?raw";
-import { color } from "framer-motion";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -48,24 +47,25 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            Haiyoucuv &nbsp;
-            <span className="sm:block"> | Profile</span>
+          <p className="text-white-100 text-[18px] font-bold cursor-pointer flex ">
+            Haiyoucuv
+            <span className="sm:block">&nbsp;丨&nbsp;Profile</span>
           </p>
         </Link>
 
         <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
-          {navLinks.map((nav) => (
-            <li
+          {navLinks.map((nav) => {
+            if (nav.title == "Github") return null;
+            return <li
               key={nav.id}
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } hover:text-white-100 text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
               <a href={nav.id}>{nav.title}</a>
-            </li>
-          ))}
+            </li>;
+          })}
 
           <li className="cursor-pointer flex items-center">
             <a href="https://github.com/haiyoucuv/profile"
@@ -93,7 +93,7 @@ const Navbar = () => {
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
+                    active === nav.title ? "text-white-100" : "text-secondary"
                   }`}
                   onClick={() => {
                     setToggle(!toggle);

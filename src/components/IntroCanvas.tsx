@@ -1,5 +1,5 @@
-import { GLTFLoader, OrbitControls, RoomEnvironment } from "three-stdlib";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { GLTFLoader, RoomEnvironment } from "three-stdlib";
+import {useEffect, useRef } from "react";
 import {
     ACESFilmicToneMapping,
     PCFSoftShadowMap,
@@ -9,7 +9,7 @@ import {
     WebGLRenderer
 } from "three";
 import { ThirdPersonCamera } from "../Game/ThirdCamera.ts";
-import { calculateHorizontalFoV, calculateVerticalFoV } from "../utils/CameraUtils.ts";
+import { calculateHorizontalFoV } from "../utils/CameraUtils.ts";
 
 const gltfLoader = new GLTFLoader();
 
@@ -23,15 +23,15 @@ export const IntroCanvas = () => {
         const { clientWidth: width, clientHeight: height } = canvas.parentElement;
 
         const renderer = new WebGLRenderer({
-            // antialias: true,
+            antialias: true,
             powerPreference: "high-performance",
             canvas,
         });
         renderer.setClearColor(0x000000, 0);
         renderer.setSize(width, height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = PCFSoftShadowMap;
+        // renderer.shadowMap.enabled = true;
+        // renderer.shadowMap.type = PCFSoftShadowMap;
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMapping = ACESFilmicToneMapping;
         renderer.toneMappingExposure = 1.5;
