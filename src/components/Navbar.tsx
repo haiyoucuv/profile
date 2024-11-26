@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 
-import logo from "../assets/H.svg";
+import LogoSvg from "../assets/H.svg?react";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
-import github from "../assets/icon/github.svg?raw";
+import GithubSvg from "../assets/icon/github.svg?react";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -29,8 +29,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav
+    return <nav
       className={`${
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20 ${
@@ -46,7 +45,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <LogoSvg className="w-9 h-9 object-contain" />
           <p className="text-white-100 text-[18px] font-bold cursor-pointer flex ">
             Haiyoucuv
             <span className="sm:block">&nbsp;丨&nbsp;Profile</span>
@@ -68,10 +67,9 @@ const Navbar = () => {
           })}
 
           <li className="cursor-pointer flex items-center">
-            <a href="https://github.com/haiyoucuv/profile"
-               className="fill-secondary hover:fill-white w-[50px] h-[50px]"
-               dangerouslySetInnerHTML={{ __html: github }}
-            />
+              <a href="https://github.com/haiyoucuv/profile">
+                  <GithubSvg className="fill-secondary hover:fill-white w-[50px] h-[50px]" />
+              </a>
           </li>
         </ul>
 
@@ -107,8 +105,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
-  );
+    </nav>;
 };
 
 export default Navbar;

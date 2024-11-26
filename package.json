@@ -32,7 +32,8 @@
     "stats.js": "^0.17.0",
     "three": "^0.170.0",
     "three-mesh-bvh": "^0.8.3",
-    "three-stdlib": "^2.34.0"
+    "three-stdlib": "^2.34.0",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
