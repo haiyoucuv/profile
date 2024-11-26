@@ -3,10 +3,12 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import {
     ACESFilmicToneMapping, Mesh, MeshBasicMaterial, MeshStandardMaterial,
     PCFSoftShadowMap,
-    PerspectiveCamera, PlaneGeometry,
+    PerspectiveCamera, PlaneGeometry, PMREMGenerator,
     Scene, SpotLight, SpotLightHelper, SRGBColorSpace,
     WebGLRenderer
 } from "three";
+
+import avatarGlb from "../assets/model/avatar_1732550465388.glb";
 
 const gltfLoader = new GLTFLoader();
 
@@ -32,16 +34,16 @@ export const ContactCanvas = () => {
         renderer.shadowMap.type = PCFSoftShadowMap;
         renderer.outputColorSpace = SRGBColorSpace;
         renderer.toneMapping = ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 2;
+        renderer.toneMappingExposure = 1;
 
         const scene = new Scene();
 
-        const camera = new PerspectiveCamera(85, width / height, 0.1, 1000);
-        camera.position.set(0, 0, 10);
+        const camera = new PerspectiveCamera(45, width / height, 0.1, 1000);
+        camera.position.set(0, 0, 4);
 
-        gltfLoader.load("./model/balloon_boy_poptropica.glb", (gltf) => {
+        gltfLoader.load(avatarGlb, (gltf) => {
             scene.add(gltf.scene);
-            scene.position.set(3, -1, 0)
+            gltf.scene.position.set(0, -1, 0);
             gltf.scene.traverse((child) => {
                 if (child instanceof Mesh) {
                     child.castShadow = true;
@@ -50,41 +52,12 @@ export const ContactCanvas = () => {
             });
         });
 
-        const wall = new Mesh(new PlaneGeometry(1, 1), new MeshStandardMaterial({ color: 0xffffff }));
-        wall.position.set(0, 0, -10);
-        wall.scale.set(100, 100, 100);
-        scene.add(wall);
-        wall.receiveShadow = true;
-
-        const grand = new Mesh(new PlaneGeometry(1, 1), new MeshStandardMaterial({ color: 0xffffff }));
-        grand.position.set(0, -6, 0);
-        grand.rotation.x = -Math.PI / 2;
-        grand.scale.set(100, 100, 100);
-        scene.add(grand);
-        grand.receiveShadow = true;
-
-        const spotLight = new SpotLight(0xffffff, 1, 0, 0.314, 1, 0.2);
-        spotLight.position.set(-6, 6, 14);
-        spotLight.castShadow = true;
-        spotLight.shadow.mapSize.width = 2048;
-        spotLight.shadow.mapSize.height = 2048;
-        spotLight.shadow.normalBias = 0.05;
-        scene.add(spotLight);
-
-        const helper = new SpotLightHelper(spotLight);
-        scene.add(helper);
+        const pmremGenerator = new PMREMGenerator(renderer);
+        scene.environment = pmremGenerator.fromScene(RoomEnvironment(), 0.04).texture;
 
         renderer.setAnimationLoop(() => {
-            spotLight.position.set(
-                -6, 6,
-                (2 - Math.sin(Date.now() * 0.0005)) * 14,
-            );
-
-            helper.update();
-
             renderer.render(scene, camera);
         });
-
 
         const onResize = () => {
             const canvas = canvasRef.current!;
@@ -107,9 +80,6 @@ export const ContactCanvas = () => {
 
     }, [canvasRef]);
 
-    return <canvas
-        className="w-full h-auto absolute inset-0 z-[-1]"
-        ref={canvasRef}
-    />;
+    return <canvas className="w-full h-full" ref={canvasRef} />;
 
 };
