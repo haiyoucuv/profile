@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { IntroCanvas } from "./IntroCanvas.tsx";
+import { IntroCanvas } from "./IntroCanvas/IntroCanvas.tsx";
 
 export const Intro = () => {
 
