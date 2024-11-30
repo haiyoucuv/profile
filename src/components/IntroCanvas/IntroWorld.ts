@@ -1,12 +1,18 @@
-import { Application, Assets, Sprite, ResizePlugin } from "pixi.js";
-import bulbSvg from "../../assets/bulb.svg";
+import { Application, Assets, Container, ResizePlugin } from "pixi.js";
 import { Bodies, Composite, Engine, Render, Runner } from "matter-js";
+import { Bulb } from "./Bulb.ts";
+import bulbSvg from "../../assets/bulb.svg";
+
 
 export class IntroWorld {
 
     canvas: HTMLCanvasElement;
     debugCanvas: HTMLCanvasElement;
     app: Application;
+    root: Container;
+
+    engine: Engine;
+    engineRender: Render;
 
     FIXED_WIDTH = 1000;
 
@@ -14,6 +20,18 @@ export class IntroWorld {
         this.canvas = canvas;
         await this.initApp();
         this.initPhysics();
+
+
+        const bulb = new Bulb();
+        bulb.position.set(500, 500);
+        this.root.addChild(bulb);
+
+        Composite.add(this.engine.world, [bulb.body]);
+
+
+
+        this.onResize();
+        window.addEventListener("resize", this.onResize);
     }
 
 
@@ -41,22 +59,17 @@ export class IntroWorld {
             // resizeTo: canvas.parentElement,
         });
 
+        await Assets.load(bulbSvg);
 
-        const bulbTexture = await Assets.load(bulbSvg);
-        const bulb = new Sprite(bulbTexture);
-        app.stage.addChild(bulb);
-        bulb.y = 900;
-
-        app.stage.y = 1000 - renderHeight;
-
-        app.ticker.add(() => {
-
-        });
-
-        this.onResize();
-        window.addEventListener("resize", this.onResize);
-
+        this.root = new Container();
+        app.stage.addChild(this.root);
+        app.ticker.add(this.onUpdate);
     };
+
+    onUpdate = () => {
+        // this.app.renderer.render(this.app.stage);
+    };
+
 
     onResize = () => {
         const { canvas } = this;
@@ -65,35 +78,29 @@ export class IntroWorld {
         const aspectRatio = height / width;
         const renderHeight = this.FIXED_WIDTH * aspectRatio;
         this.app.renderer.resize(this.FIXED_WIDTH, renderHeight);
-        this.app.stage.y = renderHeight - 1000;
+        this.root.y = -(1000-renderHeight);
+
+        this.debugCanvas.width = this.canvas.width;
+        this.debugCanvas.height = this.canvas.height;
+
+        Render.lookAt(this.engineRender, {
+            min: { x: 0, y: (1000-renderHeight) },
+            max: { x: 1000, y: 1000 },
+        })
 
         // 更新舞台缩放
         // this.updateStageScale();
     };
 
-    private updateStageScale() {
-        const { clientWidth: parentWidth } = this.canvas.parentElement;
-        // 计算缩放比例
-        const scale = parentWidth / this.FIXED_WIDTH;
-
-        // 应用缩放
-        this.app.stage.scale.set(scale);
-    }
-
-
     initPhysics = () => {
         const debugCanvas = this.debugCanvas = document.createElement("canvas");
         debugCanvas.className = "w-full h-full pointer-events-none absolute top-0 left-0 z-10";
         this.canvas.parentElement.appendChild(debugCanvas);
-        window.addEventListener("resize", () => {
-            debugCanvas.width = this.canvas.width;
-            debugCanvas.height = this.canvas.height;
-        });
 
-        const engine = Engine.create();
-        const render = Render.create({
+        this.engine = Engine.create();
+        this.engineRender = Render.create({
             canvas: debugCanvas,
-            engine: engine,
+            engine: this.engine,
             options: {
                 width: this.canvas.width,
                 height: this.canvas.height,
@@ -101,16 +108,14 @@ export class IntroWorld {
             },
         });
 
-        const boxA = Bodies.rectangle(400, 200, 80, 80);
-        const boxB = Bodies.rectangle(450, 50, 80, 80);
-        const ground = Bodies.rectangle(100, 100, 100, 60, { isStatic: true });
+        const ground = Bodies.rectangle(500, 1000, 1000, 10, { isStatic: true });
 
-        Composite.add(engine.world, [boxA, boxB, ground]);
+        Composite.add(this.engine.world, [ground]);
 
-        Render.run(render);
+        Render.run(this.engineRender);
 
         const runner = Runner.create();
-        Runner.run(runner, engine);
+        Runner.run(runner, this.engine);
 
     };
 
