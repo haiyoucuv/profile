@@ -110,9 +110,11 @@ export class IntroWorld {
             },
         });
 
-        const ground = Bodies.rectangle(500, 1000, 1000, 10, { isStatic: true });
+        const ground = Bodies.rectangle(500, 1000, 1000, 50, { isStatic: true });
+        const left = Bodies.rectangle(0, 500, 50, 1000, { isStatic: true });
+        const right = Bodies.rectangle(1000, 500, 50, 1000, { isStatic: true });
 
-        Composite.add(this.engine.world, [ground]);
+        Composite.add(this.engine.world, [left, right, ground]);
 
         Render.run(this.engineRender);
 
