@@ -1,8 +1,7 @@
-import { Application, Assets, Container, ResizePlugin } from "pixi.js";
+import { Application, Assets, Container, Ticker } from "pixi.js";
 import { Bodies, Composite, Engine, Render, Runner } from "matter-js";
 import { Bulb } from "./Bulb.ts";
 import bulbSvg from "../../assets/bulb.svg";
-
 
 export class IntroWorld {
 
@@ -16,18 +15,21 @@ export class IntroWorld {
 
     FIXED_WIDTH = 1000;
 
+    bulbArr: Bulb[] = [];
+
     async init(canvas: HTMLCanvasElement) {
         this.canvas = canvas;
         await this.initApp();
         this.initPhysics();
 
-
-        const bulb = new Bulb();
-        bulb.position.set(500, 500);
-        this.root.addChild(bulb);
-
-        Composite.add(this.engine.world, [bulb.body]);
-
+        this.bulbArr = new Array(10).fill(0).map(() => {
+            const bulb = new Bulb();
+            bulb.setPosition(Math.random() * 1000, Math.random() * 100);
+            bulb.setAngle(Math.random() * Math.PI * 2);
+            this.root.addChild(bulb);
+            Composite.add(this.engine.world, [bulb.body]);
+            return bulb;
+        });
 
 
         this.onResize();
@@ -66,7 +68,10 @@ export class IntroWorld {
         app.ticker.add(this.onUpdate);
     };
 
-    onUpdate = () => {
+    onUpdate = (ticker: Ticker) => {
+        this.bulbArr.forEach((bulb) => {
+            bulb.onUpdate(ticker);
+        });
         // this.app.renderer.render(this.app.stage);
     };
 
@@ -78,15 +83,12 @@ export class IntroWorld {
         const aspectRatio = height / width;
         const renderHeight = this.FIXED_WIDTH * aspectRatio;
         this.app.renderer.resize(this.FIXED_WIDTH, renderHeight);
-        this.root.y = -(1000-renderHeight);
+
+        const dy = (1000 - renderHeight);
+        this.root.y = -dy;
 
         this.debugCanvas.width = this.canvas.width;
         this.debugCanvas.height = this.canvas.height;
-
-        Render.lookAt(this.engineRender, {
-            min: { x: 0, y: (1000-renderHeight) },
-            max: { x: 1000, y: 1000 },
-        })
 
         // 更新舞台缩放
         // this.updateStageScale();
