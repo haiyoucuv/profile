@@ -1,28 +1,31 @@
 import {
     ACESFilmicToneMapping,
+    AmbientLight,
+    CapsuleGeometry,
+    ConeGeometry,
+    IcosahedronGeometry,
+    MathUtils,
+    Mesh,
+    MeshPhysicalMaterial,
+    MeshStandardMaterial,
+    OctahedronGeometry,
     PCFSoftShadowMap,
     PerspectiveCamera,
     PMREMGenerator,
     Scene,
-    MeshPhysicalMaterial,
-    SRGBColorSpace,
-    WebGLRenderer,
-    Mesh,
-    AmbientLight,
-    MathUtils,
-    MeshStandardMaterial,
     SphereGeometry,
+    SRGBColorSpace,
     TorusGeometry,
-    ConeGeometry,
-    OctahedronGeometry,
-    CapsuleGeometry,
-    IcosahedronGeometry,
+    WebGLRenderer,
+    DodecahedronGeometry, ShapeGeometry,
+    Shape, DoubleSide, TorusKnotGeometry
 } from "three";
 
-import { FontLoader, TextGeometry, RoomEnvironment, OrbitControls } from "three-stdlib";
+import { FontLoader, OrbitControls, RoomEnvironment, TextGeometry } from "three-stdlib";
 
 import fontData from "./Atop_Regular.json";
 import { calculateVerticalFoV } from "../../utils/CameraUtils.ts";
+import { Ease, Tween } from "../../libs/tween";
 
 export class IntroWorld {
 
@@ -32,6 +35,7 @@ export class IntroWorld {
     scene: Scene;
 
     async init(canvas: HTMLCanvasElement) {
+
         this.canvas = canvas;
 
         const { clientWidth: width, clientHeight: height } = canvas.parentElement;
@@ -111,36 +115,60 @@ export class IntroWorld {
             "#90EE90",
         ];
 
+        const x = 0, y = 0;
+        const heartShape = new Shape();
+
+        heartShape.moveTo(x + 0.5, y + 0.5);
+        heartShape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
+        heartShape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
+        heartShape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
+        heartShape.bezierCurveTo(x + 1.2, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
+        heartShape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1.0, y);
+        heartShape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
+
         const BLOCK_TYPES = [
             new SphereGeometry(1, 32, 32),
             new TorusGeometry(1, 0.25, 16, 32),
             new ConeGeometry(1, 1.5, 32),
             new OctahedronGeometry(1, 0),
-            new CapsuleGeometry(1, 1, 4, 8),
-            new IcosahedronGeometry(1, 0),
+            new CapsuleGeometry(1, 1, 10, 20),
+            new DodecahedronGeometry(1, 0),
+            new ShapeGeometry(heartShape, 12),
         ];
 
-        new Array(30).fill(1).map(() => {
+        new Array(50).fill(1).map(() => {
             const mesh = new Mesh(
                 BLOCK_TYPES[BLOCK_TYPES.length * Math.random() >> 0],
                 new MeshStandardMaterial({
+                    side: DoubleSide,
                     color: COLORS[COLORS.length * Math.random() >> 0],
                 }),
             );
             this.scene.add(mesh);
-            mesh.position.set(
-                MathUtils.randFloat(-(edge.x + 1), (edge.x + 1)),
-                MathUtils.randFloat(-(edge.y + 15), (edge.y + 15)),
-                MathUtils.randFloat(-(edge.z + 10), (edge.z + 10)),
-            );
+            const x = MathUtils.randFloat(-(edge.x + 1), (edge.x + 1));
+            const y = MathUtils.randFloat(-(edge.y + 25), (edge.y + 25));
+            const z = MathUtils.randFloat(-(edge.z + 10), (edge.z + 10));
+
+            mesh.position.set(x, y, z);
             mesh.rotation.set(
                 MathUtils.randFloat(0, Math.PI * 2),
                 MathUtils.randFloat(0, Math.PI * 2),
                 MathUtils.randFloat(0, Math.PI * 2),
             );
+
+            Tween.get(mesh.position, { loop: true })
+                .wait(MathUtils.randFloat(0, 3000))
+                .to({
+                    x: x + MathUtils.randFloat(-2, 2),
+                    y: y + MathUtils.randFloat(-2, 2),
+                    z: z + MathUtils.randFloat(-2, 2),
+                }, 3000, Ease.sineInOut)
+                .to({ x, y, z }, 3000, Ease.sineInOut);
+
         });
 
         const ctrl = new OrbitControls(this.camera, this.canvas);
+        ctrl.enableZoom = false;
         // ctrl.minAzimuthAngle = -Math.PI / 3;
         // ctrl.maxAzimuthAngle = Math.PI / 3;
         // ctrl.minPolarAngle = -Math.PI / 4 * 3;
@@ -156,6 +184,7 @@ export class IntroWorld {
 
     onUpdate = () => {
         const { scene, camera } = this;
+        Tween.flush();
         this.renderer.render(scene, camera);
     };
 

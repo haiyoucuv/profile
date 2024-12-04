@@ -15,7 +15,7 @@ import { ContactCanvas } from "./components/ContactCanvas.tsx";
 function App() {
     return <BrowserRouter>
         <div className="relative z-0">
-            <div className="bg-cover bg-no-repeat bg-center">
+            <div>
                 <Navbar />
                 <Intro />
             </div>
