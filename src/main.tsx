@@ -21,4 +21,4 @@ createRoot(document.getElementById('root')!).render(
 
 
 window.React = React;
-window.ReactDomClient = ReactDomClient;
+window["ReactDomClient"] = ReactDomClient;
