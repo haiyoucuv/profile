@@ -5,7 +5,7 @@ import postcssPxToRem from "postcss-pxtorem";
 import { viteMockServe } from "vite-plugin-mock";
 import legacy from "@vitejs/plugin-legacy";
 import svgr from "vite-plugin-svgr";
-import tailwindcss from "tailwindcss";
+import UnoCSS from 'unocss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -33,6 +33,9 @@ export default defineConfig({
         },
     },
     plugins: [
+        UnoCSS({
+            configFile: './uno.config.ts',
+        }),
         react(),
         svgr(),
         // legacy({
@@ -48,7 +51,6 @@ export default defineConfig({
         postcss: {
             plugins: [
                 autoprefixer(),
-                tailwindcss({ config: "./tailwind.config.js" }),
                 // postcssPxToRem({
                 //     rootValue: 16,
                 //     propList: ["*"],

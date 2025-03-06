@@ -36,7 +36,7 @@ const Navbar = () => {
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl w-full flex items-center justify-between">
         <Link
           to="/"
           className="flex items-center gap-2"
@@ -45,14 +45,14 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <LogoSvg className="w-9 h-9 object-contain" />
-          <p className="text-white-100 text-[18px] font-bold cursor-pointer flex ">
+          <LogoSvg className="h-9 w-9 object-contain" />
+          <p font="bold" text="18px white" cursor="pointer" flex>
             Haiyoucuv
             <span className="sm:block">&nbsp;丨&nbsp;Profile</span>
           </p>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10 items-center">
+        <ul className="hidden flex-row list-none items-center gap-10 sm:flex">
           {navLinks.map((nav) => {
             if (nav.title == "Github") return null;
             return <li
@@ -66,18 +66,18 @@ const Navbar = () => {
             </li>;
           })}
 
-          <li className="cursor-pointer flex items-center">
+          <li className="flex cursor-pointer items-center">
               <a href="https://github.com/haiyoucuv/profile">
-                  <GithubSvg className="fill-secondary hover:fill-white w-[50px] h-[50px]" />
+                  <GithubSvg className="fill-secondary h-[50px] w-[50px] hover:fill-white" />
               </a>
           </li>
         </ul>
 
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="flex flex-1 items-center justify-end sm:hidden">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className="w-[28px] h-[28px] object-contain"
+            className="h-[28px] w-[28px] object-contain"
             onClick={() => setToggle(!toggle)}
           />
 
@@ -86,7 +86,7 @@ const Navbar = () => {
               !toggle ? "hidden" : "flex"
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
-            <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
+            <ul className="flex flex-1 flex-col list-none items-start justify-end gap-4">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}

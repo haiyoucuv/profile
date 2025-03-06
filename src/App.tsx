@@ -12,6 +12,7 @@ import Feedbacks from "./components/Feedbacks.tsx";
 import Contact from "./components/Contact.tsx";
 import { ContactCanvas } from "./components/ContactCanvas.tsx";
 
+
 function App() {
     return <BrowserRouter>
         <div className="relative z-0">
