@@ -38,6 +38,9 @@ importers:
       emittery:
         specifier: ^1.0.3
         version: 1.0.3
+      esbuild-wasm:
+        specifier: ^0.25.0
+        version: 0.25.0
       framer-motion:
         specifier: ^11.11.17
         version: 11.11.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -47,6 +50,9 @@ importers:
       lil-gui:
         specifier: ^0.20.0
         version: 0.20.0
+      luna-window:
+        specifier: ^0.1.1
+        version: 0.1.1
       matter-js:
         specifier: ^0.20.0
         version: 0.20.0
@@ -1741,6 +1747,11 @@ packages:
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
 
+  esbuild-wasm@0.25.0:
+    resolution: {integrity: sha512-60iuWr6jdTVylmGXjpnqk3pCktUi5Rmjiv6EMza3h4X20BLtfL2BjUGs1+UCt2G9UK7jVGrJdUr5i1k0sL3wBg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   esbuild@0.25.0:
     resolution: {integrity: sha512-BXq5mqc8ltbaN34cDqWuYKyNhX8D/Z0J1xdtdQ8UcIIIyJyz+ZMKUt58tF3SrZ85jcfN/PZYhjR5uDQAYNVbuw==}
     engines: {node: '>=18'}
@@ -2055,6 +2066,9 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
+  licia@1.46.0:
+    resolution: {integrity: sha512-Zms2AjJB+KdqUKFF87J5J/w9DwXnGN/lKlbjpRgvaPf0BIQ0mOZ/2lX4E79zwNafHGMUq5RtN54FN6Af5G92cA==}
+
   lightningcss-darwin-arm64@1.29.2:
     resolution: {integrity: sha512-cK/eMabSViKn/PG8U/a7aCorpeKLMlK0bQeNHmdb7qUnBkNPnL+oV5DjJUo0kqWsJUapZsM4jCfYItbqBDvlcA==}
     engines: {node: '>= 12.0.0'}
@@ -2152,6 +2166,9 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
+
+  luna-window@0.1.1:
+    resolution: {integrity: sha512-ApncobsBlQeVLH9XC8F+MSGFwFnhkTLKYuLDMEspvWs6jAykmMoay4bFA/Blfsd40CgML7d35iPmcAwpa3T3ZA==}
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
@@ -4582,6 +4599,8 @@ snapshots:
     dependencies:
       is-arrayish: 0.2.1
 
+  esbuild-wasm@0.25.0: {}
+
   esbuild@0.25.0:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.25.0
@@ -4899,6 +4918,8 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
+  licia@1.46.0: {}
+
   lightningcss-darwin-arm64@1.29.2:
     optional: true
 
@@ -4976,6 +4997,10 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
+
+  luna-window@0.1.1:
+    dependencies:
+      licia: 1.46.0
 
   magic-string@0.30.17:
     dependencies:
