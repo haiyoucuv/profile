@@ -33,5 +33,6 @@ export default defineConfig({
     transformers: [
         transformerDirectives(),
         transformerVariantGroup(),
+        transformerAttributifyJsx()
     ],
 });
