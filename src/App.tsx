@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 import "./App.less";
 
 import 'luna-window/luna-window.css'
 import LunaWindow from 'luna-window/luna-window.js'
-import {createRoot} from "react-dom/client";
 
 import * as THREE from 'three';
 
@@ -12,6 +11,7 @@ import esbuild from 'esbuild-wasm';
 
 import esbuildWasm from 'esbuild-wasm/esbuild.wasm?url';
 
+import template from './buider/templete.html?raw';
 
 function TestThreeJs() {
 
@@ -59,6 +59,11 @@ function TestThreeJs() {
     return <div ref={divRef}>
     </div>
 }
+import MonacoEditor from 'react-monaco-editor';
+import { createRoot } from "react-dom/client";
+
+import { Editor } from "./Editor";
+
 
 async function TestEsBuild() {
     await esbuild.initialize({
@@ -78,41 +83,24 @@ async function TestEsBuild() {
     return result;
 }
 
-
-
 function App() {
 
     useEffect(() => {
-        const iframe = document.createElement("iframe");
+        const content = document.createElement("div");
+        createRoot(content).render(<Editor/>)
         const win = new LunaWindow({
             title: 'Window Title',
             x: 50,
             y: 50,
             width: 800,
             height: 600,
-            content: iframe,
+            content: content,
         })
         win.show();
 
-        TestEsBuild().then((result) => {
-            iframe.srcdoc = `
-                <!DOCTYPE html>
-                <html lang="zh">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Document</title>
-                </head>
-                <body>
-                    <div id="root"></div>
-                    <script>
-                        window.React = top.React;
-                        window.ReactDomClient = top.ReactDomClient;
-                        ${result.code}
-                    </script>
-                </body>
-                </html>
-            `;
-        });
+        // TestEsBuild().then((result) => {
+        //     content.srcdoc = template;
+        // });
 
         // const div = document.createElement("div");
         // createRoot(div).render(<TestThreeJs/>)
