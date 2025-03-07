@@ -1,9 +1,9 @@
-import { WindowInfo } from "./Window/Window.tsx";
+import { Window } from "./Window/Window.tsx";
 
 export class WindowManager {
     private static _ins: WindowManager;
     private maxZIndex: number = 1;
-    private windows: Map<string, WindowInfo> = new Map();
+    private windows: Map<string, Window> = new Map();
     private windowRefs: Map<string, any> = new Map();
     private listeners: Set<() => void> = new Set();
 
@@ -15,6 +15,11 @@ export class WindowManager {
             WindowManager._ins = new WindowManager();
         }
         return WindowManager._ins;
+    }
+
+    static _id = 0;
+    static getNewId(): string {
+        return `window_${WindowManager._id++}`;
     }
 
     public subscribe(listener: () => void): () => void {
@@ -30,11 +35,8 @@ export class WindowManager {
         return ++this.maxZIndex;
     }
 
-    public registerWindow(id: string, info: WindowInfo, ref?: any): void {
-        this.windows.set(id, info);
-        if (ref) {
-            this.windowRefs.set(id, ref);
-        }
+    public registerWindow(id: string, window: Window): void {
+        this.windows.set(id, window);
         this.notify();
     }
 
@@ -44,11 +46,11 @@ export class WindowManager {
         this.notify();
     }
 
-    public getWindows(): Map<string, WindowInfo> {
+    public getWindows(): Map<string, Window> {
         return this.windows;
     }
 
-    public getWindowRef(id: string): any {
-        return this.windowRefs.get(id);
+    public getWindow(id: string): Window {
+        return this.windows.get(id);
     }
 }

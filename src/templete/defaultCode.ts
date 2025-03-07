@@ -15,7 +15,14 @@ root.appendChild(canvas);
 
 const { innerWidth, innerHeight } = window;
 
-const renderer = new WebGLRenderer({ canvas });
+const renderer = new WebGLRenderer({
+    canvas,
+    antialias: true,
+    powerPreference: "high-performance",
+    // logarithmicDepthBuffer: true,
+});
+
+renderer.setPixelRatio(window.devicePixelRatio);
 
 const scene = new Scene();
 const camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 10);

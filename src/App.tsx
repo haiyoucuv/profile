@@ -62,7 +62,6 @@ function App() {
         }
     }, []);
 
-
     return <div>
         <WindowWrapper>
             <Window

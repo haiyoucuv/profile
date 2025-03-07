@@ -1,7 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect, useState, Children, isValidElement } from 'react';
 import styles from './WindowWrapper.module.less';
 import { WindowManager } from "./WindowManager.ts";
-import { Window } from './Window/Window';
 
 interface WindowWrapperProps {
     children?: ReactNode;
@@ -16,23 +15,16 @@ interface DockerItem {
 export const WindowWrapper: FC<WindowWrapperProps> = ({ children }) => {
     const [dockerItems, setDockerItems] = useState<DockerItem[]>([]);
 
-    // 验证子组件类型
-    Children.forEach(children, child => {
-        if (isValidElement(child) && child.type !== Window) {
-            throw new Error('WindowWrapper只能接受Window组件作为子组件');
-        }
-    });
-
     // 监听窗口状态变化
     useEffect(() => {
         const updateDocker = () => {
             const windows = WindowManager.ins().getWindows();
             const items: DockerItem[] = [];
-            windows.forEach((info, id) => {
+            windows.forEach((win, id) => {
                 items.push({
                     id,
-                    title: info.title,
-                    isMinimized: info.isMinimized || false
+                    title: win.title,
+                    isMinimized: win.isMinimized || false
                 });
             });
             setDockerItems(items);
@@ -45,21 +37,11 @@ export const WindowWrapper: FC<WindowWrapperProps> = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
-    // 处理Docker项点击
+    // 处理Docker点击
     const handleDockerItemClick = useCallback((id: string) => {
-        const windows = WindowManager.ins().getWindows();
-        const windowInfo = windows.get(id);
-        if (windowInfo) {
-            windowInfo.isMinimized = !windowInfo.isMinimized;
-            const windowElement = document.querySelector(`[data-window-id="${id}"]`) as HTMLElement;
-            if (windowElement) {
-                windowElement.style.display = windowInfo.isMinimized ? 'none' : 'flex';
-                if (!windowInfo.isMinimized) {
-                    const newZIndex = WindowManager.ins().getNextZIndex();
-                    windowElement.style.zIndex = String(newZIndex);
-                }
-            }
-            WindowManager.ins().registerWindow(id, windowInfo);
+        const win = WindowManager.ins().getWindow(id);
+        if (win) {
+            win.handleMinimize();
         }
     }, []);
 
