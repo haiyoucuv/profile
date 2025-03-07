@@ -1,9 +1,15 @@
 import { makeAutoObservable, } from 'mobx';
+import defaultCode from "../editor/defaultCode.ts?raw";
 
 class Store {
 
+    constructor() {
+        makeAutoObservable(this);
+    }
+
+    code = defaultCode;
+
+    compileCode = '';
 }
 
-const store: Store = makeAutoObservable(new Store());
-
-export default store;
+export default new Store();

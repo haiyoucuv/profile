@@ -12,6 +12,7 @@
   "dependencies": {
     "@csstools/normalize.css": "^12.1.1",
     "@emailjs/browser": "^4.4.1",
+    "@monaco-editor/react": "^4.7.0",
     "@recast-navigation/core": "^0.39.0",
     "@recast-navigation/generators": "^0.39.0",
     "@recast-navigation/three": "^0.39.0",
@@ -27,6 +28,7 @@
     "luna-window": "^0.1.1",
     "matter-js": "^0.20.0",
     "mobx": "^6.13.5",
+    "mobx-react": "^9.2.0",
     "monaco-editor": "^0.52.2",
     "monaco-jsx-syntax-highlight": "^1.2.0",
     "pixi.js": "^8.6.1",
@@ -34,7 +36,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.1.1",
-    "react-monaco-editor": "^0.58.0",
     "react-router-dom": "^7.0.1",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",

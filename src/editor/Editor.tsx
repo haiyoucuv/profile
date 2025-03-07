@@ -1,5 +1,5 @@
-import React from "react";
-import MonacoEditor from "react-monaco-editor";
+import React, {useRef, useState} from "react";
+import MonacoEditor, {Monaco} from "@monaco-editor/react";
 
 import * as monaco from 'monaco-editor';
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
@@ -9,8 +9,12 @@ import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
 import { getWorker, MonacoJsxSyntaxHighlight } from 'monaco-jsx-syntax-highlight'
+import {MonacoEditorConfig} from "./monacoConfig.ts";
 
-const controller = new MonacoJsxSyntaxHighlight(getWorker(), monaco)
+import { observer } from "mobx-react"
+
+import './Editor.less'
+import store from "../store/store.ts";
 
 self.MonacoEnvironment = { // 提供一个定义worker路径的全局变量
     getWorker(_: any, label: string) {
@@ -30,7 +34,6 @@ self.MonacoEnvironment = { // 提供一个定义worker路径的全局变量
     }
 };
 
-monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
 
 // 添加React类型定义配置
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -52,63 +55,75 @@ monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
 const types = import.meta.glob(
     [
         '/node_modules/{react,react-dom}/**/*.{d.ts,json}',
-        '/node_modules/@types/{react,react-dom}/**/*.{d.ts,json}'
+        '/node_modules/@types/{react,react-dom}/**/*.{d.ts,json}',
+        '/node_modules/@types/three/**/*.{d.ts,json}',
     ],
     { eager: true, as: 'raw' }
 )
+
+console.log(types)
+
 
 Object.keys(types).forEach(path => {
     monaco.languages.typescript.typescriptDefaults.addExtraLib(types[path], `file://${path}`)
     monaco.languages.typescript.javascriptDefaults.addExtraLib(types[path], `file://${path}`)
 })
 
-export class Editor extends React.Component {
-    state = {
-        code: `
-            import { createRoot } from "react-dom/client";
-            import React from "react";
+// interface Props {
+//     file: IFile
+//     onChange?: (code: string | undefined) => void
+//     options?: IEditorOptions
+// }
 
+export const Editor: React.FC = observer((props) => {
 
-            function App(){
-                return <div>Hello World!</div>
-            }
+    const editorRef = useRef<any>(null);
 
-            createRoot(document.getElementById('root')!).render(<App />);
-        `,
-    }
+    const handleEditorDidMount = async (editor: any, monaco: Monaco) => {
+        editorRef.current = editor;
 
-    editorDidMount(editor, monaco) {
-        console.log('editorDidMount', editor);
         editor.focus();
+
+        // ignore save event
+        editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+            editor.getAction('editor.action.formatDocument').run()
+        })
+
+        monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+            jsx: monaco.languages.typescript.JsxEmit.React,
+            esModuleInterop: true,
+        });
+
+        const monacoJsxSyntaxHighlight = new MonacoJsxSyntaxHighlight(getWorker(), monaco)
+        const { highlighter, dispose } = monacoJsxSyntaxHighlight.highlighterBuilder({
+            editor,
+        })
+
+        editor.onDidChangeModelContent(() => {
+            highlighter()
+        })
+
+        highlighter()
+
     }
 
-    onChange(newValue, e) {
+
+    const onChange = (newValue, e) => {
         console.log('onChange', newValue, e);
+        store.code = newValue;
     }
 
-    render() {
-        const code = this.state.code;
-        const options = {
-            automaticLayout: true, // 自适应布局 默认true
-            renderLineHighlight: "all" as "all", // 修改这里，明确指定类型
-            selectOnLineNumbers: true, // 显示行号 默认true
-            minimap: {
-                enabled: true,
-            },
-            readOnly: false, // 只读
-            fontSize: 16, // 字体大小
-            scrollBeyondLastLine: false, // 取消代码后面一大段空白
-            overviewRulerBorder: false, // 不要滚动条的边框}
-        };
-        return <MonacoEditor
-            width="800"
-            height="600"
-            language="typescript"
-            theme="vs-dark"
-            value={code}
-            options={options}
-            onChange={this.onChange}
-            editorDidMount={this.editorDidMount}
-        />;
-    }
-}
+    return <MonacoEditor
+        className='common-editor'
+        width='100%'
+        height='100%'
+        language="typescript"
+        theme="vs-dark"
+        value={store.code}
+        options={{
+            ...MonacoEditorConfig,
+        }}
+        onChange={onChange}
+        onMount={handleEditorDidMount}
+    />;
+});

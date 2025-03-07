@@ -7,10 +7,6 @@ import LunaWindow from 'luna-window/luna-window.js'
 
 import * as THREE from 'three';
 
-import esbuild from 'esbuild-wasm';
-
-import esbuildWasm from 'esbuild-wasm/esbuild.wasm?url';
-
 import template from './buider/templete.html?raw';
 
 function TestThreeJs() {
@@ -59,59 +55,92 @@ function TestThreeJs() {
     return <div ref={divRef}>
     </div>
 }
-import MonacoEditor from 'react-monaco-editor';
 import { createRoot } from "react-dom/client";
 
-import { Editor } from "./Editor";
-
-
-async function TestEsBuild() {
-    await esbuild.initialize({
-        wasmURL: esbuildWasm,
-    })
-    const ts = `
-         function App() {
-            return <div>Hello World</div>
-        }
-        
-        ReactDomClient.createRoot(document.getElementById('root')!).render(
-            <App />
-        )
-    `
-    const result = await esbuild.transform(ts, {loader: 'tsx'})
-    esbuild.stop();
-    return result;
-}
+import {Editor} from "./editor/Editor";
+import {reaction} from "mobx";
+import store from "./store/store.ts";
+import {transformCode, startBuildServer} from "./buider/buider.ts";
 
 function App() {
 
+    const iframeRef = useRef<HTMLIFrameElement>(null);
+
     useEffect(() => {
-        const content = document.createElement("div");
-        createRoot(content).render(<Editor/>)
-        const win = new LunaWindow({
-            title: 'Window Title',
-            x: 50,
-            y: 50,
-            width: 800,
-            height: 600,
-            content: content,
+        const iframe = document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.srcdoc = template;
+        iframeRef.current = iframe;
+        const iframeWin = new LunaWindow({
+            title: 'Preview',
+            x: 850, y: 30,
+            width: 375, height: 812,
+            content: iframe,
         })
-        win.show();
+        iframeWin.show();
 
-        // TestEsBuild().then((result) => {
-        //     content.srcdoc = template;
-        // });
-
-        // const div = document.createElement("div");
-        // createRoot(div).render(<TestThreeJs/>)
+        window.addEventListener('message', handleMessage);
 
         return () => {
-            win.destroy();
+            iframeWin.destroy();
+            window.removeEventListener('message', handleMessage);
         }
 
     }, []);
 
-    return <div className="relative z-0">
+    useEffect(() => {
+        const editorWin = new LunaWindow({
+            title: 'Code',
+            x: 30, y: 30,
+            width: 800, height: 600,
+            content: "",
+        })
+        editorWin.show();
+        createRoot(editorWin.$body[0]).render(<Editor/>)
+        return () => {
+            editorWin.destroy();
+        }
+    }, []);
+
+    const handleMessage = (e) => {
+        if (e.data?.type === 'PREVIEW_LOADED') {
+            const script = iframeRef.current.contentWindow.document.createElement("script");
+            script.type = "module";
+            script.text = store.compileCode;
+            iframeRef.current.contentWindow.document.body.appendChild(script);
+        }
+    }
+
+    useEffect(() => {
+        const reactionDisposer = reaction(
+            () => store.code,
+            async (code) => {
+                await startBuildServer();
+                const result = await transformCode(code);
+                store.compileCode = result.code;
+            },
+            {fireImmediately: true}
+        );
+        return () => {
+            reactionDisposer();
+        }
+    }, []);
+
+    useEffect(() => {
+        const reactionDisposer = reaction(
+            () => store.compileCode,
+            (code) => {
+                iframeRef.current?.contentWindow.location.reload();
+            },
+            {fireImmediately: true}
+        );
+        return () => {
+            reactionDisposer();
+        }
+    }, []);
+
+
+    return <div>
 
     </div>;
 }
