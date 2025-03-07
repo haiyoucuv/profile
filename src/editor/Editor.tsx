@@ -52,21 +52,20 @@ monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
     typeRoots: ["node_modules/@types"]
 });
 
-const types = import.meta.glob(
+const types:Record<string, any> = import.meta.glob(
     [
         '/node_modules/{react,react-dom}/**/*.{d.ts,json}',
         '/node_modules/@types/{react,react-dom}/**/*.{d.ts,json}',
         '/node_modules/@types/three/**/*.{d.ts,json}',
     ],
-    { eager: true, as: 'raw' }
+    { eager: true, query: '?raw' }
 )
-
 console.log(types)
 
 
-Object.keys(types).forEach(path => {
-    monaco.languages.typescript.typescriptDefaults.addExtraLib(types[path], `file://${path}`)
-    monaco.languages.typescript.javascriptDefaults.addExtraLib(types[path], `file://${path}`)
+Object.keys(types).forEach((path) => {
+    monaco.languages.typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
+    monaco.languages.typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
 })
 
 // interface Props {

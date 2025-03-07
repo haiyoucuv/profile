@@ -24,11 +24,11 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 dir: "docs",
-                manualChunks(id) {
-                    if (id.includes("node_modules")) {
-                        return "vendor";
-                    }
-                },
+                // manualChunks(id) {
+                //     if (id.includes("node_modules")) {
+                //         return "vendor";
+                //     }
+                // },
             },
         },
     },
