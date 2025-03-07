@@ -61,7 +61,7 @@ export class Window extends Component<WindowProps, WindowState> {
             iframeElement?.contentWindow?.document.addEventListener('pointerup', this.focus);
         });
 
-        this.divRef.current?.addEventListener('pointerup', focus);
+        this.divRef.current?.addEventListener('pointerup', this.focus);
     }
 
     componentWillUnmount() {
@@ -70,7 +70,7 @@ export class Window extends Component<WindowProps, WindowState> {
         const iframeElement = this.divRef.current?.querySelector('iframe');
         iframeElement?.contentWindow?.document.removeEventListener('click', this.focus);
 
-        this.divRef.current?.removeEventListener('pointerup', this.focus, { capture: false });
+        this.divRef.current?.removeEventListener('pointerup', this.focus);
     }
 
     handleMaximize = () => {
