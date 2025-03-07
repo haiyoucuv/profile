@@ -1,0 +1,65 @@
+.warper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+}
+
+.docker {
+  height: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  gap: 8px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dockerItem {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  
+  &:hover {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.dockerTitle {
+  font-size: 12px;
+  color: #333;
+  user-select: none;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  
+  .dockerItem:hover & {
+    opacity: 1;
+  }
+}
