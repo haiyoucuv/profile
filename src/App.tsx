@@ -95,7 +95,13 @@ function App() {
 
 
     return <div>
-        <Window title="我的窗口">
+        <Window
+            title="我的窗口"
+            initX={670}
+            initY={130}
+            initWidth={375}
+            initHeight={812}
+        >
             <p>这里是窗口内容</p>
         </Window>
     </div>;

@@ -92,11 +92,11 @@ const Window: FC<WindowProps> = (
             const deltaX = e.clientX - startX;
             const deltaY = e.clientY - startY;
 
-            if (resizeType.includes('w')) {
+            if (resizeType.includes('e')) {
                 winInfo.width = Math.max(200, initWinInfo.width + deltaX);
             }
 
-            if (resizeType.includes('e')) {
+            if (resizeType.includes('w')) {
                 const newWidth = Math.max(200, initWinInfo.width - deltaX);
                 winInfo.width = newWidth;
                 const widthDiff = newWidth - initWinInfo.width;
@@ -164,17 +164,22 @@ const Window: FC<WindowProps> = (
             onMouseDown={(e) => handleResizeStart(e, 's')}
         />
         <div
-            className={classNames(styles.resizeHandle, styles.e)}
+            className={classNames(styles.resizeHandle, styles.w)}
             onMouseDown={(e) => handleResizeStart(e, 'w')}
         />
         <div
-            className={classNames(styles.resizeHandle, styles.w)}
+            className={classNames(styles.resizeHandle, styles.e)}
             onMouseDown={(e) => handleResizeStart(e, 'e')}
         />
         <div
             className={styles.titleBar}
             onMouseDown={handleReadyMove}
             style={{ cursor: isDragging ? 'grabbing' : 'grab' }}>
+            <div className={styles.windowControls}>
+                <div className={`${styles.controlButton} ${styles.close}`} />
+                <div className={`${styles.controlButton} ${styles.minimize}`} />
+                <div className={`${styles.controlButton} ${styles.maximize}`} />
+            </div>
             <span className={styles.title}>{title}</span>
         </div>
         <div className={styles.content}>
