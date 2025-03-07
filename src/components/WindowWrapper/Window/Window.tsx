@@ -58,6 +58,7 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
     const [isDragging, setIsDragging] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
     const [isMaximized, setIsMaximized] = useState(false);
+    const [showMask, setShowMask] = useState(false);
     const divRef = useRef<HTMLDivElement>(null);
     const id = useRef(Math.random().toString(36).substr(2, 9));
 
@@ -171,6 +172,7 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
     const handleReadyMove = (e: MouseEvent) => {
         e.stopPropagation();
         setIsDragging(true);
+        setShowMask(true);
         document.body.style.userSelect = 'none';
 
         const winInfo = winInfoRef.current;
@@ -185,6 +187,7 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
 
         const handleGlobalMouseUp = () => {
             setIsDragging(false);
+            setShowMask(false);
             document.body.style.userSelect = '';
             document.removeEventListener('pointermove', handleGlobalMouseMove);
             document.removeEventListener('pointerup', handleGlobalMouseUp);
@@ -194,13 +197,9 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
         document.addEventListener('pointerup', handleGlobalMouseUp);
     };
 
-    /**
-     * 调整窗口大小
-     * @param e
-     * @param resizeType
-     */
     const handleResizeStart = (e: MouseEvent, resizeType: 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw') => {
         e.stopPropagation();
+        setShowMask(true);
         document.body.style.userSelect = 'none';
 
         const winInfo = winInfoRef.current;
@@ -212,7 +211,6 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
         const newWinIndo = { ...winInfo };
 
         const handleGlobalMouseMove = (e: globalThis.MouseEvent) => {
-
             const deltaX = e.clientX - startX;
             const deltaY = e.clientY - startY;
 
@@ -242,6 +240,7 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
         };
 
         const handleGlobalMouseUp = () => {
+            setShowMask(false);
             document.removeEventListener('mousemove', handleGlobalMouseMove);
             document.removeEventListener('mouseup', handleGlobalMouseUp);
             document.body.style.userSelect = '';
@@ -288,6 +287,16 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
             display: isMinimized ? 'none' : 'flex'
         }}
     >
+        {showMask && <div
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 9999
+            }}
+        />}
         <div
             className={classNames(styles.resizeHandle, styles.nw)}
             onPointerDown={(e) => handleResizeStart(e, 'nw')}

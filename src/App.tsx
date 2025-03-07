@@ -100,7 +100,7 @@ function App() {
     return <div>
         <WindowWrapper>
             <Window
-                title="我的窗口"
+                title="Code"
                 initX={50}
                 initY={50}
                 initWidth={900}
@@ -109,13 +109,16 @@ function App() {
                 <Editor/>
             </Window>
             <Window
-                title="我的窗口"
+                title="Render"
                 initX={880}
                 initY={130}
                 initWidth={375}
                 initHeight={812}
             >
-                <iframe ref={iframeRef} srcDoc={template}/>
+                <iframe
+                    ref={iframeRef}
+                    srcDoc={template}
+                />
             </Window>
         </WindowWrapper>
     </div>;
