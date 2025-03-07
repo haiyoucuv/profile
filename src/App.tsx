@@ -2,12 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import "./App.less";
 
-import 'luna-window/luna-window.css'
-import LunaWindow from 'luna-window/luna-window.js'
-
 import template from './templete/templete.html?raw';
-
-import { createRoot } from "react-dom/client";
 
 import { Editor } from "./editor/Editor";
 import { reaction } from "mobx";
@@ -30,43 +25,14 @@ function App() {
     }
 
     useEffect(() => {
-        // const iframe = document.createElement("iframe");
-        // iframe.style.border = "none";
-        // // iframe.srcdoc = template;
-        // iframeRef.current = iframe;
-        // const iframeWin = new LunaWindow({
-        //     title: 'Preview',
-        //     x: 670, y: 130,
-        //     width: 375, height: 812,
-        //     content: iframe,
-        // })
-        // iframeWin.show();
-
         iframeRef.current.style.border = "none";
         iframeRef.current.srcdoc = template;
         window.addEventListener('message', handleMessage);
 
         return () => {
-            // iframeWin.destroy();
             window.removeEventListener('message', handleMessage);
         }
-
     }, []);
-
-    // useEffect(() => {
-    //     const editorWin = new LunaWindow({
-    //         title: 'Code',
-    //         x: 10, y: 10,
-    //         width: 800, height: 600,
-    //         content: "",
-    //     })
-    //     editorWin.show();
-    //     createRoot(editorWin.$body[0]).render(<Editor/>)
-    //     return () => {
-    //         editorWin.destroy();
-    //     }
-    // }, []);
-
 
     useEffect(() => {
         const reactionDisposer = reaction(

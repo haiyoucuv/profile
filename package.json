@@ -25,7 +25,6 @@
     "framer-motion": "^11.11.17",
     "i18next": "^24.0.2",
     "lil-gui": "^0.20.0",
-    "luna-window": "^0.1.1",
     "matter-js": "^0.20.0",
     "mobx": "^6.13.5",
     "mobx-react": "^9.2.0",
