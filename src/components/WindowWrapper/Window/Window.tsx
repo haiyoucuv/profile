@@ -171,8 +171,9 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
      */
     const handleReadyMove = (e: MouseEvent) => {
         e.stopPropagation();
+        console.log(12312)
+
         setIsDragging(true);
-        setShowMask(true);
         document.body.style.userSelect = 'none';
 
         const winInfo = winInfoRef.current;
@@ -180,6 +181,8 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
         const startY = e.clientY - winInfo.y;
 
         const handleGlobalMouseMove = (e: globalThis.MouseEvent) => {
+            setShowMask(true);
+
             const x = e.clientX - startX;
             const y = e.clientY - startY;
             move(x, y);
@@ -335,9 +338,14 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
             style={{ cursor: isDragging ? 'grabbing' : 'grab' }}>
             <div className={styles.windowControls}>
                 <div className={`${styles.controlButton} ${styles.close}`} />
-                <div className={`${styles.controlButton} ${styles.minimize}`} onClick={handleMinimize} />
-                <div className={`${styles.controlButton} ${styles.maximize}`}
-                    onClick={isMaximized ? handleRestore : handleMaximize} />
+                <div
+                    className={`${styles.controlButton} ${styles.minimize}`}
+                    onClick={handleMinimize}
+                />
+                <div
+                    className={`${styles.controlButton} ${styles.maximize}`}
+                    onClick={isMaximized ? handleRestore : handleMaximize}
+                />
             </div>
             <span className={styles.title}>{title}</span>
         </div>
