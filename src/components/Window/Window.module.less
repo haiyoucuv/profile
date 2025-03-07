@@ -1,0 +1,93 @@
+.window {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+
+  @handSize: 8px;
+
+  .resizeHandle {
+    position: absolute;
+    width: @handSize;
+    height: @handSize;
+    z-index: 1;
+  }
+
+  .resizeHandle.nw {
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+  }
+
+  .resizeHandle.ne {
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+  }
+
+  .resizeHandle.sw {
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
+  }
+
+  .resizeHandle.se {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+  }
+
+  .resizeHandle.n {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - @handSize * 2);
+    cursor: n-resize;
+  }
+
+  .resizeHandle.e {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: calc(100% - @handSize * 2);
+    cursor: e-resize;
+  }
+
+  .resizeHandle.s {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - @handSize * 2);
+    cursor: s-resize;
+  }
+
+  .resizeHandle.w {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: calc(100% - @handSize * 2);
+    cursor: w-resize;
+  }
+
+}
+
+.titleBar {
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.content {
+  padding: 16px;
+}

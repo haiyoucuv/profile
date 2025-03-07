@@ -1,5 +1,5 @@
 import { makeAutoObservable, } from 'mobx';
-import defaultCode from "../editor/defaultCode.ts?raw";
+import defaultCode from "../templete/defaultCode.ts?raw";
 
 class Store {
 
