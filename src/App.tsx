@@ -101,16 +101,16 @@ function App() {
         <WindowWrapper>
             <Window
                 title="我的窗口"
-                initX={670}
-                initY={130}
-                initWidth={375}
+                initX={50}
+                initY={50}
+                initWidth={900}
                 initHeight={812}
             >
-                <iframe ref={iframeRef} srcDoc={template}/>
+                <Editor/>
             </Window>
             <Window
                 title="我的窗口"
-                initX={370}
+                initX={880}
                 initY={130}
                 initWidth={375}
                 initHeight={812}

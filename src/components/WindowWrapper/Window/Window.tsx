@@ -252,11 +252,26 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
     };
 
     useEffect(() => {
-        divRef.current.addEventListener('pointerup', focus, { capture: false });
-        return () => {
-            divRef.current.removeEventListener('pointerup', focus, { capture: false });
+        const iframeElement = divRef.current?.querySelector('iframe');
+        if (iframeElement) {
+            iframeElement.addEventListener('load', () => {
+                const iframeWindow = iframeElement.contentWindow;
+                if (iframeWindow) {
+                    iframeWindow.document.addEventListener('pointerup', focus);
+                }
+            });
         }
-    })
+
+        divRef.current.addEventListener('pointerup', focus, { capture: false });
+
+        return () => {
+            const iframeElement = divRef.current?.querySelector('iframe');
+            if (iframeElement?.contentWindow) {
+                iframeElement.contentWindow.document.removeEventListener('click', focus);
+            }
+            divRef.current.removeEventListener('pointerup', focus, { capture: false });
+        };
+    }, []);
 
     return <div
         className={`${styles.window} ${className}`}
@@ -307,12 +322,13 @@ export const Window = forwardRef<WindowHandle, WindowProps>((
         />
         <div
             className={styles.titleBar} onPointerDown={handleReadyMove}
+            onDoubleClick={isMaximized ? handleRestore : handleMaximize}
             style={{ cursor: isDragging ? 'grabbing' : 'grab' }}>
             <div className={styles.windowControls}>
                 <div className={`${styles.controlButton} ${styles.close}`} />
-                <div className={`${styles.controlButton} ${styles.minimize}`} onClick={handleMinimize}/>
+                <div className={`${styles.controlButton} ${styles.minimize}`} onClick={handleMinimize} />
                 <div className={`${styles.controlButton} ${styles.maximize}`}
-                     onClick={isMaximized ? handleRestore : handleMaximize}/>
+                    onClick={isMaximized ? handleRestore : handleMaximize} />
             </div>
             <span className={styles.title}>{title}</span>
         </div>
