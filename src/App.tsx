@@ -62,7 +62,7 @@ function App() {
         }
     }, []);
 
-    return <div>
+    return <div className="app">
         <WindowWrapper>
             <Window
                 title="Code"
