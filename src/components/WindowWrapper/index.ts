@@ -1,8 +1,8 @@
 
 
-export * from "./WindowWrapper.tsx";
+export * from "./Docker.tsx";
 
-export * from "./Window/Window.tsx";
+export * from "./Window/Window.ts";
 
 export * from "./WindowManager.ts";
 

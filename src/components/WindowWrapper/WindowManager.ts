@@ -1,25 +1,58 @@
-import { Window } from "./Window/Window.tsx";
+import { IWindowOptions, Window } from "./Window/Window.ts";
+import styles from './WindowManager.module.less';
+
 
 export class WindowManager {
     private static _ins: WindowManager;
     private maxZIndex: number = 1;
     private windows: Map<string, Window> = new Map();
-    private windowRefs: Map<string, any> = new Map();
-    private listeners: Set<() => void> = new Set();
+    listeners: Set<() => void> = new Set();
 
-    private constructor() {
+    container: HTMLDivElement = (document.getElementById("window-container") || document.createElement("div")) as HTMLDivElement;
+    pointerMask: HTMLDivElement = (document.getElementById("pointer-mask") || document.createElement("div")) as HTMLDivElement;
+
+    _enableMask = false;
+    set enableMask(enable: boolean) {
+        this._enableMask = enable;
+        this.pointerMask.style.display = enable ? 'block' : 'none';
     }
 
-    public static ins(): WindowManager {
-        if (!WindowManager._ins) {
-            WindowManager._ins = new WindowManager();
-        }
-        return WindowManager._ins;
+    get enableMask() {
+        return this._enableMask;
+    }
+
+    private constructor() {
+        document.body.appendChild(this.container);
+        this.container.id = "window-container";
+        this.container.className = styles.windowContainer;
+
+        document.body.appendChild(this.pointerMask);
+        this.pointerMask.id = "pointer-mask";
+        this.pointerMask.className = styles.pointerMask;
+        this.enableMask = false;
+    }
+
+    public static get ins(): WindowManager {
+        return WindowManager._ins || (WindowManager._ins = new WindowManager());
     }
 
     static _id = 0;
     static getNewId(): string {
         return `window_${WindowManager._id++}`;
+    }
+
+    showWindow(children: HTMLElement | string, options: IWindowOptions) {
+        const window = new Window(children, options);
+
+        this.container.appendChild(window.body);
+
+        return window;
+    }
+
+    closeWindow(window: Window) {
+        window.body.remove();
+        window.destroy();
+        this.unregisterWindow(window.id);
     }
 
     public subscribe(listener: () => void): () => void {
@@ -42,7 +75,6 @@ export class WindowManager {
 
     public unregisterWindow(id: string): void {
         this.windows.delete(id);
-        this.windowRefs.delete(id);
         this.notify();
     }
 
@@ -53,4 +85,5 @@ export class WindowManager {
     public getWindow(id: string): Window {
         return this.windows.get(id);
     }
+
 }

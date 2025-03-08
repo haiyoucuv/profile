@@ -9,30 +9,60 @@ import { reaction } from "mobx";
 import store from "./store/store.ts";
 import { transformCode, startBuildServer } from "./buider/buider.ts";
 
-import { WindowWrapper, Window } from './components/WindowWrapper';
+import { Docker, WindowManager } from './components/WindowWrapper';
+import { createRoot } from "react-dom/client";
 
 function App() {
 
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-
-    const handleMessage = (e) => {
-        if (e.data?.type === 'PREVIEW_LOADED') {
-            const script = iframeRef.current.contentWindow.document.createElement("script");
-            script.type = "module";
-            script.text = store.compileCode;
-            iframeRef.current.contentWindow.document.body.appendChild(script);
-        }
-    }
 
     useEffect(() => {
-        iframeRef.current.style.border = "none";
-        iframeRef.current.srcdoc = template;
-        window.addEventListener('message', handleMessage);
+        const codeWindow = WindowManager.ins.showWindow("", {
+            title: "Code",
+            x: 50, y: 50,
+            width: 900, height: 750,
+        });
+
+        createRoot(codeWindow.content).render(<Editor/>);
 
         return () => {
-            window.removeEventListener('message', handleMessage);
+            WindowManager.ins.closeWindow(codeWindow);
         }
-    }, []);
+    });
+
+    useEffect(() => {
+        const iframe = document.createElement("iframe");
+        const iframeWindow = WindowManager.ins.showWindow(iframe, {
+            title: "Render",
+            x: 880, y: 130,
+            width: 375, height: 812,
+        });
+
+        const handleMessage = (e) => {
+            if (e.data?.type === 'PREVIEW_LOADED') {
+                const script = iframe.contentWindow.document.createElement("script");
+                script.type = "module";
+                script.text = store.compileCode;
+                iframe.contentWindow.document.body.appendChild(script);
+            }
+        }
+
+        iframe.srcdoc = template;
+        window.addEventListener('message', handleMessage);
+
+        const reactionDisposer = reaction(
+            () => store.compileCode,
+            (code) => {
+                iframe.contentWindow.location.reload();
+            },
+            // { fireImmediately: true }
+        );
+
+        return () => {
+            WindowManager.ins.closeWindow(iframeWindow);
+            window.removeEventListener('message', handleMessage);
+            reactionDisposer();
+        }
+    });
 
     useEffect(() => {
         const reactionDisposer = reaction(
@@ -49,43 +79,8 @@ function App() {
         }
     }, []);
 
-    useEffect(() => {
-        const reactionDisposer = reaction(
-            () => store.compileCode,
-            (code) => {
-                iframeRef.current?.contentWindow.location.reload();
-            },
-            { fireImmediately: true }
-        );
-        return () => {
-            reactionDisposer();
-        }
-    }, []);
-
     return <div className="app">
-        <WindowWrapper>
-            <Window
-                title="Code"
-                initX={50}
-                initY={50}
-                initWidth={900}
-                initHeight={812}
-            >
-                <Editor/>
-            </Window>
-            <Window
-                title="Render"
-                initX={880}
-                initY={130}
-                initWidth={375}
-                initHeight={812}
-            >
-                <iframe
-                    ref={iframeRef}
-                    srcDoc={template}
-                />
-            </Window>
-        </WindowWrapper>
+        <Docker/>
     </div>;
 }
 

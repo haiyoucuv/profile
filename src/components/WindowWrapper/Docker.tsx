@@ -1,5 +1,5 @@
 import { FC, ReactNode, useCallback, useEffect, useState, Children, isValidElement } from 'react';
-import styles from './WindowWrapper.module.less';
+import styles from './Docker.module.less';
 import { WindowManager } from "./WindowManager.ts";
 
 interface WindowWrapperProps {
@@ -12,13 +12,13 @@ interface DockerItem {
     isMinimized: boolean;
 }
 
-export const WindowWrapper: FC<WindowWrapperProps> = ({ children }) => {
+export const Docker: FC<WindowWrapperProps> = ({ children }) => {
     const [dockerItems, setDockerItems] = useState<DockerItem[]>([]);
 
     // 监听窗口状态变化
     useEffect(() => {
         const updateDocker = () => {
-            const windows = WindowManager.ins().getWindows();
+            const windows = WindowManager.ins.getWindows();
             const items: DockerItem[] = [];
             windows.forEach((win, id) => {
                 items.push({
@@ -31,7 +31,7 @@ export const WindowWrapper: FC<WindowWrapperProps> = ({ children }) => {
         };
 
         // 使用WindowManager的订阅机制来监听窗口状态变化
-        const unsubscribe = WindowManager.ins().subscribe(updateDocker);
+        const unsubscribe = WindowManager.ins.subscribe(updateDocker);
         updateDocker(); // 初始化Docker栏
 
         return () => unsubscribe();
@@ -39,7 +39,7 @@ export const WindowWrapper: FC<WindowWrapperProps> = ({ children }) => {
 
     // 处理Docker点击
     const handleDockerItemClick = useCallback((id: string) => {
-        const win = WindowManager.ins().getWindow(id);
+        const win = WindowManager.ins.getWindow(id);
         if (win) {
             win.handleMinimize();
         }
