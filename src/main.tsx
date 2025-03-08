@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import * as ReactDomClient from "react-dom/client";
 
 import '@unocss/reset/normalize.css';
 
@@ -17,8 +16,3 @@ createRoot(document.getElementById('root')!).render(
     <App />
   // </StrictMode>,
 )
-
-
-
-window.React = React;
-window["ReactDomClient"] = ReactDomClient;

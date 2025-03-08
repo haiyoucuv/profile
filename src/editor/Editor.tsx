@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MonacoEditor, {Monaco} from "@monaco-editor/react";
 
 import * as monaco from 'monaco-editor';
@@ -105,6 +105,12 @@ export const Editor: React.FC = observer((props) => {
         highlighter()
 
     }
+
+    useEffect(() => {
+        return () => {
+            console.log(12312312312)
+        }
+    }, []);
 
 
     const onChange = (newValue, e) => {

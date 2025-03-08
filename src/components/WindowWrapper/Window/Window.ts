@@ -121,6 +121,8 @@ export class Window {
         iframeElement?.contentWindow?.document.removeEventListener('click', this.focus);
 
         this.body.removeEventListener('pointerup', this.focus);
+
+        this.content.remove();
     }
 
     handleMaximize = () => {

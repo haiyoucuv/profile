@@ -22,10 +22,12 @@ function App() {
             width: 900, height: 750,
         });
 
-        createRoot(codeWindow.content).render(<Editor/>);
+        const editorRoot = createRoot(codeWindow.content);
+        editorRoot.render(<Editor/>);
 
         return () => {
             WindowManager.ins.closeWindow(codeWindow);
+            editorRoot.unmount();
         }
     });
 
