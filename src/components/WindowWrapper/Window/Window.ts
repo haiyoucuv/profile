@@ -108,10 +108,10 @@ export class Window {
     createForceEvent() {
         const iframeElement = this.body.querySelector('iframe');
         iframeElement?.addEventListener('load', () => {
-            iframeElement?.contentWindow?.document.addEventListener('pointerup', this.focus);
+            iframeElement?.contentWindow?.document.addEventListener('pointerdown', this.focus);
         });
 
-        this.body.addEventListener('pointerup', this.focus);
+        this.body.addEventListener('pointerdown', this.focus, { capture: true });
     }
 
     destroy() {
@@ -120,7 +120,7 @@ export class Window {
         const iframeElement = this.body.querySelector('iframe');
         iframeElement?.contentWindow?.document.removeEventListener('click', this.focus);
 
-        this.body.removeEventListener('pointerup', this.focus);
+        this.body.removeEventListener('pointerdown', this.focus, { capture: true });
 
         this.content.remove();
     }
