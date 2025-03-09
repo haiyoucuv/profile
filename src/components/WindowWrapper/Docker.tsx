@@ -11,6 +11,7 @@ interface DockerItem {
     icon: string;
     title: string;
     isMinimized: boolean;
+    isPinned: boolean;
 }
 
 export const Docker: FC<WindowWrapperProps> = ({ children }) => {
@@ -26,7 +27,8 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
                     id,
                     icon: win.icon,
                     title: win.title,
-                    isMinimized: win.isMinimized || false
+                    isMinimized: win.isMinimized || false,
+                    isPinned: win.isPinned || false
                 });
             });
             setDockerItems(items);
@@ -49,20 +51,40 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
         }
     }, []);
 
+    const pinnedItems = dockerItems.filter(item => item.isPinned);
+    const unpinnedItems = dockerItems.filter(item => !item.isPinned);
+
     return (
         <div className={styles.warper}>
             <div className={styles.content}>
                 {children}
             </div>
             <div className={styles.docker}>
-                {dockerItems.map(item => (
-                    <img
-                        src={item.icon}
-                        key={item.id}
-                        className={styles.dockerItem}
-                        onClick={() => handleDockerItemClick(item.id)}
-                    />
-                ))}
+                <div className={styles.pinnedArea}>
+                    {pinnedItems.map(item => (
+                        <div key={item.id} className={styles.dockerItemWrapper}>
+                            <img
+                                src={item.icon}
+                                className={styles.dockerItem}
+                                onClick={() => handleDockerItemClick(item.id)}
+                            />
+                            {!item.isMinimized && <div className={styles.activeIndicator} />}
+                        </div>
+                    ))}
+                </div>
+                <div className={styles.divider} />
+                <div className={styles.activeArea}>
+                    {unpinnedItems.map(item => !item.isMinimized && (
+                        <div key={item.id} className={styles.dockerItemWrapper}>
+                            <img
+                                src={item.icon}
+                                className={styles.dockerItem}
+                                onClick={() => handleDockerItemClick(item.id)}
+                            />
+                            <div className={styles.activeIndicator} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

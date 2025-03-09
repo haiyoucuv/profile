@@ -30,6 +30,28 @@
   z-index: 9999999;
 }
 
+.pinnedArea,
+.activeArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0 8px;
+}
+
+.dockerItemWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
 .dockerItem {
   height: 40px;
   width: 40px;
@@ -40,12 +62,20 @@
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(255, 255, 255, 0.1);
-  position: relative;
   
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) translateY(-6px);
     background: rgba(255, 255, 255, 0.2);
   }
+}
+
+.activeIndicator {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00ff0a;
+  position: absolute;
+  bottom: -6px;
 }
 
 .dockerTitle {

@@ -6,5 +6,5 @@
 export type ListenerFunc = (event: string, ...args: any) => void
 
 export enum EventMessage {
-
+    CODE_COMPILED = 'code_compiled',
 }
