@@ -1,6 +1,7 @@
 import styles from './Window.module.less';
 import classNames from "classnames";
 import { WindowManager } from "../WindowManager.ts";
+import { EventDispatcher } from "../../../global/event";
 
 
 export type TResizeType = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
@@ -13,7 +14,13 @@ export interface IWindowOptions {
     y?: number;
 }
 
-export class Window {
+export class Window extends EventDispatcher {
+
+    static EventType = {
+        ON_CLOSE: 'onWindowClose',
+    }
+
+
     readonly id = WindowManager.getNewId();
 
     title = '';
@@ -52,6 +59,7 @@ export class Window {
     content: HTMLDivElement = document.createElement("div");
 
     constructor(children: HTMLElement | string, options: IWindowOptions) {
+        super();
         const { title = "Window", x = 100, y = 100, width = 250, height = 600 } = options;
         this.title = title;
 
@@ -123,6 +131,11 @@ export class Window {
         this.body.removeEventListener('pointerdown', this.focus, { capture: true });
 
         this.content.remove();
+
+        this.dispatchEvent(Window.EventType.ON_CLOSE);
+
+        super.destroy();
+
     }
 
     handleMaximize = () => {

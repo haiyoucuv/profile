@@ -9,7 +9,7 @@ import { reaction } from "mobx";
 import store from "./store/store.ts";
 import { transformCode, startBuildServer } from "./buider/buider.ts";
 
-import { Docker, WindowManager } from './components/WindowWrapper';
+import { Docker, Window, WindowManager } from './components/WindowWrapper';
 import { createRoot } from "react-dom/client";
 
 function App() {
@@ -24,6 +24,9 @@ function App() {
 
         const editorRoot = createRoot(codeWindow.content);
         editorRoot.render(<Editor/>);
+
+        // 为了触发React卸载
+        codeWindow.on(Window.EventType.ON_CLOSE, () => editorRoot.unmount());
 
         return () => {
             WindowManager.ins.closeWindow(codeWindow);
