@@ -12,6 +12,9 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     minimap: {
         enabled: true,
     },
+    inlineSuggest:{
+        enabled: true,
+    },
     fixedOverflowWidgets: true,
     smoothScrolling: true,
     smartSelect: {
