@@ -22,22 +22,6 @@ function App() {
         }
     });
 
-    useEffect(() => {
-        const reactionDisposer = reaction(
-            () => store.code,
-            async (code) => {
-                await startBuildServer();
-                const result = await transformCode(code);
-                store.compileCode = result.code
-                globalMsg.dispatchEvent(EventMessage.CODE_COMPILED, result.code);
-            },
-            { fireImmediately: true }
-        );
-        return () => {
-            reactionDisposer();
-        }
-    }, []);
-
     return <div className="app">
         <Docker/>
     </div>;

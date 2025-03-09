@@ -1,15 +1,9 @@
-import { makeAutoObservable, } from 'mobx';
-import defaultCode from "../templete/defaultCode.ts?raw";
+import { makeAutoObservable } from 'mobx';
 
 class Store {
-
     constructor() {
         makeAutoObservable(this);
     }
-
-    code = defaultCode;
-
-    compileCode = '';
 }
 
 export default new Store();

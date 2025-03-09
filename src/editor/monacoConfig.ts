@@ -10,7 +10,7 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     showDeprecated: true,
     showUnused: true,
     showFoldingControls: 'mouseover',
-    scrollBeyondLastLine: false,
+    scrollBeyondLastLine: true,
     minimap: {
         enabled: true,
     },

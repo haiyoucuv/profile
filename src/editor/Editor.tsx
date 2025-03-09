@@ -1,38 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import MonacoEditor, {Monaco} from "@monaco-editor/react";
+import React, { useCallback, useEffect, useRef } from "react";
+import { FileTree } from "./FileTree/FileTree";
+import styles from './Editor.module.less';
 
 import * as monaco from 'monaco-editor';
-import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
-import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 
-import { getWorker, MonacoJsxSyntaxHighlight } from 'monaco-jsx-syntax-highlight'
-import {MonacoEditorConfig} from "./monacoConfig.ts";
+import { MonacoEditorConfig } from "./monacoConfig.ts";
 
-import { observer } from "mobx-react"
-
-import './Editor.less'
-import store from "../store/store.ts";
-
-self.MonacoEnvironment = { // 提供一个定义worker路径的全局变量
-    getWorker(_: any, label: string) {
-        if (label === 'json') {
-            return new jsonWorker();
-        }
-        if (label === 'css' || label === 'scss' || label === 'less') {
-            return new cssWorker();
-        }
-        if (label === 'html' || label === 'handlebars' || label === 'razor') {
-            return new htmlWorker();
-        }
-        if (label === 'typescript' || label === 'javascript') {
-            return new tsWorker();
-        }
-        return new editorWorker(); // 基础功能文件， 提供了所有语言通用功能 无论使用什么语言，monaco都会去加载他。
-    }
-};
+import { FileSystem } from "./utils/FileSystem";
+import { getMonacoModel } from "./utils/utils.ts";
+import { startBuildServer, transformCode } from "../buider/buider.ts";
+import { debounce } from "../utils/utils.ts";
 
 
 // 添加React类型定义配置
@@ -52,7 +29,7 @@ monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
     typeRoots: ["node_modules/@types"]
 });
 
-const types:Record<string, any> = import.meta.glob(
+const types: Record<string, any> = import.meta.glob(
     [
         '/node_modules/{react,react-dom}/**/*.{d.ts,json}',
         '/node_modules/@types/{react,react-dom}/**/*.{d.ts,json}',
@@ -60,75 +37,82 @@ const types:Record<string, any> = import.meta.glob(
     ],
     { eager: true, query: '?raw' }
 )
-console.log(types)
-
 
 Object.keys(types).forEach((path) => {
     monaco.languages.typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
     monaco.languages.typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
 })
 
-// interface Props {
-//     file: IFile
-//     onChange?: (code: string | undefined) => void
-//     options?: IEditorOptions
-// }
 
-export const Editor: React.FC = observer((props) => {
-
+export const Editor: React.FC = (props) => {
+    const editorRootRef = useRef<HTMLDivElement>(null);
     const editorRef = useRef<any>(null);
 
-    const handleEditorDidMount = async (editor: any, monaco: Monaco) => {
+    const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
         editorRef.current = editor;
+
+        // 初始化当前文件的model
+        if (FileSystem.ins.currentFile) {
+            const model = getMonacoModel(FileSystem.ins.currentFile);
+            editor.setModel(model);
+        }
 
         editor.focus();
 
-        // ignore save event
         editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
             editor.getAction('editor.action.formatDocument').run()
         })
-
-        monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-            jsx: monaco.languages.typescript.JsxEmit.React,
-            esModuleInterop: true,
-        });
-
-        const monacoJsxSyntaxHighlight = new MonacoJsxSyntaxHighlight(getWorker(), monaco)
-        const { highlighter, dispose } = monacoJsxSyntaxHighlight.highlighterBuilder({
-            editor,
-        })
-
-        editor.onDidChangeModelContent(() => {
-            highlighter()
-        })
-
-        highlighter()
-
     }
 
-    useEffect(() => {
-        return () => {
-            console.log(12312312312)
-        }
+    const onFileChanged = useCallback((_: string, path: string) => {
+        const model = getMonacoModel(FileSystem.ins.currentFile);
+        editorRef.current.setModel(model);
     }, []);
 
+    useEffect(() => {
+        FileSystem.ins.on(FileSystem.EventType.FILE_CHANGED, onFileChanged);
+        return () => {
+            // 清理所有model
+            FileSystem.ins.off(FileSystem.EventType.FILE_CHANGED, onFileChanged);
+        }
+    }, [onFileChanged]);
 
-    const onChange = (newValue, e) => {
-        console.log('onChange', newValue, e);
-        store.code = newValue;
-    }
 
-    return <MonacoEditor
-        className='common-editor'
-        width='100%'
-        height='100%'
-        language="typescript"
-        theme="vs-dark"
-        value={store.code}
-        options={{
+    const debounceCompile = useCallback(debounce(async () => {
+        await startBuildServer();
+        await transformCode();
+    }, 1000), []);
+
+    const onChange = useCallback(async (newValue: string, e: any) => {
+        if (FileSystem.ins.currentFile) {
+            await FileSystem.ins.writeFile(FileSystem.ins.currentFile.path, newValue);
+            debounceCompile();
+        }
+    }, [debounceCompile])
+
+    useEffect(() => {
+        const editor = monaco.editor.create(editorRootRef.current, {
+            value: FileSystem.ins.code,
+            language: 'typescript',
+            theme: 'vs-dark',
             ...MonacoEditorConfig,
-        }}
-        onChange={onChange}
-        onMount={handleEditorDidMount}
-    />;
-});
+        });
+
+        handleEditorDidMount(editor);
+
+        editor.onDidChangeModelContent((e) => {
+            onChange(editor.getValue(), e);
+        });
+
+        return () => {
+            editor.dispose();
+        };
+    }, []);
+
+    return (
+        <div className={styles.editorContainer}>
+            <FileTree/>
+            <div className={styles.editorWrapper} ref={editorRootRef}/>
+        </div>
+    );
+};

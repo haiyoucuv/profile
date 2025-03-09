@@ -5,29 +5,38 @@ import { createRoot, Root } from "react-dom/client";
 import { Editor } from "../../editor/Editor.tsx";
 import React from "react";
 import d3 from "../../assets/icon/3D.svg";
-import store from "../../store/store.ts";
 
 import template from '../../templete/templete.html?raw';
 import { EventMessage, globalMsg } from "../../global/event";
+import { startBuildServer, transformCode } from "../../buider/buider.ts";
 
 
 export class EditorApp extends VirtualApp {
 
+    icon: string = vscode;
+
     id = "EditorApp";
-    icon = vscode;
 
     editorRoot: Root = null;
     iframe: HTMLIFrameElement = null;
 
+    compiledCode = '';
+
     launch() {
         this.openCodeWindow();
         this.openRenderer();
+        this.buildOnStart();
+    }
+
+    async buildOnStart() {
+        await startBuildServer();
+        await transformCode();
     }
 
     openCodeWindow() {
         const codeWindow = WindowManager.ins.showWindow("", {
             title: "Code", icon: vscode,
-            x: 50, y: 50,
+            x: 25, y: 25,
             width: 900, height: 750,
         });
 
@@ -43,7 +52,7 @@ export class EditorApp extends VirtualApp {
         this.iframe = document.createElement("iframe");
         const iframeWindow = WindowManager.ins.showWindow(this.iframe, {
             title: "Render", icon: d3,
-            x: 880, y: 130,
+            x: 800, y: 100,
             width: 375, height: 812,
         });
 
@@ -55,8 +64,8 @@ export class EditorApp extends VirtualApp {
         this.windows.set(iframeWindow.id, iframeWindow);
     }
 
-    onCodeCompiled = (code: string) => {
-        console.log(code)
+    onCodeCompiled = (_, code: string) => {
+        this.compiledCode = code;
         this.iframe.contentWindow.location.reload();
     }
 
@@ -64,7 +73,7 @@ export class EditorApp extends VirtualApp {
         if (e.data?.type === 'PREVIEW_LOADED') {
             const script = this.iframe.contentWindow.document.createElement("script");
             script.type = "module";
-            script.text = store.compileCode;
+            script.text = this.compiledCode;
             this.iframe.contentWindow.document.body.appendChild(script);
         }
     }
