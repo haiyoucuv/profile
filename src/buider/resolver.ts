@@ -17,9 +17,19 @@ export const resolvePlugin = () => ({
                     const importerDir = args.importer ? args.importer.split('/').slice(0, -1).join('/') : '';
                     const resolvedPath = importerDir ? `${importerDir}/${args.path}` : args.path;
                     
+                    // 先尝试原始路径
                     if (await fs.exists(resolvedPath)) {
                         return {
                             path: resolvedPath,
+                            namespace: 'browser-module'
+                        };
+                    }
+                    
+                    // 如果找不到，尝试添加.ts后缀
+                    const resolvedPathWithTs = resolvedPath + '.ts';
+                    if (await fs.exists(resolvedPathWithTs)) {
+                        return {
+                            path: resolvedPathWithTs,
                             namespace: 'browser-module'
                         };
                     }

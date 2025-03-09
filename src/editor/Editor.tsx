@@ -4,7 +4,7 @@ import styles from './Editor.module.less';
 
 import * as monaco from 'monaco-editor';
 
-import { MonacoEditorConfig } from "./monacoConfig.ts";
+import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
 import { FileSystem } from "./utils/FileSystem";
 import { getMonacoModel } from "./utils/utils.ts";
@@ -14,19 +14,7 @@ import { debounce } from "../utils/utils.ts";
 
 // 添加React类型定义配置
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-    target: monaco.languages.typescript.ScriptTarget.ESNext,
-    allowNonTsExtensions: true,
-    moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
-    module: monaco.languages.typescript.ModuleKind.ESNext,
-    noEmit: true,
-    lib: [
-        "dom",
-    ],
-    esModuleInterop: true,
-    jsx: monaco.languages.typescript.JsxEmit.React,
-    reactNamespace: "React",
-    allowJs: true,
-    typeRoots: ["node_modules/@types"]
+    ...TypeScriptConfig,
 });
 
 const types: Record<string, any> = import.meta.glob(

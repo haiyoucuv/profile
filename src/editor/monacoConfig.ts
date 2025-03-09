@@ -1,4 +1,4 @@
-import {editor} from 'monaco-editor'
+import {editor, languages} from 'monaco-editor'
 
 export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     automaticLayout: true,
@@ -30,7 +30,21 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
         verticalScrollbarSize: 14, // 竖滚动条
         horizontalScrollbarSize: 14, // 横滚动条
     },
-    renderLineHighlight: "all", // 修改这里，明确指定类型
-    selectOnLineNumbers: true, // 显示行号 默认true
-    readOnly: false, // 只读
+    renderLineHighlight: "all",
+    selectOnLineNumbers: true,
+    readOnly: false,
+}
+
+export const TypeScriptConfig: languages.typescript.CompilerOptions = {
+    target: languages.typescript.ScriptTarget.ESNext,
+    module: languages.typescript.ModuleKind.ESNext,
+    moduleResolution: languages.typescript.ModuleResolutionKind.NodeJs,
+    allowNonTsExtensions: true,
+    allowJs: true,
+    noEmit: true,
+    esModuleInterop: true,
+    jsx: languages.typescript.JsxEmit.React,
+    reactNamespace: "React",
+    allowSyntheticDefaultImports: true,
+    isolatedModules: true
 }

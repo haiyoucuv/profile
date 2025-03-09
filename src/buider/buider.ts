@@ -21,7 +21,7 @@ export async function transformCode() {
     initResolver(FileSystem.ins.fs);
 
     const result = await esbuild.build({
-        entryPoints: ['/index.tsx'],
+        entryPoints: ['/index.ts'],
         bundle: true,
         sourcemap: false,
         write: false,
@@ -49,7 +49,6 @@ export async function transformCode() {
             }
         ]
     });
-
 
     const code = result.outputFiles[0].text;
 

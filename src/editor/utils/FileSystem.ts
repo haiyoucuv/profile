@@ -25,7 +25,7 @@ export class FileSystem extends EventDispatcher {
     }
 
     private async initializeDefaultFile() {
-        const defaultPath = '/index.tsx';
+        const defaultPath = '/index.ts';
         await this.fs.writeFile(defaultPath, defaultCode, 'typescript');
         const file = await this.fs.readFile(defaultPath);
         if (file) {
@@ -35,7 +35,7 @@ export class FileSystem extends EventDispatcher {
 
     async createFile() {
         const files = this.fs.readdir('/');
-        const newPath = `/file${files.length + 1}.tsx`;
+        const newPath = `/file${files.length + 1}.ts`;
         await this.fs.writeFile(newPath, '', 'typescript');
         await this.openFile(newPath);
     }
