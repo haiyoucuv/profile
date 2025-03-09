@@ -33,6 +33,20 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     renderLineHighlight: "all",
     selectOnLineNumbers: true,
     readOnly: false,
+    quickSuggestions: {
+        other: false,
+        comments: false,
+        strings: false
+    },
+    acceptSuggestionOnCommitCharacter: false,
+    acceptSuggestionOnEnter: 'off',
+    suggestOnTriggerCharacters: false,
+    parameterHints: {
+        enabled: false
+    },
+
+    accessibilitySupport: "off",
+    wordWrap: "off",
 }
 
 export const TypeScriptConfig: languages.typescript.CompilerOptions = {
