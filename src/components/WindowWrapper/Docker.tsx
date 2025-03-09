@@ -28,7 +28,7 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
                     icon: win.icon,
                     title: win.title,
                     isMinimized: win.isMinimized || false,
-                    isPinned: win.isPinned || false
+                    isPinned: false
                 });
             });
             setDockerItems(items);
