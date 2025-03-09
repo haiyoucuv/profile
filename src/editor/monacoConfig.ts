@@ -2,8 +2,6 @@ import {editor, languages} from 'monaco-editor'
 
 export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     automaticLayout: true,
-    cursorBlinking: 'smooth',
-    fontLigatures: true,
     formatOnPaste: true,
     formatOnType: true,
     fontSize: 16,
@@ -13,9 +11,6 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     scrollBeyondLastLine: true,
     minimap: {
         enabled: true,
-    },
-    inlineSuggest: {
-        enabled: false,
     },
     fixedOverflowWidgets: true,
     smoothScrolling: true,
@@ -33,17 +28,6 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     renderLineHighlight: "all",
     selectOnLineNumbers: true,
     readOnly: false,
-    quickSuggestions: {
-        other: false,
-        comments: false,
-        strings: false
-    },
-    acceptSuggestionOnCommitCharacter: false,
-    acceptSuggestionOnEnter: 'off',
-    suggestOnTriggerCharacters: false,
-    parameterHints: {
-        enabled: false
-    },
 
     accessibilitySupport: "off",
     wordWrap: "off",
