@@ -12,12 +12,15 @@ import { transformCode, startBuildServer } from "./buider/buider.ts";
 import { Docker, Window, WindowManager } from './components/WindowWrapper';
 import { createRoot } from "react-dom/client";
 
+import d3 from "./assets/icon/3D.svg";
+import vscode from "./assets/icon/vscode.svg";
+
 function App() {
 
 
     useEffect(() => {
         const codeWindow = WindowManager.ins.showWindow("", {
-            title: "Code",
+            title: "Code", icon: vscode,
             x: 50, y: 50,
             width: 900, height: 750,
         });
@@ -37,7 +40,7 @@ function App() {
     useEffect(() => {
         const iframe = document.createElement("iframe");
         const iframeWindow = WindowManager.ins.showWindow(iframe, {
-            title: "Render",
+            title: "Render", icon: d3,
             x: 880, y: 130,
             width: 375, height: 812,
         });

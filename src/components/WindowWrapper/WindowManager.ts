@@ -1,9 +1,26 @@
 import { IWindowOptions, Window } from "./Window/Window.ts";
 import styles from './WindowManager.module.less';
+import { EventDispatcher } from "../../global/event";
 
 
-export class WindowManager {
+export class WindowManager extends EventDispatcher {
+
+    static EventType = {
+        ON_WINDOW_CHANGE: 'onWindowChange',
+    }
+
     private static _ins: WindowManager;
+
+    public static get ins(): WindowManager {
+        return WindowManager._ins || (WindowManager._ins = new WindowManager());
+    }
+
+    static _id = 0;
+
+    static getNewId(): string {
+        return `window_${WindowManager._id++}`;
+    }
+
     private maxZIndex: number = 1;
     private windows: Map<string, Window> = new Map();
     listeners: Set<() => void> = new Set();
@@ -22,6 +39,7 @@ export class WindowManager {
     }
 
     private constructor() {
+        super();
         document.body.appendChild(this.container);
         this.container.id = "window-container";
         this.container.className = styles.windowContainer;
@@ -32,19 +50,12 @@ export class WindowManager {
         this.enableMask = false;
     }
 
-    public static get ins(): WindowManager {
-        return WindowManager._ins || (WindowManager._ins = new WindowManager());
-    }
-
-    static _id = 0;
-    static getNewId(): string {
-        return `window_${WindowManager._id++}`;
-    }
-
     showWindow(children: HTMLElement | string, options: IWindowOptions) {
         const window = new Window(children, options);
 
         this.container.appendChild(window.body);
+
+        this.dispatchEvent(WindowManager.EventType.ON_WINDOW_CHANGE);
 
         return window;
     }
@@ -53,15 +64,7 @@ export class WindowManager {
         window.body.remove();
         window.destroy();
         this.unregisterWindow(window.id);
-    }
-
-    public subscribe(listener: () => void): () => void {
-        this.listeners.add(listener);
-        return () => this.listeners.delete(listener);
-    }
-
-    private notify(): void {
-        this.listeners.forEach(listener => listener());
+        this.dispatchEvent(WindowManager.EventType.ON_WINDOW_CHANGE);
     }
 
     public getNextZIndex(): number {
@@ -70,14 +73,11 @@ export class WindowManager {
 
     public registerWindow(id: string, window: Window): void {
         this.windows.set(id, window);
-        this.notify();
     }
 
     public unregisterWindow(id: string): void {
         this.windows.delete(id);
-        this.notify();
     }
-
     public getWindows(): Map<string, Window> {
         return this.windows;
     }

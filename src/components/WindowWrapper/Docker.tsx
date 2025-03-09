@@ -8,6 +8,7 @@ interface WindowWrapperProps {
 
 interface DockerItem {
     id: string;
+    icon: string;
     title: string;
     isMinimized: boolean;
 }
@@ -23,6 +24,7 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
             windows.forEach((win, id) => {
                 items.push({
                     id,
+                    icon: win.icon,
                     title: win.title,
                     isMinimized: win.isMinimized || false
                 });
@@ -31,10 +33,12 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
         };
 
         // 使用WindowManager的订阅机制来监听窗口状态变化
-        const unsubscribe = WindowManager.ins.subscribe(updateDocker);
+        WindowManager.ins.on(WindowManager.EventType.ON_WINDOW_CHANGE, updateDocker);
         updateDocker(); // 初始化Docker栏
 
-        return () => unsubscribe();
+        return () => {
+            WindowManager.ins.off(WindowManager.EventType.ON_WINDOW_CHANGE);
+        }
     }, []);
 
     // 处理Docker点击
@@ -52,13 +56,12 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
             </div>
             <div className={styles.docker}>
                 {dockerItems.map(item => (
-                    <div
+                    <img
+                        src={item.icon}
                         key={item.id}
                         className={styles.dockerItem}
                         onClick={() => handleDockerItemClick(item.id)}
-                    >
-                        <span className={styles.dockerTitle}>{item.title}</span>
-                    </div>
+                    />
                 ))}
             </div>
         </div>

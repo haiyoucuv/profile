@@ -21,10 +21,12 @@ export class EventDispatcher {
     /**
      * 移除全局事件
      * @param event      事件名
+     * @param listener
+     * @param object
      */
-    off(event: string) {
+    off(event: string, listener?: ListenerFunc, object?: any) {
         if (this._msg) {
-            this._msg.off(event);
+            this._msg.off(event, listener, object);
         }
     }
 

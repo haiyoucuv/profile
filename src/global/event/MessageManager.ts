@@ -22,7 +22,7 @@ export class MessageEventData {
             eds = [];
             this.events.set(event, eds);
         }
-        let ed: EventData = new EventData();
+        const ed: EventData = new EventData();
         ed.event = event;
         ed.listener = listener;
         ed.object = object;
@@ -34,15 +34,18 @@ export class MessageEventData {
     /**
      * 移除全局事件
      * @param event     事件名
+     * @param listener
+     * @param object
      */
-    off(event: string) {
+    off(event: string, listener?: Function, object?: object) {
         const eds = this.events.get(event);
         if (!eds) return;
 
         for (const eb of eds) {
+            if(listener && eb.listener != listener) continue;
+            if(object && eb.object != object) continue;
             globalMsg.off(event, eb.listener, eb.object);
         }
-        this.events.delete(event);
     }
 
     /**
@@ -205,9 +208,6 @@ export class MessageManager {
         this._dispatchEvent(event, ...args);
     }
 
-    emit(event: string, ...args: any) {
-        this._dispatchEvent(event, ...args);
-    }
 }
 
 export const globalMsg = new MessageManager();

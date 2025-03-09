@@ -8,6 +8,7 @@ export type TResizeType = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
 
 export interface IWindowOptions {
     title: string;
+    icon?: string;
     width?: number;
     height?: number;
     x?: number;
@@ -26,6 +27,7 @@ export class Window extends EventDispatcher {
     title = '';
 
     private _children: HTMLElement | string = null;
+    icon: string = null;
 
     set children(children) {
         if (children === this._children) return;
@@ -60,9 +62,10 @@ export class Window extends EventDispatcher {
 
     constructor(children: HTMLElement | string, options: IWindowOptions) {
         super();
-        const { title = "Window", x = 100, y = 100, width = 250, height = 600 } = options;
+        const { title = "Window", x = 100, y = 100, width = 250, height = 600, icon } = options;
         this.title = title;
 
+        this.icon = icon;
         this.body.style.zIndex = String(WindowManager.ins.getNextZIndex());
         this.body.className = styles.window;
 
