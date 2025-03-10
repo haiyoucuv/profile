@@ -1,4 +1,4 @@
-import { EventDispatcher } from "./event";
+import { EventDispatcher } from "../global/event";
 import { Window, WindowManager } from "../components/WindowWrapper";
 
 export abstract class VirtualApp extends EventDispatcher {

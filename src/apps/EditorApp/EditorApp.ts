@@ -1,4 +1,4 @@
-import { VirtualApp } from "../../global/VirtualApp.ts";
+import { VirtualApp } from "../VirtualApp.ts";
 import { Window, WindowManager } from "../../components/WindowWrapper";
 import vscode from "../../assets/icon/vscode.svg";
 import { createRoot, Root } from "react-dom/client";
