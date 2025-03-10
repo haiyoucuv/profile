@@ -6,7 +6,10 @@ export abstract class VirtualApp extends EventDispatcher {
     exited = false;
 
     icon: string;
+    
     id: string;
+    name: string;
+
 
     windows: Map<string, Window> = new Map<string, Window>();
 
