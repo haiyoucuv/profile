@@ -13,11 +13,16 @@ export abstract class VirtualApp extends Emittery {
 
     abstract launch();
 
+    onExit() {
+
+    }
+
     exit() {
         if(this.exited) return;
         this.exited = true;
+        this.onExit();
         this.windows.forEach((window) => {
-            WindowManager.ins.closeWindow(window);
+            window.isValid && WindowManager.ins.closeWindow(window);
         });
         this.windows.clear();
     }

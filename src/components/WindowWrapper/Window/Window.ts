@@ -21,6 +21,10 @@ export class Window extends Emittery {
         ON_CLOSE: Symbol('onWindowClose'),
     }
 
+    private _isValid = true;
+    get isValid() {
+        return this._isValid;
+    }
 
     readonly id = WindowManager.getNewId();
 
@@ -126,7 +130,7 @@ export class Window extends Emittery {
     }
 
     destroy() {
-        WindowManager.ins.unregisterWindow(this.id);
+        this._isValid = false;
 
         const iframeElement = this.body.querySelector('iframe');
         iframeElement?.contentWindow?.document.removeEventListener('click', this.focus);
@@ -136,8 +140,6 @@ export class Window extends Emittery {
         this.content.remove();
 
         this.emit(Window.EventType.ON_CLOSE);
-        
-        this.clearListeners();
     }
 
     handleMaximize = () => {

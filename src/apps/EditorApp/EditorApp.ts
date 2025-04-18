@@ -8,6 +8,7 @@ import d3 from "../../assets/icon/3D.svg";
 
 import template from '../../templete/templete.html?raw';
 import { Builder } from "../../Builder/Builder.ts";
+import { AppManager } from "../AppManager.ts";
 
 
 export class EditorApp extends VirtualApp {
@@ -41,9 +42,9 @@ export class EditorApp extends VirtualApp {
         this.editorRoot = createRoot(codeWindow.content);
         this.editorRoot.render(React.createElement(Editor));
 
-        codeWindow.on(Window.EventType.ON_CLOSE, () => this.exit());
-
         this.windows.set(codeWindow.id, codeWindow);
+
+        codeWindow.on(Window.EventType.ON_CLOSE, this.onClickClose);
     }
 
     openRenderer() {
@@ -60,6 +61,8 @@ export class EditorApp extends VirtualApp {
         Builder.ins.on(Builder.EventType.CODE_COMPILED, this.onCodeCompiled);
 
         this.windows.set(iframeWindow.id, iframeWindow);
+
+        iframeWindow.on(Window.EventType.ON_CLOSE, this.onClickClose);
     }
 
     onCodeCompiled = (code: string) => {
@@ -76,9 +79,11 @@ export class EditorApp extends VirtualApp {
         }
     }
 
-    exit() {
-        if (this.exited) return;
-        super.exit();
+    onClickClose = () => {
+        AppManager.ins.exitApp(EditorApp);
+    }
+
+    onExit() {
         this.editorRoot.unmount();
         window.removeEventListener('message', this.handleMessage);
         Builder.ins.off(Builder.EventType.CODE_COMPILED, this.onCodeCompiled);

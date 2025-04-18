@@ -1,6 +1,6 @@
 import { VirtualApp } from "./VirtualApp.ts";
 
-type TAppConstructor = new (...args: any[]) => VirtualApp;
+export type TAppConstructor<T extends VirtualApp> = new (...args: any[]) => T;
 import Emittery from 'emittery';
 
 export class AppManager extends Emittery{
@@ -19,14 +19,18 @@ export class AppManager extends Emittery{
         super();
     }
 
-    private apps: Map<TAppConstructor, VirtualApp> = new Map();
+    private _apps: Map<TAppConstructor<VirtualApp>, VirtualApp> = new Map();
+
+    get apps() {
+        return this._apps;
+    }
 
     /**
      * 启动一个App
      * @param AppClass 要启动的App类
      * @param args 传递给App构造函数的参数
      */
-    launchApp<T extends VirtualApp, Args extends any[]>(AppClass: new (...args: Args) => T, ...args: Args) {
+    launchApp<T extends VirtualApp, Args extends any[]>(AppClass: TAppConstructor<T>, ...args: Args) {
         if (this.apps.has(AppClass)) {
             console.warn(`App ${AppClass} is already running`);
             return;
@@ -35,13 +39,14 @@ export class AppManager extends Emittery{
 
         this.apps.set(AppClass, app);
         app.launch();
+        this.emit(AppManager.EventType.ON_APP_CHANGE);
     }
 
     /**
      * 退出一个App
-     * @param appId 要退出的App的ID
+     * @param AppClass
      */
-    exitApp(AppClass: TAppConstructor) {
+    exitApp(AppClass: TAppConstructor<VirtualApp>) {
         const app = this.apps.get(AppClass);
         if (!app) {
             console.warn(`App ${AppClass} is not running`);
@@ -50,20 +55,18 @@ export class AppManager extends Emittery{
 
         app.exit();
         this.apps.delete(AppClass);
+        this.emit(AppManager.EventType.ON_APP_CHANGE);
     }
 
-    /**
-     * 获取所有正在运行的App
-     */
-    getRunningApps() {
-        return this.apps;
+    getApp(AppClass: TAppConstructor<VirtualApp>) {
+        return this.apps.get(AppClass);
     }
 
     /**
      * 检查App是否正在运行
      * @param AppClass
      */
-    isAppRunning(AppClass: TAppConstructor): boolean {
+    isAppRunning(AppClass: TAppConstructor<VirtualApp>): boolean {
         return this.apps.has(AppClass);
     }
 

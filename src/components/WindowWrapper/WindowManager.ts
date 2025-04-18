@@ -59,9 +59,9 @@ export class WindowManager extends Emittery{
     }
 
     closeWindow(window: Window) {
+        this.unregisterWindow(window.id);
         window.body.remove();
         window.destroy();
-        this.unregisterWindow(window.id);
         this.emit(WindowManager.EventType.ON_WINDOW_CHANGE);
     }
 

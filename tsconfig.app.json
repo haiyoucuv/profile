@@ -27,6 +27,6 @@
     "src"
   ],
   "exclude": [
-    "docs",
+    "docs"
   ]
 }

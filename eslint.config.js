@@ -29,10 +29,7 @@ export default tseslint.config(
             "@typescript-eslint/no-empty-object-type": "off",
             "prefer-rest-params": "off",
             "no-async-promise-executor": "off",
-            'react-refresh/only-export-components': [
-                'warn',
-                {allowConstantExport: true},
-            ],
+            'react-refresh/only-export-components': "off",
         },
     },
 )

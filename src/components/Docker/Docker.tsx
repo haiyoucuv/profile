@@ -1,91 +1,67 @@
-import { FC, ReactNode, useCallback, useEffect, useState, Children, isValidElement } from 'react';
+import { FC, ReactNode, useCallback, useEffect, useState } from 'react';
 import styles from './Docker.module.less';
-import { WindowManager } from "../WindowWrapper";
+import { GitHubApp } from "../../apps/GitHubApp/GitHubApp.ts";
+import { EditorApp } from "../../apps/EditorApp/EditorApp.ts";
+import { AppManager, TAppConstructor } from "../../apps/AppManager.ts";
+import { VirtualApp } from "../../apps/VirtualApp.ts";
+import useForceUpdate from "use-force-update";
+import { BiliBiliApp } from "../../apps/BiliBiliApp/BiliBiliApp.ts";
+import { WeChatApp } from "../../apps/WeChatApp/WeChatApp.tsx";
 
 interface WindowWrapperProps {
     children?: ReactNode;
 }
 
-interface DockerItem {
-    id: string;
-    icon: string;
-    title: string;
-    isMinimized: boolean;
-    isPinned: boolean;
-}
+const PinnedApp = [EditorApp, WeChatApp, BiliBiliApp, GitHubApp];
 
 export const Docker: FC<WindowWrapperProps> = ({ children }) => {
-    const [dockerItems, setDockerItems] = useState<DockerItem[]>([]);
+    const forceUpdate = useForceUpdate();
 
     // 监听窗口状态变化
     useEffect(() => {
         const updateDocker = () => {
-            const windows = WindowManager.ins.getWindows();
-            const items: DockerItem[] = [];
-            windows.forEach((win, id) => {
-                items.push({
-                    id,
-                    icon: win.icon,
-                    title: win.title,
-                    isMinimized: win.isMinimized || false,
-                    isPinned: false
-                });
-            });
-            setDockerItems(items);
+            forceUpdate();
         };
 
         // 使用WindowManager的订阅机制来监听窗口状态变化
-        WindowManager.ins.on(WindowManager.EventType.ON_WINDOW_CHANGE, updateDocker);
+        AppManager.ins.on(AppManager.EventType.ON_APP_CHANGE, updateDocker);
         updateDocker(); // 初始化Docker栏
 
         return () => {
-            WindowManager.ins.off(WindowManager.EventType.ON_WINDOW_CHANGE, updateDocker);
+            AppManager.ins.off(AppManager.EventType.ON_APP_CHANGE, updateDocker);
         }
     }, []);
 
-    // 处理Docker点击
-    const handleDockerItemClick = useCallback((id: string) => {
-        const win = WindowManager.ins.getWindow(id);
-        if (win) {
-            win.handleMinimize();
+    // 处理DockerItem点击
+    const handleItemClick = useCallback((cls: TAppConstructor<VirtualApp>) => {
+        const isRunning = AppManager.ins.isAppRunning(cls);
+        if (isRunning) {
+            AppManager.ins.getApp(cls).windows.forEach((window) => {
+                window.handleMinimize();
+            });
+        } else {
+            AppManager.ins.launchApp(cls);
         }
     }, []);
 
-    const pinnedItems = dockerItems.filter(item => item.isPinned);
-    const unpinnedItems = dockerItems.filter(item => !item.isPinned);
-
-    return (
-        <div className={styles.warper}>
-            <div className={styles.content}>
-                {children}
-            </div>
-            <div className={styles.docker}>
-                <div className={styles.pinnedArea}>
-                    {pinnedItems.map(item => (
-                        <div key={item.id} className={styles.dockerItemWrapper}>
-                            <img
-                                src={item.icon}
-                                className={styles.dockerItem}
-                                onClick={() => handleDockerItemClick(item.id)}
-                            />
-                            {!item.isMinimized && <div className={styles.activeIndicator} />}
-                        </div>
-                    ))}
-                </div>
-                <div className={styles.divider} />
-                <div className={styles.activeArea}>
-                    {unpinnedItems.map(item => !item.isMinimized && (
-                        <div key={item.id} className={styles.dockerItemWrapper}>
-                            <img
-                                src={item.icon}
-                                className={styles.dockerItem}
-                                onClick={() => handleDockerItemClick(item.id)}
-                            />
-                            <div className={styles.activeIndicator} />
-                        </div>
-                    ))}
-                </div>
+    return <div className={styles.warper}>
+        <div className={styles.content}>
+            {children}
+        </div>
+        <div className={styles.docker}>
+            <div className={styles.pinnedArea}>
+                {PinnedApp.map((cls) => {
+                    const isRunning = AppManager.ins.isAppRunning(cls);
+                    return <div key={cls.id} className={styles.dockerItemWrapper}>
+                        <img
+                            src={cls.icon}
+                            className={styles.dockerItem}
+                            onClick={() => handleItemClick(cls)}
+                        />
+                        {isRunning && <div className={styles.activeIndicator}/>}
+                    </div>
+                })}
             </div>
         </div>
-    );
+    </div>;
 };
