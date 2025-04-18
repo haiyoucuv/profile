@@ -22,7 +22,6 @@ export class WindowManager extends Emittery{
 
     private maxZIndex: number = 1;
     private windows: Map<string, Window> = new Map();
-    listeners: Set<() => void> = new Set();
 
     container: HTMLDivElement = (document.getElementById("window-container") || document.createElement("div")) as HTMLDivElement;
     pointerMask: HTMLDivElement = (document.getElementById("pointer-mask") || document.createElement("div")) as HTMLDivElement;

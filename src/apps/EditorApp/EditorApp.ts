@@ -63,7 +63,6 @@ export class EditorApp extends VirtualApp {
     }
 
     onCodeCompiled = (code: string) => {
-        console.log(code);
         this.compiledCode = code;
         this.iframe.contentWindow.location.reload();
     }

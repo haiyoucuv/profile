@@ -1,6 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect, useState, Children, isValidElement } from 'react';
 import styles from './Docker.module.less';
-import { WindowManager } from "./WindowManager.ts";
+import { WindowManager } from "../WindowWrapper";
 
 interface WindowWrapperProps {
     children?: ReactNode;

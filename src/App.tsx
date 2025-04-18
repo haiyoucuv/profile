@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 
 import "./App.less";
 
-import { Docker } from './components/WindowWrapper';
-
 import { EditorApp } from "./apps/EditorApp/EditorApp.ts";
 import { AppManager } from "./apps/AppManager.ts";
+import { Docker } from "./components/Docker/Docker.tsx";
 
 function App() {
 
