@@ -1,9 +1,9 @@
-import { VirtualFS } from '../../buider/VirtualFS';
+import { VirtualFS } from '../../Builder/VirtualFS';
 import defaultCode from '../../templete/defaultCode.ts?raw';
-import { EventDispatcher } from "../../global/event";
-import { VirtualFile } from "../../buider/VirtualFile.ts";
+import { VirtualFile } from "../../Builder/VirtualFile.ts";
+import Emittery from 'emittery';
 
-export class FileSystem extends EventDispatcher {
+export class FileSystem extends Emittery {
 
     private static _ins: FileSystem = new FileSystem();
     static get ins() {
@@ -11,7 +11,7 @@ export class FileSystem extends EventDispatcher {
     }
 
     static EventType = {
-        FILE_CHANGED: 'onFileChanged',
+        FILE_CHANGED: Symbol('onFileChanged'),
     }
 
 
@@ -44,7 +44,7 @@ export class FileSystem extends EventDispatcher {
         const file = await this.fs.readFile(path);
         if (file) {
             this.currentFile = file;
-            this.dispatchEvent(FileSystem.EventType.FILE_CHANGED, path);
+            this.emit(FileSystem.EventType.FILE_CHANGED, path);
         }
     }
 

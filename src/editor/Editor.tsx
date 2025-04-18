@@ -8,7 +8,7 @@ import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
 import { FileSystem } from "./utils/FileSystem";
 import { getMonacoModel } from "./utils/utils.ts";
-import { startBuildServer, transformCode } from "../buider/buider.ts";
+import { Builder } from "../Builder/Builder.ts";
 import { debounce } from "../utils/utils.ts";
 
 
@@ -52,7 +52,7 @@ export const Editor: React.FC = (props) => {
         })
     }
 
-    const onFileChanged = useCallback((_: string, path: string) => {
+    const onFileChanged = useCallback(() => {
         const model = getMonacoModel(FileSystem.ins.currentFile);
         editorRef.current.setModel(model);
     }, []);
@@ -67,8 +67,7 @@ export const Editor: React.FC = (props) => {
 
 
     const debounceCompile = useCallback(debounce(async () => {
-        await startBuildServer();
-        await transformCode();
+        await Builder.ins.build();
     }, 1000), []);
 
     const onChange = useCallback(async (newValue: string, e: any) => {

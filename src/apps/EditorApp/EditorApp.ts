@@ -7,15 +7,14 @@ import React from "react";
 import d3 from "../../assets/icon/3D.svg";
 
 import template from '../../templete/templete.html?raw';
-import { EventMessage, globalMsg } from "../../global/event";
-import { startBuildServer, transformCode } from "../../buider/buider.ts";
+import { Builder } from "../../Builder/Builder.ts";
 
 
 export class EditorApp extends VirtualApp {
 
-    icon: string = vscode;
-
-    id = "EditorApp";
+    static icon: string = vscode;
+    static name = "EditorApp";
+    static id = "EditorApp";
 
     editorRoot: Root = null;
     iframe: HTMLIFrameElement = null;
@@ -29,8 +28,7 @@ export class EditorApp extends VirtualApp {
     }
 
     async buildOnStart() {
-        await startBuildServer();
-        await transformCode();
+        await Builder.ins.build();
     }
 
     openCodeWindow() {
@@ -59,12 +57,13 @@ export class EditorApp extends VirtualApp {
         this.iframe.srcdoc = template;
         window.addEventListener('message', this.handleMessage);
 
-        globalMsg.on(EventMessage.CODE_COMPILED, this.onCodeCompiled, this);
+        Builder.ins.on(Builder.EventType.CODE_COMPILED, this.onCodeCompiled);
 
         this.windows.set(iframeWindow.id, iframeWindow);
     }
 
-    onCodeCompiled = (_, code: string) => {
+    onCodeCompiled = (code: string) => {
+        console.log(code);
         this.compiledCode = code;
         this.iframe.contentWindow.location.reload();
     }
@@ -83,7 +82,7 @@ export class EditorApp extends VirtualApp {
         super.exit();
         this.editorRoot.unmount();
         window.removeEventListener('message', this.handleMessage);
-        globalMsg.off(EventMessage.CODE_COMPILED, this.onCodeCompiled, this);
+        Builder.ins.off(Builder.EventType.CODE_COMPILED, this.onCodeCompiled);
     }
 
 }

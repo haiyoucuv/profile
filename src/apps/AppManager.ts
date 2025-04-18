@@ -1,15 +1,23 @@
-import { VirtualApp } from "../apps/VirtualApp";
+import { VirtualApp } from "./VirtualApp.ts";
 
 type TAppConstructor = new (...args: any[]) => VirtualApp;
+import Emittery from 'emittery';
 
-export class AppManager {
+export class AppManager extends Emittery{
+
+    static EventType = {
+        ON_APP_CHANGE: Symbol('onAppChange'),
+    }
+
     private static _ins: AppManager;
 
     public static get ins(): AppManager {
         return AppManager._ins || (AppManager._ins = new AppManager());
     }
 
-    private constructor() {}
+    private constructor() {
+        super();
+    }
 
     private apps: Map<TAppConstructor, VirtualApp> = new Map();
 

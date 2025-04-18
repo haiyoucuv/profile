@@ -1,12 +1,11 @@
 import { IWindowOptions, Window } from "./Window/Window.ts";
 import styles from './WindowManager.module.less';
-import { EventDispatcher } from "../../global/event";
+import Emittery from 'emittery';
 
-
-export class WindowManager extends EventDispatcher {
+export class WindowManager extends Emittery{
 
     static EventType = {
-        ON_WINDOW_CHANGE: 'onWindowChange',
+        ON_WINDOW_CHANGE: Symbol('onWindowChange'),
     }
 
     private static _ins: WindowManager;
@@ -55,7 +54,7 @@ export class WindowManager extends EventDispatcher {
 
         this.container.appendChild(window.body);
 
-        this.dispatchEvent(WindowManager.EventType.ON_WINDOW_CHANGE);
+        this.emit(WindowManager.EventType.ON_WINDOW_CHANGE);
 
         return window;
     }
@@ -64,7 +63,7 @@ export class WindowManager extends EventDispatcher {
         window.body.remove();
         window.destroy();
         this.unregisterWindow(window.id);
-        this.dispatchEvent(WindowManager.EventType.ON_WINDOW_CHANGE);
+        this.emit(WindowManager.EventType.ON_WINDOW_CHANGE);
     }
 
     public getNextZIndex(): number {

@@ -5,7 +5,7 @@ import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import { VirtualFile } from "../../buider/VirtualFile.ts";
+import { VirtualFile } from "../../Builder/VirtualFile.ts";
 
 
 self.MonacoEnvironment = { // 提供一个定义worker路径的全局变量

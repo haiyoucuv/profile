@@ -1,7 +1,7 @@
 import styles from './Window.module.less';
 import classNames from "classnames";
 import { WindowManager } from "../WindowManager.ts";
-import { EventDispatcher } from "../../../global/event";
+import Emittery from 'emittery';
 
 
 export type TResizeType = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
@@ -15,10 +15,10 @@ export interface IWindowOptions {
     y?: number;
 }
 
-export class Window extends EventDispatcher {
+export class Window extends Emittery {
 
     static EventType = {
-        ON_CLOSE: 'onWindowClose',
+        ON_CLOSE: Symbol('onWindowClose'),
     }
 
 
@@ -135,10 +135,9 @@ export class Window extends EventDispatcher {
 
         this.content.remove();
 
-        this.dispatchEvent(Window.EventType.ON_CLOSE);
-
-        super.destroy();
-
+        this.emit(Window.EventType.ON_CLOSE);
+        
+        this.clearListeners();
     }
 
     handleMaximize = () => {

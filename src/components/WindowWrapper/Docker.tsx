@@ -39,7 +39,7 @@ export const Docker: FC<WindowWrapperProps> = ({ children }) => {
         updateDocker(); // 初始化Docker栏
 
         return () => {
-            WindowManager.ins.off(WindowManager.EventType.ON_WINDOW_CHANGE);
+            WindowManager.ins.off(WindowManager.EventType.ON_WINDOW_CHANGE, updateDocker);
         }
     }, []);
 
