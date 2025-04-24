@@ -27,6 +27,9 @@ export class FileSystem extends Emittery {
     private async initializeDefaultFile() {
         const defaultPath = '/index.ts';
         await this.fs.writeFile(defaultPath, defaultCode, 'typescript');
+        // 将 importMap.json 作为默认文件写入虚拟文件系统
+        const importMapContent = await fetch('/src/templete/importMap.json').then(res => res.text());
+        await this.fs.writeFile('/importMap.json', importMapContent, 'json');
         const file = await this.fs.readFile(defaultPath);
         if (file) {
             this.currentFile = file;
