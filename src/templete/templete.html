@@ -27,16 +27,16 @@
 	</style>
 </head>
 <body>
-<div id="root"></div>
 <script type="importmap">
 	{
       "imports": {
         "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/",
-        "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9",
+        "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
       }
     }
 </script>
+<div id="root"></div>
 <script type="module">
 	window.addEventListener('load', () => {
 		window.parent.postMessage({type: 'PREVIEW_LOADED', message: ''})

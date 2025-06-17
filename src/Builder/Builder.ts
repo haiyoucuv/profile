@@ -37,10 +37,12 @@ export class Builder extends Emittery {
 
         const result = await esbuild.build({
             entryPoints: ['/index.ts'],
+            loader: { '.ts': 'ts', '.tsx': 'tsx' },
             bundle: true,
             sourcemap: false,
             write: false,
             format: 'esm',
+            target: "esnext",
             plugins: [
                 resolvePlugin(),
                 {
@@ -57,7 +59,7 @@ export class Builder extends Emittery {
 
                             return {
                                 contents: file.content,
-                                // loader: file.language as any
+                                loader: "ts"
                             };
                         });
                     }

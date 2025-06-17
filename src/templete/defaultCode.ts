@@ -2,8 +2,6 @@ import {
     WebGLRenderer,
     Scene,
     PerspectiveCamera,
-    DirectionalLight,
-    AmbientLight,
     PlaneGeometry,
     MeshStandardMaterial,
     Mesh,
@@ -14,10 +12,9 @@ import {
     Clock,
     TextureLoader,
     RepeatWrapping,
-    FogExp2
 } from "three";
 import { Water } from 'three/addons/objects/Water.js';
-import { Sky } from 'three/addons/objects/Sky.js';
+import { CustomEnv } from './CustomEnv.ts';
 
 const canvas = document.createElement("canvas");
 const root = document.getElementById("root");
@@ -34,44 +31,18 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 // Create scene and camera
 const scene = new Scene();
-scene.fog = new FogExp2(0xcccccc, 0.025);
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-// Add beautiful sky
-const sky = new Sky();
-sky.scale.setScalar(10000);
-scene.add(sky);
-
-
-// Sun position
-const sun = new Vector3();
-sky.material.uniforms["sunPosition"].value.copy(sun);
-sky.material.uniforms['turbidity'].value = 1;  // 影响空气浑浊度
-sky.material.uniforms['rayleigh'].value = 1.5;  // 影响瑞利散射，决定天空颜色
-sky.material.uniforms['mieCoefficient'].value = 0.005;  // 控制雾霾效果
-sky.material.uniforms['mieDirectionalG'].value = 0.8;  // 控制光晕强度
-sky.material.uniforms['sunPosition'].value.set(-1, 0.1, -1);  // 夕阳
-
-
-// Add lighting
-const sunLight = new DirectionalLight(0xffffff, 1.2);
-sunLight.position.set(sun.x * 1000, sun.y * 1000, sun.z * 1000);
-scene.add(sunLight);
-
-const ambientLight = new AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
 
 // Create water surface
 const waterGeometry = new PlaneGeometry(10000, 10000);
 const textureLoader = new TextureLoader();
 const waterNormals = textureLoader.load('/src/assets/textures/waternormals.png');
 waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
-
 const water = new Water(waterGeometry, {
     textureWidth: 512,
     textureHeight: 512,
     waterNormals: waterNormals,
-    sunDirection: sunLight.position.clone().normalize(),
+    sunDirection: new Vector3(0, 1, 0),
     sunColor: 0xffffff,
     waterColor: 0x001e0f,
     distortionScale: 3.7,
@@ -79,7 +50,8 @@ const water = new Water(waterGeometry, {
 water.rotation.x = -Math.PI / 2;
 scene.add(water);
 
-
+// 环境系统
+const env = new CustomEnv(scene, water);
 
 const player = createPlayer();
 
@@ -189,23 +161,6 @@ const onResize = () => {
 onResize();
 window.addEventListener("resize", onResize);
 
-
-function updateSun(time) {
-    sun.set(Math.sin(time) * 10, Math.cos(time) * 5, -5);
-    sky.material.uniforms['sunPosition'].value.copy(sun);
-
-
-    water.material.uniforms["sunDirection"].value.copy(sun).normalize();
-
-    sunLight.position.set(sun.x * 1000, sun.y * 1000, sun.z * 1000);
-    // 白天夜晚光照变化
-    const isDay = sun.y > 0.1;
-    sunLight.intensity = isDay ? 1.2 : 0.2;
-    sunLight.color.set(isDay ? 0xffffff : 0x3366cc);
-    ambientLight.intensity = isDay ? 0.5 : 0.15;
-    ambientLight.color.set(isDay ? 0xffffff : 0x223344);
-}
-
 // Game clock
 const clock = new Clock();
 
@@ -215,7 +170,7 @@ function animate() {
     const delta = clock.getDelta();
     const time = clock.getElapsedTime() * 1000;
 
-    updateSun(time / 1000);
+    env.updateSun(time / 1000);
 
     // Update water
     water.material.uniforms['time'].value += delta;
