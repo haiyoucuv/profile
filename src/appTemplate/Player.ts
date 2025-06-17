@@ -1,6 +1,8 @@
-import { BoxGeometry, Group, Mesh, MeshStandardMaterial } from "three";
+import { BoxGeometry, Group, Mesh, MeshStandardMaterial, MathUtils } from "three";
 
 export class Player extends Group {
+    private keysPressed: Record<string, boolean> = {};
+    private rolling: boolean = false;
 
     constructor() {
         super();
@@ -16,17 +18,50 @@ export class Player extends Group {
 
         const wingGeometry = new BoxGeometry(8, 0.2, 2);
         const wing = new Mesh(wingGeometry, mat);
-        // wing.position.y = 0.2;
+        wing.position.y = 0.2;
 
         const tailGeometry = new BoxGeometry(2, 0.8, 0.8);
         const tail = new Mesh(tailGeometry, mat);
-        // tail.position.set(0, 0.4, -1.8);
+        tail.position.set(0, 0.4, -1.8);
 
         this.add(body, wing, tail);
     }
 
-    onUpdate(dTime: number, eTime: number) {
-        this.position.z += 10 * dTime;
+    public handleKeyDown(key: string) {
+        this.keysPressed[key] = true;
+    }
 
+    public handleKeyUp(key: string) {
+        this.keysPressed[key] = false;
+    }
+
+    onUpdate(dTime: number, eTime: number) {
+        this.position.z += 50 * dTime;
+
+        // a/d 或左右键控制左右移动和翻滚
+        this.rolling = false;
+        if (this.keysPressed['a'] || this.keysPressed['ArrowLeft']) {
+            this.position.x += 50 * dTime;
+            this.rotation.z = Math.max(this.rotation.z - 0.08, -Math.PI / 4);
+            this.rolling = true;
+        }
+        if (this.keysPressed['d'] || this.keysPressed['ArrowRight']) {
+            this.position.x -= 50 * dTime;
+            this.rotation.z = Math.min(this.rotation.z + 0.08, Math.PI / 4);
+            this.rolling = true;
+        }
+        // w/s 或上下键控制上下移动
+        if (this.keysPressed['w'] || this.keysPressed['ArrowUp']) {
+            this.position.y += 50 * dTime;
+        }
+        if (this.keysPressed['s'] || this.keysPressed['ArrowDown']) {
+            this.position.y -= 50 * dTime;
+        }
+        // 松开时自动回正
+        if (!this.rolling) {
+            this.rotation.z *= 0.92;
+        }
+        // 玩家y坐标限制在[1,10]
+        this.position.y = MathUtils.clamp(this.position.y, 5, 100);
     }
 }

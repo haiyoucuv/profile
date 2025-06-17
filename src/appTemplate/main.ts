@@ -96,15 +96,14 @@ function createBullet() {
 }
 
 // 恢复键盘控制
-const keysPressed = {};
 window.addEventListener('keydown', (event) => {
-    keysPressed[event.key] = true;
+    player.handleKeyDown(event.key);
     if (event.code === 'Space') {
         createBullet();
     }
 });
 window.addEventListener('keyup', (event) => {
-    keysPressed[event.key] = false;
+    player.handleKeyUp(event.key);
 });
 
 // window resize
@@ -130,33 +129,6 @@ function animate() {
     env.updateWater(dTime);
 
     player.onUpdate(dTime, eTime);
-
-    // a/d 或左右键控制左右移动和翻滚
-    let rolling = false;
-    if (keysPressed['a'] || keysPressed['ArrowLeft']) {
-        player.position.x += 0.5;
-        player.rotation.z = Math.max(player.rotation.z - 0.08, -Math.PI / 4);
-        rolling = true;
-    }
-    if (keysPressed['d'] || keysPressed['ArrowRight']) {
-        player.position.x -= 0.5;
-        player.rotation.z = Math.min(player.rotation.z + 0.08, Math.PI / 4);
-        rolling = true;
-    }
-    // w/s 或上下键控制上下移动
-    if (keysPressed['w'] || keysPressed['ArrowUp']) {
-        player.position.y += 0.5;
-    }
-    if (keysPressed['s'] || keysPressed['ArrowDown']) {
-        player.position.y -= 0.5;
-    }
-    // 松开时自动回正
-    if (!rolling) {
-        player.rotation.z *= 0.92;
-    }
-
-    // 玩家y坐标限制在[1,10]
-    player.position.y = MathUtils.clamp(player.position.y, 5, 100);
 
     // 摄像机跟随飞机后方
     const camOffset = new Vector3(0, 5.5, -15);
