@@ -30,7 +30,7 @@ export class CustomEnv {
         this.pmremGenerator = new PMREMGenerator(renderer);
 
         // 雾
-        scene.fog = new FogExp2(0x111111, 0.02);
+        // scene.fog = new FogExp2(0x111111, 0.02);
 
         // water
         const waterGeometry = new PlaneGeometry(10000, 10000);

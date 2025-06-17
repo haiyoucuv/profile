@@ -31,9 +31,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene = new Scene();
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// orbit controls
-const controls = new OrbitControls(camera, renderer.domElement);
-
 // 环境系统
 const env = new CustomEnv(scene, renderer);
 
