@@ -65,7 +65,7 @@ function createPlayer(){
 
     playerGeometry.add(body, wing, tail);
     playerGroup.add(playerGeometry);
-    playerGroup.position.set(0, 80, 0);
+    playerGroup.position.set(0, 5, 0);
     scene.add(playerGroup);
     return playerGroup;
 }
@@ -129,7 +129,7 @@ window.addEventListener('keyup', (event) => {
     keysPressed[event.key] = false;
 });
 
-// Handle window resize
+// window resize
 const onResize = () => {
     const { innerWidth, innerHeight } = window;
     renderer.setSize(innerWidth, innerHeight);
@@ -140,10 +140,9 @@ const onResize = () => {
 onResize();
 window.addEventListener("resize", onResize);
 
-// Game clock
 const clock = new Clock();
 
-// Animation loop
+// loop
 function animate() {
     requestAnimationFrame(animate);
     const delta = clock.getDelta();
@@ -183,7 +182,7 @@ function animate() {
     player.position.y = MathUtils.clamp(player.position.y, 5, 100);
 
     // 摄像机跟随飞机后方
-    const camOffset = new Vector3(0, 80.5, -15);
+    const camOffset = new Vector3(0, 5.5, -15);
     const camTarget = player.position.clone().add(camOffset.applyQuaternion(player.quaternion));
     camera.position.lerp(camTarget, 0.2); // 平滑跟随
     camera.lookAt(player.position);

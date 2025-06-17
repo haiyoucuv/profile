@@ -27,10 +27,10 @@ export class CustomEnv {
         // 雾
         scene.fog = new FogExp2(0xcccccc, 0.025);
 
-        // Initialize water
+        // water
         const waterGeometry = new PlaneGeometry(10000, 10000);
         const textureLoader = new TextureLoader();
-        const waterNormals = textureLoader.load('/src/assets/textures/waternormals.png');
+        const waterNormals = textureLoader.load('/assets/textures/waternormals.png');
         waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
         this.water = new Water(waterGeometry, {
             textureWidth: 512,
@@ -58,7 +58,7 @@ export class CustomEnv {
         this.sky.material.uniforms['mieDirectionalG'].value = 0.8;
         this.sky.material.uniforms['sunPosition'].value.set(-1, 0.1, -1);
 
-        // Lighting
+        // light
         this.sunLight = new DirectionalLight(0xffffff, 1.2);
         this.sunLight.position.set(0, 1000, 1000);
         scene.add(this.sunLight);
@@ -97,7 +97,7 @@ export class CustomEnv {
         skyFolder.add(this.skyParams, 'mieDirectionalG', 0, 1, 0.01);
         skyFolder.open();
 
-        // updateSun 方法
+        // 更新太阳位置
         this.updateSun = (time: number) => {
             if (this.sunParams.auto) {
                 this.sun.set(Math.sin(time) * 10, Math.cos(time) * 5, -5);
