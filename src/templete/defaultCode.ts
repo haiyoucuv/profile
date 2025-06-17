@@ -2,25 +2,21 @@ import {
     WebGLRenderer,
     Scene,
     PerspectiveCamera,
-    PlaneGeometry,
     MeshStandardMaterial,
     Mesh,
     Vector3,
     Group,
     BoxGeometry,
     SphereGeometry,
-    Clock,
-    TextureLoader,
-    RepeatWrapping,
+    Clock, MathUtils,
 } from "three";
-import { Water } from 'three/addons/objects/Water.js';
 import { CustomEnv } from './CustomEnv.ts';
 
 const canvas = document.createElement("canvas");
 const root = document.getElementById("root");
 root.appendChild(canvas);
 
-// Initialize renderer
+// renderer
 const renderer = new WebGLRenderer({
     canvas,
     antialias: true,
@@ -29,7 +25,7 @@ const renderer = new WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Create scene and camera
+// scene camera
 const scene = new Scene();
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -48,7 +44,7 @@ const enemyBullets = [];
 // Game state
 const gameState = {
     lastEnemySpawn: 0,
-    enemySpawnInterval: 2000, // ms
+    enemySpawnInterval: 2000,
 };
 
 function createPlayer(){
@@ -69,7 +65,7 @@ function createPlayer(){
 
     playerGeometry.add(body, wing, tail);
     playerGroup.add(playerGeometry);
-    playerGroup.position.set(0, 5, 0);
+    playerGroup.position.set(0, 80, 0);
     scene.add(playerGroup);
     return playerGroup;
 }
@@ -184,12 +180,12 @@ function animate() {
     }
 
     // 玩家y坐标限制在[1,10]
-    player.position.y = Math.max(5, Math.min(50, player.position.y));
+    player.position.y = MathUtils.clamp(player.position.y, 5, 100);
 
     // 摄像机跟随飞机后方
-    const camOffset = new Vector3(0, 6, -15);
+    const camOffset = new Vector3(0, 80.5, -15);
     const camTarget = player.position.clone().add(camOffset.applyQuaternion(player.quaternion));
-    camera.position.lerp(camTarget, 0.15); // 平滑跟随
+    camera.position.lerp(camTarget, 0.2); // 平滑跟随
     camera.lookAt(player.position);
 
     // Update bullets
@@ -216,7 +212,7 @@ function animate() {
         // 只沿z轴负方向直线飞行
         enemy.position.z -= 0.5;
         // y坐标限制
-        enemy.position.y = Math.max(5, Math.min(50, enemy.position.y));
+        enemy.position.y = MathUtils.clamp(enemy.position.y, 5, 50);
         // 敌机有概率发射子弹
         if (Math.random() < 0.01) {
             enemyShoot(enemy);
