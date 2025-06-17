@@ -2,11 +2,6 @@ import { VirtualFS } from '../../Builder/VirtualFS';
 import { VirtualFile } from "../../Builder/VirtualFile.ts";
 import Emittery from 'emittery';
 
-import defaultCode from '../../appTemplate/main.ts?raw';
-import Player from '../../appTemplate/Player.ts?raw';
-import CustomEnv from '../../appTemplate/CustomEnv.ts?raw';
-
-
 export class FileSystem extends Emittery {
 
     private static _ins: FileSystem = new FileSystem();
@@ -33,21 +28,19 @@ export class FileSystem extends Emittery {
         const defaultFiles = import.meta.glob([
             "../../appTemplate/**/*.ts",
         ], {
+            import: "default",
             eager: true,
             query: "?raw",
         });
 
         // 取出文件名
         for (const path in defaultFiles) {
-            const content = defaultFiles[path].default;
+            const content = defaultFiles[path] as string;
             const fileName = path.split('/').pop();
             await this.fs.writeFile(`/${fileName}`, content, 'typescript');
         }
 
         const defaultPath = '/main.ts';
-        // await this.fs.writeFile(defaultPath, defaultCode, 'typescript');
-        // await this.fs.writeFile("./CustomEnv.ts", CustomEnv, 'typescript');
-        // await this.fs.writeFile("./Player.ts", Player, 'typescript');
         const file = await this.fs.readFile(defaultPath);
         if (file) {
             this.currentFile = file;

@@ -10,7 +10,6 @@ import {
     SphereGeometry,
     Clock, MathUtils,
 } from "three";
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CustomEnv } from './CustomEnv.ts';
 import { Player } from './Player.ts';
 
@@ -29,13 +28,14 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 // scene camera
 const scene = new Scene();
-const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
-// 环境系统
-const env = new CustomEnv(scene, renderer);
 
 const player = new Player();
 scene.add(player);
+
+// 环境系统
+const env = new CustomEnv(scene, renderer, player);
 
 // Bullets array and enemy array
 const bullets = [];
@@ -127,9 +127,9 @@ function animate() {
     const dTime = clock.getDelta();
     const eTime = clock.getElapsedTime() * 1000;
 
-    env.updateWater(dTime);
-
     player.onUpdate(dTime, eTime);
+
+    env.onUpdate(dTime, eTime);
 
     // 摄像机跟随飞机后方
     const camOffset = new Vector3(0, 5.5, -15);

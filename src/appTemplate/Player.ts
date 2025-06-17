@@ -1,6 +1,7 @@
-import { BoxGeometry, Group, Mesh, MeshStandardMaterial, MathUtils } from "three";
+import { BoxGeometry, Mesh, MeshStandardMaterial, MathUtils } from "three";
+import { Component } from "./Component.ts";
 
-export class Player extends Group {
+export class Player extends Component {
     private keysPressed: Record<string, boolean> = {};
     private rolling: boolean = false;
 
@@ -42,26 +43,33 @@ export class Player extends Group {
         this.rolling = false;
         if (this.keysPressed['a'] || this.keysPressed['ArrowLeft']) {
             this.position.x += 50 * dTime;
-            this.rotation.z = Math.max(this.rotation.z - 0.08, -Math.PI / 4);
+            this.rotation.z -= 2 * dTime;
             this.rolling = true;
         }
         if (this.keysPressed['d'] || this.keysPressed['ArrowRight']) {
             this.position.x -= 50 * dTime;
-            this.rotation.z = Math.min(this.rotation.z + 0.08, Math.PI / 4);
+            this.rotation.z += 2 * dTime;
             this.rolling = true;
         }
         // w/s 或上下键控制上下移动
         if (this.keysPressed['w'] || this.keysPressed['ArrowUp']) {
             this.position.y += 50 * dTime;
+            this.rotation.x -= 2 * dTime;
+            this.rolling = true;
         }
         if (this.keysPressed['s'] || this.keysPressed['ArrowDown']) {
             this.position.y -= 50 * dTime;
+            this.rotation.x += 2 * dTime;
+            this.rolling = true;
         }
         // 松开时自动回正
         if (!this.rolling) {
-            this.rotation.z *= 0.92;
+            this.rotation.z *= 0.98;
+            this.rotation.x *= 0.98;
         }
         // 玩家y坐标限制在[1,10]
+        this.rotation.x = MathUtils.clamp(this.rotation.x, -Math.PI / 6, Math.PI / 6);
+        this.rotation.z = MathUtils.clamp(this.rotation.z, -Math.PI / 6, Math.PI / 6);
         this.position.y = MathUtils.clamp(this.position.y, 5, 100);
     }
 }

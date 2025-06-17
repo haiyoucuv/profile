@@ -12,20 +12,26 @@ import {
 } from "three";
 import { Water } from 'three/addons/objects/Water.js';
 import { Sky } from 'three/addons/objects/Sky.js';
+import { Player } from './Player';
+import { Component } from "./Component.ts";
 
-export class CustomEnv {
+export class CustomEnv extends Component {
     public sky: any;
     public sun: Vector3 = new Vector3();
     public sunLight: DirectionalLight;
     public ambientLight: AmbientLight;
     public water: Water;
+    private player: Player;
 
     scene: Scene;
     renderer: WebGLRenderer;
 
-    constructor(scene: Scene, renderer: WebGLRenderer) {
+    constructor(scene: Scene, renderer: WebGLRenderer, player: Player) {
+        super();
+
         this.scene = scene;
         this.renderer = renderer;
+        this.player = player;
 
         this.pmremGenerator = new PMREMGenerator(renderer);
 
@@ -50,13 +56,13 @@ export class CustomEnv {
 
         // Sky
         this.sky = new Sky();
-        this.sky.scale.setScalar(10000);
+        this.sky.scale.setScalar(1000);
         scene.add(this.sky);
 
         this.sky.material.uniforms['turbidity'].value = 10;
         this.sky.material.uniforms['rayleigh'].value = 2;
-        this.sky.material.uniforms['mieCoefficient'].value = 0.005;
-        this.sky.material.uniforms['mieDirectionalG'].value = 0.8;
+        this.sky.material.uniforms['mieCoefficient'].value = 0.05;
+        this.sky.material.uniforms['mieDirectionalG'].value = 0.90;
 
         // light
         this.sunLight = new DirectionalLight(0xff8c44, 1.0);
@@ -67,10 +73,14 @@ export class CustomEnv {
 
         this.updateSun();
 
+        this.sceneEnv.add(this.sky);
+        const renderTarget = this.pmremGenerator.fromScene(this.sceneEnv);
+        this.scene.environment = renderTarget.texture;
+        this.scene.add(this.sky);
     }
 
     elevation = 2;
-    azimuth = 0;
+    azimuth = 0; // 太阳在正前方
 
     pmremGenerator: PMREMGenerator = null;
     sceneEnv = new Scene();
@@ -78,8 +88,7 @@ export class CustomEnv {
     updateSun() {
         const {
             elevation, azimuth, sun, sunLight,
-            water, sky,
-            sceneEnv, pmremGenerator, scene
+            water, sky, player,
         } = this;
 
         const phi = MathUtils.degToRad(90 - elevation);
@@ -91,14 +100,13 @@ export class CustomEnv {
         water.material.uniforms['sunDirection'].value.copy(sun).normalize();
         sunLight.position.copy(sun).multiplyScalar(1000);
 
-        sceneEnv.add(sky);
-        const renderTarget = pmremGenerator.fromScene(sceneEnv);
-        scene.add(sky);
-
-        scene.environment = renderTarget.texture;
+        // 更新天空盒位置
+        sky.position.set(player.position.x, 0, player.position.z);
     }
 
-    public updateWater(delta: number) {
-        this.water.material.uniforms['time'].value += delta;
+    onUpdate(dTime, eTime) {
+        this.water.material.uniforms['time'].value += dTime;
+
+        this.updateSun(); // 每帧更新天空盒位置
     }
 }
