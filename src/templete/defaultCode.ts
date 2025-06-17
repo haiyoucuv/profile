@@ -33,25 +33,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene = new Scene();
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// Create water surface
-const waterGeometry = new PlaneGeometry(10000, 10000);
-const textureLoader = new TextureLoader();
-const waterNormals = textureLoader.load('/src/assets/textures/waternormals.png');
-waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
-const water = new Water(waterGeometry, {
-    textureWidth: 512,
-    textureHeight: 512,
-    waterNormals: waterNormals,
-    sunDirection: new Vector3(0, 1, 0),
-    sunColor: 0xffffff,
-    waterColor: 0x001e0f,
-    distortionScale: 3.7,
-});
-water.rotation.x = -Math.PI / 2;
-scene.add(water);
-
 // 环境系统
-const env = new CustomEnv(scene, water);
+const env = new CustomEnv(scene);
 
 const player = createPlayer();
 
@@ -171,9 +154,7 @@ function animate() {
     const time = clock.getElapsedTime() * 1000;
 
     env.updateSun(time / 1000);
-
-    // Update water
-    water.material.uniforms['time'].value += delta;
+    env.updateWater(delta);
 
     // 飞机自动前进
     player.position.z += 0.5;

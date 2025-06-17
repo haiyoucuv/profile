@@ -3,7 +3,10 @@ import {
     Vector3,
     DirectionalLight,
     AmbientLight,
-    FogExp2
+    FogExp2,
+    PlaneGeometry,
+    TextureLoader,
+    RepeatWrapping
 } from "three";
 import { Water } from 'three/addons/objects/Water.js';
 import { Sky } from 'three/addons/objects/Sky.js';
@@ -17,11 +20,29 @@ export class CustomEnv {
     public gui: GUI;
     public sunParams: any;
     public skyParams: any;
+    public water: Water;
     public updateSun: (time: number) => void;
 
-    constructor(scene: Scene, water: any) {
+    constructor(scene: Scene) {
         // 雾
         scene.fog = new FogExp2(0xcccccc, 0.025);
+
+        // Initialize water
+        const waterGeometry = new PlaneGeometry(10000, 10000);
+        const textureLoader = new TextureLoader();
+        const waterNormals = textureLoader.load('/src/assets/textures/waternormals.png');
+        waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
+        this.water = new Water(waterGeometry, {
+            textureWidth: 512,
+            textureHeight: 512,
+            waterNormals: waterNormals,
+            sunDirection: new Vector3(0, 1, 0),
+            sunColor: 0xffffff,
+            waterColor: 0x001e0f,
+            distortionScale: 3.7,
+        });
+        this.water.rotation.x = -Math.PI / 2;
+        scene.add(this.water);
 
         // Sky
         this.sky = new Sky();
@@ -53,9 +74,15 @@ export class CustomEnv {
             auto: true
         };
         const sunFolder = this.gui.addFolder('Sun Position');
-        sunFolder.add(this.sunParams, "y", -180, 180).onChange(() => { this.sunParams.auto = false; });
-        sunFolder.add(this.sunParams, 'y', -180, 180).onChange(() => { this.sunParams.auto = false; });
-        sunFolder.add(this.sunParams, 'z', -180, 180).onChange(() => { this.sunParams.auto = false; });
+        sunFolder.add(this.sunParams, "y", -180, 180).onChange(() => {
+            this.sunParams.auto = false;
+        });
+        sunFolder.add(this.sunParams, 'y', -180, 180).onChange(() => {
+            this.sunParams.auto = false;
+        });
+        sunFolder.add(this.sunParams, 'z', -180, 180).onChange(() => {
+            this.sunParams.auto = false;
+        });
         sunFolder.open();
         this.skyParams = {
             turbidity: 0.1,
@@ -81,7 +108,7 @@ export class CustomEnv {
                 this.sun.set(this.sunParams.x, this.sunParams.y, this.sunParams.z);
             }
             this.sky.material.uniforms['sunPosition'].value.copy(this.sun);
-            water.material.uniforms["sunDirection"].value.copy(this.sun).normalize();
+            this.water.material.uniforms["sunDirection"].value.copy(this.sun).normalize();
             this.sunLight.position.set(this.sun.x * 1000, this.sun.y * 1000, this.sun.z * 1000);
             const isDay = this.sun.y > 0.1;
             this.sunLight.intensity = isDay ? 1.2 : 0.2;
@@ -94,5 +121,9 @@ export class CustomEnv {
             this.sky.material.uniforms['mieCoefficient'].value = this.skyParams.mieCoefficient;
             this.sky.material.uniforms['mieDirectionalG'].value = this.skyParams.mieDirectionalG;
         };
+    }
+
+    public updateWater(delta: number) {
+        this.water.material.uniforms['time'].value += delta;
     }
 }
