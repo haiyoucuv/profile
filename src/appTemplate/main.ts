@@ -11,6 +11,7 @@ import {
     Clock, MathUtils,
 } from "three";
 import { CustomEnv } from './CustomEnv.ts';
+import { Player } from './Player.ts';
 
 const canvas = document.createElement("canvas");
 const root = document.getElementById("root");
@@ -32,7 +33,7 @@ const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight,
 // 环境系统
 const env = new CustomEnv(scene);
 
-const player = createPlayer();
+const player = new Player();
 
 // Bullets array and enemy array
 const bullets = [];
@@ -46,29 +47,6 @@ const gameState = {
     lastEnemySpawn: 0,
     enemySpawnInterval: 2000,
 };
-
-function createPlayer(){
-    const playerGroup = new Group();
-    const playerGeometry = new Group();
-
-    const bodyGeometry = new BoxGeometry(2, 0.5, 4);
-    const bodyMaterial = new MeshStandardMaterial({ color: 0x404040, metalness: 0.7, roughness: 0.2 });
-    const body = new Mesh(bodyGeometry, bodyMaterial);
-
-    const wingGeometry = new BoxGeometry(8, 0.2, 2);
-    const wing = new Mesh(wingGeometry, new MeshStandardMaterial({ color: 0x8888ff, metalness: 0.8, roughness: 0.15 }));
-    wing.position.y = 0.2;
-
-    const tailGeometry = new BoxGeometry(2, 0.8, 0.8);
-    const tail = new Mesh(tailGeometry, new MeshStandardMaterial({ color: 0x404040, metalness: 0.7, roughness: 0.2 }));
-    tail.position.set(0, 0.4, -1.8);
-
-    playerGeometry.add(body, wing, tail);
-    playerGroup.add(playerGeometry);
-    playerGroup.position.set(0, 5, 0);
-    scene.add(playerGroup);
-    return playerGroup;
-}
 
 // Create enemy airplane
 function createEnemy() {
@@ -145,14 +123,13 @@ const clock = new Clock();
 // loop
 function animate() {
     requestAnimationFrame(animate);
-    const delta = clock.getDelta();
-    const time = clock.getElapsedTime() * 1000;
+    const dTime = clock.getDelta();
+    const eTime = clock.getElapsedTime() * 1000;
 
-    env.updateSun(time / 1000);
-    env.updateWater(delta);
+    env.updateSun(eTime / 1000);
+    env.updateWater(dTime);
 
-    // 飞机自动前进
-    player.position.z += 0.5;
+    player.onUpdate(dTime, eTime);
 
     // a/d 或左右键控制左右移动和翻滚
     let rolling = false;
@@ -200,9 +177,9 @@ function animate() {
     }
 
     // Spawn enemies
-    if (time - gameState.lastEnemySpawn > gameState.enemySpawnInterval) {
+    if (eTime - gameState.lastEnemySpawn > gameState.enemySpawnInterval) {
         createEnemy();
-        gameState.lastEnemySpawn = time;
+        gameState.lastEnemySpawn = eTime;
     }
 
     // Update enemies

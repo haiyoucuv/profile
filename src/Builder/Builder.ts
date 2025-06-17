@@ -36,7 +36,7 @@ export class Builder extends Emittery {
         initResolver(FileSystem.ins.fs);
 
         const result = await esbuild.build({
-            entryPoints: ['/index.ts'],
+            entryPoints: ['/main.ts'],
             loader: { '.ts': 'ts', '.tsx': 'tsx' },
             bundle: true,
             sourcemap: false,

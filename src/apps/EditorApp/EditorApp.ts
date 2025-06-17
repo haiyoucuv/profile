@@ -6,7 +6,7 @@ import { Editor } from "../../editor/Editor.tsx";
 import React from "react";
 import d3 from "../../assets/icon/3D.svg";
 
-import template from '../../templete/templete.html?raw';
+import template from '../../appTemplate/index.html?raw';
 import { Builder } from "../../Builder/Builder.ts";
 import { AppManager } from "../AppManager.ts";
 
@@ -51,7 +51,7 @@ export class EditorApp extends VirtualApp {
         this.iframe = document.createElement("iframe");
         const iframeWindow = WindowManager.ins.showWindow(this.iframe, {
             title: "Render", icon: d3,
-            x: 500, y: 100,
+            x: 75, y: 100,
             width: 900, height: 812,
         });
 
