@@ -10,6 +10,7 @@ import {
     SphereGeometry,
     Clock, MathUtils,
 } from "three";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CustomEnv } from './CustomEnv.ts';
 import { Player } from './Player.ts';
 
@@ -30,10 +31,14 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene = new Scene();
 const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
+// orbit controls
+const controls = new OrbitControls(camera, renderer.domElement);
+
 // 环境系统
-const env = new CustomEnv(scene);
+const env = new CustomEnv(scene, renderer);
 
 const player = new Player();
+scene.add(player);
 
 // Bullets array and enemy array
 const bullets = [];
@@ -125,7 +130,6 @@ function animate() {
     const dTime = clock.getDelta();
     const eTime = clock.getElapsedTime() * 1000;
 
-    env.updateSun(eTime / 1000);
     env.updateWater(dTime);
 
     player.onUpdate(dTime, eTime);
