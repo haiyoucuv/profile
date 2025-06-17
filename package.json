@@ -18,6 +18,7 @@
     "@unocss/reset": "66.1.0-beta.3",
     "@unocss/transformer-attributify-jsx": "66.1.0-beta.3",
     "classnames": "^2.5.1",
+    "dat.gui": "^0.7.9",
     "emittery": "^1.0.3",
     "esbuild-wasm": "^0.25.0",
     "framer-motion": "^12.4.10",
