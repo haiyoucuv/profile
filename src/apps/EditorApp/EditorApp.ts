@@ -51,8 +51,8 @@ export class EditorApp extends VirtualApp {
         this.iframe = document.createElement("iframe");
         const iframeWindow = WindowManager.ins.showWindow(this.iframe, {
             title: "Render", icon: d3,
-            x: 800, y: 100,
-            width: 375, height: 812,
+            x: 500, y: 100,
+            width: 900, height: 812,
         });
 
         this.iframe.srcdoc = template;
