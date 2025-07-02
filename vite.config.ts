@@ -6,11 +6,12 @@ import { viteMockServe } from "vite-plugin-mock";
 import legacy from "@vitejs/plugin-legacy";
 import svgr from "vite-plugin-svgr";
 import UnoCSS from 'unocss/vite';
+import Asc from 'vite-plugin-asc'
 
 // https://vite.dev/config/
 export default defineConfig({
     base: "./",
-    assetsInclude: [/\.(svga|gltf|fbx|glsl|glb)$/],
+    assetsInclude: [/\.(gltf|fbx|glsl|glb)$/],
     server: {
         open: false,
     },
@@ -33,6 +34,10 @@ export default defineConfig({
         },
     },
     plugins: [
+        Asc({
+            ext: /\.ts\?asc$/,
+            entry: "src/assembly/index.ts"
+        }),
         UnoCSS({
             configFile: './uno.config.ts',
         }),

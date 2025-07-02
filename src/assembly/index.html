@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+import { fibonacci } from "./build/release.js";
+
+const fib = (n) => {
+    if (n <= 1) return n
+    return fib(n-1) + fib(n-2)
+}
+
+console.time('wasm')
+console.log(fibonacci(42))
+console.timeEnd('wasm')
+console.time('js')
+console.log(fib(42))
+console.timeEnd('js')
+
+</script>
+</head>
+<body></body>
+</html>

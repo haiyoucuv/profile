@@ -1,0 +1,22 @@
+{
+  "targets": {
+    "debug": {
+      "outFile": "./node_modules/.vite-plugin-asc/wasm/index.wasm",
+      "textFile": "./node_modules/.vite-plugin-asc/wasm/index.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outFile": "./node_modules/.vite-plugin-asc/wasm/index.wasm",
+      "textFile": "./node_modules/.vite-plugin-asc/wasm/index.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false
+    }
+  },
+  "options": {
+    "bindings": "esm"
+  }
+}

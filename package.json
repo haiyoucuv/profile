@@ -17,6 +17,7 @@
     "@types/matter-js": "^0.19.8",
     "@unocss/reset": "66.1.0-beta.3",
     "@unocss/transformer-attributify-jsx": "66.1.0-beta.3",
+    "assemblyscript": "^0.28.2",
     "classnames": "^2.5.1",
     "dat.gui": "^0.7.9",
     "emittery": "^1.0.3",
@@ -66,6 +67,7 @@
     "typescript-eslint": "^8.11.0",
     "unocss": "66.1.0-beta.3",
     "vite": "^6.2.0",
+    "vite-plugin-asc": "^0.0.2",
     "vite-plugin-mock": "^3.0.2",
     "vite-plugin-svgr": "^4.3.0"
   }
