@@ -18,17 +18,13 @@ createRoot(document.getElementById('root')!).render(
 
 // import init from "./assembly/index.ts?asc";
 //
+// console.log(init)
+//
 // const fib = (n) => {
 //     if (n <= 1) return n
 //     return fib(n-1) + fib(n-2)
 // }
 //
 // init().then((module) => {
-//     const { fibonacci } = module.exports
-//     console.time('wasm')
-//     console.log(fibonacci(30))
-//     console.timeEnd('wasm')
-//     console.time('js')
-//     console.log(fib(30))
-//     console.timeEnd('js')
+//     console.log(module)
 // })

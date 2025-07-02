@@ -1,22 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="delaunator.js"></script>
+
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
 <script type="module">
-import { fibonacci } from "./build/release.js";
+    import {createDelaunator, getTriangles} from "./build/release.js";
 
-const fib = (n) => {
-    if (n <= 1) return n
-    return fib(n-1) + fib(n-2)
-}
+    // const canvas = document.getElementById('canvas');
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
+    //
+    // /**
+    //  * @type {CanvasRenderingContext2D}
+    //  */
+    // const ctx = canvas.getContext('2d');
+    //
+    // ctx.lineWidth = 10;
+    // ctx.lineCap = 'round';
+    // ctx.lineJoin = 'round';
+    // ctx.fillStyle = '#FF0000';
+    // ctx.strokeStyle = "#FF0000"
+    //
+    // function drawPoint(coords) {
+    //     for (let i = 0; i < coords.length; i += 2) {
+    //         ctx.beginPath();
+    //         ctx.fillStyle = '#00FF00'; // 设置为绿色
+    //         ctx.arc(coords[i], coords[i + 1], 15, 0, Math.PI * 2); // 绘制半径为15的圆点
+    //         ctx.fill();
+    //
+    //         // 绘制编号
+    //         ctx.beginPath();
+    //         ctx.font = '100px Arial';
+    //         ctx.fillStyle = '#000000';
+    //         ctx.textAlign = 'left';
+    //         ctx.textBaseline = 'top';
+    //         ctx.fillText(i / 2, coords[i] + 20, coords[i + 1] - 20);
+    //     }
+    // }
+    //
+    //
+    // const coords = [
+    //     1000, 1000,
+    //     3000, 2000,
+    //     2000, 3000,
+    //     // 1600, 1550,
+    // ];
 
-console.time('wasm')
-console.log(fibonacci(42))
-console.timeEnd('wasm')
-console.time('js')
-console.log(fib(42))
-console.timeEnd('js')
+
+    const coords = Array.from({length: 100000 * 2}, () => Math.random() * 4000);
+
+    console.time("js");
+    const {triangles} = new Delaunator(coords);
+    console.timeEnd("js");
+
+    console.time("wasm");
+    createDelaunator(coords);
+    console.timeEnd("wasm");
 
 </script>
-</head>
-<body></body>
+</body>
 </html>
