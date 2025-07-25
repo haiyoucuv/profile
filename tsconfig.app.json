@@ -27,6 +27,7 @@
     "src"
   ],
   "exclude": [
-    "docs"
+    "docs",
+    "src/assembly"
   ]
 }

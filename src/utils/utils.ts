@@ -2,6 +2,7 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
     let timeoutId: NodeJS.Timeout | undefined;
 
     return function (this: any, ...args: Parameters<T>): void {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const context = this;
 
         if (timeoutId) {

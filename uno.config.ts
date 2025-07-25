@@ -1,7 +1,4 @@
 import {defineConfig, presetUno, presetAttributify} from 'unocss'
-
-
-import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
 import {
     presetIcons,
     presetTypography,
@@ -35,6 +32,5 @@ export default defineConfig({
     transformers: [
         transformerDirectives(),
         transformerVariantGroup(),
-        transformerAttributifyJsx()
     ],
 });
