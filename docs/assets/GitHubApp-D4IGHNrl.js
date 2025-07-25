@@ -1,0 +1,1 @@
+import{V as t}from"./VirtualApp-D697HfPS.js";import{d as i,A as n}from"./index-Cqqea-f1.js";class a extends t{static icon=i.icon;static name=i.name;static id=i.id;launch(){window.open("https://github.com/haiyoucuv","_blank"),n.ins.exitApp(a)}}export{a as GitHubApp};
