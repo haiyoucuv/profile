@@ -8,12 +8,13 @@ import useForceUpdate from "use-force-update";
 import { BiliBiliApp } from "../../apps/BiliBiliApp/BiliBiliApp.ts";
 import { WeChatApp } from "../../apps/WeChatApp/WeChatApp.tsx";
 import { SandGameApp } from "../../apps/SandGameApp/SandGameApp.tsx";
+import { JueJinApp } from "../../apps/JueJinApp/JueJinApp.ts";
 
 interface WindowWrapperProps {
     children?: ReactNode;
 }
 
-const PinnedApp = [EditorApp, WeChatApp, BiliBiliApp, GitHubApp, SandGameApp];
+const PinnedApp = [EditorApp, WeChatApp, BiliBiliApp, GitHubApp, SandGameApp, JueJinApp];
 
 export const Docker: FC<WindowWrapperProps> = ({ children }) => {
     const forceUpdate = useForceUpdate();
