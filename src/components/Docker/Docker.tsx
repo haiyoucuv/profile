@@ -75,7 +75,7 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
     // 处理DockerItem点击
     const handleItemClick = async (appId: string) => {
         if (loadingApps.has(appId)) return;
-        
+
         const isRunning = AppManager.ins.isAppRunningById(appId);
         if (isRunning) {
             // 如果应用正在运行，最小化所有窗口
@@ -88,7 +88,7 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
         } else {
             // 如果应用未运行，启动应用
             setLoadingApps(prev => new Set(prev).add(appId));
-            
+
             try {
                 await AppManager.ins.launchAppById(appId);
             } catch (error) {
@@ -109,9 +109,6 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
     // 如果还没初始化完成，显示加载状态
     if (!isInitialized) {
         return <div className={styles.warper}>
-            <div className={styles.content}>
-                {children}
-            </div>
             <div className={styles.docker}>
                 <div className={styles.pinnedArea}>
                     <div className={styles.loadingText}>正在加载应用...</div>
@@ -121,9 +118,6 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
     }
 
     return <div className={styles.warper}>
-        <div className={styles.content}>
-            {children}
-        </div>
         <div className={styles.docker}>
             <div className={styles.pinnedArea}>
                 {dockerApps.map((app) => {

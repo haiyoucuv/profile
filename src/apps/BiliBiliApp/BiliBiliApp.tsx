@@ -1,12 +1,12 @@
 import { VirtualApp } from "../VirtualApp.ts";
-import bilibili from "../../assets/icon/bilibili.svg";
 import { AppManager } from "../AppManager.ts";
+import { config } from "./config.ts";
 
 export class BiliBiliApp extends VirtualApp {
 
-    static icon: string = bilibili;
-    static name: string = "BiliBiliApp";
-    static id = "BiliBiliApp";
+    static icon: string = config.icon;
+    static name: string = config.name;
+    static id = config.id;
 
     launch() {
         window.open("https://space.bilibili.com/43669167", "_blank");

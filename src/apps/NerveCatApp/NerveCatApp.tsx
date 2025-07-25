@@ -1,10 +1,10 @@
 import { VirtualApp } from "../VirtualApp.ts";
-import wechat from "../../assets/icon/wechat.svg";
 import wxArticle from "../../assets/wxArticle.jpg";
 import { Window, WindowManager } from "../../components/WindowWrapper";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
 import { AppManager } from "../AppManager.ts";
+import { config } from "./config.ts";
 
 import styles from './NerveCatApp.module.less'
 
@@ -14,12 +14,11 @@ const WeChat: React.FC = () => {
     </div>
 }
 
-
 export class NerveCatApp extends VirtualApp {
 
-    static icon: string = wechat;
-    static name: string = "WeChatApp";
-    static id = "WeChatApp";
+    static icon: string = config.icon;
+    static name: string = config.name;
+    static id = config.id;
 
     root: Root = null;
 
@@ -29,9 +28,12 @@ export class NerveCatApp extends VirtualApp {
 
     openWindow() {
         const window = WindowManager.ins.showWindow("", {
-            title: "微信公众号", icon: wechat,
-            x: 100, y: 100,
-            width: 350, height: 550,
+            title: config.name, 
+            icon: config.icon,
+            x: config.defaultWindow.x || 100, 
+            y: config.defaultWindow.y || 100,
+            width: config.defaultWindow.width, 
+            height: config.defaultWindow.height,
         });
 
         this.root = createRoot(window.content);

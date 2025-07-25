@@ -1,21 +1,20 @@
 import { VirtualApp } from "../VirtualApp.ts";
 import { Window, WindowManager } from "../../components/WindowWrapper";
-import vscode from "../../assets/icon/vscode.svg";
 import { createRoot, Root } from "react-dom/client";
 import { Editor } from "../../editor/Editor.tsx";
 import React from "react";
 import d3 from "../../assets/icon/3D.svg";
+import { config } from "./config.ts";
 
 import template from '../../appTemplate/index.html?raw';
 import { Builder } from "../../Builder/Builder.ts";
 import { AppManager } from "../AppManager.ts";
 
-
 export class EditorApp extends VirtualApp {
 
-    static icon: string = vscode;
-    static name = "EditorApp";
-    static id = "EditorApp";
+    static icon: string = config.icon;
+    static name = config.name;
+    static id = config.id;
 
     editorRoot: Root = null;
     iframe: HTMLIFrameElement = null;
@@ -34,9 +33,12 @@ export class EditorApp extends VirtualApp {
 
     openCodeWindow() {
         const codeWindow = WindowManager.ins.showWindow("", {
-            title: "Code", icon: vscode,
-            x: 25, y: 25,
-            width: 900, height: 750,
+            title: config.name, 
+            icon: config.icon,
+            x: config.defaultWindow.x || 25, 
+            y: config.defaultWindow.y || 25,
+            width: config.defaultWindow.width, 
+            height: config.defaultWindow.height,
         });
 
         this.editorRoot = createRoot(codeWindow.content);
