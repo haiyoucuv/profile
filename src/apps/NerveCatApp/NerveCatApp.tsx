@@ -20,11 +20,11 @@ export class NerveCatApp extends VirtualApp {
 
     openWindow() {
         const window = WindowManager.ins.showWindow("", {
-            title: config.name,
+            title: config.name, 
             icon: config.icon,
-            x: config.defaultWindow.x || 100,
+            x: config.defaultWindow.x || 100, 
             y: config.defaultWindow.y || 100,
-            width: config.defaultWindow.width,
+            width: config.defaultWindow.width, 
             height: config.defaultWindow.height,
         });
 

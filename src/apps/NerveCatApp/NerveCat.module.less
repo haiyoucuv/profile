@@ -1,0 +1,221 @@
+.nerveCat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  
+  h2 {
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+}
+
+.gameState {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.result {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gameContainer {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 2px;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  user-select: none;
+  flex-shrink: 0;
+  
+  &.empty {
+    background: rgba(255, 255, 255, 0.3);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.05);
+    }
+  }
+  
+  &.blocked {
+    background: #ff6b6b;
+    transform: scale(0.95);
+    cursor: not-allowed;
+  }
+  
+  &.cat {
+    background: #4ecdc4;
+    animation: pulse 1s infinite;
+  }
+}
+
+.catIcon {
+  animation: bounce 0.6s ease-in-out;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.restartBtn {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+// 小窗口适配
+@media (max-height: 600px) {
+  .nerveCat {
+    padding: 10px;
+  }
+  
+  .header {
+    margin-bottom: 10px;
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .gameState {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .gameContainer {
+    padding: 10px;
+  }
+  
+  .cell {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .controls {
+    margin-top: 10px;
+  }
+}
+
+// 超小窗口适配
+@media (max-height: 400px) {
+  .header {
+    display: none;
+  }
+  
+  .gameState {
+    margin-bottom: 5px;
+  }
+  
+  .gameContainer {
+    padding: 5px;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+} 

@@ -7,7 +7,7 @@ export const config: AppConfig = {
   icon: logo,
 
   // 注册到 Docker
-  registerToDocker: true,
+  registerToDocker: false,
   dockerOrder: 7,
 
   // 默认窗口配置
