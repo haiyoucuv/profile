@@ -1,9 +1,9 @@
-import { VirtualApp } from "../VirtualApp.ts";
-import github from "../../assets/icon/github.svg";
+import { VirtualApp } from "../VirtualApp";
 import { AppManager } from "../AppManager.ts";
 
-export class GitHubApp extends VirtualApp {
+import github from "../../assets/icon/github.svg";
 
+export class GitHubApp extends VirtualApp {
     static icon: string = github;
     static name: string = "GitHubApp";
     static id = "GitHubApp";
@@ -12,5 +12,4 @@ export class GitHubApp extends VirtualApp {
         window.open("https://github.com/haiyoucuv", "_blank");
         AppManager.ins.exitApp(GitHubApp);
     }
-
 }
