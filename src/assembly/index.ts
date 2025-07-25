@@ -9,6 +9,13 @@ const EMPTY_STATIC_U32 = new StaticArray<u32>(0);
 const EMPTY_STATIC_I32 = new StaticArray<i32>(0);
 const EMPTY_STATIC_F64 = new StaticArray<f64>(0);
 
+const MAX_POINTS: i32 = 10000;
+const PREALLOC_TRIANGLES = new StaticArray<u32>(MAX_POINTS * 6);
+const PREALLOC_HALFEDGES = new StaticArray<i32>(MAX_POINTS * 6);
+const PREALLOC_HULL = new StaticArray<u32>(MAX_POINTS);
+const PREALLOC_IDS = new StaticArray<u32>(MAX_POINTS);
+const PREALLOC_DISTS = new StaticArray<f64>(MAX_POINTS);
+
 function defaultGetX(p: StaticArray<f64>): f64 { return p[0]; }
 function defaultGetY(p: StaticArray<f64>): f64 { return p[1]; }
 
@@ -16,7 +23,7 @@ class Delaunator {
     coords: StaticArray<f64>;
     _triangles: StaticArray<u32>;
     _halfedges: StaticArray<i32>;
-    _hashSize: i32;
+    _hashSize: i32 = 0;
     _hullPrev: StaticArray<u32>;
     _hullNext: StaticArray<u32>;
     _hullTri: StaticArray<u32>;
@@ -45,16 +52,15 @@ class Delaunator {
     constructor(coords: StaticArray<f64>) {
         const n: i32 = coords.length >> 1;
         this.coords = coords;
-        const maxTriangles: i32 = MaxI32(n * 2 - 5, 0);
-        this._triangles = new StaticArray<u32>(maxTriangles * 3);
-        this._halfedges = new StaticArray<i32>(maxTriangles * 3);
-        this._hashSize = <i32>Mathf.ceil(Mathf.sqrt(<f32>n));
-        this._hullPrev = new StaticArray<u32>(n);
-        this._hullNext = new StaticArray<u32>(n);
-        this._hullTri = new StaticArray<u32>(n);
+        this._triangles = n * 6 <= MAX_POINTS * 6 ? PREALLOC_TRIANGLES : new StaticArray<u32>(n * 6);
+        this._halfedges = n * 6 <= MAX_POINTS * 6 ? PREALLOC_HALFEDGES : new StaticArray<i32>(n * 6);
+        this._hullPrev = n <= MAX_POINTS ? PREALLOC_HULL : new StaticArray<u32>(n);
+        this._hullNext = n <= MAX_POINTS ? PREALLOC_HULL : new StaticArray<u32>(n);
+        this._hullTri = n <= MAX_POINTS ? PREALLOC_HULL : new StaticArray<u32>(n);
+        this._hashSize = Mathf.max(1, <i32>Mathf.ceil(Mathf.sqrt(<f32>n)));
         this._hullHash = new StaticArray<i32>(this._hashSize);
-        this._ids = new StaticArray<u32>(n);
-        this._dists = new StaticArray<f64>(n);
+        this._ids = n <= MAX_POINTS ? PREALLOC_IDS : new StaticArray<u32>(n);
+        this._dists = n <= MAX_POINTS ? PREALLOC_DISTS : new StaticArray<f64>(n);
         for (let i = 0; i < n; i++) {
             this._hullPrev[i] = 0;
             this._hullNext[i] = 0;
@@ -62,7 +68,7 @@ class Delaunator {
             this._ids[i] = i as u32;
             this._dists[i] = 0.0;
         }
-        for (let i = 0; i < this._hashSize; i++) this._hullHash[i] = -1;
+        for (let i = 0; i < this._hullHash.length; i++) this._hullHash[i] = -1;
         for (let i = 0; i < this._triangles.length; i++) this._triangles[i] = 0;
         for (let i = 0; i < this._halfedges.length; i++) this._halfedges[i] = -1;
         this.update();
