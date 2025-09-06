@@ -113,8 +113,8 @@
   min-width: 300px; // 保证最小宽度
 }
 
-// 摄像头视图
-.cameraView {
+// 动画视图 (替换原来的摄像头视图)
+.animationView {
   width: 100%;
   height: 60vh; // 使用视口高度的60%，响应式缩放
   min-height: 300px; // 最小高度保证可用性
@@ -245,11 +245,81 @@
     transition: all 0.3s ease;
   }
 
+  .kirkContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .kirkDefault {
+    font-size: inherit;
+  }
+
   .slapEffect {
     position: absolute;
     font-size: clamp(40px, 8vw, 80px); // 响应式特效大小
     animation: slapBurst 0.6s ease-out forwards;
     pointer-events: none;
+  }
+}
+
+// 史波克默认状态
+.spockDefault {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.3));
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      opacity: 1;
+      filter: drop-shadow(0 0 30px rgba(0, 255, 0, 0.5));
+    }
+  }
+}
+
+// 史波克扇击动画
+.spockSlapAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+  
+  .spockContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.5));
+    }
   }
 }
 

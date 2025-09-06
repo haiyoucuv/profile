@@ -6,6 +6,8 @@ import { AppManager } from "../AppManager.ts";
 import { config } from "./config.ts";
 import { HandGestureEngine, GestureResult, GestureType } from './HandGestureEngine';
 import { GameLogic, GameStats, GameState } from './GameLogic';
+import { AnimationSystem, AssetPathGenerator } from './AnimationSystem';
+import { soundSystem } from './SoundSystem';
 import styles from './SlapKirkApp.module.less';
 
 // Kirk头像组件
@@ -13,28 +15,116 @@ const KirkAvatar: React.FC<{
   isBeingSlapped: boolean;
   slapIntensity: number;
 }> = ({ isBeingSlapped, slapIntensity }) => {
-  const [currentExpression, setCurrentExpression] = useState<'normal' | 'slapped'>('normal');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    if (isBeingSlapped) {
-      setCurrentExpression('slapped');
-      // 根据强度决定恢复时间
-      const recoveryTime = 300 + (slapIntensity * 200);
-      setTimeout(() => setCurrentExpression('normal'), recoveryTime);
+    if (isBeingSlapped && !isAnimating && containerRef.current) {
+      setIsAnimating(true);
+
+      // 播放柯克被扇击动画
+      const videoPath = AssetPathGenerator.getRandomKirkSlapVideo();
+
+      animationSystemRef.current.playVideoAnimation(
+        containerRef.current,
+        {
+          type: 'video',
+          videoPath,
+          loop: false,
+          autoplay: true
+        },
+        () => {
+          setIsAnimating(false);
+          // 动画结束后显示默认状态
+          if (containerRef.current) {
+            containerRef.current.innerHTML = `
+              <div class="${styles.kirkFace}">
+                <div class="${styles.kirkDefault}">🖖</div>
+              </div>
+            `;
+          }
+        }
+      );
+
+      // 播放柯克呻吟声音
+      soundSystem.playRandomKirkGrunt();
     }
-  }, [isBeingSlapped, slapIntensity]);
+  }, [isBeingSlapped, slapIntensity, isAnimating]);
+
+  // 组件销毁时清理动画系统
+  useEffect(() => {
+    return () => {
+      animationSystemRef.current.destroy();
+    };
+  }, []);
 
   return (
     <div className={`${styles.kirkAvatar} ${isBeingSlapped ? styles.slapped : ''}`}>
-      {/* 暂时用emoji代替，稍后替换为实际图片 */}
-      <div className={styles.kirkFace}>
-        {currentExpression === 'normal' ? '🖖' : '😵'}
+      <div
+        ref={containerRef}
+        className={styles.kirkContainer}
+      >
+        {/* 默认状态 */}
+        {!isAnimating && (
+          <div className={styles.kirkFace}>
+            <div className={styles.kirkDefault}>🖖</div>
+          </div>
+        )}
       </div>
+
+      {/* 扇击特效 */}
       {isBeingSlapped && (
         <div className={styles.slapEffect}>
           💥
         </div>
       )}
+    </div>
+  );
+};
+
+// 史波克扇击动画组件
+const SpockSlapAnimation: React.FC<{
+  isVisible: boolean;
+  onComplete?: () => void;
+}> = ({ isVisible, onComplete }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
+
+  useEffect(() => {
+    if (isVisible && containerRef.current) {
+      // 播放史波克扇击帧动画
+      const framePaths = AssetPathGenerator.getSpockSlapFrames();
+
+      animationSystemRef.current.playFrameAnimation(
+        containerRef.current,
+        {
+          type: 'frames',
+          framePaths,
+          frameRate: 24,
+          loop: false
+        },
+        () => {
+          onComplete?.();
+        }
+      );
+    } else if (!isVisible) {
+      animationSystemRef.current.stop();
+    }
+  }, [isVisible, onComplete]);
+
+  // 组件销毁时清理动画系统
+  useEffect(() => {
+    return () => {
+      animationSystemRef.current.destroy();
+    };
+  }, []);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className={styles.spockSlapAnimation}>
+      <div ref={containerRef} className={styles.spockContainer} />
     </div>
   );
 };
@@ -109,83 +199,88 @@ const GestureIndicator: React.FC<{
   );
 };
 
-// 摄像头视图组件
-const CameraView: React.FC<{
-  videoElement: HTMLVideoElement | null;
+// 动画视图组件 (替换原来的摄像头视图)
+const AnimationView: React.FC<{
   debugCanvas: HTMLCanvasElement | null;
-  isVisible: boolean;
   debugMode: boolean;
   gestureEngine: HandGestureEngine;
-}> = ({ videoElement, debugCanvas, isVisible, debugMode, gestureEngine }) => {
+  showSpockSlap: boolean;
+  onSpockSlapComplete: () => void;
+}> = ({ debugCanvas, debugMode, gestureEngine, showSpockSlap, onSpockSlapComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
 
+  // 播放史波克扇击动画
   useEffect(() => {
-    if (containerRef.current && isVisible) {
-      // 清空容器
-      containerRef.current.innerHTML = '';
+    if (showSpockSlap && containerRef.current) {
+      const framePaths = AssetPathGenerator.getSpockSlapFrames();
 
-      // 始终显示视频作为底层
-      if (videoElement) {
-        containerRef.current.appendChild(videoElement);
-        videoElement.style.width = '100%';
-        videoElement.style.height = '100%';
-        videoElement.style.objectFit = 'cover';
-        videoElement.style.borderRadius = '12px';
-        videoElement.style.display = 'block';
-        videoElement.style.position = 'absolute';
-        videoElement.style.top = '0';
-        videoElement.style.left = '0';
-        videoElement.style.zIndex = '1';
-      }
-
-      // 调试模式时，在视频上方添加调试画布作为覆盖层
-      if (debugMode && debugCanvas) {
-        containerRef.current.appendChild(debugCanvas);
-        debugCanvas.style.width = '100%';
-        debugCanvas.style.height = '100%';
-        debugCanvas.style.objectFit = 'cover';
-        debugCanvas.style.borderRadius = '12px';
-        debugCanvas.style.display = 'block';
-        debugCanvas.style.position = 'absolute';
-        debugCanvas.style.top = '0';
-        debugCanvas.style.left = '0';
-        debugCanvas.style.zIndex = '2';
-        debugCanvas.style.pointerEvents = 'none'; // 允许点击穿透到视频
-        debugCanvas.style.backgroundColor = 'transparent';
-      }
+      animationSystemRef.current.playFrameAnimation(
+        containerRef.current,
+        {
+          type: 'frames',
+          framePaths,
+          frameRate: 24,
+          loop: true // 循环播放
+        },
+        onSpockSlapComplete
+      );
+    } else if (!showSpockSlap && containerRef.current) {
+      // 不显示扇击动画时，显示默认的史波克静态图像
+      animationSystemRef.current.stop();
+      containerRef.current.innerHTML = `
+        <div class="${styles.spockDefault}">
+          <img src="/src/assets/SlapKirkApp/spockslap/spockslap1.webp" alt="Spock" />
+        </div>
+      `;
     }
+  }, [showSpockSlap, onSpockSlapComplete]);
 
+  // 常驻显示调试canvas
+  useEffect(() => {
+    if (containerRef.current && debugCanvas) {
+      // 确保调试canvas始终在容器中
+      const existingCanvas = containerRef.current.querySelector('canvas');
+      if (!existingCanvas) {
+        containerRef.current.appendChild(debugCanvas);
+      }
+
+      // 设置调试canvas样式
+      debugCanvas.style.position = 'absolute';
+      debugCanvas.style.top = '0';
+      debugCanvas.style.left = '0';
+      debugCanvas.style.width = '100%';
+      debugCanvas.style.height = '100%';
+      debugCanvas.style.zIndex = '10'; // 确保在动画之上
+      debugCanvas.style.pointerEvents = 'none';
+      debugCanvas.style.backgroundColor = 'transparent';
+      debugCanvas.style.borderRadius = '12px';
+    }
+  }, [debugCanvas]);
+
+  // 组件销毁时清理
+  useEffect(() => {
     return () => {
-      // 清理时不移除元素，因为它们可能被其他地方使用
+      animationSystemRef.current.destroy();
     };
-  }, [videoElement, debugCanvas, isVisible, debugMode]);
-
-  if (!isVisible) {
-    return (
-      <div className={styles.cameraPlaceholder}>
-        <div className={styles.cameraIcon}>📹</div>
-        <div>摄像头已关闭</div>
-      </div>
-    );
-  }
+  }, []);
 
   // 双击切换高级调试模式
   const handleDoubleClick = useCallback(() => {
     if (debugMode) {
-      // 切换高级调试模式（显示关键点）
       const currentAdvanced = gestureEngine.getAdvancedDebugMode();
       if (currentAdvanced) {
         gestureEngine.disableAdvancedDebug();
         console.log('关闭高级调试模式');
       } else {
         gestureEngine.enableAdvancedDebug();
-        console.log('开启高级调试模式（显示关键点）');
+        console.log('开启高级调试模式 - 显示手部关键点');
       }
     }
   }, [debugMode, gestureEngine]);
 
   return (
-    <div className={styles.cameraView} onDoubleClick={handleDoubleClick}>
+    <div className={styles.animationView} onDoubleClick={handleDoubleClick}>
       <div
         ref={containerRef}
         style={{
@@ -214,8 +309,8 @@ const SlapKirkGame: React.FC = () => {
   const [gestureConfidence, setGestureConfidence] = useState(0);
   const [isBeingSlapped, setIsBeingSlapped] = useState(false);
   const [slapIntensity, setSlapIntensity] = useState(0);
-  const [cameraEnabled, setCameraEnabled] = useState(true);
-  const [debugMode, setDebugMode] = useState(true);
+  const [showSpockSlap, setShowSpockSlap] = useState(false);
+  const [debugMode, setDebugMode] = useState(false);
 
   // 初始化AI引擎
   useEffect(() => {
@@ -257,9 +352,15 @@ const SlapKirkGame: React.FC = () => {
     };
 
     gameLogic.onSlapEffect = (intensity) => {
-      setIsBeingSlapped(true);
-      setSlapIntensity(intensity);
-      setTimeout(() => setIsBeingSlapped(false), 100);
+      // 显示史波克扇击动画
+      setShowSpockSlap(true);
+
+      // 延迟显示柯克被击中效果，让史波克动画先播放
+      setTimeout(() => {
+        setIsBeingSlapped(true);
+        setSlapIntensity(intensity);
+        setTimeout(() => setIsBeingSlapped(false), 100);
+      }, 300); // 史波克动画播放300ms后显示柯克被击中
     };
 
 
@@ -291,15 +392,6 @@ const SlapKirkGame: React.FC = () => {
     gameLogic.resetAllData();
   }, [gameLogic]);
 
-  // 切换摄像头
-  const toggleCamera = useCallback(() => {
-    setCameraEnabled(!cameraEnabled);
-    if (!cameraEnabled) {
-      gestureEngine.startDetection();
-    } else {
-      gestureEngine.stopDetection();
-    }
-  }, [cameraEnabled, gestureEngine]);
 
   // 切换调试模式（添加防抖）
   const toggleDebugMode = useCallback(() => {
@@ -341,13 +433,6 @@ const SlapKirkGame: React.FC = () => {
         <div className={styles.headerControls}>
           <button
             className={styles.controlButton}
-            onClick={toggleCamera}
-            title={cameraEnabled ? "关闭摄像头" : "开启摄像头"}
-          >
-            {cameraEnabled ? '📹' : '📷'}
-          </button>
-          <button
-            className={styles.controlButton}
             onClick={toggleDebugMode}
             title={debugMode ? "关闭调试模式" : "开启调试模式"}
           >
@@ -372,14 +457,14 @@ const SlapKirkGame: React.FC = () => {
 
       {/* 主游戏区域 */}
       <div className={styles.gameArea}>
-        {/* 左侧摄像头区域 */}
+        {/* 左侧动画区域 */}
         <div className={styles.leftPanel}>
-          <CameraView
-            videoElement={gestureEngine.getVideoElement()}
+          <AnimationView
             debugCanvas={gestureEngine.getDebugCanvas()}
-            isVisible={cameraEnabled}
             debugMode={debugMode}
             gestureEngine={gestureEngine}
+            showSpockSlap={showSpockSlap}
+            onSpockSlapComplete={() => setShowSpockSlap(false)}
           />
           <GestureIndicator
             currentGesture={currentGesture}
