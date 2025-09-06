@@ -1,0 +1,535 @@
+// AI Slap Kirk App 样式文件
+// 科技感主题设计
+
+.gameContainer {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+  // 添加星空背景效果
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+      radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    opacity: 0.3;
+    animation: starfield 20s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes starfield {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+// 头部状态栏
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+
+  .headerControls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .controlButton {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 主游戏区域
+.gameArea {
+  display: flex;
+  flex: 1;
+  gap: 24px;
+  padding: 24px;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.leftPanel {
+  flex: 2; // 扩大摄像头区域比例
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0; // 防止flex收缩问题
+}
+
+.rightPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-width: 300px; // 保证最小宽度
+}
+
+// 摄像头视图
+.cameraView {
+  width: 100%;
+  height: 60vh; // 使用视口高度的60%，响应式缩放
+  min-height: 300px; // 最小高度保证可用性
+  max-height: 500px; // 最大高度防止过大
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  border: 3px solid rgba(0, 212, 255, 0.4);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), transparent, rgba(0, 212, 255, 0.2));
+    animation: cameraBorder 2s linear infinite;
+    pointer-events: none;
+  }
+
+  .debugLabel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #00d4ff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: clamp(10px, 1.2vw, 14px); // 响应式字体
+    font-weight: bold;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes cameraBorder {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+.cameraPlaceholder {
+  width: 100%;
+  height: 60vh;
+  min-height: 300px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 3px dashed rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  .cameraIcon {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+}
+
+// 手势指示器
+.gestureIndicator {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 16px;
+  padding: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  .gestureEmoji {
+    font-size: clamp(32px, 4vw, 48px); // 响应式字体大小
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+
+  .gestureText {
+    font-size: clamp(14px, 1.5vw, 18px); // 响应式字体大小
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .confidenceBar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+
+    .confidenceFill {
+      height: 100%;
+      transition: width 0.3s ease;
+      border-radius: 3px;
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    }
+  }
+}
+
+// Kirk头像
+.kirkAvatar {
+  position: relative;
+  width: clamp(120px, 15vw, 200px); // 响应式宽度
+  height: clamp(120px, 15vw, 200px); // 响应式高度
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+
+  &.slapped {
+    animation: slapShake 0.5s ease-out;
+  }
+
+  .kirkFace {
+    font-size: clamp(80px, 12vw, 160px); // 响应式字体大小
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.4));
+    transition: all 0.3s ease;
+  }
+
+  .slapEffect {
+    position: absolute;
+    font-size: clamp(40px, 8vw, 80px); // 响应式特效大小
+    animation: slapBurst 0.6s ease-out forwards;
+    pointer-events: none;
+  }
+}
+
+@keyframes slapShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-5deg); }
+  50% { transform: translateX(10px) rotate(5deg); }
+  75% { transform: translateX(-5px) rotate(-2deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes slapBurst {
+  0% { 
+    opacity: 1; 
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(1.5) rotate(360deg);
+  }
+}
+
+// 游戏状态
+.gameStatus {
+  text-align: center;
+  
+  .loadingText {
+    color: #00d4ff;
+    font-size: 16px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .startButton {
+    background: linear-gradient(45deg, #00d4ff, #0099cc);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .pausedText {
+    color: #ffaa00;
+    font-size: 16px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.manualSlapButton {
+  background: rgba(255, 87, 34, 0.8);
+  border: 1px solid rgba(255, 87, 34, 1);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+
+  &:hover {
+    background: rgba(255, 87, 34, 1);
+    transform: scale(1.05);
+  }
+}
+
+// 统计面板
+.statsPanel {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .statItem {
+    text-align: center;
+    
+    .statLabel {
+      display: block;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 4px;
+    }
+
+    .statValue {
+      display: block;
+      font-size: 18px;
+      font-weight: bold;
+      color: #00d4ff;
+      
+      &.combo {
+        color: #ff6b35;
+        animation: comboGlow 1s ease-in-out infinite alternate;
+      }
+    }
+  }
+}
+
+@keyframes comboGlow {
+  0% { text-shadow: 0 0 5px rgba(255, 107, 53, 0.5); }
+  100% { text-shadow: 0 0 15px rgba(255, 107, 53, 0.8); }
+}
+
+
+// 响应式设计
+// 大屏幕优化
+@media (min-width: 1400px) {
+  .gameArea {
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .leftPanel {
+    flex: 2.5; // 大屏幕上进一步扩大摄像头区域
+  }
+
+  .rightPanel {
+    min-width: 350px;
+  }
+
+  .cameraView {
+    height: 65vh;
+    max-height: 600px;
+    border-radius: 20px;
+    border-width: 4px;
+  }
+
+  .cameraPlaceholder {
+    height: 65vh;
+    max-height: 600px;
+    border-radius: 20px;
+    border-width: 4px;
+  }
+
+  .gestureIndicator {
+    padding: 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gameArea {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .leftPanel {
+    flex: 1.5; // 中等屏幕上稍微减小摄像头比例
+  }
+
+  .rightPanel {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gameArea {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .leftPanel, .rightPanel {
+    flex: none;
+    min-width: unset;
+  }
+
+  .cameraView {
+    height: 50vh; // 移动端使用50%视口高度
+    min-height: 250px;
+    max-height: 350px;
+  }
+
+  .cameraPlaceholder {
+    height: 50vh;
+    min-height: 250px;
+    max-height: 350px;
+  }
+
+  .gestureIndicator {
+    padding: 16px;
+    
+    .gestureEmoji {
+      font-size: clamp(28px, 6vw, 40px);
+    }
+    
+    .gestureText {
+      font-size: clamp(12px, 2vw, 16px);
+    }
+  }
+
+  .kirkAvatar {
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vw, 150px);
+    
+    .kirkFace {
+      font-size: clamp(60px, 16vw, 120px);
+    }
+  }
+
+  .statsPanel {
+    padding: 12px 16px;
+    
+    .statItem {
+      .statValue {
+        font-size: clamp(14px, 3vw, 18px);
+      }
+      
+      .statLabel {
+        font-size: clamp(10px, 2vw, 12px);
+      }
+    }
+  }
+
+  .header {
+    padding: 10px 16px;
+    
+    .title {
+      font-size: clamp(16px, 3vw, 18px);
+    }
+    
+    .controlButton {
+      padding: 6px 10px;
+      font-size: clamp(12px, 2.5vw, 14px);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .gameArea {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cameraView {
+    height: 45vh;
+    min-height: 200px;
+    max-height: 300px;
+    border-radius: 12px;
+    border-width: 2px;
+  }
+
+  .cameraPlaceholder {
+    height: 45vh;
+    min-height: 200px;
+    max-height: 300px;
+    border-radius: 12px;
+  }
+
+  .gestureIndicator {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+}
+
+// 暗色主题优化
+@media (prefers-color-scheme: dark) {
+  .gameContainer {
+    background: linear-gradient(135deg, #000000 0%, #0f0f23 50%, #1a1a2e 100%);
+  }
+}
