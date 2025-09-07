@@ -8,26 +8,33 @@ import { HandGestureEngine, GestureResult, GestureType } from './HandGestureEngi
 import { GameLogic, GameStats, GameState } from './GameLogic';
 import { AnimationSystem, AssetPathGenerator } from './AnimationSystem';
 import { soundSystem } from './SoundSystem';
+import { UnifiedCanvas, CanvasLayerType } from './UnifiedCanvas';
 import styles from './SlapKirkApp.module.less';
 
-// Kirk头像组件
+// Kirk头像组件 - 使用Canvas动画
 const KirkAvatar: React.FC<{
   isBeingSlapped: boolean;
   slapIntensity: number;
 }> = ({ isBeingSlapped, slapIntensity }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
+  const canvasSystemRef = useRef<UnifiedCanvas | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // 初始化Canvas系统
   useEffect(() => {
-    if (isBeingSlapped && !isAnimating && containerRef.current) {
+    if (containerRef.current && !canvasSystemRef.current) {
+      canvasSystemRef.current = new UnifiedCanvas(containerRef.current);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isBeingSlapped && !isAnimating && canvasSystemRef.current) {
       setIsAnimating(true);
 
       // 播放柯克被扇击动画
       const videoPath = AssetPathGenerator.getRandomKirkSlapVideo();
 
-      animationSystemRef.current.playVideoAnimation(
-        containerRef.current,
+      canvasSystemRef.current.playAnimation(
         {
           type: 'video',
           videoPath,
@@ -36,13 +43,9 @@ const KirkAvatar: React.FC<{
         },
         () => {
           setIsAnimating(false);
-          // 动画结束后显示默认状态
-          if (containerRef.current) {
-            containerRef.current.innerHTML = `
-              <div class="${styles.kirkFace}">
-                <div class="${styles.kirkDefault}">🖖</div>
-              </div>
-            `;
+          // 动画结束后清空Canvas，显示默认状态
+          if (canvasSystemRef.current) {
+            canvasSystemRef.current.stopAnimation();
           }
         }
       );
@@ -52,10 +55,13 @@ const KirkAvatar: React.FC<{
     }
   }, [isBeingSlapped, slapIntensity, isAnimating]);
 
-  // 组件销毁时清理动画系统
+  // 组件销毁时清理Canvas系统
   useEffect(() => {
     return () => {
-      animationSystemRef.current.destroy();
+      if (canvasSystemRef.current) {
+        canvasSystemRef.current.destroy();
+        canvasSystemRef.current = null;
+      }
     };
   }, []);
 
@@ -64,8 +70,9 @@ const KirkAvatar: React.FC<{
       <div
         ref={containerRef}
         className={styles.kirkContainer}
+        style={{ position: 'relative', width: '100%', height: '100%' }}
       >
-        {/* 默认状态 */}
+        {/* 默认状态 - 只在没有动画时显示 */}
         {!isAnimating && (
           <div className={styles.kirkFace}>
             <div className={styles.kirkDefault}>🖖</div>
@@ -83,21 +90,27 @@ const KirkAvatar: React.FC<{
   );
 };
 
-// 史波克扇击动画组件
+// 史波克扇击动画组件 - 使用Canvas动画
 const SpockSlapAnimation: React.FC<{
   isVisible: boolean;
   onComplete?: () => void;
 }> = ({ isVisible, onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
+  const canvasSystemRef = useRef<UnifiedCanvas | null>(null);
+
+  // 初始化Canvas系统
+  useEffect(() => {
+    if (containerRef.current && !canvasSystemRef.current) {
+      canvasSystemRef.current = new UnifiedCanvas(containerRef.current);
+    }
+  }, []);
 
   useEffect(() => {
-    if (isVisible && containerRef.current) {
+    if (isVisible && canvasSystemRef.current) {
       // 播放史波克扇击帧动画
       const framePaths = AssetPathGenerator.getSpockSlapFrames();
 
-      animationSystemRef.current.playFrameAnimation(
-        containerRef.current,
+      canvasSystemRef.current.playAnimation(
         {
           type: 'frames',
           framePaths,
@@ -108,15 +121,18 @@ const SpockSlapAnimation: React.FC<{
           onComplete?.();
         }
       );
-    } else if (!isVisible) {
-      animationSystemRef.current.stop();
+    } else if (!isVisible && canvasSystemRef.current) {
+      canvasSystemRef.current.stopAnimation();
     }
   }, [isVisible, onComplete]);
 
-  // 组件销毁时清理动画系统
+  // 组件销毁时清理Canvas系统
   useEffect(() => {
     return () => {
-      animationSystemRef.current.destroy();
+      if (canvasSystemRef.current) {
+        canvasSystemRef.current.destroy();
+        canvasSystemRef.current = null;
+      }
     };
   }, []);
 
@@ -124,7 +140,11 @@ const SpockSlapAnimation: React.FC<{
 
   return (
     <div className={styles.spockSlapAnimation}>
-      <div ref={containerRef} className={styles.spockContainer} />
+      <div 
+        ref={containerRef} 
+        className={styles.spockContainer}
+        style={{ position: 'relative', width: '100%', height: '100%' }}
+      />
     </div>
   );
 };
@@ -199,24 +219,35 @@ const GestureIndicator: React.FC<{
   );
 };
 
-// 动画视图组件 (替换原来的摄像头视图)
+// 动画视图组件 - 使用UnifiedCanvas系统
 const AnimationView: React.FC<{
-  debugCanvas: HTMLCanvasElement | null;
   debugMode: boolean;
   gestureEngine: HandGestureEngine;
   showSpockSlap: boolean;
   onSpockSlapComplete: () => void;
-}> = ({ debugCanvas, debugMode, gestureEngine, showSpockSlap, onSpockSlapComplete }) => {
+}> = ({ debugMode, gestureEngine, showSpockSlap, onSpockSlapComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const animationSystemRef = useRef<AnimationSystem>(new AnimationSystem());
+  const canvasSystemRef = useRef<UnifiedCanvas | null>(null);
+  const [currentGesture, setCurrentGesture] = useState<string>('无');
+  const [gestureConfidence, setGestureConfidence] = useState<number>(0);
+
+  // 初始化UnifiedCanvas系统
+  useEffect(() => {
+    if (containerRef.current && !canvasSystemRef.current) {
+      canvasSystemRef.current = new UnifiedCanvas(containerRef.current);
+      
+      // 设置调试层可见性
+      canvasSystemRef.current.setLayerVisible(CanvasLayerType.HAND_DEBUG, debugMode);
+      canvasSystemRef.current.setLayerVisible(CanvasLayerType.UI_OVERLAY, debugMode);
+    }
+  }, []);
 
   // 播放史波克扇击动画
   useEffect(() => {
-    if (showSpockSlap && containerRef.current) {
+    if (showSpockSlap && canvasSystemRef.current) {
       const framePaths = AssetPathGenerator.getSpockSlapFrames();
 
-      animationSystemRef.current.playFrameAnimation(
-        containerRef.current,
+      canvasSystemRef.current.playAnimation(
         {
           type: 'frames',
           framePaths,
@@ -225,43 +256,69 @@ const AnimationView: React.FC<{
         },
         onSpockSlapComplete
       );
-    } else if (!showSpockSlap && containerRef.current) {
-      // 不显示扇击动画时，显示默认的史波克静态图像
-      animationSystemRef.current.stop();
-      containerRef.current.innerHTML = `
-        <div class="${styles.spockDefault}">
-          <img src="/src/assets/SlapKirkApp/spockslap/spockslap1.webp" alt="Spock" />
-        </div>
-      `;
+    } else if (!showSpockSlap && canvasSystemRef.current) {
+      // 停止动画并显示默认状态
+      canvasSystemRef.current.stopAnimation();
     }
   }, [showSpockSlap, onSpockSlapComplete]);
 
-  // 常驻显示调试canvas
+  // 更新调试模式显示
   useEffect(() => {
-    if (containerRef.current && debugCanvas) {
-      // 确保调试canvas始终在容器中
-      const existingCanvas = containerRef.current.querySelector('canvas');
-      if (!existingCanvas) {
-        containerRef.current.appendChild(debugCanvas);
+    if (canvasSystemRef.current) {
+      canvasSystemRef.current.setLayerVisible(CanvasLayerType.HAND_DEBUG, debugMode);
+      canvasSystemRef.current.setLayerVisible(CanvasLayerType.UI_OVERLAY, debugMode);
+      
+      if (debugMode) {
+        // 绘制调试网格
+        canvasSystemRef.current.drawDebugGrid(50);
+      } else {
+        // 清空背景层
+        canvasSystemRef.current.clearLayer(CanvasLayerType.BACKGROUND);
       }
-
-      // 设置调试canvas样式
-      debugCanvas.style.position = 'absolute';
-      debugCanvas.style.top = '0';
-      debugCanvas.style.left = '0';
-      debugCanvas.style.width = '100%';
-      debugCanvas.style.height = '100%';
-      debugCanvas.style.zIndex = '10'; // 确保在动画之上
-      debugCanvas.style.pointerEvents = 'none';
-      debugCanvas.style.backgroundColor = 'transparent';
-      debugCanvas.style.borderRadius = '12px';
     }
-  }, [debugCanvas]);
+  }, [debugMode]);
+
+  // 集成现有的调试Canvas到UnifiedCanvas系统
+  useEffect(() => {
+    if (!gestureEngine || !canvasSystemRef.current || !debugMode) return;
+
+    const debugCanvas = gestureEngine.getDebugCanvas();
+    if (debugCanvas) {
+      // 获取调试层Canvas
+      const debugLayer = canvasSystemRef.current.getLayer(CanvasLayerType.HAND_DEBUG);
+      if (debugLayer) {
+        // 将手势引擎的调试Canvas内容复制到我们的调试层
+        const copyDebugContent = () => {
+          if (!debugLayer || !debugCanvas) return;
+          
+          // 清空调试层
+          debugLayer.ctx.clearRect(0, 0, debugLayer.canvas.width, debugLayer.canvas.height);
+          
+          // 复制调试Canvas内容
+          try {
+            debugLayer.ctx.drawImage(debugCanvas, 0, 0, debugLayer.canvas.width, debugLayer.canvas.height);
+          } catch (error) {
+            // 如果复制失败，可能是因为Canvas还没有内容，忽略错误
+          }
+        };
+
+        // 设置定时复制
+        const interval = setInterval(copyDebugContent, 100);
+
+        return () => {
+          clearInterval(interval);
+        };
+      }
+    }
+  }, [gestureEngine, debugMode]);
 
   // 组件销毁时清理
   useEffect(() => {
     return () => {
-      animationSystemRef.current.destroy();
+      if (canvasSystemRef.current) {
+        canvasSystemRef.current.destroy();
+        canvasSystemRef.current = null;
+      }
     };
   }, []);
 
@@ -274,7 +331,7 @@ const AnimationView: React.FC<{
         console.log('关闭高级调试模式');
       } else {
         gestureEngine.enableAdvancedDebug();
-        console.log('开启高级调试模式 - 显示手部关键点');
+        console.log('开启高级调试模式 - 显示手部关键点标签');
       }
     }
   }, [debugMode, gestureEngine]);
@@ -291,7 +348,12 @@ const AnimationView: React.FC<{
       />
       {debugMode && (
         <div className={styles.debugLabel}>
-          🔍 调试模式 - 显示手部关键点
+          🔍 调试模式 - 显示手部关键点 (双击切换详细模式)
+        </div>
+      )}
+      {!showSpockSlap && !debugMode && (
+        <div className={styles.spockDefault}>
+          <img src="/src/assets/SlapKirkApp/spockslap/spockslap1.webp" alt="Spock" />
         </div>
       )}
     </div>
@@ -460,7 +522,6 @@ const SlapKirkGame: React.FC = () => {
         {/* 左侧动画区域 */}
         <div className={styles.leftPanel}>
           <AnimationView
-            debugCanvas={gestureEngine.getDebugCanvas()}
             debugMode={debugMode}
             gestureEngine={gestureEngine}
             showSpockSlap={showSpockSlap}
