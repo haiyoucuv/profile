@@ -1,0 +1,1 @@
+import{V as n}from"./VirtualApp-t49sq11n.js";import{e as i,A as t}from"./index-eUvxdSQ4.js";class a extends n{static icon=i.icon;static name=i.name;static id=i.id;launch(){window.open("https://juejin.cn/user/3923497771860231","_blank"),t.ins.exitApp(a)}}export{a as JueJinApp};
