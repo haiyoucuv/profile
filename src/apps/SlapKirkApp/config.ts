@@ -7,7 +7,7 @@ export const config: AppConfig = {
   icon: logo,
 
   // 注册到 Docker
-  registerToDocker: true,
+  registerToDocker: false,
   dockerOrder: 8,
 
   // 默认窗口配置 - 为AI摄像头和游戏界面优化

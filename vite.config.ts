@@ -11,7 +11,12 @@ import Asc from 'vite-plugin-asc'
 // https://vite.dev/config/
 export default defineConfig({
     base: "./",
-    assetsInclude: [/\.(gltf|fbx|glsl|glb)$/],
+    assetsInclude: [
+        /\.(gltf|glb)$/,
+        /\.fbx$/,
+        /\.(glsl|vert|frag)$/,
+        /\.wgsl$/,
+    ],
     server: {
         open: false,
     },

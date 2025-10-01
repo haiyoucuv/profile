@@ -1,0 +1,401 @@
+.container {
+  display: flex;
+  height: 100%;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+// 左侧 LUT 库面板
+.leftPanel {
+  width: 280px;
+  background: #2a2a2a;
+  border-right: 1px solid #404040;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// 中间画布区域
+.centerPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 400px;
+}
+
+// 右侧参数调整面板
+.rightPanel {
+  width: 300px;
+  background: #2a2a2a;
+  border-left: 1px solid #404040;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// 面板通用样式
+.panelHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid #404040;
+  background: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panelTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.panelContent {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.panelFooter {
+  padding: 16px 20px;
+  border-top: 1px solid #404040;
+  background: #333333;
+}
+
+.toolbar {
+  height: 60px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #404040;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 15px;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.resetButton {
+  font-size: 12px !important;
+  padding: 6px 12px !important;
+  min-width: auto !important;
+  height: auto !important;
+}
+
+.viewControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toolbarButton {
+  background: #404040;
+  color: #cccccc;
+  border: 1px solid #555555;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #505050;
+    border-color: #666666;
+  }
+
+  &:active {
+    background: #007acc;
+    border-color: #007acc;
+    color: white;
+  }
+}
+
+.zoomInfo {
+  font-size: 12px;
+  color: #888888;
+  min-width: 80px;
+  text-align: right;
+}
+
+.canvasContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.canvas {
+  border: 1px solid #404040;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+  
+  &:active {
+    transition: none;
+  }
+}
+
+.dropZone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #666;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(42, 42, 42, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #007acc;
+    background: rgba(0, 122, 204, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+
+  &.dragOver {
+    border-color: #007acc;
+    background: rgba(0, 122, 204, 0.2);
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.dropZoneIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.dropZoneText {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.dropZoneSubtext {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.controlSection {
+  padding: 20px;
+  border-bottom: 1px solid #404040;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.controlGroup {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.controlLabel {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: #aaaaaa;
+}
+
+.slider {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #404040;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #007acc;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #007acc;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.sliderValue {
+  display: inline-block;
+  min-width: 40px;
+  text-align: right;
+  font-size: 12px;
+  color: #888888;
+  margin-left: 10px;
+}
+
+.button {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: #005a9e;
+  }
+
+  &:disabled {
+    background: #404040;
+    color: #888888;
+    cursor: not-allowed;
+  }
+}
+
+.buttonSecondary {
+  background: #404040;
+  color: #cccccc;
+
+  &:hover {
+    background: #505050;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+
+.lutPresets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.presetButton {
+  padding: 6px 12px;
+  font-size: 12px;
+  background: #333333;
+  color: #cccccc;
+  border: 1px solid #555555;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #444444;
+    border-color: #666666;
+  }
+
+  &.active {
+    background: #007acc;
+    border-color: #007acc;
+    color: white;
+  }
+}
+
+.statusBar {
+  height: 30px;
+  background: #2a2a2a;
+  border-top: 1px solid #404040;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 12px;
+  color: #888888;
+}
+
+.helpText {
+  font-size: 11px;
+  color: #666666;
+  font-style: italic;
+}
+
+.renderBackend {
+  margin-left: auto;
+  font-weight: 500;
+  color: #007acc;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 26, 26, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #404040;
+  border-top: 4px solid #007acc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 8px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 107, 107, 0.2);
+}
