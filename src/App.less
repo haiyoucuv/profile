@@ -1,20 +1,20 @@
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .app {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  //animation: gradientBG 15s ease infinite;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* UI层 - 包含Docker等界面元素 */
+.ui-layer {
+  position: relative;
+  pointer-events: none; /* 让点击事件穿透到桌面 */
+  flex: 1;
+  
+  /* 但是UI元素本身要能接收点击 */
+  > * {
+    pointer-events: auto;
+  }
 }

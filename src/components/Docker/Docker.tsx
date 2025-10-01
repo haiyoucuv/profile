@@ -11,35 +11,6 @@ interface WindowWrapperProps {
 export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
     const forceUpdate = useForceUpdate();
     const [loadingApps, setLoadingApps] = useState<Set<string>>(new Set());
-    const [isInitialized, setIsInitialized] = useState(false);
-
-    // 初始化应用注册表
-    useEffect(() => {
-        // 自动发现所有应用
-        const initializeApps = async () => {
-            try {
-                // 使用 Vite 的 import.meta.glob 自动发现应用
-                const manifests = await AppRegistry.discoverAppsWithGlob();
-
-                // 注册到清单管理器
-                manifests.forEach(manifest => {
-                    AppRegistry.ins.registerManifest(manifest);
-                });
-
-                // 注册到应用注册表
-                manifests.forEach(manifest => {
-                    AppRegistry.ins.registerFromManifest(manifest);
-                });
-
-                setIsInitialized(true);
-                forceUpdate();
-            } catch (error) {
-                console.error('Failed to initialize apps:', error);
-            }
-        };
-
-        initializeApps();
-    }, [forceUpdate]);
 
     // 监听窗口状态变化
     useEffect(() => {
@@ -106,34 +77,21 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
     // 获取 Docker 应用列表
     const dockerApps = AppRegistry.ins.getDockerAppInfos();
 
-    // 如果还没初始化完成，显示加载状态
-    if (!isInitialized) {
-        return <div className={styles.warper}>
-            <div className={styles.docker}>
-                <div className={styles.pinnedArea}>
-                    <div className={styles.loadingText}>正在加载应用...</div>
+    return <div className={styles.docker}>
+        <div className={styles.pinnedArea}>
+            {dockerApps.map((app) => {
+                const isRunning = AppManager.ins.isAppRunningById(app.id);
+                const isLoading = loadingApps.has(app.id);
+                return <div key={app.id} className={styles.dockerItemWrapper}>
+                    <img
+                        src={app.icon}
+                        className={`${styles.dockerItem} ${isLoading ? styles.loading : ''}`}
+                        onClick={() => handleItemClick(app.id)}
+                        style={{ opacity: isLoading ? 0.8 : 1 }}
+                    />
+                    {isRunning && <div className={styles.activeIndicator}/>}
                 </div>
-            </div>
-        </div>;
-    }
-
-    return <div className={styles.warper}>
-        <div className={styles.docker}>
-            <div className={styles.pinnedArea}>
-                {dockerApps.map((app) => {
-                    const isRunning = AppManager.ins.isAppRunningById(app.id);
-                    const isLoading = loadingApps.has(app.id);
-                    return <div key={app.id} className={styles.dockerItemWrapper}>
-                        <img
-                            src={app.icon}
-                            className={`${styles.dockerItem} ${isLoading ? styles.loading : ''}`}
-                            onClick={() => handleItemClick(app.id)}
-                            style={{ opacity: isLoading ? 0.8 : 1 }}
-                        />
-                        {isRunning && <div className={styles.activeIndicator} />}
-                    </div>
-                })}
-            </div>
+            })}
         </div>
     </div>;
 };

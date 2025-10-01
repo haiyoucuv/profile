@@ -195,22 +195,22 @@ const LutColorAppComponent: React.FC = () => {
 
   const handlePresetChange = useCallback(async (preset: LutPreset) => {
     if (!renderEngineRef.current) return;
-    
+
     setState(prev => ({ ...prev, isLutLoading: true, currentPreset: preset.id }));
-    
+
     try {
       const lutData = await LutManager.instance.getLutData(preset);
       await renderEngineRef.current.loadLUT(lutData);
       await renderImage();
-      
+
       setState(prev => ({ ...prev, isLutLoading: false, hasLut: true }));
-      
+
     } catch (error) {
       console.error('Failed to apply preset:', error);
-      setState(prev => ({ 
-        ...prev, 
-        isLutLoading: false, 
-        error: '预设应用失败: ' + (error as Error).message 
+      setState(prev => ({
+        ...prev,
+        isLutLoading: false,
+        error: '预设应用失败: ' + (error as Error).message
       }));
     }
   }, []);
@@ -287,20 +287,20 @@ const LutColorAppComponent: React.FC = () => {
       console.log('Starting export process...');
       console.log('Canvas dimensions:', canvasRef.current?.width, 'x', canvasRef.current?.height);
       console.log('Image dimensions:', state.imageWidth, 'x', state.imageHeight);
-      
+
       // 确保在导出前重新渲染一次，以获得最新的效果
       await renderImage();
-      
+
       // 等待一小段时间确保渲染完成
       await new Promise(resolve => setTimeout(resolve, 100));
-      
+
       const blob = await renderEngineRef.current.exportImage();
       console.log('Blob created:', blob.size, 'bytes, type:', blob.type);
-      
+
       if (blob.size === 0) {
         throw new Error('导出的图片为空，可能渲染未完成');
       }
-      
+
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -309,15 +309,15 @@ const LutColorAppComponent: React.FC = () => {
       a.click();
       document.body.removeChild(a); // 清理DOM
       URL.revokeObjectURL(url);
-      
+
       console.log('Export completed successfully');
-      
+
       // 显示成功消息
       setState(prev => ({
         ...prev,
         error: null // 清除之前的错误
       }));
-      
+
     } catch (error) {
       console.error('Export failed:', error);
       setState(prev => ({
@@ -331,7 +331,7 @@ const LutColorAppComponent: React.FC = () => {
   const handleWheel = useCallback((e: React.WheelEvent) => {
     if (!state.hasImage || !canvasRef.current) return;
 
-    e.preventDefault();
+    // e.preventDefault();
 
     const rect = canvasRef.current.getBoundingClientRect();
     const mouseX = e.clientX - rect.left - rect.width / 2;
@@ -461,7 +461,7 @@ const LutColorAppComponent: React.FC = () => {
           />
         </div>
         <div className={styles.panelFooter}>
-          <button 
+          <button
             className={`${styles.button} ${styles.buttonSecondary}`}
             onClick={() => lutInputRef.current?.click()}
           >
@@ -484,7 +484,7 @@ const LutColorAppComponent: React.FC = () => {
       <div className={styles.centerPanel}>
         <div className={styles.toolbar}>
           <div className={styles.toolbarLeft}>
-            <button 
+            <button
               className={styles.button}
               onClick={() => fileInputRef.current?.click()}
             >
@@ -535,7 +535,7 @@ const LutColorAppComponent: React.FC = () => {
           onMouseLeave={handleMouseUp}
         >
           {!state.hasImage && (
-            <div 
+            <div
               className={styles.dropZone}
               onClick={() => fileInputRef.current?.click()}
               role="button"
