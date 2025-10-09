@@ -1,4 +1,4 @@
-import { LUTData } from './RenderEngine.ts';
+import { LUTData } from './renderer/RendererFactory.ts';
 
 export class LutParser {
   /**
