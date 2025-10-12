@@ -5,6 +5,7 @@ import { LutManager, LutPreset } from './LutManager.ts';
 import { LutPresetTabs } from './components/LutPresetTabs.tsx';
 import classNames from "classnames";
 import { BaseRenderer, defaultRenderOptions, RendererFactory, RenderOptions } from "./renderer";
+import { RenderQueue } from './utils/RenderQueue';
 
 interface LutColorAppState {
     isLoading: boolean;
@@ -13,14 +14,13 @@ interface LutColorAppState {
     hasLut: boolean;
     renderBackend: string;
     currentPreset: string;
-    // 缩放和平移状态
     zoom: number;
     panX: number;
     panY: number;
     imageWidth: number;
     imageHeight: number;
-    // LUT加载状态
     isLutLoading: boolean;
+    imageVersion: number;
 }
 
 export const LutColor: React.FC = () => {
@@ -29,45 +29,42 @@ export const LutColor: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const lutInputRef = useRef<HTMLInputElement>(null);
-    const rendererRef = useRef<BaseRenderer>(null);
+    const rendererRef = useRef<BaseRenderer | null>(null);
+    const renderQueueRef = useRef<RenderQueue | null>(null);
 
     const [renderOptions, setRenderOptions] = useState<RenderOptions>({ ...defaultRenderOptions });
 
     const [state, setState] = useState<LutColorAppState>({
-        isLoading: false,
+        isLoading: true,
         error: null,
         hasImage: false,
         hasLut: false,
         renderBackend: '',
         currentPreset: 'identity',
-        // 缩放和平移初始状态
         zoom: 1.0,
         panX: 0,
         panY: 0,
         imageWidth: 0,
         imageHeight: 0,
-        // LUT加载状态
-        isLutLoading: false
+        isLutLoading: false,
+        imageVersion: 0,
     });
 
-    // 初始化渲染引擎
     useEffect(() => {
-        const initRenderEngine = async () => {
+        const init = async () => {
             if (!canvasRef.current) return;
-
-            setState(prev => ({ ...prev, isLoading: true, error: null }));
 
             try {
                 const renderer = await RendererFactory.create(canvasRef.current);
                 rendererRef.current = renderer;
+                renderQueueRef.current = new RenderQueue(rendererRef);
 
                 setState(prev => ({
                     ...prev,
                     isLoading: false,
-                    renderBackend: renderer.backend === 'webgpu' ? 'WebGPU' : 'WebGL2'
+                    renderBackend: renderer.backend === 'webgpu' ? 'WebGPU' : 'WebGL2',
                 }));
 
-                // 加载默认LUT
                 await loadDefaultLUT();
 
             } catch (error) {
@@ -80,12 +77,10 @@ export const LutColor: React.FC = () => {
             }
         };
 
-        initRenderEngine();
+        init();
 
         return () => {
-            if (rendererRef.current) {
-                rendererRef.current.dispose();
-            }
+            rendererRef.current?.dispose();
         };
     }, []);
 
@@ -101,6 +96,14 @@ export const LutColor: React.FC = () => {
         }
     };
 
+    const renderImage = useCallback(() => {
+        if (!renderQueueRef.current) {
+            console.log('No render queue');
+            return;
+        }
+        renderQueueRef.current.requestMainRender(renderOptions);
+    }, [renderOptions]);
+
     const handleImageUpload = useCallback(async (file: File) => {
         if (!rendererRef.current) return;
 
@@ -114,10 +117,8 @@ export const LutColor: React.FC = () => {
                 canvas.width = img.width;
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
-
-                const imageData = ctx.getImageData(0, 0, img.width, img.height);
-
-                await rendererRef.current!.loadTexture(imageData);
+                const mainImageData = ctx.getImageData(0, 0, img.width, img.height);
+                await rendererRef.current!.loadTexture(mainImageData);
 
                 setState(prev => ({
                     ...prev,
@@ -125,15 +126,13 @@ export const LutColor: React.FC = () => {
                     hasImage: true,
                     imageWidth: img.width,
                     imageHeight: img.height,
-                    // 重置缩放和平移
                     zoom: 1.0,
                     panX: 0,
-                    panY: 0
+                    panY: 0,
+                    imageVersion: prev.imageVersion + 1,
                 }));
 
-                // 确保在状态更新后渲染和自动适应
-                await renderImage();
-                // 自动适应窗口大小
+                renderImage();
                 autoFitToWindow(img.width, img.height);
             };
 
@@ -155,7 +154,7 @@ export const LutColor: React.FC = () => {
                 error: '图片处理失败: ' + (error as Error).message
             }));
         }
-    }, []);
+    }, [renderImage]);
 
     const handleLutUpload = useCallback(async (file: File) => {
         if (!rendererRef.current) return;
@@ -165,7 +164,7 @@ export const LutColor: React.FC = () => {
         try {
             const lutData = await LutParser.parseLUT(file);
             await rendererRef.current.loadLUT(lutData);
-            await renderImage();
+            renderImage();
 
             setState(prev => ({
                 ...prev,
@@ -182,7 +181,7 @@ export const LutColor: React.FC = () => {
                 error: 'LUT文件加载失败: ' + (error as Error).message
             }));
         }
-    }, []);
+    }, [renderImage]);
 
     const handlePresetChange = useCallback(async (preset: LutPreset) => {
         if (!rendererRef.current) return;
@@ -192,7 +191,7 @@ export const LutColor: React.FC = () => {
         try {
             const lutData = await LutManager.instance.getLutData(preset);
             await rendererRef.current.loadLUT(lutData);
-            await renderImage();
+            renderImage();
 
             setState(prev => ({ ...prev, isLutLoading: false, hasLut: true }));
 
@@ -204,45 +203,28 @@ export const LutColor: React.FC = () => {
                 error: '预设应用失败: ' + (error as Error).message
             }));
         }
-    }, []);
+    }, [renderImage]);
 
-    const renderImage = async () => {
-        if (!rendererRef.current) {
-            console.log('No render engine');
-            return;
-        }
-
-        try {
-            console.log('Rendering with options:', renderOptions);
-            await rendererRef.current.render(renderOptions);
-            console.log('Render completed');
-        } catch (error) {
-            console.error('Render failed:', error);
-            setState(prev => ({
-                ...prev,
-                error: '渲染失败: ' + (error as Error).message
-            }));
-        }
-    };
-
-    const handleParameterChange = useCallback((parameter: keyof RenderOptions, value: number) => {
-        setRenderOptions(prev => ({
-            ...prev,
-            [parameter]: value
-        }));
-    }, []);
-
-    // 重置所有调色参数到默认值
     const handleResetParameters = useCallback(() => {
         setRenderOptions({ ...defaultRenderOptions });
+        if (renderQueueRef.current) {
+            renderQueueRef.current.requestMainRender({ ...defaultRenderOptions });
+        }
     }, []);
 
-    // 当参数改变时重新渲染
+    const handleParameterChange = useCallback((parameter: keyof RenderOptions, value: number) => {
+        const newOptions = { ...renderOptions, [parameter]: value };
+        setRenderOptions(newOptions);
+        if (renderQueueRef.current) {
+            renderQueueRef.current.requestMainRender(newOptions);
+        }
+    }, [renderOptions]);
+
     useEffect(() => {
         if (state.hasImage && state.hasLut) {
             renderImage();
         }
-    }, [renderOptions, state.hasImage, state.hasLut, renderImage]);
+    }, [state.hasImage, state.hasLut, renderImage]);
 
 
     const handleDrop = useCallback((e: React.DragEvent) => {
@@ -264,15 +246,6 @@ export const LutColor: React.FC = () => {
 
         try {
             console.log('Starting export process...');
-            console.log('Canvas dimensions:', canvasRef.current?.width, 'x', canvasRef.current?.height);
-            console.log('Image dimensions:', state.imageWidth, 'x', state.imageHeight);
-
-            // 确保在导出前重新渲染一次，以获得最新的效果
-            await renderImage();
-
-            // 等待一小段时间确保渲染完成
-            await new Promise(resolve => setTimeout(resolve, 100));
-
             const blob = await rendererRef.current.exportImage();
             console.log('Blob created:', blob.size, 'bytes, type:', blob.type);
 
@@ -284,18 +257,10 @@ export const LutColor: React.FC = () => {
             const a = document.createElement('a');
             a.href = url;
             a.download = `lut-processed-${Date.now()}.png`;
-            document.body.appendChild(a); // 确保元素在DOM中
+            document.body.appendChild(a);
             a.click();
-            document.body.removeChild(a); // 清理DOM
+            document.body.removeChild(a);
             URL.revokeObjectURL(url);
-
-            console.log('Export completed successfully');
-
-            // 显示成功消息
-            setState(prev => ({
-                ...prev,
-                error: null // 清除之前的错误
-            }));
 
         } catch (error) {
             console.error('Export failed:', error);
@@ -304,13 +269,10 @@ export const LutColor: React.FC = () => {
                 error: '导出失败: ' + (error as Error).message
             }));
         }
-    }, [renderImage, state.hasImage, state.imageHeight, state.imageWidth]);
+    }, [state.hasImage]);
 
-    // 缩放功能 - 以鼠标位置为中心缩放
     const handleWheel = useCallback((e: React.WheelEvent) => {
         if (!state.hasImage || !canvasRef.current) return;
-
-        // e.preventDefault();
 
         const rect = canvasRef.current.getBoundingClientRect();
         const mouseX = e.clientX - rect.left - rect.width / 2;
@@ -319,7 +281,6 @@ export const LutColor: React.FC = () => {
         const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
         const newZoom = Math.max(0.1, Math.min(5.0, state.zoom * zoomFactor));
 
-        // 计算缩放后的平移偏移
         const zoomChange = newZoom / state.zoom;
         const newPanX = state.panX - mouseX * (zoomChange - 1);
         const newPanY = state.panY - mouseY * (zoomChange - 1);
@@ -332,7 +293,6 @@ export const LutColor: React.FC = () => {
         }));
     }, [state.hasImage, state.zoom, state.panX, state.panY]);
 
-    // 平移功能
     const [isDragging, setIsDragging] = useState(false);
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
@@ -360,7 +320,6 @@ export const LutColor: React.FC = () => {
         setIsDragging(false);
     }, []);
 
-    // 重置缩放和平移
     const handleResetView = useCallback(() => {
         setState(prev => ({
             ...prev,
@@ -370,7 +329,6 @@ export const LutColor: React.FC = () => {
         }));
     }, []);
 
-    // 自动适应窗口大小（内部函数，用于图片加载后）
     const autoFitToWindow = useCallback((imageWidth: number, imageHeight: number) => {
         if (!canvasRef.current) return;
 
@@ -390,23 +348,25 @@ export const LutColor: React.FC = () => {
         }));
     }, []);
 
-    // 适应窗口大小（手动触发）
     const handleFitToWindow = useCallback(() => {
         if (!state.hasImage) return;
         autoFitToWindow(state.imageWidth, state.imageHeight);
     }, [state.hasImage, state.imageWidth, state.imageHeight, autoFitToWindow]);
 
     return <div className={styles.container} ref={rootRef}>
-        {/* 左侧 LUT 库 */}
         <div className={styles.leftPanel}>
             <div className={styles.panelHeader}>
                 <h3 className={styles.panelTitle}>LUT 预设库</h3>
             </div>
             <div className={styles.panelContent}>
                 <LutPresetTabs
+                    key={state.imageVersion}
                     currentPreset={state.currentPreset}
                     onPresetChange={handlePresetChange}
                     isLoading={state.isLutLoading}
+                    renderQueue={renderQueueRef}
+                    imageWidth={state.imageWidth}
+                    imageHeight={state.imageHeight}
                 />
             </div>
             <div className={styles.panelFooter}>
@@ -429,7 +389,6 @@ export const LutColor: React.FC = () => {
             </div>
         </div>
 
-        {/* 中间画布区域 */}
         <div className={styles.centerPanel}>
             <div className={styles.toolbar}>
                 <div className={styles.toolbarLeft}>
@@ -531,7 +490,6 @@ export const LutColor: React.FC = () => {
             </div>
         </div>
 
-        {/* 右侧参数调整面板 */}
         <div className={styles.rightPanel}>
             <div className={styles.panelHeader}>
                 <h3 className={styles.panelTitle}>调色参数</h3>

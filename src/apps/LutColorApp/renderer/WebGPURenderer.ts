@@ -206,6 +206,120 @@ export class WebGPURenderer extends BaseRenderer {
         this.device.queue.submit([commandEncoder.finish()]);
     }
 
+    async renderToBlob(options: RenderOptions, lutData: LUTData, width: number, height: number): Promise<Blob> {
+        if (!this.device || !this.pipeline || !this.imageTexture) {
+            throw new Error("WebGPU renderer not ready for preview.");
+        }
+
+        // 1. Create temporary resources for off-screen rendering
+        const renderTexture = this.device.createTexture({
+            size: [width, height, 1],
+            format: navigator.gpu.getPreferredCanvasFormat(),
+            usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+        });
+
+        const alignedBytesPerRow = Math.ceil(width * 4 / 256) * 256;
+        const outputBuffer = this.device.createBuffer({
+            size: alignedBytesPerRow * height,
+            usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ
+        });
+
+        const tempLutTexture = this.device.createTexture({
+            size: [lutData.size, lutData.size, lutData.size],
+            format: 'rgba8unorm',
+            usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
+            dimension: '3d',
+        });
+        const uint8Data = new Uint8Array(lutData.data.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255)));
+        this.device.queue.writeTexture(
+            { texture: tempLutTexture },
+            uint8Data,
+            { bytesPerRow: lutData.size * 4, rowsPerImage: lutData.size },
+            { width: lutData.size, height: lutData.size, depthOrArrayLayers: lutData.size }
+        );
+
+        const tempUniformBuffer = this.device.createBuffer({
+            size: 32,
+            usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
+        });
+        const uniformData = new Float32Array(8);
+        uniformData[0] = options.intensity;
+        uniformData[1] = options.brightness;
+        uniformData[2] = options.contrast;
+        uniformData[3] = options.saturation;
+        uniformData[4] = options.hue;
+        this.device.queue.writeBuffer(tempUniformBuffer, 0, uniformData);
+
+        const tempBindGroup = this.device.createBindGroup({
+            layout: this.pipeline.getBindGroupLayout(0),
+            entries: [
+                { binding: 0, resource: { buffer: tempUniformBuffer } },
+                { binding: 1, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
+                { binding: 2, resource: this.imageTexture.createView() },
+                { binding: 3, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
+                { binding: 4, resource: tempLutTexture.createView({ dimension: '3d' }) },
+            ],
+        });
+
+        // 2. Render to the off-screen texture
+        const commandEncoder = this.device.createCommandEncoder();
+        const renderPass = commandEncoder.beginRenderPass({
+            colorAttachments: [{
+                view: renderTexture.createView(),
+                clearValue: { r: 0, g: 0, b: 0, a: 1 },
+                loadOp: 'clear',
+                storeOp: 'store',
+            }],
+        });
+        renderPass.setPipeline(this.pipeline);
+        renderPass.setBindGroup(0, tempBindGroup);
+        renderPass.draw(6);
+        renderPass.end();
+
+        // 3. Copy the texture to the buffer
+        commandEncoder.copyTextureToBuffer(
+            { texture: renderTexture },
+            { buffer: outputBuffer, bytesPerRow: alignedBytesPerRow, rowsPerImage: height },
+            { width, height, depthOrArrayLayers: 1 }
+        );
+
+        this.device.queue.submit([commandEncoder.finish()]);
+
+        // 4. Read data back from the buffer
+        await outputBuffer.mapAsync(GPUMapMode.READ);
+        const arrayBuffer = outputBuffer.getMappedRange();
+        const pixels = new Uint8Array(width * height * 4);
+        for (let y = 0; y < height; y++) {
+            const start = y * alignedBytesPerRow;
+            const end = start + width * 4;
+            pixels.set(new Uint8Array(arrayBuffer.slice(start, end)), y * width * 4);
+        }
+        outputBuffer.unmap();
+
+        // 5. Cleanup
+        renderTexture.destroy();
+        outputBuffer.destroy();
+        tempLutTexture.destroy();
+        tempUniformBuffer.destroy();
+
+        // 6. Convert pixels to Blob
+        return new Promise((resolve, reject) => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = width;
+            tempCanvas.height = height;
+            const ctx = tempCanvas.getContext('2d')!;
+            const imageData = new ImageData(new Uint8ClampedArray(pixels.buffer), width, height);
+            ctx.putImageData(imageData, 0, 0);
+            tempCanvas.toBlob(blob => {
+                if (blob) {
+                    resolve(blob);
+                } else {
+                    reject(new Error('Failed to create blob from preview canvas'));
+                }
+            }, 'image/png');
+        });
+    }
+
     async exportImage(): Promise<Blob> {
         // 确保在导出前完成当前的渲染
         if (this.device) {

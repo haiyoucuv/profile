@@ -2,7 +2,7 @@
 precision highp float;
 
 uniform sampler2D u_image;
-uniform sampler3D u_lut;
+uniform highp sampler3D u_lut;
 uniform float u_intensity;
 uniform float u_brightness;
 uniform float u_contrast;

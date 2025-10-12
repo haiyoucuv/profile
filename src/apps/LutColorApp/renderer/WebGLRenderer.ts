@@ -154,6 +154,78 @@ export class WebGLRenderer extends BaseRenderer {
         this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
     }
 
+    async renderToBlob(options: RenderOptions, lutData: LUTData, width: number, height: number): Promise<Blob> {
+        if (!this.gl || !this.program || !this.imageTexture) {
+            throw new Error("WebGL renderer not ready for preview.");
+        }
+
+        // 1. Create off-screen framebuffer and texture
+        const framebuffer = this.gl.createFramebuffer();
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, framebuffer);
+
+        const renderTexture = this.gl.createTexture();
+        this.gl.bindTexture(this.gl.TEXTURE_2D, renderTexture);
+        this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, width, height, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, null);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
+        this.gl.framebufferTexture2D(this.gl.FRAMEBUFFER, this.gl.COLOR_ATTACHMENT0, this.gl.TEXTURE_2D, renderTexture, 0);
+
+        // 2. Create and load the LUT for this render
+        const tempLutTexture = this.gl.createTexture();
+        this.gl.bindTexture(this.gl.TEXTURE_3D, tempLutTexture);
+        const uint8Data = new Uint8Array(lutData.data.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255)));
+        this.gl.texImage3D(this.gl.TEXTURE_3D, 0, this.gl.RGBA, lutData.size, lutData.size, lutData.size, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, uint8Data);
+        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
+        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
+
+        // 3. Render to the off-screen buffer
+        this.gl.viewport(0, 0, width, height);
+        this.gl.useProgram(this.program);
+
+        this.gl.activeTexture(this.gl.TEXTURE0);
+        this.gl.bindTexture(this.gl.TEXTURE_2D, this.imageTexture);
+        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_image'), 0);
+
+        this.gl.activeTexture(this.gl.TEXTURE1);
+        this.gl.bindTexture(this.gl.TEXTURE_3D, tempLutTexture);
+        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_lut'), 1);
+        
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_intensity'), options.intensity);
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_brightness'), options.brightness);
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_contrast'), options.contrast);
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_saturation'), options.saturation);
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_hue'), options.hue);
+
+        this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+
+        // 4. Read pixels back
+        const pixels = new Uint8Array(width * height * 4);
+        this.gl.readPixels(0, 0, width, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, pixels);
+
+        // 5. Cleanup GPU resources
+        this.gl.deleteFramebuffer(framebuffer);
+        this.gl.deleteTexture(renderTexture);
+        this.gl.deleteTexture(tempLutTexture);
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
+
+        // 6. Convert pixels to Blob
+        return new Promise((resolve, reject) => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = width;
+            tempCanvas.height = height;
+            const ctx = tempCanvas.getContext('2d')!;
+            const imageData = new ImageData(new Uint8ClampedArray(pixels.buffer), width, height);
+            ctx.putImageData(imageData, 0, 0);
+            tempCanvas.toBlob(blob => {
+                if (blob) {
+                    resolve(blob);
+                } else {
+                    reject(new Error('Failed to create blob from preview canvas'));
+                }
+            }, 'image/png');
+        });
+    }
+
     async exportImage(): Promise<Blob> {
         // 确保WebGL完成所有渲染操作
         if (this.gl) {
@@ -165,11 +237,13 @@ export class WebGLRenderer extends BaseRenderer {
                 this.canvas.toBlob((blob) => {
                     if (blob) {
                         resolve(blob);
-                    } else {
+                    }
+                    else {
                         reject(new Error('Failed to create blob from canvas'));
                     }
-                }, 'image/png', 1.0); // 设置最高质量
-            } catch (error) {
+                }, 'image/png', 1.0);
+            }
+            catch (error) {
                 reject(error);
             }
         });

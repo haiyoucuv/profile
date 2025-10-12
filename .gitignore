@@ -25,3 +25,5 @@ dist-ssr
 *.tsbuildinfo
 
 pnpm-lock.yaml
+
+.env

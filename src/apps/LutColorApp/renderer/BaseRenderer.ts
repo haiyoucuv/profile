@@ -18,6 +18,8 @@ export abstract class BaseRenderer {
 
     abstract render(options: RenderOptions): Promise<void>;
 
+    abstract renderToBlob(options: RenderOptions, lutData: LUTData, width: number, height: number): Promise<Blob>;
+
     abstract exportImage(): Promise<Blob>;
 
     abstract dispose(): void;
