@@ -1,5 +1,6 @@
 import { BaseRenderer } from "./BaseRenderer.ts";
-import { LUTData, RenderOptions } from "./const.ts";
+import { LUTData, RenderOptions, WebGLResources, RenderParams } from "./const.ts";
+import { WebGLResourceManager } from "./WebGLResourceManager.ts";
 
 import lutVert from "./shader/lut.vert?raw";
 import lutFrag from "./shader/lut.frag?raw";
@@ -8,12 +9,25 @@ import lutFrag from "./shader/lut.frag?raw";
 export class WebGLRenderer extends BaseRenderer {
     private gl: WebGL2RenderingContext | null = null;
     private program: WebGLProgram | null = null;
-    private imageTexture: WebGLTexture | null = null;
-    private lutTexture: WebGLTexture | null = null;
+    private resourceManager: WebGLResourceManager | null = null;
     private framebuffer: WebGLFramebuffer | null = null;
 
     constructor(canvas: HTMLCanvasElement) {
         super(canvas, 'webgl');
+    }
+
+    // 辅助函数：翻转像素数据的Y轴
+    private flipPixelsY(pixels: Uint8Array, width: number, height: number): Uint8Array {
+        const flipped = new Uint8Array(pixels.length);
+        const rowSize = width * 4;
+        
+        for (let y = 0; y < height; y++) {
+            const sourceRow = (height - 1 - y) * rowSize;
+            const targetRow = y * rowSize;
+            flipped.set(pixels.subarray(sourceRow, sourceRow + rowSize), targetRow);
+        }
+        
+        return flipped;
     }
 
     async initialize(): Promise<boolean> {
@@ -26,6 +40,7 @@ export class WebGLRenderer extends BaseRenderer {
 
             await this.createShaderProgram();
             this.setupGeometry();
+            this.resourceManager = new WebGLResourceManager(this.gl, this.program!);
             console.log('WebGL initialized successfully');
             return true;
         } catch (error) {
@@ -96,70 +111,48 @@ export class WebGLRenderer extends BaseRenderer {
         // 设置canvas尺寸
         this.canvas.width = imageData.width;
         this.canvas.height = imageData.height;
-
-        this.imageTexture = this.gl.createTexture();
-        this.gl.bindTexture(this.gl.TEXTURE_2D, this.imageTexture);
-        this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, imageData.width, imageData.height, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, imageData.data);
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
     }
 
     async loadLUT(lutData: LUTData): Promise<void> {
-        if (!this.gl) return;
-
-        this.lutTexture = this.gl.createTexture();
-        this.gl.bindTexture(this.gl.TEXTURE_3D, this.lutTexture);
-        // 转换Float32Array到Uint8Array (WebGL版本)
-        const uint8Data = new Uint8Array(lutData.data.length);
-        for (let i = 0; i < lutData.data.length; i++) {
-            uint8Data[i] = Math.round(Math.max(0, Math.min(1, lutData.data[i])) * 255);
-        }
-
-        this.gl.texImage3D(
-            this.gl.TEXTURE_3D, 0, this.gl.RGBA,
-            lutData.size, lutData.size, lutData.size, 0,
-            this.gl.RGBA, this.gl.UNSIGNED_BYTE, uint8Data
-        );
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_WRAP_R, this.gl.CLAMP_TO_EDGE);
+        // 这个方法现在只用于兼容性，实际资源管理由ResourceManager处理
+        console.log('LUT loaded:', lutData.size);
     }
 
     async render(options: RenderOptions): Promise<void> {
-        if (!this.gl || !this.program || !this.imageTexture || !this.lutTexture) return;
+        // 这个方法现在只用于兼容性，实际渲染使用renderWithResources
+        console.log('Legacy render method called');
+    }
+
+    // 新的渲染方法，接受外部传入的资源
+    async renderWithResources(params: RenderParams): Promise<void> {
+        if (!this.gl || !this.program || !this.resourceManager) return;
+
+        const resources = params.resources as WebGLResources;
 
         this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
         this.gl.useProgram(this.program);
 
         // 绑定纹理
-        this.gl.activeTexture(this.gl.TEXTURE0);
-        this.gl.bindTexture(this.gl.TEXTURE_2D, this.imageTexture);
-        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_image'), 0);
+        this.resourceManager.bindTextures(resources);
 
-        this.gl.activeTexture(this.gl.TEXTURE1);
-        this.gl.bindTexture(this.gl.TEXTURE_3D, this.lutTexture);
-        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_lut'), 1);
-
-        // 设置uniform
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_intensity'), options.intensity);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_brightness'), options.brightness);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_contrast'), options.contrast);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_saturation'), options.saturation);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_hue'), options.hue);
+        // 更新uniform
+        this.resourceManager.updateUniforms(params.options);
 
         this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
     }
 
     async renderToBlob(options: RenderOptions, lutData: LUTData, width: number, height: number): Promise<Blob> {
-        if (!this.gl || !this.program || !this.imageTexture) {
+        if (!this.gl || !this.program || !this.resourceManager) {
             throw new Error("WebGL renderer not ready for preview.");
         }
 
-        // 1. Create off-screen framebuffer and texture
+        // 使用ResourceManager创建临时资源
+        const tempResources = await this.resourceManager.createResources(
+            new ImageData(new Uint8ClampedArray(width * height * 4), width, height),
+            lutData
+        );
+
+        // 创建离屏framebuffer
         const framebuffer = this.gl.createFramebuffer();
         this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, framebuffer);
 
@@ -170,51 +163,93 @@ export class WebGLRenderer extends BaseRenderer {
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
         this.gl.framebufferTexture2D(this.gl.FRAMEBUFFER, this.gl.COLOR_ATTACHMENT0, this.gl.TEXTURE_2D, renderTexture, 0);
 
-        // 2. Create and load the LUT for this render
-        const tempLutTexture = this.gl.createTexture();
-        this.gl.bindTexture(this.gl.TEXTURE_3D, tempLutTexture);
-        const uint8Data = new Uint8Array(lutData.data.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255)));
-        this.gl.texImage3D(this.gl.TEXTURE_3D, 0, this.gl.RGBA, lutData.size, lutData.size, lutData.size, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, uint8Data);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
-        this.gl.texParameteri(this.gl.TEXTURE_3D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
-
-        // 3. Render to the off-screen buffer
+        // 渲染到离屏buffer
         this.gl.viewport(0, 0, width, height);
         this.gl.useProgram(this.program);
 
-        this.gl.activeTexture(this.gl.TEXTURE0);
-        this.gl.bindTexture(this.gl.TEXTURE_2D, this.imageTexture);
-        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_image'), 0);
-
-        this.gl.activeTexture(this.gl.TEXTURE1);
-        this.gl.bindTexture(this.gl.TEXTURE_3D, tempLutTexture);
-        this.gl.uniform1i(this.gl.getUniformLocation(this.program, 'u_lut'), 1);
-        
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_intensity'), options.intensity);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_brightness'), options.brightness);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_contrast'), options.contrast);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_saturation'), options.saturation);
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_hue'), options.hue);
+        this.resourceManager.bindTextures(tempResources);
+        this.resourceManager.updateUniforms(options);
 
         this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
 
-        // 4. Read pixels back
+        // 读取像素
         const pixels = new Uint8Array(width * height * 4);
         this.gl.readPixels(0, 0, width, height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, pixels);
 
-        // 5. Cleanup GPU resources
+        // 翻转Y轴（WebGL坐标系与Canvas 2D不同）
+        const flippedPixels = this.flipPixelsY(pixels, width, height);
+
+        // 清理资源
         this.gl.deleteFramebuffer(framebuffer);
         this.gl.deleteTexture(renderTexture);
-        this.gl.deleteTexture(tempLutTexture);
+        this.resourceManager.disposeResources(tempResources);
         this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
 
-        // 6. Convert pixels to Blob
+        // 转换为Blob
         return new Promise((resolve, reject) => {
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = width;
             tempCanvas.height = height;
             const ctx = tempCanvas.getContext('2d')!;
-            const imageData = new ImageData(new Uint8ClampedArray(pixels.buffer), width, height);
+            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels.buffer), width, height);
+            ctx.putImageData(imageData, 0, 0);
+            tempCanvas.toBlob(blob => {
+                if (blob) {
+                    resolve(blob);
+                } else {
+                    reject(new Error('Failed to create blob from preview canvas'));
+                }
+            }, 'image/png');
+        });
+    }
+
+    // 新的预览渲染方法，接受外部传入的资源
+    async renderToBlobWithResources(params: RenderParams): Promise<Blob> {
+        if (!this.gl || !this.program || !this.resourceManager) {
+            throw new Error("WebGL renderer not ready for preview.");
+        }
+
+        const resources = params.resources as WebGLResources;
+
+        // 创建离屏framebuffer
+        const framebuffer = this.gl.createFramebuffer();
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, framebuffer);
+
+        const renderTexture = this.gl.createTexture();
+        this.gl.bindTexture(this.gl.TEXTURE_2D, renderTexture);
+        this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, params.width, params.height, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, null);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.LINEAR);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.LINEAR);
+        this.gl.framebufferTexture2D(this.gl.FRAMEBUFFER, this.gl.COLOR_ATTACHMENT0, this.gl.TEXTURE_2D, renderTexture, 0);
+
+        // 渲染到离屏buffer
+        this.gl.viewport(0, 0, params.width, params.height);
+        this.gl.useProgram(this.program);
+
+        this.resourceManager.bindTextures(resources);
+        this.resourceManager.updateUniforms(params.options);
+
+        this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+
+        // 读取像素
+        const pixels = new Uint8Array(params.width * params.height * 4);
+        this.gl.readPixels(0, 0, params.width, params.height, this.gl.RGBA, this.gl.UNSIGNED_BYTE, pixels);
+
+        // 翻转Y轴（WebGL坐标系与Canvas 2D不同）
+        const flippedPixels = this.flipPixelsY(pixels, params.width, params.height);
+
+        // 清理资源
+        this.gl.deleteFramebuffer(framebuffer);
+        this.gl.deleteTexture(renderTexture);
+        this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null);
+
+        // 转换为Blob
+        return new Promise((resolve, reject) => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = params.width;
+            tempCanvas.height = params.height;
+            const ctx = tempCanvas.getContext('2d')!;
+            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels.buffer), params.width, params.height);
             ctx.putImageData(imageData, 0, 0);
             tempCanvas.toBlob(blob => {
                 if (blob) {
@@ -251,11 +286,15 @@ export class WebGLRenderer extends BaseRenderer {
 
     dispose(): void {
         if (this.gl) {
-            this.gl.deleteTexture(this.imageTexture);
-            this.gl.deleteTexture(this.lutTexture);
             this.gl.deleteProgram(this.program);
             this.gl.deleteFramebuffer(this.framebuffer);
         }
         this.gl = null;
+        this.resourceManager = null;
+    }
+
+    // 获取ResourceManager，供外部使用
+    getResourceManager(): WebGLResourceManager | null {
+        return this.resourceManager;
     }
 }

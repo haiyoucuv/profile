@@ -6,6 +6,7 @@ import { LutPresetTabs } from './components/LutPresetTabs.tsx';
 import classNames from "classnames";
 import { BaseRenderer, defaultRenderOptions, RendererFactory, RenderOptions } from "./renderer";
 import { RenderQueue } from './utils/RenderQueue';
+import { RenderManager } from './renderer/RenderManager';
 
 interface LutColorAppState {
     isLoading: boolean;
@@ -30,6 +31,7 @@ export const LutColor: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const lutInputRef = useRef<HTMLInputElement>(null);
     const rendererRef = useRef<BaseRenderer | null>(null);
+    const renderManagerRef = useRef<RenderManager | null>(null);
     const renderQueueRef = useRef<RenderQueue | null>(null);
 
     const [renderOptions, setRenderOptions] = useState<RenderOptions>({ ...defaultRenderOptions });
@@ -55,14 +57,26 @@ export const LutColor: React.FC = () => {
             if (!canvasRef.current) return;
 
             try {
-                const renderer = await RendererFactory.create(canvasRef.current);
-                rendererRef.current = renderer;
-                renderQueueRef.current = new RenderQueue(rendererRef);
+                // 创建渲染管理器
+                const renderManager = new RenderManager();
+                const initialized = await renderManager.initialize(canvasRef.current);
+                
+                if (!initialized) {
+                    throw new Error('Failed to initialize render manager');
+                }
+
+                renderManagerRef.current = renderManager;
+                
+                // 创建一个空的ref用于兼容RenderQueue
+                rendererRef.current = null;
+                
+                // 创建渲染队列，传入渲染管理器
+                renderQueueRef.current = new RenderQueue(rendererRef, renderManager);
 
                 setState(prev => ({
                     ...prev,
                     isLoading: false,
-                    renderBackend: renderer.backend === 'webgpu' ? 'WebGPU' : 'WebGL2',
+                    renderBackend: renderManager.getBackendInfo(),
                 }));
 
                 await loadDefaultLUT();
@@ -80,16 +94,16 @@ export const LutColor: React.FC = () => {
         init();
 
         return () => {
-            rendererRef.current?.dispose();
+            renderManagerRef.current?.dispose();
         };
     }, []);
 
     const loadDefaultLUT = async () => {
-        if (!rendererRef.current) return;
+        if (!renderManagerRef.current) return;
 
         try {
             const identityLUT = LutParser.createIdentityLUT(32);
-            await rendererRef.current.loadLUT(identityLUT);
+            await renderManagerRef.current.loadLUT(identityLUT);
             setState(prev => ({ ...prev, hasLut: true }));
         } catch (error) {
             console.error('Failed to load default LUT:', error);
@@ -105,7 +119,7 @@ export const LutColor: React.FC = () => {
     }, [renderOptions]);
 
     const handleImageUpload = useCallback(async (file: File) => {
-        if (!rendererRef.current) return;
+        if (!renderManagerRef.current) return;
 
         setState(prev => ({ ...prev, isLoading: true, error: null }));
 
@@ -118,7 +132,7 @@ export const LutColor: React.FC = () => {
                 canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
                 const mainImageData = ctx.getImageData(0, 0, img.width, img.height);
-                await rendererRef.current!.loadTexture(mainImageData);
+                await renderManagerRef.current!.loadImage(mainImageData);
 
                 setState(prev => ({
                     ...prev,
@@ -157,13 +171,13 @@ export const LutColor: React.FC = () => {
     }, [renderImage]);
 
     const handleLutUpload = useCallback(async (file: File) => {
-        if (!rendererRef.current) return;
+        if (!renderManagerRef.current) return;
 
         setState(prev => ({ ...prev, isLoading: true, error: null }));
 
         try {
             const lutData = await LutParser.parseLUT(file);
-            await rendererRef.current.loadLUT(lutData);
+            await renderManagerRef.current.loadLUT(lutData);
             renderImage();
 
             setState(prev => ({
@@ -184,13 +198,13 @@ export const LutColor: React.FC = () => {
     }, [renderImage]);
 
     const handlePresetChange = useCallback(async (preset: LutPreset) => {
-        if (!rendererRef.current) return;
+        if (!renderManagerRef.current) return;
 
         setState(prev => ({ ...prev, isLutLoading: true, currentPreset: preset.id }));
 
         try {
             const lutData = await LutManager.instance.getLutData(preset);
-            await rendererRef.current.loadLUT(lutData);
+            await renderManagerRef.current.loadLUT(lutData);
             renderImage();
 
             setState(prev => ({ ...prev, isLutLoading: false, hasLut: true }));
@@ -242,11 +256,11 @@ export const LutColor: React.FC = () => {
     }, [handleImageUpload, handleLutUpload]);
 
     const handleExport = useCallback(async (e) => {
-        if (!rendererRef.current || !state.hasImage) return;
+        if (!renderManagerRef.current || !state.hasImage) return;
 
         try {
             console.log('Starting export process...');
-            const blob = await rendererRef.current.exportImage();
+            const blob = await renderManagerRef.current.exportImage();
             console.log('Blob created:', blob.size, 'bytes, type:', blob.type);
 
             if (blob.size === 0) {
@@ -479,11 +493,6 @@ export const LutColor: React.FC = () => {
 
             <div className={styles.statusBar}>
                 {state.error && <span className={styles.errorMessage}>{state.error}</span>}
-                {
-                    state.hasImage && <span className={styles.helpText}>
-                        滚轮缩放 | 拖拽平移 | Ctrl+0重置 | Ctrl+1适应 | Ctrl+E导出
-                    </span>
-                }
                 <span className={styles.renderBackend}>
                     渲染后端: {state.renderBackend}
                 </span>

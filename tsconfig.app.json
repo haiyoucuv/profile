@@ -3,9 +3,10 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": [
-      "ES2020",
+      "ESNext",
       "DOM",
-      "DOM.Iterable"
+      "DOM.Iterable",
+      "ESNext.Promise"
     ],
     "useDefineForClassFields": true,
     "skipLibCheck": true,

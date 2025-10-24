@@ -1,5 +1,6 @@
 import { BaseRenderer } from "./BaseRenderer.ts";
-import { LUTData, RenderOptions } from "./const.ts";
+import { LUTData, RenderOptions, WebGPUResources, RenderParams } from "./const.ts";
+import { WebGPUResourceManager } from "./WebGPUResourceManager.ts";
 
 import lutWgsl from "./shader/lut.wgsl?raw";
 
@@ -7,10 +8,9 @@ export class WebGPURenderer extends BaseRenderer {
     private device: GPUDevice | null = null;
     private context: GPUCanvasContext | null = null;
     private pipeline: GPURenderPipeline | null = null;
-    private imageTexture: GPUTexture | null = null;
-    private lutTexture: GPUTexture | null = null;
-    private uniformBuffer: GPUBuffer | null = null;
-    private bindGroup: GPUBindGroup | null = null;
+    private offscreenPipeline: GPURenderPipeline | null = null; // 用于离屏渲染的pipeline
+    private pipelineLayout: GPUPipelineLayout | null = null; // 共享的pipeline layout
+    private resourceManager: WebGPUResourceManager | null = null;
 
     constructor(canvas: HTMLCanvasElement) {
         super(canvas, 'webgpu');
@@ -44,7 +44,10 @@ export class WebGPURenderer extends BaseRenderer {
                 alphaMode: 'premultiplied',
             });
 
+            this.createPipelineLayout(); // 先创建共享的layout
             this.createPipeline();
+            this.createOffscreenPipeline(); // 创建离屏渲染pipeline
+            this.resourceManager = new WebGPUResourceManager(this.device, this.pipeline!);
             console.log('WebGPU initialized successfully');
             return true;
         } catch (error) {
@@ -53,15 +56,35 @@ export class WebGPURenderer extends BaseRenderer {
         }
     }
 
-    private createPipeline() {
+    private createPipelineLayout() {
         if (!this.device) return;
+
+        // 创建显式的bind group layout
+        const bindGroupLayout = this.device.createBindGroupLayout({
+            entries: [
+                { binding: 0, visibility: GPUShaderStage.FRAGMENT, buffer: { type: 'uniform' } },
+                { binding: 1, visibility: GPUShaderStage.FRAGMENT, sampler: { type: 'filtering' } },
+                { binding: 2, visibility: GPUShaderStage.FRAGMENT, texture: { sampleType: 'float' } },
+                { binding: 3, visibility: GPUShaderStage.FRAGMENT, sampler: { type: 'filtering' } },
+                { binding: 4, visibility: GPUShaderStage.FRAGMENT, texture: { sampleType: 'float', viewDimension: '3d' } },
+            ]
+        });
+
+        // 创建pipeline layout
+        this.pipelineLayout = this.device.createPipelineLayout({
+            bindGroupLayouts: [bindGroupLayout]
+        });
+    }
+
+    private createPipeline() {
+        if (!this.device || !this.pipelineLayout) return;
 
         const shaderModule = this.device.createShaderModule({
             code: lutWgsl
         });
 
         this.pipeline = this.device.createRenderPipeline({
-            layout: 'auto',
+            layout: this.pipelineLayout, // 使用显式layout
             vertex: {
                 module: shaderModule,
                 entryPoint: 'vs_main',
@@ -77,40 +100,39 @@ export class WebGPURenderer extends BaseRenderer {
                 topology: 'triangle-list',
             },
         });
-
-        // 创建uniform buffer (需要16字节对齐)
-        this.uniformBuffer = this.device.createBuffer({
-            size: 32, // 5 floats + padding for 16-byte alignment
-            usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
-        });
     }
 
-    private createBindGroup(): void {
-        if (!this.device || !this.pipeline || !this.imageTexture || !this.lutTexture || !this.uniformBuffer) {
-            console.log('Cannot create bind group - missing resources');
-            return;
-        }
+    private createOffscreenPipeline() {
+        if (!this.device || !this.pipelineLayout) return;
 
-        console.log('Creating WebGPU bind group with 3D LUT texture');
-
-        this.bindGroup = this.device.createBindGroup({
-            layout: this.pipeline.getBindGroupLayout(0),
-            entries: [
-                { binding: 0, resource: { buffer: this.uniformBuffer } },
-                { binding: 1, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
-                { binding: 2, resource: this.imageTexture.createView() },
-                { binding: 3, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
-                { binding: 4, resource: this.lutTexture.createView({ dimension: '3d' }) },
-            ],
+        const shaderModule = this.device.createShaderModule({
+            code: lutWgsl
         });
 
-        console.log('WebGPU bind group created successfully');
+        // 创建专门用于rgba8unorm格式的离屏渲染pipeline
+        this.offscreenPipeline = this.device.createRenderPipeline({
+            layout: this.pipelineLayout, // 使用相同的显式layout
+            vertex: {
+                module: shaderModule,
+                entryPoint: 'vs_main',
+            },
+            fragment: {
+                module: shaderModule,
+                entryPoint: 'fs_main',
+                targets: [{
+                    format: 'rgba8unorm', // 固定使用rgba8unorm格式
+                }],
+            },
+            primitive: {
+                topology: 'triangle-list',
+            },
+        });
     }
 
     async loadTexture(imageData: ImageData): Promise<void> {
+        // 重新配置canvas尺寸和context
         if (!this.device || !this.context) return;
 
-        // 重新配置canvas尺寸和context
         this.canvas.width = imageData.width;
         this.canvas.height = imageData.height;
 
@@ -120,73 +142,26 @@ export class WebGPURenderer extends BaseRenderer {
             format: format,
             alphaMode: 'premultiplied',
         });
-
-        this.imageTexture = this.device.createTexture({
-            size: [imageData.width, imageData.height, 1],
-            format: 'rgba8unorm',
-            usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
-        });
-
-        this.device.queue.writeTexture(
-            { texture: this.imageTexture },
-            imageData.data,
-            { bytesPerRow: imageData.width * 4 },
-            { width: imageData.width, height: imageData.height }
-        );
-
-        // 重新创建bind group（如果LUT已加载）
-        if (this.lutTexture && this.uniformBuffer && this.pipeline) {
-            this.createBindGroup();
-        }
     }
 
     async loadLUT(lutData: LUTData): Promise<void> {
-        if (!this.device) return;
-
-        this.lutTexture = this.device.createTexture({
-            size: [lutData.size, lutData.size, lutData.size],
-            format: 'rgba8unorm',
-            usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
-            dimension: '3d',
-        });
-
-        console.log(`Created 3D LUT texture: ${lutData.size}x${lutData.size}x${lutData.size}`);
-
-        // 转换Float32Array到Uint8Array (WebGPU版本)
-        const uint8Data = new Uint8Array(lutData.data.length);
-        for (let i = 0; i < lutData.data.length; i++) {
-            uint8Data[i] = Math.round(Math.max(0, Math.min(1, lutData.data[i])) * 255);
-        }
-
-        this.device.queue.writeTexture(
-            { texture: this.lutTexture },
-            uint8Data,
-            {
-                bytesPerRow: lutData.size * 4,
-                rowsPerImage: lutData.size
-            },
-            { width: lutData.size, height: lutData.size, depthOrArrayLayers: lutData.size }
-        );
-
-        // 创建bind group（如果图片已加载）
-        if (this.imageTexture && this.uniformBuffer && this.pipeline) {
-            this.createBindGroup();
-        }
+        // 这个方法现在只用于兼容性，实际资源管理由ResourceManager处理
+        console.log('LUT loaded:', lutData.size);
     }
 
     async render(options: RenderOptions): Promise<void> {
-        if (!this.device || !this.context || !this.pipeline || !this.bindGroup || !this.uniformBuffer) return;
+        // 这个方法现在只用于兼容性，实际渲染使用renderWithResources
+        console.log('Legacy render method called');
+    }
 
-        // 更新uniform数据 (16字节对齐)
-        const uniformData = new Float32Array(8); // 32 bytes / 4 = 8 floats
-        uniformData[0] = options.intensity;
-        uniformData[1] = options.brightness;
-        uniformData[2] = options.contrast;
-        uniformData[3] = options.saturation;
-        uniformData[4] = options.hue;
-        // uniformData[5-7] are padding for alignment
+    // 新的渲染方法，接受外部传入的资源
+    async renderWithResources(params: RenderParams): Promise<void> {
+        if (!this.device || !this.context || !this.pipeline) return;
 
-        this.device.queue.writeBuffer(this.uniformBuffer, 0, uniformData);
+        const resources = params.resources as WebGPUResources;
+
+        // 更新uniform数据
+        this.resourceManager?.updateUniformBuffer(resources.uniformBuffer, params.options);
 
         const commandEncoder = this.device.createCommandEncoder();
         const renderPass = commandEncoder.beginRenderPass({
@@ -199,7 +174,7 @@ export class WebGPURenderer extends BaseRenderer {
         });
 
         renderPass.setPipeline(this.pipeline);
-        renderPass.setBindGroup(0, this.bindGroup);
+        renderPass.setBindGroup(0, resources.bindGroup);
         renderPass.draw(6);
         renderPass.end();
 
@@ -207,11 +182,17 @@ export class WebGPURenderer extends BaseRenderer {
     }
 
     async renderToBlob(options: RenderOptions, lutData: LUTData, width: number, height: number): Promise<Blob> {
-        if (!this.device || !this.pipeline || !this.imageTexture) {
+        if (!this.device || !this.pipeline || !this.resourceManager) {
             throw new Error("WebGPU renderer not ready for preview.");
         }
 
-        // 1. Create temporary resources for off-screen rendering
+        // 使用ResourceManager创建临时资源
+        const tempResources = await this.resourceManager.createResources(
+            new ImageData(new Uint8ClampedArray(width * height * 4), width, height), // 临时空图片
+            lutData
+        );
+
+        // 创建离屏渲染纹理
         const renderTexture = this.device.createTexture({
             size: [width, height, 1],
             format: navigator.gpu.getPreferredCanvasFormat(),
@@ -224,44 +205,10 @@ export class WebGPURenderer extends BaseRenderer {
             usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ
         });
 
-        const tempLutTexture = this.device.createTexture({
-            size: [lutData.size, lutData.size, lutData.size],
-            format: 'rgba8unorm',
-            usage: GPUTextureUsage.TEXTURE_BINDING | GPUTextureUsage.COPY_DST,
-            dimension: '3d',
-        });
-        const uint8Data = new Uint8Array(lutData.data.map(v => Math.round(Math.max(0, Math.min(1, v)) * 255)));
-        this.device.queue.writeTexture(
-            { texture: tempLutTexture },
-            uint8Data,
-            { bytesPerRow: lutData.size * 4, rowsPerImage: lutData.size },
-            { width: lutData.size, height: lutData.size, depthOrArrayLayers: lutData.size }
-        );
+        // 更新uniform数据
+        this.resourceManager.updateUniformBuffer(tempResources.uniformBuffer, options);
 
-        const tempUniformBuffer = this.device.createBuffer({
-            size: 32,
-            usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
-        });
-        const uniformData = new Float32Array(8);
-        uniformData[0] = options.intensity;
-        uniformData[1] = options.brightness;
-        uniformData[2] = options.contrast;
-        uniformData[3] = options.saturation;
-        uniformData[4] = options.hue;
-        this.device.queue.writeBuffer(tempUniformBuffer, 0, uniformData);
-
-        const tempBindGroup = this.device.createBindGroup({
-            layout: this.pipeline.getBindGroupLayout(0),
-            entries: [
-                { binding: 0, resource: { buffer: tempUniformBuffer } },
-                { binding: 1, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
-                { binding: 2, resource: this.imageTexture.createView() },
-                { binding: 3, resource: this.device.createSampler({ magFilter: 'linear', minFilter: 'linear' }) },
-                { binding: 4, resource: tempLutTexture.createView({ dimension: '3d' }) },
-            ],
-        });
-
-        // 2. Render to the off-screen texture
+        // 渲染到离屏纹理
         const commandEncoder = this.device.createCommandEncoder();
         const renderPass = commandEncoder.beginRenderPass({
             colorAttachments: [{
@@ -272,11 +219,11 @@ export class WebGPURenderer extends BaseRenderer {
             }],
         });
         renderPass.setPipeline(this.pipeline);
-        renderPass.setBindGroup(0, tempBindGroup);
+        renderPass.setBindGroup(0, tempResources.bindGroup);
         renderPass.draw(6);
         renderPass.end();
 
-        // 3. Copy the texture to the buffer
+        // 复制纹理到缓冲区
         commandEncoder.copyTextureToBuffer(
             { texture: renderTexture },
             { buffer: outputBuffer, bytesPerRow: alignedBytesPerRow, rowsPerImage: height },
@@ -285,7 +232,7 @@ export class WebGPURenderer extends BaseRenderer {
 
         this.device.queue.submit([commandEncoder.finish()]);
 
-        // 4. Read data back from the buffer
+        // 从缓冲区读取数据
         await outputBuffer.mapAsync(GPUMapMode.READ);
         const arrayBuffer = outputBuffer.getMappedRange();
         const pixels = new Uint8Array(width * height * 4);
@@ -296,19 +243,102 @@ export class WebGPURenderer extends BaseRenderer {
         }
         outputBuffer.unmap();
 
-        // 5. Cleanup
+        // 清理资源
         renderTexture.destroy();
         outputBuffer.destroy();
-        tempLutTexture.destroy();
-        tempUniformBuffer.destroy();
+        this.resourceManager.disposeResources(tempResources);
 
-        // 6. Convert pixels to Blob
+        // 转换为Blob
         return new Promise((resolve, reject) => {
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = width;
             tempCanvas.height = height;
             const ctx = tempCanvas.getContext('2d')!;
             const imageData = new ImageData(new Uint8ClampedArray(pixels.buffer), width, height);
+            ctx.putImageData(imageData, 0, 0);
+            tempCanvas.toBlob(blob => {
+                if (blob) {
+                    resolve(blob);
+                } else {
+                    reject(new Error('Failed to create blob from preview canvas'));
+                }
+            }, 'image/png');
+        });
+    }
+
+    // 新的预览渲染方法，接受外部传入的资源
+    async renderToBlobWithResources(params: RenderParams): Promise<Blob> {
+        if (!this.device || !this.offscreenPipeline) {
+            throw new Error("WebGPU renderer not ready for preview.");
+        }
+
+        const resources = params.resources as WebGPUResources;
+
+        // 使用rgba8unorm格式以确保颜色通道顺序正确
+        const textureFormat: GPUTextureFormat = 'rgba8unorm';
+        
+        // 创建离屏渲染纹理
+        const renderTexture = this.device.createTexture({
+            size: [params.width, params.height, 1],
+            format: textureFormat,
+            usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+        });
+
+        const alignedBytesPerRow = Math.ceil(params.width * 4 / 256) * 256;
+        const outputBuffer = this.device.createBuffer({
+            size: alignedBytesPerRow * params.height,
+            usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.MAP_READ
+        });
+
+        // 更新uniform数据
+        this.resourceManager?.updateUniformBuffer(resources.uniformBuffer, params.options);
+
+        // 渲染到离屏纹理（使用offscreenPipeline）
+        const commandEncoder = this.device.createCommandEncoder();
+        const renderPass = commandEncoder.beginRenderPass({
+            colorAttachments: [{
+                view: renderTexture.createView(),
+                clearValue: { r: 0, g: 0, b: 0, a: 1 },
+                loadOp: 'clear',
+                storeOp: 'store',
+            }],
+        });
+        renderPass.setPipeline(this.offscreenPipeline); // 使用离屏渲染pipeline
+        renderPass.setBindGroup(0, resources.bindGroup);
+        renderPass.draw(6);
+        renderPass.end();
+
+        // 复制纹理到缓冲区
+        commandEncoder.copyTextureToBuffer(
+            { texture: renderTexture },
+            { buffer: outputBuffer, bytesPerRow: alignedBytesPerRow, rowsPerImage: params.height },
+            { width: params.width, height: params.height, depthOrArrayLayers: 1 }
+        );
+
+        this.device.queue.submit([commandEncoder.finish()]);
+
+        // 从缓冲区读取数据
+        await outputBuffer.mapAsync(GPUMapMode.READ);
+        const arrayBuffer = outputBuffer.getMappedRange();
+        const pixels = new Uint8Array(params.width * params.height * 4);
+        for (let y = 0; y < params.height; y++) {
+            const start = y * alignedBytesPerRow;
+            const end = start + params.width * 4;
+            pixels.set(new Uint8Array(arrayBuffer.slice(start, end)), y * params.width * 4);
+        }
+        outputBuffer.unmap();
+
+        // 清理资源
+        renderTexture.destroy();
+        outputBuffer.destroy();
+
+        // 转换为Blob
+        return new Promise((resolve, reject) => {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = params.width;
+            tempCanvas.height = params.height;
+            const ctx = tempCanvas.getContext('2d')!;
+            const imageData = new ImageData(new Uint8ClampedArray(pixels.buffer), params.width, params.height);
             ctx.putImageData(imageData, 0, 0);
             tempCanvas.toBlob(blob => {
                 if (blob) {
@@ -342,10 +372,13 @@ export class WebGPURenderer extends BaseRenderer {
     }
 
     dispose(): void {
-        this.imageTexture?.destroy();
-        this.lutTexture?.destroy();
-        this.uniformBuffer?.destroy();
         this.device = null;
         this.context = null;
+        this.resourceManager = null;
+    }
+
+    // 获取ResourceManager，供外部使用
+    getResourceManager(): WebGPUResourceManager | null {
+        return this.resourceManager;
     }
 }

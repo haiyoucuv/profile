@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 import { BaseRenderer, defaultRenderOptions, RenderOptions } from '../renderer';
 import { LutManager, LutPreset } from '../LutManager';
+import { RenderManager } from '../renderer/RenderManager';
 
 // 定义任务类型
 interface MainRenderTask {
@@ -22,11 +23,18 @@ type RenderTask = MainRenderTask | PreviewRenderTask;
 
 export class RenderQueue {
     private rendererRef: RefObject<BaseRenderer>;
+    private renderManager: RenderManager | null = null;
     private taskQueue: RenderTask[] = [];
     private isProcessing = false;
 
-    constructor(rendererRef: RefObject<BaseRenderer>) {
+    constructor(rendererRef: RefObject<BaseRenderer>, renderManager?: RenderManager) {
         this.rendererRef = rendererRef;
+        this.renderManager = renderManager || null;
+    }
+
+    // 设置渲染管理器
+    setRenderManager(renderManager: RenderManager): void {
+        this.renderManager = renderManager;
     }
 
     // 请求主画布渲染（高优先级）
@@ -40,6 +48,7 @@ export class RenderQueue {
 
     // 请求预览图渲染（低优先级）
     public requestPreviewRender(preset: LutPreset, width: number, height: number, options: RenderOptions): Promise<Blob> {
+
         return new Promise((resolve, reject) => {
             const task: PreviewRenderTask = {
                 type: 'preview',
@@ -72,8 +81,9 @@ export class RenderQueue {
         const task = this.taskQueue.shift()!;
         const renderer = this.rendererRef.current;
 
-        if (!renderer) {
-            console.error("Renderer not available, skipping render task.");
+        // 检查是否有可用的渲染器
+        if (!this.renderManager && !renderer) {
+            console.error("Neither render manager nor renderer available, skipping render task.");
             // 如果有待处理的promise，拒绝它
             if (task.type === 'preview') {
                 task.reject(new Error('Renderer not available'));
@@ -85,12 +95,30 @@ export class RenderQueue {
         try {
             switch (task.type) {
                 case 'main':
-                    await renderer.render(task.options);
+                    if (this.renderManager) {
+                        // 使用新的渲染管理器
+                        await this.renderManager.render(task.options);
+                    } else if (renderer) {
+                        // 降级到传统方式
+                        await renderer.render(task.options);
+                    }
                     break;
                 case 'preview':
-                    const lutData = await LutManager.instance.getLutData(task.preset);
-                    const blob = await renderer.renderToBlob(task.options, lutData, task.width, task.height);
-                    task.resolve(blob);
+                    if (this.renderManager) {
+                        // 使用新的渲染管理器进行预览
+                        const blob = await this.renderManager.renderPreviewWithPreset(
+                            task.preset, 
+                            task.options, 
+                            task.width, 
+                            task.height
+                        );
+                        task.resolve(blob);
+                    } else if (renderer) {
+                        // 降级到传统方式
+                        const lutData = await LutManager.instance.getLutData(task.preset);
+                        const blob = await renderer.renderToBlob(task.options, lutData, task.width, task.height);
+                        task.resolve(blob);
+                    }
                     break;
             }
         } catch (error) {
