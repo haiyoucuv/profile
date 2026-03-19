@@ -2,6 +2,8 @@ import { VirtualApp } from "./VirtualApp.ts";
 import { AppRegistry } from "./AppRegistry.ts";
 
 export type TAppConstructor<T extends VirtualApp> = new (...args: any[]) => T;
+import { SystemContext } from "./SystemContext.ts";
+import { WindowManager } from "../components/WindowWrapper/WindowManager.ts";
 import Emittery from 'emittery';
 
 export class AppManager extends Emittery {
@@ -24,6 +26,7 @@ export class AppManager extends Emittery {
 
     private _apps: Map<TAppConstructor<VirtualApp>, VirtualApp> = new Map();
     private _appsById: Map<string, VirtualApp> = new Map();
+    private _launchingTasks: Set<string> = new Set();
 
     get apps() {
         return this._apps;
@@ -42,8 +45,14 @@ export class AppManager extends Emittery {
             return runningApp;
         }
 
+        // 检查是否正在启动中，防止并发重入引发多个同样的实例
+        if (this._launchingTasks.has(appId)) {
+            return null;
+        }
+
         // 发出加载开始事件
         this.emit(AppManager.EventType.ON_APP_LOADING, appId);
+        this._launchingTasks.add(appId);
 
         try {
             // 从注册表加载应用类
@@ -55,16 +64,40 @@ export class AppManager extends Emittery {
 
             // 创建应用实例
             const app = new (AppClass as any)(...args);
+            // 注入上下文 SystemContext
+            const sys: SystemContext = {
+                window: {
+                    create: (children, options) => {
+                        const win = WindowManager.ins.showWindow(children, options);
+                        app.registerWindow(win);
+                        return win;
+                    },
+                    close: (win) => {
+                        if (win.isValid) {
+                            WindowManager.ins.closeWindow(win);
+                        }
+                    }
+                },
+                exit: () => {
+                    this.exitAppById(appId);
+                }
+            };
+            app.sys = sys;
+
             this._apps.set(AppClass as any, app);
             this._appsById.set(appId, app);
 
-            app.launch();
+            app.launch(sys);
+            this._launchingTasks.delete(appId);
             this.emit(AppManager.EventType.ON_APP_CHANGE);
             this.emit(AppManager.EventType.ON_APP_LOADED, { appId, app });
 
             return app;
         } catch (error) {
             console.error(`Failed to launch app ${appId}:`, error);
+            this._launchingTasks.delete(appId);
+            // 确保移除加载状态
+            this.emit(AppManager.EventType.ON_APP_LOADED, { appId });
             return null;
         }
     }
@@ -83,7 +116,28 @@ export class AppManager extends Emittery {
 
         this.apps.set(AppClass, app);
         this._appsById.set((AppClass as any).id, app);
-        app.launch();
+
+        const appId = (AppClass as any).id;
+        const sys: SystemContext = {
+            window: {
+                create: (children, options) => {
+                    const win = WindowManager.ins.showWindow(children, options);
+                    app.registerWindow(win);
+                    return win;
+                },
+                close: (win) => {
+                    if (win.isValid) {
+                        WindowManager.ins.closeWindow(win);
+                    }
+                }
+            },
+            exit: () => {
+                this.exitAppById(appId);
+            }
+        };
+        app.sys = sys;
+
+        app.launch(sys);
         this.emit(AppManager.EventType.ON_APP_CHANGE);
     }
 

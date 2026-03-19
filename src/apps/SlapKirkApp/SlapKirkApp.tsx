@@ -1,8 +1,7 @@
 import { VirtualApp } from "../VirtualApp.ts";
-import { Window, WindowManager } from "../../components/WindowWrapper";
 import { createRoot, Root } from "react-dom/client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { AppManager } from "../AppManager.ts";
+import { SystemContext } from "../SystemContext.ts";
 import { config } from "./config.ts";
 import { HandGestureEngine, GestureResult, GestureType } from './HandGestureEngine';
 import { GameLogic, GameStats, GameState } from './GameLogic';
@@ -584,12 +583,12 @@ export class SlapKirkApp extends VirtualApp {
 
   root: Root | null = null;
 
-  launch() {
-    this.openWindow();
+  launch(sys: SystemContext) {
+    this.openWindow(sys);
   }
 
-  openWindow() {
-    const window = WindowManager.ins.showWindow("", {
+  openWindow(sys: SystemContext) {
+    const window = sys.window.create("", {
       title: config.name,
       icon: config.icon,
       x: config.defaultWindow.x || 200,
@@ -600,13 +599,6 @@ export class SlapKirkApp extends VirtualApp {
 
     this.root = createRoot(window.content);
     this.root.render(React.createElement(SlapKirkGame));
-
-    this.windows.set(window.id, window);
-    window.on(Window.EventType.ON_CLOSE, this.onClickClose);
-  }
-
-  onClickClose = () => {
-    AppManager.ins.exitApp(SlapKirkApp);
   }
 
   onExit() {

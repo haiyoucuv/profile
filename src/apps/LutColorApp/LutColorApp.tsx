@@ -1,9 +1,8 @@
 import React from "react";
 import { VirtualApp } from "../VirtualApp.ts";
-import { Window, WindowManager } from "../../components/WindowWrapper";
 import { createRoot, Root } from "react-dom/client";
 import { config } from "./config.ts";
-import { AppManager } from "../AppManager.ts";
+import { SystemContext } from "../SystemContext.ts";
 
 import { LutColor } from "./LutColor.tsx";
 
@@ -14,12 +13,12 @@ export class LutColorApp extends VirtualApp {
 
     private appRoot: Root | null = null;
 
-    launch() {
-        this.openMainWindow();
+    launch(sys: SystemContext) {
+        this.openMainWindow(sys);
     }
 
-    private openMainWindow() {
-        const window = WindowManager.ins.showWindow("", {
+    private openMainWindow(sys: SystemContext) {
+        const window = sys.window.create("", {
             title: config.name,
             icon: config.icon,
             x: config.defaultWindow.x || 100,
@@ -30,14 +29,7 @@ export class LutColorApp extends VirtualApp {
 
         this.appRoot = createRoot(window.content);
         this.appRoot.render(React.createElement(LutColor));
-
-        this.windows.set(window.id, window);
-        window.on(Window.EventType.ON_CLOSE, this.onClickClose);
     }
-
-    private onClickClose = () => {
-        AppManager.ins.exitApp(LutColorApp);
-    };
 
     onExit() {
         if (this.appRoot) {

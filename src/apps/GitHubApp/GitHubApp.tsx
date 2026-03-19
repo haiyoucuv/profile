@@ -1,5 +1,5 @@
 import { VirtualApp } from "../VirtualApp";
-import { AppManager } from "../AppManager.ts";
+import { SystemContext } from "../SystemContext.ts";
 import { config } from "./config.ts";
 
 export class GitHubApp extends VirtualApp {
@@ -7,8 +7,8 @@ export class GitHubApp extends VirtualApp {
     static name: string = config.name;
     static id = config.id;
 
-    launch() {
+    launch(sys: SystemContext) {
         window.open("https://github.com/haiyoucuv", "_blank");
-        AppManager.ins.exitApp(GitHubApp);
+        sys.exit();
     }
 }

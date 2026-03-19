@@ -1,8 +1,7 @@
 import { VirtualApp } from "../VirtualApp.ts";
-import { Window, WindowManager } from "../../components/WindowWrapper";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
-import { AppManager } from "../AppManager.ts";
+import { SystemContext } from "../SystemContext.ts";
 import { config } from "./config.ts";
 
 import styles from './SandGameApp.module.less'
@@ -23,12 +22,12 @@ export class SandGameApp extends VirtualApp {
 
     root: Root = null;
 
-    launch() {
-        this.openWindow();
+    launch(sys: SystemContext) {
+        this.openWindow(sys);
     }
 
-    openWindow() {
-        const window = WindowManager.ins.showWindow("", {
+    openWindow(sys: SystemContext) {
+        const window = sys.window.create("", {
             title: config.name, 
             icon: config.icon,
             x: config.defaultWindow.x || 150, 
@@ -39,14 +38,6 @@ export class SandGameApp extends VirtualApp {
 
         this.root = createRoot(window.content);
         this.root.render(React.createElement(SandGame));
-
-        this.windows.set(window.id, window);
-
-        window.on(Window.EventType.ON_CLOSE, this.onClickClose);
-    }
-
-    onClickClose = () => {
-        AppManager.ins.exitApp(SandGameApp);
     }
 
 }
