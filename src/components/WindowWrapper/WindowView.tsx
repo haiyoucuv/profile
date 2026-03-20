@@ -52,6 +52,8 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
     // 挂载内容
     useEffect(() => {
         if (!contentRef.current) return;
+        // 如果内容已经挂载，不要重复挂载，防止 React 状态丢失
+        if (contentRef.current.contains(model.content)) return;
         contentRef.current.innerHTML = '';
         contentRef.current.appendChild(model.content);
     }, [model.content]);

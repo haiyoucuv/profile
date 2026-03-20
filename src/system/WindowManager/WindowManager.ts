@@ -48,7 +48,9 @@ export class WindowManager extends Emittery<{ [key: symbol]: any }> {
     }
 
     getWindows(): Window[] {
-        return Array.from(this._windowsMap.values()).sort((a, b) => a.zIndex - b.zIndex);
+        // 返回稳定的顺序（如创建顺序），防止 DOM 节点移动导致 iframe 刷新
+        // 叠层顺序由 zIndex 属性通过 CSS 控制
+        return Array.from(this._windowsMap.values());
     }
 
     getWindowById(id: string): Window | undefined {

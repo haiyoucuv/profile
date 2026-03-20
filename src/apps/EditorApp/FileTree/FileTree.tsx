@@ -47,16 +47,20 @@ export const FileTree: FC = memo(() => {
         }
     }, [workspace]);
 
-    // 初始化根目录
     const refreshTree = useCallback(() => {
         loadNodes('/').then(setTreeData);
     }, [loadNodes]);
 
     useEffect(() => {
         refreshTree();
-        workspace?.on(EditorWorkspace.EventType.FILE_CHANGED, refreshTree);
+        
+        const onStructureChanged = () => {
+            refreshTree();
+        };
+
+        workspace?.on(EditorWorkspace.EventType.STRUCTURE_CHANGED, onStructureChanged);
         return () => {
-            workspace?.off(EditorWorkspace.EventType.FILE_CHANGED, refreshTree);
+            workspace?.off(EditorWorkspace.EventType.STRUCTURE_CHANGED, onStructureChanged);
         }
     }, [refreshTree, workspace]);
 
@@ -138,16 +142,23 @@ export const FileTree: FC = memo(() => {
                     items={treeData}
                     selectionMode="single"
                     selectedKeys={selectedKeys}
-                    onSelectionChange={(keys) => {
-                        setSelectedKeys(keys);
-                        const path = Array.from(keys)[0] as string;
-                        if (path) {
-                             workspace?.fs.stat(path).then(s => {
-                                 if (s?.type !== 'dir') {
-                                     workspace.navigate(path);
-                                 }
-                             });
-                        }
+                    onSelectionChange={setSelectedKeys}
+                    onAction={(key) => {
+                        const path = key as string;
+                        workspace?.fs.stat(path).then(s => {
+                            if (s?.type !== 'dir') {
+                                workspace.navigate(path);
+                            } else {
+                                // 文件夹再次点击切换展开状态
+                                const newExpanded = new Set(expandedKeys instanceof Set ? expandedKeys : []);
+                                if (newExpanded.has(path)) {
+                                    newExpanded.delete(path);
+                                } else {
+                                    newExpanded.add(path);
+                                }
+                                handleExpandedChange(newExpanded);
+                            }
+                        });
                     }}
                     expandedKeys={expandedKeys}
                     onExpandedChange={handleExpandedChange}
@@ -171,7 +182,7 @@ export const FileTree: FC = memo(() => {
                                         <Button className={styles.deleteBtn} onPress={() => handleDelete(item.id)}>×</Button>
                                     </div>
                                 </TreeItemContent>
-                                <Collection items={item.children} />
+                                 <Collection items={item.children}>{renderItem}</Collection>
                              </TreeItem>
                         );
                     }}

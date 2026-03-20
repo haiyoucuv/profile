@@ -17,16 +17,16 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
             forceUpdate();
         };
 
-        const handleAppLoading = (appId: string) => {
-            setLoadingApps(prev => new Set(prev).add(appId));
+        const handleAppLoading = ({ data }: any) => {
+            setLoadingApps(prev => new Set(prev).add(data));
         };
 
-        const handleAppLoaded = ({ appId }: { appId: string }) => {
+        const handleAppLoaded = ({ data }: any) => {
             setLoadingApps(prev => {
                 const newSet = new Set(prev);
-                newSet.delete(appId);
-                return newSet;
-            });
+                    newSet.delete(data);
+                    return newSet;
+                });
         };
 
         // 使用WindowManager的订阅机制来监听窗口状态变化
@@ -48,11 +48,14 @@ export const Docker: React.FC<WindowWrapperProps> = ({ children }) => {
 
         const isRunning = AppManager.ins.isAppRunningById(appId);
         if (isRunning) {
-            // 如果应用正在运行，最小化所有窗口
+            // 如果应用正在运行，切换窗口最小化状态
             const app = AppManager.ins.getAppById(appId);
             if (app) {
-                app.windows.forEach((window) => {
-                    window.handleMinimize();
+                const windows = Array.from(app.windows.values());
+                const allMinimized = windows.every(w => w.isMinimized);
+                windows.forEach((window) => {
+                    window.setMinimized(!allMinimized);
+                    if (allMinimized) window.focus();
                 });
             }
         } else {

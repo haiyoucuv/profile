@@ -12,6 +12,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     static EventType = {
         FILE_CHANGED: Symbol('onFileChanged'),
+        STRUCTURE_CHANGED: Symbol('onStructureChanged'),
     }
 
     currentFile: VirtualFile | null = null;
@@ -69,6 +70,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
         const fileName = name || `file${files.length + 1}.ts`;
         const newPath = `${this.privatePath}/${fileName}`;
         await this.fs.writeFile(newPath, '');
+        this.emit(EditorWorkspace.EventType.STRUCTURE_CHANGED, newPath);
         await this.openFile(newPath);
     }
 
@@ -82,6 +84,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
             await this.initializeDefaultFile();
         } else {
             // 触发列表刷新
+            this.emit(EditorWorkspace.EventType.STRUCTURE_CHANGED, path);
             this.emit(EditorWorkspace.EventType.FILE_CHANGED, path);
         }
     }
