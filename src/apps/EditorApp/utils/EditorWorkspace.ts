@@ -15,6 +15,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
     }
 
     currentFile: VirtualFile | null = null;
+    currentDir: string = '/';
     private initPromise: Promise<void> | null = null;
     public fs: IFileSystem;
     private rootPath: string;
@@ -120,9 +121,39 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
         }
     }
 
+    async navigate(path: string) {
+        await this.initPromise;
+        const state = await this.fs.stat(path);
+        if (state && state.type === 'dir') {
+            this.currentDir = path;
+            this.emit(EditorWorkspace.EventType.FILE_CHANGED);
+        } else {
+            await this.openFile(path);
+        }
+    }
+
+    async fetchFiles() {
+        await this.initPromise;
+        const names = await this.fs.readdir(this.currentDir);
+        const files = await Promise.all(names.map(async (name) => {
+            const path = this.currentDir === '/' ? `/${name}` : `${this.currentDir}/${name}`;
+            const state = await this.fs.stat(path);
+            return {
+                name,
+                path,
+                isDir: state?.type === 'dir'
+            };
+        }));
+        return files.sort((a, b) => {
+            if (a.isDir && !b.isDir) return -1;
+            if (!a.isDir && b.isDir) return 1;
+            return a.name.localeCompare(b.name);
+        });
+    }
+
     async listFiles() {
         await this.initPromise;
-        return this.fs.readdir('/');
+        return this.fs.readdir(this.currentDir);
     }
 
     get code(): string {

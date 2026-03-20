@@ -8,24 +8,47 @@
     flex-direction: column;
 
     .header {
-        height: 40px;
+        height: 48px;
         padding: 0 12px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid #333;
+        background-color: #252526;
+
+        .breadcrumb {
+            font-size: 11px;
+            color: #aaa;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+            margin-right: 8px;
+            
+            &:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+        }
 
         .actions {
+            display: flex;
+            gap: 2px;
             button {
                 background: none;
                 border: none;
-                color: #fff;
+                color: #aaa;
                 cursor: pointer;
-                padding: 4px 8px;
+                padding: 4px;
                 border-radius: 4px;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
 
                 &:hover {
-                    background-color: #2d2d2d;
+                    background-color: #37373d;
+                    color: #fff;
                 }
             }
         }

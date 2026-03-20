@@ -143,7 +143,7 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
                         WindowManager.ins.closeWindow(win);
                     }
                 },
-                fs: this.createScopedFileSystem(appId),
+                fs: manifest?.config.permissions?.includes('fs.root') ? FileSystem : this.createScopedFileSystem(appId),
                 exit: () => {
                     this.exitAppById(appId);
                 }
@@ -199,7 +199,7 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
                     WindowManager.ins.closeWindow(win);
                 }
             },
-            fs: this.createScopedFileSystem(appId),
+            fs: manifest?.config.permissions?.includes('fs.root') ? FileSystem : this.createScopedFileSystem(appId),
             exit: () => {
                 this.exitAppById(appId);
             }

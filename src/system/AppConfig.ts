@@ -1,5 +1,3 @@
-import { VirtualApp } from "./VirtualApp.ts";
-
 export interface AppConfig {
   // 应用基本信息
   id: string;
@@ -22,5 +20,7 @@ export interface AppConfig {
     minimizable?: boolean;
     maximizable?: boolean;
   };
+  // 权限声明
+  permissions?: string[];
 }
 
