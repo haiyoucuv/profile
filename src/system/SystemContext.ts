@@ -1,9 +1,9 @@
-import { IWindowOptions, Window } from "../components/WindowWrapper/Window/Window.ts";
+import { Window, WindowOptions } from "./WindowManager/Window.ts";
 import { FileSystem } from "./FileSystem.ts";
 
 export interface SystemContext {
     window: {
-        create: (children: HTMLElement | string, options: IWindowOptions) => Window;
+        create: (children: HTMLElement | string, options: WindowOptions) => Window;
         close: (win: Window) => void;
     };
     fs: typeof FileSystem;

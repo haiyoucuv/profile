@@ -5,6 +5,7 @@ import "./App.less";
 import { Docker } from "./components/Docker/Docker.tsx";
 import { Desktop } from "./components/Desktop/Desktop.tsx";
 import { AppRegistry } from "@system";
+import { WindowManagerView } from "./components/WindowWrapper/WindowManagerView";
 import useForceUpdate from "use-force-update";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
 
     return <div className="app">
         <Desktop />
+        <WindowManagerView />
         <Docker />
     </div>;
 }

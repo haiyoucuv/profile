@@ -3,11 +3,11 @@ import { AppRegistry } from "./AppRegistry.ts";
 
 export type TAppConstructor<T extends VirtualApp> = new (...args: any[]) => T;
 import { SystemContext } from "./SystemContext.ts";
-import { WindowManager } from "../components/WindowWrapper/WindowManager.ts";
+import { WindowManager } from "@system";
 import { FileSystem } from "./FileSystem.ts";
 import Emittery from 'emittery';
 
-export class AppManager extends Emittery {
+export class AppManager extends Emittery<{ [key: symbol]: any }> {
 
     static EventType = {
         ON_APP_CHANGE: Symbol('onAppChange'),
@@ -69,14 +69,12 @@ export class AppManager extends Emittery {
             const sys: SystemContext = {
                 window: {
                     create: (children, options) => {
-                        const win = WindowManager.ins.showWindow(children, options);
+                        const win = WindowManager.ins.createWindow(children, options);
                         app.registerWindow(win);
                         return win;
                     },
                     close: (win) => {
-                        if (win.isValid) {
-                            WindowManager.ins.closeWindow(win);
-                        }
+                        WindowManager.ins.closeWindow(win);
                     }
                 },
                 fs: FileSystem,
@@ -123,14 +121,12 @@ export class AppManager extends Emittery {
         const sys: SystemContext = {
             window: {
                 create: (children, options) => {
-                    const win = WindowManager.ins.showWindow(children, options);
+                    const win = WindowManager.ins.createWindow(children, options);
                     app.registerWindow(win);
                     return win;
                 },
                 close: (win) => {
-                    if (win.isValid) {
-                        WindowManager.ins.closeWindow(win);
-                    }
+                    WindowManager.ins.closeWindow(win);
                 }
             },
             fs: FileSystem,

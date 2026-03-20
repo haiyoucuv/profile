@@ -29,7 +29,12 @@ export default defineConfig({
     worker: {
         format: "es",
     },
-    // optimizeDeps: { exclude: ["recast-navigation"] },
+    optimizeDeps: {
+        exclude: [
+            "@mediapipe/hands",
+            "@tensorflow-models/hand-pose-detection",
+        ],
+    },
     build: {
         // cssTarget: "chrome61",
         rollupOptions: {

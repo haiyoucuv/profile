@@ -8,12 +8,7 @@ export interface VirtualFile {
     type?: string;
 }
 
-export class EditorWorkspace extends Emittery<{ [key: symbol]: string }> {
-
-    private static _ins: EditorWorkspace = new EditorWorkspace();
-    static get ins() {
-        return this._ins;
-    }
+export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     static EventType = {
         FILE_CHANGED: Symbol('onFileChanged'),
@@ -36,11 +31,14 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: string }> {
             query: "?raw",
         });
 
-        // 取出文件名
+        // 仅在文件不存在时写入默认文件
         for (const path in defaultFiles) {
             const content = defaultFiles[path] as string;
             const fileName = path.split('/').pop();
-            await SysFS.writeFile(`/${fileName}`, content);
+            const filePath = `/${fileName}`;
+            if (!(await SysFS.exists(filePath))) {
+                await SysFS.writeFile(filePath, content);
+            }
         }
 
         const defaultPath = '/main.ts';
@@ -109,3 +107,6 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: string }> {
         return this.currentFile?.content || '';
     }
 }
+
+import { createContext } from 'react';
+export const EditorWorkspaceContext = createContext<EditorWorkspace>(null!);

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useContext } from "react";
 import { FileTree } from "./FileTree/FileTree";
 import styles from './Editor.module.less';
 
@@ -6,9 +6,9 @@ import * as monaco from 'monaco-editor';
 
 import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
-import { EditorWorkspace } from "./utils/EditorWorkspace.ts";
+import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace.ts";
 import { getMonacoModel } from "./utils/utils.ts";
-import { Builder } from "@system";
+import { Builder, Window } from "@system";
 import { debounce } from "../../utils/utils.ts";
 
 
@@ -32,16 +32,17 @@ Object.keys(types).forEach((path) => {
 })
 
 
-export const Editor: React.FC = (props) => {
+export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
     const editorRootRef = useRef<HTMLDivElement>(null);
-    const editorRef = useRef<any>(null);
+    const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+    const workspace = useContext(EditorWorkspaceContext);
 
     const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
         editorRef.current = editor;
 
         // 初始化当前文件的model
-        if (EditorWorkspace.ins.currentFile) {
-            const model = getMonacoModel(EditorWorkspace.ins.currentFile);
+        if (workspace.currentFile) {
+            const model = getMonacoModel(workspace.currentFile);
             editor.setModel(model);
         }
 
@@ -53,20 +54,30 @@ export const Editor: React.FC = (props) => {
     }
 
     const onFileChanged = useCallback(() => {
-        if (!editorRef.current || !EditorWorkspace.ins.currentFile) return;
-        const model = getMonacoModel(EditorWorkspace.ins.currentFile);
+        if (!editorRef.current || !workspace.currentFile) return;
+        const model = getMonacoModel(workspace.currentFile);
         if (editorRef.current.getModel() !== model) {
             editorRef.current.setModel(model);
         }
-    }, []);
+    }, [workspace.currentFile]);
 
     useEffect(() => {
-        EditorWorkspace.ins.on(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
+        workspace.on(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
         return () => {
-            // 清理所有model
-            EditorWorkspace.ins.off(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
+            workspace.off(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
         }
-    }, [onFileChanged]);
+    }, [onFileChanged, workspace]);
+
+    // 监听窗口大小变化
+    useEffect(() => {
+        const handleResize = () => {
+            editorRef.current?.layout();
+        };
+        win.on(Window.EventType.ON_RESIZE, handleResize);
+        return () => {
+            win.off(Window.EventType.ON_RESIZE, handleResize);
+        };
+    }, [win]);
 
 
     const debounceCompile = useCallback(debounce(async () => {
@@ -74,11 +85,11 @@ export const Editor: React.FC = (props) => {
     }, 1000), []);
 
     const onChange = useCallback(async (newValue: string, e: any) => {
-        if (EditorWorkspace.ins.currentFile) {
-            await EditorWorkspace.ins.writeFile(EditorWorkspace.ins.currentFile.path, newValue);
+        if (workspace.currentFile) {
+            await workspace.writeFile(workspace.currentFile.path, newValue);
             debounceCompile();
         }
-    }, [debounceCompile])
+    }, [debounceCompile, workspace])
 
     useEffect(() => {
         const editor = monaco.editor.create(editorRootRef.current, {
@@ -100,8 +111,8 @@ export const Editor: React.FC = (props) => {
 
     return (
         <div className={styles.editorContainer}>
-            <FileTree/>
-            <div className={styles.editorWrapper} ref={editorRootRef}/>
+            <FileTree />
+            <div className={styles.editorWrapper} ref={editorRootRef} />
         </div>
     );
 };

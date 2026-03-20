@@ -5,3 +5,5 @@ export * from "./FileSystem.ts";
 export * from "./AppManager.ts";
 export * from "./AppConfig.ts";
 export * from "./Builder/Builder.ts";
+export * from "./WindowManager/Window.ts";
+export * from "./WindowManager/WindowManager.ts";

@@ -1,8 +1,8 @@
-import { Window } from "../components/WindowWrapper";
+import { Window } from "./WindowManager/Window.ts";
 import Emittery from 'emittery';
 import { SystemContext } from "./SystemContext.ts";
 
-export abstract class VirtualApp extends Emittery {
+export abstract class VirtualApp extends Emittery<{ [key: symbol]: any }> {
 
     static icon: string;
     static name: string;
@@ -24,7 +24,7 @@ export abstract class VirtualApp extends Emittery {
         this.exited = true;
         this.onExit();
         this.windows.forEach((window) => {
-            window.isValid && this.sys.window.close(window);
+            this.sys.window.close(window);
         });
         this.windows.clear();
         this.clearListeners();

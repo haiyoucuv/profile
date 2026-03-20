@@ -74,7 +74,15 @@
     height: calc(100% - @handSize * 2);
     cursor: w-resize;
   }
-
+ 
+  &.maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    transform: none !important;
+    border-radius: 0;
+  }
 }
 
 .titleBar {

@@ -7,6 +7,7 @@ import { config } from "./config.ts";
 
 import template from './appTemplate/index.html?raw';
 import { Builder } from "@system";
+import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace.ts";
 
 
 export class EditorApp extends VirtualApp {
@@ -17,6 +18,7 @@ export class EditorApp extends VirtualApp {
 
     editorRoot: Root = null;
     iframe: HTMLIFrameElement = null;
+    workspace: EditorWorkspace = new EditorWorkspace();
 
     compiledCode = '';
 
@@ -41,7 +43,11 @@ export class EditorApp extends VirtualApp {
         });
 
         this.editorRoot = createRoot(codeWindow.content);
-        this.editorRoot.render(React.createElement(Editor));
+        this.editorRoot.render(
+            React.createElement(EditorWorkspaceContext.Provider, { value: this.workspace }, 
+                React.createElement(Editor, { window: codeWindow })
+            )
+        );
     }
 
     openRenderer(sys: SystemContext) {
