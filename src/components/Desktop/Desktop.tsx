@@ -8,22 +8,32 @@ interface DesktopIconProps {
     icon: string;
     x: number;
     y: number;
-    onDoubleClick: (appId: string) => void;
+    onOpen: (appId: string) => void;
     onMove: (appId: string, x: number, y: number) => void;
 }
 
-const DesktopIcon: React.FC<DesktopIconProps> = ({ id, name, icon, x, y, onDoubleClick, onMove }) => {
+const DesktopIcon: React.FC<DesktopIconProps> = ({ id, name, icon, x, y, onOpen, onMove }) => {
     const [isDragging, setIsDragging] = useState(false);
+    const startPos = useRef({ x: 0, y: 0 });
+    const hasMoved = useRef(false);
     const iconRef = useRef<HTMLDivElement>(null);
 
     const handleMouseDown = (e: React.MouseEvent) => {
         e.preventDefault();
+        startPos.current = { x: e.clientX, y: e.clientY };
+        hasMoved.current = false;
         setIsDragging(true);
 
         const sX = e.clientX - x;
         const sY = e.clientY - y;
 
         const handleMouseMove = (e: MouseEvent) => {
+            const deltaX = Math.abs(e.clientX - startPos.current.x);
+            const deltaY = Math.abs(e.clientY - startPos.current.y);
+            if (deltaX > 5 || deltaY > 5) {
+                hasMoved.current = true;
+            }
+
             const newX = e.clientX - sX;
             const newY = e.clientY - sY;
 
@@ -41,15 +51,16 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, name, icon, x, y, onDoubl
             setIsDragging(false);
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
+            
+            if (!hasMoved.current) {
+                onOpen(id);
+            }
         };
 
         document.addEventListener('mousemove', handleMouseMove);
         document.addEventListener('mouseup', handleMouseUp);
     };
 
-    const handleDoubleClick = () => {
-        onDoubleClick(id);
-    };
 
     return <div
         ref={iconRef}
@@ -60,7 +71,6 @@ const DesktopIcon: React.FC<DesktopIconProps> = ({ id, name, icon, x, y, onDoubl
             cursor: isDragging ? 'grabbing' : 'grab'
         }}
         onMouseDown={handleMouseDown}
-        onDoubleClick={handleDoubleClick}
     >
         <div className={styles.iconImage}>
             <img src={icon} alt={name}/>
@@ -129,8 +139,8 @@ export const Desktop: React.FC<DesktopProps> = () => {
         initializeDesktopIcons();
     }, []);
 
-    // 处理图标双击启动应用
-    const handleIconDoubleClick = async (appId: string) => {
+    // 处理图标单机启动应用
+    const handleIconOpen = async (appId: string) => {
         const result = await AppManager.ins.launchAppById(appId);
         console.log('Desktop: App launched successfully:', appId, result);
     };
@@ -161,7 +171,7 @@ export const Desktop: React.FC<DesktopProps> = () => {
                 icon={icon.icon}
                 x={icon.x}
                 y={icon.y}
-                onDoubleClick={handleIconDoubleClick}
+                onOpen={handleIconOpen}
                 onMove={handleIconMove}
             />
         })}
