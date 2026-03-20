@@ -1,7 +1,7 @@
 import esbuild from 'esbuild-wasm';
 import esbuildWasm from 'esbuild-wasm/esbuild.wasm?url';
 import { resolvePlugin, initResolver } from './resolver.ts';
-import { FileSystem } from "@system";
+import { FileSystem, IFileSystem } from "@system";
 
 import Emittery from 'emittery';
 
@@ -30,10 +30,10 @@ export class Builder extends Emittery<{ [key: symbol]: string }> {
         this.running = true;
     }
 
-    async build(entryPoints: string[] = ['/main.ts']) {
+    async build(entryPoints: string[] = ['/main.ts'], fs: IFileSystem = FileSystem) {
         await this.start();
 
-        initResolver(FileSystem);
+        initResolver(fs);
 
         const result = await esbuild.build({
             entryPoints,
@@ -51,10 +51,13 @@ export class Builder extends Emittery<{ [key: symbol]: string }> {
                         // 处理文件读取
                         build.onLoad({ filter: /.*/, namespace: 'browser-module' }, async (args) => {
                             try {
-                                const content = await FileSystem.readFile(args.path);
+                                const content = await fs.readFile(args.path);
+                                const ext = args.path.split('.').pop();
+                                const loader: any = (ext === 'tsx' || ext === 'ts') ? 'tsx' : 
+                                              (ext === 'css' || ext === 'less') ? 'css' : 'text';
                                 return {
                                     contents: content as string,
-                                    loader: "ts" // or derive dynamically based on extension
+                                    loader
                                 };
                             } catch (e) {
                                 return {

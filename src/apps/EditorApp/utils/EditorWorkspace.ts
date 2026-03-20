@@ -1,4 +1,4 @@
-import { FileSystem as SysFS } from '@system';
+import { IFileSystem } from '@system';
 import Emittery from 'emittery';
 
 export interface VirtualFile {
@@ -16,10 +16,18 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     currentFile: VirtualFile | null = null;
     private initPromise: Promise<void> | null = null;
+    public fs: IFileSystem;
+    private rootPath: string;
 
-    constructor() {
+    constructor(fs: IFileSystem, rootPath: string) {
         super();
+        this.fs = fs;
+        this.rootPath = rootPath;
         this.initPromise = this.initializeDefaultFile();
+    }
+
+    private get privatePath() {
+        return this.rootPath;
     }
 
     private async initializeDefaultFile() {
@@ -35,16 +43,16 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
         for (const path in defaultFiles) {
             const content = defaultFiles[path] as string;
             const fileName = path.split('/').pop();
-            const filePath = `/${fileName}`;
-            if (!(await SysFS.exists(filePath))) {
-                await SysFS.writeFile(filePath, content);
+            const filePath = `${this.privatePath}/${fileName}`;
+            if (!(await this.fs.exists(filePath))) {
+                await this.fs.writeFile(filePath, content);
             }
         }
 
-        const defaultPath = '/main.ts';
-        const exists = await SysFS.exists(defaultPath);
+        const defaultPath = `${this.privatePath}/main.ts`;
+        const exists = await this.fs.exists(defaultPath);
         if (exists) {
-            const content = await SysFS.readFile(defaultPath);
+            const content = await this.fs.readFile(defaultPath);
             this.currentFile = {
                 path: defaultPath,
                 content: content as string,
@@ -54,20 +62,34 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
         }
     }
 
-    async createFile() {
+    async createFile(name?: string) {
         await this.initPromise;
-        const files = await SysFS.readdir('/');
-        // Filter out non-files if necessary, but just append length
-        const newPath = `/file${files.length + 1}.ts`;
-        await SysFS.writeFile(newPath, '');
+        const files = await this.fs.readdir(this.privatePath);
+        const fileName = name || `file${files.length + 1}.ts`;
+        const newPath = `${this.privatePath}/${fileName}`;
+        await this.fs.writeFile(newPath, '');
         await this.openFile(newPath);
+    }
+
+    async deleteFile(path: string) {
+        await this.initPromise;
+        await this.fs.unlink(path);
+        
+        // 如果删除的是当前文件，打开默认文件或空
+        if (this.currentFile?.path === path) {
+            this.currentFile = null;
+            await this.initializeDefaultFile();
+        } else {
+            // 触发列表刷新
+            this.emit(EditorWorkspace.EventType.FILE_CHANGED, path);
+        }
     }
 
     async openFile(path: string) {
         await this.initPromise;
-        const exists = await SysFS.exists(path);
+        const exists = await this.fs.exists(path);
         if (exists) {
-            const content = await SysFS.readFile(path);
+            const content = await this.fs.readFile(path);
             this.currentFile = {
                 path,
                 content: content as string,
@@ -79,10 +101,10 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     async readFile(path: string): Promise<VirtualFile | null> {
         await this.initPromise;
-        const exists = await SysFS.exists(path);
+        const exists = await this.fs.exists(path);
         if (!exists) return null;
         
-        const content = await SysFS.readFile(path);
+        const content = await this.fs.readFile(path);
         return {
             path,
             content: content as string,
@@ -92,7 +114,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     async writeFile(path: string, content: string) {
         await this.initPromise;
-        await SysFS.writeFile(path, content);
+        await this.fs.writeFile(path, content);
         if (this.currentFile?.path === path) {
             this.currentFile.content = content;
         }
@@ -100,7 +122,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
 
     async listFiles() {
         await this.initPromise;
-        return SysFS.readdir('/');
+        return this.fs.readdir('/');
     }
 
     get code(): string {

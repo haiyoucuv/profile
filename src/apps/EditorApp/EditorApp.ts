@@ -3,7 +3,6 @@ import { createRoot, Root } from "react-dom/client";
 import { Editor } from "./Editor.tsx";
 import React from "react";
 import d3 from "./assets/3D.svg";
-import { config } from "./config.ts";
 
 import template from './appTemplate/index.html?raw';
 import { Builder } from "@system";
@@ -12,34 +11,31 @@ import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace
 
 export class EditorApp extends VirtualApp {
 
-    static icon: string = config.icon;
-    static name = config.name;
-    static id = config.id;
-
     editorRoot: Root = null;
     iframe: HTMLIFrameElement = null;
-    workspace: EditorWorkspace = new EditorWorkspace();
+    workspace: EditorWorkspace = null as any;
 
     compiledCode = '';
 
     launch(sys: SystemContext) {
+        this.workspace = new EditorWorkspace(sys.fs, this.homeDir);
         this.openCodeWindow(sys);
         this.openRenderer(sys);
-        this.buildOnStart();
+        this.buildOnStart(sys);
     }
 
-    async buildOnStart() {
-        await Builder.ins.build();
+    async buildOnStart(sys: SystemContext) {
+        await Builder.ins.build([`${this.homeDir}/main.ts`], sys.fs);
     }
 
     openCodeWindow(sys: SystemContext) {
         const codeWindow = sys.window.create("", {
-            title: config.name,
-            icon: config.icon,
-            x: config.defaultWindow.x || 25,
-            y: config.defaultWindow.y || 25,
-            width: config.defaultWindow.width,
-            height: config.defaultWindow.height,
+            title: this.config.name,
+            icon: this.config.icon,
+            x: this.config.defaultWindow.x || 25,
+            y: this.config.defaultWindow.y || 25,
+            width: this.config.defaultWindow.width,
+            height: this.config.defaultWindow.height,
         });
 
         this.editorRoot = createRoot(codeWindow.content);

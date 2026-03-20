@@ -1,6 +1,7 @@
 import { Window } from "./WindowManager/Window.ts";
 import Emittery from 'emittery';
 import { SystemContext } from "./SystemContext.ts";
+import { AppConfig } from "./AppConfig.ts";
 
 export abstract class VirtualApp extends Emittery<{ [key: symbol]: any }> {
 
@@ -12,6 +13,11 @@ export abstract class VirtualApp extends Emittery<{ [key: symbol]: any }> {
 
     windows: Map<string, Window> = new Map<string, Window>();
     sys: SystemContext = null as any;
+    config: AppConfig = null as any;
+
+    get homeDir() {
+        return `/${this.config.id}`;
+    }
 
     abstract launch(sys: SystemContext): void;
 

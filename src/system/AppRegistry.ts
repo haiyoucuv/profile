@@ -52,6 +52,10 @@ export class AppRegistry {
     this.registerFromManifest(manifest);
   }
 
+  getManifest(appId: string): AppManifest | undefined {
+    return this.manifests.get(appId);
+  }
+
   // 从清单注册应用
   registerFromManifest(manifest: AppManifest): void {
     this.apps.set(manifest.config.id, {

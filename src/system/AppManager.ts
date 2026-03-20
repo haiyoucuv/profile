@@ -25,6 +25,67 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
         super();
     }
 
+    private createScopedFileSystem(appId: string) {
+        const privatePhysicalRoot = `/apps/${appId}`;
+        const sharedPhysicalRoot = `/shared`;
+        const appVirtualRoot = `/${appId}`;
+
+        const resolveToReal = (p: string) => {
+            let path = p.replace(/\\/g, '/');
+            if (!path.startsWith('/')) path = '/' + path;
+            
+            // 路径规范化 (处理 .. 和 .)
+            const parts = path.split('/').filter(Boolean);
+            const stack: string[] = [];
+            for (const part of parts) {
+                if (part === '.') continue;
+                if (part === '..') {
+                    if (stack.length > 0) stack.pop();
+                } else {
+                    stack.push(part);
+                }
+            }
+            const normalizedPath = '/' + stack.join('/');
+
+            // 根目录特殊处理
+            if (normalizedPath === '/') return privatePhysicalRoot; // 默认读写行为，但 readdir 会被拦截
+
+            // 1. 匹配共享目录
+            if (normalizedPath.startsWith(sharedPhysicalRoot + '/') || normalizedPath === sharedPhysicalRoot) {
+                return normalizedPath;
+            }
+
+            // 2. 匹配 App 虚拟主目录
+            if (normalizedPath.startsWith(appVirtualRoot + '/') || normalizedPath === appVirtualRoot) {
+                const subPath = normalizedPath.slice(appVirtualRoot.length);
+                return `${privatePhysicalRoot}${subPath}`.replace(/\/+$/, '') || privatePhysicalRoot;
+            }
+
+            throw new Error(`Access Denied: Path ${p} is outside of allowed scopes (/${appId} or /shared)`);
+        };
+
+        return {
+            writeFile: (path: string, content: string | Blob) => FileSystem.writeFile(resolveToReal(path), content),
+            readFile: (path: string) => FileSystem.readFile(resolveToReal(path)),
+            mkdir: (path: string, options?: any) => FileSystem.mkdir(resolveToReal(path), options),
+            readdir: async (path: string) => {
+                // 如果是请求根目录，返回虚拟节点
+                if (path === '/' || path === '') {
+                    return [appId, 'shared'];
+                }
+                const realPath = resolveToReal(path);
+                return FileSystem.readdir(realPath);
+            },
+            stat: (path: string) => FileSystem.stat(resolveToReal(path)),
+            exists: async (path: string) => {
+                if (path === '/' || path === appVirtualRoot || path === sharedPhysicalRoot) return true;
+                return FileSystem.exists(resolveToReal(path));
+            },
+            unlink: (path: string) => FileSystem.unlink(resolveToReal(path)),
+            rmdir: (path: string, options?: any) => FileSystem.rmdir(resolveToReal(path), options),
+        };
+    }
+
     private _apps: Map<TAppConstructor<VirtualApp>, VirtualApp> = new Map();
     private _appsById: Map<string, VirtualApp> = new Map();
     private _launchingTasks: Set<string> = new Set();
@@ -65,6 +126,11 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
 
             // 创建应用实例
             const app = new (AppClass as any)(...args);
+            const manifest = AppRegistry.ins.getManifest(appId);
+            if (manifest) {
+                app.config = manifest.config;
+            }
+
             // 注入上下文 SystemContext
             const sys: SystemContext = {
                 window: {
@@ -77,7 +143,7 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
                         WindowManager.ins.closeWindow(win);
                     }
                 },
-                fs: FileSystem,
+                fs: this.createScopedFileSystem(appId),
                 exit: () => {
                     this.exitAppById(appId);
                 }
@@ -113,11 +179,15 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
             return;
         }
         const app = new AppClass(...args);
+        const appId = (AppClass as any).id;
+        const manifest = AppRegistry.ins.getManifest(appId);
+        if (manifest) {
+            app.config = manifest.config;
+        }
 
         this.apps.set(AppClass, app);
         this._appsById.set((AppClass as any).id, app);
 
-        const appId = (AppClass as any).id;
         const sys: SystemContext = {
             window: {
                 create: (children, options) => {
@@ -129,7 +199,7 @@ export class AppManager extends Emittery<{ [key: symbol]: any }> {
                     WindowManager.ins.closeWindow(win);
                 }
             },
-            fs: FileSystem,
+            fs: this.createScopedFileSystem(appId),
             exit: () => {
                 this.exitAppById(appId);
             }

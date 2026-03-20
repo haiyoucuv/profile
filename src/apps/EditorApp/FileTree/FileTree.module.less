@@ -39,9 +39,32 @@
         .item {
             padding: 4px 12px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.2s;
 
             &:hover {
                 background-color: #2d2d2d;
+                .deleteBtn {
+                    opacity: 1;
+                }
+            }
+
+            &.active {
+                background-color: #37373d;
+            }
+
+            .deleteBtn {
+                opacity: 0;
+                background: none;
+                border: none;
+                color: #888;
+                padding: 0 4px;
+                transition: opacity 0.2s;
+                &:hover {
+                    color: #f44336;
+                }
             }
         }
     }

@@ -29,17 +29,26 @@ export const FileTree: FC = memo(() => {
             <div className={styles.header}>
                 <span>文件</span>
                 <div className={styles.actions}>
-                    <button onClick={() => workspace.createFile()}>新建</button>
+                    <button onClick={() => {
+                        const name = window.prompt('请输入文件名:', `file${files.length + 1}.ts`);
+                        if (name) workspace.createFile(name);
+                    }}>新建</button>
                 </div>
             </div>
             <div className={styles.content}>
                 {files.map((path) => (
                     <div
                         key={path}
-                        className={styles.item}
+                        className={`${styles.item} ${workspace.currentFile?.path === path ? styles.active : ''}`}
                         onClick={() => workspace.openFile(path)}
                     >
-                        {path.split('/').pop()}
+                        <span>{path.split('/').pop()}</span>
+                        <button className={styles.deleteBtn} onClick={(e) => {
+                            e.stopPropagation();
+                            if (window.confirm(`确定要删除 ${path} 吗？`)) {
+                                workspace.deleteFile(path);
+                            }
+                        }}>x</button>
                     </div>
                 ))}
             </div>

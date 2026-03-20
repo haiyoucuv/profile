@@ -4,7 +4,7 @@ import "./App.less";
 
 import { Docker } from "./components/Docker/Docker.tsx";
 import { Desktop } from "./components/Desktop/Desktop.tsx";
-import { AppRegistry } from "@system";
+import { AppRegistry, FileSystem as SysFS } from "@system";
 import { WindowManagerView } from "./components/WindowWrapper/WindowManagerView";
 import useForceUpdate from "use-force-update";
 
@@ -17,6 +17,13 @@ function App() {
         // 自动发现所有应用
         const initializeApps = async () => {
             try {
+                // 初始化系统目录结构
+                await Promise.all([
+                    SysFS.mkdir('/system'),
+                    SysFS.mkdir('/apps'),
+                    SysFS.mkdir('/shared'),
+                ]);
+
                 // 使用 Vite 的 import.meta.glob 自动发现应用
                 const manifests = await AppRegistry.discoverAppsWithGlob();
 

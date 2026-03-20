@@ -2,7 +2,7 @@ import { AppConfig } from "@system";
 import lutIcon from "./assets/logo.svg";
 
 export const config: AppConfig = {
-  id: 'lut-color-app',
+  id: 'LutColorApp',
   name: 'LUT调色师',
   icon: lutIcon,
   registerToDocker: true,
