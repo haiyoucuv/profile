@@ -1,4 +1,4 @@
-import { AppManifest } from "../AppRegistry.ts";
+import { AppManifest } from "@system";
 import { config } from "./config.ts";
 
 // 应用配置

@@ -20,7 +20,12 @@ export default defineConfig({
     server: {
         open: false,
     },
-    resolve: {},
+    resolve: {
+        alias: {
+            "@system": "/src/system",
+            "@apps": "/src/apps"
+        }
+    },
     worker: {
         format: "es",
     },

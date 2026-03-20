@@ -1,8 +1,7 @@
-import { VirtualApp } from "../VirtualApp.ts";
+import { VirtualApp, SystemContext } from "@system";
 import wxArticle from "../../assets/wxArticle.jpg";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
-import { SystemContext } from "../SystemContext.ts";
 import { config } from "./config.ts";
 
 import styles from './WeChatApp.module.less'

@@ -29,7 +29,7 @@ export class AppRegistry {
     const manifests: AppManifest[] = [];
 
     // 按规则自动导入应用，要求开发app有一定的规则，但是不需要在系统里手动注册
-    const appModules = import.meta.glob('./*/main.{ts,tsx}', { eager: true });
+    const appModules = import.meta.glob('../apps/*/main.{ts,tsx}', { eager: true });
 
     for (const [path, module] of Object.entries(appModules)) {
       try {

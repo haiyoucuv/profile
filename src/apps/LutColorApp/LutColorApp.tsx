@@ -1,8 +1,7 @@
 import React from "react";
-import { VirtualApp } from "../VirtualApp.ts";
+import { VirtualApp, SystemContext } from "@system";
 import { createRoot, Root } from "react-dom/client";
 import { config } from "./config.ts";
-import { SystemContext } from "../SystemContext.ts";
 
 import { LutColor } from "./LutColor.tsx";
 

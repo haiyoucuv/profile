@@ -4,7 +4,7 @@ import "./App.less";
 
 import { Docker } from "./components/Docker/Docker.tsx";
 import { Desktop } from "./components/Desktop/Desktop.tsx";
-import { AppRegistry } from "./apps/AppRegistry.ts";
+import { AppRegistry } from "@system";
 import useForceUpdate from "use-force-update";
 
 function App() {

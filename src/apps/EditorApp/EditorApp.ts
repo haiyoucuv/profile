@@ -1,5 +1,4 @@
-import { VirtualApp } from "../VirtualApp.ts";
-import { SystemContext } from "../SystemContext.ts";
+import { VirtualApp, SystemContext } from "@system";
 import { createRoot, Root } from "react-dom/client";
 import { Editor } from "../../editor/Editor.tsx";
 import React from "react";

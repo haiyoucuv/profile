@@ -24,7 +24,3 @@ export interface AppConfig {
   };
 }
 
-export interface AppManifest {
-  config: AppConfig;
-  lazyImport: () => Promise<{ [key: string]: typeof VirtualApp }>;
-} 

@@ -1,7 +1,6 @@
-import { VirtualApp } from "../VirtualApp.ts";
+import { VirtualApp, SystemContext } from "@system";
 import { createRoot, Root } from "react-dom/client";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { SystemContext } from "../SystemContext.ts";
 import { config } from "./config.ts";
 import { HandGestureEngine, GestureResult, GestureType } from './HandGestureEngine';
 import { GameLogic, GameStats, GameState } from './GameLogic';

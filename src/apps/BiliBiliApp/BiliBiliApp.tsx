@@ -1,5 +1,4 @@
-import { VirtualApp } from "../VirtualApp.ts";
-import { SystemContext } from "../SystemContext.ts";
+import { VirtualApp, SystemContext } from "@system";
 import { config } from "./config.ts";
 
 export class BiliBiliApp extends VirtualApp {

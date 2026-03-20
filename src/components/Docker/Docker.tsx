@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Docker.module.less';
-import { AppManager } from "../../apps/AppManager.ts";
-import { AppRegistry } from "../../apps/AppRegistry.ts";
+import { AppManager, AppRegistry } from "@system";
 import useForceUpdate from "use-force-update";
 
 interface WindowWrapperProps {

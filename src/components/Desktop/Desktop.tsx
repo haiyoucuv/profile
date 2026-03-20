@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styles from './Desktop.module.less';
-import { AppManager } from "../../apps/AppManager.ts";
-import { AppRegistry } from "../../apps/AppRegistry.ts";
+import { AppManager, AppRegistry } from "@system";
 
 interface DesktopIconProps {
     id: string;

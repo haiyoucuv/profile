@@ -4,6 +4,7 @@ import { AppRegistry } from "./AppRegistry.ts";
 export type TAppConstructor<T extends VirtualApp> = new (...args: any[]) => T;
 import { SystemContext } from "./SystemContext.ts";
 import { WindowManager } from "../components/WindowWrapper/WindowManager.ts";
+import { FileSystem } from "./FileSystem.ts";
 import Emittery from 'emittery';
 
 export class AppManager extends Emittery {
@@ -78,6 +79,7 @@ export class AppManager extends Emittery {
                         }
                     }
                 },
+                fs: FileSystem,
                 exit: () => {
                     this.exitAppById(appId);
                 }
@@ -131,6 +133,7 @@ export class AppManager extends Emittery {
                     }
                 }
             },
+            fs: FileSystem,
             exit: () => {
                 this.exitAppById(appId);
             }

@@ -23,6 +23,13 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@system": ["./src/system"],
+      "@system/*": ["./src/system/*"],
+      "@apps": ["./src/apps"],
+      "@apps/*": ["./src/apps/*"]
+    }
   },
   "include": [
     "src"
