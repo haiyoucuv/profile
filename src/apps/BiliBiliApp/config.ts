@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import bilibili from "../../assets/icon/bilibili.svg";
+import { AppConfig } from "@system";
+import bilibili from "./assets/logo.svg";
 
 export const config: AppConfig = {
   id: "BiliBiliApp",

@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import github from "../../assets/icon/github.svg";
+import { AppConfig } from "@system";
+import github from "./assets/logo.svg";
 
 export const config: AppConfig = {
     id: "GitHubApp",

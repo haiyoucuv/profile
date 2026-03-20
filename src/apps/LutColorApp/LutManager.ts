@@ -1,4 +1,4 @@
-import { LUTData } from './renderer/RendererFactory.ts';
+import { LUTData } from './renderer/const.ts';
 import { LutParser } from './LutParser.ts';
 import * as Module from "node:module";
 
@@ -47,7 +47,7 @@ export class LutManager {
 
         try {
             // 使用 Vite 的 import.meta.glob 来自动发现 LUT 文件
-            const lutFiles = import.meta.glob<{ default: string }>('../../assets/LutColorApp/lut/*.{cube,3dl}', {
+            const lutFiles = import.meta.glob<{ default: string }>('./assets/lut/*.{cube,3dl}', {
                 eager: false,
                 query: '?raw'
             });

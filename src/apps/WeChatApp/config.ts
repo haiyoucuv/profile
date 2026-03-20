@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import wechat from "../../assets/icon/wechat.svg";
+import { AppConfig } from "@system";
+import wechat from "./assets/logo.svg";
 
 export const config: AppConfig = {
   id: "WeChatApp",

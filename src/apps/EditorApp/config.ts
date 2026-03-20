@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import vscode from "../../assets/icon/vscode.svg";
+import { AppConfig } from "@system";
+import vscode from "./assets/logo.svg";
 
 export const config: AppConfig = {
   id: "EditorApp",

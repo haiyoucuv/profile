@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import juejinIcon from "../../assets/icon/juejin.svg";
+import { AppConfig } from "@system";
+import juejinIcon from "./assets/logo.svg";
 
 export const config: AppConfig = {
     id: "JueJinApp",

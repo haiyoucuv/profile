@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import logo from "../../assets/SlapKirkApp/logo.svg";
+import { AppConfig } from "@system";
+import logo from "./assets/logo.svg";
 
 export const config: AppConfig = {
   id: "SlapKirkApp",

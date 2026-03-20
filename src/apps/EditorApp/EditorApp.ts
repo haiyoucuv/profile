@@ -2,10 +2,10 @@ import { VirtualApp, SystemContext } from "@system";
 import { createRoot, Root } from "react-dom/client";
 import { Editor } from "./Editor.tsx";
 import React from "react";
-import d3 from "../../assets/icon/3D.svg";
+import d3 from "./assets/3D.svg";
 import { config } from "./config.ts";
 
-import template from '../../appTemplate/index.html?raw';
+import template from './appTemplate/index.html?raw';
 import { Builder } from "@system";
 
 
@@ -64,6 +64,7 @@ export class EditorApp extends VirtualApp {
     }
 
     handleMessage = (e) => {
+        if (e.source !== this.iframe.contentWindow) return;
         if (e.data?.type === 'PREVIEW_LOADED') {
             const script = this.iframe.contentWindow.document.createElement("script");
             script.type = "module";

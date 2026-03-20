@@ -1,6 +1,6 @@
-import { AppConfig } from "../AppConfig.ts";
+import { AppConfig } from "@system";
 
-import logo from "../../assets/SandGameApp/logo.png";
+import logo from "./assets/logo.png";
 
 export const config: AppConfig = {
   id: "SandGameApp",

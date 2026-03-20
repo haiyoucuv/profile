@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import logo from "../../assets/NerveCatApp/logo.png";
+import { AppConfig } from "@system";
+import logo from "./assets/logo.png";
 
 export const config: AppConfig = {
   id: "NerveCatApp",

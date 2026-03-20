@@ -1,5 +1,5 @@
 import { VirtualApp, SystemContext } from "@system";
-import wxArticle from "../../assets/wxArticle.jpg";
+import wxArticle from "./assets/wxArticle.jpg";
 import { createRoot, Root } from "react-dom/client";
 import React from "react";
 import { config } from "./config.ts";

@@ -29,7 +29,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: string }> {
 
     private async initializeDefaultFile() {
         const defaultFiles = import.meta.glob([
-            "../../../appTemplate/**/*.ts",
+            "../appTemplate/**/*.ts",
         ], {
             import: "default",
             eager: true,

@@ -5,7 +5,7 @@ import { config } from "./config.ts";
 
 import styles from './SandGameApp.module.less'
 
-import sandGameQrCode from "../../assets/SandGameApp/qrCode.png";
+import sandGameQrCode from "./assets/qrCode.png";
 
 const SandGame: React.FC = () => {
     return <div className={styles.SandGame}>

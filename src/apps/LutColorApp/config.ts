@@ -1,5 +1,5 @@
-import { AppConfig } from "../AppConfig.ts";
-import lutIcon from "../../assets/icon/web-design.svg";
+import { AppConfig } from "@system";
+import lutIcon from "./assets/logo.svg";
 
 export const config: AppConfig = {
   id: 'lut-color-app',
