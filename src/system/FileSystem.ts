@@ -34,15 +34,18 @@ class FileSystemImpl {
     }
 
     private normalizePath(path: string): string {
-        // Simple normalization: replace multiple slashes, remove trailing slash
-        let p = path.replace(/\/+/g, '/');
-        if (p.length > 1 && p.endsWith('/')) {
-            p = p.slice(0, -1);
+        let p = path.replace(/\\/g, '/');
+        const parts = p.split('/');
+        const stack: string[] = [];
+        for (const part of parts) {
+            if (part === '' || part === '.') continue;
+            if (part === '..') {
+                if (stack.length > 0) stack.pop();
+            } else {
+                stack.push(part);
+            }
         }
-        if (!p.startsWith('/')) {
-            p = '/' + p;
-        }
-        return p;
+        return '/' + stack.join('/');
     }
 
     private getParentPath(path: string): string {

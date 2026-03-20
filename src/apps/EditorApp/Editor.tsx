@@ -6,14 +6,14 @@ import * as monaco from 'monaco-editor';
 
 import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
-import { FileSystem } from "./utils/FileSystem";
+import { EditorWorkspace } from "./utils/EditorWorkspace.ts";
 import { getMonacoModel } from "./utils/utils.ts";
-import { Builder } from "../Builder/Builder.ts";
-import { debounce } from "../utils/utils.ts";
+import { Builder } from "@system";
+import { debounce } from "../../utils/utils.ts";
 
 
 // 添加React类型定义配置
-monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+monaco.typescript.typescriptDefaults.setCompilerOptions({
     ...TypeScriptConfig,
 });
 
@@ -27,8 +27,8 @@ const types: Record<string, any> = import.meta.glob(
 )
 
 Object.keys(types).forEach((path) => {
-    monaco.languages.typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
-    monaco.languages.typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
+    monaco.typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
+    monaco.typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
 })
 
 
@@ -40,8 +40,8 @@ export const Editor: React.FC = (props) => {
         editorRef.current = editor;
 
         // 初始化当前文件的model
-        if (FileSystem.ins.currentFile) {
-            const model = getMonacoModel(FileSystem.ins.currentFile);
+        if (EditorWorkspace.ins.currentFile) {
+            const model = getMonacoModel(EditorWorkspace.ins.currentFile);
             editor.setModel(model);
         }
 
@@ -53,15 +53,18 @@ export const Editor: React.FC = (props) => {
     }
 
     const onFileChanged = useCallback(() => {
-        const model = getMonacoModel(FileSystem.ins.currentFile);
-        editorRef.current.setModel(model);
+        if (!editorRef.current || !EditorWorkspace.ins.currentFile) return;
+        const model = getMonacoModel(EditorWorkspace.ins.currentFile);
+        if (editorRef.current.getModel() !== model) {
+            editorRef.current.setModel(model);
+        }
     }, []);
 
     useEffect(() => {
-        FileSystem.ins.on(FileSystem.EventType.FILE_CHANGED, onFileChanged);
+        EditorWorkspace.ins.on(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
         return () => {
             // 清理所有model
-            FileSystem.ins.off(FileSystem.EventType.FILE_CHANGED, onFileChanged);
+            EditorWorkspace.ins.off(EditorWorkspace.EventType.FILE_CHANGED, onFileChanged);
         }
     }, [onFileChanged]);
 
@@ -71,16 +74,15 @@ export const Editor: React.FC = (props) => {
     }, 1000), []);
 
     const onChange = useCallback(async (newValue: string, e: any) => {
-        if (FileSystem.ins.currentFile) {
-            await FileSystem.ins.writeFile(FileSystem.ins.currentFile.path, newValue);
+        if (EditorWorkspace.ins.currentFile) {
+            await EditorWorkspace.ins.writeFile(EditorWorkspace.ins.currentFile.path, newValue);
             debounceCompile();
         }
     }, [debounceCompile])
 
     useEffect(() => {
         const editor = monaco.editor.create(editorRootRef.current, {
-            value: FileSystem.ins.code,
-            language: 'typescript',
+            model: null,
             theme: 'vs-dark',
             ...MonacoEditorConfig,
         });

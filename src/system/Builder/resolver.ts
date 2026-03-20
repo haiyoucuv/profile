@@ -1,6 +1,6 @@
-import { VirtualFS } from './VirtualFS';
+import { FileSystem } from "@system";
 
-let fs: VirtualFS;
+let fs: typeof FileSystem;
 
 export const resolvePlugin = () => ({
     name: 'browser-resolver',
@@ -45,6 +45,6 @@ export const resolvePlugin = () => ({
     }
 })
 
-export function initResolver(virtualFS: VirtualFS) {
+export function initResolver(virtualFS: typeof FileSystem) {
     fs = virtualFS;
 }

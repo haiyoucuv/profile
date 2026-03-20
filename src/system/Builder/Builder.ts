@@ -1,11 +1,11 @@
 import esbuild from 'esbuild-wasm';
 import esbuildWasm from 'esbuild-wasm/esbuild.wasm?url';
-import { resolvePlugin, initResolver } from './resolver';
-import { FileSystem } from "../editor/utils/FileSystem.ts";
+import { resolvePlugin, initResolver } from './resolver.ts';
+import { FileSystem } from "@system";
 
 import Emittery from 'emittery';
 
-export class Builder extends Emittery {
+export class Builder extends Emittery<{ [key: symbol]: string }> {
 
     static _ins: Builder = new Builder();
     static get ins() {
@@ -30,14 +30,14 @@ export class Builder extends Emittery {
         this.running = true;
     }
 
-    async build() {
+    async build(entryPoints: string[] = ['/main.ts']) {
         await this.start();
 
-        initResolver(FileSystem.ins.fs);
+        initResolver(FileSystem);
 
         const result = await esbuild.build({
-            entryPoints: ['/main.ts'],
-            loader: { '.ts': 'ts', '.tsx': 'tsx' },
+            entryPoints,
+            loader: { '.ts': 'ts', '.tsx': 'tsx', '.css': 'css', '.less': 'css' },
             bundle: true,
             sourcemap: false,
             write: false,
@@ -50,17 +50,17 @@ export class Builder extends Emittery {
                     setup(build) {
                         // 处理文件读取
                         build.onLoad({ filter: /.*/, namespace: 'browser-module' }, async (args) => {
-                            const file = await FileSystem.ins.readFile(args.path);
-                            if (!file) {
+                            try {
+                                const content = await FileSystem.readFile(args.path);
+                                return {
+                                    contents: content as string,
+                                    loader: "ts" // or derive dynamically based on extension
+                                };
+                            } catch (e) {
                                 return {
                                     errors: [{ text: `File not found: ${args.path}` }]
                                 };
                             }
-
-                            return {
-                                contents: file.content,
-                                loader: "ts"
-                            };
                         });
                     }
                 }

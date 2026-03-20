@@ -1,12 +1,12 @@
 import { VirtualApp, SystemContext } from "@system";
 import { createRoot, Root } from "react-dom/client";
-import { Editor } from "../../editor/Editor.tsx";
+import { Editor } from "./Editor.tsx";
 import React from "react";
 import d3 from "../../assets/icon/3D.svg";
 import { config } from "./config.ts";
 
 import template from '../../appTemplate/index.html?raw';
-import { Builder } from "../../Builder/Builder.ts";
+import { Builder } from "@system";
 
 
 export class EditorApp extends VirtualApp {
@@ -32,11 +32,11 @@ export class EditorApp extends VirtualApp {
 
     openCodeWindow(sys: SystemContext) {
         const codeWindow = sys.window.create("", {
-            title: config.name, 
+            title: config.name,
             icon: config.icon,
-            x: config.defaultWindow.x || 25, 
+            x: config.defaultWindow.x || 25,
             y: config.defaultWindow.y || 25,
-            width: config.defaultWindow.width, 
+            width: config.defaultWindow.width,
             height: config.defaultWindow.height,
         });
 
@@ -58,9 +58,9 @@ export class EditorApp extends VirtualApp {
         Builder.ins.on(Builder.EventType.CODE_COMPILED, this.onCodeCompiled);
     }
 
-    onCodeCompiled = (code: string) => {
+    onCodeCompiled = ({ data: code }: { data: string }) => {
         this.compiledCode = code;
-        this.iframe.contentWindow.location.reload();
+        this.iframe.contentWindow?.location.reload();
     }
 
     handleMessage = (e) => {
