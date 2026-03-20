@@ -2,7 +2,12 @@ import React, { useCallback, useEffect, useRef, useContext } from "react";
 import { FileTree } from "./FileTree/FileTree";
 import styles from './Editor.module.less';
 
-import * as monaco from 'monaco-editor';
+import {
+    typescript,
+    editor,
+    KeyMod,
+    KeyCode,
+} from 'monaco-editor';
 
 import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
@@ -13,7 +18,7 @@ import { debounce } from "../../utils/utils.ts";
 
 
 // 添加React类型定义配置
-monaco.typescript.typescriptDefaults.setCompilerOptions({
+typescript.typescriptDefaults.setCompilerOptions({
     ...TypeScriptConfig,
 });
 
@@ -27,17 +32,17 @@ const types: Record<string, any> = import.meta.glob(
 )
 
 Object.keys(types).forEach((path) => {
-    monaco.typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
-    monaco.typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
+    typescript.typescriptDefaults.addExtraLib(types[path].default, `file://${path}`)
+    typescript.javascriptDefaults.addExtraLib(types[path].default, `file://${path}`)
 })
 
 
 export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
     const editorRootRef = useRef<HTMLDivElement>(null);
-    const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+    const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const workspace = useContext(EditorWorkspaceContext);
 
-    const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+    const handleEditorDidMount = (editor: editor.IStandaloneCodeEditor) => {
         editorRef.current = editor;
 
         // 初始化当前文件的model
@@ -48,7 +53,7 @@ export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
 
         editor.focus();
 
-        editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+        editor.addCommand(KeyMod.CtrlCmd | KeyCode.KeyS, () => {
             editor.getAction('editor.action.formatDocument').run()
         })
     }
@@ -92,20 +97,20 @@ export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
     }, [debounceCompile, workspace])
 
     useEffect(() => {
-        const editor = monaco.editor.create(editorRootRef.current, {
+        const editorIns = editor.create(editorRootRef.current, {
             model: null,
             theme: 'vs-dark',
             ...MonacoEditorConfig,
         });
 
-        handleEditorDidMount(editor);
+        handleEditorDidMount(editorIns);
 
-        editor.onDidChangeModelContent((e) => {
-            onChange(editor.getValue(), e);
+        editorIns.onDidChangeModelContent((e) => {
+            onChange(editorIns.getValue(), e);
         });
 
         return () => {
-            editor.dispose();
+            editorIns.dispose();
         };
     }, []);
 

@@ -30,10 +30,6 @@ export default defineConfig({
         format: "es",
     },
     optimizeDeps: {
-        exclude: [
-            "@mediapipe/hands",
-            "@tensorflow-models/hand-pose-detection",
-        ],
     },
     build: {
         // cssTarget: "chrome61",

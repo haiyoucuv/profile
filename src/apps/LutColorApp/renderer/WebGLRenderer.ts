@@ -191,7 +191,7 @@ export class WebGLRenderer extends BaseRenderer {
             tempCanvas.width = width;
             tempCanvas.height = height;
             const ctx = tempCanvas.getContext('2d')!;
-            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels.buffer), width, height);
+            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels), width, height);
             ctx.putImageData(imageData, 0, 0);
             tempCanvas.toBlob(blob => {
                 if (blob) {
@@ -249,7 +249,7 @@ export class WebGLRenderer extends BaseRenderer {
             tempCanvas.width = params.width;
             tempCanvas.height = params.height;
             const ctx = tempCanvas.getContext('2d')!;
-            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels.buffer), params.width, params.height);
+            const imageData = new ImageData(new Uint8ClampedArray(flippedPixels), params.width, params.height);
             ctx.putImageData(imageData, 0, 0);
             tempCanvas.toBlob(blob => {
                 if (blob) {

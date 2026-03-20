@@ -1,4 +1,4 @@
-import {editor, languages} from 'monaco-editor'
+import {editor, typescript} from 'monaco-editor'
 
 export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     automaticLayout: true,
@@ -36,15 +36,15 @@ export const MonacoEditorConfig: editor.IStandaloneEditorConstructionOptions = {
     wordWrap: "off",
 }
 
-export const TypeScriptConfig: languages.typescript.CompilerOptions = {
-    target: languages.typescript.ScriptTarget.ESNext,
-    module: languages.typescript.ModuleKind.ESNext,
-    moduleResolution: languages.typescript.ModuleResolutionKind.NodeJs,
+export const TypeScriptConfig: typescript.CompilerOptions = {
+    target: typescript.ScriptTarget.ESNext,
+    module: typescript.ModuleKind.ESNext,
+    moduleResolution: typescript.ModuleResolutionKind.NodeJs,
     allowNonTsExtensions: true,
     allowJs: true,
     noEmit: true,
     esModuleInterop: true,
-    jsx: languages.typescript.JsxEmit.React,
+    jsx: typescript.JsxEmit.React,
     reactNamespace: "React",
     allowSyntheticDefaultImports: true,
     isolatedModules: true

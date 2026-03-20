@@ -8,7 +8,7 @@ import {
     TextureLoader,
     RepeatWrapping,
     MathUtils, PMREMGenerator,
-    Renderer, WebGLRenderer
+    WebGLRenderer
 } from "three";
 import { Water } from 'three/addons/objects/Water.js';
 import { Sky } from 'three/addons/objects/Sky.js';
