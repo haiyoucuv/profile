@@ -13,7 +13,7 @@ import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 
 import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace.ts";
 import { getMonacoModel } from "./utils/utils.ts";
-import { Builder, Window } from "@system";
+import { Builder, SystemWindow } from "@system";
 import { useDebounceFn } from "ahooks";
 
 
@@ -37,7 +37,7 @@ Object.keys(types).forEach((path) => {
 })
 
 
-export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
+export const Editor: React.FC<{ window: SystemWindow }> = ({ window: win }) => {
     const editorRootRef = useRef<HTMLDivElement>(null);
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const workspace = useContext(EditorWorkspaceContext);
@@ -78,9 +78,9 @@ export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
         const handleResize = () => {
             editorRef.current?.layout();
         };
-        win.on(Window.EventType.ON_RESIZE, handleResize);
+        win.on(SystemWindow.EventType.ON_RESIZE, handleResize);
         return () => {
-            win.off(Window.EventType.ON_RESIZE, handleResize);
+            win.off(SystemWindow.EventType.ON_RESIZE, handleResize);
         };
     }, [win]);
 

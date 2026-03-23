@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 
 import "./App.less";
 
-import { Docker } from "./components/Docker/Docker.tsx";
-import { Desktop } from "./components/Desktop/Desktop.tsx";
-import { AppRegistry, FileSystem as SysFS } from "@system";
-import { WindowManagerView } from "./components/WindowWrapper/WindowManagerView";
+import { AppRegistry, FileSystem as SysFS, AppManager } from "@system";
+import { WindowManagerView } from "./system/shell/WindowWrapper/WindowManagerView";
 import useForceUpdate from "use-force-update";
 
 function App() {
@@ -38,6 +36,11 @@ function App() {
                 });
 
                 forceUpdate();
+
+                // 启动系统级核心应用 UI
+                AppManager.ins.launchAppById('system.desktop');
+                AppManager.ins.launchAppById('system.dock');
+
             } catch (error) {
                 console.error('Failed to initialize apps:', error);
             }
@@ -47,11 +50,11 @@ function App() {
     }, [forceUpdate]);
 
 
-    return <div className="app">
-        <Desktop />
-        <WindowManagerView />
-        <Docker />
-    </div>;
+    return (
+        <div className="app">
+            <WindowManagerView />
+        </div>
+    );
 }
 
 export default App;

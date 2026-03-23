@@ -28,8 +28,8 @@ export class EditorApp extends VirtualApp {
         await Builder.ins.build([`${this.homeDir}/main.ts`], sys.fs);
     }
 
-    openCodeWindow(sys: SystemContext) {
-        const codeWindow = sys.window.create("", {
+    async openCodeWindow(sys: SystemContext) {
+        const codeWindow = sys.window.create({
             title: this.config.name,
             icon: this.config.icon,
             x: this.config.defaultWindow.x || 25,
@@ -38,7 +38,8 @@ export class EditorApp extends VirtualApp {
             height: this.config.defaultWindow.height,
         });
 
-        this.editorRoot = createRoot(codeWindow.content);
+        const container = await codeWindow.whenReady();
+        this.editorRoot = createRoot(container);
         this.editorRoot.render(
             React.createElement(EditorWorkspaceContext.Provider, { value: this.workspace }, 
                 React.createElement(Editor, { window: codeWindow })
@@ -46,13 +47,16 @@ export class EditorApp extends VirtualApp {
         );
     }
 
-    openRenderer(sys: SystemContext) {
+    async openRenderer(sys: SystemContext) {
         this.iframe = document.createElement("iframe");
-        const iframeWindow = sys.window.create(this.iframe, {
+        const iframeWindow = sys.window.create({
             title: "Render", icon: d3,
             x: 75, y: 100,
             width: 900, height: 812,
         });
+
+        const container = await iframeWindow.whenReady();
+        container.appendChild(this.iframe);
 
         this.iframe.srcdoc = template;
         window.addEventListener('message', this.handleMessage);

@@ -24,8 +24,8 @@ export class WeChatApp extends VirtualApp {
         this.openWindow(sys);
     }
 
-    openWindow(sys: SystemContext) {
-        const window = sys.window.create("", {
+    async openWindow(sys: SystemContext) {
+        const window = sys.window.create({
             title: config.name, 
             icon: config.icon,
             x: config.defaultWindow.x || 100, 
@@ -34,7 +34,8 @@ export class WeChatApp extends VirtualApp {
             height: config.defaultWindow.height,
         });
 
-        this.root = createRoot(window.content);
+        const container = await window.whenReady();
+        this.root = createRoot(container);
         this.root.render(React.createElement(WeChat));
     }
 

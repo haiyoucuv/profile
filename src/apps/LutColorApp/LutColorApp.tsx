@@ -12,21 +12,18 @@ export class LutColorApp extends VirtualApp {
 
     private appRoot: Root | null = null;
 
-    launch(sys: SystemContext) {
-        this.openMainWindow(sys);
-    }
-
-    private openMainWindow(sys: SystemContext) {
-        const window = sys.window.create("", {
+    async launch(sys: SystemContext) {
+        const window = sys.window.create({
             title: config.name,
             icon: config.icon,
             x: config.defaultWindow.x || 100,
-            y: config.defaultWindow.y || 50,
+            y: config.defaultWindow.y || 100,
             width: config.defaultWindow.width,
             height: config.defaultWindow.height,
         });
 
-        this.appRoot = createRoot(window.content);
+        const container = await window.whenReady();
+        this.appRoot = createRoot(container);
         this.appRoot.render(React.createElement(LutColor));
     }
 

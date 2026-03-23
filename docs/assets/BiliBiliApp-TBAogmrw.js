@@ -1,1 +1,0 @@
-import{d as e,f as t}from"./index-BvyTisrJ.js";var n=class extends t{static icon=e.icon;static name=e.name;static id=e.id;launch(e){window.open(`https://space.bilibili.com/43669167`,`_blank`),e.exit()}};export{n as BiliBiliApp};

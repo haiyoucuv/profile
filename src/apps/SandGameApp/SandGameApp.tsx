@@ -21,21 +21,18 @@ export class SandGameApp extends VirtualApp {
 
     root: Root = null;
 
-    launch(sys: SystemContext) {
-        this.openWindow(sys);
-    }
-
-    openWindow(sys: SystemContext) {
-        const window = sys.window.create("", {
+    async launch(sys: SystemContext) {
+        const window = sys.window.create({
             title: config.name, 
             icon: config.icon,
-            x: config.defaultWindow.x || 150, 
-            y: config.defaultWindow.y || 150,
+            x: config.defaultWindow.x || 100, 
+            y: config.defaultWindow.y || 100,
             width: config.defaultWindow.width, 
             height: config.defaultWindow.height,
         });
-
-        this.root = createRoot(window.content);
+        
+        const container = await window.whenReady();
+        this.root = createRoot(container);
         this.root.render(React.createElement(SandGame));
     }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { VirtualApp, SystemContext, Window } from "@system";
+import { VirtualApp, SystemContext, SystemWindow } from "@system";
 import { createRoot, Root } from "react-dom/client";
 import { ListBox, ListBoxItem, GridList, GridListItem, Button, Text } from 'react-aria-components';
 import type { Selection, Key } from 'react-aria-components';
@@ -14,26 +14,29 @@ const SIDEBAR_ITEMS = [
 ];
 
 export class FinderApp extends VirtualApp {
-    private appRoot: Root | null = null;
+    private root: Root | null = null;
 
-    launch(sys: SystemContext) {
-        const win = sys.window.create("", {
+    async launch(sys: SystemContext) {
+        const win = sys.window.create({
             title: this.config.name,
             icon: this.config.icon,
-            width: 800,
-            height: 500,
+            x: this.config.defaultWindow.x || 100,
+            y: this.config.defaultWindow.y || 100,
+            width: this.config.defaultWindow.width,
+            height: this.config.defaultWindow.height,
         });
 
-        this.appRoot = createRoot(win.content);
-        this.appRoot.render(<FinderUI sys={sys} win={win} />);
+        const container = await win.whenReady();
+        this.root = createRoot(container);
+        this.root.render(<FinderUI sys={sys} win={win} />);
     }
 
     onExit() {
-        this.appRoot?.unmount();
+        this.root?.unmount();
     }
 }
 
-const FinderUI: React.FC<{ sys: SystemContext; win: Window }> = ({ sys, win }) => {
+const FinderUI: React.FC<{ sys: SystemContext; win: SystemWindow }> = ({ sys, win }) => {
     const [currentPath, setCurrentPath] = useState("/");
     const [files, setFiles] = useState<{ name: string; isDir: boolean; size: number }[]>([]);
     const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set<Key>());
