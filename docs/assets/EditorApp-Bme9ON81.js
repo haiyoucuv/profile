@@ -1,5 +1,5 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./cssMode-bjVstD6w.js","./lspLanguageFeatures-BAfq1ikQ.js","./editor.api2-SjOn-kZO.js","./chunk-DECur_0Z.js","./editor-CWI9TnMM.css","./workers-BSAOLak7.js","./htmlMode-CYhe96Bh.js","./jsonMode-BJl-hhCU.js","./freemarker2-O98eihL9.js","./handlebars-CedOVtB6.js","./html-D8qUINp1.js","./javascript-BrQ4NwDL.js","./typescript-CFpAkoUR.js","./liquid-7_RhWSPP.js","./mdx-DIo-gXm4.js","./python-BzqFd93L.js","./razor-C0Y5YRy6.js","./xml-CYIaI6jB.js","./yaml-Ki9FYBhW.js"])))=>i.map(i=>d[i]);
-import{n as e,r as t,t as n}from"./chunk-DECur_0Z.js";import{i as r,n as i,t as a}from"./jsx-runtime-C2LdW6aR.js";import{A as o,B as s,C as c,D as l,E as u,F as d,G as f,H as p,I as m,J as h,K as g,L as _,M as v,N as y,O as b,P as ee,R as te,S as x,T as ne,U as S,V as re,W as C,X as ie,Y as ae,Z as w,_ as oe,a as se,b as ce,c as le,d as ue,f as T,g as de,h as E,j as D,k as fe,l as pe,m as O,o as me,q as k,s as he,u as ge,v as A,w as j,x as M,y as _e,z as N}from"./GridList-CjWaot0e.js";import{d as ve,f as P,l as F,p as ye,r as I}from"./index-DPm_JGT4.js";import{a as be,c as xe,i as L,l as Se,n as Ce,r as we,s as Te,t as Ee,u as R}from"./editor.api2-SjOn-kZO.js";import"./workers-BSAOLak7.js";import{a as De,i as Oe,n as ke,o as Ae,r as je,s as Me,t as Ne}from"./monaco.contribution-3PaP9IcD.js";var Pe=i(),Fe=e({default:()=>Ie}),Ie=`/**
+import{n as e,r as t,t as n}from"./chunk-DECur_0Z.js";import{i as r,n as i,t as a}from"./jsx-runtime-C2LdW6aR.js";import{A as o,B as s,C as c,D as l,E as u,F as d,G as f,H as p,I as m,J as h,K as g,L as _,M as v,N as y,O as b,P as ee,R as te,S as x,T as ne,U as S,V as re,W as C,X as ie,Y as ae,Z as w,_ as oe,a as se,b as ce,c as le,d as ue,f as T,g as de,h as E,j as D,k as fe,l as pe,m as O,o as me,q as k,s as he,u as ge,v as A,w as j,x as M,y as _e,z as ve}from"./GridList-CjWaot0e.js";import{f as ye,l as N,m as P,p as be,r as F}from"./index-DntmRHUF.js";import{a as xe,c as Se,i as I,l as Ce,n as we,r as Te,s as Ee,t as De,u as L}from"./editor.api2-SjOn-kZO.js";import"./workers-BSAOLak7.js";import{a as Oe,i as ke,n as Ae,o as je,r as Me,s as Ne,t as Pe}from"./monaco.contribution-1ykcsFwF.js";var Fe=i(),Ie=e({default:()=>Le}),Le=`/**
  * These are types for things that are present in the React \`canary\` release channel.
  *
  * To load the types declared here in an actual project, there are three ways. The easiest one,
@@ -128,11 +128,11 @@ declare module "." {
         submitter: HTMLElement | null;
     }
 }
-`,Le=e({default:()=>Re}),Re=`// Not meant to be used directly
+`,Re=e({default:()=>ze}),ze=`// Not meant to be used directly
 // Omitting all exports so that they don't appear in IDE autocomplete.
 
 export {};
-`,ze=e({default:()=>Be}),Be=`/**
+`,Be=e({default:()=>Ve}),Ve=`/**
  * These are types for things that are present in the \`experimental\` builds of React but not yet
  * on a stable build.
  *
@@ -316,7 +316,7 @@ declare module "." {
         optimisticKey: typeof optimisticKey;
     }
 }
-`,Ve=e({default:()=>He}),He=`/*
+`,He=e({default:()=>Ue}),Ue=`/*
 React projects that don't include the DOM library need these interfaces to compile.
 React Native applications use React, but there is no DOM available. The JavaScript runtime
 is ES6/ES2015 only. These definitions allow such projects to compile with only \`--lib ES6\`.
@@ -482,7 +482,7 @@ interface TrustedHTML {}
 interface Blob {}
 interface MediaStream {}
 interface MediaSource {}
-`,Ue=e({default:()=>We}),We=`// NOTE: Users of the \`experimental\` builds of React should add a reference
+`,We=e({default:()=>Ge}),Ge=`// NOTE: Users of the \`experimental\` builds of React should add a reference
 // to 'react/experimental' in their project. See experimental.d.ts's top comment
 // for reference and documentation on how exactly to do it.
 
@@ -4852,7 +4852,7 @@ type Defaultize<P, D> = P extends any ? string extends keyof P ? P
 
 type ReactManagedAttributes<C, P> = C extends { defaultProps: infer D } ? Defaultize<P, D>
     : P;
-`,Ge=e({default:()=>Ke}),Ke=`import * as React from "./";
+`,Ke=e({default:()=>qe}),qe=`import * as React from "./";
 export { Fragment } from "./";
 
 export namespace JSX {
@@ -4897,7 +4897,7 @@ export function jsxDEV(
     source?: JSXSource,
     self?: unknown,
 ): React.ReactElement;
-`,qe=e({default:()=>Je}),Je=`import * as React from "./";
+`,Je=e({default:()=>Ye}),Ye=`import * as React from "./";
 export { Fragment } from "./";
 
 export namespace JSX {
@@ -4933,7 +4933,7 @@ export function jsxs(
     props: unknown,
     key?: React.Key,
 ): React.ReactElement;
-`,Ye=e({default:()=>Xe}),Xe=`{
+`,Xe=e({default:()=>Ze}),Ze=`{
     "name": "@types/react",
     "version": "19.2.14",
     "description": "TypeScript definitions for react",
@@ -5142,7 +5142,7 @@ export function jsxs(
     "peerDependencies": {},
     "typesPublisherContentHash": "daae8d23e06b3d45da3803abb3f0bad661cffb4c40282d6886d8dfde7d5eea01",
     "typeScriptVersion": "5.2"
-}`,Ze=e({default:()=>Qe}),Qe=`/**
+}`,Qe=e({default:()=>$e}),$e=`/**
  * These are types for things that are present in the React \`canary\` release channel.
  *
  * To load the types declared here in an actual project, there are three ways. The easiest one,
@@ -5271,7 +5271,7 @@ declare module "." {
         submitter: HTMLElement | null;
     }
 }
-`,$e=e({default:()=>et}),et=`/**
+`,et=e({default:()=>tt}),tt=`/**
  * These are types for things that are present in the \`experimental\` builds of React but not yet
  * on a stable build.
  *
@@ -5455,7 +5455,7 @@ declare module "." {
         optimisticKey: typeof optimisticKey;
     }
 }
-`,tt=e({default:()=>nt}),nt=`/*
+`,nt=e({default:()=>rt}),rt=`/*
 React projects that don't include the DOM library need these interfaces to compile.
 React Native applications use React, but there is no DOM available. The JavaScript runtime
 is ES6/ES2015 only. These definitions allow such projects to compile with only \`--lib ES6\`.
@@ -5621,7 +5621,7 @@ interface TrustedHTML {}
 interface Blob {}
 interface MediaStream {}
 interface MediaSource {}
-`,rt=e({default:()=>it}),it=`// NOTE: Users of the \`experimental\` builds of React should add a reference
+`,it=e({default:()=>at}),at=`// NOTE: Users of the \`experimental\` builds of React should add a reference
 // to 'react/experimental' in their project. See experimental.d.ts's top comment
 // for reference and documentation on how exactly to do it.
 
@@ -9978,7 +9978,7 @@ type Defaultize<P, D> = P extends any ? string extends keyof P ? P
 
 type ReactManagedAttributes<C, P> = C extends { defaultProps: infer D } ? Defaultize<P, D>
     : P;
-`,at=e({default:()=>ot}),ot=`import * as React from "./";
+`,ot=e({default:()=>st}),st=`import * as React from "./";
 export { Fragment } from "./";
 
 export namespace JSX {
@@ -10022,7 +10022,7 @@ export function jsxDEV(
     source?: JSXSource,
     self?: unknown,
 ): React.ReactElement;
-`,st=e({default:()=>ct}),ct=`import * as React from "./";
+`,ct=e({default:()=>lt}),lt=`import * as React from "./";
 export { Fragment } from "./";
 
 export namespace JSX {
@@ -10057,7 +10057,7 @@ export function jsxs(
     props: unknown,
     key?: React.Key,
 ): React.ReactElement;
-`,lt=e({default:()=>ut}),ut=`/* eslint-disable @definitelytyped/no-self-import -- self-imports in module augmentations aren't self-imports */
+`,ut=e({default:()=>dt}),dt=`/* eslint-disable @definitelytyped/no-self-import -- self-imports in module augmentations aren't self-imports */
 /* eslint-disable @definitelytyped/no-declare-current-package -- The module augmentations are optional */
 /**
  * These are types for things that are present in the upcoming React 18 release.
@@ -10128,7 +10128,7 @@ declare module "react" {
         scrollIntoView(alignToTop?: boolean): void;
     }
 }
-`,dt=e({default:()=>ft}),ft=`/**
+`,ft=e({default:()=>pt}),pt=`/**
  * WARNING: This entrypoint is only available starting with \`react-dom@18.0.0-rc.1\`
  */
 
@@ -10233,7 +10233,7 @@ export function hydrateRoot(
     initialChildren: React.ReactNode,
     options?: HydrationOptions,
 ): Root;
-`,pt=e({default:()=>mt}),mt=`/**
+`,mt=e({default:()=>ht}),ht=`/**
  * These are types for things that are present in the \`experimental\` builds of React but not yet
  * on a stable build.
  *
@@ -10287,7 +10287,7 @@ declare module "./client" {
         onDefaultTransitionIndicator?: (() => void | TransitionIndicatorCleanup) | undefined;
     }
 }
-`,ht=e({default:()=>gt}),gt=`// NOTE: Users of the \`experimental\` builds of React should add a reference
+`,gt=e({default:()=>_t}),_t=`// NOTE: Users of the \`experimental\` builds of React should add a reference
 // to 'react-dom/experimental' in their project. See experimental.d.ts's top comment
 // for reference and documentation on how exactly to do it.
 
@@ -10420,7 +10420,7 @@ export interface PreinitModuleOptions {
 export function preinitModule(href: string, options?: PreinitModuleOptions): void;
 
 export function requestFormReset(form: HTMLFormElement): void;
-`,_t=e({default:()=>vt}),vt=`{
+`,vt=e({default:()=>yt}),yt=`{
     "name": "@types/react-dom",
     "version": "19.2.3",
     "description": "TypeScript definitions for react-dom",
@@ -10547,9 +10547,9 @@ export function requestFormReset(form: HTMLFormElement): void;
     },
     "typesPublisherContentHash": "6f16aac4f50b7ebe3201fdac53a58874d2899d6108894538ade2d61fbb99f8c5",
     "typeScriptVersion": "5.2"
-}`,yt=e({default:()=>bt}),bt=`export { renderToReadableStream, renderToStaticMarkup, renderToString } from "./server";
-`,xt=e({default:()=>St}),St=`export { renderToReadableStream, renderToStaticMarkup, renderToString } from "./server";
-`,Ct=e({default:()=>wt}),wt=`// forward declarations
+}`,bt=e({default:()=>xt}),xt=`export { renderToReadableStream, renderToStaticMarkup, renderToString } from "./server";
+`,St=e({default:()=>Ct}),Ct=`export { renderToReadableStream, renderToStaticMarkup, renderToString } from "./server";
+`,wt=e({default:()=>Tt}),Tt=`// forward declarations
 declare global {
     namespace NodeJS {
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -10732,8 +10732,8 @@ export function resumeToPipeableStream(
 export const version: string;
 
 export as namespace ReactDOMServer;
-`,Tt=e({default:()=>Et}),Et=`export { renderToReadableStream, renderToStaticMarkup, renderToString, resume } from "./server";
-`,Dt=e({default:()=>Ot}),Ot=`export {
+`,Et=e({default:()=>Dt}),Dt=`export { renderToReadableStream, renderToStaticMarkup, renderToString, resume } from "./server";
+`,Ot=e({default:()=>kt}),kt=`export {
     renderToPipeableStream,
     renderToReadableStream,
     renderToStaticMarkup,
@@ -10741,8 +10741,8 @@ export as namespace ReactDOMServer;
     resume,
     resumeToPipeableStream,
 } from "./server";
-`,kt=e({default:()=>At}),At=`export { prerender, version } from "./static";
-`,jt=e({default:()=>Mt}),Mt=`// forward declarations
+`,At=e({default:()=>jt}),jt=`export { prerender, version } from "./static";
+`,Mt=e({default:()=>Nt}),Nt=`// forward declarations
 declare global {
     namespace NodeJS {
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -10895,32 +10895,32 @@ export function resumeAndPrerenderToNodeStream(
 ): Promise<PrerenderToNodeStreamResult>;
 
 export const version: string;
-`,Nt=e({default:()=>Pt}),Pt=`export { prerender, resumeAndPrerender, version } from "./static";
-`,Ft=e({default:()=>It}),It=`export {
+`,Pt=e({default:()=>Ft}),Ft=`export { prerender, resumeAndPrerender, version } from "./static";
+`,It=e({default:()=>Lt}),Lt=`export {
     prerender,
     prerenderToNodeStream,
     resumeAndPrerender,
     resumeAndPrerenderToNodeStream,
     version,
 } from "./static";
-`,Lt=e({default:()=>Rt}),Rt=`export {};
+`,Rt=e({default:()=>zt}),zt=`export {};
 
 export {
     /**
      * @deprecated Import \`act\` from \`react\` instead.
      */ act,
 } from "react";
-`,zt=e({default:()=>Bt}),Bt=`export * from "../src/Three.Core.js";
-`,Vt=e({default:()=>Ht}),Ht=`export * from "../src/Three.Core.js";
-`,Ut=e({default:()=>Wt}),Wt=`export * from "../src/Three.js";
-`,Gt=e({default:()=>Kt}),Kt=`export * from "../src/Three.js";
-`,qt=e({default:()=>Jt}),Jt=`export * from "../src/Three.TSL.js";
-`,Yt=e({default:()=>Xt}),Xt=`export * from "../src/Three.TSL.js";
-`,Zt=e({default:()=>Qt}),Qt=`export * from "../src/Three.WebGPU.js";
-`,$t=e({default:()=>en}),en=`export * from "../src/Three.WebGPU.js";
-`,tn=e({default:()=>nn}),nn=`export * from "../src/Three.WebGPU.Nodes.js";
-`,rn=e({default:()=>an}),an=`export * from "../src/Three.WebGPU.Nodes.js";
-`,on=e({default:()=>sn}),sn=`export * from "./animation/AnimationClipCreator.js";
+`,Bt=e({default:()=>Vt}),Vt=`export * from "../src/Three.Core.js";
+`,Ht=e({default:()=>Ut}),Ut=`export * from "../src/Three.Core.js";
+`,Wt=e({default:()=>Gt}),Gt=`export * from "../src/Three.js";
+`,Kt=e({default:()=>qt}),qt=`export * from "../src/Three.js";
+`,Jt=e({default:()=>Yt}),Yt=`export * from "../src/Three.TSL.js";
+`,Xt=e({default:()=>Zt}),Zt=`export * from "../src/Three.TSL.js";
+`,Qt=e({default:()=>$t}),$t=`export * from "../src/Three.WebGPU.js";
+`,en=e({default:()=>tn}),tn=`export * from "../src/Three.WebGPU.js";
+`,nn=e({default:()=>rn}),rn=`export * from "../src/Three.WebGPU.Nodes.js";
+`,an=e({default:()=>on}),on=`export * from "../src/Three.WebGPU.Nodes.js";
+`,sn=e({default:()=>cn}),cn=`export * from "./animation/AnimationClipCreator.js";
 export * from "./animation/CCDIKSolver.js";
 
 export { default as WebGL } from "./capabilities/WebGL.js";
@@ -11202,7 +11202,7 @@ export * from "./webxr/XRHandMeshModel.js";
 export * from "./webxr/XRHandModelFactory.js";
 export * from "./webxr/XRHandPrimitiveModel.js";
 export * from "./webxr/XRPlanes.js";
-`,cn=e({default:()=>ln}),ln=`import { AnimationClip, Vector3 } from "three";
+`,ln=e({default:()=>un}),un=`import { AnimationClip, Vector3 } from "three";
 
 export interface AnimationClipCreator {
     CreateRotationAnimation(period: number, axis: string): AnimationClip;
@@ -11214,7 +11214,7 @@ export interface AnimationClipCreator {
 }
 
 export const AnimationClipCreator: AnimationClipCreator;
-`,un=e({default:()=>dn}),dn=`import { LineBasicMaterial, MeshBasicMaterial, Object3D, SkinnedMesh, SphereGeometry, Vector3 } from "three";
+`,dn=e({default:()=>fn}),fn=`import { LineBasicMaterial, MeshBasicMaterial, Object3D, SkinnedMesh, SphereGeometry, Vector3 } from "three";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IK {
@@ -11258,20 +11258,20 @@ export class CCDIKHelper extends Object3D {
 
     dispose(): void;
 }
-`,fn=e({default:()=>pn}),pn=`export default class WebGL {
+`,pn=e({default:()=>mn}),mn=`export default class WebGL {
     static isWebGL2Available(): boolean;
     static isColorSpaceAvailable(colorSpace: PredefinedColorSpace): boolean;
     static getWebGL2ErrorMessage(): HTMLElement;
     static getErrorMessage(version: number): HTMLElement;
 }
-`,mn=e({default:()=>hn}),hn=`// tslint:disable-next-line:no-unnecessary-class
+`,hn=e({default:()=>gn}),gn=`// tslint:disable-next-line:no-unnecessary-class
 
 export default class WebGPU {
     static isAvailable(): boolean;
     static getStaticAdapter(): unknown;
     static getErrorMessage(): HTMLElement;
 }
-`,gn=e({default:()=>_n}),_n=`import { Camera, Controls, Raycaster, Scene } from "three";
+`,_n=e({default:()=>vn}),vn=`import { Camera, Controls, Raycaster, Scene } from "three";
 
 export type ArcballControlsMouseActionOperation = "PAN" | "ROTATE" | "ZOOM" | "FOV";
 
@@ -11479,7 +11479,7 @@ declare class ArcballControls extends Controls<ArcballControlsEventMap> {
 }
 
 export { ArcballControls };
-`,vn=e({default:()=>yn}),yn=`import { Camera, Controls, MOUSE, Object3D, Raycaster, TOUCH } from "three";
+`,yn=e({default:()=>bn}),bn=`import { Camera, Controls, MOUSE, Object3D, Raycaster, TOUCH } from "three";
 
 export interface DragControlsEventMap {
     /**
@@ -11560,7 +11560,7 @@ declare class DragControls extends Controls<DragControlsEventMap> {
 }
 
 export { DragControls };
-`,bn=e({default:()=>xn}),xn=`import { Camera, Controls, Vector3 } from "three";
+`,xn=e({default:()=>Sn}),Sn=`import { Camera, Controls, Vector3 } from "three";
 
 /**
  * This class is an alternative implementation of {@link FlyControls}.
@@ -11661,7 +11661,7 @@ declare class FirstPersonControls extends Controls<{}> {
 }
 
 export { FirstPersonControls };
-`,Sn=e({default:()=>Cn}),Cn=`import { Camera, Controls } from "three";
+`,Cn=e({default:()=>wn}),wn=`import { Camera, Controls } from "three";
 
 export interface FlyControlsEventMap {
     /**
@@ -11705,7 +11705,7 @@ declare class FlyControls extends Controls<FlyControlsEventMap> {
 }
 
 export { FlyControls };
-`,wn=e({default:()=>Tn}),Tn=`import { Camera } from "three";
+`,Tn=e({default:()=>En}),En=`import { Camera } from "three";
 import { OrbitControls } from "./OrbitControls.js";
 
 /**
@@ -11726,7 +11726,7 @@ import { OrbitControls } from "./OrbitControls.js";
 export class MapControls extends OrbitControls {
     constructor(object: Camera, domElement?: HTMLElement);
 }
-`,En=e({default:()=>Dn}),Dn=`import { Camera, Controls, MOUSE, TOUCH, Vector3 } from "three";
+`,Dn=e({default:()=>On}),On=`import { Camera, Controls, MOUSE, TOUCH, Vector3 } from "three";
 
 export interface OrbitControlsEventMap {
     /**
@@ -12021,7 +12021,7 @@ declare class OrbitControls extends Controls<OrbitControlsEventMap> {
 }
 
 export { OrbitControls };
-`,On=e({default:()=>kn}),kn=`import { Camera, Controls, Vector3 } from "three";
+`,kn=e({default:()=>An}),An=`import { Camera, Controls, Vector3 } from "three";
 
 export interface PointerLockControlsEventMap {
     /**
@@ -12105,7 +12105,7 @@ declare class PointerLockControls extends Controls<PointerLockControlsEventMap> 
 }
 
 export { PointerLockControls };
-`,An=e({default:()=>jn}),jn=`import { Camera, Controls, MOUSE, Vector3 } from "three";
+`,jn=e({default:()=>Mn}),Mn=`import { Camera, Controls, MOUSE, Vector3 } from "three";
 
 export interface TrackballControlsEventMap {
     /**
@@ -12247,7 +12247,7 @@ declare class TrackballControls extends Controls<TrackballControlsEventMap> {
 }
 
 export { TrackballControls };
-`,Mn=e({default:()=>Nn}),Nn=`import { Camera, ColorRepresentation, Controls, Mesh, Object3D, Quaternion, Raycaster, Vector3 } from "three";
+`,Nn=e({default:()=>Pn}),Pn=`import { Camera, ColorRepresentation, Controls, Mesh, Object3D, Quaternion, Raycaster, Vector3 } from "three";
 
 export type TransformControlsMode = "translate" | "rotate" | "scale";
 
@@ -12555,7 +12555,7 @@ declare class TransformControlsPlane extends Mesh {
 }
 
 export { TransformControls, TransformControlsGizmo, TransformControlsPlane };
-`,Pn=e({default:()=>Fn}),Fn=`import { Camera, DirectionalLight, Material, Object3D, Vector2, Vector3 } from "three";
+`,Fn=e({default:()=>In}),In=`import { Camera, DirectionalLight, Material, Object3D, Vector2, Vector3 } from "three";
 import { CSMFrustum } from "./CSMFrustum.js";
 
 export type CSMMode = "uniform" | "logarithmic" | "practical" | "custom";
@@ -12610,7 +12610,7 @@ export class CSM {
     remove(): void;
     dispose(): void;
 }
-`,In=e({default:()=>Ln}),Ln=`import { Matrix4, Vector3 } from "three";
+`,Ln=e({default:()=>Rn}),Rn=`import { Matrix4, Vector3 } from "three";
 
 export interface CSMFrustumVerticies {
     near: Vector3[];
@@ -12635,7 +12635,7 @@ declare class CSMFrustum {
 }
 
 export { CSMFrustum };
-`,Rn=e({default:()=>zn}),zn=`import {
+`,zn=e({default:()=>Bn}),Bn=`import {
     Box3Helper,
     BufferGeometry,
     Group,
@@ -12663,11 +12663,11 @@ export class CSMHelper<TCSM extends CSM | CSMShadowNode = CSM | CSMShadowNode> e
     update(): void;
     dispose(): void;
 }
-`,Bn=e({default:()=>Vn}),Vn=`export interface CSMShader {
+`,Vn=e({default:()=>Hn}),Hn=`export interface CSMShader {
     lights_fragment_begin: string;
     lights_pars_begin: string;
 }
-`,Hn=e({default:()=>Un}),Un=`import { Camera, DirectionalLightShadow, Light, Object3D, ShadowBaseNode } from "three/webgpu";
+`,Un=e({default:()=>Wn}),Wn=`import { Camera, DirectionalLightShadow, Light, Object3D, ShadowBaseNode } from "three/webgpu";
 import { CSMFrustum } from "./CSMFrustum.js";
 
 export type CSMShadowNodeMode = "uniform" | "logarithmic" | "practical" | "custom";
@@ -12711,7 +12711,7 @@ declare class CSMShadowNode extends ShadowBaseNode {
 }
 
 export { CSMShadowNode };
-`,Wn=e({default:()=>Gn}),Gn=`import { Curve, Vector3 } from "three";
+`,Gn=e({default:()=>Kn}),Kn=`import { Curve, Vector3 } from "three";
 
 export class GrannyKnot extends Curve<Vector3> {
     constructor();
@@ -12779,7 +12779,7 @@ export class DecoratedTorusKnot5c extends Curve<Vector3> {
     constructor(scale?: number);
     scale: number;
 }
-`,Kn=e({default:()=>qn}),qn=`import { Curve, CurveJSON, Vector2, Vector3, Vector4 } from "three";
+`,qn=e({default:()=>Jn}),Jn=`import { Curve, CurveJSON, Vector2, Vector3, Vector4 } from "three";
 
 export interface NURBSCurveJSON extends CurveJSON {
     degree: number;
@@ -12807,7 +12807,7 @@ export class NURBSCurve extends Curve<Vector3> {
     toJSON(): NURBSCurveJSON;
     fromJSON(json: NURBSCurveJSON): this;
 }
-`,Jn=e({default:()=>Yn}),Yn=`import { Vector2, Vector3, Vector4 } from "three";
+`,Yn=e({default:()=>Xn}),Xn=`import { Vector2, Vector3, Vector4 } from "three";
 
 export class NURBSSurface {
     constructor(
@@ -12820,7 +12820,7 @@ export class NURBSSurface {
 
     getPoint(t1: number, t2: number, target: Vector3): void;
 }
-`,Xn=e({default:()=>Zn}),Zn=`import { Vector3, Vector4 } from "three";
+`,Zn=e({default:()=>Qn}),Qn=`import { Vector3, Vector4 } from "three";
 
 /**
  * Finds knot vector span.
@@ -12966,7 +12966,7 @@ export function calcVolumePoint(
     w: number,
     target: Vector3,
 ): Vector3;
-`,Qn=e({default:()=>$n}),$n=`import { Vector3, Vector4 } from "three";
+`,$n=e({default:()=>er}),er=`import { Vector3, Vector4 } from "three";
 
 export class NURBSVolume {
     degree1: number;
@@ -12989,7 +12989,7 @@ export class NURBSVolume {
 
     getPoint(t1: number, t2: number, t3: number, target: Vector3): void;
 }
-`,er=e({default:()=>tr}),tr=`import { Camera, Matrix3, Scene, WebGLRenderer } from "three";
+`,tr=e({default:()=>nr}),nr=`import { Camera, Matrix3, Scene, WebGLRenderer } from "three";
 
 declare class AnaglyphEffect {
     colorMatrixLeft: Matrix3;
@@ -13010,7 +13010,7 @@ declare class AnaglyphEffect {
 }
 
 export { AnaglyphEffect };
-`,nr=e({default:()=>rr}),rr=`import { Camera, Scene, WebGLRenderer } from "three";
+`,rr=e({default:()=>ir}),ir=`import { Camera, Scene, WebGLRenderer } from "three";
 
 export interface AsciiEffectOptions {
     resolution?: number;
@@ -13028,7 +13028,7 @@ export class AsciiEffect {
     render(scene: Scene, camera: Camera): void;
     setSize(width: number, height: number): void;
 }
-`,ir=e({default:()=>ar}),ar=`import { Camera, Scene, Vector2, Vector4, WebGLRenderer, WebGLRenderTarget, WebGLShadowMap } from "three";
+`,ar=e({default:()=>or}),or=`import { Camera, Scene, Vector2, Vector4, WebGLRenderer, WebGLRenderTarget, WebGLShadowMap } from "three";
 
 export interface OutlineEffectParameters {
     defaultThickness?: number | undefined;
@@ -13056,7 +13056,7 @@ export class OutlineEffect {
     setSize(width: number, height: number, updateStyle?: boolean): void;
     setViewport(x: Vector4 | number, y?: number, width?: number, height?: number): void;
 }
-`,or=e({default:()=>sr}),sr=`import { Camera, Scene, WebGLRenderer } from "three";
+`,sr=e({default:()=>cr}),cr=`import { Camera, Scene, WebGLRenderer } from "three";
 
 declare class ParallaxBarrierEffect {
     setSize: (width: number, height: number) => void;
@@ -13067,7 +13067,7 @@ declare class ParallaxBarrierEffect {
 }
 
 export { ParallaxBarrierEffect };
-`,cr=e({default:()=>lr}),lr=`import { Camera, Scene, WebGLRenderer } from "three";
+`,lr=e({default:()=>ur}),ur=`import { Camera, Scene, WebGLRenderer } from "three";
 
 export class StereoEffect {
     constructor(renderer: WebGLRenderer);
@@ -13076,7 +13076,7 @@ export class StereoEffect {
     render(scene: Scene, camera: Camera): void;
     setSize(width: number, height: number): void;
 }
-`,ur=e({default:()=>dr}),dr=`import { ColorRepresentation, Scene } from "three";
+`,dr=e({default:()=>fr}),fr=`import { ColorRepresentation, Scene } from "three";
 
 declare class ColorEnvironment extends Scene {
     constructor(color?: ColorRepresentation);
@@ -13085,18 +13085,18 @@ declare class ColorEnvironment extends Scene {
 }
 
 export { ColorEnvironment };
-`,fr=e({default:()=>pr}),pr=`import { Scene } from "three";
+`,pr=e({default:()=>mr}),mr=`import { Scene } from "three";
 
 export class DebugEnvironment extends Scene {
     constructor();
 }
-`,mr=e({default:()=>hr}),hr=`import { Scene } from "three";
+`,hr=e({default:()=>gr}),gr=`import { Scene } from "three";
 
 export class RoomEnvironment extends Scene {
     constructor();
     dispose(): void;
 }
-`,gr=e({default:()=>_r}),_r=`import { Mesh, Points } from "three";
+`,_r=e({default:()=>vr}),vr=`import { Mesh, Points } from "three";
 
 export interface DRACOExporterOptions {
     decodeSpeed?: number;
@@ -13113,7 +13113,7 @@ export class DRACOExporter {
 
     parse(object: Mesh | Points, options?: DRACOExporterOptions): Int8Array<ArrayBuffer>;
 }
-`,vr=e({default:()=>yr}),yr=`/**
+`,yr=e({default:()=>br}),br=`/**
  * @author sciecode / https://github.com/sciecode
  *
  * EXR format references:
@@ -13140,7 +13140,7 @@ export class EXRExporter {
     ): Promise<Uint8Array<ArrayBuffer>>;
     parse(dataTexture: DataTexture, options?: EXRExporterParseOptions): Promise<Uint8Array<ArrayBuffer>>;
 }
-`,br=e({default:()=>xr}),xr=`import { AnimationClip, Material, Mesh, Object3D, Texture } from "three";
+`,xr=e({default:()=>Sr}),Sr=`import { AnimationClip, Material, Mesh, Object3D, Texture } from "three";
 
 export interface GLTFExporterOptions {
     /**
@@ -13296,21 +13296,21 @@ export interface GLTFExporterPlugin {
 
 export { GLTFExporter };
 export type { GLTFWriter };
-`,Sr=e({default:()=>Cr}),Cr=`import { Data3DTexture, DataTexture, WebGLRenderer, WebGLRenderTarget } from "three";
+`,Cr=e({default:()=>wr}),wr=`import { Data3DTexture, DataTexture, WebGLRenderer, WebGLRenderTarget } from "three";
 import { WebGPURenderer } from "three/webgpu";
 
 export class KTX2Exporter {
     parse(renderer: WebGLRenderer | WebGPURenderer, rtt?: WebGLRenderTarget): Promise<Uint8Array<ArrayBuffer>>;
     parse(texture: Data3DTexture | DataTexture): Promise<Uint8Array<ArrayBuffer>>;
 }
-`,wr=e({default:()=>Tr}),Tr=`import { Object3D } from "three";
+`,Tr=e({default:()=>Er}),Er=`import { Object3D } from "three";
 
 export class OBJExporter {
     constructor();
 
     parse(object: Object3D): string;
 }
-`,Er=e({default:()=>Dr}),Dr=`import { Object3D } from "three";
+`,Dr=e({default:()=>Or}),Or=`import { Object3D } from "three";
 
 export interface PLYExporterOptionsBase {
     excludeAttributes?: string[];
@@ -13340,7 +13340,7 @@ export class PLYExporter {
         options?: PLYExporterOptions,
     ): string | ArrayBuffer | null;
 }
-`,Or=e({default:()=>kr}),kr=`import { Object3D } from "three";
+`,kr=e({default:()=>Ar}),Ar=`import { Object3D } from "three";
 
 export interface STLExporterOptionsBinary {
     binary: true;
@@ -13361,7 +13361,7 @@ export class STLExporter {
     parse(scene: Object3D, options?: STLExporterOptionsString): string;
     parse(scene: Object3D, options?: STLExporterOptions): string | DataView<ArrayBuffer>;
 }
-`,Ar=e({default:()=>jr}),jr=`import { Object3D } from "three";
+`,jr=e({default:()=>Mr}),Mr=`import { Object3D } from "three";
 import * as WebGLTextureUtils from "../utils/WebGLTextureUtils.js";
 import * as WebGPUTextureUtils from "../utils/WebGPUTextureUtils.js";
 
@@ -13387,7 +13387,7 @@ export class USDZExporter {
 
     parseAsync(scene: Object3D, options?: USDZExporterOptions): Promise<Uint8Array<ArrayBuffer>>;
 }
-`,Mr=e({default:()=>Nr}),Nr=`import { BufferGeometry } from "three";
+`,Nr=e({default:()=>Pr}),Pr=`import { BufferGeometry } from "three";
 
 export class BoxLineGeometry extends BufferGeometry {
     constructor(
@@ -13399,12 +13399,12 @@ export class BoxLineGeometry extends BufferGeometry {
         depthSegments?: number,
     );
 }
-`,Pr=e({default:()=>Fr}),Fr=`import { BufferGeometry, Vector3 } from "three";
+`,Fr=e({default:()=>Ir}),Ir=`import { BufferGeometry, Vector3 } from "three";
 
 export class ConvexGeometry extends BufferGeometry {
     constructor(points?: Vector3[]);
 }
-`,Ir=e({default:()=>Lr}),Lr=`import { BufferGeometry, Euler, Mesh, Vector3 } from "three";
+`,Lr=e({default:()=>Rr}),Rr=`import { BufferGeometry, Euler, Mesh, Vector3 } from "three";
 
 declare class DecalGeometry extends BufferGeometry {
     constructor(mesh?: Mesh, position?: Vector3, orientation?: Euler, size?: Vector3);
@@ -13420,7 +13420,7 @@ declare class DecalVertex {
 }
 
 export { DecalGeometry, DecalVertex };
-`,Rr=e({default:()=>zr}),zr=`import { Vector3 } from "three";
+`,zr=e({default:()=>Br}),Br=`import { Vector3 } from "three";
 
 declare function klein(v: number, u: number, target: Vector3): void;
 declare function plane(u: number, v: number, target: Vector3): void;
@@ -13428,7 +13428,7 @@ declare function mobius(u: number, t: number, target: Vector3): void;
 declare function mobius3d(u: number, t: number, target: Vector3): void;
 
 export { klein, mobius, mobius3d, plane };
-`,Br=e({default:()=>Vr}),Vr=`import { BufferGeometry, Vector3 } from "three";
+`,Vr=e({default:()=>Hr}),Hr=`import { BufferGeometry, Vector3 } from "three";
 
 export class ParametricGeometry extends BufferGeometry {
     constructor(func?: (u: number, v: number, target: Vector3) => void, slices?: number, stacks?: number);
@@ -13446,12 +13446,12 @@ export class ParametricGeometry extends BufferGeometry {
 }
 
 export { ParametricGeometry as ParametricBufferGeometry };
-`,Hr=e({default:()=>Ur}),Ur=`import { BoxGeometry } from "three";
+`,Ur=e({default:()=>Wr}),Wr=`import { BoxGeometry } from "three";
 
 export class RoundedBoxGeometry extends BoxGeometry {
     constructor(width?: number, height?: number, depth?: number, segments?: number, radius?: number);
 }
-`,Wr=e({default:()=>Gr}),Gr=`import { BufferGeometry } from "three";
+`,Gr=e({default:()=>Kr}),Kr=`import { BufferGeometry } from "three";
 
 /**
  * TeapotGeometry tessellates the famous Utah teapot database by Martin Newell.
@@ -13488,7 +13488,7 @@ export class TeapotGeometry extends BufferGeometry {
         blinn?: boolean,
     );
 }
-`,Kr=e({default:()=>qr}),qr=`import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from "three";
+`,qr=e({default:()=>Jr}),Jr=`import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from "three";
 
 import { Font } from "../loaders/FontLoader.js";
 
@@ -13605,7 +13605,7 @@ export class TextGeometry extends ExtrudeGeometry {
 }
 
 export { TextGeometry as TextBufferGeometry };
-`,Jr=e({default:()=>Yr}),Yr=`import { Node, Renderer, StorageBufferNode } from "three/webgpu";
+`,Yr=e({default:()=>Xr}),Xr=`import { Node, Renderer, StorageBufferNode } from "three/webgpu";
 
 export const getBitonicFlipIndices: (index: Node, blockHeight: Node) => Node<"uvec2">;
 
@@ -13626,7 +13626,7 @@ export class BitonicSort<TNodeType> {
     computeStep(renderer: Renderer): Promise<void>;
     compute(renderer: Renderer): Promise<void>;
 }
-`,Xr=e({default:()=>Zr}),Zr=`import {
+`,Zr=e({default:()=>Qr}),Qr=`import {
     AnimationClip,
     BufferGeometry,
     ColorRepresentation,
@@ -13664,7 +13664,7 @@ declare class AnimationPathHelper extends Object3D {
 }
 
 export { AnimationPathHelper };
-`,Qr=e({default:()=>$r}),$r=`import { LightProbe, Mesh } from "three";
+`,$r=e({default:()=>ei}),ei=`import { LightProbe, Mesh } from "three";
 
 declare class LightProbeHelper extends Mesh {
     lightProbe: LightProbe;
@@ -13676,7 +13676,7 @@ declare class LightProbeHelper extends Mesh {
 }
 
 export { LightProbeHelper };
-`,ei=e({default:()=>ti}),ti=`import { LightProbe, Mesh } from "three";
+`,ti=e({default:()=>ni}),ni=`import { LightProbe, Mesh } from "three";
 
 declare class LightProbeHelper extends Mesh {
     lightProbe: LightProbe;
@@ -13688,7 +13688,7 @@ declare class LightProbeHelper extends Mesh {
 }
 
 export { LightProbeHelper };
-`,ni=e({default:()=>ri}),ri=`import { ColorRepresentation, LineSegments } from "three";
+`,ri=e({default:()=>ii}),ii=`import { ColorRepresentation, LineSegments } from "three";
 import { Octree } from "../math/Octree.js";
 
 export class OctreeHelper extends LineSegments {
@@ -13705,7 +13705,7 @@ export class OctreeHelper extends LineSegments {
     update(): void;
     dispose(): void;
 }
-`,ii=e({default:()=>ai}),ai=`import { Line, PositionalAudio } from "three";
+`,ai=e({default:()=>oi}),oi=`import { Line, PositionalAudio } from "three";
 
 export class PositionalAudioHelper extends Line {
     constructor(audio: PositionalAudio, range?: number, divisionsInnerAngle?: number, divisionsOuterAngle?: number);
@@ -13718,7 +13718,7 @@ export class PositionalAudioHelper extends Line {
     dispose(): void;
     update(): void;
 }
-`,oi=e({default:()=>si}),si=`import * as RAPIER from "@dimforge/rapier3d-compat";
+`,si=e({default:()=>ci}),ci=`import * as RAPIER from "@dimforge/rapier3d-compat";
 import { LineSegments } from "three";
 
 declare class RapierHelper extends LineSegments {
@@ -13731,7 +13731,7 @@ declare class RapierHelper extends LineSegments {
 }
 
 export { RapierHelper };
-`,ci=e({default:()=>li}),li=`import { ColorRepresentation, Line, RectAreaLight } from "three";
+`,li=e({default:()=>ui}),ui=`import { ColorRepresentation, Line, RectAreaLight } from "three";
 
 export class RectAreaLightHelper extends Line {
     constructor(light: RectAreaLight, color?: ColorRepresentation);
@@ -13741,7 +13741,7 @@ export class RectAreaLightHelper extends Line {
 
     dispose(): void;
 }
-`,ui=e({default:()=>di}),di=`import { BufferGeometry, Mesh, ShaderMaterial, Texture } from "three";
+`,di=e({default:()=>fi}),fi=`import { BufferGeometry, Mesh, ShaderMaterial, Texture } from "three";
 
 export class TextureHelper extends Mesh<BufferGeometry, ShaderMaterial> {
     texture: Texture;
@@ -13751,7 +13751,7 @@ export class TextureHelper extends Mesh<BufferGeometry, ShaderMaterial> {
 
     dispose(): void;
 }
-`,fi=e({default:()=>pi}),pi=`import { BufferGeometry, Mesh, NodeMaterial, Texture } from "three/webgpu";
+`,pi=e({default:()=>mi}),mi=`import { BufferGeometry, Mesh, NodeMaterial, Texture } from "three/webgpu";
 
 export class TextureHelper extends Mesh<BufferGeometry, NodeMaterial> {
     texture: Texture;
@@ -13761,7 +13761,7 @@ export class TextureHelper extends Mesh<BufferGeometry, NodeMaterial> {
 
     dispose(): void;
 }
-`,mi=e({default:()=>hi}),hi=`import { LineSegments, Object3D } from "three";
+`,hi=e({default:()=>gi}),gi=`import { LineSegments, Object3D } from "three";
 
 export class VertexNormalsHelper extends LineSegments {
     readonly isVertexNormalsHelper: true;
@@ -13775,7 +13775,7 @@ export class VertexNormalsHelper extends LineSegments {
 
     dispose(): void;
 }
-`,gi=e({default:()=>_i}),_i=`import { LineSegments, Object3D } from "three";
+`,_i=e({default:()=>vi}),vi=`import { LineSegments, Object3D } from "three";
 
 export class VertexTangentsHelper extends LineSegments {
     constructor(object: Object3D, size?: number, hex?: number);
@@ -13787,7 +13787,7 @@ export class VertexTangentsHelper extends LineSegments {
 
     dispose(): void;
 }
-`,vi=e({default:()=>yi}),yi=`import { Camera, Object3D, Vector3, WebGLRenderer } from "three";
+`,yi=e({default:()=>bi}),bi=`import { Camera, Object3D, Vector3, WebGLRenderer } from "three";
 
 declare class ViewHelper extends Object3D {
     readonly isViewHelper: true;
@@ -13807,7 +13807,7 @@ declare class ViewHelper extends Object3D {
 }
 
 export { ViewHelper };
-`,bi=e({default:()=>xi}),xi=`import { RendererInspector } from "./RendererInspector.js";
+`,xi=e({default:()=>Si}),Si=`import { RendererInspector } from "./RendererInspector.js";
 import { ParametersGroup } from "./tabs/Parameters.js";
 
 declare class Inspector extends RendererInspector {
@@ -13817,11 +13817,11 @@ declare class Inspector extends RendererInspector {
 }
 
 export { Inspector };
-`,Si=e({default:()=>Ci}),Ci=`import { InspectorBase } from "three/webgpu";
+`,Ci=e({default:()=>wi}),wi=`import { InspectorBase } from "three/webgpu";
 
 export class RendererInspector extends InspectorBase {
 }
-`,wi=e({default:()=>Ti}),Ti=`import { Item } from "../ui/Item.js";
+`,Ti=e({default:()=>Ei}),Ei=`import { Item } from "../ui/Item.js";
 import { Tab } from "../ui/Tab.js";
 import { ValueButton, ValueCheckbox, ValueColor, ValueNumber, ValueSelect, ValueSlider } from "../ui/Values.js";
 
@@ -13919,15 +13919,15 @@ declare class Parameters extends Tab {
 
 export { Parameters };
 export type { ParametersGroup };
-`,Ei=e({default:()=>Di}),Di=`export class Item {
+`,Di=e({default:()=>Oi}),Oi=`export class Item {
     domElement: HTMLDivElement;
 
     constructor(...data: readonly unknown[]);
 }
-`,Oi=e({default:()=>ki}),ki=`export class Tab {
+`,ki=e({default:()=>Ai}),Ai=`export class Tab {
     constructor(title: string);
 }
-`,Ai=e({default:()=>ji}),ji=`import { ColorRepresentation, EventDispatcher } from "three";
+`,ji=e({default:()=>Mi}),Mi=`import { ColorRepresentation, EventDispatcher } from "three";
 
 type KeyToValueOfType<T, V> = { [K in keyof T]: T[K] extends V ? K : never }[keyof T];
 
@@ -14007,7 +14007,7 @@ declare class ValueButton<
 }
 
 export { Value, ValueButton, ValueCheckbox, ValueColor, ValueNumber, ValueSelect, ValueSlider };
-`,Mi=e({default:()=>Ni}),Ni=`import { Mesh, MeshBasicMaterial, Object3DEventMap, PlaneGeometry } from "three";
+`,Ni=e({default:()=>Pi}),Pi=`import { Mesh, MeshBasicMaterial, Object3DEventMap, PlaneGeometry } from "three";
 
 export interface HTMLMeshEventMap extends Object3DEventMap {
     mousedown: { data: { x: number; y: number } };
@@ -14020,7 +14020,7 @@ export class HTMLMesh extends Mesh<PlaneGeometry, MeshBasicMaterial, HTMLMeshEve
     constructor(dom: HTMLElement);
     dispose(): void;
 }
-`,Pi=e({default:()=>Fi}),Fi=`import { Camera, Group, Object3D, Object3DEventMap, Raycaster, Vector2, WebGLRenderer, XRTargetRaySpace } from "three";
+`,Fi=e({default:()=>Ii}),Ii=`import { Camera, Group, Object3D, Object3DEventMap, Raycaster, Vector2, WebGLRenderer, XRTargetRaySpace } from "three";
 
 export interface InteractiveObject3DEventMap extends Object3DEventMap {
     hoveron: { data: Vector2 };
@@ -14048,7 +14048,7 @@ export class InteractiveGroup extends Group {
 
     disconnect(): void;
 }
-`,Ii=e({default:()=>Li}),Li=`import { Camera, Object3D, Scene, Vector3 } from "three";
+`,Li=e({default:()=>Ri}),Ri=`import { Camera, Object3D, Scene, Vector3 } from "three";
 
 declare class SelectionBox {
     camera: Camera;
@@ -14064,7 +14064,7 @@ declare class SelectionBox {
 
     select(startPoint?: Vector3, endPoint?: Vector3): Object3D[];
 }
-`,Ri=e({default:()=>zi}),zi=`import { Vector2, WebGLRenderer } from "three";
+`,zi=e({default:()=>Bi}),Bi=`import { Vector2, WebGLRenderer } from "three";
 
 export class SelectionHelper {
     constructor(renderer: WebGLRenderer, cssClassName: string);
@@ -14081,8 +14081,8 @@ export class SelectionHelper {
     onSelectOver(event: Event): void;
     dispose(): void;
 }
-`,Bi=e({default:()=>Vi}),Vi=`export * from "fflate";
-`,Hi=e({default:()=>Ui}),Ui=`export type KeyToValueOfType<T, V> = { [K in keyof T]: T[K] extends V ? K : never }[keyof T];
+`,Vi=e({default:()=>Hi}),Hi=`export * from "fflate";
+`,Ui=e({default:()=>Wi}),Wi=`export type KeyToValueOfType<T, V> = { [K in keyof T]: T[K] extends V ? K : never }[keyof T];
 
 export default GUI;
 export class GUI {
@@ -14690,13 +14690,13 @@ export class StringController<
     $input: HTMLInputElement;
 }
 declare function normalizeColorString(string: unknown): string | false;
-`,Wi=e({default:()=>Gi}),Gi=`export * from "meshoptimizer/decoder";
-`,Ki=e({default:()=>qi}),qi=`import Stats = require("stats.js");
+`,Gi=e({default:()=>Ki}),Ki=`export * from "meshoptimizer/decoder";
+`,qi=e({default:()=>Ji}),Ji=`import Stats = require("stats.js");
 
 export default Stats;
-`,Ji=e({default:()=>Yi}),Yi=`export * from "@tweenjs/tween.js";
+`,Yi=e({default:()=>Xi}),Xi=`export * from "@tweenjs/tween.js";
 export { default as default } from "@tweenjs/tween.js";
-`,Xi=e({default:()=>Zi}),Zi=`import { Lighting } from "three/webgpu";
+`,Zi=e({default:()=>Qi}),Qi=`import { Lighting } from "three/webgpu";
 import { Light } from "../../../src/lights/Light.js";
 import TiledLightsNode from "../tsl/lighting/TiledLightsNode.js";
 
@@ -14705,7 +14705,7 @@ export class TiledLighting extends Lighting {
 
     createNode(lights?: Light[]): TiledLightsNode;
 }
-`,Qi=e({default:()=>$i}),$i=`import { CubeTexture, LightProbe, WebGLCubeRenderTarget, WebGLRenderer } from "three";
+`,$i=e({default:()=>ea}),ea=`import { CubeTexture, LightProbe, WebGLCubeRenderTarget, WebGLRenderer } from "three";
 import { CubeRenderTarget, WebGPURenderer } from "three/webgpu";
 
 declare class LightProbeGenerator {
@@ -14721,19 +14721,19 @@ declare class LightProbeGenerator {
 }
 
 export { LightProbeGenerator };
-`,ea=e({default:()=>ta}),ta=`import { RectAreaLightTexturesLib as RectAreaLightTexturesLibInterface } from "three/webgpu";
+`,ta=e({default:()=>na}),na=`import { RectAreaLightTexturesLib as RectAreaLightTexturesLibInterface } from "three/webgpu";
 
 declare class RectAreaLightTexturesLib {
     static init(): RectAreaLightTexturesLibInterface;
 }
 
 export { RectAreaLightTexturesLib };
-`,na=e({default:()=>ra}),ra=`declare class RectAreaLightUniformsLib {
+`,ra=e({default:()=>ia}),ia=`declare class RectAreaLightUniformsLib {
     static init(): void;
 }
 
 export { RectAreaLightUniformsLib };
-`,ia=e({default:()=>aa}),aa=`import { LineGeometry } from "./LineGeometry.js";
+`,aa=e({default:()=>oa}),oa=`import { LineGeometry } from "./LineGeometry.js";
 import { LineMaterial } from "./LineMaterial.js";
 import { LineSegments2 } from "./LineSegments2.js";
 
@@ -14758,7 +14758,7 @@ export class Line2 extends LineSegments2 {
      */
     constructor(geometry?: LineGeometry, material?: LineMaterial);
 }
-`,oa=e({default:()=>sa}),sa=`import { Line } from "three";
+`,sa=e({default:()=>ca}),ca=`import { Line } from "three";
 
 import { LineSegmentsGeometry } from "./LineSegmentsGeometry.js";
 
@@ -14785,7 +14785,7 @@ export class LineGeometry extends LineSegmentsGeometry {
      */
     fromLine(line: Line): this;
 }
-`,ca=e({default:()=>la}),la=`import { Color, ColorRepresentation, ShaderMaterial, ShaderMaterialParameters, Vector2 } from "three";
+`,la=e({default:()=>ua}),ua=`import { Color, ColorRepresentation, ShaderMaterial, ShaderMaterialParameters, Vector2 } from "three";
 
 export interface LineMaterialParameters extends ShaderMaterialParameters {
     alphaToCoverage?: boolean | undefined;
@@ -14867,7 +14867,7 @@ export class LineMaterial extends ShaderMaterial {
     get resolution(): Vector2;
     set resolution(value: Vector2);
 }
-`,ua=e({default:()=>da}),da=`import { Mesh, Vector2, WebGLRenderer } from "three";
+`,da=e({default:()=>fa}),fa=`import { Mesh, Vector2, WebGLRenderer } from "three";
 
 import { LineMaterial } from "./LineMaterial.js";
 import { LineSegmentsGeometry } from "./LineSegmentsGeometry.js";
@@ -14906,7 +14906,7 @@ export class LineSegments2 extends Mesh {
      */
     onBeforeRender(renderer: WebGLRenderer): void;
 }
-`,fa=e({default:()=>pa}),pa=`import { EdgesGeometry, InstancedBufferGeometry, LineSegments, Mesh, WireframeGeometry } from "three";
+`,pa=e({default:()=>ma}),ma=`import { EdgesGeometry, InstancedBufferGeometry, LineSegments, Mesh, WireframeGeometry } from "three";
 
 /**
  * A series of vertex pairs, forming line segments.
@@ -14959,7 +14959,7 @@ export class LineSegmentsGeometry extends InstancedBufferGeometry {
      */
     fromLineSegments(lineSegments: LineSegments): this;
 }
-`,ma=e({default:()=>ha}),ha=`import { Mesh } from "three";
+`,ha=e({default:()=>ga}),ga=`import { Mesh } from "three";
 
 import { LineMaterial } from "./LineMaterial.js";
 import { LineSegmentsGeometry } from "./LineSegmentsGeometry.js";
@@ -14973,7 +14973,7 @@ declare class Wireframe extends Mesh {
 }
 
 export { Wireframe };
-`,ga=e({default:()=>_a}),_a=`import { BufferGeometry } from "three";
+`,_a=e({default:()=>va}),va=`import { BufferGeometry } from "three";
 
 import { LineSegmentsGeometry } from "./LineSegmentsGeometry.js";
 
@@ -14981,7 +14981,7 @@ export class WireframeGeometry2 extends LineSegmentsGeometry {
     constructor(geometry: BufferGeometry);
     readonly isWireframeGeometry2: boolean;
 }
-`,va=e({default:()=>ya}),ya=`import { Line2NodeMaterial } from "three/webgpu";
+`,ya=e({default:()=>ba}),ba=`import { Line2NodeMaterial } from "three/webgpu";
 import { LineGeometry } from "../LineGeometry.js";
 import { LineSegments2 } from "./LineSegments2.js";
 
@@ -14995,7 +14995,7 @@ declare class Line2 extends LineSegments2 {
 }
 
 export { Line2 };
-`,ba=e({default:()=>xa}),xa=`import { Line2NodeMaterial, Mesh } from "three/webgpu";
+`,xa=e({default:()=>Sa}),Sa=`import { Line2NodeMaterial, Mesh } from "three/webgpu";
 import { LineSegmentsGeometry } from "../LineSegmentsGeometry.js";
 
 declare class LineSegments2 extends Mesh {
@@ -15010,7 +15010,7 @@ declare class LineSegments2 extends Mesh {
 }
 
 export { LineSegments2 };
-`,Sa=e({default:()=>Ca}),Ca=`import { Line2NodeMaterial, Mesh } from "three/webgpu";
+`,Ca=e({default:()=>wa}),wa=`import { Line2NodeMaterial, Mesh } from "three/webgpu";
 
 import { WireframeGeometry2 } from "../WireframeGeometry2.js";
 
@@ -15023,7 +15023,7 @@ declare class Wireframe extends Mesh {
 }
 
 export { Wireframe };
-`,wa=e({default:()=>Ta}),Ta=`import { Loader, LoadingManager, Object3D } from "three";
+`,Ta=e({default:()=>Ea}),Ea=`import { Loader, LoadingManager, Object3D } from "three";
 
 export class Rhino3dmLoader extends Loader<Object3D> {
     constructor(manager?: LoadingManager);
@@ -15033,7 +15033,7 @@ export class Rhino3dmLoader extends Loader<Object3D> {
     setWorkerLimit(workerLimit: number): Rhino3dmLoader;
     dispose(): Rhino3dmLoader;
 }
-`,Ea=e({default:()=>Da}),Da=`import { Group, Loader, LoadingManager } from "three";
+`,Da=e({default:()=>Oa}),Oa=`import { Group, Loader, LoadingManager } from "three";
 
 export class ThreeMFLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
@@ -15042,14 +15042,14 @@ export class ThreeMFLoader extends Loader<Group> {
     parse(data: ArrayBuffer): Group;
     addExtension(extension: object): void;
 }
-`,Oa=e({default:()=>ka}),ka=`import { Group, Loader, LoadingManager } from "three";
+`,ka=e({default:()=>Aa}),Aa=`import { Group, Loader, LoadingManager } from "three";
 
 export class AMFLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
 
     parse(data: ArrayBuffer): Group;
 }
-`,Aa=e({default:()=>ja}),ja=`import { AnimationClip, Loader, LoadingManager, Skeleton } from "three";
+`,ja=e({default:()=>Ma}),Ma=`import { AnimationClip, Loader, LoadingManager, Skeleton } from "three";
 
 export interface BVH {
     clip: AnimationClip;
@@ -15063,7 +15063,7 @@ export class BVHLoader extends Loader<BVH> {
 
     parse(text: string): BVH;
 }
-`,Ma=e({default:()=>Na}),Na=`import { Loader, Scene } from "three";
+`,Na=e({default:()=>Pa}),Pa=`import { Loader, Scene } from "three";
 
 export interface ColladaKinematics {
     joints: unknown;
@@ -15097,7 +15097,7 @@ export interface Collada {
 export class ColladaLoader extends Loader<Collada | null> {
     parse(text: string, path: string): Collada | null;
 }
-`,Pa=e({default:()=>Fa}),Fa=`import {
+`,Fa=e({default:()=>Ia}),Ia=`import {
     CompressedPixelFormat,
     CompressedTextureLoader,
     CompressedTextureMipmap,
@@ -15119,7 +15119,7 @@ export class DDSLoader extends CompressedTextureLoader {
 
     parse(buffer: ArrayBuffer, loadMipmaps: boolean): DDS;
 }
-`,Ia=e({default:()=>La}),La=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,La=e({default:()=>Ra}),Ra=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class DRACOLoader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
@@ -15144,7 +15144,7 @@ export class DRACOLoader extends Loader<BufferGeometry> {
     preload(): DRACOLoader;
     dispose(): DRACOLoader;
 }
-`,Ra=e({default:()=>za}),za=`import {
+`,za=e({default:()=>Ba}),Ba=`import {
     DataTextureLoader,
     FloatType,
     HalfFloatType,
@@ -15176,14 +15176,14 @@ declare class EXRLoader extends DataTextureLoader {
     setDataType(type: typeof HalfFloatType | typeof FloatType): this;
     setOutputFormat(value: typeof RGBAFormat | typeof RGFormat | typeof RedFormat): this;
 }
-`,Ba=e({default:()=>Va}),Va=`import { Group, Loader, LoadingManager } from "three";
+`,Va=e({default:()=>Ha}),Ha=`import { Group, Loader, LoadingManager } from "three";
 
 export class FBXLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
 
     parse(FBXBuffer: ArrayBuffer | string, path: string): Group;
 }
-`,Ha=e({default:()=>Ua}),Ua=`import { Loader, LoadingManager, Shape } from "three";
+`,Ua=e({default:()=>Wa}),Wa=`import { Loader, LoadingManager, Shape } from "three";
 
 export interface FontData {
     glyphs: Record<string, { ha: number; x_min: number; x_max: number; o?: string | undefined }>;
@@ -15224,7 +15224,7 @@ export class Font {
 
     generateShapes(text: string, size?: number, direction?: "ltr" | "rtl" | "tb"): Shape[];
 }
-`,Wa=e({default:()=>Ga}),Ga=`import { Group, Loader, LoadingManager } from "three";
+`,Ga=e({default:()=>Ka}),Ka=`import { Group, Loader, LoadingManager } from "three";
 
 export class GCodeLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
@@ -15232,7 +15232,7 @@ export class GCodeLoader extends Loader<Group> {
 
     parse(data: string): Group;
 }
-`,Ka=e({default:()=>qa}),qa=`import {
+`,qa=e({default:()=>Ja}),Ja=`import {
     AnimationClip,
     BufferAttribute,
     BufferGeometry,
@@ -15384,7 +15384,7 @@ export interface GLTFLoaderPlugin {
     createNodeMesh?: ((nodeIndex: number) => Promise<Group | Mesh | SkinnedMesh> | null) | undefined;
     createNodeAttachment?: ((nodeIndex: number) => Promise<Object3D> | null) | undefined;
 }
-`,Ja=e({default:()=>Ya}),Ya=`import { CubeTexture, Loader, LoadingManager, TextureDataType } from "three";
+`,Ya=e({default:()=>Xa}),Xa=`import { CubeTexture, Loader, LoadingManager, TextureDataType } from "three";
 
 import { HDRLoader } from "./HDRLoader.js";
 
@@ -15402,7 +15402,7 @@ export class HDRCubeTextureLoader extends Loader<CubeTexture, readonly string[]>
 
     setDataType(type: TextureDataType): this;
 }
-`,Xa=e({default:()=>Za}),Za=`import { DataTextureLoader, LoadingManager, TextureDataType } from "three";
+`,Za=e({default:()=>Qa}),Qa=`import { DataTextureLoader, LoadingManager, TextureDataType } from "three";
 
 export interface HDR {
     width: number;
@@ -15424,12 +15424,12 @@ declare class HDRLoader extends DataTextureLoader {
 }
 
 export { HDRLoader };
-`,Qa=e({default:()=>$a}),$a=`import { DataTexture, Loader } from "three";
+`,$a=e({default:()=>eo}),eo=`import { DataTexture, Loader } from "three";
 
 export class IESLoader extends Loader<DataTexture> {
     parse(text: string): DataTexture;
 }
-`,eo=e({default:()=>to}),to=`import { Loader, LoadingManager } from "three";
+`,to=e({default:()=>no}),no=`import { Loader, LoadingManager } from "three";
 
 import { Collada } from "./ColladaLoader.js";
 
@@ -15438,7 +15438,7 @@ export class KMZLoader extends Loader<Collada> {
 
     parse(data: ArrayBuffer): Collada;
 }
-`,no=e({default:()=>ro}),ro=`import { CompressedTexture, Loader, LoadingManager, WebGLRenderer } from "three";
+`,ro=e({default:()=>io}),io=`import { CompressedTexture, Loader, LoadingManager, WebGLRenderer } from "three";
 import { Renderer, WebGPURenderer } from "three/webgpu";
 import { WorkerPool } from "../utils/WorkerPool.js";
 
@@ -15496,7 +15496,7 @@ export class KTX2Loader extends Loader<CompressedTexture> {
      */
     dispose(): this;
 }
-`,io=e({default:()=>ao}),ao=`import {
+`,ao=e({default:()=>oo}),oo=`import {
     CompressedPixelFormat,
     CompressedTextureLoader,
     CompressedTextureMipmap,
@@ -15518,7 +15518,7 @@ export class KTXLoader extends CompressedTextureLoader {
 
     parse(buffer: ArrayBuffer, loadMipmaps: boolean): KTX;
 }
-`,oo=e({default:()=>so}),so=`import { Group, Loader, LoadingManager, Material } from "three";
+`,so=e({default:()=>co}),co=`import { Group, Loader, LoadingManager, Material } from "three";
 import { LDrawConditionalLineMaterial } from "../materials/LDrawConditionalLineMaterial.js";
 import { LDrawConditionalLineMaterial as LDrawConditionalLineNodeMaterial } from "../materials/LDrawConditionalLineNodeMaterial.js";
 
@@ -15556,7 +15556,7 @@ export class LDrawLoader extends Loader<Group> {
     addMaterial(material: Material): this;
     getMaterial(colourCode: string): Material | null;
 }
-`,co=e({default:()=>lo}),lo=`import { Data3DTexture, FloatType, Loader, LoadingManager, UnsignedByteType } from "three";
+`,lo=e({default:()=>uo}),uo=`import { Data3DTexture, FloatType, Loader, LoadingManager, UnsignedByteType } from "three";
 
 export interface LUT3dlResult {
     size: number;
@@ -15595,7 +15595,7 @@ export class LUT3dlLoader extends Loader<LUT3dlResult> {
      */
     parse(input: string): LUT3dlResult;
 }
-`,uo=e({default:()=>fo}),fo=`import { Data3DTexture, FloatType, Loader, LoadingManager, UnsignedByteType, Vector3 } from "three";
+`,fo=e({default:()=>po}),po=`import { Data3DTexture, FloatType, Loader, LoadingManager, UnsignedByteType, Vector3 } from "three";
 
 export interface LUTCubeResult {
     title: string;
@@ -15637,7 +15637,7 @@ export class LUTCubeLoader extends Loader<LUTCubeResult> {
      */
     parse(input: string): LUTCubeResult;
 }
-`,po=e({default:()=>mo}),mo=`import { Data3DTexture, Loader, LoadingManager, Texture } from "three";
+`,mo=e({default:()=>ho}),ho=`import { Data3DTexture, Loader, LoadingManager, Texture } from "three";
 
 export interface LUTImageResult {
     size: number;
@@ -15655,7 +15655,7 @@ export class LUTImageLoader extends Loader<LUTImageResult> {
 
     parse(dataArray: Uint8ClampedArray, size: number): LUTImageResult;
 }
-`,ho=e({default:()=>go}),go=`import { Loader, LoadingManager, Material, Object3D } from "three";
+`,go=e({default:()=>_o}),_o=`import { Loader, LoadingManager, Material, Object3D } from "three";
 
 export interface LWO {
     materials: Material[];
@@ -15674,7 +15674,7 @@ export class LWOLoader extends Loader<LWO> {
 
     parse(data: ArrayBuffer, path: string, modelName: string): LWO;
 }
-`,_o=e({default:()=>vo}),vo=`import { CanvasTexture, Loader, LoadingManager } from "three";
+`,vo=e({default:()=>yo}),yo=`import { CanvasTexture, Loader, LoadingManager } from "three";
 
 export class LottieLoader extends Loader<CanvasTexture> {
     /**
@@ -15692,14 +15692,14 @@ export class LottieLoader extends Loader<CanvasTexture> {
 
     setQuality(value: number): void;
 }
-`,yo=e({default:()=>bo}),bo=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,bo=e({default:()=>xo}),xo=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class MD2Loader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
 
     parse(data: ArrayBuffer): BufferGeometry;
 }
-`,xo=e({default:()=>So}),So=`import { AnimationClip, BufferAttribute, Loader, LoadingManager } from "three";
+`,So=e({default:()=>Co}),Co=`import { AnimationClip, BufferAttribute, Loader, LoadingManager } from "three";
 
 export interface MDD {
     morphTargets: BufferAttribute[];
@@ -15711,7 +15711,7 @@ export class MDDLoader extends Loader<MDD> {
 
     parse(data: ArrayBuffer): MDD;
 }
-`,Co=e({default:()=>wo}),wo=`import { BufferGeometry, Loader, LoadingManager, Mapping, Material, Side, Texture, Vector2, Wrapping } from "three";
+`,wo=e({default:()=>To}),To=`import { BufferGeometry, Loader, LoadingManager, Mapping, Material, Side, Texture, Vector2, Wrapping } from "three";
 
 export interface MaterialCreatorOptions {
     /**
@@ -15806,12 +15806,12 @@ export namespace MTLLoader {
         ): Texture;
     }
 }
-`,To=e({default:()=>Eo}),Eo=`import { Loader, LoadingManager, MeshPhysicalNodeMaterial } from "three/webgpu";
+`,Eo=e({default:()=>Do}),Do=`import { Loader, LoadingManager, MeshPhysicalNodeMaterial } from "three/webgpu";
 
 export class MaterialXLoader extends Loader<{ materials: Record<string, MeshPhysicalNodeMaterial> }> {
     constructor(manager?: LoadingManager);
 }
-`,Do=e({default:()=>Oo}),Oo=`import { Loader, LoadingManager } from "three";
+`,Oo=e({default:()=>ko}),ko=`import { Loader, LoadingManager } from "three";
 
 import { Volume } from "../misc/Volume.js";
 
@@ -15826,7 +15826,7 @@ export class NRRDLoader extends Loader<Volume> {
     parseChars(array: number[], start?: number, end?: number): string;
     setPath(value: string): this;
 }
-`,ko=e({default:()=>Ao}),Ao=`import { Group, Loader, LoadingManager } from "three";
+`,Ao=e({default:()=>jo}),jo=`import { Group, Loader, LoadingManager } from "three";
 import { MTLLoader } from "./MTLLoader.js";
 
 export class OBJLoader extends Loader<Group> {
@@ -15836,7 +15836,7 @@ export class OBJLoader extends Loader<Group> {
     parse(data: string): Group;
     setMaterials(materials: MTLLoader.MaterialCreator): this;
 }
-`,jo=e({default:()=>Mo}),Mo=`import { BufferGeometry, Loader, LoadingManager, Points, PointsMaterial } from "three";
+`,Mo=e({default:()=>No}),No=`import { BufferGeometry, Loader, LoadingManager, Points, PointsMaterial } from "three";
 
 export class PCDLoader extends Loader<Points<BufferGeometry, PointsMaterial>> {
     constructor(manager?: LoadingManager);
@@ -15844,7 +15844,7 @@ export class PCDLoader extends Loader<Points<BufferGeometry, PointsMaterial>> {
 
     parse(data: ArrayBuffer | string): Points<BufferGeometry, PointsMaterial>;
 }
-`,No=e({default:()=>Po}),Po=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,Po=e({default:()=>Fo}),Fo=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export interface PDB {
     geometryAtoms: BufferGeometry;
@@ -15859,7 +15859,7 @@ export class PDBLoader extends Loader<PDB> {
 
     parse(text: string): PDB;
 }
-`,Fo=e({default:()=>Io}),Io=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,Io=e({default:()=>Lo}),Lo=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class PLYLoader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
@@ -15870,7 +15870,7 @@ export class PLYLoader extends Loader<BufferGeometry> {
     setCustomPropertyNameMapping(mapping: Record<string, any>): void;
     parse(data: ArrayBuffer | string): BufferGeometry;
 }
-`,Lo=e({default:()=>Ro}),Ro=`import { CompressedPixelFormat, CompressedTextureLoader, CompressedTextureMipmap, LoadingManager } from "three";
+`,Ro=e({default:()=>zo}),zo=`import { CompressedPixelFormat, CompressedTextureLoader, CompressedTextureMipmap, LoadingManager } from "three";
 
 export interface PVR {
     mipmaps: CompressedTextureMipmap[];
@@ -15886,7 +15886,7 @@ export class PVRLoader extends CompressedTextureLoader {
 
     parse(buffer: ArrayBuffer, loadMipmaps: boolean): PVR;
 }
-`,zo=e({default:()=>Bo}),Bo=`import { HDR, HDRLoader } from "./HDRLoader.js";
+`,Bo=e({default:()=>Vo}),Vo=`import { HDR, HDRLoader } from "./HDRLoader.js";
 
 /**
  * @deprecated RGBELoader has been deprecated. Please use HDRLoader instead.
@@ -15899,14 +15899,14 @@ export interface RGBE extends HDR {
  */
 export class RGBELoader extends HDRLoader {
 }
-`,Vo=e({default:()=>Ho}),Ho=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,Ho=e({default:()=>Uo}),Uo=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class STLLoader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
 
     parse(data: ArrayBuffer | string): BufferGeometry;
 }
-`,Uo=e({default:()=>Wo}),Wo=`import { BufferGeometry, Loader, LoadingManager, Shape, ShapePath, Vector2, Vector3 } from "three";
+`,Wo=e({default:()=>Go}),Go=`import { BufferGeometry, Loader, LoadingManager, Shape, ShapePath, Vector2, Vector3 } from "three";
 
 export interface SVGResultPaths extends ShapePath {
     userData?: Record<string, any> | undefined;
@@ -15970,7 +15970,7 @@ export class SVGLoader extends Loader<SVGResult> {
 
     static createShapes(shapePath: ShapePath): Shape[];
 }
-`,Go=e({default:()=>Ko}),Ko=`import { Color, Group, Loader, LoadingManager, Material, Mesh, Texture } from "three";
+`,Ko=e({default:()=>qo}),qo=`import { Color, Group, Loader, LoadingManager, Material, Mesh, Texture } from "three";
 
 export class TDSLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
@@ -16005,14 +16005,14 @@ export class TDSLoader extends Loader<Group> {
     readWord(data: DataView): number;
     resetPosition(): void;
 }
-`,qo=e({default:()=>Jo}),Jo=`import { DataTexture, DataTextureLoader, LoadingManager } from "three";
+`,Jo=e({default:()=>Yo}),Yo=`import { DataTexture, DataTextureLoader, LoadingManager } from "three";
 
 export class TGALoader extends DataTextureLoader {
     constructor(manager?: LoadingManager);
 
     parse(data: ArrayBuffer): DataTexture;
 }
-`,Yo=e({default:()=>Xo}),Xo=`import { DataTextureLoader, LoadingManager, TextureFilter } from "three";
+`,Xo=e({default:()=>Zo}),Zo=`import { DataTextureLoader, LoadingManager, TextureFilter } from "three";
 
 export interface TIFFResult {
     width: number;
@@ -16028,7 +16028,7 @@ export class TIFFLoader extends DataTextureLoader {
 
     parse(buffer: Iterable<number>): TIFFResult;
 }
-`,Zo=e({default:()=>Qo}),Qo=`import { Loader, LoadingManager } from "three";
+`,Qo=e({default:()=>$o}),$o=`import { Loader, LoadingManager } from "three";
 import { FontData } from "./FontLoader.js";
 
 export class TTFLoader extends Loader<FontData> {
@@ -16038,7 +16038,7 @@ export class TTFLoader extends Loader<FontData> {
 
     parse(arraybuffer: ArrayBuffer): FontData;
 }
-`,$o=e({default:()=>es}),es=`import { Group, Loader, LoadingManager } from "three";
+`,es=e({default:()=>ts}),ts=`import { Group, Loader, LoadingManager } from "three";
 
 declare class USDLoader extends Loader<Group> {
     constructor(manager?: LoadingManager);
@@ -16047,7 +16047,7 @@ declare class USDLoader extends Loader<Group> {
 }
 
 export { USDLoader };
-`,ts=e({default:()=>ns}),ns=`import { LoadingManager } from "three";
+`,ns=e({default:()=>rs}),rs=`import { LoadingManager } from "three";
 import { USDLoader } from "./USDLoader.js";
 
 /**
@@ -16061,7 +16061,7 @@ declare class USDZLoader extends USDLoader {
 }
 
 export { USDZLoader };
-`,rs=e({default:()=>is}),is=`import { DataTexture, Loader, LoadingManager, RGBAFormat, TextureDataType } from "three";
+`,is=e({default:()=>as}),as=`import { DataTexture, Loader, LoadingManager, RGBAFormat, TextureDataType } from "three";
 
 interface UltraHDRLoaderTextureData {
     width: number;
@@ -16089,7 +16089,7 @@ declare class UltraHDRLoader extends Loader<DataTexture> {
 }
 
 export { UltraHDRLoader };
-`,as=e({default:()=>os}),os=`import { BufferGeometry, Data3DTexture, Loader, LoadingManager, Mesh, MeshStandardMaterial, Object3D } from "three";
+`,os=e({default:()=>ss}),ss=`import { BufferGeometry, Data3DTexture, Loader, LoadingManager, Mesh, MeshStandardMaterial, Object3D } from "three";
 
 export interface Chunk {
     palette: number[];
@@ -16127,28 +16127,28 @@ declare class VOXData3DTexture extends Data3DTexture {
 }
 
 export { buildData3DTexture, buildMesh, VOXData3DTexture, VOXLoader, VOXMesh };
-`,ss=e({default:()=>cs}),cs=`import { Loader, LoadingManager, Scene } from "three";
+`,cs=e({default:()=>ls}),ls=`import { Loader, LoadingManager, Scene } from "three";
 
 export class VRMLLoader extends Loader<Scene> {
     constructor(manager?: LoadingManager);
 
     parse(data: string, path: string): Scene;
 }
-`,ls=e({default:()=>us}),us=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,us=e({default:()=>ds}),ds=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class VTKLoader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
 
     parse(data: ArrayBuffer | string, path: string): BufferGeometry;
 }
-`,ds=e({default:()=>fs}),fs=`import { BufferGeometry, Loader, LoadingManager } from "three";
+`,fs=e({default:()=>ps}),ps=`import { BufferGeometry, Loader, LoadingManager } from "three";
 
 export class XYZLoader extends Loader<BufferGeometry> {
     constructor(manager?: LoadingManager);
 
     parse(data: string, onLoad: (geometry: BufferGeometry) => void): object;
 }
-`,ps=e({default:()=>ms}),ms=`import { ShaderMaterial, ShaderMaterialParameters } from "three";
+`,ms=e({default:()=>hs}),hs=`import { ShaderMaterial, ShaderMaterialParameters } from "three";
 
 declare class LDrawConditionalLineMaterial extends ShaderMaterial {
     readonly isLDrawConditionalLineMaterial: true;
@@ -16157,7 +16157,7 @@ declare class LDrawConditionalLineMaterial extends ShaderMaterial {
 }
 
 export { LDrawConditionalLineMaterial };
-`,hs=e({default:()=>gs}),gs=`import { NodeMaterial, NodeMaterialParameters } from "three/webgpu";
+`,gs=e({default:()=>_s}),_s=`import { NodeMaterial, NodeMaterialParameters } from "three/webgpu";
 
 declare class LDrawConditionalLineMaterial extends NodeMaterial {
     readonly isLDrawConditionalLineMaterial: true;
@@ -16166,7 +16166,7 @@ declare class LDrawConditionalLineMaterial extends NodeMaterial {
 }
 
 export { LDrawConditionalLineMaterial };
-`,_s=e({default:()=>vs}),vs=`import * as THREE from "three";
+`,vs=e({default:()=>ys}),ys=`import * as THREE from "three";
 
 export type WoodGenus =
     | "teak"
@@ -16241,7 +16241,7 @@ export class WoodNodeMaterial extends THREE.MeshPhysicalMaterial {
 
     static fromPreset(genus?: WoodGenus, finish?: WoodFinish): WoodNodeMaterial;
 }
-`,ys=e({default:()=>bs}),bs=`import { Box3, Line3, Vector3 } from "three";
+`,bs=e({default:()=>xs}),xs=`import { Box3, Line3, Vector3 } from "three";
 
 export class Capsule {
     constructor(start?: Vector3, end?: Vector3, radius?: number);
@@ -16267,7 +16267,7 @@ export class Capsule {
     ): boolean;
     intersectsBox(box: Box3): boolean;
 }
-`,xs=e({default:()=>Ss}),Ss=`import { Color } from "three";
+`,Ss=e({default:()=>Cs}),Cs=`import { Color } from "three";
 
 export interface HSL {
     h: number;
@@ -16286,7 +16286,7 @@ export namespace ColorConverter {
     function setHSV(color: Color, h: number, s: number, v: number): Color;
     function getHSV(color: Color, target: HSL): HSL;
 }
-`,Cs=e({default:()=>ws}),ws=`import { ColorSpaceDefinition } from "three";
+`,ws=e({default:()=>Ts}),Ts=`import { ColorSpaceDefinition } from "three";
 
 export const DisplayP3ColorSpace: "display-p3";
 export const LinearDisplayP3ColorSpace: "display-p3-linear";
@@ -16301,7 +16301,7 @@ export const LinearRec2020ColorSpaceImpl: ColorSpaceDefinition;
 export const ExtendedSRGBColorSpace: "extended-srgb";
 
 export const ExtendedSRGBColorSpaceImpl: ColorSpaceDefinition;
-`,Ts=e({default:()=>Es}),Es=`import { Object3D, Ray, Vector3 } from "three";
+`,Es=e({default:()=>Ds}),Ds=`import { Object3D, Ray, Vector3 } from "three";
 
 export class Face {
     constructor();
@@ -16390,11 +16390,11 @@ export class ConvexHull {
     setFromPoints(points: Vector3[]): this;
     setFromObject(object: Object3D): this;
 }
-`,Ds=e({default:()=>Os}),Os=`export class ImprovedNoise {
+`,Os=e({default:()=>ks}),ks=`export class ImprovedNoise {
     constructor();
     noise(x: number, y: number, z: number): number;
 }
-`,ks=e({default:()=>As}),As=`import { Color } from "three";
+`,As=e({default:()=>js}),js=`import { Color } from "three";
 
 export class Lut {
     constructor(colormap?: string, numberofcolors?: number);
@@ -16421,7 +16421,7 @@ export interface ColorMapKeywords {
     blackbody: number[][];
     grayscale: number[][];
 }
-`,js=e({default:()=>Ms}),Ms=`import { BufferGeometry, Color, Mesh, Vector2, Vector3 } from "three";
+`,Ms=e({default:()=>Ns}),Ns=`import { BufferGeometry, Color, Mesh, Vector2, Vector3 } from "three";
 
 export class MeshSurfaceSampler {
     distribution: Float32Array | null;
@@ -16442,7 +16442,7 @@ export class MeshSurfaceSampler {
     ): this;
     setWeightAttribute(name: string | null): this;
 }
-`,Ns=e({default:()=>Ps}),Ps=`import { Box3, Matrix3, Matrix4, Plane, Ray, Sphere, Vector3 } from "three";
+`,Ps=e({default:()=>Fs}),Fs=`import { Box3, Matrix3, Matrix4, Plane, Ray, Sphere, Vector3 } from "three";
 
 export class OBB {
     center: Vector3;
@@ -16466,7 +16466,7 @@ export class OBB {
     equals(obb: OBB): boolean;
     applyMatrix4(matrix: Matrix4): this;
 }
-`,Fs=e({default:()=>Is}),Is=`import { Box3, Layers, Object3D, Ray, Sphere, Triangle, Vector3 } from "three";
+`,Is=e({default:()=>Ls}),Ls=`import { Box3, Layers, Object3D, Ray, Sphere, Triangle, Vector3 } from "three";
 
 import { Capsule } from "./Capsule.js";
 
@@ -16520,7 +16520,7 @@ declare class Octree {
 }
 
 export { Octree };
-`,Ls=e({default:()=>Rs}),Rs=`export class SimplexNoise {
+`,Rs=e({default:()=>zs}),zs=`export class SimplexNoise {
     constructor(r?: object);
     dot(g: number[], x: number, y: number): number;
     dot3(g: number[], x: number, y: number, z: number): number;
@@ -16529,7 +16529,7 @@ export { Octree };
     noise3d(xin: number, yin: number, zin: number): number;
     noise4d(x: number, y: number, z: number, w: number): number;
 }
-`,zs=e({default:()=>Bs}),Bs=`import { Object3D, Plane, Vector3 } from "three";
+`,Bs=e({default:()=>Vs}),Vs=`import { Object3D, Plane, Vector3 } from "three";
 
 export interface CutByPlaneOutput {
     object1: Object3D;
@@ -16554,7 +16554,7 @@ export class ConvexObjectBreaker {
     ): Object3D[];
     cutByPlane(object: Object3D, plane: Plane, output: CutByPlaneOutput): number;
 }
-`,Vs=e({default:()=>Hs}),Hs=`import {
+`,Hs=e({default:()=>Us}),Us=`import {
     DataTexture,
     IUniform,
     MagnificationTextureFilter,
@@ -16609,12 +16609,12 @@ export class GPUComputationRenderer {
     doRenderTarget(material: Material, output: WebGLRenderTarget): void;
     dispose(): void;
 }
-`,Us=e({default:()=>Ws}),Ws=`import { Object3D } from "three";
+`,Ws=e({default:()=>Gs}),Gs=`import { Object3D } from "three";
 
 export class Gyroscope extends Object3D {
     constructor();
 }
-`,Gs=e({default:()=>Ks}),Ks=`import { AnimationMixer, Mesh, Object3D, Texture } from "three";
+`,Ks=e({default:()=>qs}),qs=`import { AnimationMixer, Mesh, Object3D, Texture } from "three";
 
 export interface MD2PartsConfig {
     baseUrl: string;
@@ -16647,7 +16647,7 @@ export class MD2Character {
     syncWeaponAnimation(): void;
     update(delta: number): void;
 }
-`,qs=e({default:()=>Js}),Js=`import { Mesh, Object3D, Texture } from "three";
+`,Js=e({default:()=>Ys}),Ys=`import { Mesh, Object3D, Texture } from "three";
 
 export class MD2CharacterComplex {
     constructor();
@@ -16702,7 +16702,7 @@ export class MD2CharacterComplex {
     updateBehaviors(): void;
     updateMovementModel(delta: number): void;
 }
-`,Ys=e({default:()=>Xs}),Xs=`import { AnimationAction, AnimationMixer, BufferGeometry, Material, Mesh } from "three";
+`,Xs=e({default:()=>Zs}),Zs=`import { AnimationAction, AnimationMixer, BufferGeometry, Material, Mesh } from "three";
 
 export class MorphAnimMesh extends Mesh {
     constructor(geometry: BufferGeometry, material: Material);
@@ -16715,7 +16715,7 @@ export class MorphAnimMesh extends Mesh {
     updateAnimation(delta: number): void;
     copy(source: MorphAnimMesh, recursive?: boolean): this;
 }
-`,Zs=e({default:()=>Qs}),Qs=`import { BufferGeometry, Material, Mesh } from "three";
+`,Qs=e({default:()=>$s}),$s=`import { BufferGeometry, Material, Mesh } from "three";
 
 export class MorphBlendMesh extends Mesh {
     constructor(geometry: BufferGeometry, material: Material);
@@ -16736,7 +16736,7 @@ export class MorphBlendMesh extends Mesh {
     stopAnimation(name: string): void;
     update(delta: number): void;
 }
-`,$s=e({default:()=>ec}),ec=`import {
+`,ec=e({default:()=>tc}),tc=`import {
     Camera,
     Material,
     Mesh,
@@ -16794,7 +16794,7 @@ declare class ProgressiveLightMap {
 }
 
 export { ProgressiveLightMap };
-`,tc=e({default:()=>nc}),nc=`import { Camera, Material, Object3D, Vector3, WebGPURenderer } from "three/webgpu";
+`,nc=e({default:()=>rc}),rc=`import { Camera, Material, Object3D, Vector3, WebGPURenderer } from "three/webgpu";
 
 export interface UVBoxes {
     w: number;
@@ -16821,7 +16821,7 @@ declare class ProgressiveLightMap {
 }
 
 export { ProgressiveLightMap };
-`,rc=e({default:()=>ic}),ic=`import { BufferGeometry, Mesh, Vector3 } from "three";
+`,ic=e({default:()=>ac}),ac=`import { BufferGeometry, Mesh, Vector3 } from "three";
 
 interface Curve {
     getPointAt(u: number): Vector3;
@@ -16847,7 +16847,7 @@ export class SkyGeometry extends BufferGeometry {
 export class TreesGeometry extends BufferGeometry {
     constructor(landscape: Mesh);
 }
-`,ac=e({default:()=>oc}),oc=`import { Matrix4, Mesh, Vector3 } from "three";
+`,oc=e({default:()=>sc}),sc=`import { Matrix4, Mesh, Vector3 } from "three";
 
 export class TubePainter {
     constructor();
@@ -16857,7 +16857,7 @@ export class TubePainter {
     stroke(position1: Vector3, position2: Vector3, matrix1: Matrix4, matrix2: Matrix4): void;
     updateGeometry(start: number, end: number): void;
 }
-`,sc=e({default:()=>cc}),cc=`import { Matrix3, TypedArray } from "three";
+`,cc=e({default:()=>lc}),lc=`import { Matrix3, TypedArray } from "three";
 
 import { VolumeSlice } from "./VolumeSlice.js";
 
@@ -16894,7 +16894,7 @@ export class Volume {
     repaintAllSlices(): this;
     computeMinMax(): number[];
 }
-`,lc=e({default:()=>uc}),uc=`import { Matrix3, Mesh } from "three";
+`,uc=e({default:()=>dc}),dc=`import { Matrix3, Mesh } from "three";
 
 import { Volume } from "./Volume.js";
 
@@ -16922,7 +16922,7 @@ export class VolumeSlice {
     repaint(): void;
     updateGeometry(): void;
 }
-`,dc=e({default:()=>fc}),fc=`import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } from "three";
+`,fc=e({default:()=>pc}),pc=`import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } from "three";
 
 export interface SplineUniform {
     spineTexture: IUniform;
@@ -16963,7 +16963,7 @@ export class InstancedFlow extends Flow {
     moveIndividualAlongCurve(index: number, offset: number): void;
     setCurve(index: number, curveNo: number): void;
 }
-`,pc=e({default:()=>mc}),mc=`import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } from "three";
+`,mc=e({default:()=>hc}),hc=`import { BufferGeometry, Curve, DataTexture, InstancedMesh, IUniform, Material, Mesh, Vector3 } from "three";
 
 export interface SplineUniform {
     spineTexture: DataTexture;
@@ -16994,7 +16994,7 @@ export class Flow {
     updateCurve(index: number, curve: Curve<Vector3>): void;
     moveAlongCurve(amount: number): void;
 }
-`,hc=e({default:()=>gc}),gc=`import { BufferGeometry } from "three";
+`,gc=e({default:()=>_c}),_c=`import { BufferGeometry } from "three";
 
 /**
  * {@link EdgeSplitModifier} is intended to modify the geometry "dissolving" the edges to give a smoother look.
@@ -17020,13 +17020,13 @@ export class EdgeSplitModifier {
      */
     modify(geometry: BufferGeometry, cutOffPoint: number, tryKeepNormals: boolean): BufferGeometry;
 }
-`,_c=e({default:()=>vc}),vc=`import { BufferGeometry } from "three";
+`,vc=e({default:()=>yc}),yc=`import { BufferGeometry } from "three";
 
 export class SimplifyModifier {
     constructor();
     modify(geometry: BufferGeometry, count: number): BufferGeometry;
 }
-`,yc=e({default:()=>bc}),bc=`import { BufferGeometry } from "three";
+`,bc=e({default:()=>xc}),xc=`import { BufferGeometry } from "three";
 
 export class TessellateModifier {
     constructor(maxEdgeLength?: number, maxIterations?: number);
@@ -17035,12 +17035,12 @@ export class TessellateModifier {
 
     modify<TGeometry extends BufferGeometry>(geometry: TGeometry): TGeometry;
 }
-`,xc=e({default:()=>Sc}),Sc=`import { Mesh, MeshBasicMaterial, SphereGeometry, Texture } from "three";
+`,Sc=e({default:()=>Cc}),Cc=`import { Mesh, MeshBasicMaterial, SphereGeometry, Texture } from "three";
 
 export class GroundedSkybox extends Mesh<SphereGeometry, MeshBasicMaterial> {
     constructor(map: Texture, height: number, radius: number, resolution?: number);
 }
-`,Cc=e({default:()=>wc}),wc=`import { Color, Mesh, Texture } from "three";
+`,wc=e({default:()=>Tc}),Tc=`import { Color, Mesh, Texture } from "three";
 
 declare class Lensflare extends Mesh {
     readonly isLensflare: true;
@@ -17061,7 +17061,7 @@ declare class LensflareElement {
 }
 
 export { Lensflare, LensflareElement };
-`,Tc=e({default:()=>Ec}),Ec=`import { Color, Mesh, Texture } from "three";
+`,Ec=e({default:()=>Dc}),Dc=`import { Color, Mesh, Texture } from "three";
 
 declare class LensflareMesh extends Mesh {
     readonly isLensflare: true;
@@ -17082,7 +17082,7 @@ declare class LensflareElement {
 }
 
 export { LensflareElement, LensflareMesh };
-`,Dc=e({default:()=>Oc}),Oc=`import { BufferGeometry, Color, Material, Mesh } from "three";
+`,Oc=e({default:()=>kc}),kc=`import { BufferGeometry, Color, Material, Mesh } from "three";
 
 export class MarchingCubes extends Mesh {
     constructor(
@@ -17158,7 +17158,7 @@ export class MarchingCubes extends Mesh {
 
 export const edgeTable: Int32Array[];
 export const triTable: Int32Array[];
-`,kc=e({default:()=>Ac}),Ac=`import { BufferGeometry, ColorRepresentation, Mesh, PerspectiveCamera, WebGLRenderTarget } from "three";
+`,Ac=e({default:()=>jc}),jc=`import { BufferGeometry, ColorRepresentation, Mesh, PerspectiveCamera, WebGLRenderTarget } from "three";
 
 export interface ReflectorOptions {
     color?: ColorRepresentation | undefined;
@@ -17180,7 +17180,7 @@ export class Reflector extends Mesh {
 
     dispose(): void;
 }
-`,jc=e({default:()=>Mc}),Mc=`import {
+`,Mc=e({default:()=>Nc}),Nc=`import {
     BufferGeometry,
     Camera,
     Color,
@@ -17242,7 +17242,7 @@ export class ReflectorForSSRPass<TGeometry extends BufferGeometry = BufferGeomet
 
     getRenderTarget: () => WebGLRenderTarget;
 }
-`,Nc=e({default:()=>Pc}),Pc=`import { BufferGeometry, ColorRepresentation, Mesh, PerspectiveCamera, ShaderMaterial, WebGLRenderTarget } from "three";
+`,Pc=e({default:()=>Fc}),Fc=`import { BufferGeometry, ColorRepresentation, Mesh, PerspectiveCamera, ShaderMaterial, WebGLRenderTarget } from "three";
 
 export interface RefractorOptions {
     color?: ColorRepresentation | undefined;
@@ -17263,7 +17263,7 @@ export class Refractor extends Mesh<BufferGeometry, ShaderMaterial> {
 
     dispose(): void;
 }
-`,Fc=e({default:()=>Ic}),Ic=`import { BufferGeometry, Matrix4, Mesh, MeshBasicMaterial, Plane, Vector4 } from "three";
+`,Ic=e({default:()=>Lc}),Lc=`import { BufferGeometry, Matrix4, Mesh, MeshBasicMaterial, Plane, Vector4 } from "three";
 
 export class ShadowMesh extends Mesh<BufferGeometry, MeshBasicMaterial> {
     readonly isShadowMesh: true;
@@ -17273,7 +17273,7 @@ export class ShadowMesh extends Mesh<BufferGeometry, MeshBasicMaterial> {
 
     update(plane: Plane, lightPosition4D: Vector4): void;
 }
-`,Lc=e({default:()=>Rc}),Rc=`import { BoxGeometry, Mesh, ShaderMaterial } from "three";
+`,Rc=e({default:()=>zc}),zc=`import { BoxGeometry, Mesh, ShaderMaterial } from "three";
 
 /**
  * {@link Sky} creates a ready to go sky environment for your scenes.
@@ -17301,7 +17301,7 @@ export class Sky extends Mesh {
 
     static SkyShader: object;
 }
-`,zc=e({default:()=>Bc}),Bc=`import { BoxGeometry, Mesh, NodeMaterial, UniformNode, Vector3 } from "three/webgpu";
+`,Bc=e({default:()=>Vc}),Vc=`import { BoxGeometry, Mesh, NodeMaterial, UniformNode, Vector3 } from "three/webgpu";
 
 declare class SkyMesh extends Mesh<BoxGeometry, NodeMaterial> {
     turbidity: UniformNode<"float", number>;
@@ -17327,7 +17327,7 @@ declare class SkyMesh extends Mesh<BoxGeometry, NodeMaterial> {
 }
 
 export { SkyMesh };
-`,Vc=e({default:()=>Hc}),Hc=`import { BufferGeometry, ColorRepresentation, Mesh, ShaderMaterial, Side, Texture, Vector3 } from "three";
+`,Hc=e({default:()=>Uc}),Uc=`import { BufferGeometry, ColorRepresentation, Mesh, ShaderMaterial, Side, Texture, Vector3 } from "three";
 
 export interface WaterOptions {
     textureWidth?: number;
@@ -17349,7 +17349,7 @@ export class Water extends Mesh {
     material: ShaderMaterial;
     constructor(geometry: BufferGeometry, options: WaterOptions);
 }
-`,Uc=e({default:()=>Wc}),Wc=`import { BufferGeometry, ColorRepresentation, Mesh, ShaderMaterial, Texture, Vector2 } from "three";
+`,Wc=e({default:()=>Gc}),Gc=`import { BufferGeometry, ColorRepresentation, Mesh, ShaderMaterial, Texture, Vector2 } from "three";
 
 export interface WaterOptions {
     color?: ColorRepresentation | undefined;
@@ -17370,7 +17370,7 @@ export class Water extends Mesh {
     material: ShaderMaterial;
     constructor(geometry: BufferGeometry, options: WaterOptions);
 }
-`,Gc=e({default:()=>Kc}),Kc=`import {
+`,Kc=e({default:()=>qc}),qc=`import {
     BufferGeometry,
     Color,
     ColorRepresentation,
@@ -17423,7 +17423,7 @@ declare class WaterNode extends TempNode<"vec4"> {
 
 export { WaterMesh };
 export type { WaterNode };
-`,qc=e({default:()=>Jc}),Jc=`import {
+`,Jc=e({default:()=>Yc}),Yc=`import {
     BufferGeometry,
     Color,
     ColorRepresentation,
@@ -17463,7 +17463,7 @@ declare class WaterMesh extends Mesh<BufferGeometry, NodeMaterial> {
 }
 
 export { WaterMesh };
-`,Yc=e({default:()=>Xc}),Xc=`import { Mesh, Object3D, Vector3 } from "three";
+`,Xc=e({default:()=>Zc}),Zc=`import { Mesh, Object3D, Vector3 } from "three";
 
 export interface AmmoPhysicsObject {
     addScene: (scene: Object3D) => void;
@@ -17472,7 +17472,7 @@ export interface AmmoPhysicsObject {
 }
 
 export function AmmoPhysics(): Promise<AmmoPhysicsObject>;
-`,Zc=e({default:()=>Qc}),Qc=`import { Mesh, Object3D, Vector3Like } from "three";
+`,Qc=e({default:()=>$c}),$c=`import { Mesh, Object3D, Vector3Like } from "three";
 
 export interface JoltPhysicsObject {
     addScene: (scene: Object3D) => void;
@@ -17482,7 +17482,7 @@ export interface JoltPhysicsObject {
 }
 
 export function JoltPhysics(): Promise<JoltPhysicsObject>;
-`,$c=e({default:()=>el}),el=`import * as RAPIER from "@dimforge/rapier3d-compat";
+`,el=e({default:()=>tl}),tl=`import * as RAPIER from "@dimforge/rapier3d-compat";
 import { Mesh, Object3D } from "three";
 
 type Vector = { x: number; y: number; z: number };
@@ -17507,7 +17507,7 @@ export interface RapierPhysicsObject {
 export function RapierPhysics(): Promise<RapierPhysicsObject>;
 
 export type RAPIER = typeof RAPIER;
-`,tl=e({default:()=>nl}),nl=`import { IUniform, ShaderMaterial } from "three";
+`,nl=e({default:()=>rl}),rl=`import { IUniform, ShaderMaterial } from "three";
 
 import { Pass } from "./Pass.js";
 
@@ -17524,7 +17524,7 @@ declare class AfterimagePass extends Pass {
 }
 
 export { AfterimagePass };
-`,rl=e({default:()=>il}),il=`import { ShaderMaterial, WebGLRenderTarget } from "three";
+`,il=e({default:()=>al}),al=`import { ShaderMaterial, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17538,7 +17538,7 @@ export class BloomPass extends Pass {
     materialConvolution: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,al=e({default:()=>ol}),ol=`import { Camera, Color, MeshDepthMaterial, Scene, ShaderMaterial, WebGLRenderTarget } from "three";
+`,ol=e({default:()=>sl}),sl=`import { Camera, Color, MeshDepthMaterial, Scene, ShaderMaterial, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17561,7 +17561,7 @@ export class BokehPass extends Pass {
     fsQuad: FullScreenQuad;
     oldClearColor: Color;
 }
-`,sl=e({default:()=>cl}),cl=`import { ColorRepresentation } from "three";
+`,cl=e({default:()=>ll}),ll=`import { ColorRepresentation } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17570,7 +17570,7 @@ export class ClearPass extends Pass {
     clearColor: ColorRepresentation;
     clearAlpha: number;
 }
-`,ll=e({default:()=>ul}),ul=`import { CubeTexture, Mesh, PerspectiveCamera, Scene } from "three";
+`,ul=e({default:()=>dl}),dl=`import { CubeTexture, Mesh, PerspectiveCamera, Scene } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17584,7 +17584,7 @@ export class CubeTexturePass extends Pass {
     cubeScene: Scene;
     cubeCamera: PerspectiveCamera;
 }
-`,dl=e({default:()=>fl}),fl=`import { ShaderMaterial, Vector2 } from "three";
+`,fl=e({default:()=>pl}),pl=`import { ShaderMaterial, Vector2 } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17594,7 +17594,7 @@ export class DotScreenPass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,pl=e({default:()=>ml}),ml=`import { Timer, WebGLRenderer, WebGLRenderTarget } from "three";
+`,ml=e({default:()=>hl}),hl=`import { Timer, WebGLRenderer, WebGLRenderTarget } from "three";
 import { Pass } from "./Pass.js";
 import { ShaderPass } from "./ShaderPass.js";
 
@@ -17624,14 +17624,14 @@ declare class EffectComposer {
 }
 
 export { EffectComposer };
-`,hl=e({default:()=>gl}),gl=`import { ShaderPass } from "./ShaderPass.js";
+`,gl=e({default:()=>_l}),_l=`import { ShaderPass } from "./ShaderPass.js";
 
 declare class FXAAPass extends ShaderPass {
     constructor();
 }
 
 export { FXAAPass };
-`,_l=e({default:()=>vl}),vl=`import { ShaderMaterial } from "three";
+`,vl=e({default:()=>yl}),yl=`import { ShaderMaterial } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17641,7 +17641,7 @@ export class FilmPass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,yl=e({default:()=>bl}),bl=`import {
+`,bl=e({default:()=>xl}),xl=`import {
     Box3,
     Camera,
     Color,
@@ -17762,7 +17762,7 @@ export class GTAOPass extends Pass {
         Denoise: 5;
     };
 }
-`,xl=e({default:()=>Sl}),Sl=`import { DataTexture, ShaderMaterial } from "three";
+`,Sl=e({default:()=>Cl}),Cl=`import { DataTexture, ShaderMaterial } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17778,7 +17778,7 @@ export class GlitchPass extends Pass {
     generateTrigger(): void;
     generateHeightmap(dt_size: number): DataTexture;
 }
-`,Cl=e({default:()=>wl}),wl=`import { IUniform, ShaderMaterial } from "three";
+`,wl=e({default:()=>Tl}),Tl=`import { IUniform, ShaderMaterial } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17815,7 +17815,7 @@ export class HalftonePass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,Tl=e({default:()=>El}),El=`import { Data3DTexture, DataTexture } from "three";
+`,El=e({default:()=>Dl}),Dl=`import { Data3DTexture, DataTexture } from "three";
 import { ShaderPass } from "./ShaderPass.js";
 
 export interface LUTPassParameters {
@@ -17828,7 +17828,7 @@ export class LUTPass extends ShaderPass {
     intensity?: number;
     constructor(params?: LUTPassParameters);
 }
-`,Dl=e({default:()=>Ol}),Ol=`import { Camera, Scene } from "three";
+`,Ol=e({default:()=>kl}),kl=`import { Camera, Scene } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -17842,7 +17842,7 @@ export class MaskPass extends Pass {
 export class ClearMaskPass extends Pass {
     constructor();
 }
-`,kl=e({default:()=>Al}),Al=`import {
+`,Al=e({default:()=>jl}),jl=`import {
     Camera,
     Color,
     Matrix4,
@@ -17906,7 +17906,7 @@ export class OutlinePass extends Pass {
     getSeparableBlurMaterial(): ShaderMaterial;
     getOverlayMaterial(): ShaderMaterial;
 }
-`,jl=e({default:()=>Ml}),Ml=`import { IUniform, RawShaderMaterial } from "three";
+`,Ml=e({default:()=>Nl}),Nl=`import { IUniform, RawShaderMaterial } from "three";
 
 import { Pass } from "./Pass.js";
 
@@ -17920,7 +17920,7 @@ declare class OutputPass extends Pass {
 }
 
 export { OutputPass };
-`,Nl=e({default:()=>Pl}),Pl=`import { Material, WebGLRenderer, WebGLRenderTarget } from "three";
+`,Pl=e({default:()=>Fl}),Fl=`import { Material, WebGLRenderer, WebGLRenderTarget } from "three";
 
 export class Pass {
     constructor();
@@ -17951,7 +17951,7 @@ export class FullScreenQuad {
 
     material: Material;
 }
-`,Fl=e({default:()=>Il}),Il=`import { Camera, Color, Material, Scene } from "three";
+`,Il=e({default:()=>Ll}),Ll=`import { Camera, Color, Material, Scene } from "three";
 
 import { Pass } from "./Pass.js";
 
@@ -17979,7 +17979,7 @@ declare class RenderPass extends Pass {
 }
 
 export { RenderPass };
-`,Ll=e({default:()=>Rl}),Rl=`import { Camera, MeshNormalMaterial, Scene, ShaderMaterial, Vector2, WebGLRenderTarget } from "three";
+`,Rl=e({default:()=>zl}),zl=`import { Camera, MeshNormalMaterial, Scene, ShaderMaterial, Vector2, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18009,7 +18009,7 @@ export class RenderPixelatedPass extends Pass {
 
     setPixelSize(pixelSize: number): void;
 }
-`,zl=e({default:()=>Bl}),Bl=`import { Camera, Object3D, ShaderMaterial, Texture, WebGLRenderer, WebGLRenderTarget } from "three";
+`,Bl=e({default:()=>Vl}),Vl=`import { Camera, Object3D, ShaderMaterial, Texture, WebGLRenderer, WebGLRenderTarget } from "three";
 import { FullScreenQuad, Pass } from "./Pass.js";
 
 export class RenderTransitionPass extends Pass {
@@ -18042,7 +18042,7 @@ export class RenderTransitionPass extends Pass {
 
     createMaterial(): ShaderMaterial;
 }
-`,Vl=e({default:()=>Hl}),Hl=`import {
+`,Hl=e({default:()=>Ul}),Ul=`import {
     Camera,
     Color,
     ColorRepresentation,
@@ -18112,7 +18112,7 @@ export class SAOPass extends Pass {
         clearAlpha?: number,
     ): void;
 }
-`,Ul=e({default:()=>Wl}),Wl=`import { ShaderMaterial, Texture, WebGLRenderTarget } from "three";
+`,Wl=e({default:()=>Gl}),Gl=`import { ShaderMaterial, Texture, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18133,7 +18133,7 @@ export class SMAAPass extends Pass {
     getAreaTexture(): string;
     getSearchTexture(): string;
 }
-`,Gl=e({default:()=>Kl}),Kl=`import { Camera, ColorRepresentation, Scene, ShaderMaterial, WebGLRenderTarget } from "three";
+`,Kl=e({default:()=>ql}),ql=`import { Camera, ColorRepresentation, Scene, ShaderMaterial, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18159,7 +18159,7 @@ export class SSAARenderPass extends Pass {
 
     constructor(scene: Scene, camera: Camera, clearColor?: ColorRepresentation, clearAlpha?: number);
 }
-`,ql=e({default:()=>Jl}),Jl=`import {
+`,Jl=e({default:()=>Yl}),Yl=`import {
     Camera,
     Color,
     ColorRepresentation,
@@ -18227,7 +18227,7 @@ export class SSAOPass extends Pass {
         clearAlpha?: number,
     ): void;
 }
-`,Yl=e({default:()=>Xl}),Xl=`import {
+`,Xl=e({default:()=>Zl}),Zl=`import {
     Camera,
     Color,
     Mesh,
@@ -18326,7 +18326,7 @@ declare class SSRPass extends Pass {
 }
 
 export { SSRPass };
-`,Zl=e({default:()=>Ql}),Ql=`import { ShaderMaterial, WebGLRenderTarget } from "three";
+`,Ql=e({default:()=>$l}),$l=`import { ShaderMaterial, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18338,7 +18338,7 @@ export class SavePass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,$l=e({default:()=>eu}),eu=`import { ShaderMaterial } from "three";
+`,eu=e({default:()=>tu}),tu=`import { ShaderMaterial } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18349,7 +18349,7 @@ export class ShaderPass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,tu=e({default:()=>nu}),nu=`import { Camera, ColorRepresentation, Scene } from "three";
+`,nu=e({default:()=>ru}),ru=`import { Camera, ColorRepresentation, Scene } from "three";
 
 import { SSAARenderPass } from "./SSAARenderPass.js";
 
@@ -18357,7 +18357,7 @@ export class TAARenderPass extends SSAARenderPass {
     constructor(scene: Scene, camera: Camera, clearColor?: ColorRepresentation, clearAlpha?: number);
     accumulate: boolean;
 }
-`,ru=e({default:()=>iu}),iu=`import { IUniform, ShaderMaterial, Texture } from "three";
+`,iu=e({default:()=>au}),au=`import { IUniform, ShaderMaterial, Texture } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18369,7 +18369,7 @@ export class TexturePass extends Pass {
     material: ShaderMaterial;
     fsQuad: FullScreenQuad;
 }
-`,au=e({default:()=>ou}),ou=`import { Color, MeshBasicMaterial, ShaderMaterial, Vector2, Vector3, WebGLRenderTarget } from "three";
+`,ou=e({default:()=>su}),su=`import { Color, MeshBasicMaterial, ShaderMaterial, Vector2, Vector3, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad, Pass } from "./Pass.js";
 
@@ -18395,7 +18395,7 @@ export class UnrealBloomPass extends Pass {
 
     constructor(resolution: Vector2, strength: number, radius: number, threshold: number);
 }
-`,su=e({default:()=>cu}),cu=`import { Camera, Object3D, Scene, Vector2 } from "three";
+`,cu=e({default:()=>lu}),lu=`import { Camera, Object3D, Scene, Vector2 } from "three";
 
 declare class CSS2DObject extends Object3D {
     element: HTMLElement;
@@ -18423,7 +18423,7 @@ declare class CSS2DRenderer {
 }
 
 export { CSS2DObject, CSS2DRenderer };
-`,lu=e({default:()=>uu}),uu=`import { Camera, Object3D, Scene } from "three";
+`,uu=e({default:()=>du}),du=`import { Camera, Object3D, Scene } from "three";
 
 export class CSS3DObject extends Object3D {
     constructor(element: HTMLElement);
@@ -18449,7 +18449,7 @@ export class CSS3DRenderer {
     setSize(width: number, height: number): void;
     render(scene: Scene, camera: Camera): void;
 }
-`,du=e({default:()=>fu}),fu=`import { Camera, Color, Material, Object3D, Scene, Vector2, Vector3, Vector4 } from "three";
+`,fu=e({default:()=>pu}),pu=`import { Camera, Color, Material, Object3D, Scene, Vector2, Vector3, Vector4 } from "three";
 
 export class RenderableObject {
     id: number;
@@ -18509,7 +18509,7 @@ export class Projector {
 
     projectScene(scene: Scene, camera: Camera, sortObjects: boolean, sortElements: boolean): any;
 }
-`,pu=e({default:()=>mu}),mu=`import { Camera, Color, Object3D, Scene } from "three";
+`,mu=e({default:()=>hu}),hu=`import { Camera, Color, Object3D, Scene } from "three";
 
 export class SVGObject extends Object3D {
     constructor(node: SVGElement);
@@ -18535,7 +18535,7 @@ export class SVGRenderer {
     clear(): void;
     render(scene: Scene, camera: Camera): void;
 }
-`,hu=e({default:()=>gu}),gu=`import { IUniform, Texture } from "three";
+`,gu=e({default:()=>_u}),_u=`import { IUniform, Texture } from "three";
 
 export const ACESFilmicToneMappingShader: {
     name: string;
@@ -18546,7 +18546,7 @@ export const ACESFilmicToneMappingShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,_u=e({default:()=>vu}),vu=`import { IUniform } from "three";
+`,vu=e({default:()=>yu}),yu=`import { IUniform } from "three";
 
 export const AfterimageShader: {
     name: string;
@@ -18558,13 +18558,13 @@ export const AfterimageShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,yu=e({default:()=>bu}),bu=`export const BasicShader: {
+`,bu=e({default:()=>xu}),xu=`export const BasicShader: {
     name: string;
     uniforms: {};
     vertexShader: string;
     fragmentShader: string;
 };
-`,xu=e({default:()=>Su}),Su=`import { IUniform } from "three";
+`,Su=e({default:()=>Cu}),Cu=`import { IUniform } from "three";
 
 export const BleachBypassShader: {
     uniforms: {
@@ -18574,7 +18574,7 @@ export const BleachBypassShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Cu=e({default:()=>wu}),wu=`import { IUniform } from "three";
+`,wu=e({default:()=>Tu}),Tu=`import { IUniform } from "three";
 
 export const BlendShader: {
     name: string;
@@ -18587,7 +18587,7 @@ export const BlendShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Tu=e({default:()=>Eu}),Eu=`import { IUniform } from "three";
+`,Eu=e({default:()=>Du}),Du=`import { IUniform } from "three";
 
 export const BokehShader: {
     name: string;
@@ -18608,7 +18608,7 @@ export const BokehShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Du=e({default:()=>Ou}),Ou=`import { IUniform } from "three";
+`,Ou=e({default:()=>ku}),ku=`import { IUniform } from "three";
 
 export interface BokehShaderUniforms {
     textureWidth: IUniform;
@@ -18652,7 +18652,7 @@ export const BokehDepthShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,ku=e({default:()=>Au}),Au=`import { IUniform } from "three";
+`,Au=e({default:()=>ju}),ju=`import { IUniform } from "three";
 
 export const BrightnessContrastShader: {
     name: string;
@@ -18664,7 +18664,7 @@ export const BrightnessContrastShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,ju=e({default:()=>Mu}),Mu=`import { IUniform } from "three";
+`,Mu=e({default:()=>Nu}),Nu=`import { IUniform } from "three";
 
 export const ColorCorrectionShader: {
     name: string;
@@ -18677,7 +18677,7 @@ export const ColorCorrectionShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Nu=e({default:()=>Pu}),Pu=`import { IUniform } from "three";
+`,Pu=e({default:()=>Fu}),Fu=`import { IUniform } from "three";
 
 export const ColorifyShader: {
     uniforms: {
@@ -18687,7 +18687,7 @@ export const ColorifyShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Fu=e({default:()=>Iu}),Iu=`import { IUniform } from "three";
+`,Iu=e({default:()=>Lu}),Lu=`import { IUniform } from "three";
 
 export const ConvolutionShader: {
     defines: {
@@ -18704,7 +18704,7 @@ export const ConvolutionShader: {
 
     buildKernel(sigma: number): number[];
 };
-`,Lu=e({default:()=>Ru}),Ru=`import { IUniform } from "three";
+`,Ru=e({default:()=>zu}),zu=`import { IUniform } from "three";
 
 export const CopyShader: {
     uniforms: {
@@ -18714,7 +18714,7 @@ export const CopyShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,zu=e({default:()=>Bu}),Bu=`import { IUniform } from "three";
+`,Bu=e({default:()=>Vu}),Vu=`import { IUniform } from "three";
 
 export const DOFMipMapShader: {
     name: string;
@@ -18727,7 +18727,7 @@ export const DOFMipMapShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Vu=e({default:()=>Hu}),Hu=`import { IUniform, Material, Vector2 } from "three";
+`,Hu=e({default:()=>Uu}),Uu=`import { IUniform, Material, Vector2 } from "three";
 
 export const DepthLimitedBlurShader: {
     name: string;
@@ -18755,7 +18755,7 @@ export const BlurShaderUtils: {
     createSampleOffsets(kernelRadius: number, uvIncrement: Vector2): Vector2[];
     configure(configure: Material, kernelRadius: number, stdDev: number, uvIncrement: Vector2): void;
 };
-`,Uu=e({default:()=>Wu}),Wu=`import { IUniform } from "three";
+`,Wu=e({default:()=>Gu}),Gu=`import { IUniform } from "three";
 
 export const DigitalGlitch: {
     uniforms: {
@@ -18774,7 +18774,7 @@ export const DigitalGlitch: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Gu=e({default:()=>Ku}),Ku=`import { IUniform } from "three";
+`,Ku=e({default:()=>qu}),qu=`import { IUniform } from "three";
 
 export const DotScreenShader: {
     uniforms: {
@@ -18787,7 +18787,7 @@ export const DotScreenShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,qu=e({default:()=>Ju}),Ju=`import { IUniform, Texture } from "three";
+`,Ju=e({default:()=>Yu}),Yu=`import { IUniform, Texture } from "three";
 
 export const ExposureShader: {
     name: "ExposureShader";
@@ -18798,7 +18798,7 @@ export const ExposureShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Yu=e({default:()=>Xu}),Xu=`import { IUniform } from "three";
+`,Xu=e({default:()=>Zu}),Zu=`import { IUniform } from "three";
 
 export const FXAAShader: {
     name: string;
@@ -18809,7 +18809,7 @@ export const FXAAShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Zu=e({default:()=>Qu}),Qu=`import { IUniform } from "three";
+`,Qu=e({default:()=>$u}),$u=`import { IUniform } from "three";
 
 export const FilmShader: {
     uniforms: {
@@ -18821,7 +18821,7 @@ export const FilmShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,$u=e({default:()=>ed}),ed=`import { IUniform } from "three";
+`,ed=e({default:()=>td}),td=`import { IUniform } from "three";
 
 export const FocusShader: {
     name: string;
@@ -18835,7 +18835,7 @@ export const FocusShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,td=e({default:()=>nd}),nd=`import { IUniform } from "three";
+`,nd=e({default:()=>rd}),rd=`import { IUniform } from "three";
 
 export const FreiChenShader: {
     name: string;
@@ -18846,7 +18846,7 @@ export const FreiChenShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,rd=e({default:()=>id}),id=`import { DataTexture, IUniform, Matrix4, Vector2, Vector3 } from "three";
+`,id=e({default:()=>ad}),ad=`import { DataTexture, IUniform, Matrix4, Vector2, Vector3 } from "three";
 
 export const GTAOShader: {
     name: string;
@@ -18905,7 +18905,7 @@ export const GTAOBlendShader: {
 };
 
 export function generateMagicSquareNoise(samples?: number): DataTexture;
-`,ad=e({default:()=>od}),od=`import { IUniform } from "three";
+`,od=e({default:()=>sd}),sd=`import { IUniform } from "three";
 
 export const GammaCorrectionShader: {
     uniforms: {
@@ -18914,7 +18914,7 @@ export const GammaCorrectionShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,sd=e({default:()=>cd}),cd=`import { IUniform } from "three";
+`,cd=e({default:()=>ld}),ld=`import { IUniform } from "three";
 
 export const HalftoneShader: {
     name: string;
@@ -18936,7 +18936,7 @@ export const HalftoneShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,ld=e({default:()=>ud}),ud=`import { IUniform } from "three";
+`,ud=e({default:()=>dd}),dd=`import { IUniform } from "three";
 
 export const HorizontalBlurShader: {
     uniforms: {
@@ -18946,7 +18946,7 @@ export const HorizontalBlurShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,dd=e({default:()=>fd}),fd=`import { IUniform } from "three";
+`,fd=e({default:()=>pd}),pd=`import { IUniform } from "three";
 
 export const HorizontalTiltShiftShader: {
     name: string;
@@ -18958,7 +18958,7 @@ export const HorizontalTiltShiftShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,pd=e({default:()=>md}),md=`import { IUniform } from "three";
+`,md=e({default:()=>hd}),hd=`import { IUniform } from "three";
 
 export const HueSaturationShader: {
     name: string;
@@ -18970,7 +18970,7 @@ export const HueSaturationShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,hd=e({default:()=>gd}),gd=`import { IUniform } from "three";
+`,gd=e({default:()=>_d}),_d=`import { IUniform } from "three";
 
 export const KaleidoShader: {
     name: string;
@@ -18982,7 +18982,7 @@ export const KaleidoShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,_d=e({default:()=>vd}),vd=`import { IUniform } from "three";
+`,vd=e({default:()=>yd}),yd=`import { IUniform } from "three";
 
 export const LuminosityHighPassShader: {
     name: string;
@@ -18997,7 +18997,7 @@ export const LuminosityHighPassShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,yd=e({default:()=>bd}),bd=`import { IUniform } from "three";
+`,bd=e({default:()=>xd}),xd=`import { IUniform } from "three";
 
 export const LuminosityShader: {
     name: string;
@@ -19007,7 +19007,7 @@ export const LuminosityShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,xd=e({default:()=>Sd}),Sd=`import { IUniform } from "three";
+`,Sd=e({default:()=>Cd}),Cd=`import { IUniform } from "three";
 
 export const MirrorShader: {
     name: string;
@@ -19018,7 +19018,7 @@ export const MirrorShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Cd=e({default:()=>wd}),wd=`import { IUniform } from "three";
+`,wd=e({default:()=>Td}),Td=`import { IUniform } from "three";
 
 export const NormalMapShader: {
     name: string;
@@ -19031,7 +19031,7 @@ export const NormalMapShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Td=e({default:()=>Ed}),Ed=`import { IUniform } from "three";
+`,Ed=e({default:()=>Dd}),Dd=`import { IUniform } from "three";
 
 export const OutputShader: {
     name: string;
@@ -19042,7 +19042,7 @@ export const OutputShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Dd=e({default:()=>Od}),Od=`import { IUniform, Matrix4, Vector2 } from "three";
+`,Od=e({default:()=>kd}),kd=`import { IUniform, Matrix4, Vector2 } from "three";
 
 export const PoissonDenoiseShader: {
     name: string;
@@ -19070,7 +19070,7 @@ export const PoissonDenoiseShader: {
 };
 
 export function generatePdSamplePointInitializer(samples: number, rings: number, radiusExponent: number): string;
-`,kd=e({default:()=>Ad}),Ad=`import { IUniform } from "three";
+`,Ad=e({default:()=>jd}),jd=`import { IUniform } from "three";
 
 export const RGBShiftShader: {
     uniforms: {
@@ -19081,7 +19081,7 @@ export const RGBShiftShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,jd=e({default:()=>Md}),Md=`import { IUniform } from "three";
+`,Md=e({default:()=>Nd}),Nd=`import { IUniform } from "three";
 
 export const SAOShader: {
     name: string;
@@ -19110,7 +19110,7 @@ export const SAOShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Nd=e({default:()=>Pd}),Pd=`import { IUniform } from "three";
+`,Pd=e({default:()=>Fd}),Fd=`import { IUniform } from "three";
 
 export const SMAAEdgesShader: {
     name: string;
@@ -19153,7 +19153,7 @@ export const SMAABlendShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Fd=e({default:()=>Id}),Id=`import { IUniform } from "three";
+`,Id=e({default:()=>Ld}),Ld=`import { IUniform } from "three";
 
 export const SSAOShader: {
     name: string;
@@ -19202,7 +19202,7 @@ export const SSAOBlurShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Ld=e({default:()=>Rd}),Rd=`import { IUniform, Matrix4, Texture, Vector2 } from "three";
+`,Rd=e({default:()=>zd}),zd=`import { IUniform, Matrix4, Texture, Vector2 } from "three";
 /**
  * References:
  * https://lettier.github.io/3d-game-shaders-for-beginners/screen-space-reflection.html
@@ -19264,7 +19264,7 @@ export interface SSRBlurShader {
     vertexShader: string;
     fragmentShader: string;
 }
-`,zd=e({default:()=>Bd}),Bd=`import { IUniform } from "three";
+`,Bd=e({default:()=>Vd}),Vd=`import { IUniform } from "three";
 
 export const SepiaShader: {
     uniforms: {
@@ -19274,7 +19274,7 @@ export const SepiaShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Vd=e({default:()=>Hd}),Hd=`import { IUniform } from "three";
+`,Hd=e({default:()=>Ud}),Ud=`import { IUniform } from "three";
 
 export const SobelOperatorShader: {
     name: string;
@@ -19285,7 +19285,7 @@ export const SobelOperatorShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Ud=e({default:()=>Wd}),Wd=`import { IUniform } from "three";
+`,Wd=e({default:()=>Gd}),Gd=`import { IUniform } from "three";
 
 export const SubsurfaceScatteringShader: {
     name: string;
@@ -19323,7 +19323,7 @@ export const SubsurfaceScatteringShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Gd=e({default:()=>Kd}),Kd=`import { IUniform } from "three";
+`,Kd=e({default:()=>qd}),qd=`import { IUniform } from "three";
 
 export const TechnicolorShader: {
     name: string;
@@ -19333,7 +19333,7 @@ export const TechnicolorShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,qd=e({default:()=>Jd}),Jd=`import { IUniform } from "three";
+`,Jd=e({default:()=>Yd}),Yd=`import { IUniform } from "three";
 
 export const ToonShader1: {
     uniforms: {
@@ -19387,7 +19387,7 @@ export const ToonShaderDotted: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Yd=e({default:()=>Xd}),Xd=`import { IUniform } from "three";
+`,Xd=e({default:()=>Zd}),Zd=`import { IUniform } from "three";
 
 export const TriangleBlurShader: {
     name: string;
@@ -19398,7 +19398,7 @@ export const TriangleBlurShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,Zd=e({default:()=>Qd}),Qd=`import { IUniform } from "three";
+`,Qd=e({default:()=>$d}),$d=`import { IUniform } from "three";
 
 export const UnpackDepthRGBAShader: {
     name: string;
@@ -19409,7 +19409,7 @@ export const UnpackDepthRGBAShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,$d=e({default:()=>ef}),ef=`import { IUniform, UniformsLib } from "three";
+`,ef=e({default:()=>tf}),tf=`import { IUniform, UniformsLib } from "three";
 
 export const VelocityShader: {
     name: string;
@@ -19425,7 +19425,7 @@ export const VelocityShader: {
     fragmentShader: string;
     vertexShader: string;
 };
-`,tf=e({default:()=>nf}),nf=`import { IUniform } from "three";
+`,nf=e({default:()=>rf}),rf=`import { IUniform } from "three";
 
 export const VerticalBlurShader: {
     uniforms: {
@@ -19435,7 +19435,7 @@ export const VerticalBlurShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,rf=e({default:()=>af}),af=`import { IUniform } from "three";
+`,af=e({default:()=>of}),of=`import { IUniform } from "three";
 
 export const VerticalTiltShiftShader: {
     name: string;
@@ -19447,7 +19447,7 @@ export const VerticalTiltShiftShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,of=e({default:()=>sf}),sf=`import { IUniform } from "three";
+`,sf=e({default:()=>cf}),cf=`import { IUniform } from "three";
 
 export const VignetteShader: {
     uniforms: {
@@ -19458,7 +19458,7 @@ export const VignetteShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,cf=e({default:()=>lf}),lf=`import { IUniform } from "three";
+`,lf=e({default:()=>uf}),uf=`import { IUniform } from "three";
 
 export const VolumeRenderShader1: {
     uniforms: {
@@ -19472,7 +19472,7 @@ export const VolumeRenderShader1: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,uf=e({default:()=>df}),df=`import { IUniform } from "three";
+`,df=e({default:()=>ff}),ff=`import { IUniform } from "three";
 
 export const WaterRefractionShader: {
     name: string;
@@ -19486,10 +19486,10 @@ export const WaterRefractionShader: {
     vertexShader: string;
     fragmentShader: string;
 };
-`,ff=e({default:()=>pf}),pf=`export class FlakesTexture extends HTMLCanvasElement {
+`,pf=e({default:()=>mf}),mf=`export class FlakesTexture extends HTMLCanvasElement {
     constructor(width?: number, height?: number);
 }
-`,mf=e({default:()=>hf}),hf=`export class Comment {
+`,hf=e({default:()=>gf}),gf=`export class Comment {
     constructor(comment: string);
 
     comment: string;
@@ -19781,17 +19781,17 @@ export class StructDefinition {
 
     constructor(name: string, members?: StructMember[]);
 }
-`,gf=e({default:()=>_f}),_f=`import { Program } from "./AST.js";
+`,_f=e({default:()=>vf}),vf=`import { Program } from "./AST.js";
 
 export default class GLSLDecoder {
     constructor();
 
     parse(source: string): Program;
 }
-`,vf=e({default:()=>yf}),yf=`import GLSLDecoder from "./GLSLDecoder.js";
+`,yf=e({default:()=>bf}),bf=`import GLSLDecoder from "./GLSLDecoder.js";
 
 export default class ShaderToyDecoder extends GLSLDecoder {}
-`,bf=e({default:()=>xf}),xf=`import {
+`,xf=e({default:()=>Sf}),Sf=`import {
     Comment,
     Conditional,
     Expression,
@@ -19840,12 +19840,12 @@ export default class TSLEncoder {
     emitExtraLine(statement: Statement, body: Statement[]): string;
     emit(ast: Program): string;
 }
-`,Sf=e({default:()=>Cf}),Cf=`export default class Transpiler<U, V> {
+`,Cf=e({default:()=>wf}),wf=`export default class Transpiler<U, V> {
     constructor(decoder: { parse(source: string): U }, encoder: { emit(decoded: U): V });
 
     parse(source: string): V;
 }
-`,wf=e({default:()=>Tf}),Tf=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,Tf=e({default:()=>Ef}),Ef=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 export default class AfterImageNode extends TempNode {
     textureNode: TextureNode;
@@ -19860,7 +19860,7 @@ export default class AfterImageNode extends TempNode {
 }
 
 export const afterImage: (node: Node, damp?: Node | number) => AfterImageNode;
-`,Ef=e({default:()=>Df}),Df=`import { Camera, Scene } from "three/webgpu";
+`,Df=e({default:()=>Of}),Of=`import { Camera, Scene } from "three/webgpu";
 import StereoCompositePassNode from "./StereoCompositePassNode.js";
 
 declare const AnaglyphAlgorithm: {
@@ -19902,7 +19902,7 @@ export default AnaglyphPassNode;
 export { AnaglyphAlgorithm, AnaglyphColorMode };
 
 export const anaglyphPass: (scene: Scene, camera: Camera) => AnaglyphPassNode;
-`,Of=e({default:()=>kf}),kf=`import { Node, TempNode, Vector2 } from "three/webgpu";
+`,kf=e({default:()=>Af}),Af=`import { Node, TempNode, Vector2 } from "three/webgpu";
 
 export default class AnamorphicNode extends TempNode<"vec4"> {
     textureNode: Node;
@@ -19933,7 +19933,7 @@ export const anamorphic: (
     scale?: Node,
     samples?: Node | number,
 ) => AnamorphicNode;
-`,Af=e({default:()=>jf}),jf=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,jf=e({default:()=>Mf}),Mf=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class BilateralBlurNode extends TempNode<"vec4"> {
     textureNode: TextureNode;
@@ -19960,10 +19960,10 @@ export const bilateralBlur: (
     sigma?: number,
     sigmaColor?: number,
 ) => BilateralBlurNode;
-`,Mf=e({default:()=>Nf}),Nf=`import { Node } from "three/webgpu";
+`,Nf=e({default:()=>Pf}),Pf=`import { Node } from "three/webgpu";
 
 export const bleach: (color: Node, opacity?: Node | number) => Node;
-`,Pf=e({default:()=>Ff}),Ff=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,Ff=e({default:()=>If}),If=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class BloomNode extends TempNode<"vec4"> {
     inputNode: Node;
@@ -19988,7 +19988,7 @@ export const bloom: (
 ) => BloomNode;
 
 export default BloomNode;
-`,If=e({default:()=>Lf}),Lf=`import { Node } from "three/webgpu";
+`,Lf=e({default:()=>Rf}),Rf=`import { Node } from "three/webgpu";
 
 export const barrelUV: (curvature?: Node<"float">, coord?: Node<"vec2">) => Node<"vec2">;
 
@@ -20010,7 +20010,7 @@ export const vignette: (
     smoothness?: Node<"float"> | number,
     coord?: Node<"vec2">,
 ) => Node<"vec3">;
-`,Rf=e({default:()=>zf}),zf=`import { Node, TempNode, Vector2 } from "three/webgpu";
+`,zf=e({default:()=>Bf}),Bf=`import { Node, TempNode, Vector2 } from "three/webgpu";
 
 declare class ChromaticAberrationNode extends TempNode {
     textureNode: Node;
@@ -20029,7 +20029,7 @@ export const chromaticAberration: (
     center?: Node | Vector2 | null,
     scale?: Node,
 ) => ChromaticAberrationNode;
-`,Bf=e({default:()=>Vf}),Vf=`import { Camera, Node, TempNode, UniformNode } from "three/webgpu";
+`,Vf=e({default:()=>Hf}),Hf=`import { Camera, Node, TempNode, UniformNode } from "three/webgpu";
 
 declare class DenoiseNode extends TempNode {
     textureNode: Node;
@@ -20055,7 +20055,7 @@ export const denoise: (
     normalNode: Node,
     camera: Camera,
 ) => DenoiseNode;
-`,Hf=e({default:()=>Uf}),Uf=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,Uf=e({default:()=>Wf}),Wf=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class DepthOfFieldNode extends TempNode {
     textureNode: TextureNode;
@@ -20083,7 +20083,7 @@ export const dof: (
     focalLength?: Node | number,
     bokehScale?: Node | number,
 ) => DepthOfFieldNode;
-`,Wf=e({default:()=>Gf}),Gf=`import { Node, TempNode, UniformNode } from "three/webgpu";
+`,Gf=e({default:()=>Kf}),Kf=`import { Node, TempNode, UniformNode } from "three/webgpu";
 
 declare class DotScreenNode extends TempNode {
     inputNode: Node;
@@ -20100,7 +20100,7 @@ export const dotScreen: (
     angle?: number,
     scale?: number,
 ) => DotScreenNode;
-`,Kf=e({default:()=>qf}),qf=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,qf=e({default:()=>Jf}),Jf=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class FXAANode extends TempNode {
     textureNode: TextureNode;
@@ -20111,7 +20111,7 @@ declare class FXAANode extends TempNode {
 export default FXAANode;
 
 export const fxaa: (node: Node) => FXAANode;
-`,Jf=e({default:()=>Yf}),Yf=`import { Node, TempNode } from "three/webgpu";
+`,Yf=e({default:()=>Xf}),Xf=`import { Node, TempNode } from "three/webgpu";
 
 declare class FilmNode extends TempNode {
     inputNode: Node;
@@ -20128,7 +20128,7 @@ export const film: (
     intensityNode?: Node | null,
     uvNode?: Node | null,
 ) => FilmNode;
-`,Xf=e({default:()=>Zf}),Zf=`import { Camera, Node, TempNode, TextureNode, UniformNode, Vector2 } from "three/webgpu";
+`,Zf=e({default:()=>Qf}),Qf=`import { Camera, Node, TempNode, TextureNode, UniformNode, Vector2 } from "three/webgpu";
 
 declare class GTAONode extends TempNode<"float"> {
     depthNode: Node;
@@ -20160,7 +20160,7 @@ export const ao: (
     normalNode: Node,
     camera: Camera,
 ) => GTAONode;
-`,Qf=e({default:()=>$f}),$f=`import { Node, TempNode, TextureNode, Vector2 } from "three/webgpu";
+`,$f=e({default:()=>ep}),ep=`import { Node, TempNode, TextureNode, Vector2 } from "three/webgpu";
 
 export interface GaussianBlurNodeOptions {
     premultipliedAlpha?: boolean | undefined;
@@ -20216,7 +20216,7 @@ export const premultipliedGaussianBlur: (
     directionNode?: Node | number | null,
     sigma?: number,
 ) => GaussianBlurNode;
-`,ep=e({default:()=>tp}),tp=`import { Camera, DirectionalLight, PointLight, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,tp=e({default:()=>np}),np=`import { Camera, DirectionalLight, PointLight, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class GodraysNode extends TempNode<"vec4"> {
     depthNode: TextureNode;
@@ -20236,7 +20236,7 @@ declare class GodraysNode extends TempNode<"vec4"> {
 export default GodraysNode;
 
 export const godrays: (depthNode: TextureNode, camera: Camera, light: DirectionalLight | PointLight) => GodraysNode;
-`,np=e({default:()=>rp}),rp=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,rp=e({default:()=>ip}),ip=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 interface LensflareNodeParams {
     ghostTint?: Node | undefined;
@@ -20270,7 +20270,7 @@ export const lensflare: (
     inputNode: Node,
     params?: LensflareNodeParams,
 ) => LensflareNode;
-`,ip=e({default:()=>ap}),ap=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,ap=e({default:()=>op}),op=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class Lut3DNode extends TempNode {
     inputNode: Node;
@@ -20289,14 +20289,14 @@ export const lut3D: (
     size: number,
     intensity: Node,
 ) => Lut3DNode;
-`,op=e({default:()=>sp}),sp=`import { Node } from "three/webgpu";
+`,sp=e({default:()=>cp}),cp=`import { Node } from "three/webgpu";
 
 export const motionBlur: (
     inputNode: Node,
     velocity: Node,
     numSamples?: Node,
 ) => Node<"vec4">;
-`,cp=e({default:()=>lp}),lp=`import { Camera, Node, Object3D, Scene, TempNode, TextureNode } from "three/webgpu";
+`,lp=e({default:()=>up}),up=`import { Camera, Node, Object3D, Scene, TempNode, TextureNode } from "three/webgpu";
 
 export interface OutlineNodeParams {
     selectedObjects?: Object3D[] | undefined;
@@ -20327,7 +20327,7 @@ declare class OutlineNode extends TempNode<"vec4"> {
 export default OutlineNode;
 
 export const outline: (scene: Scene, camera: Camera, params?: OutlineNodeParams) => OutlineNode;
-`,up=e({default:()=>dp}),dp=`import { Camera, Scene } from "three/webgpu";
+`,dp=e({default:()=>fp}),fp=`import { Camera, Scene } from "three/webgpu";
 import StereoCompositePassNode from "./StereoCompositePassNode.js";
 
 declare class ParallaxBarrierPassNode extends StereoCompositePassNode {
@@ -20339,7 +20339,7 @@ declare class ParallaxBarrierPassNode extends StereoCompositePassNode {
 export default ParallaxBarrierPassNode;
 
 export const parallaxBarrierPass: (scene: Scene, camera: Camera) => ParallaxBarrierPassNode;
-`,fp=e({default:()=>pp}),pp=`import { Camera, Node, PassNode, Scene } from "three/webgpu";
+`,pp=e({default:()=>mp}),mp=`import { Camera, Node, PassNode, Scene } from "three/webgpu";
 
 declare class PixelationPassNode extends PassNode {
     pixelSize: Node<"float">;
@@ -20366,7 +20366,7 @@ export const pixelationPass: (
 ) => PixelationPassNode;
 
 export default PixelationPassNode;
-`,mp=e({default:()=>hp}),hp=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,hp=e({default:()=>gp}),gp=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 export default class RGBShiftNode extends TempNode {
     textureNode: TextureNode;
@@ -20381,7 +20381,7 @@ export default class RGBShiftNode extends TempNode {
 }
 
 export const rgbShift: (node: Node, amount?: number, angle?: number) => RGBShiftNode;
-`,gp=e({default:()=>_p}),_p=`import { Camera, Node, PassNode, Scene } from "three/webgpu";
+`,_p=e({default:()=>vp}),vp=`import { Camera, Node, PassNode, Scene } from "three/webgpu";
 
 export interface RetroPassNodeOptions {
     affineDistortion?: Node | null | undefined;
@@ -20398,7 +20398,7 @@ declare class RetroPassNode extends PassNode {
 export default RetroPassNode;
 
 export const retroPass: (scene: Scene, camera: Camera, options?: RetroPassNodeOptions) => RetroPassNode;
-`,vp=e({default:()=>yp}),yp=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,yp=e({default:()=>bp}),bp=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class SMAANode extends TempNode {
     textureNode: TextureNode;
@@ -20415,7 +20415,7 @@ declare class SMAANode extends TempNode {
 }
 
 export const smaa: (node: Node) => SMAANode;
-`,bp=e({default:()=>xp}),xp=`import { Camera, Color, PassNode, RenderTarget, Scene, UniformNode } from "three/webgpu";
+`,xp=e({default:()=>Sp}),Sp=`import { Camera, Color, PassNode, RenderTarget, Scene, UniformNode } from "three/webgpu";
 
 declare class SSAAPassNode extends PassNode {
     readonly isSSAAPassNode: boolean;
@@ -20435,7 +20435,7 @@ declare class SSAAPassNode extends PassNode {
 export default SSAAPassNode;
 
 export const ssaaPass: (scene: Scene, camera: Camera) => SSAAPassNode;
-`,Sp=e({default:()=>Cp}),Cp=`import { Node, PerspectiveCamera, TempNode, UniformNode } from "three/webgpu";
+`,Cp=e({default:()=>wp}),wp=`import { Node, PerspectiveCamera, TempNode, UniformNode } from "three/webgpu";
 
 declare class SSGINode extends TempNode<"vec4"> {
     beautyNode: Node;
@@ -20465,7 +20465,7 @@ export const ssgi: (
     normalNode: Node,
     camera: PerspectiveCamera,
 ) => SSGINode;
-`,wp=e({default:()=>Tp}),Tp=`import { Camera, Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,Tp=e({default:()=>Ep}),Ep=`import { Camera, Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class SSRNode extends TempNode<"vec4"> {
     colorNode: Node;
@@ -20507,7 +20507,7 @@ export const ssr: (
     roughnessNode?: Node | null,
     camera?: Camera | null,
 ) => SSRNode;
-`,Ep=e({default:()=>Dp}),Dp=`import { Camera, DirectionalLight, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,Dp=e({default:()=>Op}),Op=`import { Camera, DirectionalLight, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class SSSNode extends TempNode<"float"> {
     depthNode: TextureNode;
@@ -20527,13 +20527,13 @@ declare class SSSNode extends TempNode<"float"> {
 export default SSSNode;
 
 export const sss: (depthNode: TextureNode, camera: Camera, mainLight: DirectionalLight) => SSSNode;
-`,Op=e({default:()=>kp}),kp=`import { Node } from "three/webgpu";
+`,kp=e({default:()=>Ap}),Ap=`import { Node } from "three/webgpu";
 
 export const sepia: (color: Node) => Node;
-`,Ap=e({default:()=>jp}),jp=`import { Node } from "three/webgpu";
+`,jp=e({default:()=>Mp}),Mp=`import { Node } from "three/webgpu";
 
 export const circle: (scale?: Node<"float">, softness?: Node<"float"> | number, coord?: Node<"vec2">) => Node<"float">;
-`,Mp=e({default:()=>Np}),Np=`import { Node, TempNode, TextureNode } from "three/webgpu";
+`,Np=e({default:()=>Pp}),Pp=`import { Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class SobelOperatorNode extends TempNode {
     textureNode: TextureNode;
@@ -20544,7 +20544,7 @@ declare class SobelOperatorNode extends TempNode {
 export default SobelOperatorNode;
 
 export const sobel: (node: Node) => SobelOperatorNode;
-`,Pp=e({default:()=>Fp}),Fp=`import { Camera, CoordinateSystem, PassNode, Scene, StereoCamera } from "three/webgpu";
+`,Fp=e({default:()=>Ip}),Ip=`import { Camera, CoordinateSystem, PassNode, Scene, StereoCamera } from "three/webgpu";
 
 declare class StereoCompositePassNode extends PassNode {
     readonly isStereoCompositePassNode: true;
@@ -20557,7 +20557,7 @@ declare class StereoCompositePassNode extends PassNode {
 }
 
 export default StereoCompositePassNode;
-`,Ip=e({default:()=>Lp}),Lp=`import { Camera, PassNode, Scene, StereoCamera } from "three/webgpu";
+`,Lp=e({default:()=>Rp}),Rp=`import { Camera, PassNode, Scene, StereoCamera } from "three/webgpu";
 
 declare class StereoPassNode extends PassNode {
     readonly isStereoPassNode: true;
@@ -20570,7 +20570,7 @@ declare class StereoPassNode extends PassNode {
 export default StereoPassNode;
 
 export const stereoPass: (scene: Scene, camera: Camera) => StereoPassNode;
-`,Rp=e({default:()=>zp}),zp=`import { Camera, Node, TempNode, TextureNode } from "three/webgpu";
+`,zp=e({default:()=>Bp}),Bp=`import { Camera, Node, TempNode, TextureNode } from "three/webgpu";
 
 declare class TRAANode extends TempNode {
     readonly isTRAANode: true;
@@ -20596,7 +20596,7 @@ export const traa: (
     velocityNode: TextureNode,
     camera: Camera,
 ) => TRAANode;
-`,Bp=e({default:()=>Vp}),Vp=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
+`,Vp=e({default:()=>Hp}),Hp=`import { Node, TempNode, TextureNode, UniformNode } from "three/webgpu";
 
 declare class TransitionNode extends TempNode {
     textureNodeA: TextureNode;
@@ -20627,7 +20627,7 @@ export const transition: (
     threshold: Node | number,
     useTexture: Node | number,
 ) => TransitionNode;
-`,Hp=e({default:()=>Up}),Up=`import { Node } from "three/webgpu";
+`,Up=e({default:()=>Wp}),Wp=`import { Node } from "three/webgpu";
 
 export interface BoxBlurOptions {
     size?: Node | undefined;
@@ -20637,7 +20637,7 @@ export interface BoxBlurOptions {
 }
 
 export const boxBlur: (textureNode: Node, options?: BoxBlurOptions) => Node<"vec4">;
-`,Wp=e({default:()=>Gp}),Gp=`import { Camera, Color, Node } from "three/webgpu";
+`,Gp=e({default:()=>Kp}),Kp=`import { Camera, Color, Node } from "three/webgpu";
 
 export interface DepthAwareBlendOptions {
     blendColor?: Node | Color;
@@ -20652,7 +20652,7 @@ export const depthAwareBlend: (
     camera: Camera,
     options?: DepthAwareBlendOptions,
 ) => Node<"vec4">;
-`,Kp=e({default:()=>qp}),qp=`import { Node } from "three/webgpu";
+`,qp=e({default:()=>Jp}),Jp=`import { Node } from "three/webgpu";
 
 interface HashBlurOptions {
     size?: Node | undefined;
@@ -20665,7 +20665,7 @@ export const hashBlur: (
     bluramount?: Node | number,
     options?: HashBlurOptions,
 ) => Node<"vec4">;
-`,Jp=e({default:()=>Yp}),Yp=`import { Node } from "three/webgpu";
+`,Yp=e({default:()=>Xp}),Xp=`import { Node } from "three/webgpu";
 
 export interface RadialBlurOptions {
     center?: Node | undefined;
@@ -20677,7 +20677,7 @@ export interface RadialBlurOptions {
 }
 
 export const radialBlur: (textureNode: Node, options?: RadialBlurOptions) => Node;
-`,Xp=e({default:()=>Zp}),Zp=`import { LightsNode, Node } from "three/webgpu";
+`,Zp=e({default:()=>Qp}),Qp=`import { LightsNode, Node } from "three/webgpu";
 
 export const circleIntersectsAABB: (
     circleCenter: Node,
@@ -20699,12 +20699,12 @@ declare class TiledLightsNode extends LightsNode {
 export default TiledLightsNode;
 
 export const tiledLights: (maxLights?: number, tileSize?: number) => TiledLightsNode;
-`,Qp=e({default:()=>$p}),$p=`import { Node } from "three/webgpu";
+`,$p=e({default:()=>em}),em=`import { Node } from "three/webgpu";
 
 export const bayer16: (uv: Node) => Node;
 
 export const bayerDither: (color: Node<"vec3">, steps?: Node<"float">) => Node<"vec3">;
-`,em=e({default:()=>tm}),tm=`import { Light, ShadowBaseNode } from "three/webgpu";
+`,tm=e({default:()=>nm}),nm=`import { Light, ShadowBaseNode } from "three/webgpu";
 
 export interface TileShadeNodeConfig {
     tilesX?: number | undefined;
@@ -20718,7 +20718,7 @@ declare class TileShadowNode extends ShadowBaseNode {
 }
 
 export { TileShadowNode };
-`,nm=e({default:()=>rm}),rm=`import { Group } from "three/webgpu";
+`,rm=e({default:()=>im}),im=`import { Group } from "three/webgpu";
 import { TileShadowNode } from "./TileShadowNode.js";
 
 declare class TileShadowNodeHelper extends Group {
@@ -20732,7 +20732,7 @@ declare class TileShadowNodeHelper extends Group {
 }
 
 export { TileShadowNodeHelper };
-`,im=e({default:()=>am}),am=`import { FunctionNode, Node } from "three/webgpu";
+`,am=e({default:()=>om}),om=`import { FunctionNode, Node } from "three/webgpu";
 
 export const RaymarchingBox: (
     steps: number | Node,
@@ -20740,7 +20740,7 @@ export const RaymarchingBox: (
         | ((params: { positionRay: Node<"vec3"> }) => void)
         | FunctionNode<{ positionRay: Node<"vec3"> }>,
 ) => void;
-`,om=e({default:()=>sm}),sm=`// https://threejs.org/docs/?q=buffergeome#examples/en/utils/BufferGeometryUtils
+`,sm=e({default:()=>cm}),cm=`// https://threejs.org/docs/?q=buffergeome#examples/en/utils/BufferGeometryUtils
 
 import {
     BufferAttribute,
@@ -20777,7 +20777,7 @@ export function deinterleaveGeometry(geometry: BufferGeometry): void;
  * @param creaseAngle The crease angle in radians.
  */
 export function toCreasedNormals(geometry: BufferGeometry, creaseAngle?: number): BufferGeometry;
-`,cm=e({default:()=>lm}),lm=`import { PerspectiveCamera, Vector3 } from "three";
+`,lm=e({default:()=>um}),um=`import { PerspectiveCamera, Vector3 } from "three";
 
 export function frameCorners(
     camera: PerspectiveCamera,
@@ -20786,7 +20786,7 @@ export function frameCorners(
     topLeftCorner: Vector3,
     estimateViewFrustum?: boolean,
 ): void;
-`,um=e({default:()=>dm}),dm=`import { BufferGeometry, Mesh } from "three";
+`,dm=e({default:()=>fm}),fm=`import { BufferGeometry, Mesh } from "three";
 
 /**
  * Make the input geometry's normal attribute encoded and compressed by 3 different methods.
@@ -20807,7 +20807,7 @@ declare function compressPositions(geometry: BufferGeometry): void;
 declare function compressUvs(geometry: BufferGeometry): void;
 
 export { compressNormals, compressPositions, compressUvs };
-`,fm=e({default:()=>pm}),pm=`import { Vector3 } from "three";
+`,pm=e({default:()=>mm}),mm=`import { Vector3 } from "three";
 
 export function hilbert2D(
     center?: Vector3,
@@ -20832,12 +20832,12 @@ export function hilbert3D(
     v7?: number,
 ): Vector3[];
 export function gosper(size?: number): number[];
-`,mm=e({default:()=>hm}),hm=`import { Group, Object3D } from "three";
+`,hm=e({default:()=>gm}),gm=`import { Group, Object3D } from "three";
 
 export namespace LDrawUtils {
     function mergeObject(object: Object3D): Group;
 }
-`,gm=e({default:()=>_m}),_m=`import { BufferGeometry, Group, InstancedMesh, Material, Mesh, Object3D, Scene, Vector3 } from "three";
+`,_m=e({default:()=>vm}),vm=`import { BufferGeometry, Group, InstancedMesh, Material, Mesh, Object3D, Scene, Vector3 } from "three";
 
 export function createMeshesFromInstancedMesh(instancedMesh: InstancedMesh): Group;
 export function createMultiMaterialObject(geometry: BufferGeometry, materials: Material[]): Group;
@@ -20894,7 +20894,7 @@ export function traverseVisibleGenerator(object: Object3D): Generator<Object3D, 
  * @yields Objects that passed the filter condition.
  */
 export function traverseAncestorsGenerator(object: Object3D): Generator<Object3D, void, unknown>;
-`,vm=e({default:()=>ym}),ym=`import { Light, WebGLRenderer } from "three";
+`,ym=e({default:()=>bm}),bm=`import { Light, WebGLRenderer } from "three";
 
 export interface Size {
     width: number;
@@ -20920,7 +20920,7 @@ declare class ShadowMapViewer {
 }
 
 export { ShadowMapViewer };
-`,bm=e({default:()=>xm}),xm=`import { Light, WebGPURenderer } from "three/webgpu";
+`,xm=e({default:()=>Sm}),Sm=`import { Light, WebGPURenderer } from "three/webgpu";
 
 export interface Size {
     width: number;
@@ -20946,7 +20946,7 @@ declare class ShadowMapViewer {
 }
 
 export { ShadowMapViewer };
-`,Sm=e({default:()=>Cm}),Cm=`import { AnimationClip, Bone, Object3D, Skeleton, Vector3 } from "three";
+`,Cm=e({default:()=>wm}),wm=`import { AnimationClip, Bone, Object3D, Skeleton, Vector3 } from "three";
 
 export interface RetargetOptions {
     preserveBoneMatrix?: boolean | undefined;
@@ -20978,23 +20978,23 @@ declare function retargetClip(
 declare function clone(source: Object3D): Object3D;
 
 export { clone, retarget, retargetClip };
-`,wm=e({default:()=>Tm}),Tm=`export interface RadixSortOptions<T> {
+`,Tm=e({default:()=>Em}),Em=`export interface RadixSortOptions<T> {
     aux?: T[] | undefined;
     get?: ((el: T) => number) | undefined;
     reversed?: boolean | undefined;
 }
 
 export const radixSort: <T = number>(arr: T[], opt?: RadixSortOptions<T>) => void;
-`,Em=e({default:()=>Dm}),Dm=`import { BufferGeometry } from "three";
+`,Dm=e({default:()=>Om}),Om=`import { BufferGeometry } from "three";
 
 export function UVsDebug(geometry: BufferGeometry, size?: number): HTMLCanvasElement;
-`,Om=e({default:()=>km}),km=`import { Texture, WebGLRenderer } from "three";
+`,km=e({default:()=>Am}),Am=`import { Texture, WebGLRenderer } from "three";
 
 export function decompress(texture: Texture, maxTextureSize?: number, renderer?: WebGLRenderer): Texture;
-`,Am=e({default:()=>jm}),jm=`import { Texture, WebGPURenderer } from "three/webgpu";
+`,jm=e({default:()=>Mm}),Mm=`import { Texture, WebGPURenderer } from "three/webgpu";
 
 export function decompress(blitTexture: Texture, maxTextureSize?: number, renderer?: WebGPURenderer): Promise<Texture>;
-`,Mm=e({default:()=>Nm}),Nm=`/**
+`,Nm=e({default:()=>Pm}),Pm=`/**
  * @author Deepkolos / https://github.com/deepkolos
  */
 
@@ -21020,7 +21020,7 @@ export class WorkerPool {
     postMessage(msg: any, transfer?: Array<Transferable>): Promise<MessageEvent>;
     dispose(): void;
 }
-`,Pm=e({default:()=>Fm}),Fm=`import { WebGLRenderer } from "three";
+`,Fm=e({default:()=>Im}),Im=`import { WebGLRenderer } from "three";
 
 export interface ARButtonSessionInit extends XRSessionInit {
     domOverlay: { root: HTMLElement };
@@ -21029,7 +21029,7 @@ export interface ARButtonSessionInit extends XRSessionInit {
 export namespace ARButton {
     function createButton(renderer: WebGLRenderer, sessionInit?: Partial<ARButtonSessionInit>): HTMLElement;
 }
-`,Im=e({default:()=>Lm}),Lm=`import { Loader, Mesh, Object3D, Texture, Vector3 } from "three";
+`,Lm=e({default:()=>Rm}),Rm=`import { Loader, Mesh, Object3D, Texture, Vector3 } from "three";
 import { GLTF } from "../loaders/GLTFLoader.js";
 import { XRHandMeshModel } from "./XRHandMeshModel.js";
 
@@ -21052,7 +21052,7 @@ export class OculusHandModel extends Object3D {
 
     checkButton(button: Object3D): void;
 }
-`,Rm=e({default:()=>zm}),zm=`import "webxr";
+`,zm=e({default:()=>Bm}),Bm=`import "webxr";
 
 import {
     BufferGeometry,
@@ -21119,24 +21119,24 @@ export class OculusHandPointerModel extends Object3D {
 
     public setCursor(distance: number): void;
 }
-`,Bm=e({default:()=>Vm}),Vm=`import { Mesh } from "three";
+`,Vm=e({default:()=>Hm}),Hm=`import { Mesh } from "three";
 
 export function createText(message: string, height: number): Mesh;
-`,Hm=e({default:()=>Um}),Um=`export interface VRButtonRenderer {
+`,Um=e({default:()=>Wm}),Wm=`export interface VRButtonRenderer {
     xr: { setSession: (value: XRSession) => Promise<void> };
 }
 
 export class VRButton {
     static createButton(renderer: VRButtonRenderer, sessionInit?: XRSessionInit): HTMLElement;
 }
-`,Wm=e({default:()=>Gm}),Gm=`export interface XRButtonRenderer {
+`,Gm=e({default:()=>Km}),Km=`export interface XRButtonRenderer {
     xr: { setSession(session: XRSession): Promise<void> };
 }
 
 export class XRButton {
     static createButton(renderer: XRButtonRenderer, sessionInit?: XRSessionInit): HTMLElement;
 }
-`,Km=e({default:()=>qm}),qm=`import { Group, Loader, Object3D, Texture } from "three";
+`,qm=e({default:()=>Jm}),Jm=`import { Group, Loader, Object3D, Texture } from "three";
 import { GLTF } from "../loaders/GLTFLoader.js";
 
 export class XRControllerModel extends Object3D {
@@ -21159,7 +21159,7 @@ export class XRControllerModelFactory {
 
     createControllerModel(controller: Group): XRControllerModel;
 }
-`,Jm=e({default:()=>Ym}),Ym=`import { DirectionalLight, Group, LightProbe, Object3DEventMap, Texture, WebGLRenderer } from "three";
+`,Ym=e({default:()=>Xm}),Xm=`import { DirectionalLight, Group, LightProbe, Object3DEventMap, Texture, WebGLRenderer } from "three";
 
 export class SessionLightProbe {
     xrLight: XREstimatedLight;
@@ -21228,7 +21228,7 @@ export class XREstimatedLight extends Group<XREstimatedLightEventMap> {
      */
     constructor(renderer: WebGLRenderer, environmentEstimation?: boolean);
 }
-`,Xm=e({default:()=>Zm}),Zm=`import { Loader, Object3D } from "three";
+`,Zm=e({default:()=>Qm}),Qm=`import { Loader, Object3D } from "three";
 import { GLTF } from "../loaders/GLTFLoader.js";
 
 export class XRHandMeshModel {
@@ -21247,7 +21247,7 @@ export class XRHandMeshModel {
 
     updateMesh(): void;
 }
-`,Qm=e({default:()=>$m}),$m=`import { Group, Loader, Object3D } from "three";
+`,$m=e({default:()=>eh}),eh=`import { Group, Loader, Object3D } from "three";
 
 import { GLTF } from "../loaders/GLTFLoader.js";
 import { XRHandMeshModel } from "./XRHandMeshModel.js";
@@ -21279,7 +21279,7 @@ export class XRHandModelFactory {
         options?: XRHandPrimitiveModelOptions,
     ): XRHandModel;
 }
-`,eh=e({default:()=>th}),th=`import { Group, Texture } from "three";
+`,th=e({default:()=>nh}),nh=`import { Group, Texture } from "three";
 
 import { XRHandModel, XRHandModelHandedness } from "./XRHandModelFactory.js";
 
@@ -21303,18 +21303,18 @@ export class XRHandPrimitiveModel {
 
     updateMesh: () => void;
 }
-`,nh=e({default:()=>rh}),rh=`import { Object3D, WebGLRenderer } from "three";
+`,rh=e({default:()=>ih}),ih=`import { Object3D, WebGLRenderer } from "three";
 
 export class XRPlanes extends Object3D {
     constructor(renderer: WebGLRenderer);
 }
-`,ih=e({default:()=>ah}),ah=`// To update three.js type definition, please make changes to the repository at:
+`,ah=e({default:()=>oh}),oh=`// To update three.js type definition, please make changes to the repository at:
 // https://github.com/three-types/three-ts-types.
 // Periodically, the updates from the repository are pushed to DefinitelyTyped
 // and released in the @types/three npm package.
 
 export * from "./src/Three.js";
-`,oh=e({default:()=>sh}),sh=`{
+`,sh=e({default:()=>ch}),ch=`{
     "name": "@types/three",
     "version": "0.183.1",
     "description": "TypeScript definitions for three",
@@ -21367,7 +21367,7 @@ export * from "./src/Three.js";
     "peerDependencies": {},
     "typesPublisherContentHash": "468e3745918d138cd544eeb6d2918750f9ada85b28e98751fe1bca8bc9875fa9",
     "typeScriptVersion": "5.2"
-}`,ch=e({default:()=>lh}),lh=`export * from "./animation/AnimationAction.js";
+}`,lh=e({default:()=>uh}),uh=`export * from "./animation/AnimationAction.js";
 export * from "./animation/AnimationClip.js";
 export * from "./animation/AnimationMixer.js";
 export * from "./animation/AnimationObjectGroup.js";
@@ -21530,7 +21530,7 @@ export * from "./textures/Texture.js";
 export * from "./textures/VideoFrameTexture.js";
 export * from "./textures/VideoTexture.js";
 export { createCanvasElement, error, getConsoleFunction, log, setConsoleFunction, warn, warnOnce } from "./utils.js";
-`,uh=e({default:()=>dh}),dh=`import * as TSL from "./nodes/TSL.js";
+`,dh=e({default:()=>fh}),fh=`import * as TSL from "./nodes/TSL.js";
 
 export const BRDF_GGX: typeof TSL.BRDF_GGX;
 export const BRDF_Lambert: typeof TSL.BRDF_Lambert;
@@ -22158,7 +22158,7 @@ export const workingToColorSpace: typeof TSL.workingToColorSpace;
 export const xor: typeof TSL.xor;
 
 export type { ProxiedObject } from "./nodes/TSL.js";
-`,fh=e({default:()=>ph}),ph=`export * from "./Three.Core.js";
+`,ph=e({default:()=>mh}),mh=`export * from "./Three.Core.js";
 
 export * from "./materials/nodes/NodeMaterials.js";
 export { default as BundleGroup } from "./renderers/common/BundleGroup.js";
@@ -22187,7 +22187,7 @@ export { default as IndirectStorageBufferAttribute } from "./renderers/common/In
 export { default as StorageBufferAttribute } from "./renderers/common/StorageBufferAttribute.js";
 export { default as StorageInstancedBufferAttribute } from "./renderers/common/StorageInstancedBufferAttribute.js";
 export { default as StorageTexture } from "./renderers/common/StorageTexture.js";
-`,mh=e({default:()=>hh}),hh=`export * from "./Three.Core.js";
+`,hh=e({default:()=>gh}),gh=`export * from "./Three.Core.js";
 
 export * from "./materials/nodes/NodeMaterials.js";
 export { default as BundleGroup } from "./renderers/common/BundleGroup.js";
@@ -22219,7 +22219,7 @@ export { default as StorageArrayTexture } from "./renderers/common/StorageArrayT
 export { default as StorageBufferAttribute } from "./renderers/common/StorageBufferAttribute.js";
 export { default as StorageInstancedBufferAttribute } from "./renderers/common/StorageInstancedBufferAttribute.js";
 export { default as StorageTexture } from "./renderers/common/StorageTexture.js";
-`,gh=e({default:()=>_h}),_h=`export * from "./Three.Core.js";
+`,_h=e({default:()=>vh}),vh=`export * from "./Three.Core.js";
 
 export * from "./extras/PMREMGenerator.js";
 export * from "./renderers/shaders/ShaderChunk.js";
@@ -22277,7 +22277,7 @@ export type {
     WebXRManager,
     WebXRManagerEventMap,
 } from "./renderers/webxr/WebXRManager.js";
-`,vh=e({default:()=>yh}),yh=`import { AnimationActionLoopStyles, AnimationBlendMode } from "../constants.js";
+`,yh=e({default:()=>bh}),bh=`import { AnimationActionLoopStyles, AnimationBlendMode } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { AnimationClip } from "./AnimationClip.js";
 import { AnimationMixer } from "./AnimationMixer.js";
@@ -22563,7 +22563,7 @@ export class AnimationAction {
     getRoot(): Object3D;
     _scheduleFading(duration: number, weightNow: number, weightThen: number): this;
 }
-`,bh=e({default:()=>xh}),xh=`import { AnimationBlendMode } from "../constants.js";
+`,xh=e({default:()=>Sh}),Sh=`import { AnimationBlendMode } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { Vector3 } from "../math/Vector3.js";
 import { Bone } from "../objects/Bone.js";
@@ -22741,7 +22741,7 @@ export class AnimationClip {
      */
     toJSON(): AnimationClipJSON;
 }
-`,Sh=e({default:()=>Ch}),Ch=`import { AnimationBlendMode } from "../constants.js";
+`,Ch=e({default:()=>wh}),wh=`import { AnimationBlendMode } from "../constants.js";
 import { EventDispatcher } from "../core/EventDispatcher.js";
 import { Object3D } from "../core/Object3D.js";
 import { LinearInterpolant } from "../math/interpolants/LinearInterpolant.js";
@@ -22914,7 +22914,7 @@ export class AnimationMixer extends EventDispatcher<AnimationMixerEventMap> {
      */
     uncacheAction(clip: AnimationClip | string, optionalRoot?: Object3D | AnimationObjectGroup): void;
 }
-`,wh=e({default:()=>Th}),Th=`import { Object3D } from "../core/Object3D.js";
+`,Th=e({default:()=>Eh}),Eh=`import { Object3D } from "../core/Object3D.js";
 
 /**
  * A group of objects that receives a shared animation state.
@@ -22972,7 +22972,7 @@ export class AnimationObjectGroup {
      */
     uncache(...args: Object3D[]): void;
 }
-`,Eh=e({default:()=>Dh}),Dh=`import { TypedArray, TypedArrayConstructor } from "../core/BufferAttribute.js";
+`,Dh=e({default:()=>Oh}),Oh=`import { TypedArray, TypedArrayConstructor } from "../core/BufferAttribute.js";
 import { isTypedArray } from "../utils.js";
 import { AnimationClip } from "./AnimationClip.js";
 
@@ -23138,7 +23138,7 @@ export class AnimationUtils {
     ): AnimationClip;
 }
 export { isTypedArray };
-`,Oh=e({default:()=>kh}),kh=`import { InterpolationModes } from "../constants.js";
+`,kh=e({default:()=>Ah}),Ah=`import { InterpolationModes } from "../constants.js";
 import { TypedArray, TypedArrayConstructor } from "../core/BufferAttribute.js";
 import { BezierInterpolant } from "../math/interpolants/BezierInterpolant.js";
 import { CubicInterpolant } from "../math/interpolants/CubicInterpolant.js";
@@ -23321,7 +23321,7 @@ export class KeyframeTrack {
      */
     DefaultInterpolation: InterpolationModes;
 }
-`,Ah=e({default:()=>jh}),jh=`import { Object3D } from "../core/Object3D.js";
+`,jh=e({default:()=>Mh}),Mh=`import { Object3D } from "../core/Object3D.js";
 import { Skeleton } from "../objects/Skeleton.js";
 
 export interface ParseTrackNameResults {
@@ -23422,7 +23422,7 @@ export namespace PropertyBinding {
 declare class Composite {
 }
 export {};
-`,Mh=e({default:()=>Nh}),Nh=`import { PropertyBinding } from "./PropertyBinding.js";
+`,Nh=e({default:()=>Ph}),Ph=`import { PropertyBinding } from "./PropertyBinding.js";
 
 /**
  * Buffered scene graph property that allows weighted accumulation; used internally.
@@ -23497,7 +23497,7 @@ export class PropertyMixer {
      */
     restoreOriginalState(): void;
 }
-`,Ph=e({default:()=>Fh}),Fh=`import { KeyframeTrack } from "../KeyframeTrack.js";
+`,Fh=e({default:()=>Ih}),Ih=`import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
  * A track for boolean keyframe values.
@@ -23515,7 +23515,7 @@ export class BooleanKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<boolean>);
 }
-`,Ih=e({default:()=>Lh}),Lh=`import { InterpolationModes } from "../../constants.js";
+`,Lh=e({default:()=>Rh}),Rh=`import { InterpolationModes } from "../../constants.js";
 import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
@@ -23532,7 +23532,7 @@ export class ColorKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<number>, interpolation?: InterpolationModes);
 }
-`,Rh=e({default:()=>zh}),zh=`import { InterpolationModes } from "../../constants.js";
+`,zh=e({default:()=>Bh}),Bh=`import { InterpolationModes } from "../../constants.js";
 import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
@@ -23549,7 +23549,7 @@ export class NumberKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<number>, interpolation?: InterpolationModes);
 }
-`,Bh=e({default:()=>Vh}),Vh=`import { InterpolationModes } from "../../constants.js";
+`,Vh=e({default:()=>Hh}),Hh=`import { InterpolationModes } from "../../constants.js";
 import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
@@ -23566,7 +23566,7 @@ export class QuaternionKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<number>, interpolation?: InterpolationModes);
 }
-`,Hh=e({default:()=>Uh}),Uh=`import { KeyframeTrack } from "../KeyframeTrack.js";
+`,Uh=e({default:()=>Wh}),Wh=`import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
  * A track for string keyframe values.
@@ -23584,7 +23584,7 @@ export class StringKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<string>);
 }
-`,Wh=e({default:()=>Gh}),Gh=`import { InterpolationModes } from "../../constants.js";
+`,Gh=e({default:()=>Kh}),Kh=`import { InterpolationModes } from "../../constants.js";
 import { KeyframeTrack } from "../KeyframeTrack.js";
 
 /**
@@ -23601,7 +23601,7 @@ export class VectorKeyframeTrack extends KeyframeTrack {
      */
     constructor(name: string, times: ArrayLike<number>, values: ArrayLike<number>, interpolation?: InterpolationModes);
 }
-`,Kh=e({default:()=>qh}),qh=`import { Object3D } from "../core/Object3D.js";
+`,qh=e({default:()=>Jh}),Jh=`import { Object3D } from "../core/Object3D.js";
 import { AudioListener } from "./AudioListener.js";
 
 /**
@@ -23941,7 +23941,7 @@ export class Audio<TNode extends AudioNode = GainNode> extends Object3D {
     copy(source: Audio, recursive?: boolean): this;
     clone(recursive?: boolean): this;
 }
-`,Jh=e({default:()=>Yh}),Yh=`import { Audio } from "./Audio.js";
+`,Yh=e({default:()=>Xh}),Xh=`import { Audio } from "./Audio.js";
 
 /**
  * This class can be used to analyse audio data.
@@ -24004,7 +24004,7 @@ export class AudioAnalyser {
      */
     getAverageFrequency(): number;
 }
-`,Xh=e({default:()=>Zh}),Zh=`/**
+`,Zh=e({default:()=>Qh}),Qh=`/**
  * Manages the global audio context in the engine.
  *
  * @hideconstructor
@@ -24023,7 +24023,7 @@ export class AudioContext {
      */
     static setContext(value: AudioContext): void;
 }
-`,Qh=e({default:()=>$h}),$h=`import { Object3D } from "../core/Object3D.js";
+`,$h=e({default:()=>eg}),eg=`import { Object3D } from "../core/Object3D.js";
 
 /**
  * The class represents a virtual listener of the all positional and non-positional audio effects
@@ -24098,7 +24098,7 @@ export class AudioListener extends Object3D {
      */
     setMasterVolume(value: number): this;
 }
-`,eg=e({default:()=>tg}),tg=`import { Audio } from "./Audio.js";
+`,tg=e({default:()=>ng}),ng=`import { Audio } from "./Audio.js";
 
 /**
  * Represents a positional audio object.
@@ -24206,7 +24206,7 @@ export class PositionalAudio extends Audio<PannerNode> {
      */
     setDirectionalCone(coneInnerAngle: number, coneOuterAngle: number, coneOuterGain: number): this;
 }
-`,ng=e({default:()=>rg}),rg=`import { PerspectiveCamera } from "./PerspectiveCamera.js";
+`,rg=e({default:()=>ig}),ig=`import { PerspectiveCamera } from "./PerspectiveCamera.js";
 
 /**
  * This type of camera can be used in order to efficiently render a scene with a
@@ -24241,7 +24241,7 @@ export class ArrayCamera extends PerspectiveCamera {
      */
     cameras: PerspectiveCamera[];
 }
-`,ig=e({default:()=>ag}),ag=`import { CoordinateSystem } from "../constants.js";
+`,ag=e({default:()=>og}),og=`import { CoordinateSystem } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { Matrix4 } from "../math/Matrix4.js";
 import { Vector4 } from "../math/Vector4.js";
@@ -24283,7 +24283,7 @@ export class Camera extends Object3D {
     copy(source: Camera, recursive?: boolean): this;
     clone(): this;
 }
-`,og=e({default:()=>sg}),sg=`import { CoordinateSystem } from "../constants.js";
+`,sg=e({default:()=>cg}),cg=`import { CoordinateSystem } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { RenderTarget } from "../core/RenderTarget.js";
 import CubeRenderTarget from "../renderers/common/CubeRenderTarget.js";
@@ -24372,7 +24372,7 @@ export class CubeCamera extends Object3D {
      */
     update(renderer: CubeCameraRenderer, scene: Object3D): void;
 }
-`,cg=e({default:()=>lg}),lg=`import { JSONMeta, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
+`,lg=e({default:()=>ug}),ug=`import { JSONMeta, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
 import { Camera } from "./Camera.js";
 
 export interface OrthographicCameraJSONObject extends Object3DJSONObject {
@@ -24516,7 +24516,7 @@ export class OrthographicCamera extends Camera {
     updateProjectionMatrix(): void;
     toJSON(meta?: JSONMeta): OrthographicCameraJSON;
 }
-`,ug=e({default:()=>dg}),dg=`import { JSONMeta, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
+`,dg=e({default:()=>fg}),fg=`import { JSONMeta, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Camera } from "./Camera.js";
 
@@ -24757,7 +24757,7 @@ export class PerspectiveCamera extends Camera {
     updateProjectionMatrix(): void;
     toJSON(meta?: JSONMeta): PerspectiveCameraJSON;
 }
-`,fg=e({default:()=>pg}),pg=`import { PerspectiveCamera } from "./PerspectiveCamera.js";
+`,pg=e({default:()=>mg}),mg=`import { PerspectiveCamera } from "./PerspectiveCamera.js";
 
 /**
  * A special type of camera that uses two perspective cameras with
@@ -24801,7 +24801,7 @@ export class StereoCamera {
      */
     update(camera: PerspectiveCamera): void;
 }
-`,mg=e({default:()=>hg}),hg=`export const REVISION: string;
+`,hg=e({default:()=>gg}),gg=`export const REVISION: string;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent.button
 export enum MOUSE {
@@ -25764,7 +25764,7 @@ export type PixelFormatGPU =
     | "DEPTH_COMPONENT32F"
     | "DEPTH24_STENCIL8"
     | "DEPTH32F_STENCIL8";
-`,gg=e({default:()=>_g}),_g=`import { AttributeGPUType, Usage } from "../constants.js";
+`,_g=e({default:()=>vg}),vg=`import { AttributeGPUType, Usage } from "../constants.js";
 import { Matrix3 } from "../math/Matrix3.js";
 import { Matrix4 } from "../math/Matrix4.js";
 
@@ -26402,7 +26402,7 @@ export class Float32BufferAttribute extends BufferAttribute {
         normalized?: boolean,
     );
 }
-`,vg=e({default:()=>yg}),yg=`import { Box3 } from "../math/Box3.js";
+`,yg=e({default:()=>bg}),bg=`import { Box3 } from "../math/Box3.js";
 import { Matrix4 } from "../math/Matrix4.js";
 import { Quaternion } from "../math/Quaternion.js";
 import { Sphere } from "../math/Sphere.js";
@@ -26844,7 +26844,7 @@ export class BufferGeometry<
      */
     dispose(): void;
 }
-`,bg=e({default:()=>xg}),xg=`/**
+`,xg=e({default:()=>Sg}),Sg=`/**
  * Object for keeping track of time. This uses
  * [performance.now]{@link https://developer.mozilla.org/en-US/docs/Web/API/Performance/now}.
  * @see [Official Documentation]{@link https://threejs.org/docs/index.html#api/en/core/Clock}
@@ -26917,7 +26917,7 @@ export class Clock {
      */
     getDelta(): number;
 }
-`,Sg=e({default:()=>Cg}),Cg=`/**
+`,Cg=e({default:()=>wg}),wg=`/**
  * The minimal basic Event that can be dispatched by a {@link EventDispatcher<>}.
  */
 export interface BaseEvent<TEventType extends string = string> {
@@ -26999,7 +26999,7 @@ export class EventDispatcher<TEventMap extends {} = {}> {
      */
     dispatchEvent<T extends Extract<keyof TEventMap, string>>(event: BaseEvent<T> & TEventMap[T]): void;
 }
-`,wg=e({default:()=>Tg}),Tg=`/**
+`,Tg=e({default:()=>Eg}),Eg=`/**
  * This buffer attribute class does not construct a VBO.
  * Instead, it uses whatever VBO is passed in constructor and can later be altered via the {@link buffer | .buffer} property.
  * @remarks
@@ -27137,7 +27137,7 @@ export class GLBufferAttribute {
      */
     setCount(count: number): this;
 }
-`,Eg=e({default:()=>Dg}),Dg=`import { BufferAttribute, TypedArray } from "./BufferAttribute.js";
+`,Dg=e({default:()=>Og}),Og=`import { BufferAttribute, TypedArray } from "./BufferAttribute.js";
 
 /**
  * An instanced version of {@link THREE.BufferAttribute | BufferAttribute}.
@@ -27169,7 +27169,7 @@ export class InstancedBufferAttribute extends BufferAttribute {
      */
     readonly isInstancedBufferAttribute: true;
 }
-`,Og=e({default:()=>kg}),kg=`import { BufferGeometry } from "./BufferGeometry.js";
+`,kg=e({default:()=>Ag}),Ag=`import { BufferGeometry } from "./BufferGeometry.js";
 
 /**
  * An instanced version of {@link THREE.BufferGeometry | BufferGeometry}.
@@ -27206,7 +27206,7 @@ export class InstancedBufferGeometry extends BufferGeometry {
      */
     copy(source: InstancedBufferGeometry): this;
 }
-`,Ag=e({default:()=>jg}),jg=`import { TypedArray } from "./BufferAttribute.js";
+`,jg=e({default:()=>Mg}),Mg=`import { TypedArray } from "./BufferAttribute.js";
 import { InterleavedBuffer } from "./InterleavedBuffer.js";
 
 /**
@@ -27228,7 +27228,7 @@ export class InstancedInterleavedBuffer extends InterleavedBuffer {
      */
     meshPerAttribute: number;
 }
-`,Mg=e({default:()=>Ng}),Ng=`import { Usage } from "../constants.js";
+`,Ng=e({default:()=>Pg}),Pg=`import { Usage } from "../constants.js";
 import { TypedArray } from "./BufferAttribute.js";
 import { InterleavedBufferAttribute } from "./InterleavedBufferAttribute.js";
 
@@ -27390,7 +27390,7 @@ export class InterleavedBuffer {
         stride: number;
     };
 }
-`,Pg=e({default:()=>Fg}),Fg=`import { Matrix3 } from "../math/Matrix3.js";
+`,Fg=e({default:()=>Ig}),Ig=`import { Matrix3 } from "../math/Matrix3.js";
 import { Matrix4 } from "../math/Matrix4.js";
 import { BufferAttribute, TypedArray } from "./BufferAttribute.js";
 import { InterleavedBuffer } from "./InterleavedBuffer.js";
@@ -27591,7 +27591,7 @@ export class InterleavedBufferAttribute {
         normalized: boolean;
     };
 }
-`,Ig=e({default:()=>Lg}),Lg=`/**
+`,Lg=e({default:()=>Rg}),Rg=`/**
  * A {@link THREE.Layers | Layers} object assigns an {@link THREE.Object3D | Object3D} to 1 or more of 32 layers numbered \`0\` to \`31\` - internally the
  * layers are stored as a {@link https://en.wikipedia.org/wiki/Mask_(computing) | bit mask}, and
  * by default all Object3Ds are a member of layer \`0\`.
@@ -27663,7 +27663,7 @@ export class Layers {
      */
     isEnabled(layer: number): boolean;
 }
-`,Rg=e({default:()=>zg}),zg=`import { AnimationClip, AnimationClipJSON } from "../animation/AnimationClip.js";
+`,zg=e({default:()=>Bg}),Bg=`import { AnimationClip, AnimationClipJSON } from "../animation/AnimationClip.js";
 import { Camera } from "../cameras/Camera.js";
 import { ShapeJSON } from "../extras/core/Shape.js";
 import { Material, MaterialJSON } from "../materials/Material.js";
@@ -28361,7 +28361,7 @@ export class Object3D<TEventMap extends Object3DEventMap = Object3DEventMap> ext
      */
     copy(object: Object3D, recursive?: boolean): this;
 }
-`,Bg=e({default:()=>Vg}),Vg=`import { Camera } from "../cameras/Camera.js";
+`,Vg=e({default:()=>Hg}),Hg=`import { Camera } from "../cameras/Camera.js";
 import { Ray } from "../math/Ray.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Vector3 } from "../math/Vector3.js";
@@ -28573,7 +28573,7 @@ export class Raycaster {
         optionalTarget?: Array<Intersection<TIntersected>>,
     ): Array<Intersection<TIntersected>>;
 }
-`,Hg=e({default:()=>Ug}),Ug=`import { Vector4 } from "../math/Vector4.js";
+`,Ug=e({default:()=>Wg}),Wg=`import { Vector4 } from "../math/Vector4.js";
 import { DepthTexture } from "../textures/DepthTexture.js";
 import { Texture, TextureParameters } from "../textures/Texture.js";
 import { EventDispatcher } from "./EventDispatcher.js";
@@ -28658,7 +28658,7 @@ export class RenderTarget<TTexture extends Texture | Texture[] = Texture> extend
     copy(source: RenderTarget): this;
     dispose(): void;
 }
-`,Wg=e({default:()=>Gg}),Gg=`import { RenderTarget, RenderTargetOptions } from "./RenderTarget.js";
+`,Gg=e({default:()=>Kg}),Kg=`import { RenderTarget, RenderTargetOptions } from "./RenderTarget.js";
 
 declare class RenderTarget3D extends RenderTarget {
     readonly isRenderTarget3D: true;
@@ -28667,7 +28667,7 @@ declare class RenderTarget3D extends RenderTarget {
 }
 
 export { RenderTarget3D };
-`,Kg=e({default:()=>qg}),qg=`/**
+`,qg=e({default:()=>Jg}),Jg=`/**
  * This class is an alternative to {@link THREE.Clock} with a different API design and behavior
  * The goal is to avoid the conceptual flaws that became apparent in {@link THREE.Clock} over time.
  *
@@ -28744,7 +28744,7 @@ declare class Timer {
 }
 
 export { Timer };
-`,Jg=e({default:()=>Yg}),Yg=`/**
+`,Yg=e({default:()=>Xg}),Xg=`/**
  * Uniforms are global GLSL variables.
  * They are passed to shader programs.
  * @example
@@ -28782,7 +28782,7 @@ export class Uniform<T = any> {
      */
     clone(): Uniform<T>;
 }
-`,Xg=e({default:()=>Zg}),Zg=`import { Usage } from "../constants.js";
+`,Zg=e({default:()=>Qg}),Qg=`import { Usage } from "../constants.js";
 import { EventDispatcher } from "./EventDispatcher.js";
 import { Uniform } from "./Uniform.js";
 
@@ -28815,7 +28815,7 @@ export class UniformsGroup extends EventDispatcher<{ dispose: {} }> {
 
     clone(): UniformsGroup;
 }
-`,Qg=e({default:()=>$g}),$g=`import { EventDispatcher } from "../core/EventDispatcher.js";
+`,$g=e({default:()=>e_}),e_=`import { EventDispatcher } from "../core/EventDispatcher.js";
 import { Object3D } from "../core/Object3D.js";
 
 /**
@@ -28869,7 +28869,7 @@ declare abstract class Controls<TEventMap extends {}> extends EventDispatcher<TE
 }
 
 export { Controls };
-`,e_=e({default:()=>t_}),t_=`/**
+`,t_=e({default:()=>n_}),n_=`/**
  * Returns a half precision floating point value from the given single precision floating point value.
  * @param val A single precision floating point value.
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/DataUtils | Official Documentation}
@@ -28891,7 +28891,7 @@ declare class DataUtils {
 }
 
 export { DataUtils, fromHalfFloat, toHalfFloat };
-`,n_=e({default:()=>r_}),r_=`/**
+`,r_=e({default:()=>i_}),i_=`/**
  * An implementation of the {@link Earcut} polygon triangulation algorithm
  * @remarks
  * The code is a port of {@link https://github.com/mapbox/earcut | mapbox/earcut}.
@@ -28908,7 +28908,7 @@ declare class Earcut {
 }
 
 export { Earcut };
-`,i_=e({default:()=>a_}),a_=`/**
+`,a_=e({default:()=>o_}),o_=`/**
  * A class containing utility functions for images.
  * @see {@link https://threejs.org/docs/index.html#api/en/extras/ImageUtils | Official Documentation}
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/extras/ImageUtils.js | Source}
@@ -28941,7 +28941,7 @@ declare class ImageUtils {
 }
 
 export { ImageUtils };
-`,o_=e({default:()=>s_}),s_=`import { Vector3 } from "../math/Vector3.js";
+`,s_=e({default:()=>c_}),c_=`import { Vector3 } from "../math/Vector3.js";
 import { WebGLRenderer } from "../renderers/WebGLRenderer.js";
 import { WebGLRenderTarget } from "../renderers/WebGLRenderTarget.js";
 import { Scene } from "../scenes/Scene.js";
@@ -29036,7 +29036,7 @@ export class PMREMGenerator {
      */
     dispose(): void;
 }
-`,c_=e({default:()=>l_}),l_=`import { Vector2Like } from "../math/Vector2.js";
+`,l_=e({default:()=>u_}),u_=`import { Vector2Like } from "../math/Vector2.js";
 
 /**
  * A class containing utility functions for shapes.
@@ -29061,7 +29061,7 @@ export class ShapeUtils {
      */
     static triangulateShape(contour: Vector2Like[], holes: Vector2Like[][]): number[][];
 }
-`,u_=e({default:()=>d_}),d_=`import { CompressedPixelFormat, PixelFormat, TextureDataType } from "../constants.js";
+`,d_=e({default:()=>f_}),f_=`import { CompressedPixelFormat, PixelFormat, TextureDataType } from "../constants.js";
 import { Texture } from "../textures/Texture.js";
 
 /**
@@ -29103,7 +29103,7 @@ declare const TextureUtils: {
 };
 
 export { contain, cover, fill, getByteLength, TextureUtils };
-`,f_=e({default:()=>p_}),p_=`import { Vector2 } from "../../math/Vector2.js";
+`,p_=e({default:()=>m_}),m_=`import { Vector2 } from "../../math/Vector2.js";
 import { Vector3 } from "../../math/Vector3.js";
 
 export interface CurveJSON {
@@ -29265,7 +29265,7 @@ export abstract class Curve<TVector extends Vector2 | Vector3> {
      */
     fromJSON(json: CurveJSON): this;
 }
-`,m_=e({default:()=>h_}),h_=`import { Vector2 } from "../../math/Vector2.js";
+`,h_=e({default:()=>g_}),g_=`import { Vector2 } from "../../math/Vector2.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Curve, CurveJSON } from "./Curve.js";
 
@@ -29342,7 +29342,7 @@ export class CurvePath<TVector extends Vector2 | Vector3> extends Curve<TVector>
     toJSON(): CurvePathJSON;
     fromJSON(json: CurvePathJSON): this;
 }
-`,g_=e({default:()=>__}),__=`/**
+`,__=e({default:()=>v_}),v_=`/**
  * Used internally by {@link THREE.SplineCurve | SplineCurve}.
  * @param t Interpolation weight. Expects a \`Float\`
  * @param p0 Expects a \`Float\`
@@ -29378,7 +29378,7 @@ declare function QuadraticBezier(t: number, p0: number, p1: number, p2: number):
 declare function CubicBezier(t: number, p0: number, p1: number, p2: number, p3: number): number;
 
 export { CatmullRom, CubicBezier, QuadraticBezier };
-`,v_=e({default:()=>y_}),y_=`import { Vector2, Vector2Tuple } from "../../math/Vector2.js";
+`,y_=e({default:()=>b_}),b_=`import { Vector2, Vector2Tuple } from "../../math/Vector2.js";
 import { CurvePath, CurvePathJSON } from "./CurvePath.js";
 
 export interface PathJSON extends CurvePathJSON {
@@ -29544,7 +29544,7 @@ export class Path extends CurvePath<Vector2> {
     toJSON(): PathJSON;
     fromJSON(json: PathJSON): this;
 }
-`,b_=e({default:()=>x_}),x_=`import { Vector2 } from "../../math/Vector2.js";
+`,x_=e({default:()=>S_}),S_=`import { Vector2 } from "../../math/Vector2.js";
 import { Path, PathJSON } from "./Path.js";
 
 export interface ShapeJSON extends PathJSON {
@@ -29630,7 +29630,7 @@ export class Shape extends Path {
     toJSON(): ShapeJSON;
     fromJSON(json: ShapeJSON): this;
 }
-`,S_=e({default:()=>C_}),C_=`import { Color } from "../../math/Color.js";
+`,C_=e({default:()=>w_}),w_=`import { Color } from "../../math/Color.js";
 import { Vector2 } from "../../math/Vector2.js";
 import { Path } from "./Path.js";
 import { Shape } from "./Shape.js";
@@ -29728,7 +29728,7 @@ export class ShapePath {
      */
     toShapes(isCCW: boolean): Shape[];
 }
-`,w_=e({default:()=>T_}),T_=`import { EllipseCurve } from "./EllipseCurve.js";
+`,T_=e({default:()=>E_}),E_=`import { EllipseCurve } from "./EllipseCurve.js";
 
 /**
  * Alias for {@link THREE.EllipseCurve | EllipseCurve}.
@@ -29769,7 +29769,7 @@ export class ArcCurve extends EllipseCurve {
      */
     override readonly type: string | "ArcCurve";
 }
-`,E_=e({default:()=>D_}),D_=`import { Vector3 } from "../../math/Vector3.js";
+`,D_=e({default:()=>O_}),O_=`import { Vector3 } from "../../math/Vector3.js";
 import { Curve } from "../core/Curve.js";
 
 export type CurveType = "centripetal" | "chordal" | "catmullrom";
@@ -29846,7 +29846,7 @@ export class CatmullRomCurve3 extends Curve<Vector3> {
      */
     tension: number;
 }
-`,O_=e({default:()=>k_}),k_=`import { Vector2 } from "../../math/Vector2.js";
+`,k_=e({default:()=>A_}),A_=`import { Vector2 } from "../../math/Vector2.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -29918,7 +29918,7 @@ export class CubicBezierCurve extends Curve<Vector2> {
      */
     v3: Vector2;
 }
-`,A_=e({default:()=>j_}),j_=`import { Vector3 } from "../../math/Vector3.js";
+`,j_=e({default:()=>M_}),M_=`import { Vector3 } from "../../math/Vector3.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -29990,7 +29990,7 @@ export class CubicBezierCurve3 extends Curve<Vector3> {
      */
     v3: Vector3;
 }
-`,M_=e({default:()=>N_}),N_=`export * from "./ArcCurve.js";
+`,N_=e({default:()=>P_}),P_=`export * from "./ArcCurve.js";
 export * from "./CatmullRomCurve3.js";
 export * from "./CubicBezierCurve.js";
 export * from "./CubicBezierCurve3.js";
@@ -30000,7 +30000,7 @@ export * from "./LineCurve3.js";
 export * from "./QuadraticBezierCurve.js";
 export * from "./QuadraticBezierCurve3.js";
 export * from "./SplineCurve.js";
-`,P_=e({default:()=>F_}),F_=`import { Vector2 } from "../../math/Vector2.js";
+`,F_=e({default:()=>I_}),I_=`import { Vector2 } from "../../math/Vector2.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30115,7 +30115,7 @@ export class EllipseCurve extends Curve<Vector2> {
      */
     aRotation: number;
 }
-`,I_=e({default:()=>L_}),L_=`import { Vector2 } from "../../math/Vector2.js";
+`,L_=e({default:()=>R_}),R_=`import { Vector2 } from "../../math/Vector2.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30157,7 +30157,7 @@ export class LineCurve extends Curve<Vector2> {
      */
     v2: Vector2;
 }
-`,R_=e({default:()=>z_}),z_=`import { Vector3 } from "../../math/Vector3.js";
+`,z_=e({default:()=>B_}),B_=`import { Vector3 } from "../../math/Vector3.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30199,7 +30199,7 @@ export class LineCurve3 extends Curve<Vector3> {
      */
     v2: Vector3;
 }
-`,B_=e({default:()=>V_}),V_=`import { Vector2 } from "../../math/Vector2.js";
+`,V_=e({default:()=>H_}),H_=`import { Vector2 } from "../../math/Vector2.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30263,7 +30263,7 @@ export class QuadraticBezierCurve extends Curve<Vector2> {
      */
     v2: Vector2;
 }
-`,H_=e({default:()=>U_}),U_=`import { Vector3 } from "../../math/Vector3.js";
+`,U_=e({default:()=>W_}),W_=`import { Vector3 } from "../../math/Vector3.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30327,7 +30327,7 @@ export class QuadraticBezierCurve3 extends Curve<Vector3> {
      */
     v2: Vector3;
 }
-`,W_=e({default:()=>G_}),G_=`import { Vector2 } from "../../math/Vector2.js";
+`,G_=e({default:()=>K_}),K_=`import { Vector2 } from "../../math/Vector2.js";
 import { Curve } from "../core/Curve.js";
 
 /**
@@ -30379,7 +30379,7 @@ export class SplineCurve extends Curve<Vector2> {
      */
     points: Vector2[];
 }
-`,K_=e({default:()=>q_}),q_=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,q_=e({default:()=>J_}),J_=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * {@link BoxGeometry} is a geometry class for a rectangular cuboid with a given 'width', 'height', and 'depth'
@@ -30438,7 +30438,7 @@ export class BoxGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): BoxGeometry;
 }
-`,J_=e({default:()=>Y_}),Y_=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Y_=e({default:()=>X_}),X_=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * {@link CapsuleGeometry} is a geometry class for a capsule with given radii and height
@@ -30494,7 +30494,7 @@ export class CapsuleGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): CapsuleGeometry;
 }
-`,X_=e({default:()=>Z_}),Z_=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Z_=e({default:()=>Q_}),Q_=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * {@link CircleGeometry} is a simple shape of Euclidean geometry
@@ -30545,7 +30545,7 @@ export class CircleGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): CircleGeometry;
 }
-`,Q_=e({default:()=>$_}),$_=`import { CylinderGeometry } from "./CylinderGeometry.js";
+`,$_=e({default:()=>ev}),ev=`import { CylinderGeometry } from "./CylinderGeometry.js";
 
 /**
  * A class for generating cone geometries.
@@ -30609,7 +30609,7 @@ export class ConeGeometry extends CylinderGeometry {
     /** @internal */
     static fromJSON(data: {}): ConeGeometry;
 }
-`,ev=e({default:()=>tv}),tv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,tv=e({default:()=>nv}),nv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * A class for generating cylinder geometries.
@@ -30673,7 +30673,7 @@ export class CylinderGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: any): CylinderGeometry;
 }
-`,nv=e({default:()=>rv}),rv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
+`,rv=e({default:()=>iv}),iv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
 
 /**
  * A class for generating a dodecahedron geometries.
@@ -30698,7 +30698,7 @@ export class DodecahedronGeometry extends PolyhedronGeometry {
     /** @internal */
     static fromJSON(data: {}): DodecahedronGeometry;
 }
-`,iv=e({default:()=>av}),av=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,av=e({default:()=>ov}),ov=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * This can be used as a helper object to view the edges of a {@link THREE.BufferGeometry | geometry}.
@@ -30739,7 +30739,7 @@ export class EdgesGeometry<TBufferGeometry extends BufferGeometry = BufferGeomet
         readonly thresholdAngle: number;
     };
 }
-`,ov=e({default:()=>sv}),sv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,sv=e({default:()=>cv}),cv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Curve } from "../extras/core/Curve.js";
 import { Shape } from "../extras/core/Shape.js";
 import { Vector2 } from "../math/Vector2.js";
@@ -30891,7 +30891,7 @@ export class ExtrudeGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}, shapes: unknown): ExtrudeGeometry;
 }
-`,cv=e({default:()=>lv}),lv=`export * from "./BoxGeometry.js";
+`,lv=e({default:()=>uv}),uv=`export * from "./BoxGeometry.js";
 export * from "./CapsuleGeometry.js";
 export * from "./CircleGeometry.js";
 export * from "./ConeGeometry.js";
@@ -30912,7 +30912,7 @@ export * from "./TorusGeometry.js";
 export * from "./TorusKnotGeometry.js";
 export * from "./TubeGeometry.js";
 export * from "./WireframeGeometry.js";
-`,uv=e({default:()=>dv}),dv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
+`,dv=e({default:()=>fv}),fv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
 
 /**
  * A class for generating an icosahedron geometry.
@@ -30938,7 +30938,7 @@ export class IcosahedronGeometry extends PolyhedronGeometry {
     /** @internal */
     static fromJSON(data: {}): IcosahedronGeometry;
 }
-`,fv=e({default:()=>pv}),pv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,pv=e({default:()=>mv}),mv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Vector2 } from "../math/Vector2.js";
 
 /**
@@ -30993,7 +30993,7 @@ export class LatheGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): LatheGeometry;
 }
-`,mv=e({default:()=>hv}),hv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
+`,hv=e({default:()=>gv}),gv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
 
 /**
  * A class for generating an octahedron geometry.
@@ -31018,7 +31018,7 @@ export class OctahedronGeometry extends PolyhedronGeometry {
     /** @internal */
     static fromJSON(data: {}): OctahedronGeometry;
 }
-`,gv=e({default:()=>_v}),_v=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,_v=e({default:()=>vv}),vv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * A class for generating plane geometries.
@@ -31066,7 +31066,7 @@ export class PlaneGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): PlaneGeometry;
 }
-`,vv=e({default:()=>yv}),yv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,yv=e({default:()=>bv}),bv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * A polyhedron is a solid in three dimensions with flat faces
@@ -31120,7 +31120,7 @@ export class PolyhedronGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): PolyhedronGeometry;
 }
-`,bv=e({default:()=>xv}),xv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,xv=e({default:()=>Sv}),Sv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * A class for generating a two-dimensional ring geometry.
@@ -31179,7 +31179,7 @@ export class RingGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): RingGeometry;
 }
-`,Sv=e({default:()=>Cv}),Cv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Cv=e({default:()=>wv}),wv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Shape } from "../extras/core/Shape.js";
 
 /**
@@ -31232,7 +31232,7 @@ export class ShapeGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): ShapeGeometry;
 }
-`,wv=e({default:()=>Tv}),Tv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Tv=e({default:()=>Ev}),Ev=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * A class for generating sphere geometries.
@@ -31299,7 +31299,7 @@ export class SphereGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): SphereGeometry;
 }
-`,Ev=e({default:()=>Dv}),Dv=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
+`,Dv=e({default:()=>Ov}),Ov=`import { PolyhedronGeometry } from "./PolyhedronGeometry.js";
 
 /**
  * A class for generating a tetrahedron geometries.
@@ -31324,7 +31324,7 @@ export class TetrahedronGeometry extends PolyhedronGeometry {
     /** @internal */
     static fromJSON(data: {}): TetrahedronGeometry;
 }
-`,Ov=e({default:()=>kv}),kv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,kv=e({default:()=>Av}),Av=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 export interface TorusGeometryJSON {
     radius: number;
@@ -31391,7 +31391,7 @@ export class TorusGeometry extends BufferGeometry {
 
     static fromJSON(data: TorusGeometryJSON): TorusGeometry;
 }
-`,Av=e({default:()=>jv}),jv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,jv=e({default:()=>Mv}),Mv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * Creates a torus knot, the particular shape of which is defined by a pair of coprime integers, p and q
@@ -31450,7 +31450,7 @@ export class TorusKnotGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): TorusKnotGeometry;
 }
-`,Mv=e({default:()=>Nv}),Nv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Nv=e({default:()=>Pv}),Pv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Curve } from "../extras/core/Curve.js";
 import { Vector3 } from "../math/Vector3.js";
 
@@ -31536,7 +31536,7 @@ export class TubeGeometry extends BufferGeometry {
     /** @internal */
     static fromJSON(data: {}): TubeGeometry;
 }
-`,Pv=e({default:()=>Fv}),Fv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Fv=e({default:()=>Iv}),Iv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 
 /**
  * This can be used as a helper object to view a {@link BufferGeometry | geometry} as a wireframe.
@@ -31576,7 +31576,7 @@ export class WireframeGeometry<TBufferGeometry extends BufferGeometry = BufferGe
         readonly geometry: TBufferGeometry;
     };
 }
-`,Iv=e({default:()=>Lv}),Lv=`import { Object3D } from "../core/Object3D.js";
+`,Lv=e({default:()=>Rv}),Rv=`import { Object3D } from "../core/Object3D.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { Vector3 } from "../math/Vector3.js";
 import { Line } from "../objects/Line.js";
@@ -31653,7 +31653,7 @@ export class ArrowHelper extends Object3D {
      */
     dispose(): void;
 }
-`,Rv=e({default:()=>zv}),zv=`import { ColorRepresentation } from "../math/Color.js";
+`,zv=e({default:()=>Bv}),Bv=`import { ColorRepresentation } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
 
 /**
@@ -31691,7 +31691,7 @@ export class AxesHelper extends LineSegments {
      */
     dispose(): void;
 }
-`,Bv=e({default:()=>Vv}),Vv=`import { Box3 } from "../math/Box3.js";
+`,Vv=e({default:()=>Hv}),Hv=`import { Box3 } from "../math/Box3.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
 
@@ -31724,7 +31724,7 @@ export class Box3Helper extends LineSegments {
      */
     dispose(): void;
 }
-`,Hv=e({default:()=>Uv}),Uv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Uv=e({default:()=>Wv}),Wv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Object3D } from "../core/Object3D.js";
 import { LineBasicMaterial } from "../materials/LineBasicMaterial.js";
 import { Box3 } from "../math/Box3.js";
@@ -31777,7 +31777,7 @@ export class BoxHelper extends LineSegments<BufferGeometry, LineBasicMaterial> {
      */
     dispose(): void;
 }
-`,Wv=e({default:()=>Gv}),Gv=`import { Camera } from "../cameras/Camera.js";
+`,Gv=e({default:()=>Kv}),Kv=`import { Camera } from "../cameras/Camera.js";
 import { Color } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
 
@@ -31836,7 +31836,7 @@ export class CameraHelper extends LineSegments {
      */
     dispose(): void;
 }
-`,Kv=e({default:()=>qv}),qv=`import { Object3D } from "../core/Object3D.js";
+`,qv=e({default:()=>Jv}),Jv=`import { Object3D } from "../core/Object3D.js";
 import { DirectionalLight } from "../lights/DirectionalLight.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { Matrix4 } from "../math/Matrix4.js";
@@ -31896,7 +31896,7 @@ export class DirectionalLightHelper extends Object3D {
      */
     update(): void;
 }
-`,Jv=e({default:()=>Yv}),Yv=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Yv=e({default:()=>Xv}),Xv=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { LineBasicMaterial } from "../materials/LineBasicMaterial.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
@@ -31929,7 +31929,7 @@ export class GridHelper extends LineSegments<BufferGeometry, LineBasicMaterial> 
      */
     dispose(): void;
 }
-`,Xv=e({default:()=>Zv}),Zv=`import { Object3D } from "../core/Object3D.js";
+`,Zv=e({default:()=>Qv}),Qv=`import { Object3D } from "../core/Object3D.js";
 import { HemisphereLight } from "../lights/HemisphereLight.js";
 import { MeshBasicMaterial } from "../materials/MeshBasicMaterial.js";
 import { ColorRepresentation } from "../math/Color.js";
@@ -31978,7 +31978,7 @@ export class HemisphereLightHelper extends Object3D {
      */
     update(): void;
 }
-`,Qv=e({default:()=>$v}),$v=`import { ColorRepresentation } from "../math/Color.js";
+`,$v=e({default:()=>ey}),ey=`import { ColorRepresentation } from "../math/Color.js";
 import { Plane } from "../math/Plane.js";
 import { Line } from "../objects/Line.js";
 
@@ -32016,7 +32016,7 @@ export class PlaneHelper extends Line {
      */
     dispose(): void;
 }
-`,ey=e({default:()=>ty}),ty=`import { PointLight } from "../lights/PointLight.js";
+`,ty=e({default:()=>ny}),ny=`import { PointLight } from "../lights/PointLight.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { Mesh } from "../objects/Mesh.js";
 
@@ -32064,7 +32064,7 @@ export class PointLightHelper extends Mesh {
      */
     update(): void;
 }
-`,ny=e({default:()=>ry}),ry=`import { ColorRepresentation } from "../math/Color.js";
+`,ry=e({default:()=>iy}),iy=`import { ColorRepresentation } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
 
 /**
@@ -32106,7 +32106,7 @@ export class PolarGridHelper extends LineSegments {
      */
     dispose(): void;
 }
-`,iy=e({default:()=>ay}),ay=`import { Object3D } from "../core/Object3D.js";
+`,ay=e({default:()=>oy}),oy=`import { Object3D } from "../core/Object3D.js";
 import { Color } from "../math/Color.js";
 import { Bone } from "../objects/Bone.js";
 import { LineSegments } from "../objects/LineSegments.js";
@@ -32155,7 +32155,7 @@ export class SkeletonHelper extends LineSegments {
      */
     dispose(): void;
 }
-`,oy=e({default:()=>sy}),sy=`import { Object3D } from "../core/Object3D.js";
+`,sy=e({default:()=>cy}),cy=`import { Object3D } from "../core/Object3D.js";
 import { SpotLight } from "../lights/SpotLight.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { LineSegments } from "../objects/LineSegments.js";
@@ -32205,7 +32205,7 @@ export class SpotLightHelper extends Object3D {
      */
     update(): void;
 }
-`,cy=e({default:()=>ly}),ly=`import { ColorRepresentation } from "../math/Color.js";
+`,ly=e({default:()=>uy}),uy=`import { ColorRepresentation } from "../math/Color.js";
 import { Light } from "./Light.js";
 
 /**
@@ -32233,7 +32233,7 @@ export class AmbientLight extends Light {
      */
     readonly isAmbientLight: boolean;
 }
-`,uy=e({default:()=>dy}),dy=`import { JSONMeta, Object3D } from "../core/Object3D.js";
+`,dy=e({default:()=>fy}),fy=`import { JSONMeta, Object3D } from "../core/Object3D.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { DirectionalLightShadow } from "./DirectionalLightShadow.js";
 import { Light, LightJSON } from "./Light.js";
@@ -32301,7 +32301,7 @@ export class DirectionalLight extends Light {
     copy(source: DirectionalLight): this;
     toJSON(meta?: JSONMeta): DirectionalLightJSON;
 }
-`,fy=e({default:()=>py}),py=`import { OrthographicCamera } from "../cameras/OrthographicCamera.js";
+`,py=e({default:()=>my}),my=`import { OrthographicCamera } from "../cameras/OrthographicCamera.js";
 import { LightShadow } from "./LightShadow.js";
 
 /**
@@ -32319,7 +32319,7 @@ export class DirectionalLightShadow extends LightShadow<OrthographicCamera> {
      */
     readonly isDirectionalLightShadow: boolean;
 }
-`,my=e({default:()=>hy}),hy=`import { JSONMeta } from "../core/Object3D.js";
+`,hy=e({default:()=>gy}),gy=`import { JSONMeta } from "../core/Object3D.js";
 import { Color, ColorRepresentation } from "../math/Color.js";
 import { Light, LightJSON } from "./Light.js";
 
@@ -32360,7 +32360,7 @@ export class HemisphereLight extends Light {
     copy(source: HemisphereLight, recursive?: boolean): this;
     toJSON(meta?: JSONMeta): HemisphereLightJSON;
 }
-`,gy=e({default:()=>_y}),_y=`import { JSONMeta, Object3D, Object3DEventMap, Object3DJSON } from "../core/Object3D.js";
+`,_y=e({default:()=>vy}),vy=`import { JSONMeta, Object3D, Object3DEventMap, Object3DJSON } from "../core/Object3D.js";
 import { Color, ColorRepresentation } from "../math/Color.js";
 
 export interface LightJSON extends Object3DJSON {
@@ -32408,7 +32408,7 @@ export abstract class Light extends Object3D<LightEventMap> {
     copy(source: Light, recursive?: boolean): this;
     toJSON(meta?: JSONMeta): LightJSON;
 }
-`,vy=e({default:()=>yy}),yy=`import { JSONMeta } from "../core/Object3D.js";
+`,yy=e({default:()=>by}),by=`import { JSONMeta } from "../core/Object3D.js";
 import { SphericalHarmonics3 } from "../math/SphericalHarmonics3.js";
 import { Light, LightJSON } from "./Light.js";
 
@@ -32454,7 +32454,7 @@ export class LightProbe extends Light {
     copy(source: LightProbe): this;
     toJSON(meta?: JSONMeta): LightProbeJSON;
 }
-`,by=e({default:()=>xy}),xy=`import { Camera } from "../cameras/Camera.js";
+`,xy=e({default:()=>Sy}),Sy=`import { Camera } from "../cameras/Camera.js";
 import { TextureDataType } from "../constants.js";
 import { Object3DJSONObject } from "../core/Object3D.js";
 import { RenderTarget } from "../core/RenderTarget.js";
@@ -32647,7 +32647,7 @@ export abstract class LightShadow<TCamera extends Camera = Camera> {
      */
     toJSON(): LightShadowJSON;
 }
-`,Sy=e({default:()=>Cy}),Cy=`import { JSONMeta } from "../core/Object3D.js";
+`,Cy=e({default:()=>wy}),wy=`import { JSONMeta } from "../core/Object3D.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { Light, LightJSON } from "./Light.js";
 import { LightShadowJSON } from "./LightShadow.js";
@@ -32719,7 +32719,7 @@ export class PointLight extends Light {
     copy(source: PointLight, recursive?: boolean): this;
     toJSON(meta?: JSONMeta): PointLightJSON;
 }
-`,wy=e({default:()=>Ty}),Ty=`import { PerspectiveCamera } from "../cameras/PerspectiveCamera.js";
+`,Ty=e({default:()=>Ey}),Ey=`import { PerspectiveCamera } from "../cameras/PerspectiveCamera.js";
 import { LightShadow } from "./LightShadow.js";
 
 /**
@@ -32737,7 +32737,7 @@ export class PointLightShadow extends LightShadow<PerspectiveCamera> {
      */
     readonly isPointLightShadow: boolean;
 }
-`,Ey=e({default:()=>Dy}),Dy=`import { ColorRepresentation } from "../math/Color.js";
+`,Dy=e({default:()=>Oy}),Oy=`import { ColorRepresentation } from "../math/Color.js";
 import { Light } from "./Light.js";
 
 /**
@@ -32799,7 +32799,7 @@ export class RectAreaLight extends Light {
     get power(): number;
     copy(source: RectAreaLight): this;
 }
-`,Oy=e({default:()=>ky}),ky=`import { JSONMeta, Object3D } from "../core/Object3D.js";
+`,ky=e({default:()=>Ay}),Ay=`import { JSONMeta, Object3D } from "../core/Object3D.js";
 import { ColorRepresentation } from "../math/Color.js";
 import { Texture } from "../textures/Texture.js";
 import { Light, LightJSON } from "./Light.js";
@@ -32924,7 +32924,7 @@ export class SpotLight extends Light {
     copy(source: SpotLight, recursive?: boolean): this;
     toJSON(meta?: JSONMeta): SpotLightJSON;
 }
-`,Ay=e({default:()=>jy}),jy=`import { PerspectiveCamera } from "../cameras/PerspectiveCamera.js";
+`,jy=e({default:()=>My}),My=`import { PerspectiveCamera } from "../cameras/PerspectiveCamera.js";
 import { LightShadow } from "./LightShadow.js";
 
 /**
@@ -32956,7 +32956,7 @@ export class SpotLightShadow extends LightShadow<PerspectiveCamera> {
     aspect: number;
     copy(source: SpotLightShadow): this;
 }
-`,My=e({default:()=>Ny}),Ny=`import { Texture } from "../../textures/Texture.js";
+`,Ny=e({default:()=>Py}),Py=`import { Texture } from "../../textures/Texture.js";
 import { SpotLight } from "../SpotLight.js";
 
 /**
@@ -32974,7 +32974,7 @@ declare class IESSpotLight extends SpotLight {
 }
 
 export default IESSpotLight;
-`,Py=e({default:()=>Fy}),Fy=`import { SpotLight } from "../SpotLight.js";
+`,Fy=e({default:()=>Iy}),Iy=`import { SpotLight } from "../SpotLight.js";
 
 /**
  * A projector light version of {@link SpotLight}. Can only be used with {@link WebGPURenderer}.
@@ -32990,7 +32990,7 @@ declare class ProjectorLight extends SpotLight {
 }
 
 export default ProjectorLight;
-`,Iy=e({default:()=>Ly}),Ly=`import { AnimationClip } from "../animation/AnimationClip.js";
+`,Ly=e({default:()=>Ry}),Ry=`import { AnimationClip } from "../animation/AnimationClip.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
@@ -32999,13 +32999,13 @@ export class AnimationLoader extends Loader<AnimationClip[]> {
 
     parse(json: readonly unknown[]): AnimationClip[];
 }
-`,Ry=e({default:()=>zy}),zy=`import { Loader } from "./Loader.js";
+`,zy=e({default:()=>By}),By=`import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
 export class AudioLoader extends Loader<AudioBuffer> {
     constructor(manager?: LoadingManager);
 }
-`,By=e({default:()=>Vy}),Vy=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,Vy=e({default:()=>Hy}),Hy=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { InstancedBufferGeometry } from "../core/InstancedBufferGeometry.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
@@ -33015,7 +33015,7 @@ export class BufferGeometryLoader extends Loader<InstancedBufferGeometry | Buffe
 
     parse(json: unknown): InstancedBufferGeometry | BufferGeometry;
 }
-`,Hy=e({default:()=>Uy}),Uy=`declare const Cache: {
+`,Uy=e({default:()=>Wy}),Wy=`declare const Cache: {
     /**
      * @default false
      */
@@ -33036,7 +33036,7 @@ export class BufferGeometryLoader extends Loader<InstancedBufferGeometry | Buffe
 };
 
 export { Cache };
-`,Wy=e({default:()=>Gy}),Gy=`import { CompressedTexture } from "../textures/CompressedTexture.js";
+`,Gy=e({default:()=>Ky}),Ky=`import { CompressedTexture } from "../textures/CompressedTexture.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
@@ -33050,7 +33050,7 @@ export class CompressedTextureLoader extends Loader<CompressedTexture> {
         onError?: (err: unknown) => void,
     ): CompressedTexture;
 }
-`,Ky=e({default:()=>qy}),qy=`import { CubeTexture } from "../textures/CubeTexture.js";
+`,qy=e({default:()=>Jy}),Jy=`import { CubeTexture } from "../textures/CubeTexture.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
@@ -33064,7 +33064,7 @@ export class CubeTextureLoader extends Loader<CubeTexture, readonly string[]> {
         onError?: (err: unknown) => void,
     ): CubeTexture;
 }
-`,Jy=e({default:()=>Yy}),Yy=`import { DataTexture } from "../textures/DataTexture.js";
+`,Yy=e({default:()=>Xy}),Xy=`import { DataTexture } from "../textures/DataTexture.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
@@ -33078,7 +33078,7 @@ export class DataTextureLoader extends Loader<DataTexture> {
         onError?: (err: unknown) => void,
     ): DataTexture;
 }
-`,Xy=e({default:()=>Zy}),Zy=`import { Loader } from "./Loader.js";
+`,Zy=e({default:()=>Qy}),Qy=`import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
 export class FileLoader extends Loader<string | ArrayBuffer> {
@@ -33097,7 +33097,7 @@ export class FileLoader extends Loader<string | ArrayBuffer> {
     setResponseType(value: string): this;
     setMimeType(value: string): this;
 }
-`,Qy=e({default:()=>$y}),$y=`import { Loader } from "./Loader.js";
+`,$y=e({default:()=>eb}),eb=`import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
 export class ImageBitmapLoader extends Loader<ImageBitmap> {
@@ -33119,7 +33119,7 @@ export class ImageBitmapLoader extends Loader<ImageBitmap> {
         onError?: (err: unknown) => void,
     ): void;
 }
-`,eb=e({default:()=>tb}),tb=`import { Loader } from "./Loader.js";
+`,tb=e({default:()=>nb}),nb=`import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
 /**
@@ -33136,7 +33136,7 @@ export class ImageLoader extends Loader<HTMLImageElement> {
         onError?: (err: unknown) => void,
     ): HTMLImageElement;
 }
-`,nb=e({default:()=>rb}),rb=`import { LoadingManager } from "./LoadingManager.js";
+`,rb=e({default:()=>ib}),ib=`import { LoadingManager } from "./LoadingManager.js";
 
 /**
  * Base class for implementing loaders.
@@ -33187,12 +33187,12 @@ export class Loader<TData = unknown, TUrl = string> {
 
     static DEFAULT_MATERIAL_NAME: string;
 }
-`,ib=e({default:()=>ab}),ab=`export class LoaderUtils {
+`,ab=e({default:()=>ob}),ob=`export class LoaderUtils {
     static extractUrlBase(url: string): string;
 
     static resolveURL(url: string, path: string): string;
 }
-`,ob=e({default:()=>sb}),sb=`import { Loader } from "./Loader.js";
+`,sb=e({default:()=>cb}),cb=`import { Loader } from "./Loader.js";
 
 /**
  * Handles and keeps track of loaded and pending data.
@@ -33265,7 +33265,7 @@ declare class LoadingManager {
 declare const DefaultLoadingManager: LoadingManager;
 
 export { DefaultLoadingManager, LoadingManager };
-`,cb=e({default:()=>lb}),lb=`import { Material } from "../materials/Material.js";
+`,lb=e({default:()=>ub}),ub=`import { Material } from "../materials/Material.js";
 import { Texture } from "../textures/Texture.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
@@ -33286,7 +33286,7 @@ export class MaterialLoader extends Loader<Material> {
 
     static createMaterialFromType(type: string): Material;
 }
-`,ub=e({default:()=>db}),db=`import { AnimationClip } from "../animation/AnimationClip.js";
+`,db=e({default:()=>fb}),fb=`import { AnimationClip } from "../animation/AnimationClip.js";
 import { BufferGeometry } from "../core/BufferGeometry.js";
 import { InstancedBufferGeometry } from "../core/InstancedBufferGeometry.js";
 import { Object3D } from "../core/Object3D.js";
@@ -33321,7 +33321,7 @@ export class ObjectLoader extends Loader<Object3D> {
         animations: { [key: string]: AnimationClip },
     ): Object3D;
 }
-`,fb=e({default:()=>pb}),pb=`import { Texture } from "../textures/Texture.js";
+`,pb=e({default:()=>mb}),mb=`import { Texture } from "../textures/Texture.js";
 import { Loader } from "./Loader.js";
 import { LoadingManager } from "./LoadingManager.js";
 
@@ -33339,7 +33339,7 @@ export class TextureLoader extends Loader<Texture<HTMLImageElement>> {
         onError?: (err: unknown) => void,
     ): Texture<HTMLImageElement>;
 }
-`,mb=e({default:()=>hb}),hb=`import { Node } from "../../nodes/Nodes.js";
+`,hb=e({default:()=>gb}),gb=`import { Node } from "../../nodes/Nodes.js";
 import { Texture } from "../../textures/Texture.js";
 import { Loader } from "../Loader.js";
 import { LoadingManager } from "../LoadingManager.js";
@@ -33360,7 +33360,7 @@ export default class NodeLoader extends Loader<NodeLoaderResult> {
     setNodes(value: { [type: string]: Node }): this;
     createNodeFromType(type: string): Node;
 }
-`,gb=e({default:()=>_b}),_b=`import NodeMaterial from "../../materials/nodes/NodeMaterial.js";
+`,_b=e({default:()=>vb}),vb=`import NodeMaterial from "../../materials/nodes/NodeMaterial.js";
 import { MaterialLoader } from "../MaterialLoader.js";
 import { NodeLoaderResult } from "./NodeLoader.js";
 
@@ -33371,7 +33371,7 @@ export default class NodeMaterialLoader extends MaterialLoader {
     setNodes(value: NodeLoaderResult): this;
     setNodeMaterials(value: { [type: string]: NodeMaterial }): this;
 }
-`,vb=e({default:()=>yb}),yb=`import { Material } from "../../materials/Material.js";
+`,yb=e({default:()=>bb}),bb=`import { Material } from "../../materials/Material.js";
 import NodeMaterial from "../../materials/nodes/NodeMaterial.js";
 import { Node } from "../../nodes/Nodes.js";
 import { Texture } from "../../textures/Texture.js";
@@ -33393,7 +33393,7 @@ export default class NodeObjectLoader extends ObjectLoader {
 
     parseMaterials(json: unknown, textures: { [key: string]: Texture }): { [key: string]: Material };
 }
-`,bb=e({default:()=>xb}),xb=`import { Color } from "../math/Color.js";
+`,xb=e({default:()=>Sb}),Sb=`import { Color } from "../math/Color.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
@@ -33481,7 +33481,7 @@ export class LineBasicMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LineBasicMaterial extends LineBasicMaterialProperties {}
-`,Sb=e({default:()=>Cb}),Cb=`import { LineBasicMaterial, LineBasicMaterialProperties } from "./LineBasicMaterial.js";
+`,Cb=e({default:()=>wb}),wb=`import { LineBasicMaterial, LineBasicMaterialProperties } from "./LineBasicMaterial.js";
 import { MapColorPropertiesToColorRepresentations } from "./Material.js";
 
 export interface LineDashedMaterialProperties extends LineBasicMaterialProperties {
@@ -33537,7 +33537,7 @@ export class LineDashedMaterial extends LineBasicMaterial {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LineDashedMaterial extends LineDashedMaterialProperties {}
-`,wb=e({default:()=>Tb}),Tb=`import { Camera } from "../cameras/Camera.js";
+`,Tb=e({default:()=>Eb}),Eb=`import { Camera } from "../cameras/Camera.js";
 import {
     Blending,
     BlendingDstFactor,
@@ -34179,7 +34179,7 @@ export class Material extends EventDispatcher<{ dispose: {} }> {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Material extends MaterialProperties {}
-`,Eb=e({default:()=>Db}),Db=`export * from "./LineBasicMaterial.js";
+`,Db=e({default:()=>Ob}),Ob=`export * from "./LineBasicMaterial.js";
 export * from "./LineDashedMaterial.js";
 export * from "./Material.js";
 export * from "./MeshBasicMaterial.js";
@@ -34197,7 +34197,7 @@ export * from "./RawShaderMaterial.js";
 export * from "./ShaderMaterial.js";
 export * from "./ShadowMaterial.js";
 export * from "./SpriteMaterial.js";
-`,Ob=e({default:()=>kb}),kb=`import { Combine } from "../constants.js";
+`,kb=e({default:()=>Ab}),Ab=`import { Combine } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Euler } from "../math/Euler.js";
 import { Texture } from "../textures/Texture.js";
@@ -34371,7 +34371,7 @@ export class MeshBasicMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshBasicMaterial extends MeshBasicMaterialProperties {}
-`,Ab=e({default:()=>jb}),jb=`import { DepthPackingStrategies } from "../constants.js";
+`,jb=e({default:()=>Mb}),Mb=`import { DepthPackingStrategies } from "../constants.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
@@ -34477,7 +34477,7 @@ export class MeshDepthMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshDepthMaterial extends MeshDepthMaterialProperties {}
-`,Mb=e({default:()=>Nb}),Nb=`import { Texture } from "../textures/Texture.js";
+`,Nb=e({default:()=>Pb}),Pb=`import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
 export interface MeshDistanceMaterialProperties extends MaterialProperties {
@@ -34566,7 +34566,7 @@ export class MeshDistanceMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshDistanceMaterial extends MeshDistanceMaterialProperties {}
-`,Pb=e({default:()=>Fb}),Fb=`import { Combine, NormalMapTypes } from "../constants.js";
+`,Fb=e({default:()=>Ib}),Ib=`import { Combine, NormalMapTypes } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Euler } from "../math/Euler.js";
 import { Vector2 } from "../math/Vector2.js";
@@ -34848,7 +34848,7 @@ export class MeshLambertMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshLambertMaterial extends MeshLambertMaterialProperties {}
-`,Ib=e({default:()=>Lb}),Lb=`import { NormalMapTypes } from "../constants.js";
+`,Lb=e({default:()=>Rb}),Rb=`import { NormalMapTypes } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Texture } from "../textures/Texture.js";
@@ -35017,7 +35017,7 @@ export class MeshMatcapMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshMatcapMaterial extends MeshMatcapMaterialProperties {}
-`,Rb=e({default:()=>zb}),zb=`import { NormalMapTypes } from "../constants.js";
+`,zb=e({default:()=>Bb}),Bb=`import { NormalMapTypes } from "../constants.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
@@ -35141,7 +35141,7 @@ export class MeshNormalMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshNormalMaterial extends MeshNormalMaterialProperties {}
-`,Bb=e({default:()=>Vb}),Vb=`import { Combine, NormalMapTypes } from "../constants.js";
+`,Vb=e({default:()=>Hb}),Hb=`import { Combine, NormalMapTypes } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Euler } from "../math/Euler.js";
 import { Vector2 } from "../math/Vector2.js";
@@ -35435,7 +35435,7 @@ export class MeshPhongMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshPhongMaterial extends MeshPhongMaterialProperties {}
-`,Hb=e({default:()=>Ub}),Ub=`import { Color } from "../math/Color.js";
+`,Ub=e({default:()=>Wb}),Wb=`import { Color } from "../math/Color.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations } from "./Material.js";
@@ -35726,7 +35726,7 @@ export class MeshPhysicalMaterial extends MeshStandardMaterial {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshPhysicalMaterial extends MeshPhysicalMaterialProperties {}
-`,Wb=e({default:()=>Gb}),Gb=`import { NormalMapTypes } from "../constants.js";
+`,Gb=e({default:()=>Kb}),Kb=`import { NormalMapTypes } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Euler } from "../math/Euler.js";
 import { Vector2 } from "../math/Vector2.js";
@@ -36026,7 +36026,7 @@ export class MeshStandardMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshStandardMaterial extends MeshStandardMaterialProperties {}
-`,Kb=e({default:()=>qb}),qb=`import { NormalMapTypes } from "../constants.js";
+`,qb=e({default:()=>Jb}),Jb=`import { NormalMapTypes } from "../constants.js";
 import { Color } from "../math/Color.js";
 import { Vector2 } from "../math/Vector2.js";
 import { Texture } from "../textures/Texture.js";
@@ -36249,7 +36249,7 @@ export class MeshToonMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface MeshToonMaterial extends MeshToonMaterialProperties {}
-`,Jb=e({default:()=>Yb}),Yb=`import { Color } from "../math/Color.js";
+`,Yb=e({default:()=>Xb}),Xb=`import { Color } from "../math/Color.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
@@ -36353,7 +36353,7 @@ export class PointsMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PointsMaterial extends PointsMaterialProperties {}
-`,Xb=e({default:()=>Zb}),Zb=`import { ShaderMaterial } from "./ShaderMaterial.js";
+`,Zb=e({default:()=>Qb}),Qb=`import { ShaderMaterial } from "./ShaderMaterial.js";
 
 /**
  * This class works just like {@link ShaderMaterial}, except that definitions
@@ -36370,7 +36370,7 @@ export class RawShaderMaterial extends ShaderMaterial {
      */
     readonly isRawShaderMaterial: boolean;
 }
-`,Qb=e({default:()=>$b}),$b=`import { GLSLVersion } from "../constants.js";
+`,$b=e({default:()=>ex}),ex=`import { GLSLVersion } from "../constants.js";
 import { JSONMeta } from "../core/Object3D.js";
 import { UniformsGroup } from "../core/UniformsGroup.js";
 import { Matrix3Tuple } from "../math/Matrix3.js";
@@ -36636,7 +36636,7 @@ export class ShaderMaterial extends Material {
 export interface ShaderMaterial extends ShaderMaterialProperties {
     defines: Record<string, unknown>;
 }
-`,ex=e({default:()=>tx}),tx=`import { Color } from "../math/Color.js";
+`,tx=e({default:()=>nx}),nx=`import { Color } from "../math/Color.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
 export interface ShadowMaterialProperties extends MaterialProperties {
@@ -36697,7 +36697,7 @@ export class ShadowMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ShadowMaterial extends ShadowMaterialProperties {}
-`,nx=e({default:()=>rx}),rx=`import { Color } from "../math/Color.js";
+`,rx=e({default:()=>ix}),ix=`import { Color } from "../math/Color.js";
 import { Texture } from "../textures/Texture.js";
 import { MapColorPropertiesToColorRepresentations, Material, MaterialProperties } from "./Material.js";
 
@@ -36788,7 +36788,7 @@ export class SpriteMaterial extends Material {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SpriteMaterial extends SpriteMaterialProperties {}
-`,ix=e({default:()=>ax}),ax=`import Node from "../../nodes/core/Node.js";
+`,ax=e({default:()=>ox}),ox=`import Node from "../../nodes/core/Node.js";
 import { LineDashedMaterialParameters, LineDashedMaterialProperties } from "../LineDashedMaterial.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -36878,7 +36878,7 @@ declare class Line2NodeMaterial extends NodeMaterial {
 interface Line2NodeMaterial extends Line2NodeMaterialNodeProperties, LineDashedMaterialProperties {}
 
 export default Line2NodeMaterial;
-`,ox=e({default:()=>sx}),sx=`import { LineBasicMaterialParameters, LineBasicMaterialProperties } from "../LineBasicMaterial.js";
+`,sx=e({default:()=>cx}),cx=`import { LineBasicMaterialParameters, LineBasicMaterialProperties } from "../LineBasicMaterial.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
 
@@ -36916,7 +36916,7 @@ declare class LineBasicNodeMaterial extends NodeMaterial {
 interface LineBasicNodeMaterial extends LineBasicNodeMaterialNodeProperties, LineBasicMaterialProperties {}
 
 export default LineBasicNodeMaterial;
-`,cx=e({default:()=>lx}),lx=`import Node from "../../nodes/core/Node.js";
+`,lx=e({default:()=>ux}),ux=`import Node from "../../nodes/core/Node.js";
 import { LineDashedMaterialParameters, LineDashedMaterialProperties } from "../LineDashedMaterial.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -37004,7 +37004,7 @@ declare class LineDashedNodeMaterial extends NodeMaterial {
 interface LineDashedNodeMaterial extends LineDashedNodeMaterialNodeProperties, LineDashedMaterialProperties {}
 
 export default LineDashedNodeMaterial;
-`,ux=e({default:()=>dx}),dx=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
+`,dx=e({default:()=>fx}),fx=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import BasicLightingModel from "../../nodes/functions/BasicLightingModel.js";
 import BasicEnvironmentNode from "../../nodes/lighting/BasicEnvironmentNode.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
@@ -37059,7 +37059,7 @@ declare class MeshBasicNodeMaterial extends NodeMaterial {
 interface MeshBasicNodeMaterial extends MeshBasicNodeMaterialNodeProperties, MeshBasicMaterialProperties {}
 
 export default MeshBasicNodeMaterial;
-`,fx=e({default:()=>px}),px=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
+`,px=e({default:()=>mx}),mx=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import PhongLightingModel from "../../nodes/functions/PhongLightingModel.js";
 import BasicEnvironmentNode from "../../nodes/lighting/BasicEnvironmentNode.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
@@ -37114,7 +37114,7 @@ declare class MeshLambertNodeMaterial extends NodeMaterial {
 interface MeshLambertNodeMaterial extends MeshLambertNodeMaterialNodeProperties, MeshLambertMaterialProperties {}
 
 export default MeshLambertNodeMaterial;
-`,mx=e({default:()=>hx}),hx=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
+`,hx=e({default:()=>gx}),gx=`import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { MeshMatcapMaterialParameters, MeshMatcapMaterialProperties } from "../MeshMatcapMaterial.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -37159,7 +37159,7 @@ declare class MeshMatcapNodeMaterial extends NodeMaterial {
 interface MeshMatcapNodeMaterial extends MeshMatcapNodeMaterialNodeProperties, MeshMatcapMaterialProperties {}
 
 export default MeshMatcapNodeMaterial;
-`,gx=e({default:()=>_x}),_x=`import { MapColorPropertiesToColorRepresentations } from "../Material.js";
+`,_x=e({default:()=>vx}),vx=`import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { MeshNormalMaterialParameters, MeshNormalMaterialProperties } from "../MeshNormalMaterial.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
 
@@ -37200,7 +37200,7 @@ declare class MeshNormalNodeMaterial extends NodeMaterial {
 interface MeshNormalNodeMaterial extends MeshNormalNodeMaterialNodeProperties, MeshNormalMaterialProperties {}
 
 export default MeshNormalNodeMaterial;
-`,vx=e({default:()=>yx}),yx=`import Node from "../../nodes/core/Node.js";
+`,yx=e({default:()=>bx}),bx=`import Node from "../../nodes/core/Node.js";
 import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import PhongLightingModel from "../../nodes/functions/PhongLightingModel.js";
 import BasicEnvironmentNode from "../../nodes/lighting/BasicEnvironmentNode.js";
@@ -37277,7 +37277,7 @@ declare class MeshPhongNodeMaterial extends NodeMaterial {
 interface MeshPhongNodeMaterial extends MeshPhongNodeMaterialNodeProperties, MeshPhongMaterialProperties {}
 
 export default MeshPhongNodeMaterial;
-`,bx=e({default:()=>xx}),xx=`import Node from "../../nodes/core/Node.js";
+`,xx=e({default:()=>Sx}),Sx=`import Node from "../../nodes/core/Node.js";
 import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { MeshPhysicalMaterialParameters, MeshPhysicalMaterialProperties } from "../MeshPhysicalMaterial.js";
@@ -37546,7 +37546,7 @@ declare class MeshPhysicalNodeMaterial extends MeshStandardNodeMaterial {
 interface MeshPhysicalNodeMaterial extends MeshPhysicalNodeMaterialNodeProperties, MeshPhysicalMaterialProperties {}
 
 export default MeshPhysicalNodeMaterial;
-`,Sx=e({default:()=>Cx}),Cx=`import { LightingModelDirectInput } from "../../nodes/core/LightingModel.js";
+`,Cx=e({default:()=>wx}),wx=`import { LightingModelDirectInput } from "../../nodes/core/LightingModel.js";
 import Node from "../../nodes/core/Node.js";
 import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import PhysicalLightingModel from "../../nodes/functions/PhysicalLightingModel.js";
@@ -37656,7 +37656,7 @@ declare class MeshSSSNodeMaterial extends MeshPhysicalNodeMaterial {
 interface MeshSSSNodeMaterial extends MeshSSSNodeMaterialNodeProperties, MeshPhysicalMaterialProperties {}
 
 export default MeshSSSNodeMaterial;
-`,wx=e({default:()=>Tx}),Tx=`import Node from "../../nodes/core/Node.js";
+`,Tx=e({default:()=>Ex}),Ex=`import Node from "../../nodes/core/Node.js";
 import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import PhysicalLightingModel from "../../nodes/functions/PhysicalLightingModel.js";
 import EnvironmentNode from "../../nodes/lighting/EnvironmentNode.js";
@@ -37749,7 +37749,7 @@ declare class MeshStandardNodeMaterial extends NodeMaterial {
 interface MeshStandardNodeMaterial extends MeshStandardNodeMaterialNodeProperties, MeshStandardMaterialProperties {}
 
 export default MeshStandardNodeMaterial;
-`,Ex=e({default:()=>Dx}),Dx=`import ToonLightingModel from "../../nodes/functions/ToonLightingModel.js";
+`,Dx=e({default:()=>Ox}),Ox=`import ToonLightingModel from "../../nodes/functions/ToonLightingModel.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { MeshToonMaterialParameters, MeshToonMaterialProperties } from "../MeshToonMaterial.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -37794,7 +37794,7 @@ declare class MeshToonNodeMaterial extends NodeMaterial {
 interface MeshToonNodeMaterial extends MeshToonNodeMaterialNodeProperties, MeshToonMaterialProperties {}
 
 export default MeshToonNodeMaterial;
-`,Ox=e({default:()=>kx}),kx=`import ClippingNode from "../../nodes/accessors/ClippingNode.js";
+`,kx=e({default:()=>Ax}),Ax=`import ClippingNode from "../../nodes/accessors/ClippingNode.js";
 import ContextNode from "../../nodes/core/ContextNode.js";
 import LightingModel from "../../nodes/core/LightingModel.js";
 import MRTNode from "../../nodes/core/MRTNode.js";
@@ -38276,7 +38276,7 @@ declare class NodeMaterial extends Material {
 interface NodeMaterial extends NodeMaterialNodeProperties {}
 
 export default NodeMaterial;
-`,Ax=e({default:()=>jx}),jx=`export { default as Line2NodeMaterial, Line2NodeMaterialParameters } from "./Line2NodeMaterial.js";
+`,jx=e({default:()=>Mx}),Mx=`export { default as Line2NodeMaterial, Line2NodeMaterialParameters } from "./Line2NodeMaterial.js";
 export { default as LineBasicNodeMaterial, LineBasicNodeMaterialParameters } from "./LineBasicNodeMaterial.js";
 export { default as LineDashedNodeMaterial, LineDashedNodeMaterialParameters } from "./LineDashedNodeMaterial.js";
 export { default as NodeMaterialObserver } from "./manager/NodeMaterialObserver.js";
@@ -38294,7 +38294,7 @@ export { default as PointsNodeMaterial, PointsNodeMaterialParameters } from "./P
 export { default as ShadowNodeMaterial, ShadowNodeMaterialParameters } from "./ShadowNodeMaterial.js";
 export { default as SpriteNodeMaterial, SpriteNodeMaterialParameters } from "./SpriteNodeMaterial.js";
 export { default as VolumeNodeMaterial, VolumeNodeMaterialParameters } from "./VolumeNodeMaterial.js";
-`,Mx=e({default:()=>Nx}),Nx=`import Node from "../../nodes/core/Node.js";
+`,Nx=e({default:()=>Px}),Px=`import Node from "../../nodes/core/Node.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { PointsMaterialParameters, PointsMaterialProperties } from "../PointsMaterial.js";
 import SpriteNodeMaterial, { SpriteNodeMaterialNodeProperties } from "./SpriteNodeMaterial.js";
@@ -38354,7 +38354,7 @@ declare class PointsNodeMaterial extends SpriteNodeMaterial {
 interface PointsNodeMaterial extends PointsNodeMaterialNodeProperties, PointsMaterialProperties {}
 
 export default PointsNodeMaterial;
-`,Px=e({default:()=>Fx}),Fx=`import ShadowMaskModel from "../../nodes/functions/ShadowMaskModel.js";
+`,Fx=e({default:()=>Ix}),Ix=`import ShadowMaskModel from "../../nodes/functions/ShadowMaskModel.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { ShadowMaterialParameters, ShadowMaterialProperties } from "../ShadowMaterial.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -38399,7 +38399,7 @@ declare class ShadowNodeMaterial extends NodeMaterial {
 interface ShadowNodeMaterial extends ShadowNodeMaterialNodeProperties, ShadowMaterialProperties {}
 
 export default ShadowNodeMaterial;
-`,Ix=e({default:()=>Lx}),Lx=`import Node from "../../nodes/core/Node.js";
+`,Lx=e({default:()=>Rx}),Rx=`import Node from "../../nodes/core/Node.js";
 import NodeBuilder from "../../nodes/core/NodeBuilder.js";
 import { MapColorPropertiesToColorRepresentations } from "../Material.js";
 import { SpriteMaterialParameters, SpriteMaterialProperties } from "../SpriteMaterial.js";
@@ -38473,7 +38473,7 @@ declare class SpriteNodeMaterial extends NodeMaterial {
 interface SpriteNodeMaterial extends SpriteNodeMaterialNodeProperties, SpriteMaterialProperties {}
 
 export default SpriteNodeMaterial;
-`,Rx=e({default:()=>zx}),zx=`import Node from "../../nodes/core/Node.js";
+`,zx=e({default:()=>Bx}),Bx=`import Node from "../../nodes/core/Node.js";
 import VolumetricLightingModel from "../../nodes/functions/VolumetricLightingModel.js";
 import { MapColorPropertiesToColorRepresentations, MaterialParameters, MaterialProperties } from "../Material.js";
 import NodeMaterial, { NodeMaterialNodeProperties } from "./NodeMaterial.js";
@@ -38529,7 +38529,7 @@ declare class VolumeNodeMaterial extends NodeMaterial {
 interface VolumeNodeMaterial extends VolumeNodeMaterialNodeProperties, MaterialProperties {}
 
 export default VolumeNodeMaterial;
-`,Bx=e({default:()=>Vx}),Vx=`import { BufferAttribute } from "../../../core/BufferAttribute.js";
+`,Vx=e({default:()=>Hx}),Hx=`import { BufferAttribute } from "../../../core/BufferAttribute.js";
 import { Light } from "../../../lights/Light.js";
 import NodeBuilder from "../../../nodes/core/NodeBuilder.js";
 import NodeFrame from "../../../nodes/core/NodeFrame.js";
@@ -38661,7 +38661,7 @@ declare class NodeMaterialObserver {
 }
 
 export default NodeMaterialObserver;
-`,Hx=e({default:()=>Ux}),Ux=`import { Vector2 } from "./Vector2.js";
+`,Ux=e({default:()=>Wx}),Wx=`import { Vector2 } from "./Vector2.js";
 
 // Math //////////////////////////////////////////////////////////////////////////////////
 
@@ -38709,7 +38709,7 @@ export class Box2 {
      */
     isIntersectionBox(b: any): any;
 }
-`,Wx=e({default:()=>Gx}),Gx=`import { BufferAttribute } from "../core/BufferAttribute.js";
+`,Gx=e({default:()=>Kx}),Kx=`import { BufferAttribute } from "../core/BufferAttribute.js";
 import { Object3D } from "../core/Object3D.js";
 import { Matrix4 } from "./Matrix4.js";
 import { Plane } from "./Plane.js";
@@ -38783,7 +38783,7 @@ export interface Box3JSON {
     min: number[];
     max: number[];
 }
-`,Kx=e({default:()=>qx}),qx=`import { Matrix3 } from "./Matrix3.js";
+`,qx=e({default:()=>Jx}),Jx=`import { Matrix3 } from "./Matrix3.js";
 import { Vector3 } from "./Vector3.js";
 
 import { BufferAttribute } from "../core/BufferAttribute.js";
@@ -39159,7 +39159,7 @@ export class Color {
      */
     static NAMES: typeof _colorKeywords;
 }
-`,Jx=e({default:()=>Yx}),Yx=`import { ColorSpaceTransfer } from "../constants.js";
+`,Yx=e({default:()=>Xx}),Xx=`import { ColorSpaceTransfer } from "../constants.js";
 import { Color } from "./Color.js";
 import { Matrix3 } from "./Matrix3.js";
 import { Vector3 } from "./Vector3.js";
@@ -39218,7 +39218,7 @@ export const ColorManagement: ColorManagement;
 export function SRGBToLinear(c: number): number;
 
 export function LinearToSRGB(c: number): number;
-`,Xx=e({default:()=>Zx}),Zx=`import { Vector3 } from "./Vector3.js";
+`,Zx=e({default:()=>Qx}),Qx=`import { Vector3 } from "./Vector3.js";
 
 export class Cylindrical {
     constructor(radius?: number, theta?: number, y?: number);
@@ -39244,7 +39244,7 @@ export class Cylindrical {
     setFromVector3(vec3: Vector3): this;
     setFromCartesianCoords(x: number, y: number, z: number): this;
 }
-`,Qx=e({default:()=>$x}),$x=`import { Matrix4 } from "./Matrix4.js";
+`,$x=e({default:()=>eS}),eS=`import { Matrix4 } from "./Matrix4.js";
 import { Quaternion } from "./Quaternion.js";
 import { Vector3 } from "./Vector3.js";
 
@@ -39294,7 +39294,7 @@ export class Euler {
 
     [Symbol.iterator](): Generator<string | number, void>;
 }
-`,eS=e({default:()=>tS}),tS=`import { CoordinateSystem } from "../constants.js";
+`,tS=e({default:()=>nS}),nS=`import { CoordinateSystem } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { Sprite } from "../objects/Sprite.js";
 import { Box3 } from "./Box3.js";
@@ -39324,7 +39324,7 @@ export class Frustum {
     intersectsBox(box: Box3): boolean;
     containsPoint(point: Vector3): boolean;
 }
-`,nS=e({default:()=>rS}),rS=`import { ArrayCamera } from "../cameras/ArrayCamera.js";
+`,rS=e({default:()=>iS}),iS=`import { ArrayCamera } from "../cameras/ArrayCamera.js";
 import { CoordinateSystem } from "../constants.js";
 import { Object3D } from "../core/Object3D.js";
 import { Sprite } from "../objects/Sprite.js";
@@ -39351,7 +39351,7 @@ declare class FrustumArray {
 }
 
 export { FrustumArray };
-`,iS=e({default:()=>aS}),aS=`export abstract class Interpolant {
+`,aS=e({default:()=>oS}),oS=`export abstract class Interpolant {
     constructor(parameterPositions: any, sampleValues: any, sampleSize: number, resultBuffer?: any);
 
     parameterPositions: any;
@@ -39361,7 +39361,7 @@ export { FrustumArray };
 
     evaluate(time: number): any;
 }
-`,oS=e({default:()=>sS}),sS=`import { Matrix4 } from "./Matrix4.js";
+`,sS=e({default:()=>cS}),cS=`import { Matrix4 } from "./Matrix4.js";
 import { Vector3 } from "./Vector3.js";
 
 export class Line3 {
@@ -39391,7 +39391,7 @@ export class Line3 {
     applyMatrix4(matrix: Matrix4): Line3;
     equals(line: Line3): boolean;
 }
-`,cS=e({default:()=>lS}),lS=`import { Quaternion } from "./Quaternion.js";
+`,lS=e({default:()=>uS}),uS=`import { Quaternion } from "./Quaternion.js";
 
 /**
  * @see {@link https://github.com/mrdoob/three.js/blob/master/src/math/MathUtils.js|src/math/MathUtils.js}
@@ -39528,7 +39528,7 @@ export const MathUtils: {
     normalize: typeof normalize;
     denormalize: typeof denormalize;
 };
-`,uS=e({default:()=>dS}),dS=`export type Matrix2Tuple = [
+`,dS=e({default:()=>fS}),fS=`export type Matrix2Tuple = [
     n11: number,
     n12: number,
     n21: number,
@@ -39581,7 +39581,7 @@ export class Matrix2 {
      */
     set(n11: number, n12: number, n21: number, n22: number): this;
 }
-`,fS=e({default:()=>pS}),pS=`// https://threejs.org/docs/#api/en/math/Matrix3
+`,pS=e({default:()=>mS}),mS=`// https://threejs.org/docs/#api/en/math/Matrix3
 
 import { Matrix4 } from "./Matrix4.js";
 import { Vector2 } from "./Vector2.js";
@@ -39765,7 +39765,7 @@ export class Matrix3 {
 
     clone(): this;
 }
-`,mS=e({default:()=>hS}),hS=`import { CoordinateSystem } from "../constants.js";
+`,hS=e({default:()=>gS}),gS=`import { CoordinateSystem } from "../constants.js";
 import { Euler } from "./Euler.js";
 import { Matrix3 } from "./Matrix3.js";
 import { Quaternion } from "./Quaternion.js";
@@ -40052,7 +40052,7 @@ export class Matrix4 {
      */
     toArray<TArray extends ArrayLike<number>>(array: TArray, offset?: number): TArray;
 }
-`,gS=e({default:()=>_S}),_S=`import { Box3 } from "./Box3.js";
+`,_S=e({default:()=>vS}),vS=`import { Box3 } from "./Box3.js";
 import { Line3 } from "./Line3.js";
 import { Matrix3 } from "./Matrix3.js";
 import { Matrix4 } from "./Matrix4.js";
@@ -40099,7 +40099,7 @@ export class Plane {
      */
     isIntersectionLine(l: any): any;
 }
-`,vS=e({default:()=>yS}),yS=`import { BufferAttribute } from "../core/BufferAttribute.js";
+`,yS=e({default:()=>bS}),bS=`import { BufferAttribute } from "../core/BufferAttribute.js";
 import { InterleavedBufferAttribute } from "../core/InterleavedBufferAttribute.js";
 import { Euler } from "./Euler.js";
 import { Matrix4 } from "./Matrix4.js";
@@ -40288,7 +40288,7 @@ export class Quaternion {
 
     [Symbol.iterator](): Generator<number, void>;
 }
-`,bS=e({default:()=>xS}),xS=`import { Box3 } from "./Box3.js";
+`,xS=e({default:()=>SS}),SS=`import { Box3 } from "./Box3.js";
 import { Matrix4 } from "./Matrix4.js";
 import { Plane } from "./Plane.js";
 import { Sphere } from "./Sphere.js";
@@ -40348,7 +40348,7 @@ export class Ray {
      */
     isIntersectionSphere(s: any): any;
 }
-`,SS=e({default:()=>CS}),CS=`import { Box3 } from "./Box3.js";
+`,CS=e({default:()=>wS}),wS=`import { Box3 } from "./Box3.js";
 import { Matrix4 } from "./Matrix4.js";
 import { Plane } from "./Plane.js";
 import { Vector3 } from "./Vector3.js";
@@ -40403,7 +40403,7 @@ export interface SphereJSON {
     radius: number;
     center: number[];
 }
-`,wS=e({default:()=>TS}),TS=`import { Vector3 } from "./Vector3.js";
+`,TS=e({default:()=>ES}),ES=`import { Vector3 } from "./Vector3.js";
 
 export class Spherical {
     constructor(radius?: number, phi?: number, theta?: number);
@@ -40430,7 +40430,7 @@ export class Spherical {
     setFromVector3(v: Vector3): this;
     setFromCartesianCoords(x: number, y: number, z: number): this;
 }
-`,ES=e({default:()=>DS}),DS=`import { Vector3 } from "./Vector3.js";
+`,DS=e({default:()=>OS}),OS=`import { Vector3 } from "./Vector3.js";
 
 export class SphericalHarmonics3 {
     constructor();
@@ -40480,7 +40480,7 @@ export class SphericalHarmonics3 {
 
     static getBasisAt(normal: Vector3, shBasis: number[]): void;
 }
-`,OS=e({default:()=>kS}),kS=`import { Box3 } from "./Box3.js";
+`,kS=e({default:()=>AS}),AS=`import { Box3 } from "./Box3.js";
 import { Plane } from "./Plane.js";
 import { Vector2 } from "./Vector2.js";
 import { Vector3 } from "./Vector3.js";
@@ -40590,7 +40590,7 @@ export class Triangle {
     ): Vector4;
     static isFrontFacing(a: Vector3, b: Vector3, c: Vector3, direction: Vector3): boolean;
 }
-`,AS=e({default:()=>jS}),jS=`import { BufferAttribute } from "../core/BufferAttribute.js";
+`,jS=e({default:()=>MS}),MS=`import { BufferAttribute } from "../core/BufferAttribute.js";
 import { Matrix3 } from "./Matrix3.js";
 
 export type Vector2Tuple = [x: number, y: number];
@@ -40911,7 +40911,7 @@ export class Vector2 {
      */
     [Symbol.iterator](): Iterator<number>;
 }
-`,MS=e({default:()=>NS}),NS=`import { Camera } from "../cameras/Camera.js";
+`,NS=e({default:()=>PS}),PS=`import { Camera } from "../cameras/Camera.js";
 import { BufferAttribute } from "../core/BufferAttribute.js";
 import { InterleavedBufferAttribute } from "../core/InterleavedBufferAttribute.js";
 import { RGB } from "./Color.js";
@@ -41212,7 +41212,7 @@ export class Vector3 {
      */
     [Symbol.iterator](): Iterator<number>;
 }
-`,PS=e({default:()=>FS}),FS=`import { BufferAttribute } from "../core/BufferAttribute.js";
+`,FS=e({default:()=>IS}),IS=`import { BufferAttribute } from "../core/BufferAttribute.js";
 import { Matrix4 } from "./Matrix4.js";
 import { QuaternionLike } from "./Quaternion.js";
 
@@ -41453,42 +41453,42 @@ export class Vector4 {
      */
     [Symbol.iterator](): Iterator<number>;
 }
-`,IS=e({default:()=>LS}),LS=`import { Interpolant } from "../Interpolant.js";
+`,LS=e({default:()=>RS}),RS=`import { Interpolant } from "../Interpolant.js";
 
 export class BezierInterpolant extends Interpolant {
     constructor(parameterPositions: any, samplesValues: any, sampleSize: number, resultBuffer?: any);
 
     interpolate_(i1: number, t0: number, t: number, t1: number): any;
 }
-`,RS=e({default:()=>zS}),zS=`import { Interpolant } from "../Interpolant.js";
+`,zS=e({default:()=>BS}),BS=`import { Interpolant } from "../Interpolant.js";
 
 export class CubicInterpolant extends Interpolant {
     constructor(parameterPositions: any, samplesValues: any, sampleSize: number, resultBuffer?: any);
 
     interpolate_(i1: number, t0: number, t: number, t1: number): any;
 }
-`,BS=e({default:()=>VS}),VS=`import { Interpolant } from "../Interpolant.js";
+`,VS=e({default:()=>HS}),HS=`import { Interpolant } from "../Interpolant.js";
 
 export class DiscreteInterpolant extends Interpolant {
     constructor(parameterPositions: any, samplesValues: any, sampleSize: number, resultBuffer?: any);
 
     interpolate_(i1: number, t0: number, t: number, t1: number): any;
 }
-`,HS=e({default:()=>US}),US=`import { Interpolant } from "../Interpolant.js";
+`,US=e({default:()=>WS}),WS=`import { Interpolant } from "../Interpolant.js";
 
 export class LinearInterpolant extends Interpolant {
     constructor(parameterPositions: any, samplesValues: any, sampleSize: number, resultBuffer?: any);
 
     interpolate_(i1: number, t0: number, t: number, t1: number): any;
 }
-`,WS=e({default:()=>GS}),GS=`import { Interpolant } from "../Interpolant.js";
+`,GS=e({default:()=>KS}),KS=`import { Interpolant } from "../Interpolant.js";
 
 export class QuaternionLinearInterpolant extends Interpolant {
     constructor(parameterPositions: any, samplesValues: any, sampleSize: number, resultBuffer?: any);
 
     interpolate_(i1: number, t0: number, t: number, t1: number): any;
 }
-`,KS=e({default:()=>qS}),qS=`// constants
+`,qS=e({default:()=>JS}),JS=`// constants
 export * from "./core/constants.js";
 
 // core
@@ -41666,7 +41666,7 @@ export { default as StorageArrayElementNode } from "./utils/StorageArrayElementN
 // lighting models
 export { default as PhongLightingModel } from "./functions/PhongLightingModel.js";
 export { default as PhysicalLightingModel } from "./functions/PhysicalLightingModel.js";
-`,JS=e({default:()=>YS}),YS=`// constants
+`,YS=e({default:()=>XS}),XS=`// constants
 export * from "./core/constants.js";
 
 // core
@@ -41839,7 +41839,7 @@ export { default as getGeometryRoughness } from "./functions/material/getGeometr
 export { default as getParallaxCorrectNormal } from "./functions/material/getParallaxCorrectNormal.js";
 export { default as getRoughness } from "./functions/material/getRoughness.js";
 export { default as getShIrradianceAt } from "./functions/material/getShIrradianceAt.js";
-`,XS=e({default:()=>ZS}),ZS=`import Node from "../core/Node.js";
+`,ZS=e({default:()=>QS}),QS=`import Node from "../core/Node.js";
 
 export const TBNViewMatrix: Node;
 
@@ -41847,7 +41847,7 @@ export const parallaxDirection: Node;
 export const parallaxUV: (uv: Node, scale: Node) => Node;
 
 export const bentNormalView: Node;
-`,QS=e({default:()=>$S}),$S=`import StorageBufferNode from "./StorageBufferNode.js";
+`,$S=e({default:()=>eC}),eC=`import StorageBufferNode from "./StorageBufferNode.js";
 
 interface ArrayFunction {
     (count: number | Float32Array, type?: "float"): StorageBufferNode<"float">;
@@ -41869,7 +41869,7 @@ export const attributeArray: ArrayFunction;
 export const instancedArray: ArrayFunction;
 
 export {};
-`,eC=e({default:()=>tC}),tC=`import { BatchedMesh } from "../../objects/BatchedMesh.js";
+`,tC=e({default:()=>nC}),nC=`import { BatchedMesh } from "../../objects/BatchedMesh.js";
 import Node from "../core/Node.js";
 
 export default class BatchNode extends Node {
@@ -41881,13 +41881,13 @@ export default class BatchNode extends Node {
 }
 
 export const batch: (batchMesh: BatchedMesh) => BatchNode;
-`,nC=e({default:()=>rC}),rC=`import MathNode from "../math/MathNode.js";
+`,rC=e({default:()=>iC}),iC=`import MathNode from "../math/MathNode.js";
 
 export const bitangentGeometry: MathNode;
 export const bitangentLocal: MathNode;
 export const bitangentView: MathNode;
 export const bitangentWorld: MathNode;
-`,iC=e({default:()=>aC}),aC=`import { Usage } from "../../constants.js";
+`,aC=e({default:()=>oC}),oC=`import { Usage } from "../../constants.js";
 import { BufferAttribute, TypedArray } from "../../core/BufferAttribute.js";
 import { InterleavedBuffer } from "../../core/InterleavedBuffer.js";
 import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute.js";
@@ -42134,7 +42134,7 @@ declare module "./BufferNode.js" {
         toAttribute: () => BufferAttributeNode<TNodeType>;
     }
 }
-`,oC=e({default:()=>sC}),sC=`import UniformNode from "../core/UniformNode.js";
+`,sC=e({default:()=>cC}),cC=`import UniformNode from "../core/UniformNode.js";
 
 export interface BufferNodeInterface {
     isBufferNode: true;
@@ -42165,7 +42165,7 @@ export const buffer: <TNodeType, TValue>(
 ) => BufferNode<TNodeType, TValue>;
 
 export {};
-`,cC=e({default:()=>lC}),lC=`import Node from "../core/Node.js";
+`,lC=e({default:()=>uC}),uC=`import Node from "../core/Node.js";
 
 declare class BuiltinNode extends Node {
     name: string;
@@ -42178,7 +42178,7 @@ declare class BuiltinNode extends Node {
 export default BuiltinNode;
 
 export const builtin: (name: string) => BuiltinNode;
-`,uC=e({default:()=>dC}),dC=`import { Matrix3 } from "../../math/Matrix3.js";
+`,dC=e({default:()=>fC}),fC=`import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Vector4 } from "../../math/Vector4.js";
@@ -42194,7 +42194,7 @@ export const cameraWorldMatrix: UniformNode<"mat4", Matrix4>;
 export const cameraNormalMatrix: UniformNode<"mat3", Matrix3>;
 export const cameraPosition: UniformNode<"vec3", Vector3>;
 export const cameraViewport: UniformNode<"vec4", Vector4>;
-`,fC=e({default:()=>pC}),pC=`import Node from "../core/Node.js";
+`,pC=e({default:()=>mC}),mC=`import Node from "../core/Node.js";
 
 export type ClippingNodeScope = typeof ClippingNode.ALPHA_TO_COVERAGE | typeof ClippingNode.DEFAULT;
 
@@ -42213,7 +42213,7 @@ export default class ClippingNode extends Node {
 export const clipping: () => ClippingNode;
 export const clippingAlpha: () => ClippingNode;
 export const hardwareClipping: () => ClippingNode;
-`,mC=e({default:()=>hC}),hC=`import { CubeTexture } from "../../textures/CubeTexture.js";
+`,hC=e({default:()=>gC}),gC=`import { CubeTexture } from "../../textures/CubeTexture.js";
 import Node from "../core/Node.js";
 import TextureNode from "./TextureNode.js";
 
@@ -42251,7 +42251,7 @@ export const cubeTexture: (
 export const uniformCubeTexture: (
     value?: CubeTexture,
 ) => CubeTextureNode;
-`,gC=e({default:()=>_C}),_C=`import { InstancedBufferAttribute } from "../../core/InstancedBufferAttribute.js";
+`,_C=e({default:()=>vC}),vC=`import { InstancedBufferAttribute } from "../../core/InstancedBufferAttribute.js";
 import { InstancedInterleavedBuffer } from "../../core/InstancedInterleavedBuffer.js";
 import StorageInstancedBufferAttribute from "../../renderers/common/StorageInstancedBufferAttribute.js";
 import Node from "../core/Node.js";
@@ -42281,7 +42281,7 @@ export const instance: (
     instanceMatrix: InstancedBufferAttribute | StorageInstancedBufferAttribute,
     instanceColor?: InstancedBufferAttribute | StorageInstancedBufferAttribute | null,
 ) => InstanceNode;
-`,vC=e({default:()=>yC}),yC=`import { InstancedMesh } from "../../objects/InstancedMesh.js";
+`,yC=e({default:()=>bC}),bC=`import { InstancedMesh } from "../../objects/InstancedMesh.js";
 import InstanceNode from "./InstanceNode.js";
 
 declare class InstancedMeshNode extends InstanceNode {
@@ -42291,7 +42291,7 @@ declare class InstancedMeshNode extends InstanceNode {
 export default InstancedMeshNode;
 
 export const instancedMesh: (instancedMesh: InstancedMesh) => InstancedMeshNode;
-`,bC=e({default:()=>xC}),xC=`import { Light } from "../../lights/Light.js";
+`,xC=e({default:()=>SC}),SC=`import { Light } from "../../lights/Light.js";
 import { Matrix4 } from "../../math/Matrix4.js";
 import { Vector3 } from "../../math/Vector3.js";
 import Node from "../core/Node.js";
@@ -42308,7 +42308,7 @@ export function lightTargetPosition(light: Light): UniformNode<"vec3", Vector3>;
 export function lightViewPosition(light: Light): UniformNode<"vec3", Vector3>;
 
 export const lightTargetDirection: (light: Light) => Node<"vec3">;
-`,SC=e({default:()=>CC}),CC=`import Node from "../core/Node.js";
+`,CC=e({default:()=>wC}),wC=`import Node from "../core/Node.js";
 
 export type MaterialNodeScope =
     | typeof MaterialNode.ALPHA_TEST
@@ -42434,7 +42434,7 @@ export const materialDispersion: MaterialNode;
 export const materialLightMap: MaterialNode;
 export const materialAO: MaterialNode;
 export const materialAnisotropyVector: MaterialNode;
-`,wC=e({default:()=>TC}),TC=`import Node from "../core/Node.js";
+`,TC=e({default:()=>EC}),EC=`import Node from "../core/Node.js";
 import UniformNode from "../core/UniformNode.js";
 
 export const materialRefractionRatio: UniformNode<"float", number>;
@@ -42442,7 +42442,7 @@ export const materialRefractionRatio: UniformNode<"float", number>;
 export const materialEnvIntensity: Node<"float">;
 
 export const materialEnvRotation: Node<"mat4">;
-`,EC=e({default:()=>DC}),DC=`import { Material } from "../../materials/Material.js";
+`,DC=e({default:()=>OC}),OC=`import { Material } from "../../materials/Material.js";
 import { NodeOrType } from "../tsl/TSLCore.js";
 import ReferenceNode from "./ReferenceNode.js";
 
@@ -42457,7 +42457,7 @@ export const materialReference: (
     nodeOrType: NodeOrType,
     material?: Material | null,
 ) => MaterialReferenceNode;
-`,OC=e({default:()=>kC}),kC=`import { Matrix3 } from "../../math/Matrix3.js";
+`,kC=e({default:()=>AC}),AC=`import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
 import Node from "../core/Node.js";
 import { UniformNode } from "../Nodes.js";
@@ -42506,10 +42506,10 @@ export const mediumpModelViewMatrix: Node<"mat4">;
 export const highpModelViewMatrix: Node<"mat4">;
 
 export const highpModelNormalViewMatrix: Node<"mat3">;
-`,AC=e({default:()=>jC}),jC=`import Node from "../core/Node.js";
+`,jC=e({default:()=>MC}),MC=`import Node from "../core/Node.js";
 
 export const modelViewProjection: Node;
-`,MC=e({default:()=>NC}),NC=`import { Mesh } from "../../objects/Mesh.js";
+`,NC=e({default:()=>PC}),PC=`import { Mesh } from "../../objects/Mesh.js";
 import Node from "../core/Node.js";
 import UniformNode from "../core/UniformNode.js";
 
@@ -42523,7 +42523,7 @@ declare class MorphNode extends Node {
 export default MorphNode;
 
 export const morphReference: (mesh: Mesh) => MorphNode;
-`,PC=e({default:()=>FC}),FC=`import Node from "../core/Node.js";
+`,FC=e({default:()=>IC}),IC=`import Node from "../core/Node.js";
 
 export const normalGeometry: Node<"vec3">;
 
@@ -42559,7 +42559,7 @@ export const transformedNormalWorld: Node<"vec3">;
  * @deprecated since r178. Use \`clearcoatNormalView\` instead.
  */
 export const transformedClearcoatNormalView: Node<"vec3">;
-`,IC=e({default:()=>LC}),LC=`import { Object3D } from "../../core/Object3D.js";
+`,LC=e({default:()=>RC}),RC=`import { Object3D } from "../../core/Object3D.js";
 import Node from "../core/Node.js";
 
 export type Object3DNodeScope =
@@ -42601,7 +42601,7 @@ export const objectPosition: (object3d: Object3D | null) => Object3DNode<"vec3">
 export const objectScale: (object3d: Object3D | null) => Object3DNode<"vec3">;
 export const objectViewPosition: (object3d: Object3D | null) => Object3DNode<"vec3">;
 export const objectRadius: (object3d: Object3D | null) => Object3DNode<"float">;
-`,RC=e({default:()=>zC}),zC=`import Node from "../core/Node.js";
+`,zC=e({default:()=>BC}),BC=`import Node from "../core/Node.js";
 
 export default class PointUVNode extends Node {
     isPointUVNode: true;
@@ -42610,7 +42610,7 @@ export default class PointUVNode extends Node {
 }
 
 export const pointUV: PointUVNode;
-`,BC=e({default:()=>VC}),VC=`import AttributeNode from "../core/AttributeNode.js";
+`,VC=e({default:()=>HC}),HC=`import AttributeNode from "../core/AttributeNode.js";
 import Node from "../core/Node.js";
 
 export const clipSpace: Node<"vec4">;
@@ -42621,7 +42621,7 @@ export const positionWorld: Node<"vec3">;
 export const positionWorldDirection: Node<"vec3">;
 export const positionView: Node<"vec3">;
 export const positionViewDirection: Node<"vec3">;
-`,HC=e({default:()=>UC}),UC=`import Node from "../core/Node.js";
+`,UC=e({default:()=>WC}),WC=`import Node from "../core/Node.js";
 
 declare class ReferenceBaseNode<T> extends Node {
     property: string;
@@ -42647,7 +42647,7 @@ export const referenceBuffer: <T>(
     count: number,
     object: T,
 ) => ReferenceBaseNode<T>;
-`,WC=e({default:()=>GC}),GC=`import Node from "../core/Node.js";
+`,GC=e({default:()=>KC}),KC=`import Node from "../core/Node.js";
 
 interface ReferenceNodeInterface<T> extends Node {
     property: string;
@@ -42684,14 +42684,14 @@ export const referenceBuffer: <const TNodeType, T>(
     count: number,
     object: T,
 ) => ReferenceNode<TNodeType, T>;
-`,KC=e({default:()=>qC}),qC=`import Node from "../core/Node.js";
+`,qC=e({default:()=>JC}),JC=`import Node from "../core/Node.js";
 
 export const reflectView: Node<"vec3">;
 export const refractView: Node<"vec3">;
 
 export const reflectVector: Node<"vec3">;
 export const refractVector: Node<"vec3">;
-`,JC=e({default:()=>YC}),YC=`import Renderer from "../../renderers/common/Renderer.js";
+`,YC=e({default:()=>XC}),XC=`import Renderer from "../../renderers/common/Renderer.js";
 import ReferenceNode from "./ReferenceNode.js";
 
 export default class RendererReferenceNode extends ReferenceNode<unknown, Renderer> {
@@ -42705,12 +42705,12 @@ export const rendererReference: (
     type: string,
     renderer?: Renderer | null,
 ) => RendererReferenceNode;
-`,XC=e({default:()=>ZC}),ZC=`import Node from "../core/Node.js";
+`,ZC=e({default:()=>QC}),QC=`import Node from "../core/Node.js";
 
 export const backgroundBlurriness: Node<"float">;
 export const backgroundIntensity: Node<"float">;
 export const backgroundRotation: Node<"mat4">;
-`,QC=e({default:()=>$C}),$C=`import { SkinnedMesh } from "../../objects/SkinnedMesh.js";
+`,$C=e({default:()=>ew}),ew=`import { SkinnedMesh } from "../../objects/SkinnedMesh.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 
@@ -42742,7 +42742,7 @@ export default class SkinningNode extends Node {
 
 export const skinning: (skinnedMesh: SkinnedMesh) => SkinningNode;
 export const computeSkinning: (skinnedMesh: SkinnedMesh, toPosition?: Node | null) => SkinningNode;
-`,ew=e({default:()=>tw}),tw=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,tw=e({default:()=>nw}),nw=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import StorageBufferAttribute from "../../renderers/common/StorageBufferAttribute.js";
 import StorageInstancedBufferAttribute from "../../renderers/common/StorageInstancedBufferAttribute.js";
 import { NodeAccess } from "../core/constants.js";
@@ -42825,7 +42825,7 @@ interface Storage {
 }
 
 export const storage: Storage;
-`,nw=e({default:()=>rw}),rw=`import { Texture } from "../../textures/Texture.js";
+`,rw=e({default:()=>iw}),iw=`import { Texture } from "../../textures/Texture.js";
 import { NodeAccess } from "../core/constants.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
@@ -42870,13 +42870,13 @@ export const textureStore: (
     uvNode?: Node | null,
     storeNode?: Node,
 ) => StorageTextureNode;
-`,iw=e({default:()=>aw}),aw=`import Node from "../core/Node.js";
+`,aw=e({default:()=>ow}),ow=`import Node from "../core/Node.js";
 
 export const tangentGeometry: Node<"vec4">;
 export const tangentLocal: Node<"vec3">;
 export const tangentView: Node<"vec3">;
 export const tangentWorld: Node<"vec3">;
-`,ow=e({default:()=>sw}),sw=`import Node from "../core/Node.js";
+`,sw=e({default:()=>cw}),cw=`import Node from "../core/Node.js";
 
 /**
  * Tangent vector in view space, computed dynamically from geometry and UV derivatives.
@@ -42897,7 +42897,7 @@ export const tangentViewFrame: Node;
  * @tsl
  */
 export const bitangentViewFrame: Node;
-`,cw=e({default:()=>lw}),lw=`import { Texture } from "../../textures/Texture.js";
+`,lw=e({default:()=>uw}),uw=`import { Texture } from "../../textures/Texture.js";
 import Node from "../core/Node.js";
 import TextureNode from "./TextureNode.js";
 
@@ -42926,13 +42926,13 @@ export const texture3DLevel: (
     uvNode?: Node | null,
     levelNode?: Node | number | null,
 ) => Texture3DNode;
-`,uw=e({default:()=>dw}),dw=`import Node from "../core/Node.js";
+`,dw=e({default:()=>fw}),fw=`import Node from "../core/Node.js";
 import TextureNode from "./TextureNode.js";
 
 export const textureBicubicLevel: (textureNode: Node, lodNode: Node) => TextureNode;
 
 export const textureBicubic: (textureNode: Node, strength: Node) => TextureNode;
-`,fw=e({default:()=>pw}),pw=`import { Texture } from "../../textures/Texture.js";
+`,pw=e({default:()=>mw}),mw=`import { Texture } from "../../textures/Texture.js";
 import Node from "../core/Node.js";
 import UniformNode from "../core/UniformNode.js";
 
@@ -43020,7 +43020,7 @@ export const textureLevel: (
 export const sampler: (value: Texture | TextureNode) => Node;
 
 export const samplerComparison: (value: Texture | TextureNode) => Node;
-`,mw=e({default:()=>hw}),hw=`import Node from "../core/Node.js";
+`,hw=e({default:()=>gw}),gw=`import Node from "../core/Node.js";
 
 declare class TextureSizeNode extends Node {
     readonly isTextureSizeNode: true;
@@ -43037,10 +43037,10 @@ export const textureSize: (
     textureNode: Node,
     levelNode?: Node | null,
 ) => TextureSizeNode;
-`,gw=e({default:()=>_w}),_w=`import AttributeNode from "../core/AttributeNode.js";
+`,_w=e({default:()=>vw}),vw=`import AttributeNode from "../core/AttributeNode.js";
 
 export const uv: (index?: number) => AttributeNode<"vec2">;
-`,vw=e({default:()=>yw}),yw=`import Node from "../core/Node.js";
+`,yw=e({default:()=>bw}),bw=`import Node from "../core/Node.js";
 import ArrayElementNode from "../utils/ArrayElementNode.js";
 import BufferNode from "./BufferNode.js";
 
@@ -43067,7 +43067,7 @@ type UniformArrayNode<TNodeType> = UniformArrayNodeInterface<TNodeType> & Buffer
 export default UniformArrayNode;
 
 export const uniformArray: <TNodeType>(values: unknown[], nodeType?: TNodeType | null) => UniformArrayNode<TNodeType>;
-`,bw=e({default:()=>xw}),xw=`import ReferenceNode from "./ReferenceNode.js";
+`,xw=e({default:()=>Sw}),Sw=`import ReferenceNode from "./ReferenceNode.js";
 
 export type NodeUserData = Record<string, any>;
 
@@ -43081,7 +43081,7 @@ export const userData: (
     inputType: string,
     userData?: NodeUserData,
 ) => UserDataNode;
-`,Sw=e({default:()=>Cw}),Cw=`import { Matrix4 } from "../../math/Matrix4.js";
+`,Cw=e({default:()=>ww}),ww=`import { Matrix4 } from "../../math/Matrix4.js";
 import TempNode from "../core/TempNode.js";
 import UniformNode from "../core/UniformNode.js";
 
@@ -43100,7 +43100,7 @@ declare class VelocityNode extends TempNode {
 export default VelocityNode;
 
 export const velocity: VelocityNode;
-`,ww=e({default:()=>Tw}),Tw=`import AttributeNode from "../core/AttributeNode.js";
+`,Tw=e({default:()=>Ew}),Ew=`import AttributeNode from "../core/AttributeNode.js";
 
 export default class VertexColorNode extends AttributeNode<"vec4"> {
     readonly isVertexColorNode: true;
@@ -43111,7 +43111,7 @@ export default class VertexColorNode extends AttributeNode<"vec4"> {
 }
 
 export const vertexColor: (index?: number) => VertexColorNode;
-`,Ew=e({default:()=>Dw}),Dw=`import Node from "../core/Node.js";
+`,Dw=e({default:()=>Ow}),Ow=`import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 
 export interface CodeNodeInclude {
@@ -43133,7 +43133,7 @@ export const code: (code: string, includes?: CodeNodeInclude[], language?: strin
 export const js: (src: string, includes?: CodeNodeInclude[]) => CodeNode;
 export const wgsl: (src: string, includes?: CodeNodeInclude[]) => CodeNode;
 export const glsl: (src: string, includes?: CodeNodeInclude[]) => CodeNode;
-`,Ow=e({default:()=>kw}),kw=`import TempNode from "../core/TempNode.js";
+`,kw=e({default:()=>Aw}),Aw=`import TempNode from "../core/TempNode.js";
 
 export default class ExpressionNode extends TempNode {
     snipped: string;
@@ -43142,7 +43142,7 @@ export default class ExpressionNode extends TempNode {
 }
 
 export const expression: (snipped: string, nodeType?: string) => ExpressionNode;
-`,Aw=e({default:()=>jw}),jw=`import Node from "../core/Node.js";
+`,jw=e({default:()=>Mw}),Mw=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 import { ProxiedObject } from "../tsl/TSLCore.js";
 import FunctionNode, { FunctionNodeArguments } from "./FunctionNode.js";
@@ -43169,7 +43169,7 @@ declare module "../Nodes.js" {
         call: (parameters?: ProxiedObject<P>) => FunctionCallNode<P>;
     }
 }
-`,Mw=e({default:()=>Nw}),Nw=`import Node from "../core/Node.js";
+`,Nw=e({default:()=>Pw}),Pw=`import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import NodeFunction from "../core/NodeFunction.js";
 import NodeFunctionInput from "../core/NodeFunctionInput.js";
@@ -43209,7 +43209,7 @@ export const wgslFn: <P extends FunctionNodeArguments>(
 ) => (...params: FnParameters<P>) => Node;
 
 export {};
-`,Pw=e({default:()=>Fw}),Fw=`import Node from "./Node.js";
+`,Fw=e({default:()=>Iw}),Iw=`import Node from "./Node.js";
 import TempNode from "./TempNode.js";
 
 declare class ArrayNode extends TempNode {
@@ -43234,7 +43234,7 @@ declare module "./Node.js" {
         toArray: (count: number) => ArrayNode;
     }
 }
-`,Iw=e({default:()=>Lw}),Lw=`import Node from "./Node.js";
+`,Lw=e({default:()=>Rw}),Rw=`import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 import TempNode from "./TempNode.js";
 
@@ -43249,7 +43249,7 @@ declare class AssignNode extends TempNode {
 export default AssignNode;
 
 export const assign: (targetNode: Node, sourceNode: Node | number) => AssignNode;
-`,Rw=e({default:()=>zw}),zw=`import Node from "./Node.js";
+`,zw=e({default:()=>Bw}),Bw=`import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 
 interface AttributeNodeInterface {
@@ -43270,7 +43270,7 @@ export const attribute: <TNodeType>(
     name: string,
     nodeType?: TNodeType | null,
 ) => AttributeNode<TNodeType>;
-`,Bw=e({default:()=>Vw}),Vw=`import Node from "./Node.js";
+`,Vw=e({default:()=>Hw}),Hw=`import Node from "./Node.js";
 
 export default class BypassNode extends Node {
     isBypassNode: true;
@@ -43287,7 +43287,7 @@ declare module "./Node.js" {
         bypass: (callNode: Node) => BypassNode;
     }
 }
-`,Hw=e({default:()=>Uw}),Uw=`import InputNode from "./InputNode.js";
+`,Uw=e({default:()=>Ww}),Ww=`import InputNode from "./InputNode.js";
 import NodeBuilder from "./NodeBuilder.js";
 
 interface ConstNodeInterface {
@@ -43303,7 +43303,7 @@ declare const ConstNode: {
 type ConstNode<TNodeType, TValue> = InputNode<TNodeType, TValue> & ConstNodeInterface;
 
 export default ConstNode;
-`,Ww=e({default:()=>Gw}),Gw=`import { Light } from "../../lights/Light.js";
+`,Gw=e({default:()=>Kw}),Kw=`import { Light } from "../../lights/Light.js";
 import Node from "./Node.js";
 import { NodeBuilderContext } from "./NodeBuilder.js";
 
@@ -43360,7 +43360,7 @@ declare module "./Node.js" {
         builtinAOContext: (aoValue: Node) => ContextNode<TNodeType>;
     }
 }
-`,Kw=e({default:()=>qw}),qw=`import Node from "./Node.js";
+`,qw=e({default:()=>Jw}),Jw=`import Node from "./Node.js";
 
 export type IndexNodeScope =
     | typeof IndexNode.VERTEX
@@ -43393,7 +43393,7 @@ export const subgroupIndex: IndexNode;
 export const invocationSubgroupIndex: IndexNode;
 export const invocationLocalIndex: IndexNode;
 export const drawIndex: IndexNode;
-`,Jw=e({default:()=>Yw}),Yw=`import Node from "./Node.js";
+`,Yw=e({default:()=>Xw}),Xw=`import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 
 export type Precision = "low" | "medium" | "high";
@@ -43416,7 +43416,7 @@ type InputNode<TNodeType, TValue> = Node<TNodeType> & InputNodeInterface<TValue>
 export default InputNode;
 
 export type { InputNode };
-`,Xw=e({default:()=>Zw}),Zw=`import Node from "./Node.js";
+`,Zw=e({default:()=>Qw}),Qw=`import Node from "./Node.js";
 
 declare class InspectorNode extends Node {
     constructor(node: Node, name?: string, callback?: (node: Node) => Node);
@@ -43431,7 +43431,7 @@ declare module "./Node.js" {
         toInspector: (name?: string, callback?: (node: this) => Node) => this;
     }
 }
-`,Qw=e({default:()=>$w}),$w=`import Node from "./Node.js";
+`,$w=e({default:()=>eT}),eT=`import Node from "./Node.js";
 import NodeCache from "./NodeCache.js";
 
 declare class IsolateNode extends Node {
@@ -43462,7 +43462,7 @@ declare module "./Node.js" {
         isolate: () => IsolateNode;
     }
 }
-`,eT=e({default:()=>tT}),tT=`import { DirectLightData, DirectRectAreaLightData } from "../lighting/LightsNode.js";
+`,tT=e({default:()=>nT}),nT=`import { DirectLightData, DirectRectAreaLightData } from "../lighting/LightsNode.js";
 import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 
@@ -43493,7 +43493,7 @@ declare class LightingModel {
 }
 
 export default LightingModel;
-`,nT=e({default:()=>rT}),rT=`import BlendMode from "../../renderers/common/BlendMode.js";
+`,rT=e({default:()=>iT}),iT=`import BlendMode from "../../renderers/common/BlendMode.js";
 import { Texture } from "../../textures/Texture.js";
 import { Node } from "../Nodes.js";
 import OutputStructNode from "./OutputStructNode.js";
@@ -43523,7 +43523,7 @@ declare class MRTNode extends OutputStructNode {
 export default MRTNode;
 
 export const mrt: (outputNodes: { [name: string]: Node }) => MRTNode;
-`,iT=e({default:()=>aT}),aT=`import { EventDispatcher } from "../../core/EventDispatcher.js";
+`,aT=e({default:()=>oT}),oT=`import { EventDispatcher } from "../../core/EventDispatcher.js";
 import { NodeUpdateType } from "./constants.js";
 import NodeBuilder from "./NodeBuilder.js";
 import NodeFrame from "./NodeFrame.js";
@@ -44118,7 +44118,7 @@ type Node<TNodeType = unknown> =
 export default Node;
 
 export {};
-`,oT=e({default:()=>sT}),sT=`import Node from "./Node.js";
+`,sT=e({default:()=>cT}),cT=`import Node from "./Node.js";
 
 /**
  * {@link NodeBuilder} is going to create instances of this class during the build process
@@ -44165,7 +44165,7 @@ declare class NodeAttribute {
 }
 
 export default NodeAttribute;
-`,cT=e({default:()=>lT}),lT=`import { BufferGeometry } from "../../core/BufferGeometry.js";
+`,lT=e({default:()=>uT}),uT=`import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Material } from "../../materials/Material.js";
 import Renderer from "../../renderers/common/Renderer.js";
@@ -44309,7 +44309,7 @@ export default abstract class NodeBuilder {
     format(snippet: string, fromType: string, toType: string): string;
     getSignature(): string;
 }
-`,uT=e({default:()=>dT}),dT=`import Node from "./Node.js";
+`,dT=e({default:()=>fT}),fT=`import Node from "./Node.js";
 
 /**
  * This utility class is used in {@link NodeBuilder} as an internal
@@ -44359,11 +44359,11 @@ declare class NodeCache {
 }
 
 export default NodeCache;
-`,fT=e({default:()=>pT}),pT=`export default class NodeCode {
+`,pT=e({default:()=>mT}),mT=`export default class NodeCode {
     isNodeCode: true;
     constructor(name: string, type: string, code?: string);
 }
-`,mT=e({default:()=>hT}),hT=`import StackTrace from "./StackTrace.js";
+`,hT=e({default:()=>gT}),gT=`import StackTrace from "./StackTrace.js";
 
 declare class NodeError extends Error {
     stackTrace: StackTrace | null;
@@ -44372,7 +44372,7 @@ declare class NodeError extends Error {
 }
 
 export default NodeError;
-`,gT=e({default:()=>_T}),_T=`import { Camera } from "../../cameras/Camera.js";
+`,_T=e({default:()=>vT}),vT=`import { Camera } from "../../cameras/Camera.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Material } from "../../materials/Material.js";
 import Renderer from "../../renderers/common/Renderer.js";
@@ -44406,7 +44406,7 @@ export default class NodeFrame {
     updateNode(node: Node): void;
     update(): void;
 }
-`,vT=e({default:()=>yT}),yT=`import NodeFunctionInput from "./NodeFunctionInput.js";
+`,yT=e({default:()=>bT}),bT=`import NodeFunctionInput from "./NodeFunctionInput.js";
 
 export default abstract class NodeFunction {
     isNodeFunction: true;
@@ -44419,14 +44419,14 @@ export default abstract class NodeFunction {
 
     abstract getCode(name?: string): string;
 }
-`,bT=e({default:()=>xT}),xT=`export default class NodeFunctionInput {
+`,xT=e({default:()=>ST}),ST=`export default class NodeFunctionInput {
     isNodeFunctionInput: true;
     count: null | number;
     qualifier: string;
     isConst: boolean;
     constructor(type: string, name: string, count?: number, qualifier?: string, isConst?: boolean);
 }
-`,ST=e({default:()=>CT}),CT=`import NodeFunction from "./NodeFunction.js";
+`,CT=e({default:()=>wT}),wT=`import NodeFunction from "./NodeFunction.js";
 
 /**
  * Base class for node parsers. A derived parser must be implemented
@@ -44444,7 +44444,7 @@ declare abstract class NodeParser {
 }
 
 export default NodeParser;
-`,wT=e({default:()=>TT}),TT=`import UniformGroupNode from "./UniformGroupNode.js";
+`,TT=e({default:()=>ET}),ET=`import UniformGroupNode from "./UniformGroupNode.js";
 import UniformNode from "./UniformNode.js";
 
 /**
@@ -44510,7 +44510,7 @@ declare class NodeUniform<TNodeType, TValue> {
 }
 
 export default NodeUniform;
-`,ET=e({default:()=>DT}),DT=`import { Color } from "../../math/Color.js";
+`,DT=e({default:()=>OT}),OT=`import { Color } from "../../math/Color.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
 import { Vector2 } from "../../math/Vector2.js";
@@ -44536,7 +44536,7 @@ export function getValueFromType(
     type: string,
     ...params: number[]
 ): Color | Vector2 | Vector3 | Vector4 | Matrix3 | Matrix4 | boolean | number | string | ArrayBufferLike | null;
-`,OT=e({default:()=>kT}),kT=`/**
+`,kT=e({default:()=>AT}),AT=`/**
  * {@link NodeBuilder} is going to create instances of this class during the build process
  * of nodes. They represent the final shader variables that are going to be generated
  * by the builder. A dictionary of node variables is maintained in {@link NodeBuilder#vars} for
@@ -44587,7 +44587,7 @@ declare class NodeVar {
 }
 
 export default NodeVar;
-`,AT=e({default:()=>jT}),jT=`import { InterpolationSamplingMode, InterpolationSamplingType } from "../../constants.js";
+`,jT=e({default:()=>MT}),MT=`import { InterpolationSamplingMode, InterpolationSamplingType } from "../../constants.js";
 import NodeVar from "./NodeVar.js";
 
 /**
@@ -44646,7 +44646,7 @@ declare class NodeVarying extends NodeVar {
 }
 
 export default NodeVarying;
-`,MT=e({default:()=>NT}),NT=`import Node from "./Node.js";
+`,NT=e({default:()=>PT}),PT=`import Node from "./Node.js";
 
 export default class OutputStructNode extends Node {
     members: Node[];
@@ -44657,7 +44657,7 @@ export default class OutputStructNode extends Node {
 }
 
 export const outputStruct: (...members: Node[]) => OutputStructNode;
-`,PT=e({default:()=>FT}),FT=`import PropertyNode from "./PropertyNode.js";
+`,FT=e({default:()=>IT}),IT=`import PropertyNode from "./PropertyNode.js";
 
 interface ParameterNodeInterface {
     readonly isParameterNode: true;
@@ -44675,7 +44675,7 @@ type ParameterNode<TNodeType> = PropertyNode<TNodeType> & ParameterNodeInterface
 export default ParameterNode;
 
 export const parameter: <TNodeType>(type: TNodeType, name?: string | null) => ParameterNode<TNodeType>;
-`,IT=e({default:()=>LT}),LT=`import Node from "./Node.js";
+`,LT=e({default:()=>RT}),RT=`import Node from "./Node.js";
 
 interface PropertyNodeInterface {
     name: string | null;
@@ -44729,7 +44729,7 @@ export const thickness: PropertyNode<"float">;
 export const attenuationDistance: PropertyNode<"float">;
 export const attenuationColor: PropertyNode<"color">;
 export const dispersion: PropertyNode<"float">;
-`,RT=e({default:()=>zT}),zT=`import Node from "./Node.js";
+`,zT=e({default:()=>BT}),BT=`import Node from "./Node.js";
 
 declare class StackNode extends Node {
     isStackNode: true;
@@ -44754,7 +44754,7 @@ declare class StackNode extends Node {
 export default StackNode;
 
 export const stack: () => StackNode;
-`,BT=e({default:()=>VT}),VT=`declare class StackTrace {
+`,VT=e({default:()=>HT}),HT=`declare class StackTrace {
     readonly isStackTrace: true;
 
     stack: Array<{ fn: string; file: string; line: number; column: number }>;
@@ -44763,7 +44763,7 @@ export const stack: () => StackNode;
 }
 
 export default StackTrace;
-`,HT=e({default:()=>UT}),UT=`import Node from "./Node.js";
+`,UT=e({default:()=>WT}),WT=`import Node from "./Node.js";
 import StructTypeNode, { MembersLayout } from "./StructTypeNode.js";
 
 declare class StructNode extends Node {
@@ -44783,7 +44783,7 @@ export interface Struct {
 }
 
 export const struct: (membersLayout: MembersLayout, name?: string | null) => Struct;
-`,WT=e({default:()=>GT}),GT=`import { MemberLayout } from "./StructTypeNode.js";
+`,GT=e({default:()=>KT}),KT=`import { MemberLayout } from "./StructTypeNode.js";
 
 declare class StructType {
     constructor(name: string, members: MemberLayout[]);
@@ -44793,7 +44793,7 @@ declare class StructType {
 }
 
 export default StructType;
-`,KT=e({default:()=>qT}),qT=`import Node from "./Node.js";
+`,qT=e({default:()=>JT}),JT=`import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 
 export interface MembersLayout {
@@ -44853,7 +44853,7 @@ declare class StructTypeNode extends Node {
 }
 
 export default StructTypeNode;
-`,JT=e({default:()=>YT}),YT=`import Node from "./Node.js";
+`,YT=e({default:()=>XT}),XT=`import Node from "./Node.js";
 
 declare class SubBuildNode extends Node {
     node: Node;
@@ -44867,7 +44867,7 @@ declare class SubBuildNode extends Node {
 export default SubBuildNode;
 
 export const subBuild: (node: Node, name: string, type?: string | null) => SubBuildNode;
-`,XT=e({default:()=>ZT}),ZT=`import Node from "./Node.js";
+`,ZT=e({default:()=>QT}),QT=`import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 
 interface TempNodeInterface {
@@ -44883,7 +44883,7 @@ declare const TempNode: {
 type TempNode<TNodeType> = Node<TNodeType> & TempNodeInterface;
 
 export default TempNode;
-`,QT=e({default:()=>$T}),$T=`import Node from "./Node.js";
+`,$T=e({default:()=>eE}),eE=`import Node from "./Node.js";
 
 export default class UniformGroupNode extends Node {
     name: string;
@@ -44904,7 +44904,7 @@ export const sharedUniformGroup: (name: string) => UniformGroupNode;
 export const frameGroup: UniformGroupNode;
 export const renderGroup: UniformGroupNode;
 export const objectGroup: UniformGroupNode;
-`,eE=e({default:()=>tE}),tE=`import { Color } from "../../math/Color.js";
+`,tE=e({default:()=>nE}),nE=`import { Color } from "../../math/Color.js";
 import { Matrix2 } from "../../math/Matrix2.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
@@ -45016,7 +45016,7 @@ interface Uniform {
  * @returns {UniformNode}
  */
 export declare const uniform: Uniform;
-`,nE=e({default:()=>rE}),rE=`import Node from "./Node.js";
+`,rE=e({default:()=>iE}),iE=`import Node from "./Node.js";
 
 interface VarNodeInterface {
     node: Node;
@@ -45055,7 +45055,7 @@ declare module "./Node.js" {
         toVarIntent: () => Node<TNodeType>;
     }
 }
-`,iE=e({default:()=>aE}),aE=`import { InterpolationSamplingMode, InterpolationSamplingType } from "../../constants.js";
+`,aE=e({default:()=>oE}),oE=`import { InterpolationSamplingMode, InterpolationSamplingType } from "../../constants.js";
 import Node from "./Node.js";
 import NodeBuilder from "./NodeBuilder.js";
 import NodeVarying from "./NodeVarying.js";
@@ -45091,7 +45091,7 @@ declare module "./Node.js" {
         toVertexStage: () => VaryingNode<TNodeType>;
     }
 }
-`,oE=e({default:()=>sE}),sE=`/**
+`,sE=e({default:()=>cE}),cE=`/**
  * Possible shader stages.
  *
  * @property {string} VERTEX The vertex shader stage.
@@ -45163,7 +45163,7 @@ export declare const defaultShaderStages: NodeShaderStage[];
 export declare const defaultBuildStages: string[];
 export declare const shaderStages: NodeShaderStage[];
 export declare const vectorComponents: string[];
-`,cE=e({default:()=>lE}),lE=`import Node from "../core/Node.js";
+`,lE=e({default:()=>uE}),uE=`import Node from "../core/Node.js";
 
 export const blendBurn: (base: Node, blend: Node) => Node<"vec3">;
 
@@ -45178,7 +45178,7 @@ export const blendColor: (base: Node, blend: Node) => Node<"vec4">;
 export const premultiplyAlpha: (color: Node) => Node<"vec4">;
 
 export const unpremultiplyAlpha: (color: Node) => Node<"vec4">;
-`,uE=e({default:()=>dE}),dE=`import Node from "../core/Node.js";
+`,dE=e({default:()=>fE}),fE=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 declare class BumpMapNode extends TempNode {
@@ -45194,7 +45194,7 @@ export const bumpMap: (
     textureNode: Node,
     scaleNode?: Node | null,
 ) => BumpMapNode;
-`,fE=e({default:()=>pE}),pE=`import Node from "../core/Node.js";
+`,pE=e({default:()=>mE}),mE=`import Node from "../core/Node.js";
 
 export const grayscale: (color: Node) => Node<"vec3">;
 
@@ -45248,12 +45248,12 @@ export const cdl: (
 ) => Node<"vec4">;
 
 export const posterize: <TNodeType>(sourceNode: Node<TNodeType>, stepsNode: Node | number) => Node<TNodeType>;
-`,mE=e({default:()=>hE}),hE=`import Node from "../core/Node.js";
+`,hE=e({default:()=>gE}),gE=`import Node from "../core/Node.js";
 
 export const sRGBTransferEOTF: (color: Node) => Node;
 
 export const sRGBTransferOETF: (color: Node) => Node;
-`,gE=e({default:()=>_E}),_E=`import { LinearSRGBColorSpace, SRGBColorSpace } from "../../constants.js";
+`,_E=e({default:()=>vE}),vE=`import { LinearSRGBColorSpace, SRGBColorSpace } from "../../constants.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import TempNode from "../core/TempNode.js";
@@ -45307,7 +45307,7 @@ declare module "../core/Node.js" {
         ) => ColorSpaceNode;
     }
 }
-`,vE=e({default:()=>yE}),yE=`import Node from "../core/Node.js";
+`,yE=e({default:()=>bE}),bE=`import Node from "../core/Node.js";
 
 declare class FrontFacingNode extends Node<"bool"> {
     isFrontFacingNode: true;
@@ -45319,7 +45319,7 @@ export default FrontFacingNode;
 export const frontFacing: FrontFacingNode;
 export const faceDirection: Node;
 export const directionToFaceDirection: (direction: Node) => Node;
-`,bE=e({default:()=>xE}),xE=`import { NormalMapTypes, NormalPacking } from "../../constants.js";
+`,xE=e({default:()=>SE}),SE=`import { NormalMapTypes, NormalPacking } from "../../constants.js";
 import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
@@ -45337,7 +45337,7 @@ declare class NormalMapNode extends TempNode {
 export default NormalMapNode;
 
 export const normalMap: (node: Node, scaleNode?: Node) => NormalMapNode;
-`,SE=e({default:()=>CE}),CE=`import { Camera } from "../../cameras/Camera.js";
+`,CE=e({default:()=>wE}),wE=`import { Camera } from "../../cameras/Camera.js";
 import { Layers } from "../../core/Layers.js";
 import { Object3D } from "../../core/Object3D.js";
 import { RenderTarget, RenderTargetOptions } from "../../core/RenderTarget.js";
@@ -45448,7 +45448,7 @@ export default PassNode;
 export const pass: (scene: Object3D, camera: Camera, options?: RenderTargetOptions) => PassNode;
 export const passTexture: (pass: PassNode, texture: Texture) => PassTextureNode;
 export const depthPass: (scene: Object3D, camera: Camera, options?: RenderTargetOptions) => PassNode;
-`,wE=e({default:()=>TE}),TE=`import { ToneMapping } from "../../constants.js";
+`,TE=e({default:()=>EE}),EE=`import { ToneMapping } from "../../constants.js";
 import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
@@ -45477,7 +45477,7 @@ declare module "../core/Node.js" {
         ) => RenderOutputNode;
     }
 }
-`,EE=e({default:()=>DE}),DE=`import Node from "../core/Node.js";
+`,DE=e({default:()=>OE}),OE=`import Node from "../core/Node.js";
 
 export type ScreenNodeScope =
     | typeof ScreenNode.COORDINATE
@@ -45530,7 +45530,7 @@ export const viewportUV: Node<"vec2">;
  * @deprecated "viewportResolution" is deprecated. Use "screenSize" instead.
  */
 export const viewportResolution: Node<"vec2">;
-`,OE=e({default:()=>kE}),kE=`import Node from "../core/Node.js";
+`,kE=e({default:()=>AE}),AE=`import Node from "../core/Node.js";
 
 export const linearToneMapping: (color: Node, exposure: Node) => Node;
 
@@ -45543,7 +45543,7 @@ export const acesFilmicToneMapping: (color: Node, exposure: Node) => Node;
 export const agxToneMapping: (color: Node, exposure: Node) => Node;
 
 export const neutralToneMapping: (color: Node, exposure: Node) => Node;
-`,AE=e({default:()=>jE}),jE=`import { ToneMapping } from "../../constants.js";
+`,jE=e({default:()=>ME}),ME=`import { ToneMapping } from "../../constants.js";
 import RendererReferenceNode from "../accessors/RendererReferenceNode.js";
 import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
@@ -45572,7 +45572,7 @@ declare module "../core/Node.js" {
         ) => ToneMappingNode;
     }
 }
-`,ME=e({default:()=>NE}),NE=`import { Camera } from "../../cameras/Camera.js";
+`,NE=e({default:()=>PE}),PE=`import { Camera } from "../../cameras/Camera.js";
 import { Color } from "../../math/Color.js";
 import { Scene } from "../../scenes/Scene.js";
 import Node from "../core/Node.js";
@@ -45595,7 +45595,7 @@ export const toonOutlinePass: (
     thickness?: number,
     alpha?: number,
 ) => ToonOutlinePassNode;
-`,PE=e({default:()=>FE}),FE=`import Node from "../core/Node.js";
+`,FE=e({default:()=>IE}),IE=`import Node from "../core/Node.js";
 
 declare class ViewportDepthNode extends Node<"float"> {
     scope: ViewportDepthNodeScope;
@@ -45636,7 +45636,7 @@ export const logarithmicDepthToViewZ: (depth: Node, near: Node, far: Node) => No
 export const depth: ViewportDepthNode;
 export const linearDepth: (valueNode?: Node | null) => ViewportDepthNode;
 export const viewportLinearDepth: ViewportDepthNode;
-`,IE=e({default:()=>LE}),LE=`import { DepthTexture } from "../../textures/DepthTexture.js";
+`,LE=e({default:()=>RE}),RE=`import { DepthTexture } from "../../textures/DepthTexture.js";
 import Node from "../core/Node.js";
 import ViewportTextureNode from "./ViewportTextureNode.js";
 
@@ -45652,7 +45652,7 @@ export const viewportDepthTexture: (
     uvNode?: Node,
     levelNode?: Node,
 ) => ViewportDepthTextureNode;
-`,RE=e({default:()=>zE}),zE=`import { FramebufferTexture } from "../../textures/FramebufferTexture.js";
+`,zE=e({default:()=>BE}),BE=`import { FramebufferTexture } from "../../textures/FramebufferTexture.js";
 import Node from "../core/Node.js";
 import ViewportTextureNode from "./ViewportTextureNode.js";
 
@@ -45668,7 +45668,7 @@ export const viewportSharedTexture: (
     uvNode?: Node,
     levelNode?: Node | null,
 ) => ViewportSharedTextureNode;
-`,BE=e({default:()=>VE}),VE=`import { RenderTarget } from "../../core/RenderTarget.js";
+`,VE=e({default:()=>HE}),HE=`import { RenderTarget } from "../../core/RenderTarget.js";
 import { FramebufferTexture } from "../../textures/FramebufferTexture.js";
 import { Texture } from "../../textures/Texture.js";
 import TextureNode from "../accessors/TextureNode.js";
@@ -45701,7 +45701,7 @@ export const viewportMipTexture: (
 ) => Node;
 
 export const viewportOpaqueMipTexture: (uv?: Node, level?: Node | null) => Node;
-`,HE=e({default:()=>UE}),UE=`import Node from "../core/Node.js";
+`,UE=e({default:()=>WE}),WE=`import Node from "../core/Node.js";
 
 export const rangeFogFactor: (near: Node | number, far: Node | number) => Node<"float">;
 
@@ -45728,7 +45728,7 @@ export function densityFog(
     near: Node,
     far: Node,
 ): Node;
-`,WE=e({default:()=>GE}),GE=`import Node from "../../core/Node.js";
+`,GE=e({default:()=>KE}),KE=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const BRDF_GGX: (args: {
@@ -45742,7 +45742,7 @@ declare const BRDF_GGX: (args: {
 }) => OperatorNode;
 
 export default BRDF_GGX;
-`,KE=e({default:()=>qE}),qE=`import Node from "../../core/Node.js";
+`,qE=e({default:()=>JE}),JE=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const BRDF_GGX_Multiscatter: (args: {
@@ -45756,19 +45756,19 @@ declare const BRDF_GGX_Multiscatter: (args: {
 }) => OperatorNode;
 
 export default BRDF_GGX_Multiscatter;
-`,JE=e({default:()=>YE}),YE=`import Node from "../../core/Node.js";
+`,YE=e({default:()=>XE}),XE=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const BRDF_Lambert: (args: { diffuseColor: Node }) => OperatorNode;
 
 export default BRDF_Lambert;
-`,XE=e({default:()=>ZE}),ZE=`import Node from "../../core/Node.js";
+`,ZE=e({default:()=>QE}),QE=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const BRDF_Sheen: (args: { lightDirection: Node }) => OperatorNode;
 
 export default BRDF_Sheen;
-`,QE=e({default:()=>$E}),$E=`import Node from "../../core/Node.js";
+`,$E=e({default:()=>eD}),eD=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 /**
@@ -45780,7 +45780,7 @@ import OperatorNode from "../../math/OperatorNode.js";
 declare const DFGLUT: (args: { roughness: Node; dotNV: Node }) => OperatorNode;
 
 export default DFGLUT;
-`,eD=e({default:()=>tD}),tD=`import Node from "../../core/Node.js";
+`,tD=e({default:()=>nD}),nD=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 // Microfacet Models for Refraction through Rough Surfaces - equation (33)
@@ -45789,7 +45789,7 @@ import OperatorNode from "../../math/OperatorNode.js";
 declare const D_GGX: (args: { alpha: Node; dotNH: Node }) => OperatorNode;
 
 export default D_GGX;
-`,nD=e({default:()=>rD}),rD=`import Node from "../../core/Node.js";
+`,rD=e({default:()=>iD}),iD=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 // https://google.github.io/filament/Filament.md.html#materialsystem/anisotropicmodel/anisotropicspecularbrdf
@@ -45798,13 +45798,13 @@ declare const D_GGX_Anisotropic: (
 ) => OperatorNode;
 
 export default D_GGX_Anisotropic;
-`,iD=e({default:()=>aD}),aD=`import Node from "../../core/Node.js";
+`,aD=e({default:()=>oD}),oD=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const F_Schlick: (args: { f0: Node; f90: Node; dotVH: Node }) => OperatorNode;
 
 export default F_Schlick;
-`,oD=e({default:()=>sD}),sD=`import Node from "../../core/Node.js";
+`,sD=e({default:()=>cD}),cD=`import Node from "../../core/Node.js";
 
 declare const LTC_Uv: (args: { N: Node; V: Node; roughness: Node }) => Node;
 
@@ -45817,7 +45817,7 @@ declare const LTC_Evaluate_Volume: (
 ) => Node;
 
 export { LTC_Evaluate, LTC_Evaluate_Volume, LTC_Uv };
-`,cD=e({default:()=>lD}),lD=`import Node from "../../core/Node.js";
+`,lD=e({default:()=>uD}),uD=`import Node from "../../core/Node.js";
 
 declare const Schlick_to_F0: (
     f: Node,
@@ -45826,7 +45826,7 @@ declare const Schlick_to_F0: (
 ) => Node;
 
 export default Schlick_to_F0;
-`,uD=e({default:()=>dD}),dD=`import Node from "../../core/Node.js";
+`,dD=e({default:()=>fD}),fD=`import Node from "../../core/Node.js";
 import OperatorNode from "../../math/OperatorNode.js";
 
 declare const V_GGX_SmithCorrelated: (inputs: {
@@ -45836,7 +45836,7 @@ declare const V_GGX_SmithCorrelated: (inputs: {
 }) => OperatorNode;
 
 export default V_GGX_SmithCorrelated;
-`,fD=e({default:()=>pD}),pD=`import Node from "../../core/Node.js";
+`,pD=e({default:()=>mD}),mD=`import Node from "../../core/Node.js";
 import MathNode from "../../math/MathNode.js";
 
 declare const V_GGX_SmithCorrelated: (inputs: {
@@ -45851,21 +45851,21 @@ declare const V_GGX_SmithCorrelated: (inputs: {
 }) => MathNode;
 
 export default V_GGX_SmithCorrelated;
-`,mD=e({default:()=>hD}),hD=`import LightingModel from "../core/LightingModel.js";
+`,hD=e({default:()=>gD}),gD=`import LightingModel from "../core/LightingModel.js";
 
 declare class BasicLightingModel extends LightingModel {
     constructor();
 }
 
 export default BasicLightingModel;
-`,gD=e({default:()=>_D}),_D=`import BasicLightingModel from "./BasicLightingModel.js";
+`,_D=e({default:()=>vD}),vD=`import BasicLightingModel from "./BasicLightingModel.js";
 
 export default class PhongLightingModel extends BasicLightingModel {
     specular: boolean;
 
     constructor(specular?: boolean);
 }
-`,vD=e({default:()=>yD}),yD=`import LightingModel from "../core/LightingModel.js";
+`,yD=e({default:()=>bD}),bD=`import LightingModel from "../core/LightingModel.js";
 import Node from "../core/Node.js";
 
 export default class PhysicalLightingModel extends LightingModel {
@@ -45902,7 +45902,7 @@ export default class PhysicalLightingModel extends LightingModel {
         iridescenceF0?: Node | null,
     ): void;
 }
-`,bD=e({default:()=>xD}),xD=`import LightingModel from "../core/LightingModel.js";
+`,xD=e({default:()=>SD}),SD=`import LightingModel from "../core/LightingModel.js";
 import VarNode from "../core/VarNode.js";
 
 export default class ShadowMaskModel extends LightingModel {
@@ -45910,27 +45910,27 @@ export default class ShadowMaskModel extends LightingModel {
 
     constructor();
 }
-`,SD=e({default:()=>CD}),CD=`import LightingModel from "../core/LightingModel.js";
+`,CD=e({default:()=>wD}),wD=`import LightingModel from "../core/LightingModel.js";
 
 export default class ToonLightingModel extends LightingModel {
 }
-`,wD=e({default:()=>TD}),TD=`import LightingModel from "../core/LightingModel.js";
+`,TD=e({default:()=>ED}),ED=`import LightingModel from "../core/LightingModel.js";
 
 declare class VolumetricLightingModel extends LightingModel {
 }
 
 export default VolumetricLightingModel;
-`,ED=e({default:()=>DD}),DD=`import Node from "../../core/Node.js";
+`,DD=e({default:()=>OD}),OD=`import Node from "../../core/Node.js";
 
 declare const getAlphaHashThreshold: (position: Node) => Node;
 
 export default getAlphaHashThreshold;
-`,OD=e({default:()=>kD}),kD=`import MathNode from "../../math/MathNode.js";
+`,kD=e({default:()=>AD}),AD=`import MathNode from "../../math/MathNode.js";
 
 declare const getGeometryRoughness: () => MathNode;
 
 export default getGeometryRoughness;
-`,AD=e({default:()=>jD}),jD=`import Node from "../../core/Node.js";
+`,jD=e({default:()=>MD}),MD=`import Node from "../../core/Node.js";
 
 declare const getParallaxCorrectNormal: (
     normal: Node,
@@ -45939,18 +45939,18 @@ declare const getParallaxCorrectNormal: (
 ) => Node;
 
 export default getParallaxCorrectNormal;
-`,MD=e({default:()=>ND}),ND=`import Node from "../../core/Node.js";
+`,ND=e({default:()=>PD}),PD=`import Node from "../../core/Node.js";
 import MathNode from "../../math/MathNode.js";
 
 declare const getRoughness: (args: { roughness: Node }) => MathNode;
 
 export default getRoughness;
-`,PD=e({default:()=>FD}),FD=`import Node from "../../core/Node.js";
+`,FD=e({default:()=>ID}),ID=`import Node from "../../core/Node.js";
 
 declare const getShIrradianceAt: (normal: Node, shCoefficients: Node) => Node;
 
 export default getShIrradianceAt;
-`,ID=e({default:()=>LD}),LD=`import { Color } from "../../math/Color.js";
+`,LD=e({default:()=>RD}),RD=`import { Color } from "../../math/Color.js";
 import { Vector2 } from "../../math/Vector2.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Vector4 } from "../../math/Vector4.js";
@@ -46012,7 +46012,7 @@ interface Range {
 }
 
 export const range: Range;
-`,RD=e({default:()=>zD}),zD=`import Node from "../core/Node.js";
+`,zD=e({default:()=>BD}),BD=`import Node from "../core/Node.js";
 
 export type AtomicMethod =
     | typeof AtomicFunctionNode.ATOMIC_LOAD
@@ -46095,7 +46095,7 @@ export const atomicXor: (
     pointerNode: Node,
     valueNode: Node,
 ) => AtomicFunctionNode;
-`,BD=e({default:()=>VD}),VD=`import Node from "../core/Node.js";
+`,VD=e({default:()=>HD}),HD=`import Node from "../core/Node.js";
 
 declare class BarrierNode extends Node {
     scope: string;
@@ -46108,7 +46108,7 @@ export default BarrierNode;
 export const workgroupBarrier: () => Node;
 export const storageBarrier: () => Node;
 export const textureBarrier: () => Node;
-`,HD=e({default:()=>UD}),UD=`import Node from "../core/Node.js";
+`,UD=e({default:()=>WD}),WD=`import Node from "../core/Node.js";
 
 declare class ComputeBuiltinNode extends Node {
     constructor(builtinName: string, nodeType: string);
@@ -46121,7 +46121,7 @@ export const workgroupId: ComputeBuiltinNode;
 export const globalId: ComputeBuiltinNode;
 export const localId: ComputeBuiltinNode;
 export const subgroupSize: ComputeBuiltinNode;
-`,WD=e({default:()=>GD}),GD=`import Renderer from "../../renderers/common/Renderer.js";
+`,GD=e({default:()=>KD}),KD=`import Renderer from "../../renderers/common/Renderer.js";
 import Node from "../core/Node.js";
 
 export default class ComputeNode extends Node {
@@ -46167,7 +46167,7 @@ declare module "../core/Node.js" {
         computeKernel: (workgroupSize?: number[]) => ComputeNode;
     }
 }
-`,KD=e({default:()=>qD}),qD=`import Node from "../core/Node.js";
+`,qD=e({default:()=>JD}),JD=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 export type SubgroupFunctionNodeMethod0 = typeof SubgroupFunctionNode.SUBGROUP_ELECT;
@@ -46266,7 +46266,7 @@ export const subgroupShuffleXor: (v: Node, mask: Node) => Node;
 export const subgroupShuffleUp: (v: Node, delta: Node) => Node;
 export const subgroupShuffleDown: (v: Node, delta: Node) => Node;
 export const quadBroadcast: (e: Node) => Node;
-`,JD=e({default:()=>YD}),YD=`import Node from "../core/Node.js";
+`,YD=e({default:()=>XD}),XD=`import Node from "../core/Node.js";
 
 declare class WorkgroupInfoNode extends Node {
     bufferType: string;
@@ -46284,7 +46284,7 @@ declare class WorkgroupInfoNode extends Node {
 export default WorkgroupInfoNode;
 
 export const workgroupArray: (type: string, count?: number) => WorkgroupInfoNode;
-`,XD=e({default:()=>ZD}),ZD=`import Node from "../core/Node.js";
+`,ZD=e({default:()=>QD}),QD=`import Node from "../core/Node.js";
 import LightingNode from "./LightingNode.js";
 
 export default class AONode extends LightingNode {
@@ -46292,7 +46292,7 @@ export default class AONode extends LightingNode {
 
     constructor(aoNode?: Node | null);
 }
-`,QD=e({default:()=>$D}),$D=`import { AmbientLight } from "../../lights/AmbientLight.js";
+`,$D=e({default:()=>eO}),eO=`import { AmbientLight } from "../../lights/AmbientLight.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
 
 declare class AmbientLightNode extends AnalyticLightNode<AmbientLight> {
@@ -46300,7 +46300,7 @@ declare class AmbientLightNode extends AnalyticLightNode<AmbientLight> {
 }
 
 export default AmbientLightNode;
-`,eO=e({default:()=>tO}),tO=`import { Light } from "../../lights/Light.js";
+`,tO=e({default:()=>nO}),nO=`import { Light } from "../../lights/Light.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import LightingNode from "./LightingNode.js";
@@ -46332,7 +46332,7 @@ declare class AnalyticLightNode<T extends Light> extends LightingNode {
 }
 
 export default AnalyticLightNode;
-`,nO=e({default:()=>rO}),rO=`import Node from "../core/Node.js";
+`,rO=e({default:()=>iO}),iO=`import Node from "../core/Node.js";
 import LightingNode from "./LightingNode.js";
 
 declare class BasicEnvironmentNode extends LightingNode {
@@ -46342,7 +46342,7 @@ declare class BasicEnvironmentNode extends LightingNode {
 }
 
 export default BasicEnvironmentNode;
-`,iO=e({default:()=>aO}),aO=`import Node from "../core/Node.js";
+`,aO=e({default:()=>oO}),oO=`import Node from "../core/Node.js";
 import LightingNode from "./LightingNode.js";
 
 declare class BasicLightMapNode extends LightingNode {
@@ -46350,7 +46350,7 @@ declare class BasicLightMapNode extends LightingNode {
 }
 
 export default BasicLightMapNode;
-`,oO=e({default:()=>sO}),sO=`import { DirectionalLight } from "../../lights/DirectionalLight.js";
+`,sO=e({default:()=>cO}),cO=`import { DirectionalLight } from "../../lights/DirectionalLight.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
 
 declare class DirectionalLightNode extends AnalyticLightNode<DirectionalLight> {
@@ -46358,7 +46358,7 @@ declare class DirectionalLightNode extends AnalyticLightNode<DirectionalLight> {
 }
 
 export default DirectionalLightNode;
-`,cO=e({default:()=>lO}),lO=`import Node from "../core/Node.js";
+`,lO=e({default:()=>uO}),uO=`import Node from "../core/Node.js";
 import LightingNode from "./LightingNode.js";
 
 export default class EnvironmentNode extends LightingNode {
@@ -46366,7 +46366,7 @@ export default class EnvironmentNode extends LightingNode {
 
     constructor(envNode?: Node | null);
 }
-`,uO=e({default:()=>dO}),dO=`import { HemisphereLight } from "../../lights/HemisphereLight.js";
+`,dO=e({default:()=>fO}),fO=`import { HemisphereLight } from "../../lights/HemisphereLight.js";
 import { Vector3 } from "../../math/Vector3.js";
 import Node from "../core/Node.js";
 import UniformNode from "../core/UniformNode.js";
@@ -46380,12 +46380,12 @@ export default class HemisphereLightNode extends AnalyticLightNode<HemisphereLig
 
     constructor(light?: HemisphereLight | null);
 }
-`,fO=e({default:()=>pO}),pO=`import SpotLightNode from "./SpotLightNode.js";
+`,pO=e({default:()=>mO}),mO=`import SpotLightNode from "./SpotLightNode.js";
 
 declare class IESSpotLightNode extends SpotLightNode {}
 
 export default IESSpotLightNode;
-`,mO=e({default:()=>hO}),hO=`import Node from "../core/Node.js";
+`,hO=e({default:()=>gO}),gO=`import Node from "../core/Node.js";
 import LightingNode from "./LightingNode.js";
 
 export default class IrradianceNode extends LightingNode {
@@ -46393,7 +46393,7 @@ export default class IrradianceNode extends LightingNode {
 
     constructor(node?: Node | null);
 }
-`,gO=e({default:()=>_O}),_O=`import { LightProbe } from "../../lights/LightProbe.js";
+`,_O=e({default:()=>vO}),vO=`import { LightProbe } from "../../lights/LightProbe.js";
 import UniformArrayNode from "../accessors/UniformArrayNode.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
 
@@ -46404,7 +46404,7 @@ declare class LightProbeNode extends AnalyticLightNode<LightProbe> {
 }
 
 export default LightProbeNode;
-`,vO=e({default:()=>yO}),yO=`import Node from "../core/Node.js";
+`,yO=e({default:()=>bO}),bO=`import Node from "../core/Node.js";
 import ConditionalNode from "../math/ConditionalNode.js";
 
 export const getDistanceAttenuation: (args: {
@@ -46412,7 +46412,7 @@ export const getDistanceAttenuation: (args: {
     cutoffDistance: Node;
     decayExponent: Node;
 }) => Node<"float">;
-`,bO=e({default:()=>xO}),xO=`import ContextNode from "../core/ContextNode.js";
+`,xO=e({default:()=>SO}),SO=`import ContextNode from "../core/ContextNode.js";
 import LightingModel, { LightingModelReflectedLight } from "../core/LightingModel.js";
 import Node from "../core/Node.js";
 import LightsNode from "./LightsNode.js";
@@ -46446,14 +46446,14 @@ export const lightingContext: (
     node: LightsNode,
     lightingModelNode?: LightingModel,
 ) => LightingContextNode;
-`,SO=e({default:()=>CO}),CO=`import Node from "../core/Node.js";
+`,CO=e({default:()=>wO}),wO=`import Node from "../core/Node.js";
 
 export default abstract class LightingNode extends Node {
     readonly isLightingNode: true;
 
     constructor();
 }
-`,wO=e({default:()=>TO}),TO=`import { Light } from "../../lights/Light.js";
+`,TO=e({default:()=>EO}),EO=`import { Light } from "../../lights/Light.js";
 import Node from "../core/Node.js";
 import { NodeBuilder } from "../Nodes.js";
 import LightingNode from "./LightingNode.js";
@@ -46499,7 +46499,7 @@ declare class LightsNode extends Node {
 export default LightsNode;
 
 export const lights: (lights?: Light[]) => LightsNode;
-`,EO=e({default:()=>DO}),DO=`import { PointLight } from "../../lights/PointLight.js";
+`,DO=e({default:()=>OO}),OO=`import { PointLight } from "../../lights/PointLight.js";
 import Node from "../core/Node.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
 import { DirectLightData } from "./LightsNode.js";
@@ -46522,7 +46522,7 @@ declare class PointLightNode extends AnalyticLightNode<PointLight> {
 }
 
 export default PointLightNode;
-`,OO=e({default:()=>kO}),kO=`import { Light } from "../../lights/Light.js";
+`,kO=e({default:()=>AO}),AO=`import { Light } from "../../lights/Light.js";
 import { LightShadow } from "../../lights/LightShadow.js";
 import Node from "../core/Node.js";
 import ShadowNode from "./ShadowNode.js";
@@ -46547,12 +46547,12 @@ declare class PointShadowNode extends ShadowNode {
 export default PointShadowNode;
 
 export const pointShadow: (light: Light, shadow?: LightShadow | null) => PointShadowNode;
-`,AO=e({default:()=>jO}),jO=`import SpotLightNode from "./SpotLightNode.js";
+`,jO=e({default:()=>MO}),MO=`import SpotLightNode from "./SpotLightNode.js";
 
 declare class ProjectorLightNode extends SpotLightNode {}
 
 export default ProjectorLightNode;
-`,MO=e({default:()=>NO}),NO=`import { RectAreaLight } from "../../lights/RectAreaLight.js";
+`,NO=e({default:()=>PO}),PO=`import { RectAreaLight } from "../../lights/RectAreaLight.js";
 import { DataTexture } from "../../textures/DataTexture.js";
 import Node from "../core/Node.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
@@ -46573,7 +46573,7 @@ export default class RectAreaLightNode extends AnalyticLightNode<RectAreaLight> 
 
     static setLTC(ltc: RectAreaLightTexturesLib): void;
 }
-`,PO=e({default:()=>FO}),FO=`import { Light } from "../../lights/Light.js";
+`,FO=e({default:()=>IO}),IO=`import { Light } from "../../lights/Light.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 
@@ -46590,7 +46590,7 @@ declare class ShadowBaseNode extends Node {
 export const shadowPositionWorld: Node;
 
 export default ShadowBaseNode;
-`,IO=e({default:()=>LO}),LO=`import { Light } from "../../lights/Light.js";
+`,LO=e({default:()=>RO}),RO=`import { Light } from "../../lights/Light.js";
 import NodeMaterial from "../../materials/nodes/NodeMaterial.js";
 import Node from "../core/Node.js";
 
@@ -46619,7 +46619,7 @@ export const VSMShadowFilter: (
 export const getShadowMaterial: (light: Light) => NodeMaterial;
 
 export const disposeShadowMaterial: (light: Light) => void;
-`,RO=e({default:()=>zO}),zO=`import { Camera } from "../../cameras/Camera.js";
+`,zO=e({default:()=>BO}),BO=`import { Camera } from "../../cameras/Camera.js";
 import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Light } from "../../lights/Light.js";
@@ -46656,7 +46656,7 @@ declare class ShadowNode extends ShadowBaseNode {
 export default ShadowNode;
 
 export const shadow: (light: Light, shadow?: LightShadow) => ShadowNode;
-`,BO=e({default:()=>VO}),VO=`import { SpotLight } from "../../lights/SpotLight.js";
+`,VO=e({default:()=>HO}),HO=`import { SpotLight } from "../../lights/SpotLight.js";
 import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import AnalyticLightNode from "./AnalyticLightNode.js";
@@ -46678,7 +46678,7 @@ declare class SpotLightNode extends AnalyticLightNode<SpotLight> {
 }
 
 export default SpotLightNode;
-`,HO=e({default:()=>UO}),UO=`import Node from "../core/Node.js";
+`,UO=e({default:()=>WO}),WO=`import Node from "../core/Node.js";
 import MathNode from "../math/MathNode.js";
 import { mx_hsvtorgb, mx_rgbtohsv } from "./lib/mx_hsv.js";
 import { mx_srgb_texture_to_lin_rec709 } from "./lib/mx_transform_color.js";
@@ -46849,12 +46849,12 @@ export const mx_rotate2d: (input: Node, amount: Node) => Node;
 export const mx_rotate3d: (input: Node, amount: Node, axis: Node) => Node;
 
 export const mx_heighttonormal: (input: Node, scale: Node) => Node;
-`,WO=e({default:()=>GO}),GO=`import Node from "../../core/Node.js";
+`,GO=e({default:()=>KO}),KO=`import Node from "../../core/Node.js";
 
 export const mx_hsvtorgb: (hsv: Node) => Node;
 
 export const mx_rgbtohsv: (c_immutable: Node) => Node;
-`,KO=e({default:()=>qO}),qO=`import Node from "../../core/Node.js";
+`,qO=e({default:()=>JO}),JO=`import Node from "../../core/Node.js";
 import VarNode from "../../core/VarNode.js";
 
 export const mx_select: (
@@ -47240,10 +47240,10 @@ export const mx_unifiednoise3d: (
     lacunarity_immutable: Node,
     diminish_immutable: Node,
 ) => Node;
-`,JO=e({default:()=>YO}),YO=`import Node from "../../core/Node.js";
+`,YO=e({default:()=>XO}),XO=`import Node from "../../core/Node.js";
 
 export const mx_srgb_texture_to_lin_rec709: (color_immutable: Node) => Node;
-`,XO=e({default:()=>ZO}),ZO=`import Node from "../core/Node.js";
+`,ZO=e({default:()=>QO}),QO=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 declare class BitcastNode extends TempNode {
@@ -47267,7 +47267,7 @@ export const floatBitsToUint: (value: Node) => BitcastNode;
 export const intBitsToFloat: (value: Node) => BitcastNode;
 
 export const uintBitsToFloat: (value: Node) => BitcastNode;
-`,QO=e({default:()=>$O}),$O=`import Node from "../core/Node.js";
+`,$O=e({default:()=>ek}),ek=`import Node from "../core/Node.js";
 import MathNode from "./MathNode.js";
 
 export type BitcountNodeMethod =
@@ -47290,7 +47290,7 @@ export default BitcountNode;
 export const countTrailingZeros: (x: Node | number) => BitcountNode;
 export const countLeadingZeros: (x: Node | number) => BitcountNode;
 export const countOneBits: (x: Node | number) => BitcountNode;
-`,ek=e({default:()=>tk}),tk=`import Node from "../core/Node.js";
+`,tk=e({default:()=>nk}),nk=`import Node from "../core/Node.js";
 
 interface ConditionalNodeInterface<TNodeType> {
     condNode: Node<"bool">;
@@ -47341,10 +47341,10 @@ declare module "../core/Node.js" {
         select: SelectExtension;
     }
 }
-`,nk=e({default:()=>rk}),rk=`import Node from "../core/Node.js";
+`,rk=e({default:()=>ik}),ik=`import Node from "../core/Node.js";
 
 export const hash: (seed: Node) => Node<"float">;
-`,ik=e({default:()=>ak}),ak=`import { Vector2 } from "../../math/Vector2.js";
+`,ak=e({default:()=>ok}),ok=`import { Vector2 } from "../../math/Vector2.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Vector4 } from "../../math/Vector4.js";
 import Node from "../core/Node.js";
@@ -48127,7 +48127,7 @@ export const faceforward: typeof faceForward;
 export const inversesqrt: typeof inverseSqrt;
 
 export {};
-`,ok=e({default:()=>sk}),sk=`import Node from "../core/Node.js";
+`,sk=e({default:()=>ck}),ck=`import Node from "../core/Node.js";
 
 type FloatOrNumber = Node<"float"> | number;
 
@@ -48137,7 +48137,7 @@ export const pcurve: (x: FloatOrNumber, a: FloatOrNumber, b: FloatOrNumber) => N
 export const sinc: (x: FloatOrNumber, k: FloatOrNumber) => Node<"float">;
 
 export {};
-`,ck=e({default:()=>lk}),lk=`import Node, { IntegerType, NumType } from "../core/Node.js";
+`,lk=e({default:()=>uk}),uk=`import Node, { IntegerType, NumType } from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 export type OperatorNodeOp =
@@ -48675,7 +48675,7 @@ declare module "../core/Node.js" {
 }
 
 export {};
-`,uk=e({default:()=>dk}),dk=`import Node from "../core/Node.js";
+`,dk=e({default:()=>fk}),fk=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 export type PackFloatNodeEncoding = "snorm" | "unorm" | "float16";
@@ -48694,7 +48694,7 @@ export default PackFloatNode;
 export const packSnorm2x16: (value: Node) => PackFloatNode;
 export const packUnorm2x16: (value: Node) => PackFloatNode;
 export const packHalf2x16: (value: Node) => PackFloatNode;
-`,fk=e({default:()=>pk}),pk=`import Node from "../core/Node.js";
+`,pk=e({default:()=>mk}),mk=`import Node from "../core/Node.js";
 
 export const tri: (x: Node) => Node<"float">;
 
@@ -48705,7 +48705,7 @@ export const triNoise3D: (
     speed: Node | number,
     time: Node | number,
 ) => Node<"float">;
-`,mk=e({default:()=>hk}),hk=`import Node from "../core/Node.js";
+`,hk=e({default:()=>gk}),gk=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 import { PackFloatNodeEncoding } from "./PackFloatNode.js";
 
@@ -48723,7 +48723,7 @@ export default PackFloatNode;
 export const unpackSnorm2x16: (value: Node) => PackFloatNode;
 export const unpackUnorm2x16: (value: Node) => PackFloatNode;
 export const unpackHalf2x16: (value: Node) => PackFloatNode;
-`,gk=e({default:()=>_k}),_k=`import NodeFunction from "../core/NodeFunction.js";
+`,_k=e({default:()=>vk}),vk=`import NodeFunction from "../core/NodeFunction.js";
 
 declare class GLSLNodeFunction extends NodeFunction {
     constructor(source: string);
@@ -48732,7 +48732,7 @@ declare class GLSLNodeFunction extends NodeFunction {
 }
 
 export default GLSLNodeFunction;
-`,vk=e({default:()=>yk}),yk=`import NodeParser from "../core/NodeParser.js";
+`,yk=e({default:()=>bk}),bk=`import NodeParser from "../core/NodeParser.js";
 import GLSLNodeFunction from "./GLSLNodeFunction.js";
 
 declare class GLSLNodeParser extends NodeParser {
@@ -48740,7 +48740,7 @@ declare class GLSLNodeParser extends NodeParser {
 }
 
 export default GLSLNodeParser;
-`,bk=e({default:()=>xk}),xk=`import { Texture } from "../../textures/Texture.js";
+`,xk=e({default:()=>Sk}),Sk=`import { Texture } from "../../textures/Texture.js";
 import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
@@ -48761,7 +48761,7 @@ export const pmremTexture: (
     uvNode?: Node,
     levelNode?: Node,
 ) => PMREMNode;
-`,Sk=e({default:()=>Ck}),Ck=`import Node from "../core/Node.js";
+`,Ck=e({default:()=>wk}),wk=`import Node from "../core/Node.js";
 
 export const getDirection: (uv_immutable: Node, face: Node) => Node;
 
@@ -48788,13 +48788,13 @@ export const blur: (
     CUBEUV_TEXEL_HEIGHT: Node,
     CUBEUV_MAX_MIP: Node,
 ) => Node;
-`,wk=e({default:()=>Tk}),Tk=`import Node from "../core/Node.js";
+`,Tk=e({default:()=>Ek}),Ek=`import Node from "../core/Node.js";
 
 export const checker: (coord?: Node) => Node<"float">;
-`,Ek=e({default:()=>Dk}),Dk=`import Node from "../core/Node.js";
+`,Dk=e({default:()=>Ok}),Ok=`import Node from "../core/Node.js";
 
 export const shapeCircle: (coord?: Node) => Node;
-`,Ok=e({default:()=>kk}),kk=`export * from "../accessors/BufferAttributeNode.js";
+`,kk=e({default:()=>Ak}),Ak=`export * from "../accessors/BufferAttributeNode.js";
 export * from "../code/ExpressionNode.js";
 export * from "../code/FunctionCallNode.js";
 export * from "../core/ArrayNode.js";
@@ -48824,7 +48824,7 @@ export * from "./TSLCore.js";
  * @deprecated
  */
 export function addNodeElement(name: string): void;
-`,Ak=e({default:()=>jk}),jk=`import { Color } from "../../math/Color.js";
+`,jk=e({default:()=>Mk}),Mk=`import { Color } from "../../math/Color.js";
 import { Matrix2 } from "../../math/Matrix2.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
@@ -50843,7 +50843,7 @@ declare module "../core/Node.js" {
 }
 
 export {};
-`,Mk=e({default:()=>Nk}),Nk=`import Node from "../core/Node.js";
+`,Nk=e({default:()=>Pk}),Pk=`import Node from "../core/Node.js";
 
 interface ArrayElementNodeInterface {
     node: Node;
@@ -50857,14 +50857,14 @@ declare const ArrayElementNode: {
 type ArrayElementNode<TNodeType> = Node<TNodeType> & ArrayElementNodeInterface;
 
 export default ArrayElementNode;
-`,Pk=e({default:()=>Fk}),Fk=`import Node from "../core/Node.js";
+`,Fk=e({default:()=>Ik}),Ik=`import Node from "../core/Node.js";
 
 export default class ConvertNode extends Node {
     node: Node;
     convertTo: string;
     constructor(node: Node, convertTo: string);
 }
-`,Ik=e({default:()=>Lk}),Lk=`import Node from "../core/Node.js";
+`,Lk=e({default:()=>Rk}),Rk=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 declare class CubeMapNode extends TempNode {
@@ -50876,7 +50876,7 @@ declare class CubeMapNode extends TempNode {
 export default CubeMapNode;
 
 export const cubeMapNode: (envNode: Node) => CubeMapNode;
-`,Rk=e({default:()=>zk}),zk=`import Node from "../core/Node.js";
+`,zk=e({default:()=>Bk}),Bk=`import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import TempNode from "../core/TempNode.js";
 
@@ -50898,7 +50898,7 @@ declare module "../core/Node.js" {
         ) => DebugNode;
     }
 }
-`,Bk=e({default:()=>Vk}),Vk=`import Node from "../core/Node.js";
+`,Vk=e({default:()=>Hk}),Hk=`import Node from "../core/Node.js";
 
 export const Discard: (conditional?: Node) => Node;
 export const Return: () => Node;
@@ -50908,10 +50908,10 @@ declare module "../core/Node.js" {
         discard: () => Node;
     }
 }
-`,Hk=e({default:()=>Uk}),Uk=`import Node from "../core/Node.js";
+`,Uk=e({default:()=>Wk}),Wk=`import Node from "../core/Node.js";
 
 export const equirectUV: (dirNode?: Node) => Node;
-`,Wk=e({default:()=>Gk}),Gk=`import Node from "../core/Node.js";
+`,Gk=e({default:()=>Kk}),Kk=`import Node from "../core/Node.js";
 import NodeFrame from "../core/NodeFrame.js";
 
 export type EventNodeType = typeof EventNode.OBJECT | typeof EventNode.MATERIAL;
@@ -50937,7 +50937,7 @@ export const OnMaterialUpdate: (callback: (frame: NodeFrame) => void) => Node;
 export const OnBeforeObjectUpdate: (callback: (frame: NodeFrame) => void) => Node;
 
 export const OnBeforeMaterialUpdate: (callback: (frame: NodeFrame) => void) => Node;
-`,Kk=e({default:()=>qk}),qk=`import Node from "../core/Node.js";
+`,qk=e({default:()=>Jk}),Jk=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 declare class FlipNode extends TempNode {
@@ -50948,7 +50948,7 @@ declare class FlipNode extends TempNode {
 }
 
 export default FlipNode;
-`,Jk=e({default:()=>Yk}),Yk=`import Node from "../core/Node.js";
+`,Yk=e({default:()=>Xk}),Xk=`import Node from "../core/Node.js";
 
 declare class FunctionOverloadingNode extends Node {
     functionNodes: Node[];
@@ -50960,7 +50960,7 @@ declare class FunctionOverloadingNode extends Node {
 export default FunctionOverloadingNode;
 
 export const overloadingFn: (functionNodes: Node[]) => (...params: Node[]) => FunctionOverloadingNode;
-`,Xk=e({default:()=>Zk}),Zk=`import Node from "../core/Node.js";
+`,Zk=e({default:()=>Qk}),Qk=`import Node from "../core/Node.js";
 import { TempNode } from "../Nodes.js";
 
 /**
@@ -50970,7 +50970,7 @@ export default class JoinNode extends TempNode {
     nodes: Node[];
     constructor(nodes: Node[]);
 }
-`,Qk=e({default:()=>$k}),$k=`import Node from "../core/Node.js";
+`,$k=e({default:()=>eA}),eA=`import Node from "../core/Node.js";
 import NodeBuilder from "../core/NodeBuilder.js";
 import { VarNode } from "../Nodes.js";
 
@@ -51013,10 +51013,10 @@ interface Loop {
 export const Loop: Loop;
 export const Continue: () => Node;
 export const Break: () => Node;
-`,eA=e({default:()=>tA}),tA=`import Node from "../core/Node.js";
+`,tA=e({default:()=>nA}),nA=`import Node from "../core/Node.js";
 
 export const matcapUV: Node;
-`,nA=e({default:()=>rA}),rA=`import { Texture } from "../../textures/Texture.js";
+`,rA=e({default:()=>iA}),iA=`import { Texture } from "../../textures/Texture.js";
 import TextureNode from "../accessors/TextureNode.js";
 import UniformNode from "../core/UniformNode.js";
 
@@ -51029,7 +51029,7 @@ export default class MaxMipLevelNode extends UniformNode<"float", number> {
 }
 
 export const maxMipLevel: (texture: Texture) => MaxMipLevelNode;
-`,iA=e({default:()=>aA}),aA=`import Node from "../core/Node.js";
+`,aA=e({default:()=>oA}),oA=`import Node from "../core/Node.js";
 
 declare class MemberNode extends Node {
     node: Node;
@@ -51040,18 +51040,18 @@ declare class MemberNode extends Node {
 }
 
 export default MemberNode;
-`,oA=e({default:()=>sA}),sA=`import Node from "../core/Node.js";
+`,sA=e({default:()=>cA}),cA=`import Node from "../core/Node.js";
 
 export const oscSine: (timeNode?: Node) => Node<"float">;
 export const oscSquare: (timeNode?: Node) => Node<"float">;
 export const oscTriangle: (timeNode?: Node) => Node<"float">;
 export const oscSawtooth: (timeNode?: Node) => Node<"float">;
-`,cA=e({default:()=>lA}),lA=`import Node from "../core/Node.js";
+`,lA=e({default:()=>uA}),uA=`import Node from "../core/Node.js";
 
 export const directionToColor: (node: Node) => Node<"vec3">;
 export const colorToDirection: (node: Node) => Node<"vec3">;
 export const unpackNormal: (xy: Node) => Node<"vec3">;
-`,uA=e({default:()=>dA}),dA=`import Node from "../core/Node.js";
+`,dA=e({default:()=>fA}),fA=`import Node from "../core/Node.js";
 
 /**
  * Computes a position in view space based on a fragment's screen position expressed as uv coordinates, the fragments
@@ -51099,7 +51099,7 @@ export const getNormalFromDepth: (
 export const interleavedGradientNoise: (position: Node) => Node<"float">;
 
 export const vogelDiskSample: (sampleIndex: Node, samplesCount: Node, phi: Node) => Node<"vec2">;
-`,fA=e({default:()=>pA}),pA=`import { TextureDataType } from "../../constants.js";
+`,pA=e({default:()=>mA}),mA=`import { TextureDataType } from "../../constants.js";
 import { RenderTarget } from "../../core/RenderTarget.js";
 import TextureNode from "../accessors/TextureNode.js";
 import Node from "../core/Node.js";
@@ -51145,7 +51145,7 @@ export const convertToTexture: (
     height?: number | null,
     options?: RTTNodeOptions,
 ) => RTTNode;
-`,mA=e({default:()=>hA}),hA=`import { Camera } from "../../cameras/Camera.js";
+`,hA=e({default:()=>gA}),gA=`import { Camera } from "../../cameras/Camera.js";
 import { Object3D } from "../../core/Object3D.js";
 import { RenderTarget } from "../../core/RenderTarget.js";
 import TextureNode from "../accessors/TextureNode.js";
@@ -51206,7 +51206,7 @@ declare class ReflectorBaseNode extends Node {
 export const reflector: (parameters?: ReflectorNodeParameters) => ReflectorNode;
 
 export default ReflectorNode;
-`,gA=e({default:()=>_A}),_A=`import Node from "../core/Node.js";
+`,_A=e({default:()=>vA}),vA=`import Node from "../core/Node.js";
 
 export default class RemapNode extends Node<"float"> {
     node: Node<"float">;
@@ -51258,7 +51258,7 @@ declare module "../core/Node.js" {
         ) => RemapNode;
     }
 }
-`,vA=e({default:()=>yA}),yA=`import Node from "../core/Node.js";
+`,yA=e({default:()=>bA}),bA=`import Node from "../core/Node.js";
 import TempNode from "../core/TempNode.js";
 
 interface RotateNodeInterface<TNodeType> {
@@ -51281,7 +51281,7 @@ interface Rotate {
 }
 
 export const rotate: Rotate;
-`,bA=e({default:()=>xA}),xA=`import Node from "../core/Node.js";
+`,xA=e({default:()=>SA}),SA=`import Node from "../core/Node.js";
 
 declare class SampleNode extends Node {
     callback: (uv: Node) => Node;
@@ -51297,7 +51297,7 @@ declare class SampleNode extends Node {
 export default SampleNode;
 
 export const sample: (callback: (uv: Node) => Node, uv?: Node | null) => SampleNode;
-`,SA=e({default:()=>CA}),CA=`import TempNode from "../core/TempNode.js";
+`,CA=e({default:()=>wA}),wA=`import TempNode from "../core/TempNode.js";
 
 declare class SetNode extends TempNode {
     sourceNode: Node;
@@ -51308,7 +51308,7 @@ declare class SetNode extends TempNode {
 }
 
 export default SetNode;
-`,wA=e({default:()=>TA}),TA=`import Node from "../core/Node.js";
+`,TA=e({default:()=>EA}),EA=`import Node from "../core/Node.js";
 
 export default class SplitNode extends Node {
     node: Node;
@@ -51322,19 +51322,19 @@ export default class SplitNode extends Node {
 
     getVectorLength(): number;
 }
-`,EA=e({default:()=>DA}),DA=`import Node from "../core/Node.js";
+`,DA=e({default:()=>OA}),OA=`import Node from "../core/Node.js";
 
 export const spritesheetUV: (
     countNode: Node,
     uvNode?: Node,
     frameNode?: Node,
 ) => Node;
-`,OA=e({default:()=>kA}),kA=`import Node from "../core/Node.js";
+`,kA=e({default:()=>AA}),AA=`import Node from "../core/Node.js";
 
 export const billboarding: (
     args?: { position?: Node | null; horizontal?: boolean; vertical?: boolean },
 ) => Node;
-`,AA=e({default:()=>jA}),jA=`import StorageBufferNode from "../accessors/StorageBufferNode.js";
+`,jA=e({default:()=>MA}),MA=`import StorageBufferNode from "../accessors/StorageBufferNode.js";
 import Node from "../core/Node.js";
 import ArrayElementNode from "./ArrayElementNode.js";
 
@@ -51362,12 +51362,12 @@ export const storageElement: <TNodeType>(
     storageBufferNode: Node<TNodeType>,
     indexNode: Node,
 ) => StorageArrayElementNode<TNodeType>;
-`,MA=e({default:()=>NA}),NA=`import UniformNode from "../core/UniformNode.js";
+`,NA=e({default:()=>PA}),PA=`import UniformNode from "../core/UniformNode.js";
 
 export const time: UniformNode<"float", number>;
 export const deltaTime: UniformNode<"float", number>;
 export const frameId: UniformNode<"uint", number>;
-`,PA=e({default:()=>FA}),FA=`import Node from "../core/Node.js";
+`,FA=e({default:()=>IA}),IA=`import Node from "../core/Node.js";
 
 export const triplanarTextures: (
     textureXNode: Node,
@@ -51386,7 +51386,7 @@ export const triplanarTexture: (
     positionNode?: Node,
     normalNode?: Node,
 ) => Node<"vec4">;
-`,IA=e({default:()=>LA}),LA=`import ContextNode from "../core/ContextNode.js";
+`,LA=e({default:()=>RA}),RA=`import ContextNode from "../core/ContextNode.js";
 import Node from "../core/Node.js";
 
 export function replaceDefaultUV<TNodeType>(
@@ -51405,10 +51405,10 @@ export const spherizeUV: (
     strength: Node | number,
     center?: Node,
 ) => Node<"vec2">;
-`,RA=e({default:()=>zA}),zA=`import Node from "../core/Node.js";
+`,zA=e({default:()=>BA}),BA=`import Node from "../core/Node.js";
 
 export const viewportSafeUV: (uv?: Node | null) => Node;
-`,BA=e({default:()=>VA}),VA=`import { Camera } from "../cameras/Camera.js";
+`,VA=e({default:()=>HA}),HA=`import { Camera } from "../cameras/Camera.js";
 import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Material } from "../materials/Material.js";
 import { Box3 } from "../math/Box3.js";
@@ -51686,7 +51686,7 @@ declare class BatchedMesh extends Mesh<BufferGeometry, Material> {
 }
 
 export { BatchedMesh };
-`,HA=e({default:()=>UA}),UA=`import { Object3D, Object3DEventMap } from "../core/Object3D.js";
+`,UA=e({default:()=>WA}),WA=`import { Object3D, Object3DEventMap } from "../core/Object3D.js";
 
 /**
  * A {@link Bone} which is part of a {@link THREE.Skeleton | Skeleton}
@@ -51722,7 +51722,7 @@ export class Bone<TEventMap extends Object3DEventMap = Object3DEventMap> extends
      */
     override readonly type: string | "Bone";
 }
-`,WA=e({default:()=>GA}),GA=`import { Plane } from "../math/Plane.js";
+`,GA=e({default:()=>KA}),KA=`import { Plane } from "../math/Plane.js";
 import { Group } from "./Group.js";
 
 /**
@@ -51763,7 +51763,7 @@ declare class ClippingGroup extends Group {
 }
 
 export { ClippingGroup };
-`,KA=e({default:()=>qA}),qA=`import { Object3D, Object3DEventMap } from "../core/Object3D.js";
+`,qA=e({default:()=>JA}),JA=`import { Object3D, Object3DEventMap } from "../core/Object3D.js";
 
 /**
  * Its purpose is to make working with groups of objects syntactically clearer.
@@ -51800,7 +51800,7 @@ export class Group<TEventMap extends Object3DEventMap = Object3DEventMap> extend
      */
     readonly isGroup: true;
 }
-`,JA=e({default:()=>YA}),YA=`import { BufferAttributeJSON } from "./../core/BufferAttribute.js";
+`,YA=e({default:()=>XA}),XA=`import { BufferAttributeJSON } from "./../core/BufferAttribute.js";
 import { BufferGeometry } from "../core/BufferGeometry.js";
 import { InstancedBufferAttribute } from "../core/InstancedBufferAttribute.js";
 import { JSONMeta, Object3DEventMap } from "../core/Object3D.js";
@@ -51987,7 +51987,7 @@ export class InstancedMesh<
 
     toJSON(meta?: JSONMeta): InstancedMeshJSON;
 }
-`,XA=e({default:()=>ZA}),ZA=`import { Camera } from "../cameras/Camera.js";
+`,ZA=e({default:()=>QA}),QA=`import { Camera } from "../cameras/Camera.js";
 import { JSONMeta, Object3D, Object3DEventMap, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
 
 export interface LODJSONObject extends Object3DJSONObject {
@@ -52099,7 +52099,7 @@ export class LOD<TEventMap extends Object3DEventMap = Object3DEventMap> extends 
 
     toJSON(meta?: JSONMeta): LODJSON;
 }
-`,QA=e({default:()=>$A}),$A=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,$A=e({default:()=>ej}),ej=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Object3D, Object3DEventMap } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 
@@ -52186,7 +52186,7 @@ export class Line<
      */
     updateMorphTargets(): void;
 }
-`,ej=e({default:()=>tj}),tj=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,tj=e({default:()=>nj}),nj=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Object3DEventMap } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 import { Line } from "./Line.js";
@@ -52226,7 +52226,7 @@ export class LineLoop<
      */
     override readonly type: string | "LineLoop";
 }
-`,nj=e({default:()=>rj}),rj=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,rj=e({default:()=>ij}),ij=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Object3DEventMap } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 import { Line } from "./Line.js";
@@ -52267,7 +52267,7 @@ export class LineSegments<
      */
     override readonly type: string | "LineSegments";
 }
-`,ij=e({default:()=>aj}),aj=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,aj=e({default:()=>oj}),oj=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { JSONMeta, Object3D, Object3DEventMap, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 import { Vector3 } from "../math/Vector3.js";
@@ -52369,7 +52369,7 @@ export class Mesh<
 
     toJSON(meta?: JSONMeta): MeshJSON;
 }
-`,oj=e({default:()=>sj}),sj=`import { BufferGeometry, NormalOrGLBufferAttributes } from "../core/BufferGeometry.js";
+`,sj=e({default:()=>cj}),cj=`import { BufferGeometry, NormalOrGLBufferAttributes } from "../core/BufferGeometry.js";
 import { Object3D, Object3DEventMap } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 
@@ -52435,7 +52435,7 @@ export class Points<
      */
     updateMorphTargets(): void;
 }
-`,cj=e({default:()=>lj}),lj=`import { Matrix4, Matrix4Tuple } from "../math/Matrix4.js";
+`,lj=e({default:()=>uj}),uj=`import { Matrix4, Matrix4Tuple } from "../math/Matrix4.js";
 import { DataTexture } from "../textures/DataTexture.js";
 import { Bone } from "./Bone.js";
 
@@ -52557,7 +52557,7 @@ export class Skeleton {
 
     fromJSON(json: SkeletonJSON, bones: Record<string, Bone>): void;
 }
-`,uj=e({default:()=>dj}),dj=`import { BindMode } from "../constants.js";
+`,dj=e({default:()=>fj}),fj=`import { BindMode } from "../constants.js";
 import { BufferGeometry } from "../core/BufferGeometry.js";
 import { JSONMeta, Object3DEventMap } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
@@ -52717,7 +52717,7 @@ export class SkinnedMesh<
 
     toJSON(meta?: JSONMeta): SkinnedMeshJSON;
 }
-`,fj=e({default:()=>pj}),pj=`import { BufferGeometry } from "../core/BufferGeometry.js";
+`,pj=e({default:()=>mj}),mj=`import { BufferGeometry } from "../core/BufferGeometry.js";
 import { Object3D, Object3DEventMap } from "../core/Object3D.js";
 import { SpriteMaterial } from "../materials/Materials.js";
 import { Vector2 } from "../math/Vector2.js";
@@ -52790,7 +52790,7 @@ export class Sprite<TEventMap extends Object3DEventMap = Object3DEventMap> exten
      */
     count: number;
 }
-`,mj=e({default:()=>hj}),hj=`import { RenderTargetOptions } from "../core/RenderTarget.js";
+`,hj=e({default:()=>gj}),gj=`import { RenderTargetOptions } from "../core/RenderTarget.js";
 import { Data3DTexture } from "../textures/Data3DTexture.js";
 import { WebGLRenderTarget } from "./WebGLRenderTarget.js";
 
@@ -52819,7 +52819,7 @@ export class WebGL3DRenderTarget extends WebGLRenderTarget {
 
     readonly isWebGL3DRenderTarget: true;
 }
-`,gj=e({default:()=>_j}),_j=`import { RenderTargetOptions } from "../core/RenderTarget.js";
+`,_j=e({default:()=>vj}),vj=`import { RenderTargetOptions } from "../core/RenderTarget.js";
 import { DataArrayTexture } from "../textures/DataArrayTexture.js";
 import { WebGLRenderTarget } from "./WebGLRenderTarget.js";
 
@@ -52848,7 +52848,7 @@ export class WebGLArrayRenderTarget extends WebGLRenderTarget {
 
     readonly isWebGLArrayRenderTarget: true;
 }
-`,vj=e({default:()=>yj}),yj=`import { RenderTargetOptions } from "../core/RenderTarget.js";
+`,yj=e({default:()=>bj}),bj=`import { RenderTargetOptions } from "../core/RenderTarget.js";
 import { CubeTexture } from "../textures/CubeTexture.js";
 import { Texture } from "../textures/Texture.js";
 import { WebGLRenderer } from "./WebGLRenderer.js";
@@ -52866,7 +52866,7 @@ export class WebGLCubeRenderTarget extends WebGLRenderTarget {
 
     clear(renderer: WebGLRenderer, color: boolean, depth: boolean, stencil: boolean): void;
 }
-`,bj=e({default:()=>xj}),xj=`import { RenderTarget, RenderTargetOptions } from "../core/RenderTarget.js";
+`,xj=e({default:()=>Sj}),Sj=`import { RenderTarget, RenderTargetOptions } from "../core/RenderTarget.js";
 import { Texture } from "../textures/Texture.js";
 
 export class WebGLRenderTarget<TTexture extends Texture | Texture[] = Texture> extends RenderTarget<TTexture> {
@@ -52874,7 +52874,7 @@ export class WebGLRenderTarget<TTexture extends Texture | Texture[] = Texture> e
 
     readonly isWebGLRenderTarget: true;
 }
-`,Sj=e({default:()=>Cj}),Cj=`import { Camera } from "../cameras/Camera.js";
+`,Cj=e({default:()=>wj}),wj=`import { Camera } from "../cameras/Camera.js";
 import { TextureDataType, ToneMapping, WebGLCoordinateSystem } from "../constants.js";
 import { TypedArray } from "../core/BufferAttribute.js";
 import { BufferGeometry, GeometryGroup } from "../core/BufferGeometry.js";
@@ -53343,7 +53343,7 @@ export class WebGLRenderer {
      */
     resetState(): void;
 }
-`,wj=e({default:()=>Tj}),Tj=`import Info from "./Info.js";
+`,Tj=e({default:()=>Ej}),Ej=`import Info from "./Info.js";
 import NodeManager from "./nodes/NodeManager.js";
 import Renderer from "./Renderer.js";
 
@@ -53445,7 +53445,7 @@ declare class Animation {
 }
 
 export default Animation;
-`,Ej=e({default:()=>Dj}),Dj=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,Dj=e({default:()=>Oj}),Oj=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { InterleavedBuffer } from "../../core/InterleavedBuffer.js";
 import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute.js";
 import Backend from "./Backend.js";
@@ -53496,7 +53496,7 @@ declare class Attributes extends DataMap {
 }
 
 export default Attributes;
-`,Oj=e({default:()=>kj}),kj=`import { CoordinateSystem } from "../../constants.js";
+`,kj=e({default:()=>Aj}),Aj=`import { CoordinateSystem } from "../../constants.js";
 import Renderer from "./Renderer.js";
 
 declare module "../../core/Object3D.js" {
@@ -53524,7 +53524,7 @@ export default abstract class Backend {
 
     getDomElement(): HTMLCanvasElement | OffscreenCanvas;
 }
-`,Aj=e({default:()=>jj}),jj=`import { Scene } from "../../scenes/Scene.js";
+`,jj=e({default:()=>Mj}),Mj=`import { Scene } from "../../scenes/Scene.js";
 import DataMap from "./DataMap.js";
 import NodeManager from "./nodes/NodeManager.js";
 import RenderContext from "./RenderContext.js";
@@ -53571,7 +53571,7 @@ declare class Background extends DataMap {
 }
 
 export default Background;
-`,Mj=e({default:()=>Nj}),Nj=`import Binding from "./Binding.js";
+`,Nj=e({default:()=>Pj}),Pj=`import Binding from "./Binding.js";
 
 /**
  * A bind group represents a collection of bindings and thus a collection
@@ -53616,7 +53616,7 @@ declare class BindGroup {
 }
 
 export default BindGroup;
-`,Pj=e({default:()=>Fj}),Fj=`/**
+`,Fj=e({default:()=>Ij}),Ij=`/**
  * A binding represents the connection between a resource (like a texture, sampler
  * or uniform buffer) and the resource definition in a shader stage.
  *
@@ -53666,7 +53666,7 @@ declare class Binding {
 }
 
 export default Binding;
-`,Ij=e({default:()=>Lj}),Lj=`import ComputeNode from "../../nodes/gpgpu/ComputeNode.js";
+`,Lj=e({default:()=>Rj}),Rj=`import ComputeNode from "../../nodes/gpgpu/ComputeNode.js";
 import Attributes from "./Attributes.js";
 import Backend from "./Backend.js";
 import BindGroup from "./BindGroup.js";
@@ -53798,7 +53798,7 @@ declare class Bindings extends DataMap {
 }
 
 export default Bindings;
-`,Rj=e({default:()=>zj}),zj=`import { Blending, BlendingDstFactor, BlendingEquation, BlendingSrcFactor } from "../../constants.js";
+`,zj=e({default:()=>Bj}),Bj=`import { Blending, BlendingDstFactor, BlendingEquation, BlendingSrcFactor } from "../../constants.js";
 
 declare class BlendMode {
     blending: Blending;
@@ -53820,7 +53820,7 @@ declare class BlendMode {
 }
 
 export default BlendMode;
-`,Bj=e({default:()=>Vj}),Vj=`import { TypedArray } from "../../core/BufferAttribute.js";
+`,Vj=e({default:()=>Hj}),Hj=`import { TypedArray } from "../../core/BufferAttribute.js";
 import Binding from "./Binding.js";
 
 /**
@@ -53910,7 +53910,7 @@ declare class Buffer extends Binding {
 }
 
 export default Buffer;
-`,Hj=e({default:()=>Uj}),Uj=`/**
+`,Uj=e({default:()=>Wj}),Wj=`/**
  * This function is usually called with the length in bytes of an array buffer.
  * It returns an padded value which ensure chunk size alignment according to STD140 layout.
  *
@@ -53938,7 +53938,7 @@ export function getVectorLength(count: number, vectorLength?: number): number;
  * @return {number} The padded length.
  */
 export function getStrideLength(vectorLength: number): number;
-`,Wj=e({default:()=>Gj}),Gj=`import { Group } from "../../objects/Group.js";
+`,Gj=e({default:()=>Kj}),Kj=`import { Group } from "../../objects/Group.js";
 
 /**
  * A specialized group which enables applications access to the
@@ -53980,7 +53980,7 @@ declare class BundleGroup extends Group {
 }
 
 export default BundleGroup;
-`,Kj=e({default:()=>qj}),qj=`import { EventDispatcher } from "../../core/EventDispatcher.js";
+`,qj=e({default:()=>Jj}),Jj=`import { EventDispatcher } from "../../core/EventDispatcher.js";
 import { Vector2 } from "../../math/Vector2.js";
 import { Vector4 } from "../../math/Vector4.js";
 import { DepthTexture } from "../../textures/DepthTexture.js";
@@ -54185,7 +54185,7 @@ declare class CanvasTarget extends EventDispatcher<CanvasTargetEventMap> {
 }
 
 export default CanvasTarget;
-`,Jj=e({default:()=>Yj}),Yj=`/**
+`,Yj=e({default:()=>Xj}),Xj=`/**
  * Data structure for the renderer. It allows defining values
  * with chained, hierarchical keys. Keys are meant to be
  * objects since the module internally works with Weak Maps
@@ -54234,7 +54234,7 @@ declare class ChainMap {
 }
 
 export default ChainMap;
-`,Xj=e({default:()=>Zj}),Zj=`import { Camera } from "../../cameras/Camera.js";
+`,Zj=e({default:()=>Qj}),Qj=`import { Camera } from "../../cameras/Camera.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
 import { Plane } from "../../math/Plane.js";
@@ -54356,7 +54356,7 @@ declare class ClippingContext {
 }
 
 export default ClippingContext;
-`,Qj=e({default:()=>$j}),$j=`import { Color, ColorRepresentation } from "../../math/Color.js";
+`,$j=e({default:()=>eM}),eM=`import { Color, ColorRepresentation } from "../../math/Color.js";
 
 /**
  * A four-component version of {@link Color} which is internally
@@ -54411,7 +54411,7 @@ declare class Color4 extends Color {
 }
 
 export default Color4;
-`,eM=e({default:()=>tM}),tM=`import Pipeline from "./Pipeline.js";
+`,tM=e({default:()=>nM}),nM=`import Pipeline from "./Pipeline.js";
 import ProgrammableStage from "./ProgrammableStage.js";
 
 /**
@@ -54445,7 +54445,7 @@ declare class ComputePipeline extends Pipeline {
 }
 
 export default ComputePipeline;
-`,nM=e({default:()=>rM}),rM=`export declare const AttributeType: {
+`,rM=e({default:()=>iM}),iM=`export declare const AttributeType: {
     readonly VERTEX: 1;
     readonly INDEX: 2;
     readonly STORAGE: 3;
@@ -54457,7 +54457,7 @@ export const GPU_CHUNK_BYTES: 16;
 
 export const BlendColorFactor: 211;
 export const OneMinusBlendColorFactor: 212;
-`,iM=e({default:()=>aM}),aM=`import { RenderTarget, RenderTargetOptions } from "../../core/RenderTarget.js";
+`,aM=e({default:()=>oM}),oM=`import { RenderTarget, RenderTargetOptions } from "../../core/RenderTarget.js";
 import { Texture } from "../../textures/Texture.js";
 import Renderer from "./Renderer.js";
 
@@ -54503,7 +54503,7 @@ declare class CubeRenderTarget extends RenderTarget {
 }
 
 export default CubeRenderTarget;
-`,oM=e({default:()=>sM}),sM=`/**
+`,sM=e({default:()=>cM}),cM=`/**
  * Data structure for the renderer. It is intended to manage
  * data of objects in dictionaries.
  *
@@ -54545,7 +54545,7 @@ declare class DataMap {
 }
 
 export default DataMap;
-`,cM=e({default:()=>lM}),lM=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,lM=e({default:()=>uM}),uM=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { BufferGeometry } from "../../core/BufferGeometry.js";
 import Attributes from "./Attributes.js";
 import { AttributeType } from "./Constants.js";
@@ -54656,7 +54656,7 @@ declare class Geometries extends DataMap {
 }
 
 export default Geometries;
-`,uM=e({default:()=>dM}),dM=`import { TypedArray } from "../../core/BufferAttribute.js";
+`,dM=e({default:()=>fM}),fM=`import { TypedArray } from "../../core/BufferAttribute.js";
 import StorageBufferAttribute from "./StorageBufferAttribute.js";
 
 declare class IndirectStorageBufferAttribute extends StorageBufferAttribute {
@@ -54666,7 +54666,7 @@ declare class IndirectStorageBufferAttribute extends StorageBufferAttribute {
 }
 
 export default IndirectStorageBufferAttribute;
-`,fM=e({default:()=>pM}),pM=`import { Object3D } from "../../core/Object3D.js";
+`,pM=e({default:()=>mM}),mM=`import { Object3D } from "../../core/Object3D.js";
 
 /**
  * This renderer module provides a series of statistical information
@@ -54769,7 +54769,7 @@ declare class Info {
 }
 
 export default Info;
-`,mM=e({default:()=>hM}),hM=`import { Camera } from "../../cameras/Camera.js";
+`,hM=e({default:()=>gM}),gM=`import { Camera } from "../../cameras/Camera.js";
 import { RenderTarget } from "../../core/RenderTarget.js";
 import Node from "../../nodes/core/Node.js";
 import NodeFrame from "../../nodes/core/NodeFrame.js";
@@ -54886,7 +54886,7 @@ declare class InspectorBase {
 }
 
 export default InspectorBase;
-`,gM=e({default:()=>_M}),_M=`import { Object3D } from "../../core/Object3D.js";
+`,_M=e({default:()=>vM}),vM=`import { Object3D } from "../../core/Object3D.js";
 import { Light } from "../../lights/Light.js";
 import LightsNode from "../../nodes/lighting/LightsNode.js";
 
@@ -54897,7 +54897,7 @@ declare class Lighting {
 }
 
 export default Lighting;
-`,vM=e({default:()=>yM}),yM=`/**
+`,yM=e({default:()=>bM}),bM=`/**
  * Abstract class for representing pipelines.
  *
  * @private
@@ -54926,7 +54926,7 @@ declare class Pipeline {
 }
 
 export default Pipeline;
-`,bM=e({default:()=>xM}),xM=`import ComputeNode from "../../nodes/gpgpu/ComputeNode.js";
+`,xM=e({default:()=>SM}),SM=`import ComputeNode from "../../nodes/gpgpu/ComputeNode.js";
 import Backend from "./Backend.js";
 import BindGroup from "./BindGroup.js";
 import Bindings from "./Bindings.js";
@@ -55096,7 +55096,7 @@ declare class Pipelines extends DataMap {
 }
 
 export default Pipelines;
-`,SM=e({default:()=>CM}),CM=`import { Node } from "../../nodes/Nodes.js";
+`,CM=e({default:()=>wM}),wM=`import { Node } from "../../nodes/Nodes.js";
 import Renderer from "./Renderer.js";
 import RenderPipeline from "./RenderPipeline.js";
 
@@ -55117,7 +55117,7 @@ declare class PostProcessing extends RenderPipeline {
 }
 
 export default PostProcessing;
-`,wM=e({default:()=>TM}),TM=`import NodeAttribute from "../../nodes/core/NodeAttribute.js";
+`,TM=e({default:()=>EM}),EM=`import NodeAttribute from "../../nodes/core/NodeAttribute.js";
 
 /**
  * Class for representing programmable stages which are vertex,
@@ -55190,7 +55190,7 @@ declare class ProgrammableStage {
 }
 
 export default ProgrammableStage;
-`,EM=e({default:()=>DM}),DM=`import { OrthographicCamera } from "../../cameras/OrthographicCamera.js";
+`,DM=e({default:()=>OM}),OM=`import { OrthographicCamera } from "../../cameras/OrthographicCamera.js";
 import { Material } from "../../materials/Material.js";
 import { Mesh } from "../../objects/Mesh.js";
 import Renderer from "./Renderer.js";
@@ -55209,7 +55209,7 @@ export default class QuadMesh extends Mesh {
 
     render(renderer: Renderer): void;
 }
-`,OM=e({default:()=>kM}),kM=`import { Camera } from "../../cameras/Camera.js";
+`,kM=e({default:()=>AM}),AM=`import { Camera } from "../../cameras/Camera.js";
 import BundleGroup from "./BundleGroup.js";
 
 /**
@@ -55231,7 +55231,7 @@ declare class RenderBundle {
 }
 
 export default RenderBundle;
-`,AM=e({default:()=>jM}),jM=`import { Camera } from "../../cameras/Camera.js";
+`,jM=e({default:()=>MM}),MM=`import { Camera } from "../../cameras/Camera.js";
 import BundleGroup from "./BundleGroup.js";
 import ChainMap from "./ChainMap.js";
 import RenderBundle from "./RenderBundle.js";
@@ -55263,7 +55263,7 @@ declare class RenderBundles {
 }
 
 export default RenderBundles;
-`,MM=e({default:()=>NM}),NM=`import { Camera } from "../../cameras/Camera.js";
+`,NM=e({default:()=>PM}),PM=`import { Camera } from "../../cameras/Camera.js";
 import { RenderTarget } from "../../core/RenderTarget.js";
 import { Vector4 } from "../../math/Vector4.js";
 import MRTNode from "../../nodes/core/MRTNode.js";
@@ -55498,7 +55498,7 @@ declare class RenderContext {
 export function getCacheKey(renderContext: RenderContext): number;
 
 export default RenderContext;
-`,PM=e({default:()=>FM}),FM=`import { RenderTarget } from "../../core/RenderTarget.js";
+`,FM=e({default:()=>IM}),IM=`import { RenderTarget } from "../../core/RenderTarget.js";
 import MRTNode from "../../nodes/core/MRTNode.js";
 import RenderContext from "./RenderContext.js";
 import Renderer from "./Renderer.js";
@@ -55545,7 +55545,7 @@ declare class RenderContexts {
 }
 
 export default RenderContexts;
-`,IM=e({default:()=>LM}),LM=`import { Camera } from "../../cameras/Camera.js";
+`,LM=e({default:()=>RM}),RM=`import { Camera } from "../../cameras/Camera.js";
 import { BufferGeometry, GeometryGroup } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Light } from "../../lights/Light.js";
@@ -55771,7 +55771,7 @@ declare class RenderList {
 }
 
 export default RenderList;
-`,RM=e({default:()=>zM}),zM=`import { Camera } from "../../cameras/Camera.js";
+`,zM=e({default:()=>BM}),BM=`import { Camera } from "../../cameras/Camera.js";
 import { Scene } from "../../scenes/Scene.js";
 import ChainMap from "./ChainMap.js";
 import Lighting from "./Lighting.js";
@@ -55817,7 +55817,7 @@ declare class RenderLists {
 }
 
 export default RenderLists;
-`,BM=e({default:()=>VM}),VM=`import { Camera } from "../../cameras/Camera.js";
+`,VM=e({default:()=>HM}),HM=`import { Camera } from "../../cameras/Camera.js";
 import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { InterleavedBuffer } from "../../core/InterleavedBuffer.js";
@@ -56265,7 +56265,7 @@ declare class RenderObject {
 }
 
 export default RenderObject;
-`,HM=e({default:()=>UM}),UM=`import Pipeline from "./Pipeline.js";
+`,UM=e({default:()=>WM}),WM=`import Pipeline from "./Pipeline.js";
 import ProgrammableStage from "./ProgrammableStage.js";
 
 /**
@@ -56298,7 +56298,7 @@ declare class RenderObjectPipeline extends Pipeline {
 }
 
 export default RenderObjectPipeline;
-`,WM=e({default:()=>GM}),GM=`import { Camera } from "../../cameras/Camera.js";
+`,GM=e({default:()=>KM}),KM=`import { Camera } from "../../cameras/Camera.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Material } from "../../materials/Material.js";
 import LightsNode from "../../nodes/lighting/LightsNode.js";
@@ -56449,7 +56449,7 @@ declare class RenderObjects {
 }
 
 export default RenderObjects;
-`,KM=e({default:()=>qM}),qM=`import { Node } from "../../nodes/Nodes.js";
+`,qM=e({default:()=>JM}),JM=`import { Node } from "../../nodes/Nodes.js";
 import Renderer from "./Renderer.js";
 
 declare class RenderPipeline {
@@ -56473,7 +56473,7 @@ declare class RenderPipeline {
 }
 
 export default RenderPipeline;
-`,JM=e({default:()=>YM}),YM=`import { Camera } from "../../cameras/Camera.js";
+`,YM=e({default:()=>XM}),XM=`import { Camera } from "../../cameras/Camera.js";
 import { CoordinateSystem, ShadowMapType, TextureDataType, TimestampQuery, ToneMapping } from "../../constants.js";
 import { BufferAttribute, TypedArray } from "../../core/BufferAttribute.js";
 import { BufferGeometry, GeometryGroup } from "../../core/BufferGeometry.js";
@@ -57986,7 +57986,7 @@ declare class Renderer {
 }
 
 export default Renderer;
-`,XM=e({default:()=>ZM}),ZM=`import { Camera } from "../../cameras/Camera.js";
+`,ZM=e({default:()=>QM}),QM=`import { Camera } from "../../cameras/Camera.js";
 import { ToneMapping } from "../../constants.js";
 import { BufferGeometry, GeometryGroup } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
@@ -58064,7 +58064,7 @@ export function saveRendererAndSceneState(
 export function resetRendererAndSceneState(renderer: Renderer, state: RendererAndSceneState): RendererAndSceneState;
 
 export function restoreRendererAndSceneState(renderer: Renderer, state: RendererAndSceneState): void;
-`,QM=e({default:()=>$M}),$M=`import { Texture } from "../../textures/Texture.js";
+`,$M=e({default:()=>eN}),eN=`import { Texture } from "../../textures/Texture.js";
 import Sampler from "./Sampler.js";
 
 declare class SampledTexture extends Sampler {
@@ -58092,7 +58092,7 @@ declare class SampledCubeTexture extends SampledTexture {
 }
 
 export { Sampled3DTexture, SampledArrayTexture, SampledCubeTexture, SampledTexture };
-`,eN=e({default:()=>tN}),tN=`import { Texture } from "../../textures/Texture.js";
+`,tN=e({default:()=>nN}),nN=`import { Texture } from "../../textures/Texture.js";
 import Binding from "./Binding.js";
 
 declare class Sampler extends Binding {
@@ -58111,7 +58111,7 @@ declare class Sampler extends Binding {
 }
 
 export default Sampler;
-`,nN=e({default:()=>rN}),rN=`import { Wrapping } from "../../constants.js";
+`,rN=e({default:()=>iN}),iN=`import { Wrapping } from "../../constants.js";
 import { Texture } from "../../textures/Texture.js";
 
 /**
@@ -58153,7 +58153,7 @@ declare class Storage3DTexture extends Texture {
 }
 
 export default Storage3DTexture;
-`,iN=e({default:()=>aN}),aN=`import { Wrapping } from "../../constants.js";
+`,aN=e({default:()=>oN}),oN=`import { Wrapping } from "../../constants.js";
 import { Texture } from "../../textures/Texture.js";
 
 /**
@@ -58184,14 +58184,14 @@ declare class Storage3DTexture extends Texture {
 }
 
 export default Storage3DTexture;
-`,oN=e({default:()=>sN}),sN=`import { BufferAttribute, TypedArray } from "../../core/BufferAttribute.js";
+`,sN=e({default:()=>cN}),cN=`import { BufferAttribute, TypedArray } from "../../core/BufferAttribute.js";
 
 export default class StorageBufferAttribute extends BufferAttribute {
     readonly isStorageBufferAttribute: true;
 
     constructor(array: TypedArray | number, itemSize: number);
 }
-`,cN=e({default:()=>lN}),lN=`import { TypedArray } from "../../core/BufferAttribute.js";
+`,lN=e({default:()=>uN}),uN=`import { TypedArray } from "../../core/BufferAttribute.js";
 import { InstancedBufferAttribute } from "../../core/InstancedBufferAttribute.js";
 
 export default class StorageInstancedBufferAttribute extends InstancedBufferAttribute {
@@ -58199,14 +58199,14 @@ export default class StorageInstancedBufferAttribute extends InstancedBufferAttr
 
     constructor(array: TypedArray | number, itemSize: number);
 }
-`,uN=e({default:()=>dN}),dN=`import { Texture } from "../../textures/Texture.js";
+`,dN=e({default:()=>fN}),fN=`import { Texture } from "../../textures/Texture.js";
 
 export default class StorageTexture extends Texture {
     constructor(width?: number, height?: number);
 
     setSize(width: number, height: number, depth: number): void;
 }
-`,fN=e({default:()=>pN}),pN=`import { RenderTarget } from "../../core/RenderTarget.js";
+`,pN=e({default:()=>mN}),mN=`import { RenderTarget } from "../../core/RenderTarget.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Texture } from "../../textures/Texture.js";
 import Backend from "./Backend.js";
@@ -58331,7 +58331,7 @@ declare class Textures extends DataMap {
 }
 
 export default Textures;
-`,mN=e({default:()=>hN}),hN=`/**
+`,hN=e({default:()=>gN}),gN=`/**
  * Abstract base class of a timestamp query pool.
  *
  * @abstract
@@ -58451,7 +58451,7 @@ declare abstract class TimestampQueryPool {
 }
 
 export default TimestampQueryPool;
-`,gN=e({default:()=>_N}),_N=`import { Color } from "../../math/Color.js";
+`,_N=e({default:()=>vN}),vN=`import { Color } from "../../math/Color.js";
 import { Matrix2 } from "../../math/Matrix2.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Matrix4 } from "../../math/Matrix4.js";
@@ -58713,7 +58713,7 @@ declare class Uniform<TValue> {
 }
 
 export type { Uniform };
-`,vN=e({default:()=>yN}),yN=`import Buffer from "./Buffer.js";
+`,yN=e({default:()=>bN}),bN=`import Buffer from "./Buffer.js";
 
 /**
  * Represents a uniform buffer binding type.
@@ -58733,7 +58733,7 @@ declare class UniformBuffer extends Buffer {
 }
 
 export default UniformBuffer;
-`,bN=e({default:()=>xN}),xN=`import {
+`,xN=e({default:()=>SN}),SN=`import {
     ColorNodeUniform,
     Matrix3NodeUniform,
     Matrix4NodeUniform,
@@ -58885,7 +58885,7 @@ declare class UniformsGroup extends UniformBuffer {
 }
 
 export default UniformsGroup;
-`,SN=e({default:()=>CN}),CN=`import { ArrayCamera } from "../../cameras/ArrayCamera.js";
+`,CN=e({default:()=>wN}),wN=`import { ArrayCamera } from "../../cameras/ArrayCamera.js";
 import { PerspectiveCamera } from "../../cameras/PerspectiveCamera.js";
 import { EventDispatcher } from "../../core/EventDispatcher.js";
 import { RenderTarget } from "../../core/RenderTarget.js";
@@ -59448,7 +59448,7 @@ declare class XRManager extends EventDispatcher<XRManagerEventMap> {
 }
 
 export default XRManager;
-`,wN=e({default:()=>TN}),TN=`import { RenderTarget, RenderTargetOptions } from "../../core/RenderTarget.js";
+`,TN=e({default:()=>EN}),EN=`import { RenderTarget, RenderTargetOptions } from "../../core/RenderTarget.js";
 
 /**
  * A special type of render target that is used when rendering
@@ -59515,7 +59515,7 @@ export class XRRenderTarget extends RenderTarget {
     private _isOpaqueFramebuffer;
     copy(source: XRRenderTarget): this;
 }
-`,EN=e({default:()=>DN}),DN=`import { RenderTarget } from "../../../core/RenderTarget.js";
+`,DN=e({default:()=>ON}),ON=`import { RenderTarget } from "../../../core/RenderTarget.js";
 import { Vector3 } from "../../../math/Vector3.js";
 import { Scene } from "../../../scenes/Scene.js";
 import { Texture } from "../../../textures/Texture.js";
@@ -59567,7 +59567,7 @@ declare class PMREMGenerator {
 }
 
 export default PMREMGenerator;
-`,ON=e({default:()=>kN}),kN=`import NodeMaterialObserver from "../../../materials/nodes/manager/NodeMaterialObserver.js";
+`,kN=e({default:()=>AN}),AN=`import NodeMaterialObserver from "../../../materials/nodes/manager/NodeMaterialObserver.js";
 import Node from "../../../nodes/core/Node.js";
 import NodeAttribute from "../../../nodes/core/NodeAttribute.js";
 import BindGroup from "../BindGroup.js";
@@ -59688,7 +59688,7 @@ declare class NodeBuilderState {
 }
 
 export default NodeBuilderState;
-`,AN=e({default:()=>jN}),jN=`import { ToneMapping } from "../../../constants.js";
+`,jN=e({default:()=>MN}),MN=`import { ToneMapping } from "../../../constants.js";
 import { Light } from "../../../lights/Light.js";
 import { Material } from "../../../materials/Material.js";
 import NodeMaterial from "../../../materials/nodes/NodeMaterial.js";
@@ -59817,7 +59817,7 @@ declare class NodeLibrary {
 }
 
 export default NodeLibrary;
-`,MN=e({default:()=>NN}),NN=`import { Camera } from "../../../cameras/Camera.js";
+`,NN=e({default:()=>PN}),PN=`import { Camera } from "../../../cameras/Camera.js";
 import { Object3D } from "../../../core/Object3D.js";
 import { Material } from "../../../materials/Material.js";
 import Node from "../../../nodes/core/Node.js";
@@ -60086,7 +60086,7 @@ declare class NodeManager extends DataMap {
 }
 
 export default NodeManager;
-`,PN=e({default:()=>FN}),FN=`import TextureNode from "../../../nodes/accessors/TextureNode.js";
+`,FN=e({default:()=>IN}),IN=`import TextureNode from "../../../nodes/accessors/TextureNode.js";
 import UniformGroupNode from "../../../nodes/core/UniformGroupNode.js";
 import { SampledTexture } from "../SampledTexture.js";
 
@@ -60115,7 +60115,7 @@ declare class NodeSampledTexture3D extends NodeSampledTexture {
 }
 
 export { NodeSampledCubeTexture, NodeSampledTexture, NodeSampledTexture3D };
-`,IN=e({default:()=>LN}),LN=`import TextureNode from "../../../nodes/accessors/TextureNode.js";
+`,LN=e({default:()=>RN}),RN=`import TextureNode from "../../../nodes/accessors/TextureNode.js";
 import UniformGroupNode from "../../../nodes/core/UniformGroupNode.js";
 import Sampler from "../Sampler.js";
 
@@ -60127,7 +60127,7 @@ declare class NodeSampler extends Sampler {
 }
 
 export default NodeSampler;
-`,RN=e({default:()=>zN}),zN=`import { Color } from "../../../math/Color.js";
+`,zN=e({default:()=>BN}),BN=`import { Color } from "../../../math/Color.js";
 import { Matrix2 } from "../../../math/Matrix2.js";
 import { Matrix3 } from "../../../math/Matrix3.js";
 import { Matrix4 } from "../../../math/Matrix4.js";
@@ -60377,7 +60377,7 @@ export type NodeUniformGPU =
     | ColorNodeUniform<unknown>
     | Matrix3NodeUniform<unknown>
     | Matrix4NodeUniform<unknown>;
-`,BN=e({default:()=>VN}),VN=`import UniformGroupNode from "../../../nodes/core/UniformGroupNode.js";
+`,VN=e({default:()=>HN}),HN=`import UniformGroupNode from "../../../nodes/core/UniformGroupNode.js";
 import UniformsGroup from "../UniformsGroup.js";
 
 /**
@@ -60418,7 +60418,7 @@ declare class NodeUniformsGroup extends UniformsGroup {
 }
 
 export default NodeUniformsGroup;
-`,HN=e({default:()=>UN}),UN=`// Renderers / Shaders /////////////////////////////////////////////////////////////////////
+`,UN=e({default:()=>WN}),WN=`// Renderers / Shaders /////////////////////////////////////////////////////////////////////
 export const ShaderChunk: {
     alphahash_fragment: string;
     alphahash_pars_fragment: string;
@@ -60561,7 +60561,7 @@ export const ShaderChunk: {
     sprite_vert: string;
     sprite_frag: string;
 };
-`,WN=e({default:()=>GN}),GN=`import { IUniform } from "./UniformsLib.js";
+`,GN=e({default:()=>KN}),KN=`import { IUniform } from "./UniformsLib.js";
 
 export interface ShaderLibShader {
     uniforms: { [uniform: string]: IUniform };
@@ -60590,7 +60590,7 @@ declare const ShaderLib: {
 };
 
 export { ShaderLib };
-`,KN=e({default:()=>qN}),qN=`import { Color } from "../../math/Color.js";
+`,qN=e({default:()=>JN}),JN=`import { Color } from "../../math/Color.js";
 import { Matrix3 } from "../../math/Matrix3.js";
 import { Vector2 } from "../../math/Vector2.js";
 
@@ -60776,7 +60776,7 @@ export const UniformsLib: {
         alphaTest: IUniform<number>;
     };
 };
-`,JN=e({default:()=>YN}),YN=`import { UniformsGroup } from "../../core/UniformsGroup.js";
+`,YN=e({default:()=>XN}),XN=`import { UniformsGroup } from "../../core/UniformsGroup.js";
 import { IUniform } from "./UniformsLib.js";
 
 export function cloneUniforms<T extends { [uniform: string]: IUniform }>(uniformsSrc: T): T;
@@ -60790,7 +60790,7 @@ declare const UniformsUtils: {
 };
 
 export { UniformsUtils };
-`,XN=e({default:()=>ZN}),ZN=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,ZN=e({default:()=>QN}),QN=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { GLBufferAttribute } from "../../core/GLBufferAttribute.js";
 import { InterleavedBufferAttribute } from "../../core/InterleavedBufferAttribute.js";
 
@@ -60813,7 +60813,7 @@ export class WebGLAttributes {
 
     update(attribute: BufferAttribute | InterleavedBufferAttribute | GLBufferAttribute, bufferType: number): void;
 }
-`,QN=e({default:()=>$N}),$N=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,$N=e({default:()=>eP}),eP=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Material } from "../../materials/Material.js";
@@ -60839,7 +60839,7 @@ export class WebGLBindingStates {
     enableAttribute(attribute: number): void;
     disableUnusedAttributes(): void;
 }
-`,eP=e({default:()=>tP}),tP=`import { WebGLExtensions } from "./WebGLExtensions.js";
+`,tP=e({default:()=>nP}),nP=`import { WebGLExtensions } from "./WebGLExtensions.js";
 import { WebGLInfo } from "./WebGLInfo.js";
 
 export class WebGLBufferRenderer {
@@ -60860,7 +60860,7 @@ export class WebGLBufferRenderer {
         primcount: Int32Array,
     ) => void;
 }
-`,nP=e({default:()=>rP}),rP=`import { PixelFormat, TextureDataType } from "../../constants.js";
+`,rP=e({default:()=>iP}),iP=`import { PixelFormat, TextureDataType } from "../../constants.js";
 
 export interface WebGLCapabilitiesParameters {
     /**
@@ -60908,7 +60908,7 @@ export class WebGLCapabilities {
 
     samples: number;
 }
-`,iP=e({default:()=>aP}),aP=`import { Camera } from "../../cameras/Camera.js";
+`,aP=e({default:()=>oP}),oP=`import { Camera } from "../../cameras/Camera.js";
 import { Material } from "../../materials/Material.js";
 import { Plane } from "../../math/Plane.js";
 import { WebGLProperties } from "./WebGLProperties.js";
@@ -60934,7 +60934,7 @@ export class WebGLClipping {
     setGlobalState(planes: Plane[], camera: Camera): void;
     setState(material: Material, camera: Camera, useCache: boolean): void;
 }
-`,oP=e({default:()=>sP}),sP=`import { Texture } from "../../textures/Texture.js";
+`,sP=e({default:()=>cP}),cP=`import { Texture } from "../../textures/Texture.js";
 
 declare class WebGLEnvironments {
     get(texture: Texture): Texture | null;
@@ -60942,14 +60942,14 @@ declare class WebGLEnvironments {
 }
 
 export { WebGLEnvironments };
-`,cP=e({default:()=>lP}),lP=`export class WebGLExtensions {
+`,lP=e({default:()=>uP}),uP=`export class WebGLExtensions {
     constructor(gl: WebGLRenderingContext);
 
     has(name: string): boolean;
     init(): void;
     get(name: string): unknown;
 }
-`,uP=e({default:()=>dP}),dP=`import { BufferAttribute } from "../../core/BufferAttribute.js";
+`,dP=e({default:()=>fP}),fP=`import { BufferAttribute } from "../../core/BufferAttribute.js";
 import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { WebGLAttributes } from "./WebGLAttributes.js";
@@ -60962,7 +60962,7 @@ export class WebGLGeometries {
     update(geometry: BufferGeometry): void;
     getWireframeAttribute(geometry: BufferGeometry): BufferAttribute;
 }
-`,fP=e({default:()=>pP}),pP=`import { WebGLAttribute } from "./WebGLAttributes.js";
+`,pP=e({default:()=>mP}),mP=`import { WebGLAttribute } from "./WebGLAttributes.js";
 import { WebGLExtensions } from "./WebGLExtensions.js";
 import { WebGLInfo } from "./WebGLInfo.js";
 
@@ -60981,7 +60981,7 @@ export class WebGLIndexedBufferRenderer {
         primcount: Int32Array,
     ) => void;
 }
-`,mP=e({default:()=>hP}),hP=`import { WebGLProgram } from "./WebGLProgram.js";
+`,hP=e({default:()=>gP}),gP=`import { WebGLProgram } from "./WebGLProgram.js";
 
 /**
  * An object with a series of statistical information about the graphics board memory and the rendering process.
@@ -61020,7 +61020,7 @@ export class WebGLInfo {
     update(count: number, mode: number, instanceCount: number): void;
     reset(): void;
 }
-`,gP=e({default:()=>_P}),_P=`import { Camera } from "../../cameras/Camera.js";
+`,_P=e({default:()=>vP}),vP=`import { Camera } from "../../cameras/Camera.js";
 import { Light } from "../../lights/Light.js";
 import { WebGLExtensions } from "./WebGLExtensions.js";
 
@@ -61070,7 +61070,7 @@ export class WebGLLights {
     setup(lights: Light[]): void;
     setupView(lights: Light[], camera: Camera): void;
 }
-`,vP=e({default:()=>yP}),yP=`import { BufferGeometry } from "../../core/BufferGeometry.js";
+`,yP=e({default:()=>bP}),bP=`import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { WebGLAttributes } from "./WebGLAttributes.js";
 import { WebGLBindingStates } from "./WebGLBindingStates.js";
@@ -61089,7 +61089,7 @@ export class WebGLObjects {
     update(object: Object3D): BufferGeometry;
     dispose(): void;
 }
-`,bP=e({default:()=>xP}),xP=`import { WebGLRenderer } from "../WebGLRenderer.js";
+`,xP=e({default:()=>SP}),SP=`import { WebGLRenderer } from "../WebGLRenderer.js";
 import { WebGLUniforms } from "./WebGLUniforms.js";
 
 export class WebGLProgram {
@@ -61111,7 +61111,7 @@ export class WebGLProgram {
     getAttributes(): unknown;
     destroy(): void;
 }
-`,SP=e({default:()=>CP}),CP=`import { Combine, DepthPackingStrategies, GLSLVersion, Mapping, ShadowMapType, ToneMapping } from "../../constants.js";
+`,CP=e({default:()=>wP}),wP=`import { Combine, DepthPackingStrategies, GLSLVersion, Mapping, ShadowMapType, ToneMapping } from "../../constants.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Light } from "../../lights/Light.js";
 import { Material } from "../../materials/Material.js";
@@ -61343,7 +61343,7 @@ export class WebGLPrograms {
     acquireProgram(parameters: WebGLProgramParametersWithUniforms, cacheKey: string): WebGLProgram;
     releaseProgram(program: WebGLProgram): void;
 }
-`,wP=e({default:()=>TP}),TP=`export class WebGLProperties {
+`,TP=e({default:()=>EP}),EP=`export class WebGLProperties {
     constructor();
 
     has: (object: unknown) => boolean;
@@ -61352,7 +61352,7 @@ export class WebGLPrograms {
     update: (object: unknown, key: unknown, value: unknown) => unknown;
     dispose: () => void;
 }
-`,EP=e({default:()=>DP}),DP=`import { BufferGeometry } from "../../core/BufferGeometry.js";
+`,DP=e({default:()=>OP}),OP=`import { BufferGeometry } from "../../core/BufferGeometry.js";
 import { Object3D } from "../../core/Object3D.js";
 import { Material } from "../../materials/Material.js";
 import { Group } from "../../objects/Group.js";
@@ -61416,8 +61416,8 @@ export class WebGLRenderLists {
     dispose(): void;
     get(scene: Scene, renderCallDepth: number): WebGLRenderList;
 }
-`,OP=e({default:()=>kP}),kP=`export function WebGLShader(gl: WebGLRenderingContext, type: string, string: string): WebGLShader;
-`,AP=e({default:()=>jP}),jP=`import { Camera } from "../../cameras/Camera.js";
+`,kP=e({default:()=>AP}),AP=`export function WebGLShader(gl: WebGLRenderingContext, type: string, string: string): WebGLShader;
+`,jP=e({default:()=>MP}),MP=`import { Camera } from "../../cameras/Camera.js";
 import { ShadowMapType } from "../../constants.js";
 import { Light } from "../../lights/Light.js";
 import { Scene } from "../../scenes/Scene.js";
@@ -61450,7 +61450,7 @@ export class WebGLShadowMap {
 
     render(shadowsArray: Light[], scene: Scene, camera: Camera): void;
 }
-`,MP=e({default:()=>NP}),NP=`import {
+`,NP=e({default:()=>PP}),PP=`import {
     Blending,
     BlendingDstFactor,
     BlendingEquation,
@@ -61847,7 +61847,7 @@ declare class WebGLState {
 
 export { WebGLState };
 export type { WebGLColorBuffer, WebGLDepthBuffer, WebGLStencilBuffer };
-`,PP=e({default:()=>FP}),FP=`import { RenderTarget } from "../../core/RenderTarget.js";
+`,FP=e({default:()=>IP}),IP=`import { RenderTarget } from "../../core/RenderTarget.js";
 import { Texture } from "../../textures/Texture.js";
 import { WebGLCapabilities } from "./WebGLCapabilities.js";
 import { WebGLExtensions } from "./WebGLExtensions.js";
@@ -61878,12 +61878,12 @@ export class WebGLTextures {
     updateRenderTargetMipmap(renderTarget: RenderTarget): void;
     updateMultisampleRenderTarget(renderTarget: RenderTarget): void;
 }
-`,IP=e({default:()=>LP}),LP=`import { WebGLProgram } from "./WebGLProgram.js";
+`,LP=e({default:()=>RP}),RP=`import { WebGLProgram } from "./WebGLProgram.js";
 
 export class WebGLUniforms {
     constructor(gl: WebGLRenderingContext, program: WebGLProgram);
 }
-`,RP=e({default:()=>zP}),zP=`import { UniformsGroup } from "../../core/UniformsGroup.js";
+`,zP=e({default:()=>BP}),BP=`import { UniformsGroup } from "../../core/UniformsGroup.js";
 
 import { WebGLCapabilities } from "./WebGLCapabilities.js";
 import { WebGLInfo } from "./WebGLInfo.js";
@@ -61900,7 +61900,7 @@ export function WebGLUniformsGroups(
     update: (uniformsGroup: UniformsGroup, program: WebGLProgram) => void;
     bind: (uniformsGroup: UniformsGroup, program: WebGLProgram) => void;
 };
-`,BP=e({default:()=>VP}),VP=`import { CompressedPixelFormat, PixelFormat, TextureDataType } from "../../constants.js";
+`,VP=e({default:()=>HP}),HP=`import { CompressedPixelFormat, PixelFormat, TextureDataType } from "../../constants.js";
 import { WebGLExtensions } from "./WebGLExtensions.js";
 
 export class WebGLUtils {
@@ -61911,7 +61911,7 @@ export class WebGLUtils {
 
     convert(p: PixelFormat | CompressedPixelFormat | TextureDataType, colorSpace?: string): number | null;
 }
-`,HP=e({default:()=>UP}),UP=`import { CoordinateSystem } from "../../constants.js";
+`,UP=e({default:()=>WP}),WP=`import { CoordinateSystem } from "../../constants.js";
 import Backend, { BackendParameters } from "../common/Backend.js";
 
 export interface WebGLBackendParameters extends BackendParameters {
@@ -61925,7 +61925,7 @@ export default class WebGLBackend extends Backend {
 
     getMaxAnisotropy(): number;
 }
-`,WP=e({default:()=>GP}),GP=`/// <reference types="@webgpu/types" />
+`,GP=e({default:()=>KP}),KP=`/// <reference types="@webgpu/types" />
 
 import { CoordinateSystem, HalfFloatType, UnsignedByteType } from "../../constants.js";
 import Backend, { BackendParameters } from "../common/Backend.js";
@@ -61951,7 +61951,7 @@ export default class WebGPUBackend extends Backend {
 
     getMaxAnisotropy(): number;
 }
-`,KP=e({default:()=>qP}),qP=`import Renderer, { RendererParameters } from "../common/Renderer.js";
+`,qP=e({default:()=>JP}),JP=`import Renderer, { RendererParameters } from "../common/Renderer.js";
 import { WebGPUBackendParameters } from "./WebGPUBackend.js";
 
 export interface WebGPURendererParameters extends RendererParameters, WebGPUBackendParameters {
@@ -61963,7 +61963,7 @@ export default class WebGPURenderer extends Renderer {
 
     constructor(parameters?: WebGPURendererParameters);
 }
-`,JP=e({default:()=>YP}),YP=`import Renderer, { RendererParameters } from "../common/Renderer.js";
+`,YP=e({default:()=>XP}),XP=`import Renderer, { RendererParameters } from "../common/Renderer.js";
 import StandardNodeLibrary from "./nodes/StandardNodeLibrary.js";
 import { WebGPUBackendParameters } from "./WebGPUBackend.js";
 
@@ -61980,7 +61980,7 @@ declare class WebGPURenderer extends Renderer {
 }
 
 export default WebGPURenderer;
-`,XP=e({default:()=>ZP}),ZP=`import NodeLibrary from "../../common/nodes/NodeLibrary.js";
+`,ZP=e({default:()=>QP}),QP=`import NodeLibrary from "../../common/nodes/NodeLibrary.js";
 
 /**
  * This version of a node library represents a basic version
@@ -61993,7 +61993,7 @@ declare class BasicNodeLibrary extends NodeLibrary {
 }
 
 export default BasicNodeLibrary;
-`,QP=e({default:()=>$P}),$P=`import { LineBasicNodeMaterialNodeProperties } from "../../../materials/nodes/LineBasicNodeMaterial.js";
+`,$P=e({default:()=>eF}),eF=`import { LineBasicNodeMaterialNodeProperties } from "../../../materials/nodes/LineBasicNodeMaterial.js";
 import { LineDashedNodeMaterialNodeProperties } from "../../../materials/nodes/LineDashedNodeMaterial.js";
 import { MeshBasicNodeMaterialNodeProperties } from "../../../materials/nodes/MeshBasicNodeMaterial.js";
 import { MeshLambertNodeMaterialNodeProperties } from "../../../materials/nodes/MeshLambertNodeMaterial.js";
@@ -62085,7 +62085,7 @@ declare module "../../../materials/ShadowMaterial.js" {
 }
 
 export default StandardNodeLibrary;
-`,eF=e({default:()=>tF}),tF=`import CodeNode from "../../../nodes/code/CodeNode.js";
+`,tF=e({default:()=>nF}),nF=`import CodeNode from "../../../nodes/code/CodeNode.js";
 import { NodeShaderStage } from "../../../nodes/core/constants.js";
 import NodeBuilder from "../../../nodes/core/NodeBuilder.js";
 import NodeUniform from "../../../nodes/core/NodeUniform.js";
@@ -62210,19 +62210,19 @@ export default class WGSLNodeBuilder extends NodeBuilder {
     _getWGSLStruct(name: string, vars: string): string;
     _getWGSLStructBinding(name: string, vars: string, access: string, binding: number, group: number): string;
 }
-`,nF=e({default:()=>rF}),rF=`import NodeFunction from "../../../nodes/core/NodeFunction.js";
+`,rF=e({default:()=>iF}),iF=`import NodeFunction from "../../../nodes/core/NodeFunction.js";
 
 export default class WGSLNodeFunction extends NodeFunction {
     constructor(source: string);
     getCode(name?: string): string;
 }
-`,iF=e({default:()=>aF}),aF=`import NodeParser from "../../../nodes/core/NodeParser.js";
+`,aF=e({default:()=>oF}),oF=`import NodeParser from "../../../nodes/core/NodeParser.js";
 import WGSLNodeFunction from "./WGSLNodeFunction.js";
 
 export default class WGSLNodeParser extends NodeParser {
     parseFunction(source: string): WGSLNodeFunction;
 }
-`,oF=e({default:()=>sF}),sF=`export enum GPUPrimitiveTopology {
+`,sF=e({default:()=>cF}),cF=`export enum GPUPrimitiveTopology {
     PointList = "point-list",
     LineList = "line-list",
     LineStrip = "line-strip",
@@ -62564,7 +62564,7 @@ export enum GPUFeatureMap {
     "texture-compression-s3tc" = "texture-compression-bc",
     "texture-compression-etc1" = "texture-compression-etc2",
 }
-`,cF=e({default:()=>lF}),lF=`import { Object3DEventMap } from "../../core/Object3D.js";
+`,lF=e({default:()=>uF}),uF=`import { Object3DEventMap } from "../../core/Object3D.js";
 import { Vector3 } from "../../math/Vector3.js";
 import { Group } from "../../objects/Group.js";
 
@@ -62627,7 +62627,7 @@ export class WebXRController {
     disconnect(inputSource: XRInputSource): this;
     update(inputSource: XRInputSource, frame: XRFrame, referenceSpace: XRReferenceSpace): this;
 }
-`,uF=e({default:()=>dF}),dF=`import { Mesh } from "../../objects/Mesh.js";
+`,dF=e({default:()=>fF}),fF=`import { Mesh } from "../../objects/Mesh.js";
 import { ExternalTexture } from "../../textures/ExternalTexture.js";
 import { WebXRArrayCamera } from "./WebXRManager.js";
 
@@ -62648,7 +62648,7 @@ export class WebXRDepthSensing {
 
     getDepthTexture(): ExternalTexture | null;
 }
-`,fF=e({default:()=>pF}),pF=`/// <reference types="webxr" />
+`,pF=e({default:()=>mF}),mF=`/// <reference types="webxr" />
 
 import { ArrayCamera } from "../../cameras/ArrayCamera.js";
 import { PerspectiveCamera } from "../../cameras/PerspectiveCamera.js";
@@ -62735,7 +62735,7 @@ export class WebXRManager extends EventDispatcher<WebXRManagerEventMap> {
 
     dispose: () => void;
 }
-`,mF=e({default:()=>hF}),hF=`import { Color, ColorRepresentation } from "../math/Color.js";
+`,hF=e({default:()=>gF}),gF=`import { Color, ColorRepresentation } from "../math/Color.js";
 
 export interface FogJSON {
     type: string;
@@ -62806,7 +62806,7 @@ export class Fog {
      */
     toJSON(): FogJSON;
 }
-`,gF=e({default:()=>_F}),_F=`import { Color, ColorRepresentation } from "../math/Color.js";
+`,_F=e({default:()=>vF}),vF=`import { Color, ColorRepresentation } from "../math/Color.js";
 
 export interface FogExp2JSON {
     type: string;
@@ -62867,7 +62867,7 @@ export class FogExp2 {
      */
     toJSON(): FogExp2JSON;
 }
-`,vF=e({default:()=>yF}),yF=`import { JSONMeta, Object3D, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
+`,yF=e({default:()=>bF}),bF=`import { JSONMeta, Object3D, Object3DJSON, Object3DJSONObject } from "../core/Object3D.js";
 import { Material } from "../materials/Material.js";
 import { Color } from "../math/Color.js";
 import { Euler, EulerTuple } from "../math/Euler.js";
@@ -62971,7 +62971,7 @@ export class Scene extends Object3D {
     copy(source: Scene, recursive?: boolean): this;
     toJSON(meta?: JSONMeta): SceneJSON;
 }
-`,bF=e({default:()=>xF}),xF=`import {
+`,xF=e({default:()=>SF}),SF=`import {
     MagnificationTextureFilter,
     Mapping,
     MinificationTextureFilter,
@@ -63022,7 +63022,7 @@ export class CanvasTexture<TCanvas = HTMLCanvasElement> extends Texture<TCanvas>
      */
     readonly isCanvasTexture: true;
 }
-`,SF=e({default:()=>CF}),CF=`import { CompressedPixelFormat, TextureDataType, Wrapping } from "../constants.js";
+`,CF=e({default:()=>wF}),wF=`import { CompressedPixelFormat, TextureDataType, Wrapping } from "../constants.js";
 import { CompressedTexture, CompressedTextureImageData, CompressedTextureMipmap } from "./CompressedTexture.js";
 
 /**
@@ -63087,7 +63087,7 @@ export class CompressedArrayTexture extends CompressedTexture<CompressedArrayTex
 export interface CompressedArrayTextureImageData extends CompressedTextureImageData {
     depth: number;
 }
-`,wF=e({default:()=>TF}),TF=`import { CompressedPixelFormat, TextureDataType } from "../constants.js";
+`,TF=e({default:()=>EF}),EF=`import { CompressedPixelFormat, TextureDataType } from "../constants.js";
 import { CompressedTexture, CompressedTextureImageData } from "./CompressedTexture.js";
 
 export class CompressedCubeTexture extends CompressedTexture<CompressedTextureImageData[]> {
@@ -63100,7 +63100,7 @@ export class CompressedCubeTexture extends CompressedTexture<CompressedTextureIm
         type?: TextureDataType,
     );
 }
-`,EF=e({default:()=>DF}),DF=`import {
+`,DF=e({default:()=>OF}),OF=`import {
     CompressedPixelFormat,
     MagnificationTextureFilter,
     Mapping,
@@ -63192,7 +63192,7 @@ export interface CompressedTextureImageData {
     width: number;
     height: number;
 }
-`,OF=e({default:()=>kF}),kF=`import {
+`,kF=e({default:()=>AF}),AF=`import {
     DepthTexturePixelFormat,
     MagnificationTextureFilter,
     Mapping,
@@ -63233,7 +63233,7 @@ export type CubeDepthTextureImageData = [
     DepthTextureImageData,
     DepthTextureImageData,
 ];
-`,AF=e({default:()=>jF}),jF=`import {
+`,jF=e({default:()=>MF}),MF=`import {
     CubeTextureMapping,
     MagnificationTextureFilter,
     MinificationTextureFilter,
@@ -63315,7 +63315,7 @@ export class CubeTexture<TImage = unknown> extends Texture<TImage[]> {
      */
     flipY: boolean;
 }
-`,MF=e({default:()=>NF}),NF=`import { MagnificationTextureFilter, MinificationTextureFilter, Wrapping } from "../constants.js";
+`,NF=e({default:()=>PF}),PF=`import { MagnificationTextureFilter, MinificationTextureFilter, Wrapping } from "../constants.js";
 import { TypedArray } from "../core/BufferAttribute.js";
 import { Texture } from "./Texture.js";
 
@@ -63409,7 +63409,7 @@ export interface Data3DTextureImageData {
     height: number;
     depth: number;
 }
-`,PF=e({default:()=>FF}),FF=`import { MagnificationTextureFilter, MinificationTextureFilter } from "../constants.js";
+`,FF=e({default:()=>IF}),IF=`import { MagnificationTextureFilter, MinificationTextureFilter } from "../constants.js";
 import { TypedArray } from "../core/BufferAttribute.js";
 import { Texture } from "./Texture.js";
 
@@ -63532,7 +63532,7 @@ export interface DataArrayTextureImageData {
     height: number;
     depth: number;
 }
-`,IF=e({default:()=>LF}),LF=`import {
+`,LF=e({default:()=>RF}),RF=`import {
     MagnificationTextureFilter,
     Mapping,
     MinificationTextureFilter,
@@ -63643,7 +63643,7 @@ export interface DataTextureImageData {
     width: number;
     height: number;
 }
-`,RF=e({default:()=>zF}),zF=`import {
+`,zF=e({default:()=>BF}),BF=`import {
     DepthTexturePixelFormat,
     MagnificationTextureFilter,
     Mapping,
@@ -63748,7 +63748,7 @@ export interface DepthTextureImageData {
     height: number;
     depth: number;
 }
-`,BF=e({default:()=>VF}),VF=`/// <reference types="@webgpu/types" />
+`,VF=e({default:()=>HF}),HF=`/// <reference types="@webgpu/types" />
 
 import { Texture } from "./Texture.js";
 
@@ -63761,7 +63761,7 @@ declare class ExternalTexture extends Texture<null> {
 }
 
 export { ExternalTexture };
-`,HF=e({default:()=>UF}),UF=`import { MagnificationTextureFilter, MinificationTextureFilter } from "../constants.js";
+`,UF=e({default:()=>WF}),WF=`import { MagnificationTextureFilter, MinificationTextureFilter } from "../constants.js";
 import { Texture } from "./Texture.js";
 
 /**
@@ -63828,7 +63828,7 @@ export interface FramebufferTextureImageData {
     width: number;
     height: number;
 }
-`,WF=e({default:()=>GF}),GF=`import { Vector3 } from "../math/Vector3.js";
+`,GF=e({default:()=>KF}),KF=`import { Vector3 } from "../math/Vector3.js";
 
 export type SerializedImage =
     | string
@@ -63907,7 +63907,7 @@ export class Source<TData> {
      */
     toJSON(meta?: string | {}): SourceJSON;
 }
-`,KF=e({default:()=>qF}),qF=`import {
+`,qF=e({default:()=>JF}),JF=`import {
     AnyMapping,
     AnyPixelFormat,
     ColorSpace,
@@ -64457,7 +64457,7 @@ export class Texture<TImage = unknown> extends EventDispatcher<{ dispose: {} }> 
      */
     dispose(): void;
 }
-`,JF=e({default:()=>YF}),YF=`import {
+`,YF=e({default:()=>XF}),XF=`import {
     MagnificationTextureFilter,
     Mapping,
     MinificationTextureFilter,
@@ -64484,7 +64484,7 @@ declare class VideoFrameTexture extends VideoTexture<VideoFrame | {}> {
 }
 
 export { VideoFrameTexture };
-`,XF=e({default:()=>ZF}),ZF=`import {
+`,ZF=e({default:()=>QF}),QF=`import {
     MagnificationTextureFilter,
     Mapping,
     MinificationTextureFilter,
@@ -64574,7 +64574,7 @@ export class VideoTexture<TVideo = HTMLVideoElement> extends Texture<TVideo> {
      */
     update(): void;
 }
-`,QF=e({default:()=>$F}),$F=`import { DepthModes } from "./constants.js";
+`,$F=e({default:()=>eI}),eI=`import { DepthModes } from "./constants.js";
 
 declare function isTypedArray(object: unknown): boolean;
 
@@ -64610,7 +64610,7 @@ export {
     warn,
     warnOnce,
 };
-`,eI=e({default:()=>tI}),tI=`{
+`,tI=e({default:()=>nI}),nI=`{
   "name": "react",
   "description": "React is a JavaScript library for building user interfaces.",
   "keywords": [
@@ -64660,7 +64660,7 @@ export {
   "engines": {
     "node": ">=0.10.0"
   }
-}`,nI=e({default:()=>rI}),rI=`{
+}`,rI=e({default:()=>iI}),iI=`{
   "name": "react-dom",
   "version": "19.2.4",
   "description": "React package for working with the DOM.",
@@ -64776,7 +64776,7 @@ export {
     "./server.js": "./server.browser.js",
     "./static.js": "./static.browser.js"
   }
-}`,z=t(r(),1),iI=`import { Group } from "three";\r
+}`,R=t(r(),1),aI=`import { Group } from "three";\r
 \r
 export class Component extends Group {\r
 \r
@@ -64785,7 +64785,7 @@ export class Component extends Group {\r
     }\r
 \r
 }\r
-`,aI=`import {\r
+`,oI=`import {\r
     Scene,\r
     Vector3,\r
     DirectionalLight,\r
@@ -64897,7 +64897,7 @@ export class CustomEnv extends Component {\r
         this.updateSun(); // 每帧更新天空盒位置\r
     }\r
 }\r
-`,oI=`import { BoxGeometry, Mesh, MeshStandardMaterial, MathUtils } from "three";\r
+`,sI=`import { BoxGeometry, Mesh, MeshStandardMaterial, MathUtils } from "three";\r
 import { Component } from "./Component.ts";\r
 \r
 export class Player extends Component {\r
@@ -64972,7 +64972,7 @@ export class Player extends Component {\r
         this.position.y = MathUtils.clamp(this.position.y, 5, 100);\r
     }\r
 }\r
-`,sI=`import {\r
+`,cI=`import {\r
     WebGLRenderer,\r
     Scene,\r
     PerspectiveCamera,\r
@@ -65181,9 +65181,9 @@ function animate() {\r
 }\r
 \r
 animate();\r
-`,B=class e extends ye{static EventType={FILE_CHANGED:Symbol(`onFileChanged`),STRUCTURE_CHANGED:Symbol(`onStructureChanged`)};currentFile=null;currentDir=`/`;initPromise=null;fs;rootPath;constructor(e,t){super(),this.fs=e,this.rootPath=t,this.initPromise=this.initializeDefaultFile()}get privatePath(){return this.rootPath}async initializeDefaultFile(){let t=Object.assign({"../appTemplate/Component.ts":iI,"../appTemplate/CustomEnv.ts":aI,"../appTemplate/Player.ts":oI,"../appTemplate/main.ts":sI});for(let e in t){let n=t[e],r=e.split(`/`).pop(),i=`${this.privatePath}/${r}`;await this.fs.exists(i)||await this.fs.writeFile(i,n)}let n=`${this.privatePath}/main.ts`;await this.fs.exists(n)&&(this.currentFile={path:n,content:await this.fs.readFile(n),language:`typescript`},this.emit(e.EventType.FILE_CHANGED,n))}async createFile(t){await this.initPromise;let n=await this.fs.readdir(this.privatePath),r=t||`file${n.length+1}.ts`,i=`${this.privatePath}/${r}`;await this.fs.writeFile(i,``),this.emit(e.EventType.STRUCTURE_CHANGED,i),await this.openFile(i)}async deleteFile(t){await this.initPromise,await this.fs.unlink(t),this.currentFile?.path===t?(this.currentFile=null,await this.initializeDefaultFile()):(this.emit(e.EventType.STRUCTURE_CHANGED,t),this.emit(e.EventType.FILE_CHANGED,t))}async openFile(t){await this.initPromise,await this.fs.exists(t)&&(this.currentFile={path:t,content:await this.fs.readFile(t),language:`typescript`},this.emit(e.EventType.FILE_CHANGED,t))}async readFile(e){return await this.initPromise,await this.fs.exists(e)?{path:e,content:await this.fs.readFile(e),language:`typescript`}:null}async writeFile(e,t){await this.initPromise,await this.fs.writeFile(e,t),this.currentFile?.path===e&&(this.currentFile.content=t)}async navigate(t){await this.initPromise;let n=await this.fs.stat(t);n&&n.type===`dir`?(this.currentDir=t,this.emit(e.EventType.FILE_CHANGED)):await this.openFile(t)}async fetchFiles(){await this.initPromise;let e=await this.fs.readdir(this.currentDir);return(await Promise.all(e.map(async e=>{let t=this.currentDir===`/`?`/${e}`:`${this.currentDir}/${e}`;return{name:e,path:t,isDir:(await this.fs.stat(t))?.type===`dir`}}))).sort((e,t)=>e.isDir&&!t.isDir?-1:!e.isDir&&t.isDir?1:e.name.localeCompare(t.name))}async listFiles(){return await this.initPromise,this.fs.readdir(this.currentDir)}get code(){return this.currentFile?.content||``}},cI=(0,z.createContext)(null);function lI(e,t){var n=typeof Symbol==`function`&&e[Symbol.iterator];if(!n)return e;var r=n.call(e),i,a=[],o;try{for(;(t===void 0||t-- >0)&&!(i=r.next()).done;)a.push(i.value)}catch(e){o={error:e}}finally{try{i&&!i.done&&(n=r.return)&&n.call(r)}finally{if(o)throw o.error}}return a}function uI(e,t,n){if(n||arguments.length===2)for(var r=0,i=t.length,a;r<i;r++)(a||!(r in t))&&(a||=Array.prototype.slice.call(t,0,r),a[r]=t[r]);return e.concat(a||Array.prototype.slice.call(t))}function dI(e,t,n){let{gridProps:r}=A(e,t,n);return r.role=`treegrid`,{gridProps:r}}var fI={};fI={collapse:`طي`,expand:`تمديد`};var pI={};pI={collapse:`Свиване`,expand:`Разширяване`};var mI={};mI={collapse:`Sbalit`,expand:`Roztáhnout`};var hI={};hI={collapse:`Skjul`,expand:`Udvid`};var gI={};gI={collapse:`Reduzieren`,expand:`Erweitern`};var _I={};_I={collapse:`Σύμπτυξη`,expand:`Ανάπτυξη`};var vI={};vI={expand:`Expand`,collapse:`Collapse`};var yI={};yI={collapse:`Contraer`,expand:`Ampliar`};var bI={};bI={collapse:`Ahenda`,expand:`Laienda`};var xI={};xI={collapse:`Pienennä`,expand:`Laajenna`};var SI={};SI={collapse:`Réduire`,expand:`Développer`};var CI={};CI={collapse:`כווץ`,expand:`הרחב`};var wI={};wI={collapse:`Sažmi`,expand:`Proširi`};var TI={};TI={collapse:`Összecsukás`,expand:`Kibontás`};var EI={};EI={collapse:`Comprimi`,expand:`Espandi`};var DI={};DI={collapse:`折りたたむ`,expand:`展開`};var OI={};OI={collapse:`접기`,expand:`펼치기`};var kI={};kI={collapse:`Sutraukti`,expand:`Išskleisti`};var AI={};AI={collapse:`Sakļaut`,expand:`Izvērst`};var jI={};jI={collapse:`Skjul`,expand:`Utvid`};var MI={};MI={collapse:`Samenvouwen`,expand:`Uitvouwen`};var NI={};NI={collapse:`Zwiń`,expand:`Rozwiń`};var PI={};PI={collapse:`Recolher`,expand:`Expandir`};var FI={};FI={collapse:`Colapsar`,expand:`Expandir`};var II={};II={collapse:`Restrângeți`,expand:`Extindeți`};var LI={};LI={collapse:`Свернуть`,expand:`Развернуть`};var RI={};RI={collapse:`Zbaliť`,expand:`Rozbaliť`};var zI={};zI={collapse:`Strni`,expand:`Razširi`};var BI={};BI={collapse:` Skupi`,expand:`Proširi`};var VI={};VI={collapse:`Dölj`,expand:`Expandera`};var HI={};HI={collapse:`Daralt`,expand:`Genişlet`};var UI={};UI={collapse:`Згорнути`,expand:`Розгорнути`};var WI={};WI={collapse:`折叠`,expand:`扩展`};var GI={};GI={collapse:`收合`,expand:`展開`};var KI={};KI={"ar-AE":fI,"bg-BG":pI,"cs-CZ":mI,"da-DK":hI,"de-DE":gI,"el-GR":_I,"en-US":vI,"es-ES":yI,"et-EE":bI,"fi-FI":xI,"fr-FR":SI,"he-IL":CI,"hr-HR":wI,"hu-HU":TI,"it-IT":EI,"ja-JP":DI,"ko-KR":OI,"lt-LT":kI,"lv-LV":AI,"nb-NO":jI,"nl-NL":MI,"pl-PL":NI,"pt-BR":PI,"pt-PT":FI,"ro-RO":II,"ru-RU":LI,"sk-SK":RI,"sl-SI":zI,"sr-SP":BI,"sv-SE":VI,"tr-TR":HI,"uk-UA":UI,"zh-CN":WI,"zh-TW":GI};function qI(e){return e&&e.__esModule?e.default:e}function JI(e,t,n){let{node:r}=e,i=oe(e,t,n),a=i.rowProps[`aria-expanded`]===!0,o=m(qI(KI),`@react-aria/tree`),s=k({"aria-label":a?o.format(`collapse`):o.format(`expand`),"aria-labelledby":i.rowProps.id}),c={onPress:()=>{i.isDisabled||(t.toggleKey(r.key),t.selectionManager.setFocused(!0),t.selectionManager.setFocusedKey(r.key))},excludeFromTabOrder:!0,preventFocusOnPress:!0,"data-react-aria-prevent-focus":!0,...s};return{...i,expandButtonProps:c}}var YI=class{*[Symbol.iterator](){yield*this.iterable}get size(){return this.keyMap.size}getKeys(){return this.keyMap.keys()}getKeyBefore(e){let t=this.keyMap.get(e);return t?t.prevKey??null:null}getKeyAfter(e){let t=this.keyMap.get(e);return t?t.nextKey??null:null}getFirstKey(){return this.firstKey}getLastKey(){return this.lastKey}getItem(e){return this.keyMap.get(e)??null}at(e){let t=[...this.getKeys()];return this.getItem(t[e])}constructor(e,{expandedKeys:t}={}){this.keyMap=new Map,this.firstKey=null,this.lastKey=null,this.iterable=e,t||=new Set;let n=e=>{if(this.keyMap.set(e.key,e),e.childNodes&&(e.type===`section`||t.has(e.key)))for(let t of e.childNodes)n(t)};for(let t of e)n(t);let r=null,i=0;for(let[e,t]of this.keyMap)r?(r.nextKey=e,t.prevKey=r.key):(this.firstKey=e,t.prevKey=void 0),t.type===`item`&&(t.index=i++),r=t,r.nextKey=void 0;this.lastKey=r?.key??null}};function XI(e){let{onExpandedChange:t}=e,[n,r]=S(e.expandedKeys?new Set(e.expandedKeys):void 0,e.defaultExpandedKeys?new Set(e.defaultExpandedKeys):new Set,t),i=T(e),a=(0,z.useMemo)(()=>e.disabledKeys?new Set(e.disabledKeys):new Set,[e.disabledKeys]),o=fe(e,(0,z.useCallback)(e=>new YI(e,{expandedKeys:n}),[n]),null);return(0,z.useEffect)(()=>{i.focusedKey!=null&&!o.getItem(i.focusedKey)&&i.setFocusedKey(null)},[o,i.focusedKey]),{collection:o,expandedKeys:n,disabledKeys:a,toggleKey:e=>{r(ZI(n,e))},setExpandedKeys:r,selectionManager:new ue(o,i)}}function ZI(e,t){let n=new Set(e);return n.has(t)?n.delete(t):n.add(t),n}var QI=10,$I=5,eL=class{setup(e,t,n){this.delegate=e,this.state=t,this.direction=n}getDropTargetFromPoint(e,t,n){let r=this.delegate.getDropTargetFromPoint(e,t,n);return!r||r.type===`root`?r:this.resolveDropTarget(r,e,t,n)}resolveDropTarget(e,t,n,r){let i=this.pointerTracking,a=n-i.lastY,o=t-i.lastX,s=i.yDirection,c=i.xDirection;if(Math.abs(a)>$I&&(s=a>0?`down`:`up`,i.yDirection=s,i.lastY=n),Math.abs(o)>QI&&(c=o>0?`right`:`left`,i.xDirection=c,i.lastX=t),e.dropPosition===`before`){let t=this.state.collection.getKeyBefore(e.key);if(t!=null){let n={type:`item`,key:t,dropPosition:`after`};r(n)&&(e=n)}}let l=this.getPotentialTargets(e,r);if(l.length===0)return{type:`root`};let u;return l.length>1?u=this.selectTarget(l,e,t,n,s,c):(u=l[0],i.boundaryContext=null),u}getPotentialTargets(e,t){if(e.dropPosition===`on`)return[e];let n=e,r=this.state.collection,i=r.getItem(n.key);for(;i&&i?.type!==`item`&&i.nextKey!=null;)n.key=i.nextKey,i=r.getItem(i.nextKey);let a=[n];if(i&&i.hasChildNodes&&this.state.expandedKeys.has(i.key)&&r.getChildren&&n.dropPosition===`after`){let e=null;for(let t of r.getChildren(i.key))if(t.type===`item`){e=t;break}if(e){let n={type:`item`,key:e.key,dropPosition:`before`};return t(n)?[n]:[]}}if(i?.nextKey!=null)return[e];let o=i?.parentKey,s=[];for(;o;){let e=r.getItem(o),n=e?.nextKey?r.getItem(e.nextKey):null;if(!n||n.parentKey!==o){let e={type:`item`,key:o,dropPosition:`after`};if(t(e)&&s.push(e),n)break}o=e?.parentKey}if(s.length>0&&a.push(...s),a.length===1){let e=r.getKeyAfter(n.key),a=e?r.getItem(e):null;if(e!=null&&a&&i&&a.level!=null&&i.level!=null&&a.level>i.level){let n={type:`item`,key:e,dropPosition:`before`};if(t(n))return[n]}}return a.filter(t)}selectTarget(e,t,n,r,i,a){if(e.length<2)return e[0];let o=this.pointerTracking,s=this.state.collection.getItem(t.key)?.parentKey;if(!s)return e[0];(!o.boundaryContext||o.boundaryContext.parentKey!==s)&&(o.boundaryContext={parentKey:s,preferredTargetIndex:o.yDirection===`up`?e.length-1:0,lastSwitchY:r,lastSwitchX:n});let c=o.boundaryContext,l=Math.abs(n-c.lastSwitchX);if(Math.abs(r-c.lastSwitchY)>$I&&i){let t=c.preferredTargetIndex||0;i===`down`&&t===0?c.preferredTargetIndex=e.length-1:i===`up`&&t===e.length-1&&(c.preferredTargetIndex=0),o.xDirection=null}if(l>QI&&a){let t=c.preferredTargetIndex||0;a===`left`?this.direction===`ltr`?t<e.length-1&&(c.preferredTargetIndex=t+1,c.lastSwitchX=n):t>0&&(c.preferredTargetIndex=t-1,c.lastSwitchX=n):a===`right`&&(this.direction===`ltr`?t>0&&(c.preferredTargetIndex=t-1,c.lastSwitchX=n):t<e.length-1&&(c.preferredTargetIndex=t+1,c.lastSwitchX=n)),o.yDirection=null}return e[Math.max(0,Math.min(c.preferredTargetIndex||0,e.length-1))]}constructor(){this.delegate=null,this.state=null,this.direction=`ltr`,this.pointerTracking={lastY:0,lastX:0,yDirection:null,xDirection:null,boundaryContext:null}}},tL=class e extends u{withExpandedKeys(t,n){let r=this.clone();return r.expandedKeys=n,e.cloneAncestorSections(n,t,r),e.cloneAncestorSections(t,n,r),r.frozen=this.frozen,r}static cloneAncestorSections(e,t,n){for(let r of e)if(!t.has(r)){let e=r;for(;e!=null;){let t=n.getItem(e);if(t?.type===`section`){n.keyMap.set(e,t.clone());break}else e=t?.parentKey??null}}}*[Symbol.iterator](){let e=this.getFirstKey(),t=e==null?null:this.getItem(e);for(;t;)if(yield t,t.type===`section`)t=t.nextKey?this.getItem(t.nextKey):null;else{let e=this.getKeyAfter(t.key);t=e?this.getItem(e):null}}getLastKey(){let e=this.lastKey;if(e==null)return null;let t=this.getItem(e);for(;t?.lastChildKey!=null&&(t.type!==`item`||this.expandedKeys.has(t.key));)t=this.getItem(t.lastChildKey);return t?.key}getKeyAfter(e){let t=this.getItem(e);if(!t)return null;if((this.expandedKeys.has(t.key)||t.type!==`item`)&&t.firstChildKey!=null)return t.firstChildKey;for(;t;){if(t.nextKey!=null)return t.nextKey;if(t.parentKey!=null)t=this.getItem(t.parentKey);else return null}return null}getKeyBefore(e){let t=this.getItem(e);if(!t)return null;if(t.prevKey!=null){for(t=this.getItem(t.prevKey);t&&(t.type!==`item`||this.expandedKeys.has(t.key))&&t.lastChildKey!=null;)t=this.getItem(t.lastChildKey);return t?.key??null}return t.parentKey}getChildren(e){let t=this;return{*[Symbol.iterator](){let n=t.getItem(e),r=n?.firstChildKey==null?null:t.getItem(n.firstChildKey);if(n&&n.type===`section`&&r)for(;r&&r.key!==n.nextKey;){yield t.getItem(r.key);let e=t.getKeyAfter(r.key);r=e==null?null:t.getItem(e)}else for(;r;)yield r,r=r.nextKey==null?null:t.getItem(r.nextKey)}}}getTextValue(e){let t=this.getItem(e);return t?t.textValue:``}constructor(...e){super(...e),this.expandedKeys=new Set}},nL=(0,z.createContext)(null),rL=(0,z.createContext)(null),iL=(0,z.forwardRef)(function(e,t){return[e,t]=N(e,t,nL),z.createElement(x,{content:z.createElement(j,e),createCollection:()=>new tL},n=>z.createElement(oL,{props:e,collection:n,treeRef:t}))}),aL={expand:{ltr:`ArrowRight`,rtl:`ArrowLeft`},collapse:{ltr:`ArrowLeft`,rtl:`ArrowRight`}};function oL({props:e,collection:t,treeRef:n}){let{dragAndDropHooks:r}=e,{direction:i}=_(),a=d({usage:`search`,sensitivity:`base`}),c=!!r?.useDraggableCollectionState,l=!!r?.useDroppableCollectionState,u=(0,z.useRef)(c),f=(0,z.useRef)(l);(0,z.useEffect)(()=>{u.current!==c&&console.warn(`Drag hooks were provided during one render, but not another. This should be avoided as it may produce unexpected behavior.`),f.current!==l&&console.warn(`Drop hooks were provided during one render, but not another. This should be avoided as it may produce unexpected behavior.`)},[c,l]);let{selectionMode:m=`none`,expandedKeys:g,defaultExpandedKeys:b,onExpandedChange:ee,disabledBehavior:x=`all`}=e,{CollectionRoot:ne,isVirtualized:re,layoutDelegate:C,dropTargetDelegate:ie}=(0,z.useContext)(_e),[w,oe]=S(g?new Set(g):void 0,b?new Set(b):new Set,ee),[se,ce]=(0,z.useState)(t),[ue,T]=(0,z.useState)(w),[de,E]=(0,z.useState)(()=>t.withExpandedKeys(ue,w));(!gL(ue,w)||t!==se)&&(E(t.withExpandedKeys(ue,w)),ce(t),T(w));let D=XI({...e,selectionMode:m,expandedKeys:w,onExpandedChange:oe,collection:de,children:void 0,disabledBehavior:x}),{gridProps:fe}=dI({...e,isVirtualized:re,layoutDelegate:C},D,n),O,k,A,j=!1,M=null,N=(0,z.useRef)(null);if(c&&r){O=r.useDraggableCollectionState({collection:D.collection,selectionManager:D.selectionManager,preview:r.renderDragPreview?N:void 0}),r.useDraggableCollection({},O,n);let e=r.DragPreview;M=r.renderDragPreview?z.createElement(e,{ref:N},r.renderDragPreview):null}let[ve]=(0,z.useState)(()=>new eL);if(l&&r){k=r.useDroppableCollectionState({collection:D.collection,selectionManager:D.selectionManager});let e=r.dropTargetDelegate||ie||new r.ListDropTargetDelegate(D.collection,n,{direction:i});ve.setup(e,D,i);let t=new o({collection:D.collection,collator:a,ref:n,disabledKeys:D.selectionManager.disabledKeys,disabledBehavior:D.selectionManager.disabledBehavior,direction:i,layoutDelegate:C});A=r.useDroppableCollection({keyboardDelegate:t,dropTargetDelegate:ve,onDropActivate:e=>{if(e.target.type===`item`){let t=e.target.key,n=D.collection.getItem(t),i=w.has(t);n&&n.hasChildNodes&&(!i||r!=null&&r.isVirtualDragging?.call(r))&&D.toggleKey(t)}},onKeyDown:e=>{let t=k?.target;if(t&&t.type===`item`&&t.dropPosition===`on`){let n=D.collection.getItem(t.key);(e.key===aL.expand[i]&&n?.hasChildNodes&&!D.expandedKeys.has(t.key)||e.key===aL.collapse[i]&&n?.hasChildNodes&&D.expandedKeys.has(t.key))&&D.toggleKey(t.key)}}},k,n);let s=k.getDropOperation;k.getDropOperation=e=>{let{target:t,isInternal:n}=e,r=O?.draggingKeys??new Set;if(n&&t.type===`item`&&r.size>0){if(r.has(t.key)&&t.dropPosition===`on`)return`cancel`;let e=t.key;for(;e!=null;){let t=D.collection.getItem(e)?.parentKey;if(t!=null&&r.has(t))return`cancel`;e=t??null}}return s(e)},j=k.isDropTarget({type:`root`})}let P=!!(c&&!O?.isDisabled),{focusProps:F,isFocused:ye,isFocusVisible:I}=v(),be={isEmpty:D.collection.size===0,isFocused:ye,isFocusVisible:I,isDropTarget:j,selectionMode:D.selectionManager.selectionMode,allowsDragging:!!P,state:D},xe=s({...e,children:void 0,defaultClassName:`react-aria-Tree`,values:be}),L=null;if(D.collection.size===0&&e.renderEmptyState){let{isEmpty:t,...n}=be,r=e.renderEmptyState({...n});L=z.createElement(`div`,{role:`row`,style:{display:`contents`},"aria-level":1},z.createElement(`div`,{role:`gridcell`,style:{display:`contents`}},r))}let Se=h(e,{global:!0});return z.createElement(z.Fragment,null,z.createElement(y,null,z.createElement(p.div,{...ae(Se,xe,fe,F,A?.collectionProps),ref:n,slot:e.slot||void 0,"data-empty":D.collection.size===0||void 0,"data-focused":ye||void 0,"data-drop-target":j||void 0,"data-focus-visible":I||void 0,"data-selection-mode":D.selectionManager.selectionMode===`none`?void 0:D.selectionManager.selectionMode,"data-allows-dragging":!!P||void 0},z.createElement(te,{values:[[rL,D],[le,{dragAndDropHooks:r,dragState:O,dropState:k}],[ge,{render:fL}]]},l&&z.createElement(hL,null),z.createElement(me,null,z.createElement(ne,{collection:D.collection,persistedKeys:pe(D.selectionManager,r,k),scrollRef:n,renderDropIndicator:he(r,k)}))),L)),M)}var sL=class extends b{};sL.type=`content`;var cL=M(sL,function(e){let t=(0,z.useContext)(lL),n=s({children:e.children,values:t});return z.createElement(_e.Provider,{value:ce},n.children)}),lL=(0,z.createContext)(null),uL=class extends b{};uL.type=`item`;var dL=c(uL,(e,t,n)=>{let r=(0,z.useContext)(rL);t=g(t);let{dragAndDropHooks:i,dragState:a,dropState:o}=(0,z.useContext)(le),{rowProps:c,gridCellProps:l,expandButtonProps:u,descriptionProps:d,...f}=JI({node:n,shouldSelectOnPressUp:!!a},r,t),m=c[`aria-expanded`]===!0,_=e.hasChildItems||[...r.collection.getChildren(n.key)]?.length>1,y=c[`aria-level`]||1,{hoverProps:b,isHovered:x}=ee({isDisabled:!f.allowsSelection&&!f.hasAction,onHoverStart:e.onHoverStart,onHoverChange:e.onHoverChange,onHoverEnd:e.onHoverEnd}),{isFocusVisible:S,focusProps:C}=v(),{isFocusVisible:oe,focusProps:ce}=v({within:!0}),{checkboxProps:ue}=de({key:n.key},r),T=null;a&&i&&(T=i.useDraggableItem({key:n.key,hasDragButton:!0},a));let E=null,fe=(0,z.useRef)(null),pe=(0,z.useRef)(null),me=(0,z.useRef)(null),{visuallyHiddenProps:k}=D();o&&i&&(E=i.useDropIndicator({target:{type:`item`,key:n.key,dropPosition:`on`},activateButtonRef:me},o,pe));let he=a&&a.isDragging(n.key),ge=E?.isDropTarget,A=r.selectionManager.selectionMode,j=r.selectionManager.selectionBehavior,M=z.useMemo(()=>({...f,isHovered:x,isFocusVisible:S,isExpanded:m,hasChildItems:_,level:y,selectionMode:A,selectionBehavior:j,isFocusVisibleWithin:oe,state:r,id:n.key,allowsDragging:!!a,isDragging:he,isDropTarget:ge}),[f,x,S,m,_,y,oe,r,n.key,a,he,ge,j,A]),_e=s({...e,id:void 0,children:n.rendered,defaultClassName:`react-aria-TreeItem`,defaultStyle:{"--tree-item-level":y},values:M});(0,z.useEffect)(()=>{n.textValue},[n.textValue]),(0,z.useEffect)(()=>{_&&fe.current},[]);let N=(0,z.useRef)(null);(0,z.useEffect)(()=>{a&&N.current},[]);let ve=ne({items:r.collection.getChildren(n.key),children:e=>{switch(e.type){case`content`:return e.render(e);case`loader`:case`item`:return z.createElement(z.Fragment,null);default:throw Error(`Unsupported element type in TreeRow: `+e.type)}}}),P=ie(),F=h(e,{global:!0});return delete F.id,delete F.onClick,z.createElement(z.Fragment,null,E&&!E.isHidden&&z.createElement(`div`,{role:`row`,"aria-level":c[`aria-level`],"aria-expanded":c[`aria-expanded`],"aria-label":E.dropIndicatorProps[`aria-label`]},z.createElement(`div`,{role:`gridcell`,"aria-colindex":1,style:{display:`contents`}},z.createElement(`div`,{role:`button`,...k,...E.dropIndicatorProps,ref:pe}),c[`aria-expanded`]==null?null:z.createElement(`div`,{role:`button`,...k,id:P,"aria-label":u[`aria-label`],"aria-labelledby":`${P} ${c.id}`,tabIndex:-1,ref:me}))),z.createElement(p.div,{...ae(F,c,C,b,ce,T?.dragProps),..._e,ref:t,"data-expanded":_&&m||void 0,"data-has-child-items":_||void 0,"data-level":y,"data-selected":f.isSelected||void 0,"data-disabled":f.isDisabled||void 0,"data-hovered":x||void 0,"data-focused":f.isFocused||void 0,"data-focus-visible":S||void 0,"data-pressed":f.isPressed||void 0,"data-selection-mode":r.selectionManager.selectionMode===`none`?void 0:r.selectionManager.selectionMode,"data-allows-dragging":!!a||void 0,"data-dragging":he||void 0,"data-drop-target":ge||void 0},z.createElement(`div`,{...l,style:{display:`contents`}},z.createElement(te,{values:[[w,{slots:{selection:ue}}],[O,{slots:{[re]:{},chevron:{...u,ref:fe},drag:{...T?.dragButtonProps,ref:N,style:{pointerEvents:`none`}}}}],[lL,{...M}],[se,{isSelected:f.isSelected}]]},ve))))});M(l,function(e,t,n){let{isVirtualized:r}=(0,z.useContext)(_e),i=(0,z.useContext)(rL),{isLoading:a,onLoadMore:o,scrollOffset:c,...l}=e,u=(0,z.useRef)(null);f((0,z.useMemo)(()=>({onLoadMore:o,collection:i?.collection,sentinelRef:u,scrollOffset:c}),[o,c,i?.collection]),u),t=g(t);let{rowProps:d,gridCellProps:m}=JI({node:n},i,t),_=d[`aria-level`]||1,v={role:`row`,"aria-level":d[`aria-level`]},y=s({...l,id:void 0,children:n.rendered,defaultClassName:`react-aria-TreeLoader`,values:{level:_}}),b={};return r&&(b={display:`contents`}),z.createElement(z.Fragment,null,z.createElement(`div`,{style:{position:`relative`,width:0,height:0},inert:C(!0)},z.createElement(`div`,{"data-testid":`loadMoreSentinel`,ref:u,style:{position:`absolute`,height:1,width:1}})),a&&y.children&&z.createElement(p.div,{ref:t,...ae(h(e),v),...y,"data-level":_},z.createElement(`div`,{...m,style:b},y.children)))});function fL(e,t){t=g(t);let{dragAndDropHooks:n,dropState:r}=(0,z.useContext)(le),i=(0,z.useRef)(null),{dropIndicatorProps:a,isHidden:o,isDropTarget:s}=n.useDropIndicator(e,r,i);if(o)return null;let c=r&&e.target.type===`item`?(r.collection.getItem(e.target.key)?.level||0)+1:1;return z.createElement(mL,{...e,dropIndicatorProps:a,isDropTarget:s,ref:t,buttonRef:i,level:c})}function pL(e,t){let{dropIndicatorProps:n,isDropTarget:r,buttonRef:i,level:a,...o}=e,{visuallyHiddenProps:c}=D(),l=s({...o,defaultClassName:`react-aria-DropIndicator`,defaultStyle:{position:`relative`,"--tree-item-level":a},values:{isDropTarget:r}});return z.createElement(p.div,{...l,role:`row`,"aria-level":a,ref:t,"data-drop-target":r||void 0},z.createElement(`div`,{role:`gridcell`},z.createElement(`div`,{...c,role:`button`,...n,ref:i}),l.children))}var mL=(0,z.forwardRef)(pL);function hL(){let{dragAndDropHooks:e,dropState:t}=(0,z.useContext)(le),n=(0,z.useRef)(null),{dropIndicatorProps:r}=e.useDropIndicator({target:{type:`root`}},t,n),i=t.isDropTarget({type:`root`}),{visuallyHiddenProps:a}=D();return!i&&r[`aria-hidden`]?null:z.createElement(`div`,{role:`row`,"aria-hidden":r[`aria-hidden`],style:{position:`absolute`}},z.createElement(`div`,{role:`gridcell`},z.createElement(`div`,{role:`button`,...a,...r,ref:n})))}function gL(e,t){if(e.size!==t.size)return!1;for(let n of e)if(!t.has(n))return!1;return!0}var V={fileTree:`_fileTree_1y6a4_1`,header:`_header_1y6a4_10`,actions:`_actions_1y6a4_24`,treeRoot:`_treeRoot_1y6a4_43`,treeItem:`_treeItem_1y6a4_46`,itemContent:`_itemContent_1y6a4_49`,deleteBtn:`_deleteBtn_1y6a4_66`,itemMain:`_itemMain_1y6a4_69`,chevron:`_chevron_1y6a4_75`,icon:`_icon_1y6a4_83`,name:`_name_1y6a4_87`},H=a(),_L=(0,z.memo)(()=>{let e=(0,z.useContext)(cI),[t,n]=(0,z.useState)([]),[r,i]=(0,z.useState)(new Set),[a,o]=(0,z.useState)(new Set),s=(0,z.useCallback)(async t=>{if(!e)return console.log(`Tree: Workspace not ready`),[];console.log(`Tree: Loading path`,t);try{let n=await e.fs.readdir(t),r=(await Promise.all(n.map(async n=>{let r=t===`/`?`/${n}`:`${t}/${n}`,i=(await e.fs.stat(r))?.type===`dir`;return{id:r,name:n,isDir:i,children:i?[]:void 0}}))).sort((e,t)=>e.isDir===t.isDir?e.name.localeCompare(t.name):e.isDir?-1:1);return console.log(`Tree: Loaded ${r.length} items for ${t}`),r}catch(e){return console.error(`Tree: Failed to load nodes`,e),[]}},[e]),c=(0,z.useCallback)(()=>{s(`/`).then(n)},[s]);(0,z.useEffect)(()=>{c();let t=()=>{c()};return e?.on(B.EventType.STRUCTURE_CHANGED,t),()=>{e?.off(B.EventType.STRUCTURE_CHANGED,t)}},[c,e]);let l=async e=>{let a=r instanceof Set?r:new Set,o=e instanceof Set?e:new Set,c=Array.from(o).find(e=>!a.has(e));if(i(e),c){let e=async(t,n)=>{for(let r=0;r<t.length;r++){let i=t[r];if(i.id===n&&i.isDir&&(!i.children||i.children.length===0)){let e=await s(i.id);return[...t.slice(0,r),{...i,children:e},...t.slice(r+1)]}if(i.children){let a=await e(i.children,n);if(a!==i.children)return[...t.slice(0,r),{...i,children:a},...t.slice(r+1)]}}return t},r=await e(t,c);r!==t&&n(r)}},u=async t=>{window.confirm(`确定要删除 ${t} 吗？`)&&((await e?.fs.stat(t))?.type===`dir`?await e?.fs.rmdir(t,{recursive:!0}):await e?.deleteFile(t),c())};return(0,H.jsxs)(`div`,{className:V.fileTree,children:[(0,H.jsxs)(`div`,{className:V.header,children:[(0,H.jsx)(`span`,{children:`项目资源`}),(0,H.jsxs)(`div`,{className:V.actions,children:[(0,H.jsx)(`button`,{onClick:()=>{let t=window.prompt(`请输入文件夹名:`);t&&e.fs.mkdir(`/${t}`).then(c)},title:`根目录新建文件夹`,children:`📁+`}),(0,H.jsx)(`button`,{onClick:()=>{let t=window.prompt(`请输入文件名:`);t&&e.createFile(`/${t}`).then(c)},title:`根目录新建文件`,children:`📄+`})]})]}),(0,H.jsx)(`div`,{className:V.content,children:(0,H.jsx)(iL,{"aria-label":`项目资源文件树`,items:t,selectionMode:`single`,selectedKeys:a,onSelectionChange:o,onAction:t=>{let n=t;e?.fs.stat(n).then(t=>{if(t?.type!==`dir`)e.navigate(n);else{let e=new Set(r instanceof Set?r:[]);e.has(n)?e.delete(n):e.add(n),l(e)}})},expandedKeys:r,onExpandedChange:l,className:V.treeRoot,children:function e(t){return(0,H.jsxs)(dL,{id:t.id,textValue:t.name,className:V.treeItem,children:[(0,H.jsx)(cL,{children:(0,H.jsxs)(`div`,{className:V.itemContent,children:[(0,H.jsxs)(`div`,{className:V.itemMain,children:[t.isDir&&(0,H.jsx)(E,{slot:`chevron`,className:V.chevron,children:r!==`all`&&r.has(t.id)?`▾`:`▸`}),!t.isDir&&(0,H.jsx)(`span`,{className:V.chevron}),(0,H.jsx)(`span`,{className:V.icon,children:t.isDir?`📁`:`📄`}),(0,H.jsx)(`span`,{className:V.name,children:t.name})]}),(0,H.jsx)(E,{className:V.deleteBtn,onPress:()=>u(t.id),children:`×`})]})}),(0,H.jsx)(j,{items:t.children,children:e})]})}})})]})}),vL=`_editorContainer_193du_1`,yL=`_editorWrapper_193du_7`,bL=`_common-editor_193du_12`,xL=`_hidden_193du_17`,SL={editorContainer:vL,editorWrapper:yL,"common-editor":`_common-editor_193du_12`,commonEditor:bL,hidden:xL},CL=e({cssDefaults:()=>DL,lessDefaults:()=>kL,scssDefaults:()=>OL}),wL=class{constructor(e,t,n){this._onDidChange=new Ee,this._languageId=e,this.setOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get modeConfiguration(){return this._modeConfiguration}get diagnosticsOptions(){return this.options}get options(){return this._options}setOptions(e){this._options=e||Object.create(null),this._onDidChange.fire(this)}setDiagnosticsOptions(e){this.setOptions(e)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}},TL={validate:!0,lint:{compatibleVendorPrefixes:`ignore`,vendorPrefix:`warning`,duplicateProperties:`warning`,emptyRules:`warning`,importStatement:`ignore`,boxModel:`ignore`,universalSelector:`ignore`,zeroUnits:`ignore`,fontFaceProperties:`warning`,hexColorLength:`error`,argumentsInColorFunction:`error`,unknownProperties:`warning`,ieHack:`ignore`,unknownVendorSpecificProperties:`ignore`,propertyIgnoredDueToDisplay:`warning`,important:`ignore`,float:`ignore`,idSelector:`ignore`},data:{useDefaultDataProvider:!0},format:{newlineBetweenSelectors:!0,newlineBetweenRules:!0,spaceAroundSelectorSeparator:!1,braceStyle:`collapse`,maxPreserveNewLines:void 0,preserveNewLines:!0}},EL={completionItems:!0,hovers:!0,documentSymbols:!0,definitions:!0,references:!0,documentHighlights:!0,rename:!0,colors:!0,foldingRanges:!0,diagnostics:!0,selectionRanges:!0,documentFormattingEdits:!0,documentRangeFormattingEdits:!0},DL=new wL(`css`,TL,EL),OL=new wL(`scss`,TL,EL),kL=new wL(`less`,TL,EL);function AL(){return F(()=>import(`./cssMode-bjVstD6w.js`),__vite__mapDeps([0,1,2,3,4,5]),import.meta.url)}R.onLanguage(`less`,()=>{AL().then(e=>e.setupMode(kL))}),R.onLanguage(`scss`,()=>{AL().then(e=>e.setupMode(OL))}),R.onLanguage(`css`,()=>{AL().then(e=>e.setupMode(DL))});var jL=e({handlebarDefaults:()=>VL,handlebarLanguageService:()=>BL,htmlDefaults:()=>zL,htmlLanguageService:()=>RL,razorDefaults:()=>UL,razorLanguageService:()=>HL,registerHTMLLanguageService:()=>GL}),ML=class{constructor(e,t,n){this._onDidChange=new Ee,this._languageId=e,this.setOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get options(){return this._options}get modeConfiguration(){return this._modeConfiguration}setOptions(e){this._options=e||Object.create(null),this._onDidChange.fire(this)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}},NL={format:{tabSize:4,insertSpaces:!1,wrapLineLength:120,unformatted:`default": "a, abbr, acronym, b, bdo, big, br, button, cite, code, dfn, em, i, img, input, kbd, label, map, object, q, samp, select, small, span, strong, sub, sup, textarea, tt, var`,contentUnformatted:`pre`,indentInnerHtml:!1,preserveNewLines:!0,maxPreserveNewLines:void 0,indentHandlebars:!1,endWithNewline:!1,extraLiners:`head, body, /html`,wrapAttributes:`auto`},suggest:{},data:{useDefaultDataProvider:!0}};function PL(e){return{completionItems:!0,hovers:!0,documentSymbols:!0,links:!0,documentHighlights:!0,rename:!0,colors:!0,foldingRanges:!0,selectionRanges:!0,diagnostics:e===FL,documentFormattingEdits:e===FL,documentRangeFormattingEdits:e===FL}}var FL=`html`,IL=`handlebars`,LL=`razor`,RL=GL(FL,NL,PL(FL)),zL=RL.defaults,BL=GL(IL,NL,PL(IL)),VL=BL.defaults,HL=GL(LL,NL,PL(LL)),UL=HL.defaults;function WL(){return F(()=>import(`./htmlMode-CYhe96Bh.js`),__vite__mapDeps([6,1,2,3,4,5]),import.meta.url)}function GL(e,t=NL,n=PL(e)){let r=new ML(e,t,n),i,a=R.onLanguage(e,async()=>{i=(await WL()).setupMode(r)});return{defaults:r,dispose(){a.dispose(),i?.dispose(),i=void 0}}}var KL=e({getWorker:()=>JL,jsonDefaults:()=>qL}),qL=new class{constructor(e,t,n){this._onDidChange=new Ee,this._languageId=e,this.setDiagnosticsOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get modeConfiguration(){return this._modeConfiguration}get diagnosticsOptions(){return this._diagnosticsOptions}setDiagnosticsOptions(e){this._diagnosticsOptions=e||Object.create(null),this._onDidChange.fire(this)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}}(`json`,{validate:!0,allowComments:!0,schemas:[],enableSchemaRequest:!1,schemaRequest:`warning`,schemaValidation:`warning`,comments:`error`,trailingCommas:`error`},{documentFormattingEdits:!0,documentRangeFormattingEdits:!0,completionItems:!0,hovers:!0,documentSymbols:!0,tokens:!0,colors:!0,foldingRanges:!0,diagnostics:!0,selectionRanges:!0}),JL=()=>YL().then(e=>e.getWorker());function YL(){return F(()=>import(`./jsonMode-BJl-hhCU.js`),__vite__mapDeps([7,1,2,3,4,5]),import.meta.url)}R.register({id:`json`,extensions:[`.json`,`.bowerrc`,`.jshintrc`,`.jscsrc`,`.eslintrc`,`.babelrc`,`.har`],aliases:[`JSON`,`json`],mimetypes:[`application/json`]}),R.onLanguage(`json`,()=>{YL().then(e=>e.setupMode(qL))});var XL={},ZL={},QL=class e{static getOrCreate(t){return ZL[t]||(ZL[t]=new e(t)),ZL[t]}constructor(e){this._languageId=e,this._loadingTriggered=!1,this._lazyLoadPromise=new Promise((e,t)=>{this._lazyLoadPromiseResolve=e,this._lazyLoadPromiseReject=t})}load(){return this._loadingTriggered||(this._loadingTriggered=!0,XL[this._languageId].loader().then(e=>this._lazyLoadPromiseResolve(e),e=>this._lazyLoadPromiseReject(e))),this._lazyLoadPromise}};function U(e){let t=e.id;XL[t]=e,R.register(e);let n=QL.getOrCreate(t);R.registerTokensProviderFactory(t,{create:async()=>(await n.load()).language}),R.onLanguageEncountered(t,async()=>{let e=await n.load();R.setLanguageConfiguration(t,e.conf)})}U({id:`abap`,extensions:[`.abap`],aliases:[`abap`,`ABAP`],loader:()=>F(()=>import(`./abap-BRVHlTbR.js`),[],import.meta.url)}),U({id:`apex`,extensions:[`.cls`],aliases:[`Apex`,`apex`],mimetypes:[`text/x-apex-source`,`text/x-apex`],loader:()=>F(()=>import(`./apex-GS4zZi0I.js`),[],import.meta.url)}),U({id:`azcli`,extensions:[`.azcli`],aliases:[`Azure CLI`,`azcli`],loader:()=>F(()=>import(`./azcli-TAZdLe_1.js`),[],import.meta.url)}),U({id:`bat`,extensions:[`.bat`,`.cmd`],aliases:[`Batch`,`bat`],loader:()=>F(()=>import(`./bat-BNHAuPwR.js`),[],import.meta.url)}),U({id:`bicep`,extensions:[`.bicep`],aliases:[`Bicep`],loader:()=>F(()=>import(`./bicep-BAoj49ib.js`),[],import.meta.url)}),U({id:`cameligo`,extensions:[`.mligo`],aliases:[`Cameligo`],loader:()=>F(()=>import(`./cameligo-gupdI4nQ.js`),[],import.meta.url)}),U({id:`clojure`,extensions:[`.clj`,`.cljs`,`.cljc`,`.edn`],aliases:[`clojure`,`Clojure`],loader:()=>F(()=>import(`./clojure-Bfa7OrL3.js`),[],import.meta.url)}),U({id:`coffeescript`,extensions:[`.coffee`],aliases:[`CoffeeScript`,`coffeescript`,`coffee`],mimetypes:[`text/x-coffeescript`,`text/coffeescript`],loader:()=>F(()=>import(`./coffee-B0FZSSpt.js`),[],import.meta.url)}),U({id:`c`,extensions:[`.c`,`.h`],aliases:[`C`,`c`],loader:()=>F(()=>import(`./cpp-_-gj_ws2.js`),[],import.meta.url)}),U({id:`cpp`,extensions:[`.cpp`,`.cc`,`.cxx`,`.hpp`,`.hh`,`.hxx`],aliases:[`C++`,`Cpp`,`cpp`],loader:()=>F(()=>import(`./cpp-_-gj_ws2.js`),[],import.meta.url)}),U({id:`csharp`,extensions:[`.cs`,`.csx`,`.cake`],aliases:[`C#`,`csharp`],loader:()=>F(()=>import(`./csharp-BlRNCFE9.js`),[],import.meta.url)}),U({id:`csp`,extensions:[`.csp`],aliases:[`CSP`,`csp`],loader:()=>F(()=>import(`./csp-B2Z5Y_Sf.js`),[],import.meta.url)}),U({id:`css`,extensions:[`.css`],aliases:[`CSS`,`css`],mimetypes:[`text/css`],loader:()=>F(()=>import(`./css-BmeubtOS.js`),[],import.meta.url)}),U({id:`cypher`,extensions:[`.cypher`,`.cyp`],aliases:[`Cypher`,`OpenCypher`],loader:()=>F(()=>import(`./cypher-PFHDKyaL.js`),[],import.meta.url)}),U({id:`dart`,extensions:[`.dart`],aliases:[`Dart`,`dart`],mimetypes:[`text/x-dart-source`,`text/x-dart`],loader:()=>F(()=>import(`./dart-BwvfliPc.js`),[],import.meta.url)}),U({id:`dockerfile`,extensions:[`.dockerfile`],filenames:[`Dockerfile`],aliases:[`Dockerfile`],loader:()=>F(()=>import(`./dockerfile-Y-SfPMKb.js`),[],import.meta.url)}),U({id:`ecl`,extensions:[`.ecl`],aliases:[`ECL`,`Ecl`,`ecl`],loader:()=>F(()=>import(`./ecl-BLLFWuTF.js`),[],import.meta.url)}),U({id:`elixir`,extensions:[`.ex`,`.exs`],aliases:[`Elixir`,`elixir`,`ex`],loader:()=>F(()=>import(`./elixir-xXCAglHV.js`),[],import.meta.url)}),U({id:`flow9`,extensions:[`.flow`],aliases:[`Flow9`,`Flow`,`flow9`,`flow`],loader:()=>F(()=>import(`./flow9-CVf6ZIck.js`),[],import.meta.url)}),U({id:`fsharp`,extensions:[`.fs`,`.fsi`,`.ml`,`.mli`,`.fsx`,`.fsscript`],aliases:[`F#`,`FSharp`,`fsharp`],loader:()=>F(()=>import(`./fsharp-CJD6fImD.js`),[],import.meta.url)}),U({id:`freemarker2`,extensions:[`.ftl`,`.ftlh`,`.ftlx`],aliases:[`FreeMarker2`,`Apache FreeMarker2`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-angle.interpolation-dollar`,aliases:[`FreeMarker2 (Angle/Dollar)`,`Apache FreeMarker2 (Angle/Dollar)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAngleInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-bracket.interpolation-dollar`,aliases:[`FreeMarker2 (Bracket/Dollar)`,`Apache FreeMarker2 (Bracket/Dollar)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagBracketInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-angle.interpolation-bracket`,aliases:[`FreeMarker2 (Angle/Bracket)`,`Apache FreeMarker2 (Angle/Bracket)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAngleInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-bracket.interpolation-bracket`,aliases:[`FreeMarker2 (Bracket/Bracket)`,`Apache FreeMarker2 (Bracket/Bracket)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagBracketInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-auto.interpolation-dollar`,aliases:[`FreeMarker2 (Auto/Dollar)`,`Apache FreeMarker2 (Auto/Dollar)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-auto.interpolation-bracket`,aliases:[`FreeMarker2 (Auto/Bracket)`,`Apache FreeMarker2 (Auto/Bracket)`],loader:()=>F(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`go`,extensions:[`.go`],aliases:[`Go`],loader:()=>F(()=>import(`./go-jUCqQ7bD.js`),[],import.meta.url)}),U({id:`graphql`,extensions:[`.graphql`,`.gql`],aliases:[`GraphQL`,`graphql`,`gql`],mimetypes:[`application/graphql`],loader:()=>F(()=>import(`./graphql-rw7g9h7D.js`),[],import.meta.url)}),U({id:`handlebars`,extensions:[`.handlebars`,`.hbs`],aliases:[`Handlebars`,`handlebars`,`hbs`],mimetypes:[`text/x-handlebars-template`],loader:()=>F(()=>import(`./handlebars-CedOVtB6.js`),__vite__mapDeps([9,2,3,4]),import.meta.url)}),U({id:`hcl`,extensions:[`.tf`,`.tfvars`,`.hcl`],aliases:[`Terraform`,`tf`,`HCL`,`hcl`],loader:()=>F(()=>import(`./hcl-BKX27Mn7.js`),[],import.meta.url)}),U({id:`html`,extensions:[`.html`,`.htm`,`.shtml`,`.xhtml`,`.mdoc`,`.jsp`,`.asp`,`.aspx`,`.jshtm`],aliases:[`HTML`,`htm`,`html`,`xhtml`],mimetypes:[`text/html`,`text/x-jshtm`,`text/template`,`text/ng-template`],loader:()=>F(()=>import(`./html-D8qUINp1.js`),__vite__mapDeps([10,2,3,4]),import.meta.url)}),U({id:`ini`,extensions:[`.ini`,`.properties`,`.gitconfig`],filenames:[`config`,`.gitattributes`,`.gitconfig`,`.editorconfig`],aliases:[`Ini`,`ini`],loader:()=>F(()=>import(`./ini-CrXjga2H.js`),[],import.meta.url)}),U({id:`java`,extensions:[`.java`,`.jav`],aliases:[`Java`,`java`],mimetypes:[`text/x-java-source`,`text/x-java`],loader:()=>F(()=>import(`./java-D4jksGBb.js`),[],import.meta.url)}),U({id:`javascript`,extensions:[`.js`,`.es6`,`.jsx`,`.mjs`,`.cjs`],firstLine:`^#!.*\\bnode`,filenames:[`jakefile`],aliases:[`JavaScript`,`javascript`,`js`],mimetypes:[`text/javascript`],loader:()=>F(()=>import(`./javascript-BrQ4NwDL.js`),__vite__mapDeps([11,2,3,4,12]),import.meta.url)}),U({id:`julia`,extensions:[`.jl`],aliases:[`julia`,`Julia`],loader:()=>F(()=>import(`./julia-CbWxfkeS.js`),[],import.meta.url)}),U({id:`kotlin`,extensions:[`.kt`,`.kts`],aliases:[`Kotlin`,`kotlin`],mimetypes:[`text/x-kotlin-source`,`text/x-kotlin`],loader:()=>F(()=>import(`./kotlin-CrQkDI41.js`),[],import.meta.url)}),U({id:`less`,extensions:[`.less`],aliases:[`Less`,`less`],mimetypes:[`text/x-less`,`text/less`],loader:()=>F(()=>import(`./less-DFzn-zC9.js`),[],import.meta.url)}),U({id:`lexon`,extensions:[`.lex`],aliases:[`Lexon`],loader:()=>F(()=>import(`./lexon-C-w-W8Yv.js`),[],import.meta.url)}),U({id:`lua`,extensions:[`.lua`],aliases:[`Lua`,`lua`],loader:()=>F(()=>import(`./lua-CHuE_HoG.js`),[],import.meta.url)}),U({id:`liquid`,extensions:[`.liquid`,`.html.liquid`],aliases:[`Liquid`,`liquid`],mimetypes:[`application/liquid`],loader:()=>F(()=>import(`./liquid-7_RhWSPP.js`),__vite__mapDeps([13,2,3,4]),import.meta.url)}),U({id:`m3`,extensions:[`.m3`,`.i3`,`.mg`,`.ig`],aliases:[`Modula-3`,`Modula3`,`modula3`,`m3`],loader:()=>F(()=>import(`./m3-DEFZN2qS.js`),[],import.meta.url)}),U({id:`markdown`,extensions:[`.md`,`.markdown`,`.mdown`,`.mkdn`,`.mkd`,`.mdwn`,`.mdtxt`,`.mdtext`],aliases:[`Markdown`,`markdown`],loader:()=>F(()=>import(`./markdown-Cbt4TlFt.js`),[],import.meta.url)}),U({id:`mdx`,extensions:[`.mdx`],aliases:[`MDX`,`mdx`],loader:()=>F(()=>import(`./mdx-DIo-gXm4.js`),__vite__mapDeps([14,2,3,4]),import.meta.url)}),U({id:`mips`,extensions:[`.s`],aliases:[`MIPS`,`MIPS-V`],mimetypes:[`text/x-mips`,`text/mips`,`text/plaintext`],loader:()=>F(()=>import(`./mips-C6m4XECw.js`),[],import.meta.url)}),U({id:`msdax`,extensions:[`.dax`,`.msdax`],aliases:[`DAX`,`MSDAX`],loader:()=>F(()=>import(`./msdax-un0CFb_S.js`),[],import.meta.url)}),U({id:`mysql`,extensions:[],aliases:[`MySQL`,`mysql`],loader:()=>F(()=>import(`./mysql-CuAPeiOV.js`),[],import.meta.url)}),U({id:`objective-c`,extensions:[`.m`],aliases:[`Objective-C`],loader:()=>F(()=>import(`./objective-c-DLVMdxAC.js`),[],import.meta.url)}),U({id:`pascal`,extensions:[`.pas`,`.p`,`.pp`],aliases:[`Pascal`,`pas`],mimetypes:[`text/x-pascal-source`,`text/x-pascal`],loader:()=>F(()=>import(`./pascal-BGCThuPY.js`),[],import.meta.url)}),U({id:`pascaligo`,extensions:[`.ligo`],aliases:[`Pascaligo`,`ligo`],loader:()=>F(()=>import(`./pascaligo-DfxSVpdo.js`),[],import.meta.url)}),U({id:`perl`,extensions:[`.pl`,`.pm`],aliases:[`Perl`,`pl`],loader:()=>F(()=>import(`./perl-BOE6y94t.js`),[],import.meta.url)}),U({id:`pgsql`,extensions:[],aliases:[`PostgreSQL`,`postgres`,`pg`,`postgre`],loader:()=>F(()=>import(`./pgsql-Dn7JkY4F.js`),[],import.meta.url)}),U({id:`php`,extensions:[`.php`,`.php4`,`.php5`,`.phtml`,`.ctp`],aliases:[`PHP`,`php`],mimetypes:[`application/x-php`],loader:()=>F(()=>import(`./php-r1gD0KyT.js`),[],import.meta.url)}),U({id:`pla`,extensions:[`.pla`],loader:()=>F(()=>import(`./pla-CgXknhb0.js`),[],import.meta.url)}),U({id:`postiats`,extensions:[`.dats`,`.sats`,`.hats`],aliases:[`ATS`,`ATS/Postiats`],loader:()=>F(()=>import(`./postiats-CsIEtnRB.js`),[],import.meta.url)}),U({id:`powerquery`,extensions:[`.pq`,`.pqm`],aliases:[`PQ`,`M`,`Power Query`,`Power Query M`],loader:()=>F(()=>import(`./powerquery-yNJCmC_6.js`),[],import.meta.url)}),U({id:`powershell`,extensions:[`.ps1`,`.psm1`,`.psd1`],aliases:[`PowerShell`,`powershell`,`ps`,`ps1`],loader:()=>F(()=>import(`./powershell-CQcz1SqH.js`),[],import.meta.url)}),U({id:`proto`,extensions:[`.proto`],aliases:[`protobuf`,`Protocol Buffers`],loader:()=>F(()=>import(`./protobuf-BmC34uvO.js`),[],import.meta.url)}),U({id:`pug`,extensions:[`.jade`,`.pug`],aliases:[`Pug`,`Jade`,`jade`],loader:()=>F(()=>import(`./pug-C20znvWM.js`),[],import.meta.url)}),U({id:`python`,extensions:[`.py`,`.rpy`,`.pyw`,`.cpy`,`.gyp`,`.gypi`],aliases:[`Python`,`py`],firstLine:`^#!/.*\\bpython[0-9.-]*\\b`,loader:()=>F(()=>import(`./python-BzqFd93L.js`),__vite__mapDeps([15,2,3,4]),import.meta.url)}),U({id:`qsharp`,extensions:[`.qs`],aliases:[`Q#`,`qsharp`],loader:()=>F(()=>import(`./qsharp-B7bnARMS.js`),[],import.meta.url)}),U({id:`r`,extensions:[`.r`,`.rhistory`,`.rmd`,`.rprofile`,`.rt`],aliases:[`R`,`r`],loader:()=>F(()=>import(`./r-ClvcLdqC.js`),[],import.meta.url)}),U({id:`razor`,extensions:[`.cshtml`],aliases:[`Razor`,`razor`],mimetypes:[`text/x-cshtml`],loader:()=>F(()=>import(`./razor-C0Y5YRy6.js`),__vite__mapDeps([16,2,3,4]),import.meta.url)}),U({id:`redis`,extensions:[`.redis`],aliases:[`redis`],loader:()=>F(()=>import(`./redis-DCyda7_S.js`),[],import.meta.url)}),U({id:`redshift`,extensions:[],aliases:[`Redshift`,`redshift`],loader:()=>F(()=>import(`./redshift-BtWDr4pb.js`),[],import.meta.url)}),U({id:`restructuredtext`,extensions:[`.rst`],aliases:[`reStructuredText`,`restructuredtext`],loader:()=>F(()=>import(`./restructuredtext-CLcnlkhl.js`),[],import.meta.url)}),U({id:`ruby`,extensions:[`.rb`,`.rbx`,`.rjs`,`.gemspec`,`.pp`],filenames:[`rakefile`,`Gemfile`],aliases:[`Ruby`,`rb`],loader:()=>F(()=>import(`./ruby-DY0SOSSZ.js`),[],import.meta.url)}),U({id:`rust`,extensions:[`.rs`,`.rlib`],aliases:[`Rust`,`rust`],loader:()=>F(()=>import(`./rust-JQd-fJZI.js`),[],import.meta.url)}),U({id:`sb`,extensions:[`.sb`],aliases:[`Small Basic`,`sb`],loader:()=>F(()=>import(`./sb-BV2j8yFF.js`),[],import.meta.url)}),U({id:`scala`,extensions:[`.scala`,`.sc`,`.sbt`],aliases:[`Scala`,`scala`,`SBT`,`Sbt`,`sbt`,`Dotty`,`dotty`],mimetypes:[`text/x-scala-source`,`text/x-scala`,`text/x-sbt`,`text/x-dotty`],loader:()=>F(()=>import(`./scala-DwbnREDs.js`),[],import.meta.url)}),U({id:`scheme`,extensions:[`.scm`,`.ss`,`.sch`,`.rkt`],aliases:[`scheme`,`Scheme`],loader:()=>F(()=>import(`./scheme-CrtA-vei.js`),[],import.meta.url)}),U({id:`scss`,extensions:[`.scss`],aliases:[`Sass`,`sass`,`scss`],mimetypes:[`text/x-scss`,`text/scss`],loader:()=>F(()=>import(`./scss-VxQz3zmI.js`),[],import.meta.url)}),U({id:`shell`,extensions:[`.sh`,`.bash`],aliases:[`Shell`,`sh`],loader:()=>F(()=>import(`./shell-CP9faqFI.js`),[],import.meta.url)}),U({id:`sol`,extensions:[`.sol`],aliases:[`sol`,`solidity`,`Solidity`],loader:()=>F(()=>import(`./solidity-9IIb0b89.js`),[],import.meta.url)}),U({id:`aes`,extensions:[`.aes`],aliases:[`aes`,`sophia`,`Sophia`],loader:()=>F(()=>import(`./sophia-D2LQU2AD.js`),[],import.meta.url)}),U({id:`sparql`,extensions:[`.rq`],aliases:[`sparql`,`SPARQL`],loader:()=>F(()=>import(`./sparql-DONCa5dy.js`),[],import.meta.url)}),U({id:`sql`,extensions:[`.sql`],aliases:[`SQL`],loader:()=>F(()=>import(`./sql-DaAAHGEt.js`),[],import.meta.url)}),U({id:`st`,extensions:[`.st`,`.iecst`,`.iecplc`,`.lc3lib`,`.TcPOU`,`.TcDUT`,`.TcGVL`,`.TcIO`],aliases:[`StructuredText`,`scl`,`stl`],loader:()=>F(()=>import(`./st-CRY2V-j3.js`),[],import.meta.url)}),U({id:`swift`,aliases:[`Swift`,`swift`],extensions:[`.swift`],mimetypes:[`text/swift`],loader:()=>F(()=>import(`./swift-BlKbfloF.js`),[],import.meta.url)}),U({id:`systemverilog`,extensions:[`.sv`,`.svh`],aliases:[`SV`,`sv`,`SystemVerilog`,`systemverilog`],loader:()=>F(()=>import(`./systemverilog-B_h9Q_T_.js`),[],import.meta.url)}),U({id:`verilog`,extensions:[`.v`,`.vh`],aliases:[`V`,`v`,`Verilog`,`verilog`],loader:()=>F(()=>import(`./systemverilog-B_h9Q_T_.js`),[],import.meta.url)}),U({id:`tcl`,extensions:[`.tcl`],aliases:[`tcl`,`Tcl`,`tcltk`,`TclTk`,`tcl/tk`,`Tcl/Tk`],loader:()=>F(()=>import(`./tcl-C4wN3A6M.js`),[],import.meta.url)}),U({id:`twig`,extensions:[`.twig`],aliases:[`Twig`,`twig`],mimetypes:[`text/x-twig`],loader:()=>F(()=>import(`./twig-DDdaBLC9.js`),[],import.meta.url)}),U({id:`typescript`,extensions:[`.ts`,`.tsx`,`.cts`,`.mts`],aliases:[`TypeScript`,`ts`,`typescript`],mimetypes:[`text/typescript`],loader:()=>F(()=>import(`./typescript-CFpAkoUR.js`),__vite__mapDeps([12,2,3,4]),import.meta.url)}),U({id:`typespec`,extensions:[`.tsp`],aliases:[`TypeSpec`],loader:()=>F(()=>import(`./typespec-Dc1ipt8A.js`),[],import.meta.url)}),U({id:`vb`,extensions:[`.vb`],aliases:[`Visual Basic`,`vb`],loader:()=>F(()=>import(`./vb-C4BXIvrh.js`),[],import.meta.url)}),U({id:`wgsl`,extensions:[`.wgsl`],aliases:[`WebGPU Shading Language`,`WGSL`,`wgsl`],loader:()=>F(()=>import(`./wgsl-XVg3Pi-r.js`),[],import.meta.url)}),U({id:`xml`,extensions:[`.xml`,`.xsd`,`.dtd`,`.ascx`,`.csproj`,`.config`,`.props`,`.targets`,`.wxi`,`.wxl`,`.wxs`,`.xaml`,`.svg`,`.svgz`,`.opf`,`.xslt`,`.xsl`],firstLine:`(\\<\\?xml.*)|(\\<svg)|(\\<\\!doctype\\s+svg)`,aliases:[`XML`,`xml`],mimetypes:[`text/xml`,`application/xml`,`application/xaml+xml`,`application/xml-dtd`],loader:()=>F(()=>import(`./xml-CYIaI6jB.js`),__vite__mapDeps([17,2,3,4]),import.meta.url)}),U({id:`yaml`,extensions:[`.yaml`,`.yml`],aliases:[`YAML`,`yaml`,`YML`,`yml`],mimetypes:[`application/x-yaml`,`text/x-yaml`],loader:()=>F(()=>import(`./yaml-Ki9FYBhW.js`),__vite__mapDeps([18,2,3,4]),import.meta.url)});var $L=Object.defineProperty,eR=(e,t,n)=>t in e?$L(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,W=(e,t,n)=>eR(e,typeof t==`symbol`?t:t+``,n),tR,nR,rR,iR,aR;function oR(e){return e.method!==void 0}var sR;(function(e){function t(e){return e}e.create=t})(sR||={});var G;(function(e){e.parseError=-32700,e.invalidRequest=-32600,e.methodNotFound=-32601,e.invalidParams=-32602,e.internalError=-32603;function t(e){return-32099<=e&&e<=-32e3}e.isServerError=t;function n(e){if(!t(e))throw Error(`Invalid range for a server error.`);return e}e.serverError=n,e.unexpectedServerError=-32e3;function r(e){return!0}e.isApplicationError=r;function i(e){return e}e.applicationError=i,e.genericApplicationError=-320100})(G||={});var cR=class{constructor(){W(this,`listeners`,new Set),W(this,`event`,e=>(this.listeners.add(e),{dispose:()=>{this.listeners.delete(e)}}))}fire(e){this.listeners.forEach(t=>t(e))}},lR=class{constructor(e){W(this,`_value`),W(this,`eventEmitter`),this._value=e,this.eventEmitter=new cR}get value(){return this._value}set value(e){this._value!==e&&(this._value=e,this.eventEmitter.fire(e))}get onChange(){return this.eventEmitter.event}};function uR(e,t){let n=setTimeout(t,e);return{dispose:()=>clearTimeout(n)}}function dR(e,t,n){return e instanceof Set?(e.add(t),{dispose:()=>e.delete(t)}):(e.set(t,n),{dispose:()=>e.delete(t)})}var fR=class{constructor(){W(this,`_state`,`none`),W(this,`promise`),W(this,`resolve`,()=>{}),W(this,`reject`,()=>{}),this.promise=new Promise((e,t)=>{this.resolve=e,this.reject=t})}get state(){return this._state}};tR=class{constructor(){W(this,`_unprocessedMessages`,[]),W(this,`_messageListener`),W(this,`id`,tR.id++),W(this,`_state`,new lR({state:`open`})),W(this,`state`,this._state)}setListener(e){if(this._messageListener=e,e)for(;this._unprocessedMessages.length>0&&this._messageListener!==void 0;){let e=this._unprocessedMessages.shift();this._messageListener(e)}}send(e){return this._sendImpl(e)}_dispatchReceivedMessage(e){this._unprocessedMessages.length===0&&this._messageListener?this._messageListener(e):this._unprocessedMessages.push(e)}_onConnectionClosed(){this._state.value={state:`closed`,error:void 0}}log(e){return new pR(this,e??new mR)}},W(tR,`id`,0);var pR=class{constructor(e,t){W(this,`baseStream`),W(this,`logger`),this.baseStream=e,this.logger=t}get state(){return this.baseStream.state}setListener(e){if(e===void 0){this.baseStream.setListener(void 0);return}this.baseStream.setListener(t=>{this.logger.log(this.baseStream,`incoming`,t),e(t)})}send(e){return this.logger.log(this.baseStream,`outgoing`,e),this.baseStream.send(e)}toString(){return`StreamLogger/${this.baseStream.toString()}`}},mR=class{log(e,t,n){console.log(`${t===`incoming`?`<-`:`->`} [${e.toString()}] ${JSON.stringify(n)}`)}},hR=class e{constructor(e){W(this,`connect`),this.connect=e}mapContext(t){return new e(e=>this.connect(e?gR(e,t):void 0))}};function gR(e,t){return{handleNotification:(n,r)=>e.handleNotification(n,t(r)),handleRequest:(n,r,i)=>e.handleRequest(n,r,t(i))}}var _R=class e{constructor(e,t,n){W(this,`_stream`),W(this,`_listener`),W(this,`_logger`),W(this,`_unprocessedResponses`,new Map),W(this,`_lastUsedRequestId`,0),this._stream=e,this._listener=t,this._logger=n,this._stream.setListener(e=>{oR(e)?e.id===void 0?this._processNotification(e):this._processRequest(e):this._processResponse(e)})}static createChannel(t,n){let r=!1;return new hR(i=>{if(r)throw Error(`A channel to the stream ${t} was already constructed!`);return r=!0,new e(t,i,n)})}get state(){return this._stream.state}async _processNotification(e){if(e.id!==void 0)throw Error();if(!this._listener){this._logger&&this._logger.debug({text:`Notification ignored`,message:e});return}try{await this._listener.handleNotification({method:e.method,params:e.params||null})}catch(t){this._logger&&this._logger.warn({text:`Exception was thrown while handling notification: ${t}`,exception:t,message:e})}}async _processRequest(e){if(e.id===void 0)throw Error();let t;if(this._listener)try{t=await this._listener.handleRequest({method:e.method,params:e.params||null},e.id)}catch(n){this._logger&&this._logger.warn({text:`Exception was thrown while handling request: ${n}`,message:e,exception:n}),t={error:{code:G.internalError,message:`An unexpected exception was thrown.`,data:void 0}}}else this._logger&&this._logger.debug({text:`Received request even though not listening for requests`,message:e}),t={error:{code:G.methodNotFound,message:`This endpoint does not listen for requests or notifications.`,data:void 0}};let n;n=`result`in t?{jsonrpc:`2.0`,id:e.id,result:t.result}:{jsonrpc:`2.0`,id:e.id,error:t.error},await this._stream.send(n)}_processResponse(e){let t=``+e.id,n=this._unprocessedResponses.get(t);if(!n){this._logger&&this._logger.debug({text:`Got an unexpected response message`,message:e});return}this._unprocessedResponses.delete(t),n(e)}_newRequestId(){return this._lastUsedRequestId++}sendRequest(e,t,n){let r={jsonrpc:`2.0`,id:this._newRequestId(),method:e.method,params:e.params||void 0};return n&&n(r.id),new Promise((e,t)=>{let n=``+r.id;this._unprocessedResponses.set(n,n=>{`result`in n?e({result:n.result}):(n.error||t(Error(`Response had neither 'result' nor 'error' field set.`)),e({error:n.error}))}),this._stream.send(r).then(void 0,e=>{this._unprocessedResponses.delete(n),t(e)})})}sendNotification(e,t){let n={jsonrpc:`2.0`,id:void 0,method:e.method,params:e.params||void 0};return this._stream.send(n)}toString(){return`StreamChannel/`+this._stream.toString()}},K;(function(e){function t(){return{deserializeFromJson:e=>({hasErrors:!1,value:e}),serializeToJson:e=>e}}e.sAny=t;function n(){return{deserializeFromJson:e=>({hasErrors:!1,value:{}}),serializeToJson:e=>({})}}e.sEmptyObject=n;function r(){return{deserializeFromJson:e=>({hasErrors:!1,value:void 0}),serializeToJson:e=>null}}e.sVoidFromNull=r})(K||={});var vR=Symbol(`OptionalMethodNotFound`),yR=class{contextualize(e){return new bR(this,e)}},bR=class extends yR{constructor(e,t){super(),W(this,`underylingTypedChannel`),W(this,`converters`),this.underylingTypedChannel=e,this.converters=t}async request(e,t,n){let r=await this.converters.getSendContext(n);return this.underylingTypedChannel.request(e,t,r)}async notify(e,t,n){let r=await this.converters.getSendContext(n);return this.underylingTypedChannel.notify(e,t,r)}registerNotificationHandler(e,t){return this.underylingTypedChannel.registerNotificationHandler(e,async(e,n)=>await t(e,await this.converters.getNewContext(n)))}registerRequestHandler(e,t){return this.underylingTypedChannel.registerRequestHandler(e,async(e,n,r)=>await t(e,n,await this.converters.getNewContext(r)))}},xR=class e extends yR{constructor(e,t={}){super(),W(this,`channelCtor`),W(this,`_requestSender`),W(this,`_handler`,new Map),W(this,`_unknownNotificationHandler`,new Set),W(this,`_timeout`),W(this,`sendExceptionDetails`,!1),W(this,`_logger`),W(this,`listeningDeferred`,new fR),W(this,`onListening`,this.listeningDeferred.promise),W(this,`_requestDidErrorEventEmitter`,new cR),W(this,`onRequestDidError`,this._requestDidErrorEventEmitter.event),this.channelCtor=e,this._logger=t.logger,this.sendExceptionDetails=!!t.sendExceptionDetails,this._timeout=uR(1e3,()=>{this._requestSender||console.warn(`"${this.startListen.name}" has not been called within 1 second after construction of this channel. Did you forget to call it?`,this)})}static fromTransport(t,n={}){return new e(_R.createChannel(t,n.logger),n)}startListen(){if(this._requestSender)throw Error(`"${this.startListen.name}" can be called only once, but it already has been called.`);this._timeout&&=(this._timeout.dispose(),void 0),this._requestSender=this.channelCtor.connect({handleRequest:(e,t,n)=>this.handleRequest(e,t,n),handleNotification:(e,t)=>this.handleNotification(e,t)}),this.listeningDeferred.resolve()}checkChannel(e){if(!e)throw Error(`"${this.startListen.name}" must be called before any messages can be sent or received.`);return!0}async handleRequest(e,t,n){let r=this._handler.get(e.method);if(!r)return this._logger&&this._logger.debug({text:`No request handler for "${e.method}".`,data:{requestObject:e}}),{error:{code:G.methodNotFound,message:`No request handler for "${e.method}".`,data:{method:e.method}}};if(r.kind!=`request`){let t=`"${e.method}" is registered as notification, but was sent as request.`;return this._logger&&this._logger.debug({text:t,data:{requestObject:e}}),{error:{code:G.invalidRequest,message:t,data:{method:e.method}}}}let i=r.requestType.paramsSerializer.deserializeFromJson(e.params);if(i.hasErrors){let t=`Got invalid params: ${i.errorMessage}`;return this._logger&&this._logger.debug({text:t,data:{requestObject:e,errorMessage:i.errorMessage}}),{error:{code:G.invalidParams,message:t,data:{errors:i.errorMessage}}}}else{let a=i.value,o;try{let e=await r.handler(a,t,n);if(`error`in e||`errorMessage`in e){let t=e.error?r.requestType.errorSerializer.serializeToJson(e.error):void 0;o={error:{code:e.errorCode||G.genericApplicationError,message:e.errorMessage||`An error was returned`,data:t}}}else o={result:r.requestType.resultSerializer.serializeToJson(e.ok)}}catch(t){t instanceof CR?o={error:{code:t.code,message:t.message}}:(this._logger&&this._logger.warn({text:`An exception was thrown while handling a request: ${t}.`,exception:t,data:{requestObject:e}}),o={error:{code:G.unexpectedServerError,message:this.sendExceptionDetails?`An exception was thrown while handling a request: ${t}.`:`Server has thrown an unexpected exception`}})}return o}}async handleNotification(e,t){let n=this._handler.get(e.method);if(!n){for(let t of this._unknownNotificationHandler)t(e);this._unknownNotificationHandler.size===0&&this._logger&&this._logger.debug({text:`Unhandled notification "${e.method}"`,data:{requestObject:e}});return}if(n.kind!=`notification`){this._logger&&this._logger.debug({text:`"${e.method}" is registered as request, but was sent as notification.`,data:{requestObject:e}});return}let r=n.notificationType.paramsSerializer.deserializeFromJson(e.params);if(r.hasErrors){this._logger&&this._logger.debug({text:`Got invalid params: ${r}`,data:{requestObject:e,errorMessage:r.errorMessage}});return}let i=r.value;for(let r of n.handlers)try{r(i,t)}catch(t){this._logger&&this._logger.warn({text:`An exception was thrown while handling a notification: ${t}.`,exception:t,data:{requestObject:e}})}}registerUnknownNotificationHandler(e){return dR(this._unknownNotificationHandler,e)}registerRequestHandler(e,t){if(this._handler.get(e.method))throw Error(`Handler with method "${e.method}" already registered.`);return dR(this._handler,e.method,{kind:`request`,requestType:e,handler:t})}registerNotificationHandler(e,t){let n=this._handler.get(e.method);if(!n)n={kind:`notification`,notificationType:e,handlers:new Set},this._handler.set(e.method,n);else{if(n.kind!==`notification`)throw Error(`Method "${e.method}" was already registered as request handler.`);if(n.notificationType!==e)throw Error(`Method "${e.method}" was registered for a different type.`)}return dR(n.handlers,t)}getRegisteredTypes(){let e=[];for(let t of this._handler.values())t.kind===`notification`?e.push(t.notificationType):t.kind===`request`&&e.push(t.requestType);return e}async request(e,t,n){if(!this.checkChannel(this._requestSender))throw Error(`Impossible`);let r=e.paramsSerializer.serializeToJson(t);SR(r);let i=await this._requestSender.sendRequest({method:e.method,params:r},n);if(`error`in i){if(e.isOptional&&i.error.code===G.methodNotFound)return vR;let t;if(i.error.data!==void 0){let n=e.errorSerializer.deserializeFromJson(i.error.data);if(n.hasErrors)throw Error(n.errorMessage);t=n.value}else t=void 0;let n=new CR(i.error.message,t,i.error.code);throw this._requestDidErrorEventEmitter.fire({error:n}),n}else{let t=e.resultSerializer.deserializeFromJson(i.result);if(t.hasErrors)throw Error(`Could not deserialize response: `+t.errorMessage+`
+`,z=class e extends P{static EventType={FILE_CHANGED:Symbol(`onFileChanged`),STRUCTURE_CHANGED:Symbol(`onStructureChanged`)};currentFile=null;currentDir=`/`;initPromise=null;fs;rootPath;constructor(e,t){super(),this.fs=e,this.rootPath=t,this.initPromise=this.initializeDefaultFile()}get privatePath(){return this.rootPath}async initializeDefaultFile(){let t=Object.assign({"../appTemplate/Component.ts":aI,"../appTemplate/CustomEnv.ts":oI,"../appTemplate/Player.ts":sI,"../appTemplate/main.ts":cI});for(let e in t){let n=t[e],r=e.split(`/`).pop(),i=`${this.privatePath}/${r}`;await this.fs.exists(i)||await this.fs.writeFile(i,n)}let n=`${this.privatePath}/main.ts`;await this.fs.exists(n)&&(this.currentFile={path:n,content:await this.fs.readFile(n),language:`typescript`},this.emit(e.EventType.FILE_CHANGED,n))}async createFile(t){await this.initPromise;let n=await this.fs.readdir(this.privatePath),r=t||`file${n.length+1}.ts`,i=`${this.privatePath}/${r}`;await this.fs.writeFile(i,``),this.emit(e.EventType.STRUCTURE_CHANGED,i),await this.openFile(i)}async deleteFile(t){await this.initPromise,await this.fs.unlink(t),this.currentFile?.path===t?(this.currentFile=null,await this.initializeDefaultFile()):(this.emit(e.EventType.STRUCTURE_CHANGED,t),this.emit(e.EventType.FILE_CHANGED,t))}async openFile(t){await this.initPromise,await this.fs.exists(t)&&(this.currentFile={path:t,content:await this.fs.readFile(t),language:`typescript`},this.emit(e.EventType.FILE_CHANGED,t))}async readFile(e){return await this.initPromise,await this.fs.exists(e)?{path:e,content:await this.fs.readFile(e),language:`typescript`}:null}async writeFile(e,t){await this.initPromise,await this.fs.writeFile(e,t),this.currentFile?.path===e&&(this.currentFile.content=t)}async navigate(t){await this.initPromise;let n=await this.fs.stat(t);n&&n.type===`dir`?(this.currentDir=t,this.emit(e.EventType.FILE_CHANGED)):await this.openFile(t)}async fetchFiles(){await this.initPromise;let e=await this.fs.readdir(this.currentDir);return(await Promise.all(e.map(async e=>{let t=this.currentDir===`/`?`/${e}`:`${this.currentDir}/${e}`;return{name:e,path:t,isDir:(await this.fs.stat(t))?.type===`dir`}}))).sort((e,t)=>e.isDir&&!t.isDir?-1:!e.isDir&&t.isDir?1:e.name.localeCompare(t.name))}async listFiles(){return await this.initPromise,this.fs.readdir(this.currentDir)}get code(){return this.currentFile?.content||``}},lI=(0,R.createContext)(null);function uI(e,t){var n=typeof Symbol==`function`&&e[Symbol.iterator];if(!n)return e;var r=n.call(e),i,a=[],o;try{for(;(t===void 0||t-- >0)&&!(i=r.next()).done;)a.push(i.value)}catch(e){o={error:e}}finally{try{i&&!i.done&&(n=r.return)&&n.call(r)}finally{if(o)throw o.error}}return a}function dI(e,t,n){if(n||arguments.length===2)for(var r=0,i=t.length,a;r<i;r++)(a||!(r in t))&&(a||=Array.prototype.slice.call(t,0,r),a[r]=t[r]);return e.concat(a||Array.prototype.slice.call(t))}function fI(e,t,n){let{gridProps:r}=A(e,t,n);return r.role=`treegrid`,{gridProps:r}}var pI={};pI={collapse:`طي`,expand:`تمديد`};var mI={};mI={collapse:`Свиване`,expand:`Разширяване`};var hI={};hI={collapse:`Sbalit`,expand:`Roztáhnout`};var gI={};gI={collapse:`Skjul`,expand:`Udvid`};var _I={};_I={collapse:`Reduzieren`,expand:`Erweitern`};var vI={};vI={collapse:`Σύμπτυξη`,expand:`Ανάπτυξη`};var yI={};yI={expand:`Expand`,collapse:`Collapse`};var bI={};bI={collapse:`Contraer`,expand:`Ampliar`};var xI={};xI={collapse:`Ahenda`,expand:`Laienda`};var SI={};SI={collapse:`Pienennä`,expand:`Laajenna`};var CI={};CI={collapse:`Réduire`,expand:`Développer`};var wI={};wI={collapse:`כווץ`,expand:`הרחב`};var TI={};TI={collapse:`Sažmi`,expand:`Proširi`};var EI={};EI={collapse:`Összecsukás`,expand:`Kibontás`};var DI={};DI={collapse:`Comprimi`,expand:`Espandi`};var OI={};OI={collapse:`折りたたむ`,expand:`展開`};var kI={};kI={collapse:`접기`,expand:`펼치기`};var AI={};AI={collapse:`Sutraukti`,expand:`Išskleisti`};var jI={};jI={collapse:`Sakļaut`,expand:`Izvērst`};var MI={};MI={collapse:`Skjul`,expand:`Utvid`};var NI={};NI={collapse:`Samenvouwen`,expand:`Uitvouwen`};var PI={};PI={collapse:`Zwiń`,expand:`Rozwiń`};var FI={};FI={collapse:`Recolher`,expand:`Expandir`};var II={};II={collapse:`Colapsar`,expand:`Expandir`};var LI={};LI={collapse:`Restrângeți`,expand:`Extindeți`};var RI={};RI={collapse:`Свернуть`,expand:`Развернуть`};var zI={};zI={collapse:`Zbaliť`,expand:`Rozbaliť`};var BI={};BI={collapse:`Strni`,expand:`Razširi`};var VI={};VI={collapse:` Skupi`,expand:`Proširi`};var HI={};HI={collapse:`Dölj`,expand:`Expandera`};var UI={};UI={collapse:`Daralt`,expand:`Genişlet`};var WI={};WI={collapse:`Згорнути`,expand:`Розгорнути`};var GI={};GI={collapse:`折叠`,expand:`扩展`};var KI={};KI={collapse:`收合`,expand:`展開`};var qI={};qI={"ar-AE":pI,"bg-BG":mI,"cs-CZ":hI,"da-DK":gI,"de-DE":_I,"el-GR":vI,"en-US":yI,"es-ES":bI,"et-EE":xI,"fi-FI":SI,"fr-FR":CI,"he-IL":wI,"hr-HR":TI,"hu-HU":EI,"it-IT":DI,"ja-JP":OI,"ko-KR":kI,"lt-LT":AI,"lv-LV":jI,"nb-NO":MI,"nl-NL":NI,"pl-PL":PI,"pt-BR":FI,"pt-PT":II,"ro-RO":LI,"ru-RU":RI,"sk-SK":zI,"sl-SI":BI,"sr-SP":VI,"sv-SE":HI,"tr-TR":UI,"uk-UA":WI,"zh-CN":GI,"zh-TW":KI};function JI(e){return e&&e.__esModule?e.default:e}function YI(e,t,n){let{node:r}=e,i=oe(e,t,n),a=i.rowProps[`aria-expanded`]===!0,o=m(JI(qI),`@react-aria/tree`),s=k({"aria-label":a?o.format(`collapse`):o.format(`expand`),"aria-labelledby":i.rowProps.id}),c={onPress:()=>{i.isDisabled||(t.toggleKey(r.key),t.selectionManager.setFocused(!0),t.selectionManager.setFocusedKey(r.key))},excludeFromTabOrder:!0,preventFocusOnPress:!0,"data-react-aria-prevent-focus":!0,...s};return{...i,expandButtonProps:c}}var XI=class{*[Symbol.iterator](){yield*this.iterable}get size(){return this.keyMap.size}getKeys(){return this.keyMap.keys()}getKeyBefore(e){let t=this.keyMap.get(e);return t?t.prevKey??null:null}getKeyAfter(e){let t=this.keyMap.get(e);return t?t.nextKey??null:null}getFirstKey(){return this.firstKey}getLastKey(){return this.lastKey}getItem(e){return this.keyMap.get(e)??null}at(e){let t=[...this.getKeys()];return this.getItem(t[e])}constructor(e,{expandedKeys:t}={}){this.keyMap=new Map,this.firstKey=null,this.lastKey=null,this.iterable=e,t||=new Set;let n=e=>{if(this.keyMap.set(e.key,e),e.childNodes&&(e.type===`section`||t.has(e.key)))for(let t of e.childNodes)n(t)};for(let t of e)n(t);let r=null,i=0;for(let[e,t]of this.keyMap)r?(r.nextKey=e,t.prevKey=r.key):(this.firstKey=e,t.prevKey=void 0),t.type===`item`&&(t.index=i++),r=t,r.nextKey=void 0;this.lastKey=r?.key??null}};function ZI(e){let{onExpandedChange:t}=e,[n,r]=S(e.expandedKeys?new Set(e.expandedKeys):void 0,e.defaultExpandedKeys?new Set(e.defaultExpandedKeys):new Set,t),i=T(e),a=(0,R.useMemo)(()=>e.disabledKeys?new Set(e.disabledKeys):new Set,[e.disabledKeys]),o=fe(e,(0,R.useCallback)(e=>new XI(e,{expandedKeys:n}),[n]),null);return(0,R.useEffect)(()=>{i.focusedKey!=null&&!o.getItem(i.focusedKey)&&i.setFocusedKey(null)},[o,i.focusedKey]),{collection:o,expandedKeys:n,disabledKeys:a,toggleKey:e=>{r(QI(n,e))},setExpandedKeys:r,selectionManager:new ue(o,i)}}function QI(e,t){let n=new Set(e);return n.has(t)?n.delete(t):n.add(t),n}var $I=10,eL=5,tL=class{setup(e,t,n){this.delegate=e,this.state=t,this.direction=n}getDropTargetFromPoint(e,t,n){let r=this.delegate.getDropTargetFromPoint(e,t,n);return!r||r.type===`root`?r:this.resolveDropTarget(r,e,t,n)}resolveDropTarget(e,t,n,r){let i=this.pointerTracking,a=n-i.lastY,o=t-i.lastX,s=i.yDirection,c=i.xDirection;if(Math.abs(a)>eL&&(s=a>0?`down`:`up`,i.yDirection=s,i.lastY=n),Math.abs(o)>$I&&(c=o>0?`right`:`left`,i.xDirection=c,i.lastX=t),e.dropPosition===`before`){let t=this.state.collection.getKeyBefore(e.key);if(t!=null){let n={type:`item`,key:t,dropPosition:`after`};r(n)&&(e=n)}}let l=this.getPotentialTargets(e,r);if(l.length===0)return{type:`root`};let u;return l.length>1?u=this.selectTarget(l,e,t,n,s,c):(u=l[0],i.boundaryContext=null),u}getPotentialTargets(e,t){if(e.dropPosition===`on`)return[e];let n=e,r=this.state.collection,i=r.getItem(n.key);for(;i&&i?.type!==`item`&&i.nextKey!=null;)n.key=i.nextKey,i=r.getItem(i.nextKey);let a=[n];if(i&&i.hasChildNodes&&this.state.expandedKeys.has(i.key)&&r.getChildren&&n.dropPosition===`after`){let e=null;for(let t of r.getChildren(i.key))if(t.type===`item`){e=t;break}if(e){let n={type:`item`,key:e.key,dropPosition:`before`};return t(n)?[n]:[]}}if(i?.nextKey!=null)return[e];let o=i?.parentKey,s=[];for(;o;){let e=r.getItem(o),n=e?.nextKey?r.getItem(e.nextKey):null;if(!n||n.parentKey!==o){let e={type:`item`,key:o,dropPosition:`after`};if(t(e)&&s.push(e),n)break}o=e?.parentKey}if(s.length>0&&a.push(...s),a.length===1){let e=r.getKeyAfter(n.key),a=e?r.getItem(e):null;if(e!=null&&a&&i&&a.level!=null&&i.level!=null&&a.level>i.level){let n={type:`item`,key:e,dropPosition:`before`};if(t(n))return[n]}}return a.filter(t)}selectTarget(e,t,n,r,i,a){if(e.length<2)return e[0];let o=this.pointerTracking,s=this.state.collection.getItem(t.key)?.parentKey;if(!s)return e[0];(!o.boundaryContext||o.boundaryContext.parentKey!==s)&&(o.boundaryContext={parentKey:s,preferredTargetIndex:o.yDirection===`up`?e.length-1:0,lastSwitchY:r,lastSwitchX:n});let c=o.boundaryContext,l=Math.abs(n-c.lastSwitchX);if(Math.abs(r-c.lastSwitchY)>eL&&i){let t=c.preferredTargetIndex||0;i===`down`&&t===0?c.preferredTargetIndex=e.length-1:i===`up`&&t===e.length-1&&(c.preferredTargetIndex=0),o.xDirection=null}if(l>$I&&a){let t=c.preferredTargetIndex||0;a===`left`?this.direction===`ltr`?t<e.length-1&&(c.preferredTargetIndex=t+1,c.lastSwitchX=n):t>0&&(c.preferredTargetIndex=t-1,c.lastSwitchX=n):a===`right`&&(this.direction===`ltr`?t>0&&(c.preferredTargetIndex=t-1,c.lastSwitchX=n):t<e.length-1&&(c.preferredTargetIndex=t+1,c.lastSwitchX=n)),o.yDirection=null}return e[Math.max(0,Math.min(c.preferredTargetIndex||0,e.length-1))]}constructor(){this.delegate=null,this.state=null,this.direction=`ltr`,this.pointerTracking={lastY:0,lastX:0,yDirection:null,xDirection:null,boundaryContext:null}}},nL=class e extends u{withExpandedKeys(t,n){let r=this.clone();return r.expandedKeys=n,e.cloneAncestorSections(n,t,r),e.cloneAncestorSections(t,n,r),r.frozen=this.frozen,r}static cloneAncestorSections(e,t,n){for(let r of e)if(!t.has(r)){let e=r;for(;e!=null;){let t=n.getItem(e);if(t?.type===`section`){n.keyMap.set(e,t.clone());break}else e=t?.parentKey??null}}}*[Symbol.iterator](){let e=this.getFirstKey(),t=e==null?null:this.getItem(e);for(;t;)if(yield t,t.type===`section`)t=t.nextKey?this.getItem(t.nextKey):null;else{let e=this.getKeyAfter(t.key);t=e?this.getItem(e):null}}getLastKey(){let e=this.lastKey;if(e==null)return null;let t=this.getItem(e);for(;t?.lastChildKey!=null&&(t.type!==`item`||this.expandedKeys.has(t.key));)t=this.getItem(t.lastChildKey);return t?.key}getKeyAfter(e){let t=this.getItem(e);if(!t)return null;if((this.expandedKeys.has(t.key)||t.type!==`item`)&&t.firstChildKey!=null)return t.firstChildKey;for(;t;){if(t.nextKey!=null)return t.nextKey;if(t.parentKey!=null)t=this.getItem(t.parentKey);else return null}return null}getKeyBefore(e){let t=this.getItem(e);if(!t)return null;if(t.prevKey!=null){for(t=this.getItem(t.prevKey);t&&(t.type!==`item`||this.expandedKeys.has(t.key))&&t.lastChildKey!=null;)t=this.getItem(t.lastChildKey);return t?.key??null}return t.parentKey}getChildren(e){let t=this;return{*[Symbol.iterator](){let n=t.getItem(e),r=n?.firstChildKey==null?null:t.getItem(n.firstChildKey);if(n&&n.type===`section`&&r)for(;r&&r.key!==n.nextKey;){yield t.getItem(r.key);let e=t.getKeyAfter(r.key);r=e==null?null:t.getItem(e)}else for(;r;)yield r,r=r.nextKey==null?null:t.getItem(r.nextKey)}}}getTextValue(e){let t=this.getItem(e);return t?t.textValue:``}constructor(...e){super(...e),this.expandedKeys=new Set}},rL=(0,R.createContext)(null),iL=(0,R.createContext)(null),aL=(0,R.forwardRef)(function(e,t){return[e,t]=ve(e,t,rL),R.createElement(x,{content:R.createElement(j,e),createCollection:()=>new nL},n=>R.createElement(sL,{props:e,collection:n,treeRef:t}))}),oL={expand:{ltr:`ArrowRight`,rtl:`ArrowLeft`},collapse:{ltr:`ArrowLeft`,rtl:`ArrowRight`}};function sL({props:e,collection:t,treeRef:n}){let{dragAndDropHooks:r}=e,{direction:i}=_(),a=d({usage:`search`,sensitivity:`base`}),c=!!r?.useDraggableCollectionState,l=!!r?.useDroppableCollectionState,u=(0,R.useRef)(c),f=(0,R.useRef)(l);(0,R.useEffect)(()=>{u.current!==c&&console.warn(`Drag hooks were provided during one render, but not another. This should be avoided as it may produce unexpected behavior.`),f.current!==l&&console.warn(`Drop hooks were provided during one render, but not another. This should be avoided as it may produce unexpected behavior.`)},[c,l]);let{selectionMode:m=`none`,expandedKeys:g,defaultExpandedKeys:b,onExpandedChange:ee,disabledBehavior:x=`all`}=e,{CollectionRoot:ne,isVirtualized:re,layoutDelegate:C,dropTargetDelegate:ie}=(0,R.useContext)(_e),[w,oe]=S(g?new Set(g):void 0,b?new Set(b):new Set,ee),[se,ce]=(0,R.useState)(t),[ue,T]=(0,R.useState)(w),[de,E]=(0,R.useState)(()=>t.withExpandedKeys(ue,w));(!_L(ue,w)||t!==se)&&(E(t.withExpandedKeys(ue,w)),ce(t),T(w));let D=ZI({...e,selectionMode:m,expandedKeys:w,onExpandedChange:oe,collection:de,children:void 0,disabledBehavior:x}),{gridProps:fe}=fI({...e,isVirtualized:re,layoutDelegate:C},D,n),O,k,A,j=!1,M=null,ve=(0,R.useRef)(null);if(c&&r){O=r.useDraggableCollectionState({collection:D.collection,selectionManager:D.selectionManager,preview:r.renderDragPreview?ve:void 0}),r.useDraggableCollection({},O,n);let e=r.DragPreview;M=r.renderDragPreview?R.createElement(e,{ref:ve},r.renderDragPreview):null}let[ye]=(0,R.useState)(()=>new tL);if(l&&r){k=r.useDroppableCollectionState({collection:D.collection,selectionManager:D.selectionManager});let e=r.dropTargetDelegate||ie||new r.ListDropTargetDelegate(D.collection,n,{direction:i});ye.setup(e,D,i);let t=new o({collection:D.collection,collator:a,ref:n,disabledKeys:D.selectionManager.disabledKeys,disabledBehavior:D.selectionManager.disabledBehavior,direction:i,layoutDelegate:C});A=r.useDroppableCollection({keyboardDelegate:t,dropTargetDelegate:ye,onDropActivate:e=>{if(e.target.type===`item`){let t=e.target.key,n=D.collection.getItem(t),i=w.has(t);n&&n.hasChildNodes&&(!i||r!=null&&r.isVirtualDragging?.call(r))&&D.toggleKey(t)}},onKeyDown:e=>{let t=k?.target;if(t&&t.type===`item`&&t.dropPosition===`on`){let n=D.collection.getItem(t.key);(e.key===oL.expand[i]&&n?.hasChildNodes&&!D.expandedKeys.has(t.key)||e.key===oL.collapse[i]&&n?.hasChildNodes&&D.expandedKeys.has(t.key))&&D.toggleKey(t.key)}}},k,n);let s=k.getDropOperation;k.getDropOperation=e=>{let{target:t,isInternal:n}=e,r=O?.draggingKeys??new Set;if(n&&t.type===`item`&&r.size>0){if(r.has(t.key)&&t.dropPosition===`on`)return`cancel`;let e=t.key;for(;e!=null;){let t=D.collection.getItem(e)?.parentKey;if(t!=null&&r.has(t))return`cancel`;e=t??null}}return s(e)},j=k.isDropTarget({type:`root`})}let N=!!(c&&!O?.isDisabled),{focusProps:P,isFocused:be,isFocusVisible:F}=v(),xe={isEmpty:D.collection.size===0,isFocused:be,isFocusVisible:F,isDropTarget:j,selectionMode:D.selectionManager.selectionMode,allowsDragging:!!N,state:D},Se=s({...e,children:void 0,defaultClassName:`react-aria-Tree`,values:xe}),I=null;if(D.collection.size===0&&e.renderEmptyState){let{isEmpty:t,...n}=xe,r=e.renderEmptyState({...n});I=R.createElement(`div`,{role:`row`,style:{display:`contents`},"aria-level":1},R.createElement(`div`,{role:`gridcell`,style:{display:`contents`}},r))}let Ce=h(e,{global:!0});return R.createElement(R.Fragment,null,R.createElement(y,null,R.createElement(p.div,{...ae(Ce,Se,fe,P,A?.collectionProps),ref:n,slot:e.slot||void 0,"data-empty":D.collection.size===0||void 0,"data-focused":be||void 0,"data-drop-target":j||void 0,"data-focus-visible":F||void 0,"data-selection-mode":D.selectionManager.selectionMode===`none`?void 0:D.selectionManager.selectionMode,"data-allows-dragging":!!N||void 0},R.createElement(te,{values:[[iL,D],[le,{dragAndDropHooks:r,dragState:O,dropState:k}],[ge,{render:pL}]]},l&&R.createElement(gL,null),R.createElement(me,null,R.createElement(ne,{collection:D.collection,persistedKeys:pe(D.selectionManager,r,k),scrollRef:n,renderDropIndicator:he(r,k)}))),I)),M)}var cL=class extends b{};cL.type=`content`;var lL=M(cL,function(e){let t=(0,R.useContext)(uL),n=s({children:e.children,values:t});return R.createElement(_e.Provider,{value:ce},n.children)}),uL=(0,R.createContext)(null),dL=class extends b{};dL.type=`item`;var fL=c(dL,(e,t,n)=>{let r=(0,R.useContext)(iL);t=g(t);let{dragAndDropHooks:i,dragState:a,dropState:o}=(0,R.useContext)(le),{rowProps:c,gridCellProps:l,expandButtonProps:u,descriptionProps:d,...f}=YI({node:n,shouldSelectOnPressUp:!!a},r,t),m=c[`aria-expanded`]===!0,_=e.hasChildItems||[...r.collection.getChildren(n.key)]?.length>1,y=c[`aria-level`]||1,{hoverProps:b,isHovered:x}=ee({isDisabled:!f.allowsSelection&&!f.hasAction,onHoverStart:e.onHoverStart,onHoverChange:e.onHoverChange,onHoverEnd:e.onHoverEnd}),{isFocusVisible:S,focusProps:C}=v(),{isFocusVisible:oe,focusProps:ce}=v({within:!0}),{checkboxProps:ue}=de({key:n.key},r),T=null;a&&i&&(T=i.useDraggableItem({key:n.key,hasDragButton:!0},a));let E=null,fe=(0,R.useRef)(null),pe=(0,R.useRef)(null),me=(0,R.useRef)(null),{visuallyHiddenProps:k}=D();o&&i&&(E=i.useDropIndicator({target:{type:`item`,key:n.key,dropPosition:`on`},activateButtonRef:me},o,pe));let he=a&&a.isDragging(n.key),ge=E?.isDropTarget,A=r.selectionManager.selectionMode,j=r.selectionManager.selectionBehavior,M=R.useMemo(()=>({...f,isHovered:x,isFocusVisible:S,isExpanded:m,hasChildItems:_,level:y,selectionMode:A,selectionBehavior:j,isFocusVisibleWithin:oe,state:r,id:n.key,allowsDragging:!!a,isDragging:he,isDropTarget:ge}),[f,x,S,m,_,y,oe,r,n.key,a,he,ge,j,A]),_e=s({...e,id:void 0,children:n.rendered,defaultClassName:`react-aria-TreeItem`,defaultStyle:{"--tree-item-level":y},values:M});(0,R.useEffect)(()=>{n.textValue},[n.textValue]),(0,R.useEffect)(()=>{_&&fe.current},[]);let ve=(0,R.useRef)(null);(0,R.useEffect)(()=>{a&&ve.current},[]);let ye=ne({items:r.collection.getChildren(n.key),children:e=>{switch(e.type){case`content`:return e.render(e);case`loader`:case`item`:return R.createElement(R.Fragment,null);default:throw Error(`Unsupported element type in TreeRow: `+e.type)}}}),N=ie(),P=h(e,{global:!0});return delete P.id,delete P.onClick,R.createElement(R.Fragment,null,E&&!E.isHidden&&R.createElement(`div`,{role:`row`,"aria-level":c[`aria-level`],"aria-expanded":c[`aria-expanded`],"aria-label":E.dropIndicatorProps[`aria-label`]},R.createElement(`div`,{role:`gridcell`,"aria-colindex":1,style:{display:`contents`}},R.createElement(`div`,{role:`button`,...k,...E.dropIndicatorProps,ref:pe}),c[`aria-expanded`]==null?null:R.createElement(`div`,{role:`button`,...k,id:N,"aria-label":u[`aria-label`],"aria-labelledby":`${N} ${c.id}`,tabIndex:-1,ref:me}))),R.createElement(p.div,{...ae(P,c,C,b,ce,T?.dragProps),..._e,ref:t,"data-expanded":_&&m||void 0,"data-has-child-items":_||void 0,"data-level":y,"data-selected":f.isSelected||void 0,"data-disabled":f.isDisabled||void 0,"data-hovered":x||void 0,"data-focused":f.isFocused||void 0,"data-focus-visible":S||void 0,"data-pressed":f.isPressed||void 0,"data-selection-mode":r.selectionManager.selectionMode===`none`?void 0:r.selectionManager.selectionMode,"data-allows-dragging":!!a||void 0,"data-dragging":he||void 0,"data-drop-target":ge||void 0},R.createElement(`div`,{...l,style:{display:`contents`}},R.createElement(te,{values:[[w,{slots:{selection:ue}}],[O,{slots:{[re]:{},chevron:{...u,ref:fe},drag:{...T?.dragButtonProps,ref:ve,style:{pointerEvents:`none`}}}}],[uL,{...M}],[se,{isSelected:f.isSelected}]]},ye))))});M(l,function(e,t,n){let{isVirtualized:r}=(0,R.useContext)(_e),i=(0,R.useContext)(iL),{isLoading:a,onLoadMore:o,scrollOffset:c,...l}=e,u=(0,R.useRef)(null);f((0,R.useMemo)(()=>({onLoadMore:o,collection:i?.collection,sentinelRef:u,scrollOffset:c}),[o,c,i?.collection]),u),t=g(t);let{rowProps:d,gridCellProps:m}=YI({node:n},i,t),_=d[`aria-level`]||1,v={role:`row`,"aria-level":d[`aria-level`]},y=s({...l,id:void 0,children:n.rendered,defaultClassName:`react-aria-TreeLoader`,values:{level:_}}),b={};return r&&(b={display:`contents`}),R.createElement(R.Fragment,null,R.createElement(`div`,{style:{position:`relative`,width:0,height:0},inert:C(!0)},R.createElement(`div`,{"data-testid":`loadMoreSentinel`,ref:u,style:{position:`absolute`,height:1,width:1}})),a&&y.children&&R.createElement(p.div,{ref:t,...ae(h(e),v),...y,"data-level":_},R.createElement(`div`,{...m,style:b},y.children)))});function pL(e,t){t=g(t);let{dragAndDropHooks:n,dropState:r}=(0,R.useContext)(le),i=(0,R.useRef)(null),{dropIndicatorProps:a,isHidden:o,isDropTarget:s}=n.useDropIndicator(e,r,i);if(o)return null;let c=r&&e.target.type===`item`?(r.collection.getItem(e.target.key)?.level||0)+1:1;return R.createElement(hL,{...e,dropIndicatorProps:a,isDropTarget:s,ref:t,buttonRef:i,level:c})}function mL(e,t){let{dropIndicatorProps:n,isDropTarget:r,buttonRef:i,level:a,...o}=e,{visuallyHiddenProps:c}=D(),l=s({...o,defaultClassName:`react-aria-DropIndicator`,defaultStyle:{position:`relative`,"--tree-item-level":a},values:{isDropTarget:r}});return R.createElement(p.div,{...l,role:`row`,"aria-level":a,ref:t,"data-drop-target":r||void 0},R.createElement(`div`,{role:`gridcell`},R.createElement(`div`,{...c,role:`button`,...n,ref:i}),l.children))}var hL=(0,R.forwardRef)(mL);function gL(){let{dragAndDropHooks:e,dropState:t}=(0,R.useContext)(le),n=(0,R.useRef)(null),{dropIndicatorProps:r}=e.useDropIndicator({target:{type:`root`}},t,n),i=t.isDropTarget({type:`root`}),{visuallyHiddenProps:a}=D();return!i&&r[`aria-hidden`]?null:R.createElement(`div`,{role:`row`,"aria-hidden":r[`aria-hidden`],style:{position:`absolute`}},R.createElement(`div`,{role:`gridcell`},R.createElement(`div`,{role:`button`,...a,...r,ref:n})))}function _L(e,t){if(e.size!==t.size)return!1;for(let n of e)if(!t.has(n))return!1;return!0}var B={fileTree:`_fileTree_1y6a4_1`,header:`_header_1y6a4_10`,actions:`_actions_1y6a4_24`,treeRoot:`_treeRoot_1y6a4_43`,treeItem:`_treeItem_1y6a4_46`,itemContent:`_itemContent_1y6a4_49`,deleteBtn:`_deleteBtn_1y6a4_66`,itemMain:`_itemMain_1y6a4_69`,chevron:`_chevron_1y6a4_75`,icon:`_icon_1y6a4_83`,name:`_name_1y6a4_87`},V=a(),vL=(0,R.memo)(()=>{let e=(0,R.useContext)(lI),[t,n]=(0,R.useState)([]),[r,i]=(0,R.useState)(new Set),[a,o]=(0,R.useState)(new Set),s=(0,R.useCallback)(async t=>{if(!e)return console.log(`Tree: Workspace not ready`),[];console.log(`Tree: Loading path`,t);try{let n=await e.fs.readdir(t),r=(await Promise.all(n.map(async n=>{let r=t===`/`?`/${n}`:`${t}/${n}`,i=(await e.fs.stat(r))?.type===`dir`;return{id:r,name:n,isDir:i,children:i?[]:void 0}}))).sort((e,t)=>e.isDir===t.isDir?e.name.localeCompare(t.name):e.isDir?-1:1);return console.log(`Tree: Loaded ${r.length} items for ${t}`),r}catch(e){return console.error(`Tree: Failed to load nodes`,e),[]}},[e]),c=(0,R.useCallback)(()=>{s(`/`).then(n)},[s]);(0,R.useEffect)(()=>{c();let t=()=>{c()};return e?.on(z.EventType.STRUCTURE_CHANGED,t),()=>{e?.off(z.EventType.STRUCTURE_CHANGED,t)}},[c,e]);let l=async e=>{let a=r instanceof Set?r:new Set,o=e instanceof Set?e:new Set,c=Array.from(o).find(e=>!a.has(e));if(i(e),c){let e=async(t,n)=>{for(let r=0;r<t.length;r++){let i=t[r];if(i.id===n&&i.isDir&&(!i.children||i.children.length===0)){let e=await s(i.id);return[...t.slice(0,r),{...i,children:e},...t.slice(r+1)]}if(i.children){let a=await e(i.children,n);if(a!==i.children)return[...t.slice(0,r),{...i,children:a},...t.slice(r+1)]}}return t},r=await e(t,c);r!==t&&n(r)}},u=async t=>{window.confirm(`确定要删除 ${t} 吗？`)&&((await e?.fs.stat(t))?.type===`dir`?await e?.fs.rmdir(t,{recursive:!0}):await e?.deleteFile(t),c())};return(0,V.jsxs)(`div`,{className:B.fileTree,children:[(0,V.jsxs)(`div`,{className:B.header,children:[(0,V.jsx)(`span`,{children:`项目资源`}),(0,V.jsxs)(`div`,{className:B.actions,children:[(0,V.jsx)(`button`,{onClick:()=>{let t=window.prompt(`请输入文件夹名:`);t&&e.fs.mkdir(`/${t}`).then(c)},title:`根目录新建文件夹`,children:`📁+`}),(0,V.jsx)(`button`,{onClick:()=>{let t=window.prompt(`请输入文件名:`);t&&e.createFile(`/${t}`).then(c)},title:`根目录新建文件`,children:`📄+`})]})]}),(0,V.jsx)(`div`,{className:B.content,children:(0,V.jsx)(aL,{"aria-label":`项目资源文件树`,items:t,selectionMode:`single`,selectedKeys:a,onSelectionChange:o,onAction:t=>{let n=t;e?.fs.stat(n).then(t=>{if(t?.type!==`dir`)e.navigate(n);else{let e=new Set(r instanceof Set?r:[]);e.has(n)?e.delete(n):e.add(n),l(e)}})},expandedKeys:r,onExpandedChange:l,className:B.treeRoot,children:function e(t){return(0,V.jsxs)(fL,{id:t.id,textValue:t.name,className:B.treeItem,children:[(0,V.jsx)(lL,{children:(0,V.jsxs)(`div`,{className:B.itemContent,children:[(0,V.jsxs)(`div`,{className:B.itemMain,children:[t.isDir&&(0,V.jsx)(E,{slot:`chevron`,className:B.chevron,children:r!==`all`&&r.has(t.id)?`▾`:`▸`}),!t.isDir&&(0,V.jsx)(`span`,{className:B.chevron}),(0,V.jsx)(`span`,{className:B.icon,children:t.isDir?`📁`:`📄`}),(0,V.jsx)(`span`,{className:B.name,children:t.name})]}),(0,V.jsx)(E,{className:B.deleteBtn,onPress:()=>u(t.id),children:`×`})]})}),(0,V.jsx)(j,{items:t.children,children:e})]})}})})]})}),yL=`_editorContainer_193du_1`,bL=`_editorWrapper_193du_7`,xL=`_common-editor_193du_12`,SL=`_hidden_193du_17`,CL={editorContainer:yL,editorWrapper:bL,"common-editor":`_common-editor_193du_12`,commonEditor:xL,hidden:SL},wL=e({cssDefaults:()=>OL,lessDefaults:()=>AL,scssDefaults:()=>kL}),TL=class{constructor(e,t,n){this._onDidChange=new De,this._languageId=e,this.setOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get modeConfiguration(){return this._modeConfiguration}get diagnosticsOptions(){return this.options}get options(){return this._options}setOptions(e){this._options=e||Object.create(null),this._onDidChange.fire(this)}setDiagnosticsOptions(e){this.setOptions(e)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}},EL={validate:!0,lint:{compatibleVendorPrefixes:`ignore`,vendorPrefix:`warning`,duplicateProperties:`warning`,emptyRules:`warning`,importStatement:`ignore`,boxModel:`ignore`,universalSelector:`ignore`,zeroUnits:`ignore`,fontFaceProperties:`warning`,hexColorLength:`error`,argumentsInColorFunction:`error`,unknownProperties:`warning`,ieHack:`ignore`,unknownVendorSpecificProperties:`ignore`,propertyIgnoredDueToDisplay:`warning`,important:`ignore`,float:`ignore`,idSelector:`ignore`},data:{useDefaultDataProvider:!0},format:{newlineBetweenSelectors:!0,newlineBetweenRules:!0,spaceAroundSelectorSeparator:!1,braceStyle:`collapse`,maxPreserveNewLines:void 0,preserveNewLines:!0}},DL={completionItems:!0,hovers:!0,documentSymbols:!0,definitions:!0,references:!0,documentHighlights:!0,rename:!0,colors:!0,foldingRanges:!0,diagnostics:!0,selectionRanges:!0,documentFormattingEdits:!0,documentRangeFormattingEdits:!0},OL=new TL(`css`,EL,DL),kL=new TL(`scss`,EL,DL),AL=new TL(`less`,EL,DL);function jL(){return N(()=>import(`./cssMode-bjVstD6w.js`),__vite__mapDeps([0,1,2,3,4,5]),import.meta.url)}L.onLanguage(`less`,()=>{jL().then(e=>e.setupMode(AL))}),L.onLanguage(`scss`,()=>{jL().then(e=>e.setupMode(kL))}),L.onLanguage(`css`,()=>{jL().then(e=>e.setupMode(OL))});var ML=e({handlebarDefaults:()=>VL,handlebarLanguageService:()=>BL,htmlDefaults:()=>zL,htmlLanguageService:()=>RL,razorDefaults:()=>UL,razorLanguageService:()=>HL,registerHTMLLanguageService:()=>GL}),NL=class{constructor(e,t,n){this._onDidChange=new De,this._languageId=e,this.setOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get options(){return this._options}get modeConfiguration(){return this._modeConfiguration}setOptions(e){this._options=e||Object.create(null),this._onDidChange.fire(this)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}},PL={format:{tabSize:4,insertSpaces:!1,wrapLineLength:120,unformatted:`default": "a, abbr, acronym, b, bdo, big, br, button, cite, code, dfn, em, i, img, input, kbd, label, map, object, q, samp, select, small, span, strong, sub, sup, textarea, tt, var`,contentUnformatted:`pre`,indentInnerHtml:!1,preserveNewLines:!0,maxPreserveNewLines:void 0,indentHandlebars:!1,endWithNewline:!1,extraLiners:`head, body, /html`,wrapAttributes:`auto`},suggest:{},data:{useDefaultDataProvider:!0}};function FL(e){return{completionItems:!0,hovers:!0,documentSymbols:!0,links:!0,documentHighlights:!0,rename:!0,colors:!0,foldingRanges:!0,selectionRanges:!0,diagnostics:e===H,documentFormattingEdits:e===H,documentRangeFormattingEdits:e===H}}var H=`html`,IL=`handlebars`,LL=`razor`,RL=GL(H,PL,FL(H)),zL=RL.defaults,BL=GL(IL,PL,FL(IL)),VL=BL.defaults,HL=GL(LL,PL,FL(LL)),UL=HL.defaults;function WL(){return N(()=>import(`./htmlMode-CYhe96Bh.js`),__vite__mapDeps([6,1,2,3,4,5]),import.meta.url)}function GL(e,t=PL,n=FL(e)){let r=new NL(e,t,n),i,a=L.onLanguage(e,async()=>{i=(await WL()).setupMode(r)});return{defaults:r,dispose(){a.dispose(),i?.dispose(),i=void 0}}}var KL=e({getWorker:()=>JL,jsonDefaults:()=>qL}),qL=new class{constructor(e,t,n){this._onDidChange=new De,this._languageId=e,this.setDiagnosticsOptions(t),this.setModeConfiguration(n)}get onDidChange(){return this._onDidChange.event}get languageId(){return this._languageId}get modeConfiguration(){return this._modeConfiguration}get diagnosticsOptions(){return this._diagnosticsOptions}setDiagnosticsOptions(e){this._diagnosticsOptions=e||Object.create(null),this._onDidChange.fire(this)}setModeConfiguration(e){this._modeConfiguration=e||Object.create(null),this._onDidChange.fire(this)}}(`json`,{validate:!0,allowComments:!0,schemas:[],enableSchemaRequest:!1,schemaRequest:`warning`,schemaValidation:`warning`,comments:`error`,trailingCommas:`error`},{documentFormattingEdits:!0,documentRangeFormattingEdits:!0,completionItems:!0,hovers:!0,documentSymbols:!0,tokens:!0,colors:!0,foldingRanges:!0,diagnostics:!0,selectionRanges:!0}),JL=()=>YL().then(e=>e.getWorker());function YL(){return N(()=>import(`./jsonMode-BJl-hhCU.js`),__vite__mapDeps([7,1,2,3,4,5]),import.meta.url)}L.register({id:`json`,extensions:[`.json`,`.bowerrc`,`.jshintrc`,`.jscsrc`,`.eslintrc`,`.babelrc`,`.har`],aliases:[`JSON`,`json`],mimetypes:[`application/json`]}),L.onLanguage(`json`,()=>{YL().then(e=>e.setupMode(qL))});var XL={},ZL={},QL=class e{static getOrCreate(t){return ZL[t]||(ZL[t]=new e(t)),ZL[t]}constructor(e){this._languageId=e,this._loadingTriggered=!1,this._lazyLoadPromise=new Promise((e,t)=>{this._lazyLoadPromiseResolve=e,this._lazyLoadPromiseReject=t})}load(){return this._loadingTriggered||(this._loadingTriggered=!0,XL[this._languageId].loader().then(e=>this._lazyLoadPromiseResolve(e),e=>this._lazyLoadPromiseReject(e))),this._lazyLoadPromise}};function U(e){let t=e.id;XL[t]=e,L.register(e);let n=QL.getOrCreate(t);L.registerTokensProviderFactory(t,{create:async()=>(await n.load()).language}),L.onLanguageEncountered(t,async()=>{let e=await n.load();L.setLanguageConfiguration(t,e.conf)})}U({id:`abap`,extensions:[`.abap`],aliases:[`abap`,`ABAP`],loader:()=>N(()=>import(`./abap-BRVHlTbR.js`),[],import.meta.url)}),U({id:`apex`,extensions:[`.cls`],aliases:[`Apex`,`apex`],mimetypes:[`text/x-apex-source`,`text/x-apex`],loader:()=>N(()=>import(`./apex-GS4zZi0I.js`),[],import.meta.url)}),U({id:`azcli`,extensions:[`.azcli`],aliases:[`Azure CLI`,`azcli`],loader:()=>N(()=>import(`./azcli-TAZdLe_1.js`),[],import.meta.url)}),U({id:`bat`,extensions:[`.bat`,`.cmd`],aliases:[`Batch`,`bat`],loader:()=>N(()=>import(`./bat-BNHAuPwR.js`),[],import.meta.url)}),U({id:`bicep`,extensions:[`.bicep`],aliases:[`Bicep`],loader:()=>N(()=>import(`./bicep-BAoj49ib.js`),[],import.meta.url)}),U({id:`cameligo`,extensions:[`.mligo`],aliases:[`Cameligo`],loader:()=>N(()=>import(`./cameligo-gupdI4nQ.js`),[],import.meta.url)}),U({id:`clojure`,extensions:[`.clj`,`.cljs`,`.cljc`,`.edn`],aliases:[`clojure`,`Clojure`],loader:()=>N(()=>import(`./clojure-Bfa7OrL3.js`),[],import.meta.url)}),U({id:`coffeescript`,extensions:[`.coffee`],aliases:[`CoffeeScript`,`coffeescript`,`coffee`],mimetypes:[`text/x-coffeescript`,`text/coffeescript`],loader:()=>N(()=>import(`./coffee-B0FZSSpt.js`),[],import.meta.url)}),U({id:`c`,extensions:[`.c`,`.h`],aliases:[`C`,`c`],loader:()=>N(()=>import(`./cpp-_-gj_ws2.js`),[],import.meta.url)}),U({id:`cpp`,extensions:[`.cpp`,`.cc`,`.cxx`,`.hpp`,`.hh`,`.hxx`],aliases:[`C++`,`Cpp`,`cpp`],loader:()=>N(()=>import(`./cpp-_-gj_ws2.js`),[],import.meta.url)}),U({id:`csharp`,extensions:[`.cs`,`.csx`,`.cake`],aliases:[`C#`,`csharp`],loader:()=>N(()=>import(`./csharp-BlRNCFE9.js`),[],import.meta.url)}),U({id:`csp`,extensions:[`.csp`],aliases:[`CSP`,`csp`],loader:()=>N(()=>import(`./csp-B2Z5Y_Sf.js`),[],import.meta.url)}),U({id:`css`,extensions:[`.css`],aliases:[`CSS`,`css`],mimetypes:[`text/css`],loader:()=>N(()=>import(`./css-BmeubtOS.js`),[],import.meta.url)}),U({id:`cypher`,extensions:[`.cypher`,`.cyp`],aliases:[`Cypher`,`OpenCypher`],loader:()=>N(()=>import(`./cypher-PFHDKyaL.js`),[],import.meta.url)}),U({id:`dart`,extensions:[`.dart`],aliases:[`Dart`,`dart`],mimetypes:[`text/x-dart-source`,`text/x-dart`],loader:()=>N(()=>import(`./dart-BwvfliPc.js`),[],import.meta.url)}),U({id:`dockerfile`,extensions:[`.dockerfile`],filenames:[`Dockerfile`],aliases:[`Dockerfile`],loader:()=>N(()=>import(`./dockerfile-Y-SfPMKb.js`),[],import.meta.url)}),U({id:`ecl`,extensions:[`.ecl`],aliases:[`ECL`,`Ecl`,`ecl`],loader:()=>N(()=>import(`./ecl-BLLFWuTF.js`),[],import.meta.url)}),U({id:`elixir`,extensions:[`.ex`,`.exs`],aliases:[`Elixir`,`elixir`,`ex`],loader:()=>N(()=>import(`./elixir-xXCAglHV.js`),[],import.meta.url)}),U({id:`flow9`,extensions:[`.flow`],aliases:[`Flow9`,`Flow`,`flow9`,`flow`],loader:()=>N(()=>import(`./flow9-CVf6ZIck.js`),[],import.meta.url)}),U({id:`fsharp`,extensions:[`.fs`,`.fsi`,`.ml`,`.mli`,`.fsx`,`.fsscript`],aliases:[`F#`,`FSharp`,`fsharp`],loader:()=>N(()=>import(`./fsharp-CJD6fImD.js`),[],import.meta.url)}),U({id:`freemarker2`,extensions:[`.ftl`,`.ftlh`,`.ftlx`],aliases:[`FreeMarker2`,`Apache FreeMarker2`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-angle.interpolation-dollar`,aliases:[`FreeMarker2 (Angle/Dollar)`,`Apache FreeMarker2 (Angle/Dollar)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAngleInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-bracket.interpolation-dollar`,aliases:[`FreeMarker2 (Bracket/Dollar)`,`Apache FreeMarker2 (Bracket/Dollar)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagBracketInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-angle.interpolation-bracket`,aliases:[`FreeMarker2 (Angle/Bracket)`,`Apache FreeMarker2 (Angle/Bracket)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAngleInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-bracket.interpolation-bracket`,aliases:[`FreeMarker2 (Bracket/Bracket)`,`Apache FreeMarker2 (Bracket/Bracket)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagBracketInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-auto.interpolation-dollar`,aliases:[`FreeMarker2 (Auto/Dollar)`,`Apache FreeMarker2 (Auto/Dollar)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationDollar),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`freemarker2.tag-auto.interpolation-bracket`,aliases:[`FreeMarker2 (Auto/Bracket)`,`Apache FreeMarker2 (Auto/Bracket)`],loader:()=>N(()=>import(`./freemarker2-O98eihL9.js`).then(e=>e.TagAutoInterpolationBracket),__vite__mapDeps([8,2,3,4]),import.meta.url)}),U({id:`go`,extensions:[`.go`],aliases:[`Go`],loader:()=>N(()=>import(`./go-jUCqQ7bD.js`),[],import.meta.url)}),U({id:`graphql`,extensions:[`.graphql`,`.gql`],aliases:[`GraphQL`,`graphql`,`gql`],mimetypes:[`application/graphql`],loader:()=>N(()=>import(`./graphql-rw7g9h7D.js`),[],import.meta.url)}),U({id:`handlebars`,extensions:[`.handlebars`,`.hbs`],aliases:[`Handlebars`,`handlebars`,`hbs`],mimetypes:[`text/x-handlebars-template`],loader:()=>N(()=>import(`./handlebars-CedOVtB6.js`),__vite__mapDeps([9,2,3,4]),import.meta.url)}),U({id:`hcl`,extensions:[`.tf`,`.tfvars`,`.hcl`],aliases:[`Terraform`,`tf`,`HCL`,`hcl`],loader:()=>N(()=>import(`./hcl-BKX27Mn7.js`),[],import.meta.url)}),U({id:`html`,extensions:[`.html`,`.htm`,`.shtml`,`.xhtml`,`.mdoc`,`.jsp`,`.asp`,`.aspx`,`.jshtm`],aliases:[`HTML`,`htm`,`html`,`xhtml`],mimetypes:[`text/html`,`text/x-jshtm`,`text/template`,`text/ng-template`],loader:()=>N(()=>import(`./html-D8qUINp1.js`),__vite__mapDeps([10,2,3,4]),import.meta.url)}),U({id:`ini`,extensions:[`.ini`,`.properties`,`.gitconfig`],filenames:[`config`,`.gitattributes`,`.gitconfig`,`.editorconfig`],aliases:[`Ini`,`ini`],loader:()=>N(()=>import(`./ini-CrXjga2H.js`),[],import.meta.url)}),U({id:`java`,extensions:[`.java`,`.jav`],aliases:[`Java`,`java`],mimetypes:[`text/x-java-source`,`text/x-java`],loader:()=>N(()=>import(`./java-D4jksGBb.js`),[],import.meta.url)}),U({id:`javascript`,extensions:[`.js`,`.es6`,`.jsx`,`.mjs`,`.cjs`],firstLine:`^#!.*\\bnode`,filenames:[`jakefile`],aliases:[`JavaScript`,`javascript`,`js`],mimetypes:[`text/javascript`],loader:()=>N(()=>import(`./javascript-BrQ4NwDL.js`),__vite__mapDeps([11,2,3,4,12]),import.meta.url)}),U({id:`julia`,extensions:[`.jl`],aliases:[`julia`,`Julia`],loader:()=>N(()=>import(`./julia-CbWxfkeS.js`),[],import.meta.url)}),U({id:`kotlin`,extensions:[`.kt`,`.kts`],aliases:[`Kotlin`,`kotlin`],mimetypes:[`text/x-kotlin-source`,`text/x-kotlin`],loader:()=>N(()=>import(`./kotlin-CrQkDI41.js`),[],import.meta.url)}),U({id:`less`,extensions:[`.less`],aliases:[`Less`,`less`],mimetypes:[`text/x-less`,`text/less`],loader:()=>N(()=>import(`./less-DFzn-zC9.js`),[],import.meta.url)}),U({id:`lexon`,extensions:[`.lex`],aliases:[`Lexon`],loader:()=>N(()=>import(`./lexon-C-w-W8Yv.js`),[],import.meta.url)}),U({id:`lua`,extensions:[`.lua`],aliases:[`Lua`,`lua`],loader:()=>N(()=>import(`./lua-CHuE_HoG.js`),[],import.meta.url)}),U({id:`liquid`,extensions:[`.liquid`,`.html.liquid`],aliases:[`Liquid`,`liquid`],mimetypes:[`application/liquid`],loader:()=>N(()=>import(`./liquid-7_RhWSPP.js`),__vite__mapDeps([13,2,3,4]),import.meta.url)}),U({id:`m3`,extensions:[`.m3`,`.i3`,`.mg`,`.ig`],aliases:[`Modula-3`,`Modula3`,`modula3`,`m3`],loader:()=>N(()=>import(`./m3-DEFZN2qS.js`),[],import.meta.url)}),U({id:`markdown`,extensions:[`.md`,`.markdown`,`.mdown`,`.mkdn`,`.mkd`,`.mdwn`,`.mdtxt`,`.mdtext`],aliases:[`Markdown`,`markdown`],loader:()=>N(()=>import(`./markdown-Cbt4TlFt.js`),[],import.meta.url)}),U({id:`mdx`,extensions:[`.mdx`],aliases:[`MDX`,`mdx`],loader:()=>N(()=>import(`./mdx-DIo-gXm4.js`),__vite__mapDeps([14,2,3,4]),import.meta.url)}),U({id:`mips`,extensions:[`.s`],aliases:[`MIPS`,`MIPS-V`],mimetypes:[`text/x-mips`,`text/mips`,`text/plaintext`],loader:()=>N(()=>import(`./mips-C6m4XECw.js`),[],import.meta.url)}),U({id:`msdax`,extensions:[`.dax`,`.msdax`],aliases:[`DAX`,`MSDAX`],loader:()=>N(()=>import(`./msdax-un0CFb_S.js`),[],import.meta.url)}),U({id:`mysql`,extensions:[],aliases:[`MySQL`,`mysql`],loader:()=>N(()=>import(`./mysql-CuAPeiOV.js`),[],import.meta.url)}),U({id:`objective-c`,extensions:[`.m`],aliases:[`Objective-C`],loader:()=>N(()=>import(`./objective-c-DLVMdxAC.js`),[],import.meta.url)}),U({id:`pascal`,extensions:[`.pas`,`.p`,`.pp`],aliases:[`Pascal`,`pas`],mimetypes:[`text/x-pascal-source`,`text/x-pascal`],loader:()=>N(()=>import(`./pascal-BGCThuPY.js`),[],import.meta.url)}),U({id:`pascaligo`,extensions:[`.ligo`],aliases:[`Pascaligo`,`ligo`],loader:()=>N(()=>import(`./pascaligo-DfxSVpdo.js`),[],import.meta.url)}),U({id:`perl`,extensions:[`.pl`,`.pm`],aliases:[`Perl`,`pl`],loader:()=>N(()=>import(`./perl-BOE6y94t.js`),[],import.meta.url)}),U({id:`pgsql`,extensions:[],aliases:[`PostgreSQL`,`postgres`,`pg`,`postgre`],loader:()=>N(()=>import(`./pgsql-Dn7JkY4F.js`),[],import.meta.url)}),U({id:`php`,extensions:[`.php`,`.php4`,`.php5`,`.phtml`,`.ctp`],aliases:[`PHP`,`php`],mimetypes:[`application/x-php`],loader:()=>N(()=>import(`./php-r1gD0KyT.js`),[],import.meta.url)}),U({id:`pla`,extensions:[`.pla`],loader:()=>N(()=>import(`./pla-CgXknhb0.js`),[],import.meta.url)}),U({id:`postiats`,extensions:[`.dats`,`.sats`,`.hats`],aliases:[`ATS`,`ATS/Postiats`],loader:()=>N(()=>import(`./postiats-CsIEtnRB.js`),[],import.meta.url)}),U({id:`powerquery`,extensions:[`.pq`,`.pqm`],aliases:[`PQ`,`M`,`Power Query`,`Power Query M`],loader:()=>N(()=>import(`./powerquery-yNJCmC_6.js`),[],import.meta.url)}),U({id:`powershell`,extensions:[`.ps1`,`.psm1`,`.psd1`],aliases:[`PowerShell`,`powershell`,`ps`,`ps1`],loader:()=>N(()=>import(`./powershell-CQcz1SqH.js`),[],import.meta.url)}),U({id:`proto`,extensions:[`.proto`],aliases:[`protobuf`,`Protocol Buffers`],loader:()=>N(()=>import(`./protobuf-BmC34uvO.js`),[],import.meta.url)}),U({id:`pug`,extensions:[`.jade`,`.pug`],aliases:[`Pug`,`Jade`,`jade`],loader:()=>N(()=>import(`./pug-C20znvWM.js`),[],import.meta.url)}),U({id:`python`,extensions:[`.py`,`.rpy`,`.pyw`,`.cpy`,`.gyp`,`.gypi`],aliases:[`Python`,`py`],firstLine:`^#!/.*\\bpython[0-9.-]*\\b`,loader:()=>N(()=>import(`./python-BzqFd93L.js`),__vite__mapDeps([15,2,3,4]),import.meta.url)}),U({id:`qsharp`,extensions:[`.qs`],aliases:[`Q#`,`qsharp`],loader:()=>N(()=>import(`./qsharp-B7bnARMS.js`),[],import.meta.url)}),U({id:`r`,extensions:[`.r`,`.rhistory`,`.rmd`,`.rprofile`,`.rt`],aliases:[`R`,`r`],loader:()=>N(()=>import(`./r-ClvcLdqC.js`),[],import.meta.url)}),U({id:`razor`,extensions:[`.cshtml`],aliases:[`Razor`,`razor`],mimetypes:[`text/x-cshtml`],loader:()=>N(()=>import(`./razor-C0Y5YRy6.js`),__vite__mapDeps([16,2,3,4]),import.meta.url)}),U({id:`redis`,extensions:[`.redis`],aliases:[`redis`],loader:()=>N(()=>import(`./redis-DCyda7_S.js`),[],import.meta.url)}),U({id:`redshift`,extensions:[],aliases:[`Redshift`,`redshift`],loader:()=>N(()=>import(`./redshift-BtWDr4pb.js`),[],import.meta.url)}),U({id:`restructuredtext`,extensions:[`.rst`],aliases:[`reStructuredText`,`restructuredtext`],loader:()=>N(()=>import(`./restructuredtext-CLcnlkhl.js`),[],import.meta.url)}),U({id:`ruby`,extensions:[`.rb`,`.rbx`,`.rjs`,`.gemspec`,`.pp`],filenames:[`rakefile`,`Gemfile`],aliases:[`Ruby`,`rb`],loader:()=>N(()=>import(`./ruby-DY0SOSSZ.js`),[],import.meta.url)}),U({id:`rust`,extensions:[`.rs`,`.rlib`],aliases:[`Rust`,`rust`],loader:()=>N(()=>import(`./rust-JQd-fJZI.js`),[],import.meta.url)}),U({id:`sb`,extensions:[`.sb`],aliases:[`Small Basic`,`sb`],loader:()=>N(()=>import(`./sb-BV2j8yFF.js`),[],import.meta.url)}),U({id:`scala`,extensions:[`.scala`,`.sc`,`.sbt`],aliases:[`Scala`,`scala`,`SBT`,`Sbt`,`sbt`,`Dotty`,`dotty`],mimetypes:[`text/x-scala-source`,`text/x-scala`,`text/x-sbt`,`text/x-dotty`],loader:()=>N(()=>import(`./scala-DwbnREDs.js`),[],import.meta.url)}),U({id:`scheme`,extensions:[`.scm`,`.ss`,`.sch`,`.rkt`],aliases:[`scheme`,`Scheme`],loader:()=>N(()=>import(`./scheme-CrtA-vei.js`),[],import.meta.url)}),U({id:`scss`,extensions:[`.scss`],aliases:[`Sass`,`sass`,`scss`],mimetypes:[`text/x-scss`,`text/scss`],loader:()=>N(()=>import(`./scss-VxQz3zmI.js`),[],import.meta.url)}),U({id:`shell`,extensions:[`.sh`,`.bash`],aliases:[`Shell`,`sh`],loader:()=>N(()=>import(`./shell-CP9faqFI.js`),[],import.meta.url)}),U({id:`sol`,extensions:[`.sol`],aliases:[`sol`,`solidity`,`Solidity`],loader:()=>N(()=>import(`./solidity-9IIb0b89.js`),[],import.meta.url)}),U({id:`aes`,extensions:[`.aes`],aliases:[`aes`,`sophia`,`Sophia`],loader:()=>N(()=>import(`./sophia-D2LQU2AD.js`),[],import.meta.url)}),U({id:`sparql`,extensions:[`.rq`],aliases:[`sparql`,`SPARQL`],loader:()=>N(()=>import(`./sparql-DONCa5dy.js`),[],import.meta.url)}),U({id:`sql`,extensions:[`.sql`],aliases:[`SQL`],loader:()=>N(()=>import(`./sql-DaAAHGEt.js`),[],import.meta.url)}),U({id:`st`,extensions:[`.st`,`.iecst`,`.iecplc`,`.lc3lib`,`.TcPOU`,`.TcDUT`,`.TcGVL`,`.TcIO`],aliases:[`StructuredText`,`scl`,`stl`],loader:()=>N(()=>import(`./st-CRY2V-j3.js`),[],import.meta.url)}),U({id:`swift`,aliases:[`Swift`,`swift`],extensions:[`.swift`],mimetypes:[`text/swift`],loader:()=>N(()=>import(`./swift-BlKbfloF.js`),[],import.meta.url)}),U({id:`systemverilog`,extensions:[`.sv`,`.svh`],aliases:[`SV`,`sv`,`SystemVerilog`,`systemverilog`],loader:()=>N(()=>import(`./systemverilog-B_h9Q_T_.js`),[],import.meta.url)}),U({id:`verilog`,extensions:[`.v`,`.vh`],aliases:[`V`,`v`,`Verilog`,`verilog`],loader:()=>N(()=>import(`./systemverilog-B_h9Q_T_.js`),[],import.meta.url)}),U({id:`tcl`,extensions:[`.tcl`],aliases:[`tcl`,`Tcl`,`tcltk`,`TclTk`,`tcl/tk`,`Tcl/Tk`],loader:()=>N(()=>import(`./tcl-C4wN3A6M.js`),[],import.meta.url)}),U({id:`twig`,extensions:[`.twig`],aliases:[`Twig`,`twig`],mimetypes:[`text/x-twig`],loader:()=>N(()=>import(`./twig-DDdaBLC9.js`),[],import.meta.url)}),U({id:`typescript`,extensions:[`.ts`,`.tsx`,`.cts`,`.mts`],aliases:[`TypeScript`,`ts`,`typescript`],mimetypes:[`text/typescript`],loader:()=>N(()=>import(`./typescript-CFpAkoUR.js`),__vite__mapDeps([12,2,3,4]),import.meta.url)}),U({id:`typespec`,extensions:[`.tsp`],aliases:[`TypeSpec`],loader:()=>N(()=>import(`./typespec-Dc1ipt8A.js`),[],import.meta.url)}),U({id:`vb`,extensions:[`.vb`],aliases:[`Visual Basic`,`vb`],loader:()=>N(()=>import(`./vb-C4BXIvrh.js`),[],import.meta.url)}),U({id:`wgsl`,extensions:[`.wgsl`],aliases:[`WebGPU Shading Language`,`WGSL`,`wgsl`],loader:()=>N(()=>import(`./wgsl-XVg3Pi-r.js`),[],import.meta.url)}),U({id:`xml`,extensions:[`.xml`,`.xsd`,`.dtd`,`.ascx`,`.csproj`,`.config`,`.props`,`.targets`,`.wxi`,`.wxl`,`.wxs`,`.xaml`,`.svg`,`.svgz`,`.opf`,`.xslt`,`.xsl`],firstLine:`(\\<\\?xml.*)|(\\<svg)|(\\<\\!doctype\\s+svg)`,aliases:[`XML`,`xml`],mimetypes:[`text/xml`,`application/xml`,`application/xaml+xml`,`application/xml-dtd`],loader:()=>N(()=>import(`./xml-CYIaI6jB.js`),__vite__mapDeps([17,2,3,4]),import.meta.url)}),U({id:`yaml`,extensions:[`.yaml`,`.yml`],aliases:[`YAML`,`yaml`,`YML`,`yml`],mimetypes:[`application/x-yaml`,`text/x-yaml`],loader:()=>N(()=>import(`./yaml-Ki9FYBhW.js`),__vite__mapDeps([18,2,3,4]),import.meta.url)});var $L=Object.defineProperty,eR=(e,t,n)=>t in e?$L(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n,W=(e,t,n)=>eR(e,typeof t==`symbol`?t:t+``,n),tR,nR,rR,iR,aR;function oR(e){return e.method!==void 0}var sR;(function(e){function t(e){return e}e.create=t})(sR||={});var G;(function(e){e.parseError=-32700,e.invalidRequest=-32600,e.methodNotFound=-32601,e.invalidParams=-32602,e.internalError=-32603;function t(e){return-32099<=e&&e<=-32e3}e.isServerError=t;function n(e){if(!t(e))throw Error(`Invalid range for a server error.`);return e}e.serverError=n,e.unexpectedServerError=-32e3;function r(e){return!0}e.isApplicationError=r;function i(e){return e}e.applicationError=i,e.genericApplicationError=-320100})(G||={});var cR=class{constructor(){W(this,`listeners`,new Set),W(this,`event`,e=>(this.listeners.add(e),{dispose:()=>{this.listeners.delete(e)}}))}fire(e){this.listeners.forEach(t=>t(e))}},lR=class{constructor(e){W(this,`_value`),W(this,`eventEmitter`),this._value=e,this.eventEmitter=new cR}get value(){return this._value}set value(e){this._value!==e&&(this._value=e,this.eventEmitter.fire(e))}get onChange(){return this.eventEmitter.event}};function uR(e,t){let n=setTimeout(t,e);return{dispose:()=>clearTimeout(n)}}function dR(e,t,n){return e instanceof Set?(e.add(t),{dispose:()=>e.delete(t)}):(e.set(t,n),{dispose:()=>e.delete(t)})}var fR=class{constructor(){W(this,`_state`,`none`),W(this,`promise`),W(this,`resolve`,()=>{}),W(this,`reject`,()=>{}),this.promise=new Promise((e,t)=>{this.resolve=e,this.reject=t})}get state(){return this._state}};tR=class{constructor(){W(this,`_unprocessedMessages`,[]),W(this,`_messageListener`),W(this,`id`,tR.id++),W(this,`_state`,new lR({state:`open`})),W(this,`state`,this._state)}setListener(e){if(this._messageListener=e,e)for(;this._unprocessedMessages.length>0&&this._messageListener!==void 0;){let e=this._unprocessedMessages.shift();this._messageListener(e)}}send(e){return this._sendImpl(e)}_dispatchReceivedMessage(e){this._unprocessedMessages.length===0&&this._messageListener?this._messageListener(e):this._unprocessedMessages.push(e)}_onConnectionClosed(){this._state.value={state:`closed`,error:void 0}}log(e){return new pR(this,e??new mR)}},W(tR,`id`,0);var pR=class{constructor(e,t){W(this,`baseStream`),W(this,`logger`),this.baseStream=e,this.logger=t}get state(){return this.baseStream.state}setListener(e){if(e===void 0){this.baseStream.setListener(void 0);return}this.baseStream.setListener(t=>{this.logger.log(this.baseStream,`incoming`,t),e(t)})}send(e){return this.logger.log(this.baseStream,`outgoing`,e),this.baseStream.send(e)}toString(){return`StreamLogger/${this.baseStream.toString()}`}},mR=class{log(e,t,n){console.log(`${t===`incoming`?`<-`:`->`} [${e.toString()}] ${JSON.stringify(n)}`)}},hR=class e{constructor(e){W(this,`connect`),this.connect=e}mapContext(t){return new e(e=>this.connect(e?gR(e,t):void 0))}};function gR(e,t){return{handleNotification:(n,r)=>e.handleNotification(n,t(r)),handleRequest:(n,r,i)=>e.handleRequest(n,r,t(i))}}var _R=class e{constructor(e,t,n){W(this,`_stream`),W(this,`_listener`),W(this,`_logger`),W(this,`_unprocessedResponses`,new Map),W(this,`_lastUsedRequestId`,0),this._stream=e,this._listener=t,this._logger=n,this._stream.setListener(e=>{oR(e)?e.id===void 0?this._processNotification(e):this._processRequest(e):this._processResponse(e)})}static createChannel(t,n){let r=!1;return new hR(i=>{if(r)throw Error(`A channel to the stream ${t} was already constructed!`);return r=!0,new e(t,i,n)})}get state(){return this._stream.state}async _processNotification(e){if(e.id!==void 0)throw Error();if(!this._listener){this._logger&&this._logger.debug({text:`Notification ignored`,message:e});return}try{await this._listener.handleNotification({method:e.method,params:e.params||null})}catch(t){this._logger&&this._logger.warn({text:`Exception was thrown while handling notification: ${t}`,exception:t,message:e})}}async _processRequest(e){if(e.id===void 0)throw Error();let t;if(this._listener)try{t=await this._listener.handleRequest({method:e.method,params:e.params||null},e.id)}catch(n){this._logger&&this._logger.warn({text:`Exception was thrown while handling request: ${n}`,message:e,exception:n}),t={error:{code:G.internalError,message:`An unexpected exception was thrown.`,data:void 0}}}else this._logger&&this._logger.debug({text:`Received request even though not listening for requests`,message:e}),t={error:{code:G.methodNotFound,message:`This endpoint does not listen for requests or notifications.`,data:void 0}};let n;n=`result`in t?{jsonrpc:`2.0`,id:e.id,result:t.result}:{jsonrpc:`2.0`,id:e.id,error:t.error},await this._stream.send(n)}_processResponse(e){let t=``+e.id,n=this._unprocessedResponses.get(t);if(!n){this._logger&&this._logger.debug({text:`Got an unexpected response message`,message:e});return}this._unprocessedResponses.delete(t),n(e)}_newRequestId(){return this._lastUsedRequestId++}sendRequest(e,t,n){let r={jsonrpc:`2.0`,id:this._newRequestId(),method:e.method,params:e.params||void 0};return n&&n(r.id),new Promise((e,t)=>{let n=``+r.id;this._unprocessedResponses.set(n,n=>{`result`in n?e({result:n.result}):(n.error||t(Error(`Response had neither 'result' nor 'error' field set.`)),e({error:n.error}))}),this._stream.send(r).then(void 0,e=>{this._unprocessedResponses.delete(n),t(e)})})}sendNotification(e,t){let n={jsonrpc:`2.0`,id:void 0,method:e.method,params:e.params||void 0};return this._stream.send(n)}toString(){return`StreamChannel/`+this._stream.toString()}},K;(function(e){function t(){return{deserializeFromJson:e=>({hasErrors:!1,value:e}),serializeToJson:e=>e}}e.sAny=t;function n(){return{deserializeFromJson:e=>({hasErrors:!1,value:{}}),serializeToJson:e=>({})}}e.sEmptyObject=n;function r(){return{deserializeFromJson:e=>({hasErrors:!1,value:void 0}),serializeToJson:e=>null}}e.sVoidFromNull=r})(K||={});var vR=Symbol(`OptionalMethodNotFound`),yR=class{contextualize(e){return new bR(this,e)}},bR=class extends yR{constructor(e,t){super(),W(this,`underylingTypedChannel`),W(this,`converters`),this.underylingTypedChannel=e,this.converters=t}async request(e,t,n){let r=await this.converters.getSendContext(n);return this.underylingTypedChannel.request(e,t,r)}async notify(e,t,n){let r=await this.converters.getSendContext(n);return this.underylingTypedChannel.notify(e,t,r)}registerNotificationHandler(e,t){return this.underylingTypedChannel.registerNotificationHandler(e,async(e,n)=>await t(e,await this.converters.getNewContext(n)))}registerRequestHandler(e,t){return this.underylingTypedChannel.registerRequestHandler(e,async(e,n,r)=>await t(e,n,await this.converters.getNewContext(r)))}},xR=class e extends yR{constructor(e,t={}){super(),W(this,`channelCtor`),W(this,`_requestSender`),W(this,`_handler`,new Map),W(this,`_unknownNotificationHandler`,new Set),W(this,`_timeout`),W(this,`sendExceptionDetails`,!1),W(this,`_logger`),W(this,`listeningDeferred`,new fR),W(this,`onListening`,this.listeningDeferred.promise),W(this,`_requestDidErrorEventEmitter`,new cR),W(this,`onRequestDidError`,this._requestDidErrorEventEmitter.event),this.channelCtor=e,this._logger=t.logger,this.sendExceptionDetails=!!t.sendExceptionDetails,this._timeout=uR(1e3,()=>{this._requestSender||console.warn(`"${this.startListen.name}" has not been called within 1 second after construction of this channel. Did you forget to call it?`,this)})}static fromTransport(t,n={}){return new e(_R.createChannel(t,n.logger),n)}startListen(){if(this._requestSender)throw Error(`"${this.startListen.name}" can be called only once, but it already has been called.`);this._timeout&&=(this._timeout.dispose(),void 0),this._requestSender=this.channelCtor.connect({handleRequest:(e,t,n)=>this.handleRequest(e,t,n),handleNotification:(e,t)=>this.handleNotification(e,t)}),this.listeningDeferred.resolve()}checkChannel(e){if(!e)throw Error(`"${this.startListen.name}" must be called before any messages can be sent or received.`);return!0}async handleRequest(e,t,n){let r=this._handler.get(e.method);if(!r)return this._logger&&this._logger.debug({text:`No request handler for "${e.method}".`,data:{requestObject:e}}),{error:{code:G.methodNotFound,message:`No request handler for "${e.method}".`,data:{method:e.method}}};if(r.kind!=`request`){let t=`"${e.method}" is registered as notification, but was sent as request.`;return this._logger&&this._logger.debug({text:t,data:{requestObject:e}}),{error:{code:G.invalidRequest,message:t,data:{method:e.method}}}}let i=r.requestType.paramsSerializer.deserializeFromJson(e.params);if(i.hasErrors){let t=`Got invalid params: ${i.errorMessage}`;return this._logger&&this._logger.debug({text:t,data:{requestObject:e,errorMessage:i.errorMessage}}),{error:{code:G.invalidParams,message:t,data:{errors:i.errorMessage}}}}else{let a=i.value,o;try{let e=await r.handler(a,t,n);if(`error`in e||`errorMessage`in e){let t=e.error?r.requestType.errorSerializer.serializeToJson(e.error):void 0;o={error:{code:e.errorCode||G.genericApplicationError,message:e.errorMessage||`An error was returned`,data:t}}}else o={result:r.requestType.resultSerializer.serializeToJson(e.ok)}}catch(t){t instanceof CR?o={error:{code:t.code,message:t.message}}:(this._logger&&this._logger.warn({text:`An exception was thrown while handling a request: ${t}.`,exception:t,data:{requestObject:e}}),o={error:{code:G.unexpectedServerError,message:this.sendExceptionDetails?`An exception was thrown while handling a request: ${t}.`:`Server has thrown an unexpected exception`}})}return o}}async handleNotification(e,t){let n=this._handler.get(e.method);if(!n){for(let t of this._unknownNotificationHandler)t(e);this._unknownNotificationHandler.size===0&&this._logger&&this._logger.debug({text:`Unhandled notification "${e.method}"`,data:{requestObject:e}});return}if(n.kind!=`notification`){this._logger&&this._logger.debug({text:`"${e.method}" is registered as request, but was sent as notification.`,data:{requestObject:e}});return}let r=n.notificationType.paramsSerializer.deserializeFromJson(e.params);if(r.hasErrors){this._logger&&this._logger.debug({text:`Got invalid params: ${r}`,data:{requestObject:e,errorMessage:r.errorMessage}});return}let i=r.value;for(let r of n.handlers)try{r(i,t)}catch(t){this._logger&&this._logger.warn({text:`An exception was thrown while handling a notification: ${t}.`,exception:t,data:{requestObject:e}})}}registerUnknownNotificationHandler(e){return dR(this._unknownNotificationHandler,e)}registerRequestHandler(e,t){if(this._handler.get(e.method))throw Error(`Handler with method "${e.method}" already registered.`);return dR(this._handler,e.method,{kind:`request`,requestType:e,handler:t})}registerNotificationHandler(e,t){let n=this._handler.get(e.method);if(!n)n={kind:`notification`,notificationType:e,handlers:new Set},this._handler.set(e.method,n);else{if(n.kind!==`notification`)throw Error(`Method "${e.method}" was already registered as request handler.`);if(n.notificationType!==e)throw Error(`Method "${e.method}" was registered for a different type.`)}return dR(n.handlers,t)}getRegisteredTypes(){let e=[];for(let t of this._handler.values())t.kind===`notification`?e.push(t.notificationType):t.kind===`request`&&e.push(t.requestType);return e}async request(e,t,n){if(!this.checkChannel(this._requestSender))throw Error(`Impossible`);let r=e.paramsSerializer.serializeToJson(t);SR(r);let i=await this._requestSender.sendRequest({method:e.method,params:r},n);if(`error`in i){if(e.isOptional&&i.error.code===G.methodNotFound)return vR;let t;if(i.error.data!==void 0){let n=e.errorSerializer.deserializeFromJson(i.error.data);if(n.hasErrors)throw Error(n.errorMessage);t=n.value}else t=void 0;let n=new CR(i.error.message,t,i.error.code);throw this._requestDidErrorEventEmitter.fire({error:n}),n}else{let t=e.resultSerializer.deserializeFromJson(i.result);if(t.hasErrors)throw Error(`Could not deserialize response: `+t.errorMessage+`
 
-${JSON.stringify(i,null,2)}`);return t.value}}async notify(e,t,n){if(!this.checkChannel(this._requestSender))throw Error();let r=e.paramsSerializer.serializeToJson(t);SR(r),this._requestSender.sendNotification({method:e.method,params:r},n)}};function SR(e){if(e!==null&&Array.isArray(e)&&typeof e!=`object`)throw Error(`Invalid value! Only null, array and object is allowed.`)}var CR=class e extends Error{constructor(t,n,r=G.genericApplicationError){super(t),W(this,`data`),W(this,`code`),this.data=n,this.code=r,Object.setPrototypeOf(this,e.prototype)}},wR=class e{constructor(e,t,n,r,i=!1){W(this,`method`),W(this,`paramsSerializer`),W(this,`resultSerializer`),W(this,`errorSerializer`),W(this,`isOptional`),W(this,`kind`,`request`),this.method=e,this.paramsSerializer=t,this.resultSerializer=n,this.errorSerializer=r,this.isOptional=i}withMethod(t){return new e(t,this.paramsSerializer,this.resultSerializer,this.errorSerializer)}optional(){return new e(this.method,this.paramsSerializer,this.resultSerializer,this.errorSerializer,!0)}},TR=class e{constructor(e,t){W(this,`method`),W(this,`paramsSerializer`),W(this,`kind`,`notification`),this.method=e,this.paramsSerializer=t}withMethod(t){return new e(t,this.paramsSerializer)}};function q(e){return new wR((e||{}).method,K.sAny(),K.sAny(),K.sAny())}function J(e){return new TR((e||{}).method,K.sAny())}var ER=(nR=Symbol(),rR=class{constructor(e){W(this,`error`),W(this,nR),this.error=e}},W(rR,`factory`,e=>new rR(e)),rR);function DR(e){let t=OR(e.server),n=OR(e.client);return new kR(e.tags||[],t,n)}function OR(e){let t={};for(let[n,r]of Object.entries(e)){let e=r.method?r.method:n;t[n]=r.withMethod(e)}return t}var kR=class e{constructor(e=[],t,n){W(this,`tags`),W(this,`server`),W(this,`client`),this.tags=e,this.server=t,this.client=n}_onlyDesignTime(){return Error(`This property is not meant to be accessed at runtime`)}get TContractObject(){throw this._onlyDesignTime()}get TClientInterface(){throw this._onlyDesignTime()}get TServerInterface(){throw this._onlyDesignTime()}get TClientHandler(){throw this._onlyDesignTime()}get TServerHandler(){throw this._onlyDesignTime()}get TTags(){throw this._onlyDesignTime()}getInterface(e,t,n,r){let i=this.buildCounterpart(e,n),a=this.registerHandlers(e,t,r,i);return{counterpart:i,dispose:()=>a.dispose()}}buildCounterpart(e,t){let n={};for(let[r,i]of Object.entries(t)){let t;t=i.kind===`request`?i.isOptional?async(t,n)=>{t===void 0&&(t={});try{return await e.request(i,t,n)}catch(e){if(e&&e.code===G.methodNotFound)return vR;throw e}}:(t,n)=>(t===void 0&&(t={}),e.request(i,t,n)):(t,n)=>(t===void 0&&(t={}),e.notify(i,t,n)),n[r]=t}return n}registerHandlers(e,t,n,r){let i=[];for(let[a,o]of Object.entries(t))if(o.kind===`request`){let t=n[a];if(!t)continue;let s=this.createRequestHandler(r,t);i.push(e.registerRequestHandler(o,s))}else{let t=n[a];t&&i.push(e.registerNotificationHandler(o,(e,n)=>{t(e,{context:n,counterpart:r})}))}return{dispose:()=>i.forEach(e=>e.dispose())}}createRequestHandler(e,t){return async(n,r,i)=>{let a=await t(n,{context:i,counterpart:e,newErr:ER.factory,requestId:r});return a instanceof ER?a.error:{ok:a}}}static getServerFromStream(e,t,n,r){let i=xR.fromTransport(t,n),{server:a}=e.getServer(i,r);return i.startListen(),{channel:i,server:a}}static registerServerToStream(e,t,n,r){let i=xR.fromTransport(t,n),{client:a}=e.registerServer(i,r);return i.startListen(),{channel:i,client:a}}getServer(e,t){let{counterpart:n,dispose:r}=this.getInterface(e,this.client,this.server,t);return{server:n,dispose:r}}registerServer(e,t){let{counterpart:n,dispose:r}=this.getInterface(e,this.server,this.client,t);return{client:n,dispose:r}}withContext(){return new e(this.tags,this.server,this.client)}},AR=(function(e){return e.Comment=`comment`,e.Imports=`imports`,e.Region=`region`,e})({}),Y=(function(e){return e[e.File=1]=`File`,e[e.Module=2]=`Module`,e[e.Namespace=3]=`Namespace`,e[e.Package=4]=`Package`,e[e.Class=5]=`Class`,e[e.Method=6]=`Method`,e[e.Property=7]=`Property`,e[e.Field=8]=`Field`,e[e.Constructor=9]=`Constructor`,e[e.Enum=10]=`Enum`,e[e.Interface=11]=`Interface`,e[e.Function=12]=`Function`,e[e.Variable=13]=`Variable`,e[e.Constant=14]=`Constant`,e[e.String=15]=`String`,e[e.Number=16]=`Number`,e[e.Boolean=17]=`Boolean`,e[e.Array=18]=`Array`,e[e.Object=19]=`Object`,e[e.Key=20]=`Key`,e[e.Null=21]=`Null`,e[e.EnumMember=22]=`EnumMember`,e[e.Struct=23]=`Struct`,e[e.Event=24]=`Event`,e[e.Operator=25]=`Operator`,e[e.TypeParameter=26]=`TypeParameter`,e})({}),jR=(function(e){return e[e.Deprecated=1]=`Deprecated`,e})({}),MR=(function(e){return e[e.Type=1]=`Type`,e[e.Parameter=2]=`Parameter`,e})({}),X=(function(e){return e[e.Text=1]=`Text`,e[e.Method=2]=`Method`,e[e.Function=3]=`Function`,e[e.Constructor=4]=`Constructor`,e[e.Field=5]=`Field`,e[e.Variable=6]=`Variable`,e[e.Class=7]=`Class`,e[e.Interface=8]=`Interface`,e[e.Module=9]=`Module`,e[e.Property=10]=`Property`,e[e.Unit=11]=`Unit`,e[e.Value=12]=`Value`,e[e.Enum=13]=`Enum`,e[e.Keyword=14]=`Keyword`,e[e.Snippet=15]=`Snippet`,e[e.Color=16]=`Color`,e[e.File=17]=`File`,e[e.Reference=18]=`Reference`,e[e.Folder=19]=`Folder`,e[e.EnumMember=20]=`EnumMember`,e[e.Constant=21]=`Constant`,e[e.Struct=22]=`Struct`,e[e.Event=23]=`Event`,e[e.Operator=24]=`Operator`,e[e.TypeParameter=25]=`TypeParameter`,e})({}),NR=(function(e){return e[e.Deprecated=1]=`Deprecated`,e})({}),PR=(function(e){return e[e.PlainText=1]=`PlainText`,e[e.Snippet=2]=`Snippet`,e})({}),FR=(function(e){return e[e.Text=1]=`Text`,e[e.Read=2]=`Read`,e[e.Write=3]=`Write`,e})({}),Z=(function(e){return e.Empty=``,e.QuickFix=`quickfix`,e.Refactor=`refactor`,e.RefactorExtract=`refactor.extract`,e.RefactorInline=`refactor.inline`,e.RefactorRewrite=`refactor.rewrite`,e.Source=`source`,e.SourceOrganizeImports=`source.organizeImports`,e.SourceFixAll=`source.fixAll`,e})({}),Q=(function(e){return e[e.Error=1]=`Error`,e[e.Warning=2]=`Warning`,e[e.Information=3]=`Information`,e[e.Hint=4]=`Hint`,e})({}),IR=(function(e){return e[e.Unnecessary=1]=`Unnecessary`,e[e.Deprecated=2]=`Deprecated`,e})({}),LR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.TriggerCharacter=2]=`TriggerCharacter`,e[e.TriggerForIncompleteCompletions=3]=`TriggerForIncompleteCompletions`,e})({}),RR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.TriggerCharacter=2]=`TriggerCharacter`,e[e.ContentChange=3]=`ContentChange`,e})({}),zR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.Automatic=2]=`Automatic`,e})({}),$=class{constructor(e){this.method=e}},BR={textDocumentImplementation:new $(`textDocument/implementation`),textDocumentTypeDefinition:new $(`textDocument/typeDefinition`),textDocumentDocumentColor:new $(`textDocument/documentColor`),textDocumentColorPresentation:new $(`textDocument/colorPresentation`),textDocumentFoldingRange:new $(`textDocument/foldingRange`),textDocumentDeclaration:new $(`textDocument/declaration`),textDocumentSelectionRange:new $(`textDocument/selectionRange`),textDocumentPrepareCallHierarchy:new $(`textDocument/prepareCallHierarchy`),textDocumentSemanticTokensFull:new $(`textDocument/semanticTokens/full`),textDocumentSemanticTokensFullDelta:new $(`textDocument/semanticTokens/full/delta`),textDocumentLinkedEditingRange:new $(`textDocument/linkedEditingRange`),workspaceWillCreateFiles:new $(`workspace/willCreateFiles`),workspaceWillRenameFiles:new $(`workspace/willRenameFiles`),workspaceWillDeleteFiles:new $(`workspace/willDeleteFiles`),textDocumentMoniker:new $(`textDocument/moniker`),textDocumentPrepareTypeHierarchy:new $(`textDocument/prepareTypeHierarchy`),textDocumentInlineValue:new $(`textDocument/inlineValue`),textDocumentInlayHint:new $(`textDocument/inlayHint`),textDocumentDiagnostic:new $(`textDocument/diagnostic`),textDocumentInlineCompletion:new $(`textDocument/inlineCompletion`),textDocumentWillSaveWaitUntil:new $(`textDocument/willSaveWaitUntil`),textDocumentCompletion:new $(`textDocument/completion`),textDocumentHover:new $(`textDocument/hover`),textDocumentSignatureHelp:new $(`textDocument/signatureHelp`),textDocumentDefinition:new $(`textDocument/definition`),textDocumentReferences:new $(`textDocument/references`),textDocumentDocumentHighlight:new $(`textDocument/documentHighlight`),textDocumentDocumentSymbol:new $(`textDocument/documentSymbol`),textDocumentCodeAction:new $(`textDocument/codeAction`),workspaceSymbol:new $(`workspace/symbol`),textDocumentCodeLens:new $(`textDocument/codeLens`),textDocumentDocumentLink:new $(`textDocument/documentLink`),textDocumentFormatting:new $(`textDocument/formatting`),textDocumentRangeFormatting:new $(`textDocument/rangeFormatting`),textDocumentRangesFormatting:new $(`textDocument/rangesFormatting`),textDocumentOnTypeFormatting:new $(`textDocument/onTypeFormatting`),textDocumentRename:new $(`textDocument/rename`),workspaceExecuteCommand:new $(`workspace/executeCommand`),workspaceDidCreateFiles:new $(`workspace/didCreateFiles`),workspaceDidRenameFiles:new $(`workspace/didRenameFiles`),workspaceDidDeleteFiles:new $(`workspace/didDeleteFiles`),workspaceDidChangeConfiguration:new $(`workspace/didChangeConfiguration`),textDocumentDidOpen:new $(`textDocument/didOpen`),textDocumentDidChange:new $(`textDocument/didChange`),textDocumentDidClose:new $(`textDocument/didClose`),textDocumentDidSave:new $(`textDocument/didSave`),textDocumentWillSave:new $(`textDocument/willSave`),workspaceDidChangeWatchedFiles:new $(`workspace/didChangeWatchedFiles`)};DR({server:{textDocumentImplementation:q({method:`textDocument/implementation`}),textDocumentTypeDefinition:q({method:`textDocument/typeDefinition`}),textDocumentDocumentColor:q({method:`textDocument/documentColor`}),textDocumentColorPresentation:q({method:`textDocument/colorPresentation`}),textDocumentFoldingRange:q({method:`textDocument/foldingRange`}),textDocumentDeclaration:q({method:`textDocument/declaration`}),textDocumentSelectionRange:q({method:`textDocument/selectionRange`}),textDocumentPrepareCallHierarchy:q({method:`textDocument/prepareCallHierarchy`}),callHierarchyIncomingCalls:q({method:`callHierarchy/incomingCalls`}),callHierarchyOutgoingCalls:q({method:`callHierarchy/outgoingCalls`}),textDocumentSemanticTokensFull:q({method:`textDocument/semanticTokens/full`}),textDocumentSemanticTokensFullDelta:q({method:`textDocument/semanticTokens/full/delta`}),textDocumentSemanticTokensRange:q({method:`textDocument/semanticTokens/range`}),textDocumentLinkedEditingRange:q({method:`textDocument/linkedEditingRange`}),workspaceWillCreateFiles:q({method:`workspace/willCreateFiles`}),workspaceWillRenameFiles:q({method:`workspace/willRenameFiles`}),workspaceWillDeleteFiles:q({method:`workspace/willDeleteFiles`}),textDocumentMoniker:q({method:`textDocument/moniker`}),textDocumentPrepareTypeHierarchy:q({method:`textDocument/prepareTypeHierarchy`}),typeHierarchySupertypes:q({method:`typeHierarchy/supertypes`}),typeHierarchySubtypes:q({method:`typeHierarchy/subtypes`}),textDocumentInlineValue:q({method:`textDocument/inlineValue`}),textDocumentInlayHint:q({method:`textDocument/inlayHint`}),inlayHintResolve:q({method:`inlayHint/resolve`}),textDocumentDiagnostic:q({method:`textDocument/diagnostic`}),workspaceDiagnostic:q({method:`workspace/diagnostic`}),textDocumentInlineCompletion:q({method:`textDocument/inlineCompletion`}),initialize:q({method:`initialize`}),shutdown:q({method:`shutdown`}),textDocumentWillSaveWaitUntil:q({method:`textDocument/willSaveWaitUntil`}),textDocumentCompletion:q({method:`textDocument/completion`}),completionItemResolve:q({method:`completionItem/resolve`}),textDocumentHover:q({method:`textDocument/hover`}),textDocumentSignatureHelp:q({method:`textDocument/signatureHelp`}),textDocumentDefinition:q({method:`textDocument/definition`}),textDocumentReferences:q({method:`textDocument/references`}),textDocumentDocumentHighlight:q({method:`textDocument/documentHighlight`}),textDocumentDocumentSymbol:q({method:`textDocument/documentSymbol`}),textDocumentCodeAction:q({method:`textDocument/codeAction`}),codeActionResolve:q({method:`codeAction/resolve`}),workspaceSymbol:q({method:`workspace/symbol`}),workspaceSymbolResolve:q({method:`workspaceSymbol/resolve`}),textDocumentCodeLens:q({method:`textDocument/codeLens`}),codeLensResolve:q({method:`codeLens/resolve`}),textDocumentDocumentLink:q({method:`textDocument/documentLink`}),documentLinkResolve:q({method:`documentLink/resolve`}),textDocumentFormatting:q({method:`textDocument/formatting`}),textDocumentRangeFormatting:q({method:`textDocument/rangeFormatting`}),textDocumentRangesFormatting:q({method:`textDocument/rangesFormatting`}),textDocumentOnTypeFormatting:q({method:`textDocument/onTypeFormatting`}),textDocumentRename:q({method:`textDocument/rename`}),textDocumentPrepareRename:q({method:`textDocument/prepareRename`}),workspaceExecuteCommand:q({method:`workspace/executeCommand`}),workspaceDidChangeWorkspaceFolders:J({method:`workspace/didChangeWorkspaceFolders`}),windowWorkDoneProgressCancel:J({method:`window/workDoneProgress/cancel`}),workspaceDidCreateFiles:J({method:`workspace/didCreateFiles`}),workspaceDidRenameFiles:J({method:`workspace/didRenameFiles`}),workspaceDidDeleteFiles:J({method:`workspace/didDeleteFiles`}),notebookDocumentDidOpen:J({method:`notebookDocument/didOpen`}),notebookDocumentDidChange:J({method:`notebookDocument/didChange`}),notebookDocumentDidSave:J({method:`notebookDocument/didSave`}),notebookDocumentDidClose:J({method:`notebookDocument/didClose`}),initialized:J({method:`initialized`}),exit:J({method:`exit`}),workspaceDidChangeConfiguration:J({method:`workspace/didChangeConfiguration`}),textDocumentDidOpen:J({method:`textDocument/didOpen`}),textDocumentDidChange:J({method:`textDocument/didChange`}),textDocumentDidClose:J({method:`textDocument/didClose`}),textDocumentDidSave:J({method:`textDocument/didSave`}),textDocumentWillSave:J({method:`textDocument/willSave`}),workspaceDidChangeWatchedFiles:J({method:`workspace/didChangeWatchedFiles`}),setTrace:J({method:`$/setTrace`}),cancelRequest:J({method:`$/cancelRequest`}),progress:J({method:`$/progress`})},client:{workspaceWorkspaceFolders:q({method:`workspace/workspaceFolders`}).optional(),workspaceConfiguration:q({method:`workspace/configuration`}).optional(),workspaceFoldingRangeRefresh:q({method:`workspace/foldingRange/refresh`}).optional(),windowWorkDoneProgressCreate:q({method:`window/workDoneProgress/create`}).optional(),workspaceSemanticTokensRefresh:q({method:`workspace/semanticTokens/refresh`}).optional(),windowShowDocument:q({method:`window/showDocument`}).optional(),workspaceInlineValueRefresh:q({method:`workspace/inlineValue/refresh`}).optional(),workspaceInlayHintRefresh:q({method:`workspace/inlayHint/refresh`}).optional(),workspaceDiagnosticRefresh:q({method:`workspace/diagnostic/refresh`}).optional(),clientRegisterCapability:q({method:`client/registerCapability`}).optional(),clientUnregisterCapability:q({method:`client/unregisterCapability`}).optional(),windowShowMessageRequest:q({method:`window/showMessageRequest`}).optional(),workspaceCodeLensRefresh:q({method:`workspace/codeLens/refresh`}).optional(),workspaceApplyEdit:q({method:`workspace/applyEdit`}).optional(),windowShowMessage:J({method:`window/showMessage`}),windowLogMessage:J({method:`window/logMessage`}),telemetryEvent:J({method:`telemetry/event`}),textDocumentPublishDiagnostics:J({method:`textDocument/publishDiagnostics`}),logTrace:J({method:`$/logTrace`}),cancelRequest:J({method:`$/cancelRequest`}),progress:J({method:`$/progress`})}}),iR=class{constructor(){W(this,`_store`,new VR)}dispose(){this._store.dispose()}_register(e){if(e===this)throw Error(`Cannot register a disposable on itself!`);return this._store.add(e)}},W(iR,`None`,Object.freeze({dispose(){}}));var VR=(aR=class{constructor(){W(this,`_toDispose`,new Set),W(this,`_isDisposed`,!1)}dispose(){this._isDisposed||(this._isDisposed=!0,this.clear())}clear(){if(this._toDispose.size!==0)try{for(let e of this._toDispose)e.dispose()}finally{this._toDispose.clear()}}add(e){if(!e)return e;if(e===this)throw Error(`Cannot register a disposable on itself!`);return this._isDisposed?aR.DISABLE_DISPOSED_WARNING||console.warn(Error(`Trying to add a disposable to a DisposableStore that has already been disposed of. The added object will be leaked!`).stack):this._toDispose.add(e),e}},W(aR,`DISABLE_DISPOSED_WARNING`,!1),aR);Z.Empty,Z.QuickFix,Z.Refactor,Z.RefactorExtract,Z.RefactorInline,Z.RefactorRewrite,Z.Source,Z.SourceOrganizeImports,Z.SourceFixAll,R.CodeActionTriggerType.Invoke,zR.Invoked,R.CodeActionTriggerType.Auto,zR.Automatic,X.Text,R.CompletionItemKind.Text,X.Method,R.CompletionItemKind.Method,X.Function,R.CompletionItemKind.Function,X.Constructor,R.CompletionItemKind.Constructor,X.Field,R.CompletionItemKind.Field,X.Variable,R.CompletionItemKind.Variable,X.Class,R.CompletionItemKind.Class,X.Interface,R.CompletionItemKind.Interface,X.Module,R.CompletionItemKind.Module,X.Property,R.CompletionItemKind.Property,X.Unit,R.CompletionItemKind.Unit,X.Value,R.CompletionItemKind.Value,X.Enum,R.CompletionItemKind.Enum,X.Keyword,R.CompletionItemKind.Keyword,X.Snippet,R.CompletionItemKind.Snippet,X.Color,R.CompletionItemKind.Color,X.File,R.CompletionItemKind.File,X.Reference,R.CompletionItemKind.Reference,X.Folder,R.CompletionItemKind.Folder,X.EnumMember,R.CompletionItemKind.EnumMember,X.Constant,R.CompletionItemKind.Constant,X.Struct,R.CompletionItemKind.Struct,X.Event,R.CompletionItemKind.Event,X.Operator,R.CompletionItemKind.Operator,X.TypeParameter,R.CompletionItemKind.TypeParameter,NR.Deprecated,R.CompletionItemTag.Deprecated,R.CompletionTriggerKind.Invoke,LR.Invoked,R.CompletionTriggerKind.TriggerCharacter,LR.TriggerCharacter,R.CompletionTriggerKind.TriggerForIncompleteCompletions,LR.TriggerForIncompleteCompletions,PR.Snippet,R.CompletionItemInsertTextRule.InsertAsSnippet,Y.File,R.SymbolKind.File,Y.Module,R.SymbolKind.Module,Y.Namespace,R.SymbolKind.Namespace,Y.Package,R.SymbolKind.Package,Y.Class,R.SymbolKind.Class,Y.Method,R.SymbolKind.Method,Y.Property,R.SymbolKind.Property,Y.Field,R.SymbolKind.Field,Y.Constructor,R.SymbolKind.Constructor,Y.Enum,R.SymbolKind.Enum,Y.Interface,R.SymbolKind.Interface,Y.Function,R.SymbolKind.Function,Y.Variable,R.SymbolKind.Variable,Y.Constant,R.SymbolKind.Constant,Y.String,R.SymbolKind.String,Y.Number,R.SymbolKind.Number,Y.Boolean,R.SymbolKind.Boolean,Y.Array,R.SymbolKind.Array,Y.Object,R.SymbolKind.Object,Y.Key,R.SymbolKind.Key,Y.Null,R.SymbolKind.Null,Y.EnumMember,R.SymbolKind.EnumMember,Y.Struct,R.SymbolKind.Struct,Y.Event,R.SymbolKind.Event,Y.Operator,R.SymbolKind.Operator,Y.TypeParameter,R.SymbolKind.TypeParameter,jR.Deprecated,R.SymbolTag.Deprecated,FR.Text,R.DocumentHighlightKind.Text,FR.Read,R.DocumentHighlightKind.Read,FR.Write,R.DocumentHighlightKind.Write,AR.Comment,R.FoldingRangeKind.Comment,AR.Imports,R.FoldingRangeKind.Imports,AR.Region,R.FoldingRangeKind.Region,L.Error,Q.Error,L.Warning,Q.Warning,L.Info,Q.Information,L.Hint,Q.Hint,Q.Error,L.Error,Q.Warning,L.Warning,Q.Information,L.Info,Q.Hint,L.Hint,IR.Unnecessary,be.Unnecessary,IR.Deprecated,be.Deprecated,R.SignatureHelpTriggerKind.Invoke,RR.Invoked,R.SignatureHelpTriggerKind.TriggerCharacter,RR.TriggerCharacter,R.SignatureHelpTriggerKind.ContentChange,RR.ContentChange,MR.Type,R.InlayHintKind.Type,MR.Parameter,R.InlayHintKind.Parameter,new Map([...Object.values(BR)].map(e=>[e.method,e])),typeof WebSocket<`u`||(typeof MozWebSocket<`u`?MozWebSocket:typeof global<`u`?global.WebSocket||global.MozWebSocket:typeof window<`u`?window.WebSocket||window.MozWebSocket:typeof self<`u`&&(self.WebSocket||self.MozWebSocket));function HR(){return Se}globalThis.MonacoEnvironment?.globalAPI&&(globalThis.monaco=HR());var UR=HR();UR.languages.css=CL,UR.languages.html=jL,UR.languages.typescript=Ae,UR.languages.json=KL;var WR={automaticLayout:!0,formatOnPaste:!0,formatOnType:!0,fontSize:16,showDeprecated:!0,showUnused:!0,showFoldingControls:`always`,scrollBeyondLastLine:!0,minimap:{enabled:!0},inlineSuggest:{enabled:!0},fixedOverflowWidgets:!0,smoothScrolling:!0,smartSelect:{selectSubwords:!0,selectLeadingAndTrailingWhitespace:!0},tabSize:2,overviewRulerBorder:!0,scrollbar:{verticalScrollbarSize:14,horizontalScrollbarSize:14},renderLineHighlight:`all`,selectOnLineNumbers:!0,readOnly:!1,accessibilitySupport:`off`,wordWrap:`off`},GR={target:Oe.ESNext,module:ke.ESNext,moduleResolution:je.NodeJs,allowNonTsExtensions:!0,allowJs:!0,noEmit:!0,esModuleInterop:!0,jsx:Ne.React,reactNamespace:`React`,allowSyntheticDefaultImports:!0,isolatedModules:!0};function KR(e){return new Worker(``+new URL(`editor.worker-Qflgy8bP.js`,import.meta.url).href,{type:`module`,name:e?.name})}function qR(e){return new Worker(``+new URL(`json.worker-mexi0yo2.js`,import.meta.url).href,{type:`module`,name:e?.name})}function JR(e){return new Worker(``+new URL(`css.worker-CgsFFuEw.js`,import.meta.url).href,{type:`module`,name:e?.name})}function YR(e){return new Worker(``+new URL(`html.worker-KYe8ILdy.js`,import.meta.url).href,{type:`module`,name:e?.name})}function XR(e){return new Worker(``+new URL(`ts.worker-CNvosV8B.js`,import.meta.url).href,{type:`module`,name:e?.name})}self.MonacoEnvironment={getWorker(e,t){return t===`json`?new qR:t===`css`||t===`scss`||t===`less`?new JR:t===`html`||t===`handlebars`||t===`razor`?new YR:t===`typescript`||t===`javascript`?new XR:new KR}};function ZR({path:e,language:t,content:n}){let r=Te.parse(e),i=xe.getModel(r);return i||=xe.createModel(n,t,r),i}function QR(e){var t=(0,z.useRef)(e);return t.current=e,t}var $R=function(e){var t=QR(e);(0,z.useEffect)(function(){return function(){t.current()}},[])},ez=n(((e,t)=>{function n(e){var t=typeof e;return e!=null&&(t==`object`||t==`function`)}t.exports=n})),tz=n(((e,t)=>{t.exports=typeof global==`object`&&global&&global.Object===Object&&global})),nz=n(((e,t)=>{var n=tz(),r=typeof self==`object`&&self&&self.Object===Object&&self;t.exports=n||r||Function(`return this`)()})),rz=n(((e,t)=>{var n=nz();t.exports=function(){return n.Date.now()}})),iz=n(((e,t)=>{var n=/\s/;function r(e){for(var t=e.length;t--&&n.test(e.charAt(t)););return t}t.exports=r})),az=n(((e,t)=>{var n=iz(),r=/^\s+/;function i(e){return e&&e.slice(0,n(e)+1).replace(r,``)}t.exports=i})),oz=n(((e,t)=>{t.exports=nz().Symbol})),sz=n(((e,t)=>{var n=oz(),r=Object.prototype,i=r.hasOwnProperty,a=r.toString,o=n?n.toStringTag:void 0;function s(e){var t=i.call(e,o),n=e[o];try{e[o]=void 0;var r=!0}catch{}var s=a.call(e);return r&&(t?e[o]=n:delete e[o]),s}t.exports=s})),cz=n(((e,t)=>{var n=Object.prototype.toString;function r(e){return n.call(e)}t.exports=r})),lz=n(((e,t)=>{var n=oz(),r=sz(),i=cz(),a=`[object Null]`,o=`[object Undefined]`,s=n?n.toStringTag:void 0;function c(e){return e==null?e===void 0?o:a:s&&s in Object(e)?r(e):i(e)}t.exports=c})),uz=n(((e,t)=>{function n(e){return typeof e==`object`&&!!e}t.exports=n})),dz=n(((e,t)=>{var n=lz(),r=uz(),i=`[object Symbol]`;function a(e){return typeof e==`symbol`||r(e)&&n(e)==i}t.exports=a})),fz=n(((e,t)=>{var n=az(),r=ez(),i=dz(),a=NaN,o=/^[-+]0x[0-9a-f]+$/i,s=/^0b[01]+$/i,c=/^0o[0-7]+$/i,l=parseInt;function u(e){if(typeof e==`number`)return e;if(i(e))return a;if(r(e)){var t=typeof e.valueOf==`function`?e.valueOf():e;e=r(t)?t+``:t}if(typeof e!=`string`)return e===0?e:+e;e=n(e);var u=s.test(e);return u||c.test(e)?l(e.slice(2),u?2:8):o.test(e)?a:+e}t.exports=u})),pz=t(n(((e,t)=>{var n=ez(),r=rz(),i=fz(),a=`Expected a function`,o=Math.max,s=Math.min;function c(e,t,c){var l,u,d,f,p,m,h=0,g=!1,_=!1,v=!0;if(typeof e!=`function`)throw TypeError(a);t=i(t)||0,n(c)&&(g=!!c.leading,_=`maxWait`in c,d=_?o(i(c.maxWait)||0,t):d,v=`trailing`in c?!!c.trailing:v);function y(t){var n=l,r=u;return l=u=void 0,h=t,f=e.apply(r,n),f}function b(e){return h=e,p=setTimeout(x,t),g?y(e):f}function ee(e){var n=e-m,r=e-h,i=t-n;return _?s(i,d-r):i}function te(e){var n=e-m,r=e-h;return m===void 0||n>=t||n<0||_&&r>=d}function x(){var e=r();if(te(e))return ne(e);p=setTimeout(x,ee(e))}function ne(e){return p=void 0,v&&l?y(e):(l=u=void 0,f)}function S(){p!==void 0&&clearTimeout(p),h=0,l=m=u=p=void 0}function re(){return p===void 0?f:ne(r())}function C(){var e=r(),n=te(e);if(l=arguments,u=this,m=e,n){if(p===void 0)return b(m);if(_)return clearTimeout(p),p=setTimeout(x,t),y(m)}return p===void 0&&(p=setTimeout(x,t)),f}return C.cancel=S,C.flush=re,C}t.exports=c}))());function mz(){var e=(typeof global>`u`?`undefined`:typeof global)==`object`&&global&&global.Object===Object&&global,t=typeof self==`object`&&self&&self.Object===Object&&self;return e||t}mz()||(global.Date=Date);function hz(e,t){var n=QR(e),r=t?.wait??1e3,i=(0,z.useMemo)(function(){return(0,pz.default)(function(){var e=[...arguments];return n.current.apply(n,uI([],lI(e),!1))},r,t)},[]);return $R(function(){i.cancel()}),{run:i,cancel:i.cancel,flush:i.flush}}Me.setCompilerOptions({...GR});var gz=Object.assign({"/node_modules/@types/react/canary.d.ts":Fe,"/node_modules/@types/react/compiler-runtime.d.ts":Le,"/node_modules/@types/react/experimental.d.ts":ze,"/node_modules/@types/react/global.d.ts":Ve,"/node_modules/@types/react/index.d.ts":Ue,"/node_modules/@types/react/jsx-dev-runtime.d.ts":Ge,"/node_modules/@types/react/jsx-runtime.d.ts":qe,"/node_modules/@types/react/package.json":Ye,"/node_modules/@types/react/ts5.0/canary.d.ts":Ze,"/node_modules/@types/react/ts5.0/experimental.d.ts":$e,"/node_modules/@types/react/ts5.0/global.d.ts":tt,"/node_modules/@types/react/ts5.0/index.d.ts":rt,"/node_modules/@types/react/ts5.0/jsx-dev-runtime.d.ts":at,"/node_modules/@types/react/ts5.0/jsx-runtime.d.ts":st,"/node_modules/@types/react-dom/canary.d.ts":lt,"/node_modules/@types/react-dom/client.d.ts":dt,"/node_modules/@types/react-dom/experimental.d.ts":pt,"/node_modules/@types/react-dom/index.d.ts":ht,"/node_modules/@types/react-dom/package.json":_t,"/node_modules/@types/react-dom/server.browser.d.ts":yt,"/node_modules/@types/react-dom/server.bun.d.ts":xt,"/node_modules/@types/react-dom/server.d.ts":Ct,"/node_modules/@types/react-dom/server.edge.d.ts":Tt,"/node_modules/@types/react-dom/server.node.d.ts":Dt,"/node_modules/@types/react-dom/static.browser.d.ts":kt,"/node_modules/@types/react-dom/static.d.ts":jt,"/node_modules/@types/react-dom/static.edge.d.ts":Nt,"/node_modules/@types/react-dom/static.node.d.ts":Ft,"/node_modules/@types/react-dom/test-utils/index.d.ts":Lt,"/node_modules/@types/three/build/three.core.d.ts":zt,"/node_modules/@types/three/build/three.core.min.d.ts":Vt,"/node_modules/@types/three/build/three.module.d.ts":Ut,"/node_modules/@types/three/build/three.module.min.d.ts":Gt,"/node_modules/@types/three/build/three.tsl.d.ts":qt,"/node_modules/@types/three/build/three.tsl.min.d.ts":Yt,"/node_modules/@types/three/build/three.webgpu.d.ts":Zt,"/node_modules/@types/three/build/three.webgpu.min.d.ts":$t,"/node_modules/@types/three/build/three.webgpu.nodes.d.ts":tn,"/node_modules/@types/three/build/three.webgpu.nodes.min.d.ts":rn,"/node_modules/@types/three/examples/jsm/Addons.d.ts":on,"/node_modules/@types/three/examples/jsm/animation/AnimationClipCreator.d.ts":cn,"/node_modules/@types/three/examples/jsm/animation/CCDIKSolver.d.ts":un,"/node_modules/@types/three/examples/jsm/capabilities/WebGL.d.ts":fn,"/node_modules/@types/three/examples/jsm/capabilities/WebGPU.d.ts":mn,"/node_modules/@types/three/examples/jsm/controls/ArcballControls.d.ts":gn,"/node_modules/@types/three/examples/jsm/controls/DragControls.d.ts":vn,"/node_modules/@types/three/examples/jsm/controls/FirstPersonControls.d.ts":bn,"/node_modules/@types/three/examples/jsm/controls/FlyControls.d.ts":Sn,"/node_modules/@types/three/examples/jsm/controls/MapControls.d.ts":wn,"/node_modules/@types/three/examples/jsm/controls/OrbitControls.d.ts":En,"/node_modules/@types/three/examples/jsm/controls/PointerLockControls.d.ts":On,"/node_modules/@types/three/examples/jsm/controls/TrackballControls.d.ts":An,"/node_modules/@types/three/examples/jsm/controls/TransformControls.d.ts":Mn,"/node_modules/@types/three/examples/jsm/csm/CSM.d.ts":Pn,"/node_modules/@types/three/examples/jsm/csm/CSMFrustum.d.ts":In,"/node_modules/@types/three/examples/jsm/csm/CSMHelper.d.ts":Rn,"/node_modules/@types/three/examples/jsm/csm/CSMShader.d.ts":Bn,"/node_modules/@types/three/examples/jsm/csm/CSMShadowNode.d.ts":Hn,"/node_modules/@types/three/examples/jsm/curves/CurveExtras.d.ts":Wn,"/node_modules/@types/three/examples/jsm/curves/NURBSCurve.d.ts":Kn,"/node_modules/@types/three/examples/jsm/curves/NURBSSurface.d.ts":Jn,"/node_modules/@types/three/examples/jsm/curves/NURBSUtils.d.ts":Xn,"/node_modules/@types/three/examples/jsm/curves/NURBSVolume.d.ts":Qn,"/node_modules/@types/three/examples/jsm/effects/AnaglyphEffect.d.ts":er,"/node_modules/@types/three/examples/jsm/effects/AsciiEffect.d.ts":nr,"/node_modules/@types/three/examples/jsm/effects/OutlineEffect.d.ts":ir,"/node_modules/@types/three/examples/jsm/effects/ParallaxBarrierEffect.d.ts":or,"/node_modules/@types/three/examples/jsm/effects/StereoEffect.d.ts":cr,"/node_modules/@types/three/examples/jsm/environments/ColorEnvironment.d.ts":ur,"/node_modules/@types/three/examples/jsm/environments/DebugEnvironment.d.ts":fr,"/node_modules/@types/three/examples/jsm/environments/RoomEnvironment.d.ts":mr,"/node_modules/@types/three/examples/jsm/exporters/DRACOExporter.d.ts":gr,"/node_modules/@types/three/examples/jsm/exporters/EXRExporter.d.ts":vr,"/node_modules/@types/three/examples/jsm/exporters/GLTFExporter.d.ts":br,"/node_modules/@types/three/examples/jsm/exporters/KTX2Exporter.d.ts":Sr,"/node_modules/@types/three/examples/jsm/exporters/OBJExporter.d.ts":wr,"/node_modules/@types/three/examples/jsm/exporters/PLYExporter.d.ts":Er,"/node_modules/@types/three/examples/jsm/exporters/STLExporter.d.ts":Or,"/node_modules/@types/three/examples/jsm/exporters/USDZExporter.d.ts":Ar,"/node_modules/@types/three/examples/jsm/geometries/BoxLineGeometry.d.ts":Mr,"/node_modules/@types/three/examples/jsm/geometries/ConvexGeometry.d.ts":Pr,"/node_modules/@types/three/examples/jsm/geometries/DecalGeometry.d.ts":Ir,"/node_modules/@types/three/examples/jsm/geometries/ParametricFunctions.d.ts":Rr,"/node_modules/@types/three/examples/jsm/geometries/ParametricGeometry.d.ts":Br,"/node_modules/@types/three/examples/jsm/geometries/RoundedBoxGeometry.d.ts":Hr,"/node_modules/@types/three/examples/jsm/geometries/TeapotGeometry.d.ts":Wr,"/node_modules/@types/three/examples/jsm/geometries/TextGeometry.d.ts":Kr,"/node_modules/@types/three/examples/jsm/gpgpu/BitonicSort.d.ts":Jr,"/node_modules/@types/three/examples/jsm/helpers/AnimationPathHelper.d.ts":Xr,"/node_modules/@types/three/examples/jsm/helpers/LightProbeHelper.d.ts":Qr,"/node_modules/@types/three/examples/jsm/helpers/LightProbeHelperGPU.d.ts":ei,"/node_modules/@types/three/examples/jsm/helpers/OctreeHelper.d.ts":ni,"/node_modules/@types/three/examples/jsm/helpers/PositionalAudioHelper.d.ts":ii,"/node_modules/@types/three/examples/jsm/helpers/RapierHelper.d.ts":oi,"/node_modules/@types/three/examples/jsm/helpers/RectAreaLightHelper.d.ts":ci,"/node_modules/@types/three/examples/jsm/helpers/TextureHelper.d.ts":ui,"/node_modules/@types/three/examples/jsm/helpers/TextureHelperGPU.d.ts":fi,"/node_modules/@types/three/examples/jsm/helpers/VertexNormalsHelper.d.ts":mi,"/node_modules/@types/three/examples/jsm/helpers/VertexTangentsHelper.d.ts":gi,"/node_modules/@types/three/examples/jsm/helpers/ViewHelper.d.ts":vi,"/node_modules/@types/three/examples/jsm/inspector/Inspector.d.ts":bi,"/node_modules/@types/three/examples/jsm/inspector/RendererInspector.d.ts":Si,"/node_modules/@types/three/examples/jsm/inspector/tabs/Parameters.d.ts":wi,"/node_modules/@types/three/examples/jsm/inspector/ui/Item.d.ts":Ei,"/node_modules/@types/three/examples/jsm/inspector/ui/Tab.d.ts":Oi,"/node_modules/@types/three/examples/jsm/inspector/ui/Values.d.ts":Ai,"/node_modules/@types/three/examples/jsm/interactive/HTMLMesh.d.ts":Mi,"/node_modules/@types/three/examples/jsm/interactive/InteractiveGroup.d.ts":Pi,"/node_modules/@types/three/examples/jsm/interactive/SelectionBox.d.ts":Ii,"/node_modules/@types/three/examples/jsm/interactive/SelectionHelper.d.ts":Ri,"/node_modules/@types/three/examples/jsm/libs/fflate.module.d.ts":Bi,"/node_modules/@types/three/examples/jsm/libs/lil-gui.module.min.d.ts":Hi,"/node_modules/@types/three/examples/jsm/libs/meshopt_decoder.module.d.ts":Wi,"/node_modules/@types/three/examples/jsm/libs/stats.module.d.ts":Ki,"/node_modules/@types/three/examples/jsm/libs/tween.module.d.ts":Ji,"/node_modules/@types/three/examples/jsm/lighting/TiledLighting.d.ts":Xi,"/node_modules/@types/three/examples/jsm/lights/LightProbeGenerator.d.ts":Qi,"/node_modules/@types/three/examples/jsm/lights/RectAreaLightTexturesLib.d.ts":ea,"/node_modules/@types/three/examples/jsm/lights/RectAreaLightUniformsLib.d.ts":na,"/node_modules/@types/three/examples/jsm/lines/Line2.d.ts":ia,"/node_modules/@types/three/examples/jsm/lines/LineGeometry.d.ts":oa,"/node_modules/@types/three/examples/jsm/lines/LineMaterial.d.ts":ca,"/node_modules/@types/three/examples/jsm/lines/LineSegments2.d.ts":ua,"/node_modules/@types/three/examples/jsm/lines/LineSegmentsGeometry.d.ts":fa,"/node_modules/@types/three/examples/jsm/lines/Wireframe.d.ts":ma,"/node_modules/@types/three/examples/jsm/lines/WireframeGeometry2.d.ts":ga,"/node_modules/@types/three/examples/jsm/lines/webgpu/Line2.d.ts":va,"/node_modules/@types/three/examples/jsm/lines/webgpu/LineSegments2.d.ts":ba,"/node_modules/@types/three/examples/jsm/lines/webgpu/Wireframe.d.ts":Sa,"/node_modules/@types/three/examples/jsm/loaders/3DMLoader.d.ts":wa,"/node_modules/@types/three/examples/jsm/loaders/3MFLoader.d.ts":Ea,"/node_modules/@types/three/examples/jsm/loaders/AMFLoader.d.ts":Oa,"/node_modules/@types/three/examples/jsm/loaders/BVHLoader.d.ts":Aa,"/node_modules/@types/three/examples/jsm/loaders/ColladaLoader.d.ts":Ma,"/node_modules/@types/three/examples/jsm/loaders/DDSLoader.d.ts":Pa,"/node_modules/@types/three/examples/jsm/loaders/DRACOLoader.d.ts":Ia,"/node_modules/@types/three/examples/jsm/loaders/EXRLoader.d.ts":Ra,"/node_modules/@types/three/examples/jsm/loaders/FBXLoader.d.ts":Ba,"/node_modules/@types/three/examples/jsm/loaders/FontLoader.d.ts":Ha,"/node_modules/@types/three/examples/jsm/loaders/GCodeLoader.d.ts":Wa,"/node_modules/@types/three/examples/jsm/loaders/GLTFLoader.d.ts":Ka,"/node_modules/@types/three/examples/jsm/loaders/HDRCubeTextureLoader.d.ts":Ja,"/node_modules/@types/three/examples/jsm/loaders/HDRLoader.d.ts":Xa,"/node_modules/@types/three/examples/jsm/loaders/IESLoader.d.ts":Qa,"/node_modules/@types/three/examples/jsm/loaders/KMZLoader.d.ts":eo,"/node_modules/@types/three/examples/jsm/loaders/KTX2Loader.d.ts":no,"/node_modules/@types/three/examples/jsm/loaders/KTXLoader.d.ts":io,"/node_modules/@types/three/examples/jsm/loaders/LDrawLoader.d.ts":oo,"/node_modules/@types/three/examples/jsm/loaders/LUT3dlLoader.d.ts":co,"/node_modules/@types/three/examples/jsm/loaders/LUTCubeLoader.d.ts":uo,"/node_modules/@types/three/examples/jsm/loaders/LUTImageLoader.d.ts":po,"/node_modules/@types/three/examples/jsm/loaders/LWOLoader.d.ts":ho,"/node_modules/@types/three/examples/jsm/loaders/LottieLoader.d.ts":_o,"/node_modules/@types/three/examples/jsm/loaders/MD2Loader.d.ts":yo,"/node_modules/@types/three/examples/jsm/loaders/MDDLoader.d.ts":xo,"/node_modules/@types/three/examples/jsm/loaders/MTLLoader.d.ts":Co,"/node_modules/@types/three/examples/jsm/loaders/MaterialXLoader.d.ts":To,"/node_modules/@types/three/examples/jsm/loaders/NRRDLoader.d.ts":Do,"/node_modules/@types/three/examples/jsm/loaders/OBJLoader.d.ts":ko,"/node_modules/@types/three/examples/jsm/loaders/PCDLoader.d.ts":jo,"/node_modules/@types/three/examples/jsm/loaders/PDBLoader.d.ts":No,"/node_modules/@types/three/examples/jsm/loaders/PLYLoader.d.ts":Fo,"/node_modules/@types/three/examples/jsm/loaders/PVRLoader.d.ts":Lo,"/node_modules/@types/three/examples/jsm/loaders/RGBELoader.d.ts":zo,"/node_modules/@types/three/examples/jsm/loaders/STLLoader.d.ts":Vo,"/node_modules/@types/three/examples/jsm/loaders/SVGLoader.d.ts":Uo,"/node_modules/@types/three/examples/jsm/loaders/TDSLoader.d.ts":Go,"/node_modules/@types/three/examples/jsm/loaders/TGALoader.d.ts":qo,"/node_modules/@types/three/examples/jsm/loaders/TIFFLoader.d.ts":Yo,"/node_modules/@types/three/examples/jsm/loaders/TTFLoader.d.ts":Zo,"/node_modules/@types/three/examples/jsm/loaders/USDLoader.d.ts":$o,"/node_modules/@types/three/examples/jsm/loaders/USDZLoader.d.ts":ts,"/node_modules/@types/three/examples/jsm/loaders/UltraHDRLoader.d.ts":rs,"/node_modules/@types/three/examples/jsm/loaders/VOXLoader.d.ts":as,"/node_modules/@types/three/examples/jsm/loaders/VRMLLoader.d.ts":ss,"/node_modules/@types/three/examples/jsm/loaders/VTKLoader.d.ts":ls,"/node_modules/@types/three/examples/jsm/loaders/XYZLoader.d.ts":ds,"/node_modules/@types/three/examples/jsm/materials/LDrawConditionalLineMaterial.d.ts":ps,"/node_modules/@types/three/examples/jsm/materials/LDrawConditionalLineNodeMaterial.d.ts":hs,"/node_modules/@types/three/examples/jsm/materials/WoodNodeMaterial.d.ts":_s,"/node_modules/@types/three/examples/jsm/math/Capsule.d.ts":ys,"/node_modules/@types/three/examples/jsm/math/ColorConverter.d.ts":xs,"/node_modules/@types/three/examples/jsm/math/ColorSpaces.d.ts":Cs,"/node_modules/@types/three/examples/jsm/math/ConvexHull.d.ts":Ts,"/node_modules/@types/three/examples/jsm/math/ImprovedNoise.d.ts":Ds,"/node_modules/@types/three/examples/jsm/math/Lut.d.ts":ks,"/node_modules/@types/three/examples/jsm/math/MeshSurfaceSampler.d.ts":js,"/node_modules/@types/three/examples/jsm/math/OBB.d.ts":Ns,"/node_modules/@types/three/examples/jsm/math/Octree.d.ts":Fs,"/node_modules/@types/three/examples/jsm/math/SimplexNoise.d.ts":Ls,"/node_modules/@types/three/examples/jsm/misc/ConvexObjectBreaker.d.ts":zs,"/node_modules/@types/three/examples/jsm/misc/GPUComputationRenderer.d.ts":Vs,"/node_modules/@types/three/examples/jsm/misc/Gyroscope.d.ts":Us,"/node_modules/@types/three/examples/jsm/misc/MD2Character.d.ts":Gs,"/node_modules/@types/three/examples/jsm/misc/MD2CharacterComplex.d.ts":qs,"/node_modules/@types/three/examples/jsm/misc/MorphAnimMesh.d.ts":Ys,"/node_modules/@types/three/examples/jsm/misc/MorphBlendMesh.d.ts":Zs,"/node_modules/@types/three/examples/jsm/misc/ProgressiveLightMap.d.ts":$s,"/node_modules/@types/three/examples/jsm/misc/ProgressiveLightMapGPU.d.ts":tc,"/node_modules/@types/three/examples/jsm/misc/RollerCoaster.d.ts":rc,"/node_modules/@types/three/examples/jsm/misc/TubePainter.d.ts":ac,"/node_modules/@types/three/examples/jsm/misc/Volume.d.ts":sc,"/node_modules/@types/three/examples/jsm/misc/VolumeSlice.d.ts":lc,"/node_modules/@types/three/examples/jsm/modifiers/CurveModifier.d.ts":dc,"/node_modules/@types/three/examples/jsm/modifiers/CurveModifierGPU.d.ts":pc,"/node_modules/@types/three/examples/jsm/modifiers/EdgeSplitModifier.d.ts":hc,"/node_modules/@types/three/examples/jsm/modifiers/SimplifyModifier.d.ts":_c,"/node_modules/@types/three/examples/jsm/modifiers/TessellateModifier.d.ts":yc,"/node_modules/@types/three/examples/jsm/objects/GroundedSkybox.d.ts":xc,"/node_modules/@types/three/examples/jsm/objects/Lensflare.d.ts":Cc,"/node_modules/@types/three/examples/jsm/objects/LensflareMesh.d.ts":Tc,"/node_modules/@types/three/examples/jsm/objects/MarchingCubes.d.ts":Dc,"/node_modules/@types/three/examples/jsm/objects/Reflector.d.ts":kc,"/node_modules/@types/three/examples/jsm/objects/ReflectorForSSRPass.d.ts":jc,"/node_modules/@types/three/examples/jsm/objects/Refractor.d.ts":Nc,"/node_modules/@types/three/examples/jsm/objects/ShadowMesh.d.ts":Fc,"/node_modules/@types/three/examples/jsm/objects/Sky.d.ts":Lc,"/node_modules/@types/three/examples/jsm/objects/SkyMesh.d.ts":zc,"/node_modules/@types/three/examples/jsm/objects/Water.d.ts":Vc,"/node_modules/@types/three/examples/jsm/objects/Water2.d.ts":Uc,"/node_modules/@types/three/examples/jsm/objects/Water2Mesh.d.ts":Gc,"/node_modules/@types/three/examples/jsm/objects/WaterMesh.d.ts":qc,"/node_modules/@types/three/examples/jsm/physics/AmmoPhysics.d.ts":Yc,"/node_modules/@types/three/examples/jsm/physics/JoltPhysics.d.ts":Zc,"/node_modules/@types/three/examples/jsm/physics/RapierPhysics.d.ts":$c,"/node_modules/@types/three/examples/jsm/postprocessing/AfterimagePass.d.ts":tl,"/node_modules/@types/three/examples/jsm/postprocessing/BloomPass.d.ts":rl,"/node_modules/@types/three/examples/jsm/postprocessing/BokehPass.d.ts":al,"/node_modules/@types/three/examples/jsm/postprocessing/ClearPass.d.ts":sl,"/node_modules/@types/three/examples/jsm/postprocessing/CubeTexturePass.d.ts":ll,"/node_modules/@types/three/examples/jsm/postprocessing/DotScreenPass.d.ts":dl,"/node_modules/@types/three/examples/jsm/postprocessing/EffectComposer.d.ts":pl,"/node_modules/@types/three/examples/jsm/postprocessing/FXAAPass.d.ts":hl,"/node_modules/@types/three/examples/jsm/postprocessing/FilmPass.d.ts":_l,"/node_modules/@types/three/examples/jsm/postprocessing/GTAOPass.d.ts":yl,"/node_modules/@types/three/examples/jsm/postprocessing/GlitchPass.d.ts":xl,"/node_modules/@types/three/examples/jsm/postprocessing/HalftonePass.d.ts":Cl,"/node_modules/@types/three/examples/jsm/postprocessing/LUTPass.d.ts":Tl,"/node_modules/@types/three/examples/jsm/postprocessing/MaskPass.d.ts":Dl,"/node_modules/@types/three/examples/jsm/postprocessing/OutlinePass.d.ts":kl,"/node_modules/@types/three/examples/jsm/postprocessing/OutputPass.d.ts":jl,"/node_modules/@types/three/examples/jsm/postprocessing/Pass.d.ts":Nl,"/node_modules/@types/three/examples/jsm/postprocessing/RenderPass.d.ts":Fl,"/node_modules/@types/three/examples/jsm/postprocessing/RenderPixelatedPass.d.ts":Ll,"/node_modules/@types/three/examples/jsm/postprocessing/RenderTransitionPass.d.ts":zl,"/node_modules/@types/three/examples/jsm/postprocessing/SAOPass.d.ts":Vl,"/node_modules/@types/three/examples/jsm/postprocessing/SMAAPass.d.ts":Ul,"/node_modules/@types/three/examples/jsm/postprocessing/SSAARenderPass.d.ts":Gl,"/node_modules/@types/three/examples/jsm/postprocessing/SSAOPass.d.ts":ql,"/node_modules/@types/three/examples/jsm/postprocessing/SSRPass.d.ts":Yl,"/node_modules/@types/three/examples/jsm/postprocessing/SavePass.d.ts":Zl,"/node_modules/@types/three/examples/jsm/postprocessing/ShaderPass.d.ts":$l,"/node_modules/@types/three/examples/jsm/postprocessing/TAARenderPass.d.ts":tu,"/node_modules/@types/three/examples/jsm/postprocessing/TexturePass.d.ts":ru,"/node_modules/@types/three/examples/jsm/postprocessing/UnrealBloomPass.d.ts":au,"/node_modules/@types/three/examples/jsm/renderers/CSS2DRenderer.d.ts":su,"/node_modules/@types/three/examples/jsm/renderers/CSS3DRenderer.d.ts":lu,"/node_modules/@types/three/examples/jsm/renderers/Projector.d.ts":du,"/node_modules/@types/three/examples/jsm/renderers/SVGRenderer.d.ts":pu,"/node_modules/@types/three/examples/jsm/shaders/ACESFilmicToneMappingShader.d.ts":hu,"/node_modules/@types/three/examples/jsm/shaders/AfterimageShader.d.ts":_u,"/node_modules/@types/three/examples/jsm/shaders/BasicShader.d.ts":yu,"/node_modules/@types/three/examples/jsm/shaders/BleachBypassShader.d.ts":xu,"/node_modules/@types/three/examples/jsm/shaders/BlendShader.d.ts":Cu,"/node_modules/@types/three/examples/jsm/shaders/BokehShader.d.ts":Tu,"/node_modules/@types/three/examples/jsm/shaders/BokehShader2.d.ts":Du,"/node_modules/@types/three/examples/jsm/shaders/BrightnessContrastShader.d.ts":ku,"/node_modules/@types/three/examples/jsm/shaders/ColorCorrectionShader.d.ts":ju,"/node_modules/@types/three/examples/jsm/shaders/ColorifyShader.d.ts":Nu,"/node_modules/@types/three/examples/jsm/shaders/ConvolutionShader.d.ts":Fu,"/node_modules/@types/three/examples/jsm/shaders/CopyShader.d.ts":Lu,"/node_modules/@types/three/examples/jsm/shaders/DOFMipMapShader.d.ts":zu,"/node_modules/@types/three/examples/jsm/shaders/DepthLimitedBlurShader.d.ts":Vu,"/node_modules/@types/three/examples/jsm/shaders/DigitalGlitch.d.ts":Uu,"/node_modules/@types/three/examples/jsm/shaders/DotScreenShader.d.ts":Gu,"/node_modules/@types/three/examples/jsm/shaders/ExposureShader.d.ts":qu,"/node_modules/@types/three/examples/jsm/shaders/FXAAShader.d.ts":Yu,"/node_modules/@types/three/examples/jsm/shaders/FilmShader.d.ts":Zu,"/node_modules/@types/three/examples/jsm/shaders/FocusShader.d.ts":$u,"/node_modules/@types/three/examples/jsm/shaders/FreiChenShader.d.ts":td,"/node_modules/@types/three/examples/jsm/shaders/GTAOShader.d.ts":rd,"/node_modules/@types/three/examples/jsm/shaders/GammaCorrectionShader.d.ts":ad,"/node_modules/@types/three/examples/jsm/shaders/HalftoneShader.d.ts":sd,"/node_modules/@types/three/examples/jsm/shaders/HorizontalBlurShader.d.ts":ld,"/node_modules/@types/three/examples/jsm/shaders/HorizontalTiltShiftShader.d.ts":dd,"/node_modules/@types/three/examples/jsm/shaders/HueSaturationShader.d.ts":pd,"/node_modules/@types/three/examples/jsm/shaders/KaleidoShader.d.ts":hd,"/node_modules/@types/three/examples/jsm/shaders/LuminosityHighPassShader.d.ts":_d,"/node_modules/@types/three/examples/jsm/shaders/LuminosityShader.d.ts":yd,"/node_modules/@types/three/examples/jsm/shaders/MirrorShader.d.ts":xd,"/node_modules/@types/three/examples/jsm/shaders/NormalMapShader.d.ts":Cd,"/node_modules/@types/three/examples/jsm/shaders/OutputShader.d.ts":Td,"/node_modules/@types/three/examples/jsm/shaders/PoissonDenoiseShader.d.ts":Dd,"/node_modules/@types/three/examples/jsm/shaders/RGBShiftShader.d.ts":kd,"/node_modules/@types/three/examples/jsm/shaders/SAOShader.d.ts":jd,"/node_modules/@types/three/examples/jsm/shaders/SMAAShader.d.ts":Nd,"/node_modules/@types/three/examples/jsm/shaders/SSAOShader.d.ts":Fd,"/node_modules/@types/three/examples/jsm/shaders/SSRShader.d.ts":Ld,"/node_modules/@types/three/examples/jsm/shaders/SepiaShader.d.ts":zd,"/node_modules/@types/three/examples/jsm/shaders/SobelOperatorShader.d.ts":Vd,"/node_modules/@types/three/examples/jsm/shaders/SubsurfaceScatteringShader.d.ts":Ud,"/node_modules/@types/three/examples/jsm/shaders/TechnicolorShader.d.ts":Gd,"/node_modules/@types/three/examples/jsm/shaders/ToonShader.d.ts":qd,"/node_modules/@types/three/examples/jsm/shaders/TriangleBlurShader.d.ts":Yd,"/node_modules/@types/three/examples/jsm/shaders/UnpackDepthRGBAShader.d.ts":Zd,"/node_modules/@types/three/examples/jsm/shaders/VelocityShader.d.ts":$d,"/node_modules/@types/three/examples/jsm/shaders/VerticalBlurShader.d.ts":tf,"/node_modules/@types/three/examples/jsm/shaders/VerticalTiltShiftShader.d.ts":rf,"/node_modules/@types/three/examples/jsm/shaders/VignetteShader.d.ts":of,"/node_modules/@types/three/examples/jsm/shaders/VolumeShader.d.ts":cf,"/node_modules/@types/three/examples/jsm/shaders/WaterRefractionShader.d.ts":uf,"/node_modules/@types/three/examples/jsm/textures/FlakesTexture.d.ts":ff,"/node_modules/@types/three/examples/jsm/transpiler/AST.d.ts":mf,"/node_modules/@types/three/examples/jsm/transpiler/GLSLDecoder.d.ts":gf,"/node_modules/@types/three/examples/jsm/transpiler/ShaderToyDecoder.d.ts":vf,"/node_modules/@types/three/examples/jsm/transpiler/TSLEncoder.d.ts":bf,"/node_modules/@types/three/examples/jsm/transpiler/Transpiler.d.ts":Sf,"/node_modules/@types/three/examples/jsm/tsl/display/AfterImageNode.d.ts":wf,"/node_modules/@types/three/examples/jsm/tsl/display/AnaglyphPassNode.d.ts":Ef,"/node_modules/@types/three/examples/jsm/tsl/display/AnamorphicNode.d.ts":Of,"/node_modules/@types/three/examples/jsm/tsl/display/BilateralBlurNode.d.ts":Af,"/node_modules/@types/three/examples/jsm/tsl/display/BleachBypass.d.ts":Mf,"/node_modules/@types/three/examples/jsm/tsl/display/BloomNode.d.ts":Pf,"/node_modules/@types/three/examples/jsm/tsl/display/CRT.d.ts":If,"/node_modules/@types/three/examples/jsm/tsl/display/ChromaticAberrationNode.d.ts":Rf,"/node_modules/@types/three/examples/jsm/tsl/display/DenoiseNode.d.ts":Bf,"/node_modules/@types/three/examples/jsm/tsl/display/DepthOfFieldNode.d.ts":Hf,"/node_modules/@types/three/examples/jsm/tsl/display/DotScreenNode.d.ts":Wf,"/node_modules/@types/three/examples/jsm/tsl/display/FXAANode.d.ts":Kf,"/node_modules/@types/three/examples/jsm/tsl/display/FilmNode.d.ts":Jf,"/node_modules/@types/three/examples/jsm/tsl/display/GTAONode.d.ts":Xf,"/node_modules/@types/three/examples/jsm/tsl/display/GaussianBlurNode.d.ts":Qf,"/node_modules/@types/three/examples/jsm/tsl/display/GodraysNode.d.ts":ep,"/node_modules/@types/three/examples/jsm/tsl/display/LensflareNode.d.ts":np,"/node_modules/@types/three/examples/jsm/tsl/display/Lut3DNode.d.ts":ip,"/node_modules/@types/three/examples/jsm/tsl/display/MotionBlur.d.ts":op,"/node_modules/@types/three/examples/jsm/tsl/display/OutlineNode.d.ts":cp,"/node_modules/@types/three/examples/jsm/tsl/display/ParallaxBarrierPassNode.d.ts":up,"/node_modules/@types/three/examples/jsm/tsl/display/PixelationPassNode.d.ts":fp,"/node_modules/@types/three/examples/jsm/tsl/display/RGBShiftNode.d.ts":mp,"/node_modules/@types/three/examples/jsm/tsl/display/RetroPassNode.d.ts":gp,"/node_modules/@types/three/examples/jsm/tsl/display/SMAANode.d.ts":vp,"/node_modules/@types/three/examples/jsm/tsl/display/SSAAPassNode.d.ts":bp,"/node_modules/@types/three/examples/jsm/tsl/display/SSGINode.d.ts":Sp,"/node_modules/@types/three/examples/jsm/tsl/display/SSRNode.d.ts":wp,"/node_modules/@types/three/examples/jsm/tsl/display/SSSNode.d.ts":Ep,"/node_modules/@types/three/examples/jsm/tsl/display/Sepia.d.ts":Op,"/node_modules/@types/three/examples/jsm/tsl/display/Shape.d.ts":Ap,"/node_modules/@types/three/examples/jsm/tsl/display/SobelOperatorNode.d.ts":Mp,"/node_modules/@types/three/examples/jsm/tsl/display/StereoCompositePassNode.d.ts":Pp,"/node_modules/@types/three/examples/jsm/tsl/display/StereoPassNode.d.ts":Ip,"/node_modules/@types/three/examples/jsm/tsl/display/TRAANode.d.ts":Rp,"/node_modules/@types/three/examples/jsm/tsl/display/TransitionNode.d.ts":Bp,"/node_modules/@types/three/examples/jsm/tsl/display/boxBlur.d.ts":Hp,"/node_modules/@types/three/examples/jsm/tsl/display/depthAwareBlend.d.ts":Wp,"/node_modules/@types/three/examples/jsm/tsl/display/hashBlur.d.ts":Kp,"/node_modules/@types/three/examples/jsm/tsl/display/radialBlur.d.ts":Jp,"/node_modules/@types/three/examples/jsm/tsl/lighting/TiledLightsNode.d.ts":Xp,"/node_modules/@types/three/examples/jsm/tsl/math/Bayer.d.ts":Qp,"/node_modules/@types/three/examples/jsm/tsl/shadows/TileShadowNode.d.ts":em,"/node_modules/@types/three/examples/jsm/tsl/shadows/TileShadowNodeHelper.d.ts":nm,"/node_modules/@types/three/examples/jsm/tsl/utils/Raymarching.d.ts":im,"/node_modules/@types/three/examples/jsm/utils/BufferGeometryUtils.d.ts":om,"/node_modules/@types/three/examples/jsm/utils/CameraUtils.d.ts":cm,"/node_modules/@types/three/examples/jsm/utils/GeometryCompressionUtils.d.ts":um,"/node_modules/@types/three/examples/jsm/utils/GeometryUtils.d.ts":fm,"/node_modules/@types/three/examples/jsm/utils/LDrawUtils.d.ts":mm,"/node_modules/@types/three/examples/jsm/utils/SceneUtils.d.ts":gm,"/node_modules/@types/three/examples/jsm/utils/ShadowMapViewer.d.ts":vm,"/node_modules/@types/three/examples/jsm/utils/ShadowMapViewerGPU.d.ts":bm,"/node_modules/@types/three/examples/jsm/utils/SkeletonUtils.d.ts":Sm,"/node_modules/@types/three/examples/jsm/utils/SortUtils.d.ts":wm,"/node_modules/@types/three/examples/jsm/utils/UVsDebug.d.ts":Em,"/node_modules/@types/three/examples/jsm/utils/WebGLTextureUtils.d.ts":Om,"/node_modules/@types/three/examples/jsm/utils/WebGPUTextureUtils.d.ts":Am,"/node_modules/@types/three/examples/jsm/utils/WorkerPool.d.ts":Mm,"/node_modules/@types/three/examples/jsm/webxr/ARButton.d.ts":Pm,"/node_modules/@types/three/examples/jsm/webxr/OculusHandModel.d.ts":Im,"/node_modules/@types/three/examples/jsm/webxr/OculusHandPointerModel.d.ts":Rm,"/node_modules/@types/three/examples/jsm/webxr/Text2D.d.ts":Bm,"/node_modules/@types/three/examples/jsm/webxr/VRButton.d.ts":Hm,"/node_modules/@types/three/examples/jsm/webxr/XRButton.d.ts":Wm,"/node_modules/@types/three/examples/jsm/webxr/XRControllerModelFactory.d.ts":Km,"/node_modules/@types/three/examples/jsm/webxr/XREstimatedLight.d.ts":Jm,"/node_modules/@types/three/examples/jsm/webxr/XRHandMeshModel.d.ts":Xm,"/node_modules/@types/three/examples/jsm/webxr/XRHandModelFactory.d.ts":Qm,"/node_modules/@types/three/examples/jsm/webxr/XRHandPrimitiveModel.d.ts":eh,"/node_modules/@types/three/examples/jsm/webxr/XRPlanes.d.ts":nh,"/node_modules/@types/three/index.d.ts":ih,"/node_modules/@types/three/package.json":oh,"/node_modules/@types/three/src/Three.Core.d.ts":ch,"/node_modules/@types/three/src/Three.TSL.d.ts":uh,"/node_modules/@types/three/src/Three.WebGPU.Nodes.d.ts":fh,"/node_modules/@types/three/src/Three.WebGPU.d.ts":mh,"/node_modules/@types/three/src/Three.d.ts":gh,"/node_modules/@types/three/src/animation/AnimationAction.d.ts":vh,"/node_modules/@types/three/src/animation/AnimationClip.d.ts":bh,"/node_modules/@types/three/src/animation/AnimationMixer.d.ts":Sh,"/node_modules/@types/three/src/animation/AnimationObjectGroup.d.ts":wh,"/node_modules/@types/three/src/animation/AnimationUtils.d.ts":Eh,"/node_modules/@types/three/src/animation/KeyframeTrack.d.ts":Oh,"/node_modules/@types/three/src/animation/PropertyBinding.d.ts":Ah,"/node_modules/@types/three/src/animation/PropertyMixer.d.ts":Mh,"/node_modules/@types/three/src/animation/tracks/BooleanKeyframeTrack.d.ts":Ph,"/node_modules/@types/three/src/animation/tracks/ColorKeyframeTrack.d.ts":Ih,"/node_modules/@types/three/src/animation/tracks/NumberKeyframeTrack.d.ts":Rh,"/node_modules/@types/three/src/animation/tracks/QuaternionKeyframeTrack.d.ts":Bh,"/node_modules/@types/three/src/animation/tracks/StringKeyframeTrack.d.ts":Hh,"/node_modules/@types/three/src/animation/tracks/VectorKeyframeTrack.d.ts":Wh,"/node_modules/@types/three/src/audio/Audio.d.ts":Kh,"/node_modules/@types/three/src/audio/AudioAnalyser.d.ts":Jh,"/node_modules/@types/three/src/audio/AudioContext.d.ts":Xh,"/node_modules/@types/three/src/audio/AudioListener.d.ts":Qh,"/node_modules/@types/three/src/audio/PositionalAudio.d.ts":eg,"/node_modules/@types/three/src/cameras/ArrayCamera.d.ts":ng,"/node_modules/@types/three/src/cameras/Camera.d.ts":ig,"/node_modules/@types/three/src/cameras/CubeCamera.d.ts":og,"/node_modules/@types/three/src/cameras/OrthographicCamera.d.ts":cg,"/node_modules/@types/three/src/cameras/PerspectiveCamera.d.ts":ug,"/node_modules/@types/three/src/cameras/StereoCamera.d.ts":fg,"/node_modules/@types/three/src/constants.d.ts":mg,"/node_modules/@types/three/src/core/BufferAttribute.d.ts":gg,"/node_modules/@types/three/src/core/BufferGeometry.d.ts":vg,"/node_modules/@types/three/src/core/Clock.d.ts":bg,"/node_modules/@types/three/src/core/EventDispatcher.d.ts":Sg,"/node_modules/@types/three/src/core/GLBufferAttribute.d.ts":wg,"/node_modules/@types/three/src/core/InstancedBufferAttribute.d.ts":Eg,"/node_modules/@types/three/src/core/InstancedBufferGeometry.d.ts":Og,"/node_modules/@types/three/src/core/InstancedInterleavedBuffer.d.ts":Ag,"/node_modules/@types/three/src/core/InterleavedBuffer.d.ts":Mg,"/node_modules/@types/three/src/core/InterleavedBufferAttribute.d.ts":Pg,"/node_modules/@types/three/src/core/Layers.d.ts":Ig,"/node_modules/@types/three/src/core/Object3D.d.ts":Rg,"/node_modules/@types/three/src/core/Raycaster.d.ts":Bg,"/node_modules/@types/three/src/core/RenderTarget.d.ts":Hg,"/node_modules/@types/three/src/core/RenderTarget3D.d.ts":Wg,"/node_modules/@types/three/src/core/Timer.d.ts":Kg,"/node_modules/@types/three/src/core/Uniform.d.ts":Jg,"/node_modules/@types/three/src/core/UniformsGroup.d.ts":Xg,"/node_modules/@types/three/src/extras/Controls.d.ts":Qg,"/node_modules/@types/three/src/extras/DataUtils.d.ts":e_,"/node_modules/@types/three/src/extras/Earcut.d.ts":n_,"/node_modules/@types/three/src/extras/ImageUtils.d.ts":i_,"/node_modules/@types/three/src/extras/PMREMGenerator.d.ts":o_,"/node_modules/@types/three/src/extras/ShapeUtils.d.ts":c_,"/node_modules/@types/three/src/extras/TextureUtils.d.ts":u_,"/node_modules/@types/three/src/extras/core/Curve.d.ts":f_,"/node_modules/@types/three/src/extras/core/CurvePath.d.ts":m_,"/node_modules/@types/three/src/extras/core/Interpolations.d.ts":g_,"/node_modules/@types/three/src/extras/core/Path.d.ts":v_,"/node_modules/@types/three/src/extras/core/Shape.d.ts":b_,"/node_modules/@types/three/src/extras/core/ShapePath.d.ts":S_,"/node_modules/@types/three/src/extras/curves/ArcCurve.d.ts":w_,"/node_modules/@types/three/src/extras/curves/CatmullRomCurve3.d.ts":E_,"/node_modules/@types/three/src/extras/curves/CubicBezierCurve.d.ts":O_,"/node_modules/@types/three/src/extras/curves/CubicBezierCurve3.d.ts":A_,"/node_modules/@types/three/src/extras/curves/Curves.d.ts":M_,"/node_modules/@types/three/src/extras/curves/EllipseCurve.d.ts":P_,"/node_modules/@types/three/src/extras/curves/LineCurve.d.ts":I_,"/node_modules/@types/three/src/extras/curves/LineCurve3.d.ts":R_,"/node_modules/@types/three/src/extras/curves/QuadraticBezierCurve.d.ts":B_,"/node_modules/@types/three/src/extras/curves/QuadraticBezierCurve3.d.ts":H_,"/node_modules/@types/three/src/extras/curves/SplineCurve.d.ts":W_,"/node_modules/@types/three/src/geometries/BoxGeometry.d.ts":K_,"/node_modules/@types/three/src/geometries/CapsuleGeometry.d.ts":J_,"/node_modules/@types/three/src/geometries/CircleGeometry.d.ts":X_,"/node_modules/@types/three/src/geometries/ConeGeometry.d.ts":Q_,"/node_modules/@types/three/src/geometries/CylinderGeometry.d.ts":ev,"/node_modules/@types/three/src/geometries/DodecahedronGeometry.d.ts":nv,"/node_modules/@types/three/src/geometries/EdgesGeometry.d.ts":iv,"/node_modules/@types/three/src/geometries/ExtrudeGeometry.d.ts":ov,"/node_modules/@types/three/src/geometries/Geometries.d.ts":cv,"/node_modules/@types/three/src/geometries/IcosahedronGeometry.d.ts":uv,"/node_modules/@types/three/src/geometries/LatheGeometry.d.ts":fv,"/node_modules/@types/three/src/geometries/OctahedronGeometry.d.ts":mv,"/node_modules/@types/three/src/geometries/PlaneGeometry.d.ts":gv,"/node_modules/@types/three/src/geometries/PolyhedronGeometry.d.ts":vv,"/node_modules/@types/three/src/geometries/RingGeometry.d.ts":bv,"/node_modules/@types/three/src/geometries/ShapeGeometry.d.ts":Sv,"/node_modules/@types/three/src/geometries/SphereGeometry.d.ts":wv,"/node_modules/@types/three/src/geometries/TetrahedronGeometry.d.ts":Ev,"/node_modules/@types/three/src/geometries/TorusGeometry.d.ts":Ov,"/node_modules/@types/three/src/geometries/TorusKnotGeometry.d.ts":Av,"/node_modules/@types/three/src/geometries/TubeGeometry.d.ts":Mv,"/node_modules/@types/three/src/geometries/WireframeGeometry.d.ts":Pv,"/node_modules/@types/three/src/helpers/ArrowHelper.d.ts":Iv,"/node_modules/@types/three/src/helpers/AxesHelper.d.ts":Rv,"/node_modules/@types/three/src/helpers/Box3Helper.d.ts":Bv,"/node_modules/@types/three/src/helpers/BoxHelper.d.ts":Hv,"/node_modules/@types/three/src/helpers/CameraHelper.d.ts":Wv,"/node_modules/@types/three/src/helpers/DirectionalLightHelper.d.ts":Kv,"/node_modules/@types/three/src/helpers/GridHelper.d.ts":Jv,"/node_modules/@types/three/src/helpers/HemisphereLightHelper.d.ts":Xv,"/node_modules/@types/three/src/helpers/PlaneHelper.d.ts":Qv,"/node_modules/@types/three/src/helpers/PointLightHelper.d.ts":ey,"/node_modules/@types/three/src/helpers/PolarGridHelper.d.ts":ny,"/node_modules/@types/three/src/helpers/SkeletonHelper.d.ts":iy,"/node_modules/@types/three/src/helpers/SpotLightHelper.d.ts":oy,"/node_modules/@types/three/src/lights/AmbientLight.d.ts":cy,"/node_modules/@types/three/src/lights/DirectionalLight.d.ts":uy,"/node_modules/@types/three/src/lights/DirectionalLightShadow.d.ts":fy,"/node_modules/@types/three/src/lights/HemisphereLight.d.ts":my,"/node_modules/@types/three/src/lights/Light.d.ts":gy,"/node_modules/@types/three/src/lights/LightProbe.d.ts":vy,"/node_modules/@types/three/src/lights/LightShadow.d.ts":by,"/node_modules/@types/three/src/lights/PointLight.d.ts":Sy,"/node_modules/@types/three/src/lights/PointLightShadow.d.ts":wy,"/node_modules/@types/three/src/lights/RectAreaLight.d.ts":Ey,"/node_modules/@types/three/src/lights/SpotLight.d.ts":Oy,"/node_modules/@types/three/src/lights/SpotLightShadow.d.ts":Ay,"/node_modules/@types/three/src/lights/webgpu/IESSpotLight.d.ts":My,"/node_modules/@types/three/src/lights/webgpu/ProjectorLight.d.ts":Py,"/node_modules/@types/three/src/loaders/AnimationLoader.d.ts":Iy,"/node_modules/@types/three/src/loaders/AudioLoader.d.ts":Ry,"/node_modules/@types/three/src/loaders/BufferGeometryLoader.d.ts":By,"/node_modules/@types/three/src/loaders/Cache.d.ts":Hy,"/node_modules/@types/three/src/loaders/CompressedTextureLoader.d.ts":Wy,"/node_modules/@types/three/src/loaders/CubeTextureLoader.d.ts":Ky,"/node_modules/@types/three/src/loaders/DataTextureLoader.d.ts":Jy,"/node_modules/@types/three/src/loaders/FileLoader.d.ts":Xy,"/node_modules/@types/three/src/loaders/ImageBitmapLoader.d.ts":Qy,"/node_modules/@types/three/src/loaders/ImageLoader.d.ts":eb,"/node_modules/@types/three/src/loaders/Loader.d.ts":nb,"/node_modules/@types/three/src/loaders/LoaderUtils.d.ts":ib,"/node_modules/@types/three/src/loaders/LoadingManager.d.ts":ob,"/node_modules/@types/three/src/loaders/MaterialLoader.d.ts":cb,"/node_modules/@types/three/src/loaders/ObjectLoader.d.ts":ub,"/node_modules/@types/three/src/loaders/TextureLoader.d.ts":fb,"/node_modules/@types/three/src/loaders/nodes/NodeLoader.d.ts":mb,"/node_modules/@types/three/src/loaders/nodes/NodeMaterialLoader.d.ts":gb,"/node_modules/@types/three/src/loaders/nodes/NodeObjectLoader.d.ts":vb,"/node_modules/@types/three/src/materials/LineBasicMaterial.d.ts":bb,"/node_modules/@types/three/src/materials/LineDashedMaterial.d.ts":Sb,"/node_modules/@types/three/src/materials/Material.d.ts":wb,"/node_modules/@types/three/src/materials/Materials.d.ts":Eb,"/node_modules/@types/three/src/materials/MeshBasicMaterial.d.ts":Ob,"/node_modules/@types/three/src/materials/MeshDepthMaterial.d.ts":Ab,"/node_modules/@types/three/src/materials/MeshDistanceMaterial.d.ts":Mb,"/node_modules/@types/three/src/materials/MeshLambertMaterial.d.ts":Pb,"/node_modules/@types/three/src/materials/MeshMatcapMaterial.d.ts":Ib,"/node_modules/@types/three/src/materials/MeshNormalMaterial.d.ts":Rb,"/node_modules/@types/three/src/materials/MeshPhongMaterial.d.ts":Bb,"/node_modules/@types/three/src/materials/MeshPhysicalMaterial.d.ts":Hb,"/node_modules/@types/three/src/materials/MeshStandardMaterial.d.ts":Wb,"/node_modules/@types/three/src/materials/MeshToonMaterial.d.ts":Kb,"/node_modules/@types/three/src/materials/PointsMaterial.d.ts":Jb,"/node_modules/@types/three/src/materials/RawShaderMaterial.d.ts":Xb,"/node_modules/@types/three/src/materials/ShaderMaterial.d.ts":Qb,"/node_modules/@types/three/src/materials/ShadowMaterial.d.ts":ex,"/node_modules/@types/three/src/materials/SpriteMaterial.d.ts":nx,"/node_modules/@types/three/src/materials/nodes/Line2NodeMaterial.d.ts":ix,"/node_modules/@types/three/src/materials/nodes/LineBasicNodeMaterial.d.ts":ox,"/node_modules/@types/three/src/materials/nodes/LineDashedNodeMaterial.d.ts":cx,"/node_modules/@types/three/src/materials/nodes/MeshBasicNodeMaterial.d.ts":ux,"/node_modules/@types/three/src/materials/nodes/MeshLambertNodeMaterial.d.ts":fx,"/node_modules/@types/three/src/materials/nodes/MeshMatcapNodeMaterial.d.ts":mx,"/node_modules/@types/three/src/materials/nodes/MeshNormalNodeMaterial.d.ts":gx,"/node_modules/@types/three/src/materials/nodes/MeshPhongNodeMaterial.d.ts":vx,"/node_modules/@types/three/src/materials/nodes/MeshPhysicalNodeMaterial.d.ts":bx,"/node_modules/@types/three/src/materials/nodes/MeshSSSNodeMaterial.d.ts":Sx,"/node_modules/@types/three/src/materials/nodes/MeshStandardNodeMaterial.d.ts":wx,"/node_modules/@types/three/src/materials/nodes/MeshToonNodeMaterial.d.ts":Ex,"/node_modules/@types/three/src/materials/nodes/NodeMaterial.d.ts":Ox,"/node_modules/@types/three/src/materials/nodes/NodeMaterials.d.ts":Ax,"/node_modules/@types/three/src/materials/nodes/PointsNodeMaterial.d.ts":Mx,"/node_modules/@types/three/src/materials/nodes/ShadowNodeMaterial.d.ts":Px,"/node_modules/@types/three/src/materials/nodes/SpriteNodeMaterial.d.ts":Ix,"/node_modules/@types/three/src/materials/nodes/VolumeNodeMaterial.d.ts":Rx,"/node_modules/@types/three/src/materials/nodes/manager/NodeMaterialObserver.d.ts":Bx,"/node_modules/@types/three/src/math/Box2.d.ts":Hx,"/node_modules/@types/three/src/math/Box3.d.ts":Wx,"/node_modules/@types/three/src/math/Color.d.ts":Kx,"/node_modules/@types/three/src/math/ColorManagement.d.ts":Jx,"/node_modules/@types/three/src/math/Cylindrical.d.ts":Xx,"/node_modules/@types/three/src/math/Euler.d.ts":Qx,"/node_modules/@types/three/src/math/Frustum.d.ts":eS,"/node_modules/@types/three/src/math/FrustumArray.d.ts":nS,"/node_modules/@types/three/src/math/Interpolant.d.ts":iS,"/node_modules/@types/three/src/math/Line3.d.ts":oS,"/node_modules/@types/three/src/math/MathUtils.d.ts":cS,"/node_modules/@types/three/src/math/Matrix2.d.ts":uS,"/node_modules/@types/three/src/math/Matrix3.d.ts":fS,"/node_modules/@types/three/src/math/Matrix4.d.ts":mS,"/node_modules/@types/three/src/math/Plane.d.ts":gS,"/node_modules/@types/three/src/math/Quaternion.d.ts":vS,"/node_modules/@types/three/src/math/Ray.d.ts":bS,"/node_modules/@types/three/src/math/Sphere.d.ts":SS,"/node_modules/@types/three/src/math/Spherical.d.ts":wS,"/node_modules/@types/three/src/math/SphericalHarmonics3.d.ts":ES,"/node_modules/@types/three/src/math/Triangle.d.ts":OS,"/node_modules/@types/three/src/math/Vector2.d.ts":AS,"/node_modules/@types/three/src/math/Vector3.d.ts":MS,"/node_modules/@types/three/src/math/Vector4.d.ts":PS,"/node_modules/@types/three/src/math/interpolants/BezierInterpolant.d.ts":IS,"/node_modules/@types/three/src/math/interpolants/CubicInterpolant.d.ts":RS,"/node_modules/@types/three/src/math/interpolants/DiscreteInterpolant.d.ts":BS,"/node_modules/@types/three/src/math/interpolants/LinearInterpolant.d.ts":HS,"/node_modules/@types/three/src/math/interpolants/QuaternionLinearInterpolant.d.ts":WS,"/node_modules/@types/three/src/nodes/Nodes.d.ts":KS,"/node_modules/@types/three/src/nodes/TSL.d.ts":JS,"/node_modules/@types/three/src/nodes/accessors/AccessorsUtils.d.ts":XS,"/node_modules/@types/three/src/nodes/accessors/Arrays.d.ts":QS,"/node_modules/@types/three/src/nodes/accessors/BatchNode.d.ts":eC,"/node_modules/@types/three/src/nodes/accessors/Bitangent.d.ts":nC,"/node_modules/@types/three/src/nodes/accessors/BufferAttributeNode.d.ts":iC,"/node_modules/@types/three/src/nodes/accessors/BufferNode.d.ts":oC,"/node_modules/@types/three/src/nodes/accessors/BuiltinNode.d.ts":cC,"/node_modules/@types/three/src/nodes/accessors/Camera.d.ts":uC,"/node_modules/@types/three/src/nodes/accessors/ClippingNode.d.ts":fC,"/node_modules/@types/three/src/nodes/accessors/CubeTextureNode.d.ts":mC,"/node_modules/@types/three/src/nodes/accessors/InstanceNode.d.ts":gC,"/node_modules/@types/three/src/nodes/accessors/InstancedMeshNode.d.ts":vC,"/node_modules/@types/three/src/nodes/accessors/Lights.d.ts":bC,"/node_modules/@types/three/src/nodes/accessors/MaterialNode.d.ts":SC,"/node_modules/@types/three/src/nodes/accessors/MaterialProperties.d.ts":wC,"/node_modules/@types/three/src/nodes/accessors/MaterialReferenceNode.d.ts":EC,"/node_modules/@types/three/src/nodes/accessors/ModelNode.d.ts":OC,"/node_modules/@types/three/src/nodes/accessors/ModelViewProjectionNode.d.ts":AC,"/node_modules/@types/three/src/nodes/accessors/MorphNode.d.ts":MC,"/node_modules/@types/three/src/nodes/accessors/Normal.d.ts":PC,"/node_modules/@types/three/src/nodes/accessors/Object3DNode.d.ts":IC,"/node_modules/@types/three/src/nodes/accessors/PointUVNode.d.ts":RC,"/node_modules/@types/three/src/nodes/accessors/Position.d.ts":BC,"/node_modules/@types/three/src/nodes/accessors/ReferenceBaseNode.d.ts":HC,"/node_modules/@types/three/src/nodes/accessors/ReferenceNode.d.ts":WC,"/node_modules/@types/three/src/nodes/accessors/ReflectVector.d.ts":KC,"/node_modules/@types/three/src/nodes/accessors/RendererReferenceNode.d.ts":JC,"/node_modules/@types/three/src/nodes/accessors/SceneProperties.d.ts":XC,"/node_modules/@types/three/src/nodes/accessors/SkinningNode.d.ts":QC,"/node_modules/@types/three/src/nodes/accessors/StorageBufferNode.d.ts":ew,"/node_modules/@types/three/src/nodes/accessors/StorageTextureNode.d.ts":nw,"/node_modules/@types/three/src/nodes/accessors/Tangent.d.ts":iw,"/node_modules/@types/three/src/nodes/accessors/TangentUtils.d.ts":ow,"/node_modules/@types/three/src/nodes/accessors/Texture3DNode.d.ts":cw,"/node_modules/@types/three/src/nodes/accessors/TextureBicubic.d.ts":uw,"/node_modules/@types/three/src/nodes/accessors/TextureNode.d.ts":fw,"/node_modules/@types/three/src/nodes/accessors/TextureSizeNode.d.ts":mw,"/node_modules/@types/three/src/nodes/accessors/UV.d.ts":gw,"/node_modules/@types/three/src/nodes/accessors/UniformArrayNode.d.ts":vw,"/node_modules/@types/three/src/nodes/accessors/UserDataNode.d.ts":bw,"/node_modules/@types/three/src/nodes/accessors/VelocityNode.d.ts":Sw,"/node_modules/@types/three/src/nodes/accessors/VertexColorNode.d.ts":ww,"/node_modules/@types/three/src/nodes/code/CodeNode.d.ts":Ew,"/node_modules/@types/three/src/nodes/code/ExpressionNode.d.ts":Ow,"/node_modules/@types/three/src/nodes/code/FunctionCallNode.d.ts":Aw,"/node_modules/@types/three/src/nodes/code/FunctionNode.d.ts":Mw,"/node_modules/@types/three/src/nodes/core/ArrayNode.d.ts":Pw,"/node_modules/@types/three/src/nodes/core/AssignNode.d.ts":Iw,"/node_modules/@types/three/src/nodes/core/AttributeNode.d.ts":Rw,"/node_modules/@types/three/src/nodes/core/BypassNode.d.ts":Bw,"/node_modules/@types/three/src/nodes/core/ConstNode.d.ts":Hw,"/node_modules/@types/three/src/nodes/core/ContextNode.d.ts":Ww,"/node_modules/@types/three/src/nodes/core/IndexNode.d.ts":Kw,"/node_modules/@types/three/src/nodes/core/InputNode.d.ts":Jw,"/node_modules/@types/three/src/nodes/core/InspectorNode.d.ts":Xw,"/node_modules/@types/three/src/nodes/core/IsolateNode.d.ts":Qw,"/node_modules/@types/three/src/nodes/core/LightingModel.d.ts":eT,"/node_modules/@types/three/src/nodes/core/MRTNode.d.ts":nT,"/node_modules/@types/three/src/nodes/core/Node.d.ts":iT,"/node_modules/@types/three/src/nodes/core/NodeAttribute.d.ts":oT,"/node_modules/@types/three/src/nodes/core/NodeBuilder.d.ts":cT,"/node_modules/@types/three/src/nodes/core/NodeCache.d.ts":uT,"/node_modules/@types/three/src/nodes/core/NodeCode.d.ts":fT,"/node_modules/@types/three/src/nodes/core/NodeError.d.ts":mT,"/node_modules/@types/three/src/nodes/core/NodeFrame.d.ts":gT,"/node_modules/@types/three/src/nodes/core/NodeFunction.d.ts":vT,"/node_modules/@types/three/src/nodes/core/NodeFunctionInput.d.ts":bT,"/node_modules/@types/three/src/nodes/core/NodeParser.d.ts":ST,"/node_modules/@types/three/src/nodes/core/NodeUniform.d.ts":wT,"/node_modules/@types/three/src/nodes/core/NodeUtils.d.ts":ET,"/node_modules/@types/three/src/nodes/core/NodeVar.d.ts":OT,"/node_modules/@types/three/src/nodes/core/NodeVarying.d.ts":AT,"/node_modules/@types/three/src/nodes/core/OutputStructNode.d.ts":MT,"/node_modules/@types/three/src/nodes/core/ParameterNode.d.ts":PT,"/node_modules/@types/three/src/nodes/core/PropertyNode.d.ts":IT,"/node_modules/@types/three/src/nodes/core/StackNode.d.ts":RT,"/node_modules/@types/three/src/nodes/core/StackTrace.d.ts":BT,"/node_modules/@types/three/src/nodes/core/StructNode.d.ts":HT,"/node_modules/@types/three/src/nodes/core/StructType.d.ts":WT,"/node_modules/@types/three/src/nodes/core/StructTypeNode.d.ts":KT,"/node_modules/@types/three/src/nodes/core/SubBuildNode.d.ts":JT,"/node_modules/@types/three/src/nodes/core/TempNode.d.ts":XT,"/node_modules/@types/three/src/nodes/core/UniformGroupNode.d.ts":QT,"/node_modules/@types/three/src/nodes/core/UniformNode.d.ts":eE,"/node_modules/@types/three/src/nodes/core/VarNode.d.ts":nE,"/node_modules/@types/three/src/nodes/core/VaryingNode.d.ts":iE,"/node_modules/@types/three/src/nodes/core/constants.d.ts":oE,"/node_modules/@types/three/src/nodes/display/BlendModes.d.ts":cE,"/node_modules/@types/three/src/nodes/display/BumpMapNode.d.ts":uE,"/node_modules/@types/three/src/nodes/display/ColorAdjustment.d.ts":fE,"/node_modules/@types/three/src/nodes/display/ColorSpaceFunctions.d.ts":mE,"/node_modules/@types/three/src/nodes/display/ColorSpaceNode.d.ts":gE,"/node_modules/@types/three/src/nodes/display/FrontFacingNode.d.ts":vE,"/node_modules/@types/three/src/nodes/display/NormalMapNode.d.ts":bE,"/node_modules/@types/three/src/nodes/display/PassNode.d.ts":SE,"/node_modules/@types/three/src/nodes/display/RenderOutputNode.d.ts":wE,"/node_modules/@types/three/src/nodes/display/ScreenNode.d.ts":EE,"/node_modules/@types/three/src/nodes/display/ToneMappingFunctions.d.ts":OE,"/node_modules/@types/three/src/nodes/display/ToneMappingNode.d.ts":AE,"/node_modules/@types/three/src/nodes/display/ToonOutlinePassNode.d.ts":ME,"/node_modules/@types/three/src/nodes/display/ViewportDepthNode.d.ts":PE,"/node_modules/@types/three/src/nodes/display/ViewportDepthTextureNode.d.ts":IE,"/node_modules/@types/three/src/nodes/display/ViewportSharedTextureNode.d.ts":RE,"/node_modules/@types/three/src/nodes/display/ViewportTextureNode.d.ts":BE,"/node_modules/@types/three/src/nodes/fog/Fog.d.ts":HE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_GGX.d.ts":WE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_GGX_Multiscatter.d.ts":KE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_Lambert.d.ts":JE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_Sheen.d.ts":XE,"/node_modules/@types/three/src/nodes/functions/BSDF/DFGLUT.d.ts":QE,"/node_modules/@types/three/src/nodes/functions/BSDF/D_GGX.d.ts":eD,"/node_modules/@types/three/src/nodes/functions/BSDF/D_GGX_Anisotropic.d.ts":nD,"/node_modules/@types/three/src/nodes/functions/BSDF/F_Schlick.d.ts":iD,"/node_modules/@types/three/src/nodes/functions/BSDF/LTC.d.ts":oD,"/node_modules/@types/three/src/nodes/functions/BSDF/Schlick_to_F0.d.ts":cD,"/node_modules/@types/three/src/nodes/functions/BSDF/V_GGX_SmithCorrelated.d.ts":uD,"/node_modules/@types/three/src/nodes/functions/BSDF/V_GGX_SmithCorrelated_Anisotropic.d.ts":fD,"/node_modules/@types/three/src/nodes/functions/BasicLightingModel.d.ts":mD,"/node_modules/@types/three/src/nodes/functions/PhongLightingModel.d.ts":gD,"/node_modules/@types/three/src/nodes/functions/PhysicalLightingModel.d.ts":vD,"/node_modules/@types/three/src/nodes/functions/ShadowMaskModel.d.ts":bD,"/node_modules/@types/three/src/nodes/functions/ToonLightingModel.d.ts":SD,"/node_modules/@types/three/src/nodes/functions/VolumetricLightingModel.d.ts":wD,"/node_modules/@types/three/src/nodes/functions/material/getAlphaHashThreshold.d.ts":ED,"/node_modules/@types/three/src/nodes/functions/material/getGeometryRoughness.d.ts":OD,"/node_modules/@types/three/src/nodes/functions/material/getParallaxCorrectNormal.d.ts":AD,"/node_modules/@types/three/src/nodes/functions/material/getRoughness.d.ts":MD,"/node_modules/@types/three/src/nodes/functions/material/getShIrradianceAt.d.ts":PD,"/node_modules/@types/three/src/nodes/geometry/RangeNode.d.ts":ID,"/node_modules/@types/three/src/nodes/gpgpu/AtomicFunctionNode.d.ts":RD,"/node_modules/@types/three/src/nodes/gpgpu/BarrierNode.d.ts":BD,"/node_modules/@types/three/src/nodes/gpgpu/ComputeBuiltinNode.d.ts":HD,"/node_modules/@types/three/src/nodes/gpgpu/ComputeNode.d.ts":WD,"/node_modules/@types/three/src/nodes/gpgpu/SubgroupFunctionNode.d.ts":KD,"/node_modules/@types/three/src/nodes/gpgpu/WorkgroupInfoNode.d.ts":JD,"/node_modules/@types/three/src/nodes/lighting/AONode.d.ts":XD,"/node_modules/@types/three/src/nodes/lighting/AmbientLightNode.d.ts":QD,"/node_modules/@types/three/src/nodes/lighting/AnalyticLightNode.d.ts":eO,"/node_modules/@types/three/src/nodes/lighting/BasicEnvironmentNode.d.ts":nO,"/node_modules/@types/three/src/nodes/lighting/BasicLightMapNode.d.ts":iO,"/node_modules/@types/three/src/nodes/lighting/DirectionalLightNode.d.ts":oO,"/node_modules/@types/three/src/nodes/lighting/EnvironmentNode.d.ts":cO,"/node_modules/@types/three/src/nodes/lighting/HemisphereLightNode.d.ts":uO,"/node_modules/@types/three/src/nodes/lighting/IESSpotLightNode.d.ts":fO,"/node_modules/@types/three/src/nodes/lighting/IrradianceNode.d.ts":mO,"/node_modules/@types/three/src/nodes/lighting/LightProbeNode.d.ts":gO,"/node_modules/@types/three/src/nodes/lighting/LightUtils.d.ts":vO,"/node_modules/@types/three/src/nodes/lighting/LightingContextNode.d.ts":bO,"/node_modules/@types/three/src/nodes/lighting/LightingNode.d.ts":SO,"/node_modules/@types/three/src/nodes/lighting/LightsNode.d.ts":wO,"/node_modules/@types/three/src/nodes/lighting/PointLightNode.d.ts":EO,"/node_modules/@types/three/src/nodes/lighting/PointShadowNode.d.ts":OO,"/node_modules/@types/three/src/nodes/lighting/ProjectorLightNode.d.ts":AO,"/node_modules/@types/three/src/nodes/lighting/RectAreaLightNode.d.ts":MO,"/node_modules/@types/three/src/nodes/lighting/ShadowBaseNode.d.ts":PO,"/node_modules/@types/three/src/nodes/lighting/ShadowFilterNode.d.ts":IO,"/node_modules/@types/three/src/nodes/lighting/ShadowNode.d.ts":RO,"/node_modules/@types/three/src/nodes/lighting/SpotLightNode.d.ts":BO,"/node_modules/@types/three/src/nodes/materialx/MaterialXNodes.d.ts":HO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_hsv.d.ts":WO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_noise.d.ts":KO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_transform_color.d.ts":JO,"/node_modules/@types/three/src/nodes/math/BitcastNode.d.ts":XO,"/node_modules/@types/three/src/nodes/math/BitcountNode.d.ts":QO,"/node_modules/@types/three/src/nodes/math/ConditionalNode.d.ts":ek,"/node_modules/@types/three/src/nodes/math/Hash.d.ts":nk,"/node_modules/@types/three/src/nodes/math/MathNode.d.ts":ik,"/node_modules/@types/three/src/nodes/math/MathUtils.d.ts":ok,"/node_modules/@types/three/src/nodes/math/OperatorNode.d.ts":ck,"/node_modules/@types/three/src/nodes/math/PackFloatNode.d.ts":uk,"/node_modules/@types/three/src/nodes/math/TriNoise3D.d.ts":fk,"/node_modules/@types/three/src/nodes/math/UnpackFloatNode.d.ts":mk,"/node_modules/@types/three/src/nodes/parsers/GLSLNodeFunction.d.ts":gk,"/node_modules/@types/three/src/nodes/parsers/GLSLNodeParser.d.ts":vk,"/node_modules/@types/three/src/nodes/pmrem/PMREMNode.d.ts":bk,"/node_modules/@types/three/src/nodes/pmrem/PMREMUtils.d.ts":Sk,"/node_modules/@types/three/src/nodes/procedural/Checker.d.ts":wk,"/node_modules/@types/three/src/nodes/shapes/Shapes.d.ts":Ek,"/node_modules/@types/three/src/nodes/tsl/TSLBase.d.ts":Ok,"/node_modules/@types/three/src/nodes/tsl/TSLCore.d.ts":Ak,"/node_modules/@types/three/src/nodes/utils/ArrayElementNode.d.ts":Mk,"/node_modules/@types/three/src/nodes/utils/ConvertNode.d.ts":Pk,"/node_modules/@types/three/src/nodes/utils/CubeMapNode.d.ts":Ik,"/node_modules/@types/three/src/nodes/utils/DebugNode.d.ts":Rk,"/node_modules/@types/three/src/nodes/utils/Discard.d.ts":Bk,"/node_modules/@types/three/src/nodes/utils/EquirectUV.d.ts":Hk,"/node_modules/@types/three/src/nodes/utils/EventNode.d.ts":Wk,"/node_modules/@types/three/src/nodes/utils/FlipNode.d.ts":Kk,"/node_modules/@types/three/src/nodes/utils/FunctionOverloadingNode.d.ts":Jk,"/node_modules/@types/three/src/nodes/utils/JoinNode.d.ts":Xk,"/node_modules/@types/three/src/nodes/utils/LoopNode.d.ts":Qk,"/node_modules/@types/three/src/nodes/utils/MatcapUV.d.ts":eA,"/node_modules/@types/three/src/nodes/utils/MaxMipLevelNode.d.ts":nA,"/node_modules/@types/three/src/nodes/utils/MemberNode.d.ts":iA,"/node_modules/@types/three/src/nodes/utils/Oscillators.d.ts":oA,"/node_modules/@types/three/src/nodes/utils/Packing.d.ts":cA,"/node_modules/@types/three/src/nodes/utils/PostProcessingUtils.d.ts":uA,"/node_modules/@types/three/src/nodes/utils/RTTNode.d.ts":fA,"/node_modules/@types/three/src/nodes/utils/ReflectorNode.d.ts":mA,"/node_modules/@types/three/src/nodes/utils/RemapNode.d.ts":gA,"/node_modules/@types/three/src/nodes/utils/RotateNode.d.ts":vA,"/node_modules/@types/three/src/nodes/utils/SampleNode.d.ts":bA,"/node_modules/@types/three/src/nodes/utils/SetNode.d.ts":SA,"/node_modules/@types/three/src/nodes/utils/SplitNode.d.ts":wA,"/node_modules/@types/three/src/nodes/utils/SpriteSheetUV.d.ts":EA,"/node_modules/@types/three/src/nodes/utils/SpriteUtils.d.ts":OA,"/node_modules/@types/three/src/nodes/utils/StorageArrayElementNode.d.ts":AA,"/node_modules/@types/three/src/nodes/utils/Timer.d.ts":MA,"/node_modules/@types/three/src/nodes/utils/TriplanarTextures.d.ts":PA,"/node_modules/@types/three/src/nodes/utils/UVUtils.d.ts":IA,"/node_modules/@types/three/src/nodes/utils/ViewportUtils.d.ts":RA,"/node_modules/@types/three/src/objects/BatchedMesh.d.ts":BA,"/node_modules/@types/three/src/objects/Bone.d.ts":HA,"/node_modules/@types/three/src/objects/ClippingGroup.d.ts":WA,"/node_modules/@types/three/src/objects/Group.d.ts":KA,"/node_modules/@types/three/src/objects/InstancedMesh.d.ts":JA,"/node_modules/@types/three/src/objects/LOD.d.ts":XA,"/node_modules/@types/three/src/objects/Line.d.ts":QA,"/node_modules/@types/three/src/objects/LineLoop.d.ts":ej,"/node_modules/@types/three/src/objects/LineSegments.d.ts":nj,"/node_modules/@types/three/src/objects/Mesh.d.ts":ij,"/node_modules/@types/three/src/objects/Points.d.ts":oj,"/node_modules/@types/three/src/objects/Skeleton.d.ts":cj,"/node_modules/@types/three/src/objects/SkinnedMesh.d.ts":uj,"/node_modules/@types/three/src/objects/Sprite.d.ts":fj,"/node_modules/@types/three/src/renderers/WebGL3DRenderTarget.d.ts":mj,"/node_modules/@types/three/src/renderers/WebGLArrayRenderTarget.d.ts":gj,"/node_modules/@types/three/src/renderers/WebGLCubeRenderTarget.d.ts":vj,"/node_modules/@types/three/src/renderers/WebGLRenderTarget.d.ts":bj,"/node_modules/@types/three/src/renderers/WebGLRenderer.d.ts":Sj,"/node_modules/@types/three/src/renderers/common/Animation.d.ts":wj,"/node_modules/@types/three/src/renderers/common/Attributes.d.ts":Ej,"/node_modules/@types/three/src/renderers/common/Backend.d.ts":Oj,"/node_modules/@types/three/src/renderers/common/Background.d.ts":Aj,"/node_modules/@types/three/src/renderers/common/BindGroup.d.ts":Mj,"/node_modules/@types/three/src/renderers/common/Binding.d.ts":Pj,"/node_modules/@types/three/src/renderers/common/Bindings.d.ts":Ij,"/node_modules/@types/three/src/renderers/common/BlendMode.d.ts":Rj,"/node_modules/@types/three/src/renderers/common/Buffer.d.ts":Bj,"/node_modules/@types/three/src/renderers/common/BufferUtils.d.ts":Hj,"/node_modules/@types/three/src/renderers/common/BundleGroup.d.ts":Wj,"/node_modules/@types/three/src/renderers/common/CanvasTarget.d.ts":Kj,"/node_modules/@types/three/src/renderers/common/ChainMap.d.ts":Jj,"/node_modules/@types/three/src/renderers/common/ClippingContext.d.ts":Xj,"/node_modules/@types/three/src/renderers/common/Color4.d.ts":Qj,"/node_modules/@types/three/src/renderers/common/ComputePipeline.d.ts":eM,"/node_modules/@types/three/src/renderers/common/Constants.d.ts":nM,"/node_modules/@types/three/src/renderers/common/CubeRenderTarget.d.ts":iM,"/node_modules/@types/three/src/renderers/common/DataMap.d.ts":oM,"/node_modules/@types/three/src/renderers/common/Geometries.d.ts":cM,"/node_modules/@types/three/src/renderers/common/IndirectStorageBufferAttribute.d.ts":uM,"/node_modules/@types/three/src/renderers/common/Info.d.ts":fM,"/node_modules/@types/three/src/renderers/common/InspectorBase.d.ts":mM,"/node_modules/@types/three/src/renderers/common/Lighting.d.ts":gM,"/node_modules/@types/three/src/renderers/common/Pipeline.d.ts":vM,"/node_modules/@types/three/src/renderers/common/Pipelines.d.ts":bM,"/node_modules/@types/three/src/renderers/common/PostProcessing.d.ts":SM,"/node_modules/@types/three/src/renderers/common/ProgrammableStage.d.ts":wM,"/node_modules/@types/three/src/renderers/common/QuadMesh.d.ts":EM,"/node_modules/@types/three/src/renderers/common/RenderBundle.d.ts":OM,"/node_modules/@types/three/src/renderers/common/RenderBundles.d.ts":AM,"/node_modules/@types/three/src/renderers/common/RenderContext.d.ts":MM,"/node_modules/@types/three/src/renderers/common/RenderContexts.d.ts":PM,"/node_modules/@types/three/src/renderers/common/RenderList.d.ts":IM,"/node_modules/@types/three/src/renderers/common/RenderLists.d.ts":RM,"/node_modules/@types/three/src/renderers/common/RenderObject.d.ts":BM,"/node_modules/@types/three/src/renderers/common/RenderObjectPipeline.d.ts":HM,"/node_modules/@types/three/src/renderers/common/RenderObjects.d.ts":WM,"/node_modules/@types/three/src/renderers/common/RenderPipeline.d.ts":KM,"/node_modules/@types/three/src/renderers/common/Renderer.d.ts":JM,"/node_modules/@types/three/src/renderers/common/RendererUtils.d.ts":XM,"/node_modules/@types/three/src/renderers/common/SampledTexture.d.ts":QM,"/node_modules/@types/three/src/renderers/common/Sampler.d.ts":eN,"/node_modules/@types/three/src/renderers/common/Storage3DTexture.d.ts":nN,"/node_modules/@types/three/src/renderers/common/StorageArrayTexture.d.ts":iN,"/node_modules/@types/three/src/renderers/common/StorageBufferAttribute.d.ts":oN,"/node_modules/@types/three/src/renderers/common/StorageInstancedBufferAttribute.d.ts":cN,"/node_modules/@types/three/src/renderers/common/StorageTexture.d.ts":uN,"/node_modules/@types/three/src/renderers/common/Textures.d.ts":fN,"/node_modules/@types/three/src/renderers/common/TimestampQueryPool.d.ts":mN,"/node_modules/@types/three/src/renderers/common/Uniform.d.ts":gN,"/node_modules/@types/three/src/renderers/common/UniformBuffer.d.ts":vN,"/node_modules/@types/three/src/renderers/common/UniformsGroup.d.ts":bN,"/node_modules/@types/three/src/renderers/common/XRManager.d.ts":SN,"/node_modules/@types/three/src/renderers/common/XRRenderTarget.d.ts":wN,"/node_modules/@types/three/src/renderers/common/extras/PMREMGenerator.d.ts":EN,"/node_modules/@types/three/src/renderers/common/nodes/NodeBuilderState.d.ts":ON,"/node_modules/@types/three/src/renderers/common/nodes/NodeLibrary.d.ts":AN,"/node_modules/@types/three/src/renderers/common/nodes/NodeManager.d.ts":MN,"/node_modules/@types/three/src/renderers/common/nodes/NodeSampledTexture.d.ts":PN,"/node_modules/@types/three/src/renderers/common/nodes/NodeSampler.d.ts":IN,"/node_modules/@types/three/src/renderers/common/nodes/NodeUniform.d.ts":RN,"/node_modules/@types/three/src/renderers/common/nodes/NodeUniformsGroup.d.ts":BN,"/node_modules/@types/three/src/renderers/shaders/ShaderChunk.d.ts":HN,"/node_modules/@types/three/src/renderers/shaders/ShaderLib.d.ts":WN,"/node_modules/@types/three/src/renderers/shaders/UniformsLib.d.ts":KN,"/node_modules/@types/three/src/renderers/shaders/UniformsUtils.d.ts":JN,"/node_modules/@types/three/src/renderers/webgl/WebGLAttributes.d.ts":XN,"/node_modules/@types/three/src/renderers/webgl/WebGLBindingStates.d.ts":QN,"/node_modules/@types/three/src/renderers/webgl/WebGLBufferRenderer.d.ts":eP,"/node_modules/@types/three/src/renderers/webgl/WebGLCapabilities.d.ts":nP,"/node_modules/@types/three/src/renderers/webgl/WebGLClipping.d.ts":iP,"/node_modules/@types/three/src/renderers/webgl/WebGLEnvironments.d.ts":oP,"/node_modules/@types/three/src/renderers/webgl/WebGLExtensions.d.ts":cP,"/node_modules/@types/three/src/renderers/webgl/WebGLGeometries.d.ts":uP,"/node_modules/@types/three/src/renderers/webgl/WebGLIndexedBufferRenderer.d.ts":fP,"/node_modules/@types/three/src/renderers/webgl/WebGLInfo.d.ts":mP,"/node_modules/@types/three/src/renderers/webgl/WebGLLights.d.ts":gP,"/node_modules/@types/three/src/renderers/webgl/WebGLObjects.d.ts":vP,"/node_modules/@types/three/src/renderers/webgl/WebGLProgram.d.ts":bP,"/node_modules/@types/three/src/renderers/webgl/WebGLPrograms.d.ts":SP,"/node_modules/@types/three/src/renderers/webgl/WebGLProperties.d.ts":wP,"/node_modules/@types/three/src/renderers/webgl/WebGLRenderLists.d.ts":EP,"/node_modules/@types/three/src/renderers/webgl/WebGLShader.d.ts":OP,"/node_modules/@types/three/src/renderers/webgl/WebGLShadowMap.d.ts":AP,"/node_modules/@types/three/src/renderers/webgl/WebGLState.d.ts":MP,"/node_modules/@types/three/src/renderers/webgl/WebGLTextures.d.ts":PP,"/node_modules/@types/three/src/renderers/webgl/WebGLUniforms.d.ts":IP,"/node_modules/@types/three/src/renderers/webgl/WebGLUniformsGroups.d.ts":RP,"/node_modules/@types/three/src/renderers/webgl/WebGLUtils.d.ts":BP,"/node_modules/@types/three/src/renderers/webgl-fallback/WebGLBackend.d.ts":HP,"/node_modules/@types/three/src/renderers/webgpu/WebGPUBackend.d.ts":WP,"/node_modules/@types/three/src/renderers/webgpu/WebGPURenderer.Nodes.d.ts":KP,"/node_modules/@types/three/src/renderers/webgpu/WebGPURenderer.d.ts":JP,"/node_modules/@types/three/src/renderers/webgpu/nodes/BasicNodeLibrary.d.ts":XP,"/node_modules/@types/three/src/renderers/webgpu/nodes/StandardNodeLibrary.d.ts":QP,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeBuilder.d.ts":eF,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeFunction.d.ts":nF,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeParser.d.ts":iF,"/node_modules/@types/three/src/renderers/webgpu/utils/WebGPUConstants.d.ts":oF,"/node_modules/@types/three/src/renderers/webxr/WebXRController.d.ts":cF,"/node_modules/@types/three/src/renderers/webxr/WebXRDepthSensing.d.ts":uF,"/node_modules/@types/three/src/renderers/webxr/WebXRManager.d.ts":fF,"/node_modules/@types/three/src/scenes/Fog.d.ts":mF,"/node_modules/@types/three/src/scenes/FogExp2.d.ts":gF,"/node_modules/@types/three/src/scenes/Scene.d.ts":vF,"/node_modules/@types/three/src/textures/CanvasTexture.d.ts":bF,"/node_modules/@types/three/src/textures/CompressedArrayTexture.d.ts":SF,"/node_modules/@types/three/src/textures/CompressedCubeTexture.d.ts":wF,"/node_modules/@types/three/src/textures/CompressedTexture.d.ts":EF,"/node_modules/@types/three/src/textures/CubeDepthTexture.d.ts":OF,"/node_modules/@types/three/src/textures/CubeTexture.d.ts":AF,"/node_modules/@types/three/src/textures/Data3DTexture.d.ts":MF,"/node_modules/@types/three/src/textures/DataArrayTexture.d.ts":PF,"/node_modules/@types/three/src/textures/DataTexture.d.ts":IF,"/node_modules/@types/three/src/textures/DepthTexture.d.ts":RF,"/node_modules/@types/three/src/textures/ExternalTexture.d.ts":BF,"/node_modules/@types/three/src/textures/FramebufferTexture.d.ts":HF,"/node_modules/@types/three/src/textures/Source.d.ts":WF,"/node_modules/@types/three/src/textures/Texture.d.ts":KF,"/node_modules/@types/three/src/textures/VideoFrameTexture.d.ts":JF,"/node_modules/@types/three/src/textures/VideoTexture.d.ts":XF,"/node_modules/@types/three/src/utils.d.ts":QF,"/node_modules/react/package.json":eI,"/node_modules/react-dom/package.json":nI});Object.keys(gz).forEach(e=>{Me.addExtraLib(gz[e].default,`file://${e}`),De.addExtraLib(gz[e].default,`file://${e}`)});var _z=({window:e})=>{let t=(0,z.useRef)(null),n=(0,z.useRef)(null),r=(0,z.useContext)(cI),i=e=>{if(n.current=e,r.currentFile){let t=ZR(r.currentFile);e.setModel(t)}e.focus(),e.addCommand(we.CtrlCmd|Ce.KeyS,()=>{e.getAction(`editor.action.formatDocument`).run()})},a=(0,z.useCallback)(()=>{if(!n.current||!r.currentFile)return;let e=ZR(r.currentFile);n.current.getModel()!==e&&n.current.setModel(e)},[r.currentFile]);(0,z.useEffect)(()=>(r.on(B.EventType.FILE_CHANGED,a),()=>{r.off(B.EventType.FILE_CHANGED,a)}),[a,r]),(0,z.useEffect)(()=>{let t=()=>{n.current?.layout()};return e.on(P.EventType.ON_RESIZE,t),()=>{e.off(P.EventType.ON_RESIZE,t)}},[e]);let{run:o}=hz(async()=>{await I.ins.build()},{wait:1e3}),s=(0,z.useCallback)(async(e,t)=>{r.currentFile&&(await r.writeFile(r.currentFile.path,e),o())},[o,r]);return(0,z.useEffect)(()=>{let e=xe.create(t.current,{model:null,theme:`vs-dark`,...WR});return i(e),e.onDidChangeModelContent(t=>{s(e.getValue(),t)}),()=>{e.dispose()}},[]),(0,H.jsxs)(`div`,{className:SL.editorContainer,children:[(0,H.jsx)(_L,{}),(0,H.jsx)(`div`,{className:SL.editorWrapper,ref:t})]})},vz=``+new URL(`3D-RPQS6Ad1.svg`,import.meta.url).href,yz=`<!DOCTYPE html>\r
+${JSON.stringify(i,null,2)}`);return t.value}}async notify(e,t,n){if(!this.checkChannel(this._requestSender))throw Error();let r=e.paramsSerializer.serializeToJson(t);SR(r),this._requestSender.sendNotification({method:e.method,params:r},n)}};function SR(e){if(e!==null&&Array.isArray(e)&&typeof e!=`object`)throw Error(`Invalid value! Only null, array and object is allowed.`)}var CR=class e extends Error{constructor(t,n,r=G.genericApplicationError){super(t),W(this,`data`),W(this,`code`),this.data=n,this.code=r,Object.setPrototypeOf(this,e.prototype)}},wR=class e{constructor(e,t,n,r,i=!1){W(this,`method`),W(this,`paramsSerializer`),W(this,`resultSerializer`),W(this,`errorSerializer`),W(this,`isOptional`),W(this,`kind`,`request`),this.method=e,this.paramsSerializer=t,this.resultSerializer=n,this.errorSerializer=r,this.isOptional=i}withMethod(t){return new e(t,this.paramsSerializer,this.resultSerializer,this.errorSerializer)}optional(){return new e(this.method,this.paramsSerializer,this.resultSerializer,this.errorSerializer,!0)}},TR=class e{constructor(e,t){W(this,`method`),W(this,`paramsSerializer`),W(this,`kind`,`notification`),this.method=e,this.paramsSerializer=t}withMethod(t){return new e(t,this.paramsSerializer)}};function q(e){return new wR((e||{}).method,K.sAny(),K.sAny(),K.sAny())}function J(e){return new TR((e||{}).method,K.sAny())}var ER=(nR=Symbol(),rR=class{constructor(e){W(this,`error`),W(this,nR),this.error=e}},W(rR,`factory`,e=>new rR(e)),rR);function DR(e){let t=OR(e.server),n=OR(e.client);return new kR(e.tags||[],t,n)}function OR(e){let t={};for(let[n,r]of Object.entries(e)){let e=r.method?r.method:n;t[n]=r.withMethod(e)}return t}var kR=class e{constructor(e=[],t,n){W(this,`tags`),W(this,`server`),W(this,`client`),this.tags=e,this.server=t,this.client=n}_onlyDesignTime(){return Error(`This property is not meant to be accessed at runtime`)}get TContractObject(){throw this._onlyDesignTime()}get TClientInterface(){throw this._onlyDesignTime()}get TServerInterface(){throw this._onlyDesignTime()}get TClientHandler(){throw this._onlyDesignTime()}get TServerHandler(){throw this._onlyDesignTime()}get TTags(){throw this._onlyDesignTime()}getInterface(e,t,n,r){let i=this.buildCounterpart(e,n),a=this.registerHandlers(e,t,r,i);return{counterpart:i,dispose:()=>a.dispose()}}buildCounterpart(e,t){let n={};for(let[r,i]of Object.entries(t)){let t;t=i.kind===`request`?i.isOptional?async(t,n)=>{t===void 0&&(t={});try{return await e.request(i,t,n)}catch(e){if(e&&e.code===G.methodNotFound)return vR;throw e}}:(t,n)=>(t===void 0&&(t={}),e.request(i,t,n)):(t,n)=>(t===void 0&&(t={}),e.notify(i,t,n)),n[r]=t}return n}registerHandlers(e,t,n,r){let i=[];for(let[a,o]of Object.entries(t))if(o.kind===`request`){let t=n[a];if(!t)continue;let s=this.createRequestHandler(r,t);i.push(e.registerRequestHandler(o,s))}else{let t=n[a];t&&i.push(e.registerNotificationHandler(o,(e,n)=>{t(e,{context:n,counterpart:r})}))}return{dispose:()=>i.forEach(e=>e.dispose())}}createRequestHandler(e,t){return async(n,r,i)=>{let a=await t(n,{context:i,counterpart:e,newErr:ER.factory,requestId:r});return a instanceof ER?a.error:{ok:a}}}static getServerFromStream(e,t,n,r){let i=xR.fromTransport(t,n),{server:a}=e.getServer(i,r);return i.startListen(),{channel:i,server:a}}static registerServerToStream(e,t,n,r){let i=xR.fromTransport(t,n),{client:a}=e.registerServer(i,r);return i.startListen(),{channel:i,client:a}}getServer(e,t){let{counterpart:n,dispose:r}=this.getInterface(e,this.client,this.server,t);return{server:n,dispose:r}}registerServer(e,t){let{counterpart:n,dispose:r}=this.getInterface(e,this.server,this.client,t);return{client:n,dispose:r}}withContext(){return new e(this.tags,this.server,this.client)}},AR=(function(e){return e.Comment=`comment`,e.Imports=`imports`,e.Region=`region`,e})({}),Y=(function(e){return e[e.File=1]=`File`,e[e.Module=2]=`Module`,e[e.Namespace=3]=`Namespace`,e[e.Package=4]=`Package`,e[e.Class=5]=`Class`,e[e.Method=6]=`Method`,e[e.Property=7]=`Property`,e[e.Field=8]=`Field`,e[e.Constructor=9]=`Constructor`,e[e.Enum=10]=`Enum`,e[e.Interface=11]=`Interface`,e[e.Function=12]=`Function`,e[e.Variable=13]=`Variable`,e[e.Constant=14]=`Constant`,e[e.String=15]=`String`,e[e.Number=16]=`Number`,e[e.Boolean=17]=`Boolean`,e[e.Array=18]=`Array`,e[e.Object=19]=`Object`,e[e.Key=20]=`Key`,e[e.Null=21]=`Null`,e[e.EnumMember=22]=`EnumMember`,e[e.Struct=23]=`Struct`,e[e.Event=24]=`Event`,e[e.Operator=25]=`Operator`,e[e.TypeParameter=26]=`TypeParameter`,e})({}),jR=(function(e){return e[e.Deprecated=1]=`Deprecated`,e})({}),MR=(function(e){return e[e.Type=1]=`Type`,e[e.Parameter=2]=`Parameter`,e})({}),X=(function(e){return e[e.Text=1]=`Text`,e[e.Method=2]=`Method`,e[e.Function=3]=`Function`,e[e.Constructor=4]=`Constructor`,e[e.Field=5]=`Field`,e[e.Variable=6]=`Variable`,e[e.Class=7]=`Class`,e[e.Interface=8]=`Interface`,e[e.Module=9]=`Module`,e[e.Property=10]=`Property`,e[e.Unit=11]=`Unit`,e[e.Value=12]=`Value`,e[e.Enum=13]=`Enum`,e[e.Keyword=14]=`Keyword`,e[e.Snippet=15]=`Snippet`,e[e.Color=16]=`Color`,e[e.File=17]=`File`,e[e.Reference=18]=`Reference`,e[e.Folder=19]=`Folder`,e[e.EnumMember=20]=`EnumMember`,e[e.Constant=21]=`Constant`,e[e.Struct=22]=`Struct`,e[e.Event=23]=`Event`,e[e.Operator=24]=`Operator`,e[e.TypeParameter=25]=`TypeParameter`,e})({}),NR=(function(e){return e[e.Deprecated=1]=`Deprecated`,e})({}),PR=(function(e){return e[e.PlainText=1]=`PlainText`,e[e.Snippet=2]=`Snippet`,e})({}),FR=(function(e){return e[e.Text=1]=`Text`,e[e.Read=2]=`Read`,e[e.Write=3]=`Write`,e})({}),Z=(function(e){return e.Empty=``,e.QuickFix=`quickfix`,e.Refactor=`refactor`,e.RefactorExtract=`refactor.extract`,e.RefactorInline=`refactor.inline`,e.RefactorRewrite=`refactor.rewrite`,e.Source=`source`,e.SourceOrganizeImports=`source.organizeImports`,e.SourceFixAll=`source.fixAll`,e})({}),Q=(function(e){return e[e.Error=1]=`Error`,e[e.Warning=2]=`Warning`,e[e.Information=3]=`Information`,e[e.Hint=4]=`Hint`,e})({}),IR=(function(e){return e[e.Unnecessary=1]=`Unnecessary`,e[e.Deprecated=2]=`Deprecated`,e})({}),LR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.TriggerCharacter=2]=`TriggerCharacter`,e[e.TriggerForIncompleteCompletions=3]=`TriggerForIncompleteCompletions`,e})({}),RR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.TriggerCharacter=2]=`TriggerCharacter`,e[e.ContentChange=3]=`ContentChange`,e})({}),zR=(function(e){return e[e.Invoked=1]=`Invoked`,e[e.Automatic=2]=`Automatic`,e})({}),$=class{constructor(e){this.method=e}},BR={textDocumentImplementation:new $(`textDocument/implementation`),textDocumentTypeDefinition:new $(`textDocument/typeDefinition`),textDocumentDocumentColor:new $(`textDocument/documentColor`),textDocumentColorPresentation:new $(`textDocument/colorPresentation`),textDocumentFoldingRange:new $(`textDocument/foldingRange`),textDocumentDeclaration:new $(`textDocument/declaration`),textDocumentSelectionRange:new $(`textDocument/selectionRange`),textDocumentPrepareCallHierarchy:new $(`textDocument/prepareCallHierarchy`),textDocumentSemanticTokensFull:new $(`textDocument/semanticTokens/full`),textDocumentSemanticTokensFullDelta:new $(`textDocument/semanticTokens/full/delta`),textDocumentLinkedEditingRange:new $(`textDocument/linkedEditingRange`),workspaceWillCreateFiles:new $(`workspace/willCreateFiles`),workspaceWillRenameFiles:new $(`workspace/willRenameFiles`),workspaceWillDeleteFiles:new $(`workspace/willDeleteFiles`),textDocumentMoniker:new $(`textDocument/moniker`),textDocumentPrepareTypeHierarchy:new $(`textDocument/prepareTypeHierarchy`),textDocumentInlineValue:new $(`textDocument/inlineValue`),textDocumentInlayHint:new $(`textDocument/inlayHint`),textDocumentDiagnostic:new $(`textDocument/diagnostic`),textDocumentInlineCompletion:new $(`textDocument/inlineCompletion`),textDocumentWillSaveWaitUntil:new $(`textDocument/willSaveWaitUntil`),textDocumentCompletion:new $(`textDocument/completion`),textDocumentHover:new $(`textDocument/hover`),textDocumentSignatureHelp:new $(`textDocument/signatureHelp`),textDocumentDefinition:new $(`textDocument/definition`),textDocumentReferences:new $(`textDocument/references`),textDocumentDocumentHighlight:new $(`textDocument/documentHighlight`),textDocumentDocumentSymbol:new $(`textDocument/documentSymbol`),textDocumentCodeAction:new $(`textDocument/codeAction`),workspaceSymbol:new $(`workspace/symbol`),textDocumentCodeLens:new $(`textDocument/codeLens`),textDocumentDocumentLink:new $(`textDocument/documentLink`),textDocumentFormatting:new $(`textDocument/formatting`),textDocumentRangeFormatting:new $(`textDocument/rangeFormatting`),textDocumentRangesFormatting:new $(`textDocument/rangesFormatting`),textDocumentOnTypeFormatting:new $(`textDocument/onTypeFormatting`),textDocumentRename:new $(`textDocument/rename`),workspaceExecuteCommand:new $(`workspace/executeCommand`),workspaceDidCreateFiles:new $(`workspace/didCreateFiles`),workspaceDidRenameFiles:new $(`workspace/didRenameFiles`),workspaceDidDeleteFiles:new $(`workspace/didDeleteFiles`),workspaceDidChangeConfiguration:new $(`workspace/didChangeConfiguration`),textDocumentDidOpen:new $(`textDocument/didOpen`),textDocumentDidChange:new $(`textDocument/didChange`),textDocumentDidClose:new $(`textDocument/didClose`),textDocumentDidSave:new $(`textDocument/didSave`),textDocumentWillSave:new $(`textDocument/willSave`),workspaceDidChangeWatchedFiles:new $(`workspace/didChangeWatchedFiles`)};DR({server:{textDocumentImplementation:q({method:`textDocument/implementation`}),textDocumentTypeDefinition:q({method:`textDocument/typeDefinition`}),textDocumentDocumentColor:q({method:`textDocument/documentColor`}),textDocumentColorPresentation:q({method:`textDocument/colorPresentation`}),textDocumentFoldingRange:q({method:`textDocument/foldingRange`}),textDocumentDeclaration:q({method:`textDocument/declaration`}),textDocumentSelectionRange:q({method:`textDocument/selectionRange`}),textDocumentPrepareCallHierarchy:q({method:`textDocument/prepareCallHierarchy`}),callHierarchyIncomingCalls:q({method:`callHierarchy/incomingCalls`}),callHierarchyOutgoingCalls:q({method:`callHierarchy/outgoingCalls`}),textDocumentSemanticTokensFull:q({method:`textDocument/semanticTokens/full`}),textDocumentSemanticTokensFullDelta:q({method:`textDocument/semanticTokens/full/delta`}),textDocumentSemanticTokensRange:q({method:`textDocument/semanticTokens/range`}),textDocumentLinkedEditingRange:q({method:`textDocument/linkedEditingRange`}),workspaceWillCreateFiles:q({method:`workspace/willCreateFiles`}),workspaceWillRenameFiles:q({method:`workspace/willRenameFiles`}),workspaceWillDeleteFiles:q({method:`workspace/willDeleteFiles`}),textDocumentMoniker:q({method:`textDocument/moniker`}),textDocumentPrepareTypeHierarchy:q({method:`textDocument/prepareTypeHierarchy`}),typeHierarchySupertypes:q({method:`typeHierarchy/supertypes`}),typeHierarchySubtypes:q({method:`typeHierarchy/subtypes`}),textDocumentInlineValue:q({method:`textDocument/inlineValue`}),textDocumentInlayHint:q({method:`textDocument/inlayHint`}),inlayHintResolve:q({method:`inlayHint/resolve`}),textDocumentDiagnostic:q({method:`textDocument/diagnostic`}),workspaceDiagnostic:q({method:`workspace/diagnostic`}),textDocumentInlineCompletion:q({method:`textDocument/inlineCompletion`}),initialize:q({method:`initialize`}),shutdown:q({method:`shutdown`}),textDocumentWillSaveWaitUntil:q({method:`textDocument/willSaveWaitUntil`}),textDocumentCompletion:q({method:`textDocument/completion`}),completionItemResolve:q({method:`completionItem/resolve`}),textDocumentHover:q({method:`textDocument/hover`}),textDocumentSignatureHelp:q({method:`textDocument/signatureHelp`}),textDocumentDefinition:q({method:`textDocument/definition`}),textDocumentReferences:q({method:`textDocument/references`}),textDocumentDocumentHighlight:q({method:`textDocument/documentHighlight`}),textDocumentDocumentSymbol:q({method:`textDocument/documentSymbol`}),textDocumentCodeAction:q({method:`textDocument/codeAction`}),codeActionResolve:q({method:`codeAction/resolve`}),workspaceSymbol:q({method:`workspace/symbol`}),workspaceSymbolResolve:q({method:`workspaceSymbol/resolve`}),textDocumentCodeLens:q({method:`textDocument/codeLens`}),codeLensResolve:q({method:`codeLens/resolve`}),textDocumentDocumentLink:q({method:`textDocument/documentLink`}),documentLinkResolve:q({method:`documentLink/resolve`}),textDocumentFormatting:q({method:`textDocument/formatting`}),textDocumentRangeFormatting:q({method:`textDocument/rangeFormatting`}),textDocumentRangesFormatting:q({method:`textDocument/rangesFormatting`}),textDocumentOnTypeFormatting:q({method:`textDocument/onTypeFormatting`}),textDocumentRename:q({method:`textDocument/rename`}),textDocumentPrepareRename:q({method:`textDocument/prepareRename`}),workspaceExecuteCommand:q({method:`workspace/executeCommand`}),workspaceDidChangeWorkspaceFolders:J({method:`workspace/didChangeWorkspaceFolders`}),windowWorkDoneProgressCancel:J({method:`window/workDoneProgress/cancel`}),workspaceDidCreateFiles:J({method:`workspace/didCreateFiles`}),workspaceDidRenameFiles:J({method:`workspace/didRenameFiles`}),workspaceDidDeleteFiles:J({method:`workspace/didDeleteFiles`}),notebookDocumentDidOpen:J({method:`notebookDocument/didOpen`}),notebookDocumentDidChange:J({method:`notebookDocument/didChange`}),notebookDocumentDidSave:J({method:`notebookDocument/didSave`}),notebookDocumentDidClose:J({method:`notebookDocument/didClose`}),initialized:J({method:`initialized`}),exit:J({method:`exit`}),workspaceDidChangeConfiguration:J({method:`workspace/didChangeConfiguration`}),textDocumentDidOpen:J({method:`textDocument/didOpen`}),textDocumentDidChange:J({method:`textDocument/didChange`}),textDocumentDidClose:J({method:`textDocument/didClose`}),textDocumentDidSave:J({method:`textDocument/didSave`}),textDocumentWillSave:J({method:`textDocument/willSave`}),workspaceDidChangeWatchedFiles:J({method:`workspace/didChangeWatchedFiles`}),setTrace:J({method:`$/setTrace`}),cancelRequest:J({method:`$/cancelRequest`}),progress:J({method:`$/progress`})},client:{workspaceWorkspaceFolders:q({method:`workspace/workspaceFolders`}).optional(),workspaceConfiguration:q({method:`workspace/configuration`}).optional(),workspaceFoldingRangeRefresh:q({method:`workspace/foldingRange/refresh`}).optional(),windowWorkDoneProgressCreate:q({method:`window/workDoneProgress/create`}).optional(),workspaceSemanticTokensRefresh:q({method:`workspace/semanticTokens/refresh`}).optional(),windowShowDocument:q({method:`window/showDocument`}).optional(),workspaceInlineValueRefresh:q({method:`workspace/inlineValue/refresh`}).optional(),workspaceInlayHintRefresh:q({method:`workspace/inlayHint/refresh`}).optional(),workspaceDiagnosticRefresh:q({method:`workspace/diagnostic/refresh`}).optional(),clientRegisterCapability:q({method:`client/registerCapability`}).optional(),clientUnregisterCapability:q({method:`client/unregisterCapability`}).optional(),windowShowMessageRequest:q({method:`window/showMessageRequest`}).optional(),workspaceCodeLensRefresh:q({method:`workspace/codeLens/refresh`}).optional(),workspaceApplyEdit:q({method:`workspace/applyEdit`}).optional(),windowShowMessage:J({method:`window/showMessage`}),windowLogMessage:J({method:`window/logMessage`}),telemetryEvent:J({method:`telemetry/event`}),textDocumentPublishDiagnostics:J({method:`textDocument/publishDiagnostics`}),logTrace:J({method:`$/logTrace`}),cancelRequest:J({method:`$/cancelRequest`}),progress:J({method:`$/progress`})}}),iR=class{constructor(){W(this,`_store`,new VR)}dispose(){this._store.dispose()}_register(e){if(e===this)throw Error(`Cannot register a disposable on itself!`);return this._store.add(e)}},W(iR,`None`,Object.freeze({dispose(){}}));var VR=(aR=class{constructor(){W(this,`_toDispose`,new Set),W(this,`_isDisposed`,!1)}dispose(){this._isDisposed||(this._isDisposed=!0,this.clear())}clear(){if(this._toDispose.size!==0)try{for(let e of this._toDispose)e.dispose()}finally{this._toDispose.clear()}}add(e){if(!e)return e;if(e===this)throw Error(`Cannot register a disposable on itself!`);return this._isDisposed?aR.DISABLE_DISPOSED_WARNING||console.warn(Error(`Trying to add a disposable to a DisposableStore that has already been disposed of. The added object will be leaked!`).stack):this._toDispose.add(e),e}},W(aR,`DISABLE_DISPOSED_WARNING`,!1),aR);Z.Empty,Z.QuickFix,Z.Refactor,Z.RefactorExtract,Z.RefactorInline,Z.RefactorRewrite,Z.Source,Z.SourceOrganizeImports,Z.SourceFixAll,L.CodeActionTriggerType.Invoke,zR.Invoked,L.CodeActionTriggerType.Auto,zR.Automatic,X.Text,L.CompletionItemKind.Text,X.Method,L.CompletionItemKind.Method,X.Function,L.CompletionItemKind.Function,X.Constructor,L.CompletionItemKind.Constructor,X.Field,L.CompletionItemKind.Field,X.Variable,L.CompletionItemKind.Variable,X.Class,L.CompletionItemKind.Class,X.Interface,L.CompletionItemKind.Interface,X.Module,L.CompletionItemKind.Module,X.Property,L.CompletionItemKind.Property,X.Unit,L.CompletionItemKind.Unit,X.Value,L.CompletionItemKind.Value,X.Enum,L.CompletionItemKind.Enum,X.Keyword,L.CompletionItemKind.Keyword,X.Snippet,L.CompletionItemKind.Snippet,X.Color,L.CompletionItemKind.Color,X.File,L.CompletionItemKind.File,X.Reference,L.CompletionItemKind.Reference,X.Folder,L.CompletionItemKind.Folder,X.EnumMember,L.CompletionItemKind.EnumMember,X.Constant,L.CompletionItemKind.Constant,X.Struct,L.CompletionItemKind.Struct,X.Event,L.CompletionItemKind.Event,X.Operator,L.CompletionItemKind.Operator,X.TypeParameter,L.CompletionItemKind.TypeParameter,NR.Deprecated,L.CompletionItemTag.Deprecated,L.CompletionTriggerKind.Invoke,LR.Invoked,L.CompletionTriggerKind.TriggerCharacter,LR.TriggerCharacter,L.CompletionTriggerKind.TriggerForIncompleteCompletions,LR.TriggerForIncompleteCompletions,PR.Snippet,L.CompletionItemInsertTextRule.InsertAsSnippet,Y.File,L.SymbolKind.File,Y.Module,L.SymbolKind.Module,Y.Namespace,L.SymbolKind.Namespace,Y.Package,L.SymbolKind.Package,Y.Class,L.SymbolKind.Class,Y.Method,L.SymbolKind.Method,Y.Property,L.SymbolKind.Property,Y.Field,L.SymbolKind.Field,Y.Constructor,L.SymbolKind.Constructor,Y.Enum,L.SymbolKind.Enum,Y.Interface,L.SymbolKind.Interface,Y.Function,L.SymbolKind.Function,Y.Variable,L.SymbolKind.Variable,Y.Constant,L.SymbolKind.Constant,Y.String,L.SymbolKind.String,Y.Number,L.SymbolKind.Number,Y.Boolean,L.SymbolKind.Boolean,Y.Array,L.SymbolKind.Array,Y.Object,L.SymbolKind.Object,Y.Key,L.SymbolKind.Key,Y.Null,L.SymbolKind.Null,Y.EnumMember,L.SymbolKind.EnumMember,Y.Struct,L.SymbolKind.Struct,Y.Event,L.SymbolKind.Event,Y.Operator,L.SymbolKind.Operator,Y.TypeParameter,L.SymbolKind.TypeParameter,jR.Deprecated,L.SymbolTag.Deprecated,FR.Text,L.DocumentHighlightKind.Text,FR.Read,L.DocumentHighlightKind.Read,FR.Write,L.DocumentHighlightKind.Write,AR.Comment,L.FoldingRangeKind.Comment,AR.Imports,L.FoldingRangeKind.Imports,AR.Region,L.FoldingRangeKind.Region,I.Error,Q.Error,I.Warning,Q.Warning,I.Info,Q.Information,I.Hint,Q.Hint,Q.Error,I.Error,Q.Warning,I.Warning,Q.Information,I.Info,Q.Hint,I.Hint,IR.Unnecessary,xe.Unnecessary,IR.Deprecated,xe.Deprecated,L.SignatureHelpTriggerKind.Invoke,RR.Invoked,L.SignatureHelpTriggerKind.TriggerCharacter,RR.TriggerCharacter,L.SignatureHelpTriggerKind.ContentChange,RR.ContentChange,MR.Type,L.InlayHintKind.Type,MR.Parameter,L.InlayHintKind.Parameter,new Map([...Object.values(BR)].map(e=>[e.method,e])),typeof WebSocket<`u`||(typeof MozWebSocket<`u`?MozWebSocket:typeof global<`u`?global.WebSocket||global.MozWebSocket:typeof window<`u`?window.WebSocket||window.MozWebSocket:typeof self<`u`&&(self.WebSocket||self.MozWebSocket));function HR(){return Ce}globalThis.MonacoEnvironment?.globalAPI&&(globalThis.monaco=HR());var UR=HR();UR.languages.css=wL,UR.languages.html=ML,UR.languages.typescript=je,UR.languages.json=KL;var WR={automaticLayout:!0,formatOnPaste:!0,formatOnType:!0,fontSize:16,showDeprecated:!0,showUnused:!0,showFoldingControls:`always`,scrollBeyondLastLine:!0,minimap:{enabled:!0},inlineSuggest:{enabled:!0},fixedOverflowWidgets:!0,smoothScrolling:!0,smartSelect:{selectSubwords:!0,selectLeadingAndTrailingWhitespace:!0},tabSize:2,overviewRulerBorder:!0,scrollbar:{verticalScrollbarSize:14,horizontalScrollbarSize:14},renderLineHighlight:`all`,selectOnLineNumbers:!0,readOnly:!1,accessibilitySupport:`off`,wordWrap:`off`},GR={target:ke.ESNext,module:Ae.ESNext,moduleResolution:Me.NodeJs,allowNonTsExtensions:!0,allowJs:!0,noEmit:!0,esModuleInterop:!0,jsx:Pe.React,reactNamespace:`React`,allowSyntheticDefaultImports:!0,isolatedModules:!0};function KR(e){return new Worker(``+new URL(`editor.worker-Qflgy8bP.js`,import.meta.url).href,{type:`module`,name:e?.name})}function qR(e){return new Worker(``+new URL(`json.worker-mexi0yo2.js`,import.meta.url).href,{type:`module`,name:e?.name})}function JR(e){return new Worker(``+new URL(`css.worker-CgsFFuEw.js`,import.meta.url).href,{type:`module`,name:e?.name})}function YR(e){return new Worker(``+new URL(`html.worker-KYe8ILdy.js`,import.meta.url).href,{type:`module`,name:e?.name})}function XR(e){return new Worker(``+new URL(`ts.worker-CNvosV8B.js`,import.meta.url).href,{type:`module`,name:e?.name})}self.MonacoEnvironment={getWorker(e,t){return t===`json`?new qR:t===`css`||t===`scss`||t===`less`?new JR:t===`html`||t===`handlebars`||t===`razor`?new YR:t===`typescript`||t===`javascript`?new XR:new KR}};function ZR({path:e,language:t,content:n}){let r=Ee.parse(e),i=Se.getModel(r);return i||=Se.createModel(n,t,r),i}function QR(e){var t=(0,R.useRef)(e);return t.current=e,t}var $R=function(e){var t=QR(e);(0,R.useEffect)(function(){return function(){t.current()}},[])},ez=n(((e,t)=>{function n(e){var t=typeof e;return e!=null&&(t==`object`||t==`function`)}t.exports=n})),tz=n(((e,t)=>{t.exports=typeof global==`object`&&global&&global.Object===Object&&global})),nz=n(((e,t)=>{var n=tz(),r=typeof self==`object`&&self&&self.Object===Object&&self;t.exports=n||r||Function(`return this`)()})),rz=n(((e,t)=>{var n=nz();t.exports=function(){return n.Date.now()}})),iz=n(((e,t)=>{var n=/\s/;function r(e){for(var t=e.length;t--&&n.test(e.charAt(t)););return t}t.exports=r})),az=n(((e,t)=>{var n=iz(),r=/^\s+/;function i(e){return e&&e.slice(0,n(e)+1).replace(r,``)}t.exports=i})),oz=n(((e,t)=>{t.exports=nz().Symbol})),sz=n(((e,t)=>{var n=oz(),r=Object.prototype,i=r.hasOwnProperty,a=r.toString,o=n?n.toStringTag:void 0;function s(e){var t=i.call(e,o),n=e[o];try{e[o]=void 0;var r=!0}catch{}var s=a.call(e);return r&&(t?e[o]=n:delete e[o]),s}t.exports=s})),cz=n(((e,t)=>{var n=Object.prototype.toString;function r(e){return n.call(e)}t.exports=r})),lz=n(((e,t)=>{var n=oz(),r=sz(),i=cz(),a=`[object Null]`,o=`[object Undefined]`,s=n?n.toStringTag:void 0;function c(e){return e==null?e===void 0?o:a:s&&s in Object(e)?r(e):i(e)}t.exports=c})),uz=n(((e,t)=>{function n(e){return typeof e==`object`&&!!e}t.exports=n})),dz=n(((e,t)=>{var n=lz(),r=uz(),i=`[object Symbol]`;function a(e){return typeof e==`symbol`||r(e)&&n(e)==i}t.exports=a})),fz=n(((e,t)=>{var n=az(),r=ez(),i=dz(),a=NaN,o=/^[-+]0x[0-9a-f]+$/i,s=/^0b[01]+$/i,c=/^0o[0-7]+$/i,l=parseInt;function u(e){if(typeof e==`number`)return e;if(i(e))return a;if(r(e)){var t=typeof e.valueOf==`function`?e.valueOf():e;e=r(t)?t+``:t}if(typeof e!=`string`)return e===0?e:+e;e=n(e);var u=s.test(e);return u||c.test(e)?l(e.slice(2),u?2:8):o.test(e)?a:+e}t.exports=u})),pz=t(n(((e,t)=>{var n=ez(),r=rz(),i=fz(),a=`Expected a function`,o=Math.max,s=Math.min;function c(e,t,c){var l,u,d,f,p,m,h=0,g=!1,_=!1,v=!0;if(typeof e!=`function`)throw TypeError(a);t=i(t)||0,n(c)&&(g=!!c.leading,_=`maxWait`in c,d=_?o(i(c.maxWait)||0,t):d,v=`trailing`in c?!!c.trailing:v);function y(t){var n=l,r=u;return l=u=void 0,h=t,f=e.apply(r,n),f}function b(e){return h=e,p=setTimeout(x,t),g?y(e):f}function ee(e){var n=e-m,r=e-h,i=t-n;return _?s(i,d-r):i}function te(e){var n=e-m,r=e-h;return m===void 0||n>=t||n<0||_&&r>=d}function x(){var e=r();if(te(e))return ne(e);p=setTimeout(x,ee(e))}function ne(e){return p=void 0,v&&l?y(e):(l=u=void 0,f)}function S(){p!==void 0&&clearTimeout(p),h=0,l=m=u=p=void 0}function re(){return p===void 0?f:ne(r())}function C(){var e=r(),n=te(e);if(l=arguments,u=this,m=e,n){if(p===void 0)return b(m);if(_)return clearTimeout(p),p=setTimeout(x,t),y(m)}return p===void 0&&(p=setTimeout(x,t)),f}return C.cancel=S,C.flush=re,C}t.exports=c}))());function mz(){var e=(typeof global>`u`?`undefined`:typeof global)==`object`&&global&&global.Object===Object&&global,t=typeof self==`object`&&self&&self.Object===Object&&self;return e||t}mz()||(global.Date=Date);function hz(e,t){var n=QR(e),r=t?.wait??1e3,i=(0,R.useMemo)(function(){return(0,pz.default)(function(){var e=[...arguments];return n.current.apply(n,dI([],uI(e),!1))},r,t)},[]);return $R(function(){i.cancel()}),{run:i,cancel:i.cancel,flush:i.flush}}Ne.setCompilerOptions({...GR});var gz=Object.assign({"/node_modules/@types/react/canary.d.ts":Ie,"/node_modules/@types/react/compiler-runtime.d.ts":Re,"/node_modules/@types/react/experimental.d.ts":Be,"/node_modules/@types/react/global.d.ts":He,"/node_modules/@types/react/index.d.ts":We,"/node_modules/@types/react/jsx-dev-runtime.d.ts":Ke,"/node_modules/@types/react/jsx-runtime.d.ts":Je,"/node_modules/@types/react/package.json":Xe,"/node_modules/@types/react/ts5.0/canary.d.ts":Qe,"/node_modules/@types/react/ts5.0/experimental.d.ts":et,"/node_modules/@types/react/ts5.0/global.d.ts":nt,"/node_modules/@types/react/ts5.0/index.d.ts":it,"/node_modules/@types/react/ts5.0/jsx-dev-runtime.d.ts":ot,"/node_modules/@types/react/ts5.0/jsx-runtime.d.ts":ct,"/node_modules/@types/react-dom/canary.d.ts":ut,"/node_modules/@types/react-dom/client.d.ts":ft,"/node_modules/@types/react-dom/experimental.d.ts":mt,"/node_modules/@types/react-dom/index.d.ts":gt,"/node_modules/@types/react-dom/package.json":vt,"/node_modules/@types/react-dom/server.browser.d.ts":bt,"/node_modules/@types/react-dom/server.bun.d.ts":St,"/node_modules/@types/react-dom/server.d.ts":wt,"/node_modules/@types/react-dom/server.edge.d.ts":Et,"/node_modules/@types/react-dom/server.node.d.ts":Ot,"/node_modules/@types/react-dom/static.browser.d.ts":At,"/node_modules/@types/react-dom/static.d.ts":Mt,"/node_modules/@types/react-dom/static.edge.d.ts":Pt,"/node_modules/@types/react-dom/static.node.d.ts":It,"/node_modules/@types/react-dom/test-utils/index.d.ts":Rt,"/node_modules/@types/three/build/three.core.d.ts":Bt,"/node_modules/@types/three/build/three.core.min.d.ts":Ht,"/node_modules/@types/three/build/three.module.d.ts":Wt,"/node_modules/@types/three/build/three.module.min.d.ts":Kt,"/node_modules/@types/three/build/three.tsl.d.ts":Jt,"/node_modules/@types/three/build/three.tsl.min.d.ts":Xt,"/node_modules/@types/three/build/three.webgpu.d.ts":Qt,"/node_modules/@types/three/build/three.webgpu.min.d.ts":en,"/node_modules/@types/three/build/three.webgpu.nodes.d.ts":nn,"/node_modules/@types/three/build/three.webgpu.nodes.min.d.ts":an,"/node_modules/@types/three/examples/jsm/Addons.d.ts":sn,"/node_modules/@types/three/examples/jsm/animation/AnimationClipCreator.d.ts":ln,"/node_modules/@types/three/examples/jsm/animation/CCDIKSolver.d.ts":dn,"/node_modules/@types/three/examples/jsm/capabilities/WebGL.d.ts":pn,"/node_modules/@types/three/examples/jsm/capabilities/WebGPU.d.ts":hn,"/node_modules/@types/three/examples/jsm/controls/ArcballControls.d.ts":_n,"/node_modules/@types/three/examples/jsm/controls/DragControls.d.ts":yn,"/node_modules/@types/three/examples/jsm/controls/FirstPersonControls.d.ts":xn,"/node_modules/@types/three/examples/jsm/controls/FlyControls.d.ts":Cn,"/node_modules/@types/three/examples/jsm/controls/MapControls.d.ts":Tn,"/node_modules/@types/three/examples/jsm/controls/OrbitControls.d.ts":Dn,"/node_modules/@types/three/examples/jsm/controls/PointerLockControls.d.ts":kn,"/node_modules/@types/three/examples/jsm/controls/TrackballControls.d.ts":jn,"/node_modules/@types/three/examples/jsm/controls/TransformControls.d.ts":Nn,"/node_modules/@types/three/examples/jsm/csm/CSM.d.ts":Fn,"/node_modules/@types/three/examples/jsm/csm/CSMFrustum.d.ts":Ln,"/node_modules/@types/three/examples/jsm/csm/CSMHelper.d.ts":zn,"/node_modules/@types/three/examples/jsm/csm/CSMShader.d.ts":Vn,"/node_modules/@types/three/examples/jsm/csm/CSMShadowNode.d.ts":Un,"/node_modules/@types/three/examples/jsm/curves/CurveExtras.d.ts":Gn,"/node_modules/@types/three/examples/jsm/curves/NURBSCurve.d.ts":qn,"/node_modules/@types/three/examples/jsm/curves/NURBSSurface.d.ts":Yn,"/node_modules/@types/three/examples/jsm/curves/NURBSUtils.d.ts":Zn,"/node_modules/@types/three/examples/jsm/curves/NURBSVolume.d.ts":$n,"/node_modules/@types/three/examples/jsm/effects/AnaglyphEffect.d.ts":tr,"/node_modules/@types/three/examples/jsm/effects/AsciiEffect.d.ts":rr,"/node_modules/@types/three/examples/jsm/effects/OutlineEffect.d.ts":ar,"/node_modules/@types/three/examples/jsm/effects/ParallaxBarrierEffect.d.ts":sr,"/node_modules/@types/three/examples/jsm/effects/StereoEffect.d.ts":lr,"/node_modules/@types/three/examples/jsm/environments/ColorEnvironment.d.ts":dr,"/node_modules/@types/three/examples/jsm/environments/DebugEnvironment.d.ts":pr,"/node_modules/@types/three/examples/jsm/environments/RoomEnvironment.d.ts":hr,"/node_modules/@types/three/examples/jsm/exporters/DRACOExporter.d.ts":_r,"/node_modules/@types/three/examples/jsm/exporters/EXRExporter.d.ts":yr,"/node_modules/@types/three/examples/jsm/exporters/GLTFExporter.d.ts":xr,"/node_modules/@types/three/examples/jsm/exporters/KTX2Exporter.d.ts":Cr,"/node_modules/@types/three/examples/jsm/exporters/OBJExporter.d.ts":Tr,"/node_modules/@types/three/examples/jsm/exporters/PLYExporter.d.ts":Dr,"/node_modules/@types/three/examples/jsm/exporters/STLExporter.d.ts":kr,"/node_modules/@types/three/examples/jsm/exporters/USDZExporter.d.ts":jr,"/node_modules/@types/three/examples/jsm/geometries/BoxLineGeometry.d.ts":Nr,"/node_modules/@types/three/examples/jsm/geometries/ConvexGeometry.d.ts":Fr,"/node_modules/@types/three/examples/jsm/geometries/DecalGeometry.d.ts":Lr,"/node_modules/@types/three/examples/jsm/geometries/ParametricFunctions.d.ts":zr,"/node_modules/@types/three/examples/jsm/geometries/ParametricGeometry.d.ts":Vr,"/node_modules/@types/three/examples/jsm/geometries/RoundedBoxGeometry.d.ts":Ur,"/node_modules/@types/three/examples/jsm/geometries/TeapotGeometry.d.ts":Gr,"/node_modules/@types/three/examples/jsm/geometries/TextGeometry.d.ts":qr,"/node_modules/@types/three/examples/jsm/gpgpu/BitonicSort.d.ts":Yr,"/node_modules/@types/three/examples/jsm/helpers/AnimationPathHelper.d.ts":Zr,"/node_modules/@types/three/examples/jsm/helpers/LightProbeHelper.d.ts":$r,"/node_modules/@types/three/examples/jsm/helpers/LightProbeHelperGPU.d.ts":ti,"/node_modules/@types/three/examples/jsm/helpers/OctreeHelper.d.ts":ri,"/node_modules/@types/three/examples/jsm/helpers/PositionalAudioHelper.d.ts":ai,"/node_modules/@types/three/examples/jsm/helpers/RapierHelper.d.ts":si,"/node_modules/@types/three/examples/jsm/helpers/RectAreaLightHelper.d.ts":li,"/node_modules/@types/three/examples/jsm/helpers/TextureHelper.d.ts":di,"/node_modules/@types/three/examples/jsm/helpers/TextureHelperGPU.d.ts":pi,"/node_modules/@types/three/examples/jsm/helpers/VertexNormalsHelper.d.ts":hi,"/node_modules/@types/three/examples/jsm/helpers/VertexTangentsHelper.d.ts":_i,"/node_modules/@types/three/examples/jsm/helpers/ViewHelper.d.ts":yi,"/node_modules/@types/three/examples/jsm/inspector/Inspector.d.ts":xi,"/node_modules/@types/three/examples/jsm/inspector/RendererInspector.d.ts":Ci,"/node_modules/@types/three/examples/jsm/inspector/tabs/Parameters.d.ts":Ti,"/node_modules/@types/three/examples/jsm/inspector/ui/Item.d.ts":Di,"/node_modules/@types/three/examples/jsm/inspector/ui/Tab.d.ts":ki,"/node_modules/@types/three/examples/jsm/inspector/ui/Values.d.ts":ji,"/node_modules/@types/three/examples/jsm/interactive/HTMLMesh.d.ts":Ni,"/node_modules/@types/three/examples/jsm/interactive/InteractiveGroup.d.ts":Fi,"/node_modules/@types/three/examples/jsm/interactive/SelectionBox.d.ts":Li,"/node_modules/@types/three/examples/jsm/interactive/SelectionHelper.d.ts":zi,"/node_modules/@types/three/examples/jsm/libs/fflate.module.d.ts":Vi,"/node_modules/@types/three/examples/jsm/libs/lil-gui.module.min.d.ts":Ui,"/node_modules/@types/three/examples/jsm/libs/meshopt_decoder.module.d.ts":Gi,"/node_modules/@types/three/examples/jsm/libs/stats.module.d.ts":qi,"/node_modules/@types/three/examples/jsm/libs/tween.module.d.ts":Yi,"/node_modules/@types/three/examples/jsm/lighting/TiledLighting.d.ts":Zi,"/node_modules/@types/three/examples/jsm/lights/LightProbeGenerator.d.ts":$i,"/node_modules/@types/three/examples/jsm/lights/RectAreaLightTexturesLib.d.ts":ta,"/node_modules/@types/three/examples/jsm/lights/RectAreaLightUniformsLib.d.ts":ra,"/node_modules/@types/three/examples/jsm/lines/Line2.d.ts":aa,"/node_modules/@types/three/examples/jsm/lines/LineGeometry.d.ts":sa,"/node_modules/@types/three/examples/jsm/lines/LineMaterial.d.ts":la,"/node_modules/@types/three/examples/jsm/lines/LineSegments2.d.ts":da,"/node_modules/@types/three/examples/jsm/lines/LineSegmentsGeometry.d.ts":pa,"/node_modules/@types/three/examples/jsm/lines/Wireframe.d.ts":ha,"/node_modules/@types/three/examples/jsm/lines/WireframeGeometry2.d.ts":_a,"/node_modules/@types/three/examples/jsm/lines/webgpu/Line2.d.ts":ya,"/node_modules/@types/three/examples/jsm/lines/webgpu/LineSegments2.d.ts":xa,"/node_modules/@types/three/examples/jsm/lines/webgpu/Wireframe.d.ts":Ca,"/node_modules/@types/three/examples/jsm/loaders/3DMLoader.d.ts":Ta,"/node_modules/@types/three/examples/jsm/loaders/3MFLoader.d.ts":Da,"/node_modules/@types/three/examples/jsm/loaders/AMFLoader.d.ts":ka,"/node_modules/@types/three/examples/jsm/loaders/BVHLoader.d.ts":ja,"/node_modules/@types/three/examples/jsm/loaders/ColladaLoader.d.ts":Na,"/node_modules/@types/three/examples/jsm/loaders/DDSLoader.d.ts":Fa,"/node_modules/@types/three/examples/jsm/loaders/DRACOLoader.d.ts":La,"/node_modules/@types/three/examples/jsm/loaders/EXRLoader.d.ts":za,"/node_modules/@types/three/examples/jsm/loaders/FBXLoader.d.ts":Va,"/node_modules/@types/three/examples/jsm/loaders/FontLoader.d.ts":Ua,"/node_modules/@types/three/examples/jsm/loaders/GCodeLoader.d.ts":Ga,"/node_modules/@types/three/examples/jsm/loaders/GLTFLoader.d.ts":qa,"/node_modules/@types/three/examples/jsm/loaders/HDRCubeTextureLoader.d.ts":Ya,"/node_modules/@types/three/examples/jsm/loaders/HDRLoader.d.ts":Za,"/node_modules/@types/three/examples/jsm/loaders/IESLoader.d.ts":$a,"/node_modules/@types/three/examples/jsm/loaders/KMZLoader.d.ts":to,"/node_modules/@types/three/examples/jsm/loaders/KTX2Loader.d.ts":ro,"/node_modules/@types/three/examples/jsm/loaders/KTXLoader.d.ts":ao,"/node_modules/@types/three/examples/jsm/loaders/LDrawLoader.d.ts":so,"/node_modules/@types/three/examples/jsm/loaders/LUT3dlLoader.d.ts":lo,"/node_modules/@types/three/examples/jsm/loaders/LUTCubeLoader.d.ts":fo,"/node_modules/@types/three/examples/jsm/loaders/LUTImageLoader.d.ts":mo,"/node_modules/@types/three/examples/jsm/loaders/LWOLoader.d.ts":go,"/node_modules/@types/three/examples/jsm/loaders/LottieLoader.d.ts":vo,"/node_modules/@types/three/examples/jsm/loaders/MD2Loader.d.ts":bo,"/node_modules/@types/three/examples/jsm/loaders/MDDLoader.d.ts":So,"/node_modules/@types/three/examples/jsm/loaders/MTLLoader.d.ts":wo,"/node_modules/@types/three/examples/jsm/loaders/MaterialXLoader.d.ts":Eo,"/node_modules/@types/three/examples/jsm/loaders/NRRDLoader.d.ts":Oo,"/node_modules/@types/three/examples/jsm/loaders/OBJLoader.d.ts":Ao,"/node_modules/@types/three/examples/jsm/loaders/PCDLoader.d.ts":Mo,"/node_modules/@types/three/examples/jsm/loaders/PDBLoader.d.ts":Po,"/node_modules/@types/three/examples/jsm/loaders/PLYLoader.d.ts":Io,"/node_modules/@types/three/examples/jsm/loaders/PVRLoader.d.ts":Ro,"/node_modules/@types/three/examples/jsm/loaders/RGBELoader.d.ts":Bo,"/node_modules/@types/three/examples/jsm/loaders/STLLoader.d.ts":Ho,"/node_modules/@types/three/examples/jsm/loaders/SVGLoader.d.ts":Wo,"/node_modules/@types/three/examples/jsm/loaders/TDSLoader.d.ts":Ko,"/node_modules/@types/three/examples/jsm/loaders/TGALoader.d.ts":Jo,"/node_modules/@types/three/examples/jsm/loaders/TIFFLoader.d.ts":Xo,"/node_modules/@types/three/examples/jsm/loaders/TTFLoader.d.ts":Qo,"/node_modules/@types/three/examples/jsm/loaders/USDLoader.d.ts":es,"/node_modules/@types/three/examples/jsm/loaders/USDZLoader.d.ts":ns,"/node_modules/@types/three/examples/jsm/loaders/UltraHDRLoader.d.ts":is,"/node_modules/@types/three/examples/jsm/loaders/VOXLoader.d.ts":os,"/node_modules/@types/three/examples/jsm/loaders/VRMLLoader.d.ts":cs,"/node_modules/@types/three/examples/jsm/loaders/VTKLoader.d.ts":us,"/node_modules/@types/three/examples/jsm/loaders/XYZLoader.d.ts":fs,"/node_modules/@types/three/examples/jsm/materials/LDrawConditionalLineMaterial.d.ts":ms,"/node_modules/@types/three/examples/jsm/materials/LDrawConditionalLineNodeMaterial.d.ts":gs,"/node_modules/@types/three/examples/jsm/materials/WoodNodeMaterial.d.ts":vs,"/node_modules/@types/three/examples/jsm/math/Capsule.d.ts":bs,"/node_modules/@types/three/examples/jsm/math/ColorConverter.d.ts":Ss,"/node_modules/@types/three/examples/jsm/math/ColorSpaces.d.ts":ws,"/node_modules/@types/three/examples/jsm/math/ConvexHull.d.ts":Es,"/node_modules/@types/three/examples/jsm/math/ImprovedNoise.d.ts":Os,"/node_modules/@types/three/examples/jsm/math/Lut.d.ts":As,"/node_modules/@types/three/examples/jsm/math/MeshSurfaceSampler.d.ts":Ms,"/node_modules/@types/three/examples/jsm/math/OBB.d.ts":Ps,"/node_modules/@types/three/examples/jsm/math/Octree.d.ts":Is,"/node_modules/@types/three/examples/jsm/math/SimplexNoise.d.ts":Rs,"/node_modules/@types/three/examples/jsm/misc/ConvexObjectBreaker.d.ts":Bs,"/node_modules/@types/three/examples/jsm/misc/GPUComputationRenderer.d.ts":Hs,"/node_modules/@types/three/examples/jsm/misc/Gyroscope.d.ts":Ws,"/node_modules/@types/three/examples/jsm/misc/MD2Character.d.ts":Ks,"/node_modules/@types/three/examples/jsm/misc/MD2CharacterComplex.d.ts":Js,"/node_modules/@types/three/examples/jsm/misc/MorphAnimMesh.d.ts":Xs,"/node_modules/@types/three/examples/jsm/misc/MorphBlendMesh.d.ts":Qs,"/node_modules/@types/three/examples/jsm/misc/ProgressiveLightMap.d.ts":ec,"/node_modules/@types/three/examples/jsm/misc/ProgressiveLightMapGPU.d.ts":nc,"/node_modules/@types/three/examples/jsm/misc/RollerCoaster.d.ts":ic,"/node_modules/@types/three/examples/jsm/misc/TubePainter.d.ts":oc,"/node_modules/@types/three/examples/jsm/misc/Volume.d.ts":cc,"/node_modules/@types/three/examples/jsm/misc/VolumeSlice.d.ts":uc,"/node_modules/@types/three/examples/jsm/modifiers/CurveModifier.d.ts":fc,"/node_modules/@types/three/examples/jsm/modifiers/CurveModifierGPU.d.ts":mc,"/node_modules/@types/three/examples/jsm/modifiers/EdgeSplitModifier.d.ts":gc,"/node_modules/@types/three/examples/jsm/modifiers/SimplifyModifier.d.ts":vc,"/node_modules/@types/three/examples/jsm/modifiers/TessellateModifier.d.ts":bc,"/node_modules/@types/three/examples/jsm/objects/GroundedSkybox.d.ts":Sc,"/node_modules/@types/three/examples/jsm/objects/Lensflare.d.ts":wc,"/node_modules/@types/three/examples/jsm/objects/LensflareMesh.d.ts":Ec,"/node_modules/@types/three/examples/jsm/objects/MarchingCubes.d.ts":Oc,"/node_modules/@types/three/examples/jsm/objects/Reflector.d.ts":Ac,"/node_modules/@types/three/examples/jsm/objects/ReflectorForSSRPass.d.ts":Mc,"/node_modules/@types/three/examples/jsm/objects/Refractor.d.ts":Pc,"/node_modules/@types/three/examples/jsm/objects/ShadowMesh.d.ts":Ic,"/node_modules/@types/three/examples/jsm/objects/Sky.d.ts":Rc,"/node_modules/@types/three/examples/jsm/objects/SkyMesh.d.ts":Bc,"/node_modules/@types/three/examples/jsm/objects/Water.d.ts":Hc,"/node_modules/@types/three/examples/jsm/objects/Water2.d.ts":Wc,"/node_modules/@types/three/examples/jsm/objects/Water2Mesh.d.ts":Kc,"/node_modules/@types/three/examples/jsm/objects/WaterMesh.d.ts":Jc,"/node_modules/@types/three/examples/jsm/physics/AmmoPhysics.d.ts":Xc,"/node_modules/@types/three/examples/jsm/physics/JoltPhysics.d.ts":Qc,"/node_modules/@types/three/examples/jsm/physics/RapierPhysics.d.ts":el,"/node_modules/@types/three/examples/jsm/postprocessing/AfterimagePass.d.ts":nl,"/node_modules/@types/three/examples/jsm/postprocessing/BloomPass.d.ts":il,"/node_modules/@types/three/examples/jsm/postprocessing/BokehPass.d.ts":ol,"/node_modules/@types/three/examples/jsm/postprocessing/ClearPass.d.ts":cl,"/node_modules/@types/three/examples/jsm/postprocessing/CubeTexturePass.d.ts":ul,"/node_modules/@types/three/examples/jsm/postprocessing/DotScreenPass.d.ts":fl,"/node_modules/@types/three/examples/jsm/postprocessing/EffectComposer.d.ts":ml,"/node_modules/@types/three/examples/jsm/postprocessing/FXAAPass.d.ts":gl,"/node_modules/@types/three/examples/jsm/postprocessing/FilmPass.d.ts":vl,"/node_modules/@types/three/examples/jsm/postprocessing/GTAOPass.d.ts":bl,"/node_modules/@types/three/examples/jsm/postprocessing/GlitchPass.d.ts":Sl,"/node_modules/@types/three/examples/jsm/postprocessing/HalftonePass.d.ts":wl,"/node_modules/@types/three/examples/jsm/postprocessing/LUTPass.d.ts":El,"/node_modules/@types/three/examples/jsm/postprocessing/MaskPass.d.ts":Ol,"/node_modules/@types/three/examples/jsm/postprocessing/OutlinePass.d.ts":Al,"/node_modules/@types/three/examples/jsm/postprocessing/OutputPass.d.ts":Ml,"/node_modules/@types/three/examples/jsm/postprocessing/Pass.d.ts":Pl,"/node_modules/@types/three/examples/jsm/postprocessing/RenderPass.d.ts":Il,"/node_modules/@types/three/examples/jsm/postprocessing/RenderPixelatedPass.d.ts":Rl,"/node_modules/@types/three/examples/jsm/postprocessing/RenderTransitionPass.d.ts":Bl,"/node_modules/@types/three/examples/jsm/postprocessing/SAOPass.d.ts":Hl,"/node_modules/@types/three/examples/jsm/postprocessing/SMAAPass.d.ts":Wl,"/node_modules/@types/three/examples/jsm/postprocessing/SSAARenderPass.d.ts":Kl,"/node_modules/@types/three/examples/jsm/postprocessing/SSAOPass.d.ts":Jl,"/node_modules/@types/three/examples/jsm/postprocessing/SSRPass.d.ts":Xl,"/node_modules/@types/three/examples/jsm/postprocessing/SavePass.d.ts":Ql,"/node_modules/@types/three/examples/jsm/postprocessing/ShaderPass.d.ts":eu,"/node_modules/@types/three/examples/jsm/postprocessing/TAARenderPass.d.ts":nu,"/node_modules/@types/three/examples/jsm/postprocessing/TexturePass.d.ts":iu,"/node_modules/@types/three/examples/jsm/postprocessing/UnrealBloomPass.d.ts":ou,"/node_modules/@types/three/examples/jsm/renderers/CSS2DRenderer.d.ts":cu,"/node_modules/@types/three/examples/jsm/renderers/CSS3DRenderer.d.ts":uu,"/node_modules/@types/three/examples/jsm/renderers/Projector.d.ts":fu,"/node_modules/@types/three/examples/jsm/renderers/SVGRenderer.d.ts":mu,"/node_modules/@types/three/examples/jsm/shaders/ACESFilmicToneMappingShader.d.ts":gu,"/node_modules/@types/three/examples/jsm/shaders/AfterimageShader.d.ts":vu,"/node_modules/@types/three/examples/jsm/shaders/BasicShader.d.ts":bu,"/node_modules/@types/three/examples/jsm/shaders/BleachBypassShader.d.ts":Su,"/node_modules/@types/three/examples/jsm/shaders/BlendShader.d.ts":wu,"/node_modules/@types/three/examples/jsm/shaders/BokehShader.d.ts":Eu,"/node_modules/@types/three/examples/jsm/shaders/BokehShader2.d.ts":Ou,"/node_modules/@types/three/examples/jsm/shaders/BrightnessContrastShader.d.ts":Au,"/node_modules/@types/three/examples/jsm/shaders/ColorCorrectionShader.d.ts":Mu,"/node_modules/@types/three/examples/jsm/shaders/ColorifyShader.d.ts":Pu,"/node_modules/@types/three/examples/jsm/shaders/ConvolutionShader.d.ts":Iu,"/node_modules/@types/three/examples/jsm/shaders/CopyShader.d.ts":Ru,"/node_modules/@types/three/examples/jsm/shaders/DOFMipMapShader.d.ts":Bu,"/node_modules/@types/three/examples/jsm/shaders/DepthLimitedBlurShader.d.ts":Hu,"/node_modules/@types/three/examples/jsm/shaders/DigitalGlitch.d.ts":Wu,"/node_modules/@types/three/examples/jsm/shaders/DotScreenShader.d.ts":Ku,"/node_modules/@types/three/examples/jsm/shaders/ExposureShader.d.ts":Ju,"/node_modules/@types/three/examples/jsm/shaders/FXAAShader.d.ts":Xu,"/node_modules/@types/three/examples/jsm/shaders/FilmShader.d.ts":Qu,"/node_modules/@types/three/examples/jsm/shaders/FocusShader.d.ts":ed,"/node_modules/@types/three/examples/jsm/shaders/FreiChenShader.d.ts":nd,"/node_modules/@types/three/examples/jsm/shaders/GTAOShader.d.ts":id,"/node_modules/@types/three/examples/jsm/shaders/GammaCorrectionShader.d.ts":od,"/node_modules/@types/three/examples/jsm/shaders/HalftoneShader.d.ts":cd,"/node_modules/@types/three/examples/jsm/shaders/HorizontalBlurShader.d.ts":ud,"/node_modules/@types/three/examples/jsm/shaders/HorizontalTiltShiftShader.d.ts":fd,"/node_modules/@types/three/examples/jsm/shaders/HueSaturationShader.d.ts":md,"/node_modules/@types/three/examples/jsm/shaders/KaleidoShader.d.ts":gd,"/node_modules/@types/three/examples/jsm/shaders/LuminosityHighPassShader.d.ts":vd,"/node_modules/@types/three/examples/jsm/shaders/LuminosityShader.d.ts":bd,"/node_modules/@types/three/examples/jsm/shaders/MirrorShader.d.ts":Sd,"/node_modules/@types/three/examples/jsm/shaders/NormalMapShader.d.ts":wd,"/node_modules/@types/three/examples/jsm/shaders/OutputShader.d.ts":Ed,"/node_modules/@types/three/examples/jsm/shaders/PoissonDenoiseShader.d.ts":Od,"/node_modules/@types/three/examples/jsm/shaders/RGBShiftShader.d.ts":Ad,"/node_modules/@types/three/examples/jsm/shaders/SAOShader.d.ts":Md,"/node_modules/@types/three/examples/jsm/shaders/SMAAShader.d.ts":Pd,"/node_modules/@types/three/examples/jsm/shaders/SSAOShader.d.ts":Id,"/node_modules/@types/three/examples/jsm/shaders/SSRShader.d.ts":Rd,"/node_modules/@types/three/examples/jsm/shaders/SepiaShader.d.ts":Bd,"/node_modules/@types/three/examples/jsm/shaders/SobelOperatorShader.d.ts":Hd,"/node_modules/@types/three/examples/jsm/shaders/SubsurfaceScatteringShader.d.ts":Wd,"/node_modules/@types/three/examples/jsm/shaders/TechnicolorShader.d.ts":Kd,"/node_modules/@types/three/examples/jsm/shaders/ToonShader.d.ts":Jd,"/node_modules/@types/three/examples/jsm/shaders/TriangleBlurShader.d.ts":Xd,"/node_modules/@types/three/examples/jsm/shaders/UnpackDepthRGBAShader.d.ts":Qd,"/node_modules/@types/three/examples/jsm/shaders/VelocityShader.d.ts":ef,"/node_modules/@types/three/examples/jsm/shaders/VerticalBlurShader.d.ts":nf,"/node_modules/@types/three/examples/jsm/shaders/VerticalTiltShiftShader.d.ts":af,"/node_modules/@types/three/examples/jsm/shaders/VignetteShader.d.ts":sf,"/node_modules/@types/three/examples/jsm/shaders/VolumeShader.d.ts":lf,"/node_modules/@types/three/examples/jsm/shaders/WaterRefractionShader.d.ts":df,"/node_modules/@types/three/examples/jsm/textures/FlakesTexture.d.ts":pf,"/node_modules/@types/three/examples/jsm/transpiler/AST.d.ts":hf,"/node_modules/@types/three/examples/jsm/transpiler/GLSLDecoder.d.ts":_f,"/node_modules/@types/three/examples/jsm/transpiler/ShaderToyDecoder.d.ts":yf,"/node_modules/@types/three/examples/jsm/transpiler/TSLEncoder.d.ts":xf,"/node_modules/@types/three/examples/jsm/transpiler/Transpiler.d.ts":Cf,"/node_modules/@types/three/examples/jsm/tsl/display/AfterImageNode.d.ts":Tf,"/node_modules/@types/three/examples/jsm/tsl/display/AnaglyphPassNode.d.ts":Df,"/node_modules/@types/three/examples/jsm/tsl/display/AnamorphicNode.d.ts":kf,"/node_modules/@types/three/examples/jsm/tsl/display/BilateralBlurNode.d.ts":jf,"/node_modules/@types/three/examples/jsm/tsl/display/BleachBypass.d.ts":Nf,"/node_modules/@types/three/examples/jsm/tsl/display/BloomNode.d.ts":Ff,"/node_modules/@types/three/examples/jsm/tsl/display/CRT.d.ts":Lf,"/node_modules/@types/three/examples/jsm/tsl/display/ChromaticAberrationNode.d.ts":zf,"/node_modules/@types/three/examples/jsm/tsl/display/DenoiseNode.d.ts":Vf,"/node_modules/@types/three/examples/jsm/tsl/display/DepthOfFieldNode.d.ts":Uf,"/node_modules/@types/three/examples/jsm/tsl/display/DotScreenNode.d.ts":Gf,"/node_modules/@types/three/examples/jsm/tsl/display/FXAANode.d.ts":qf,"/node_modules/@types/three/examples/jsm/tsl/display/FilmNode.d.ts":Yf,"/node_modules/@types/three/examples/jsm/tsl/display/GTAONode.d.ts":Zf,"/node_modules/@types/three/examples/jsm/tsl/display/GaussianBlurNode.d.ts":$f,"/node_modules/@types/three/examples/jsm/tsl/display/GodraysNode.d.ts":tp,"/node_modules/@types/three/examples/jsm/tsl/display/LensflareNode.d.ts":rp,"/node_modules/@types/three/examples/jsm/tsl/display/Lut3DNode.d.ts":ap,"/node_modules/@types/three/examples/jsm/tsl/display/MotionBlur.d.ts":sp,"/node_modules/@types/three/examples/jsm/tsl/display/OutlineNode.d.ts":lp,"/node_modules/@types/three/examples/jsm/tsl/display/ParallaxBarrierPassNode.d.ts":dp,"/node_modules/@types/three/examples/jsm/tsl/display/PixelationPassNode.d.ts":pp,"/node_modules/@types/three/examples/jsm/tsl/display/RGBShiftNode.d.ts":hp,"/node_modules/@types/three/examples/jsm/tsl/display/RetroPassNode.d.ts":_p,"/node_modules/@types/three/examples/jsm/tsl/display/SMAANode.d.ts":yp,"/node_modules/@types/three/examples/jsm/tsl/display/SSAAPassNode.d.ts":xp,"/node_modules/@types/three/examples/jsm/tsl/display/SSGINode.d.ts":Cp,"/node_modules/@types/three/examples/jsm/tsl/display/SSRNode.d.ts":Tp,"/node_modules/@types/three/examples/jsm/tsl/display/SSSNode.d.ts":Dp,"/node_modules/@types/three/examples/jsm/tsl/display/Sepia.d.ts":kp,"/node_modules/@types/three/examples/jsm/tsl/display/Shape.d.ts":jp,"/node_modules/@types/three/examples/jsm/tsl/display/SobelOperatorNode.d.ts":Np,"/node_modules/@types/three/examples/jsm/tsl/display/StereoCompositePassNode.d.ts":Fp,"/node_modules/@types/three/examples/jsm/tsl/display/StereoPassNode.d.ts":Lp,"/node_modules/@types/three/examples/jsm/tsl/display/TRAANode.d.ts":zp,"/node_modules/@types/three/examples/jsm/tsl/display/TransitionNode.d.ts":Vp,"/node_modules/@types/three/examples/jsm/tsl/display/boxBlur.d.ts":Up,"/node_modules/@types/three/examples/jsm/tsl/display/depthAwareBlend.d.ts":Gp,"/node_modules/@types/three/examples/jsm/tsl/display/hashBlur.d.ts":qp,"/node_modules/@types/three/examples/jsm/tsl/display/radialBlur.d.ts":Yp,"/node_modules/@types/three/examples/jsm/tsl/lighting/TiledLightsNode.d.ts":Zp,"/node_modules/@types/three/examples/jsm/tsl/math/Bayer.d.ts":$p,"/node_modules/@types/three/examples/jsm/tsl/shadows/TileShadowNode.d.ts":tm,"/node_modules/@types/three/examples/jsm/tsl/shadows/TileShadowNodeHelper.d.ts":rm,"/node_modules/@types/three/examples/jsm/tsl/utils/Raymarching.d.ts":am,"/node_modules/@types/three/examples/jsm/utils/BufferGeometryUtils.d.ts":sm,"/node_modules/@types/three/examples/jsm/utils/CameraUtils.d.ts":lm,"/node_modules/@types/three/examples/jsm/utils/GeometryCompressionUtils.d.ts":dm,"/node_modules/@types/three/examples/jsm/utils/GeometryUtils.d.ts":pm,"/node_modules/@types/three/examples/jsm/utils/LDrawUtils.d.ts":hm,"/node_modules/@types/three/examples/jsm/utils/SceneUtils.d.ts":_m,"/node_modules/@types/three/examples/jsm/utils/ShadowMapViewer.d.ts":ym,"/node_modules/@types/three/examples/jsm/utils/ShadowMapViewerGPU.d.ts":xm,"/node_modules/@types/three/examples/jsm/utils/SkeletonUtils.d.ts":Cm,"/node_modules/@types/three/examples/jsm/utils/SortUtils.d.ts":Tm,"/node_modules/@types/three/examples/jsm/utils/UVsDebug.d.ts":Dm,"/node_modules/@types/three/examples/jsm/utils/WebGLTextureUtils.d.ts":km,"/node_modules/@types/three/examples/jsm/utils/WebGPUTextureUtils.d.ts":jm,"/node_modules/@types/three/examples/jsm/utils/WorkerPool.d.ts":Nm,"/node_modules/@types/three/examples/jsm/webxr/ARButton.d.ts":Fm,"/node_modules/@types/three/examples/jsm/webxr/OculusHandModel.d.ts":Lm,"/node_modules/@types/three/examples/jsm/webxr/OculusHandPointerModel.d.ts":zm,"/node_modules/@types/three/examples/jsm/webxr/Text2D.d.ts":Vm,"/node_modules/@types/three/examples/jsm/webxr/VRButton.d.ts":Um,"/node_modules/@types/three/examples/jsm/webxr/XRButton.d.ts":Gm,"/node_modules/@types/three/examples/jsm/webxr/XRControllerModelFactory.d.ts":qm,"/node_modules/@types/three/examples/jsm/webxr/XREstimatedLight.d.ts":Ym,"/node_modules/@types/three/examples/jsm/webxr/XRHandMeshModel.d.ts":Zm,"/node_modules/@types/three/examples/jsm/webxr/XRHandModelFactory.d.ts":$m,"/node_modules/@types/three/examples/jsm/webxr/XRHandPrimitiveModel.d.ts":th,"/node_modules/@types/three/examples/jsm/webxr/XRPlanes.d.ts":rh,"/node_modules/@types/three/index.d.ts":ah,"/node_modules/@types/three/package.json":sh,"/node_modules/@types/three/src/Three.Core.d.ts":lh,"/node_modules/@types/three/src/Three.TSL.d.ts":dh,"/node_modules/@types/three/src/Three.WebGPU.Nodes.d.ts":ph,"/node_modules/@types/three/src/Three.WebGPU.d.ts":hh,"/node_modules/@types/three/src/Three.d.ts":_h,"/node_modules/@types/three/src/animation/AnimationAction.d.ts":yh,"/node_modules/@types/three/src/animation/AnimationClip.d.ts":xh,"/node_modules/@types/three/src/animation/AnimationMixer.d.ts":Ch,"/node_modules/@types/three/src/animation/AnimationObjectGroup.d.ts":Th,"/node_modules/@types/three/src/animation/AnimationUtils.d.ts":Dh,"/node_modules/@types/three/src/animation/KeyframeTrack.d.ts":kh,"/node_modules/@types/three/src/animation/PropertyBinding.d.ts":jh,"/node_modules/@types/three/src/animation/PropertyMixer.d.ts":Nh,"/node_modules/@types/three/src/animation/tracks/BooleanKeyframeTrack.d.ts":Fh,"/node_modules/@types/three/src/animation/tracks/ColorKeyframeTrack.d.ts":Lh,"/node_modules/@types/three/src/animation/tracks/NumberKeyframeTrack.d.ts":zh,"/node_modules/@types/three/src/animation/tracks/QuaternionKeyframeTrack.d.ts":Vh,"/node_modules/@types/three/src/animation/tracks/StringKeyframeTrack.d.ts":Uh,"/node_modules/@types/three/src/animation/tracks/VectorKeyframeTrack.d.ts":Gh,"/node_modules/@types/three/src/audio/Audio.d.ts":qh,"/node_modules/@types/three/src/audio/AudioAnalyser.d.ts":Yh,"/node_modules/@types/three/src/audio/AudioContext.d.ts":Zh,"/node_modules/@types/three/src/audio/AudioListener.d.ts":$h,"/node_modules/@types/three/src/audio/PositionalAudio.d.ts":tg,"/node_modules/@types/three/src/cameras/ArrayCamera.d.ts":rg,"/node_modules/@types/three/src/cameras/Camera.d.ts":ag,"/node_modules/@types/three/src/cameras/CubeCamera.d.ts":sg,"/node_modules/@types/three/src/cameras/OrthographicCamera.d.ts":lg,"/node_modules/@types/three/src/cameras/PerspectiveCamera.d.ts":dg,"/node_modules/@types/three/src/cameras/StereoCamera.d.ts":pg,"/node_modules/@types/three/src/constants.d.ts":hg,"/node_modules/@types/three/src/core/BufferAttribute.d.ts":_g,"/node_modules/@types/three/src/core/BufferGeometry.d.ts":yg,"/node_modules/@types/three/src/core/Clock.d.ts":xg,"/node_modules/@types/three/src/core/EventDispatcher.d.ts":Cg,"/node_modules/@types/three/src/core/GLBufferAttribute.d.ts":Tg,"/node_modules/@types/three/src/core/InstancedBufferAttribute.d.ts":Dg,"/node_modules/@types/three/src/core/InstancedBufferGeometry.d.ts":kg,"/node_modules/@types/three/src/core/InstancedInterleavedBuffer.d.ts":jg,"/node_modules/@types/three/src/core/InterleavedBuffer.d.ts":Ng,"/node_modules/@types/three/src/core/InterleavedBufferAttribute.d.ts":Fg,"/node_modules/@types/three/src/core/Layers.d.ts":Lg,"/node_modules/@types/three/src/core/Object3D.d.ts":zg,"/node_modules/@types/three/src/core/Raycaster.d.ts":Vg,"/node_modules/@types/three/src/core/RenderTarget.d.ts":Ug,"/node_modules/@types/three/src/core/RenderTarget3D.d.ts":Gg,"/node_modules/@types/three/src/core/Timer.d.ts":qg,"/node_modules/@types/three/src/core/Uniform.d.ts":Yg,"/node_modules/@types/three/src/core/UniformsGroup.d.ts":Zg,"/node_modules/@types/three/src/extras/Controls.d.ts":$g,"/node_modules/@types/three/src/extras/DataUtils.d.ts":t_,"/node_modules/@types/three/src/extras/Earcut.d.ts":r_,"/node_modules/@types/three/src/extras/ImageUtils.d.ts":a_,"/node_modules/@types/three/src/extras/PMREMGenerator.d.ts":s_,"/node_modules/@types/three/src/extras/ShapeUtils.d.ts":l_,"/node_modules/@types/three/src/extras/TextureUtils.d.ts":d_,"/node_modules/@types/three/src/extras/core/Curve.d.ts":p_,"/node_modules/@types/three/src/extras/core/CurvePath.d.ts":h_,"/node_modules/@types/three/src/extras/core/Interpolations.d.ts":__,"/node_modules/@types/three/src/extras/core/Path.d.ts":y_,"/node_modules/@types/three/src/extras/core/Shape.d.ts":x_,"/node_modules/@types/three/src/extras/core/ShapePath.d.ts":C_,"/node_modules/@types/three/src/extras/curves/ArcCurve.d.ts":T_,"/node_modules/@types/three/src/extras/curves/CatmullRomCurve3.d.ts":D_,"/node_modules/@types/three/src/extras/curves/CubicBezierCurve.d.ts":k_,"/node_modules/@types/three/src/extras/curves/CubicBezierCurve3.d.ts":j_,"/node_modules/@types/three/src/extras/curves/Curves.d.ts":N_,"/node_modules/@types/three/src/extras/curves/EllipseCurve.d.ts":F_,"/node_modules/@types/three/src/extras/curves/LineCurve.d.ts":L_,"/node_modules/@types/three/src/extras/curves/LineCurve3.d.ts":z_,"/node_modules/@types/three/src/extras/curves/QuadraticBezierCurve.d.ts":V_,"/node_modules/@types/three/src/extras/curves/QuadraticBezierCurve3.d.ts":U_,"/node_modules/@types/three/src/extras/curves/SplineCurve.d.ts":G_,"/node_modules/@types/three/src/geometries/BoxGeometry.d.ts":q_,"/node_modules/@types/three/src/geometries/CapsuleGeometry.d.ts":Y_,"/node_modules/@types/three/src/geometries/CircleGeometry.d.ts":Z_,"/node_modules/@types/three/src/geometries/ConeGeometry.d.ts":$_,"/node_modules/@types/three/src/geometries/CylinderGeometry.d.ts":tv,"/node_modules/@types/three/src/geometries/DodecahedronGeometry.d.ts":rv,"/node_modules/@types/three/src/geometries/EdgesGeometry.d.ts":av,"/node_modules/@types/three/src/geometries/ExtrudeGeometry.d.ts":sv,"/node_modules/@types/three/src/geometries/Geometries.d.ts":lv,"/node_modules/@types/three/src/geometries/IcosahedronGeometry.d.ts":dv,"/node_modules/@types/three/src/geometries/LatheGeometry.d.ts":pv,"/node_modules/@types/three/src/geometries/OctahedronGeometry.d.ts":hv,"/node_modules/@types/three/src/geometries/PlaneGeometry.d.ts":_v,"/node_modules/@types/three/src/geometries/PolyhedronGeometry.d.ts":yv,"/node_modules/@types/three/src/geometries/RingGeometry.d.ts":xv,"/node_modules/@types/three/src/geometries/ShapeGeometry.d.ts":Cv,"/node_modules/@types/three/src/geometries/SphereGeometry.d.ts":Tv,"/node_modules/@types/three/src/geometries/TetrahedronGeometry.d.ts":Dv,"/node_modules/@types/three/src/geometries/TorusGeometry.d.ts":kv,"/node_modules/@types/three/src/geometries/TorusKnotGeometry.d.ts":jv,"/node_modules/@types/three/src/geometries/TubeGeometry.d.ts":Nv,"/node_modules/@types/three/src/geometries/WireframeGeometry.d.ts":Fv,"/node_modules/@types/three/src/helpers/ArrowHelper.d.ts":Lv,"/node_modules/@types/three/src/helpers/AxesHelper.d.ts":zv,"/node_modules/@types/three/src/helpers/Box3Helper.d.ts":Vv,"/node_modules/@types/three/src/helpers/BoxHelper.d.ts":Uv,"/node_modules/@types/three/src/helpers/CameraHelper.d.ts":Gv,"/node_modules/@types/three/src/helpers/DirectionalLightHelper.d.ts":qv,"/node_modules/@types/three/src/helpers/GridHelper.d.ts":Yv,"/node_modules/@types/three/src/helpers/HemisphereLightHelper.d.ts":Zv,"/node_modules/@types/three/src/helpers/PlaneHelper.d.ts":$v,"/node_modules/@types/three/src/helpers/PointLightHelper.d.ts":ty,"/node_modules/@types/three/src/helpers/PolarGridHelper.d.ts":ry,"/node_modules/@types/three/src/helpers/SkeletonHelper.d.ts":ay,"/node_modules/@types/three/src/helpers/SpotLightHelper.d.ts":sy,"/node_modules/@types/three/src/lights/AmbientLight.d.ts":ly,"/node_modules/@types/three/src/lights/DirectionalLight.d.ts":dy,"/node_modules/@types/three/src/lights/DirectionalLightShadow.d.ts":py,"/node_modules/@types/three/src/lights/HemisphereLight.d.ts":hy,"/node_modules/@types/three/src/lights/Light.d.ts":_y,"/node_modules/@types/three/src/lights/LightProbe.d.ts":yy,"/node_modules/@types/three/src/lights/LightShadow.d.ts":xy,"/node_modules/@types/three/src/lights/PointLight.d.ts":Cy,"/node_modules/@types/three/src/lights/PointLightShadow.d.ts":Ty,"/node_modules/@types/three/src/lights/RectAreaLight.d.ts":Dy,"/node_modules/@types/three/src/lights/SpotLight.d.ts":ky,"/node_modules/@types/three/src/lights/SpotLightShadow.d.ts":jy,"/node_modules/@types/three/src/lights/webgpu/IESSpotLight.d.ts":Ny,"/node_modules/@types/three/src/lights/webgpu/ProjectorLight.d.ts":Fy,"/node_modules/@types/three/src/loaders/AnimationLoader.d.ts":Ly,"/node_modules/@types/three/src/loaders/AudioLoader.d.ts":zy,"/node_modules/@types/three/src/loaders/BufferGeometryLoader.d.ts":Vy,"/node_modules/@types/three/src/loaders/Cache.d.ts":Uy,"/node_modules/@types/three/src/loaders/CompressedTextureLoader.d.ts":Gy,"/node_modules/@types/three/src/loaders/CubeTextureLoader.d.ts":qy,"/node_modules/@types/three/src/loaders/DataTextureLoader.d.ts":Yy,"/node_modules/@types/three/src/loaders/FileLoader.d.ts":Zy,"/node_modules/@types/three/src/loaders/ImageBitmapLoader.d.ts":$y,"/node_modules/@types/three/src/loaders/ImageLoader.d.ts":tb,"/node_modules/@types/three/src/loaders/Loader.d.ts":rb,"/node_modules/@types/three/src/loaders/LoaderUtils.d.ts":ab,"/node_modules/@types/three/src/loaders/LoadingManager.d.ts":sb,"/node_modules/@types/three/src/loaders/MaterialLoader.d.ts":lb,"/node_modules/@types/three/src/loaders/ObjectLoader.d.ts":db,"/node_modules/@types/three/src/loaders/TextureLoader.d.ts":pb,"/node_modules/@types/three/src/loaders/nodes/NodeLoader.d.ts":hb,"/node_modules/@types/three/src/loaders/nodes/NodeMaterialLoader.d.ts":_b,"/node_modules/@types/three/src/loaders/nodes/NodeObjectLoader.d.ts":yb,"/node_modules/@types/three/src/materials/LineBasicMaterial.d.ts":xb,"/node_modules/@types/three/src/materials/LineDashedMaterial.d.ts":Cb,"/node_modules/@types/three/src/materials/Material.d.ts":Tb,"/node_modules/@types/three/src/materials/Materials.d.ts":Db,"/node_modules/@types/three/src/materials/MeshBasicMaterial.d.ts":kb,"/node_modules/@types/three/src/materials/MeshDepthMaterial.d.ts":jb,"/node_modules/@types/three/src/materials/MeshDistanceMaterial.d.ts":Nb,"/node_modules/@types/three/src/materials/MeshLambertMaterial.d.ts":Fb,"/node_modules/@types/three/src/materials/MeshMatcapMaterial.d.ts":Lb,"/node_modules/@types/three/src/materials/MeshNormalMaterial.d.ts":zb,"/node_modules/@types/three/src/materials/MeshPhongMaterial.d.ts":Vb,"/node_modules/@types/three/src/materials/MeshPhysicalMaterial.d.ts":Ub,"/node_modules/@types/three/src/materials/MeshStandardMaterial.d.ts":Gb,"/node_modules/@types/three/src/materials/MeshToonMaterial.d.ts":qb,"/node_modules/@types/three/src/materials/PointsMaterial.d.ts":Yb,"/node_modules/@types/three/src/materials/RawShaderMaterial.d.ts":Zb,"/node_modules/@types/three/src/materials/ShaderMaterial.d.ts":$b,"/node_modules/@types/three/src/materials/ShadowMaterial.d.ts":tx,"/node_modules/@types/three/src/materials/SpriteMaterial.d.ts":rx,"/node_modules/@types/three/src/materials/nodes/Line2NodeMaterial.d.ts":ax,"/node_modules/@types/three/src/materials/nodes/LineBasicNodeMaterial.d.ts":sx,"/node_modules/@types/three/src/materials/nodes/LineDashedNodeMaterial.d.ts":lx,"/node_modules/@types/three/src/materials/nodes/MeshBasicNodeMaterial.d.ts":dx,"/node_modules/@types/three/src/materials/nodes/MeshLambertNodeMaterial.d.ts":px,"/node_modules/@types/three/src/materials/nodes/MeshMatcapNodeMaterial.d.ts":hx,"/node_modules/@types/three/src/materials/nodes/MeshNormalNodeMaterial.d.ts":_x,"/node_modules/@types/three/src/materials/nodes/MeshPhongNodeMaterial.d.ts":yx,"/node_modules/@types/three/src/materials/nodes/MeshPhysicalNodeMaterial.d.ts":xx,"/node_modules/@types/three/src/materials/nodes/MeshSSSNodeMaterial.d.ts":Cx,"/node_modules/@types/three/src/materials/nodes/MeshStandardNodeMaterial.d.ts":Tx,"/node_modules/@types/three/src/materials/nodes/MeshToonNodeMaterial.d.ts":Dx,"/node_modules/@types/three/src/materials/nodes/NodeMaterial.d.ts":kx,"/node_modules/@types/three/src/materials/nodes/NodeMaterials.d.ts":jx,"/node_modules/@types/three/src/materials/nodes/PointsNodeMaterial.d.ts":Nx,"/node_modules/@types/three/src/materials/nodes/ShadowNodeMaterial.d.ts":Fx,"/node_modules/@types/three/src/materials/nodes/SpriteNodeMaterial.d.ts":Lx,"/node_modules/@types/three/src/materials/nodes/VolumeNodeMaterial.d.ts":zx,"/node_modules/@types/three/src/materials/nodes/manager/NodeMaterialObserver.d.ts":Vx,"/node_modules/@types/three/src/math/Box2.d.ts":Ux,"/node_modules/@types/three/src/math/Box3.d.ts":Gx,"/node_modules/@types/three/src/math/Color.d.ts":qx,"/node_modules/@types/three/src/math/ColorManagement.d.ts":Yx,"/node_modules/@types/three/src/math/Cylindrical.d.ts":Zx,"/node_modules/@types/three/src/math/Euler.d.ts":$x,"/node_modules/@types/three/src/math/Frustum.d.ts":tS,"/node_modules/@types/three/src/math/FrustumArray.d.ts":rS,"/node_modules/@types/three/src/math/Interpolant.d.ts":aS,"/node_modules/@types/three/src/math/Line3.d.ts":sS,"/node_modules/@types/three/src/math/MathUtils.d.ts":lS,"/node_modules/@types/three/src/math/Matrix2.d.ts":dS,"/node_modules/@types/three/src/math/Matrix3.d.ts":pS,"/node_modules/@types/three/src/math/Matrix4.d.ts":hS,"/node_modules/@types/three/src/math/Plane.d.ts":_S,"/node_modules/@types/three/src/math/Quaternion.d.ts":yS,"/node_modules/@types/three/src/math/Ray.d.ts":xS,"/node_modules/@types/three/src/math/Sphere.d.ts":CS,"/node_modules/@types/three/src/math/Spherical.d.ts":TS,"/node_modules/@types/three/src/math/SphericalHarmonics3.d.ts":DS,"/node_modules/@types/three/src/math/Triangle.d.ts":kS,"/node_modules/@types/three/src/math/Vector2.d.ts":jS,"/node_modules/@types/three/src/math/Vector3.d.ts":NS,"/node_modules/@types/three/src/math/Vector4.d.ts":FS,"/node_modules/@types/three/src/math/interpolants/BezierInterpolant.d.ts":LS,"/node_modules/@types/three/src/math/interpolants/CubicInterpolant.d.ts":zS,"/node_modules/@types/three/src/math/interpolants/DiscreteInterpolant.d.ts":VS,"/node_modules/@types/three/src/math/interpolants/LinearInterpolant.d.ts":US,"/node_modules/@types/three/src/math/interpolants/QuaternionLinearInterpolant.d.ts":GS,"/node_modules/@types/three/src/nodes/Nodes.d.ts":qS,"/node_modules/@types/three/src/nodes/TSL.d.ts":YS,"/node_modules/@types/three/src/nodes/accessors/AccessorsUtils.d.ts":ZS,"/node_modules/@types/three/src/nodes/accessors/Arrays.d.ts":$S,"/node_modules/@types/three/src/nodes/accessors/BatchNode.d.ts":tC,"/node_modules/@types/three/src/nodes/accessors/Bitangent.d.ts":rC,"/node_modules/@types/three/src/nodes/accessors/BufferAttributeNode.d.ts":aC,"/node_modules/@types/three/src/nodes/accessors/BufferNode.d.ts":sC,"/node_modules/@types/three/src/nodes/accessors/BuiltinNode.d.ts":lC,"/node_modules/@types/three/src/nodes/accessors/Camera.d.ts":dC,"/node_modules/@types/three/src/nodes/accessors/ClippingNode.d.ts":pC,"/node_modules/@types/three/src/nodes/accessors/CubeTextureNode.d.ts":hC,"/node_modules/@types/three/src/nodes/accessors/InstanceNode.d.ts":_C,"/node_modules/@types/three/src/nodes/accessors/InstancedMeshNode.d.ts":yC,"/node_modules/@types/three/src/nodes/accessors/Lights.d.ts":xC,"/node_modules/@types/three/src/nodes/accessors/MaterialNode.d.ts":CC,"/node_modules/@types/three/src/nodes/accessors/MaterialProperties.d.ts":TC,"/node_modules/@types/three/src/nodes/accessors/MaterialReferenceNode.d.ts":DC,"/node_modules/@types/three/src/nodes/accessors/ModelNode.d.ts":kC,"/node_modules/@types/three/src/nodes/accessors/ModelViewProjectionNode.d.ts":jC,"/node_modules/@types/three/src/nodes/accessors/MorphNode.d.ts":NC,"/node_modules/@types/three/src/nodes/accessors/Normal.d.ts":FC,"/node_modules/@types/three/src/nodes/accessors/Object3DNode.d.ts":LC,"/node_modules/@types/three/src/nodes/accessors/PointUVNode.d.ts":zC,"/node_modules/@types/three/src/nodes/accessors/Position.d.ts":VC,"/node_modules/@types/three/src/nodes/accessors/ReferenceBaseNode.d.ts":UC,"/node_modules/@types/three/src/nodes/accessors/ReferenceNode.d.ts":GC,"/node_modules/@types/three/src/nodes/accessors/ReflectVector.d.ts":qC,"/node_modules/@types/three/src/nodes/accessors/RendererReferenceNode.d.ts":YC,"/node_modules/@types/three/src/nodes/accessors/SceneProperties.d.ts":ZC,"/node_modules/@types/three/src/nodes/accessors/SkinningNode.d.ts":$C,"/node_modules/@types/three/src/nodes/accessors/StorageBufferNode.d.ts":tw,"/node_modules/@types/three/src/nodes/accessors/StorageTextureNode.d.ts":rw,"/node_modules/@types/three/src/nodes/accessors/Tangent.d.ts":aw,"/node_modules/@types/three/src/nodes/accessors/TangentUtils.d.ts":sw,"/node_modules/@types/three/src/nodes/accessors/Texture3DNode.d.ts":lw,"/node_modules/@types/three/src/nodes/accessors/TextureBicubic.d.ts":dw,"/node_modules/@types/three/src/nodes/accessors/TextureNode.d.ts":pw,"/node_modules/@types/three/src/nodes/accessors/TextureSizeNode.d.ts":hw,"/node_modules/@types/three/src/nodes/accessors/UV.d.ts":_w,"/node_modules/@types/three/src/nodes/accessors/UniformArrayNode.d.ts":yw,"/node_modules/@types/three/src/nodes/accessors/UserDataNode.d.ts":xw,"/node_modules/@types/three/src/nodes/accessors/VelocityNode.d.ts":Cw,"/node_modules/@types/three/src/nodes/accessors/VertexColorNode.d.ts":Tw,"/node_modules/@types/three/src/nodes/code/CodeNode.d.ts":Dw,"/node_modules/@types/three/src/nodes/code/ExpressionNode.d.ts":kw,"/node_modules/@types/three/src/nodes/code/FunctionCallNode.d.ts":jw,"/node_modules/@types/three/src/nodes/code/FunctionNode.d.ts":Nw,"/node_modules/@types/three/src/nodes/core/ArrayNode.d.ts":Fw,"/node_modules/@types/three/src/nodes/core/AssignNode.d.ts":Lw,"/node_modules/@types/three/src/nodes/core/AttributeNode.d.ts":zw,"/node_modules/@types/three/src/nodes/core/BypassNode.d.ts":Vw,"/node_modules/@types/three/src/nodes/core/ConstNode.d.ts":Uw,"/node_modules/@types/three/src/nodes/core/ContextNode.d.ts":Gw,"/node_modules/@types/three/src/nodes/core/IndexNode.d.ts":qw,"/node_modules/@types/three/src/nodes/core/InputNode.d.ts":Yw,"/node_modules/@types/three/src/nodes/core/InspectorNode.d.ts":Zw,"/node_modules/@types/three/src/nodes/core/IsolateNode.d.ts":$w,"/node_modules/@types/three/src/nodes/core/LightingModel.d.ts":tT,"/node_modules/@types/three/src/nodes/core/MRTNode.d.ts":rT,"/node_modules/@types/three/src/nodes/core/Node.d.ts":aT,"/node_modules/@types/three/src/nodes/core/NodeAttribute.d.ts":sT,"/node_modules/@types/three/src/nodes/core/NodeBuilder.d.ts":lT,"/node_modules/@types/three/src/nodes/core/NodeCache.d.ts":dT,"/node_modules/@types/three/src/nodes/core/NodeCode.d.ts":pT,"/node_modules/@types/three/src/nodes/core/NodeError.d.ts":hT,"/node_modules/@types/three/src/nodes/core/NodeFrame.d.ts":_T,"/node_modules/@types/three/src/nodes/core/NodeFunction.d.ts":yT,"/node_modules/@types/three/src/nodes/core/NodeFunctionInput.d.ts":xT,"/node_modules/@types/three/src/nodes/core/NodeParser.d.ts":CT,"/node_modules/@types/three/src/nodes/core/NodeUniform.d.ts":TT,"/node_modules/@types/three/src/nodes/core/NodeUtils.d.ts":DT,"/node_modules/@types/three/src/nodes/core/NodeVar.d.ts":kT,"/node_modules/@types/three/src/nodes/core/NodeVarying.d.ts":jT,"/node_modules/@types/three/src/nodes/core/OutputStructNode.d.ts":NT,"/node_modules/@types/three/src/nodes/core/ParameterNode.d.ts":FT,"/node_modules/@types/three/src/nodes/core/PropertyNode.d.ts":LT,"/node_modules/@types/three/src/nodes/core/StackNode.d.ts":zT,"/node_modules/@types/three/src/nodes/core/StackTrace.d.ts":VT,"/node_modules/@types/three/src/nodes/core/StructNode.d.ts":UT,"/node_modules/@types/three/src/nodes/core/StructType.d.ts":GT,"/node_modules/@types/three/src/nodes/core/StructTypeNode.d.ts":qT,"/node_modules/@types/three/src/nodes/core/SubBuildNode.d.ts":YT,"/node_modules/@types/three/src/nodes/core/TempNode.d.ts":ZT,"/node_modules/@types/three/src/nodes/core/UniformGroupNode.d.ts":$T,"/node_modules/@types/three/src/nodes/core/UniformNode.d.ts":tE,"/node_modules/@types/three/src/nodes/core/VarNode.d.ts":rE,"/node_modules/@types/three/src/nodes/core/VaryingNode.d.ts":aE,"/node_modules/@types/three/src/nodes/core/constants.d.ts":sE,"/node_modules/@types/three/src/nodes/display/BlendModes.d.ts":lE,"/node_modules/@types/three/src/nodes/display/BumpMapNode.d.ts":dE,"/node_modules/@types/three/src/nodes/display/ColorAdjustment.d.ts":pE,"/node_modules/@types/three/src/nodes/display/ColorSpaceFunctions.d.ts":hE,"/node_modules/@types/three/src/nodes/display/ColorSpaceNode.d.ts":_E,"/node_modules/@types/three/src/nodes/display/FrontFacingNode.d.ts":yE,"/node_modules/@types/three/src/nodes/display/NormalMapNode.d.ts":xE,"/node_modules/@types/three/src/nodes/display/PassNode.d.ts":CE,"/node_modules/@types/three/src/nodes/display/RenderOutputNode.d.ts":TE,"/node_modules/@types/three/src/nodes/display/ScreenNode.d.ts":DE,"/node_modules/@types/three/src/nodes/display/ToneMappingFunctions.d.ts":kE,"/node_modules/@types/three/src/nodes/display/ToneMappingNode.d.ts":jE,"/node_modules/@types/three/src/nodes/display/ToonOutlinePassNode.d.ts":NE,"/node_modules/@types/three/src/nodes/display/ViewportDepthNode.d.ts":FE,"/node_modules/@types/three/src/nodes/display/ViewportDepthTextureNode.d.ts":LE,"/node_modules/@types/three/src/nodes/display/ViewportSharedTextureNode.d.ts":zE,"/node_modules/@types/three/src/nodes/display/ViewportTextureNode.d.ts":VE,"/node_modules/@types/three/src/nodes/fog/Fog.d.ts":UE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_GGX.d.ts":GE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_GGX_Multiscatter.d.ts":qE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_Lambert.d.ts":YE,"/node_modules/@types/three/src/nodes/functions/BSDF/BRDF_Sheen.d.ts":ZE,"/node_modules/@types/three/src/nodes/functions/BSDF/DFGLUT.d.ts":$E,"/node_modules/@types/three/src/nodes/functions/BSDF/D_GGX.d.ts":tD,"/node_modules/@types/three/src/nodes/functions/BSDF/D_GGX_Anisotropic.d.ts":rD,"/node_modules/@types/three/src/nodes/functions/BSDF/F_Schlick.d.ts":aD,"/node_modules/@types/three/src/nodes/functions/BSDF/LTC.d.ts":sD,"/node_modules/@types/three/src/nodes/functions/BSDF/Schlick_to_F0.d.ts":lD,"/node_modules/@types/three/src/nodes/functions/BSDF/V_GGX_SmithCorrelated.d.ts":dD,"/node_modules/@types/three/src/nodes/functions/BSDF/V_GGX_SmithCorrelated_Anisotropic.d.ts":pD,"/node_modules/@types/three/src/nodes/functions/BasicLightingModel.d.ts":hD,"/node_modules/@types/three/src/nodes/functions/PhongLightingModel.d.ts":_D,"/node_modules/@types/three/src/nodes/functions/PhysicalLightingModel.d.ts":yD,"/node_modules/@types/three/src/nodes/functions/ShadowMaskModel.d.ts":xD,"/node_modules/@types/three/src/nodes/functions/ToonLightingModel.d.ts":CD,"/node_modules/@types/three/src/nodes/functions/VolumetricLightingModel.d.ts":TD,"/node_modules/@types/three/src/nodes/functions/material/getAlphaHashThreshold.d.ts":DD,"/node_modules/@types/three/src/nodes/functions/material/getGeometryRoughness.d.ts":kD,"/node_modules/@types/three/src/nodes/functions/material/getParallaxCorrectNormal.d.ts":jD,"/node_modules/@types/three/src/nodes/functions/material/getRoughness.d.ts":ND,"/node_modules/@types/three/src/nodes/functions/material/getShIrradianceAt.d.ts":FD,"/node_modules/@types/three/src/nodes/geometry/RangeNode.d.ts":LD,"/node_modules/@types/three/src/nodes/gpgpu/AtomicFunctionNode.d.ts":zD,"/node_modules/@types/three/src/nodes/gpgpu/BarrierNode.d.ts":VD,"/node_modules/@types/three/src/nodes/gpgpu/ComputeBuiltinNode.d.ts":UD,"/node_modules/@types/three/src/nodes/gpgpu/ComputeNode.d.ts":GD,"/node_modules/@types/three/src/nodes/gpgpu/SubgroupFunctionNode.d.ts":qD,"/node_modules/@types/three/src/nodes/gpgpu/WorkgroupInfoNode.d.ts":YD,"/node_modules/@types/three/src/nodes/lighting/AONode.d.ts":ZD,"/node_modules/@types/three/src/nodes/lighting/AmbientLightNode.d.ts":$D,"/node_modules/@types/three/src/nodes/lighting/AnalyticLightNode.d.ts":tO,"/node_modules/@types/three/src/nodes/lighting/BasicEnvironmentNode.d.ts":rO,"/node_modules/@types/three/src/nodes/lighting/BasicLightMapNode.d.ts":aO,"/node_modules/@types/three/src/nodes/lighting/DirectionalLightNode.d.ts":sO,"/node_modules/@types/three/src/nodes/lighting/EnvironmentNode.d.ts":lO,"/node_modules/@types/three/src/nodes/lighting/HemisphereLightNode.d.ts":dO,"/node_modules/@types/three/src/nodes/lighting/IESSpotLightNode.d.ts":pO,"/node_modules/@types/three/src/nodes/lighting/IrradianceNode.d.ts":hO,"/node_modules/@types/three/src/nodes/lighting/LightProbeNode.d.ts":_O,"/node_modules/@types/three/src/nodes/lighting/LightUtils.d.ts":yO,"/node_modules/@types/three/src/nodes/lighting/LightingContextNode.d.ts":xO,"/node_modules/@types/three/src/nodes/lighting/LightingNode.d.ts":CO,"/node_modules/@types/three/src/nodes/lighting/LightsNode.d.ts":TO,"/node_modules/@types/three/src/nodes/lighting/PointLightNode.d.ts":DO,"/node_modules/@types/three/src/nodes/lighting/PointShadowNode.d.ts":kO,"/node_modules/@types/three/src/nodes/lighting/ProjectorLightNode.d.ts":jO,"/node_modules/@types/three/src/nodes/lighting/RectAreaLightNode.d.ts":NO,"/node_modules/@types/three/src/nodes/lighting/ShadowBaseNode.d.ts":FO,"/node_modules/@types/three/src/nodes/lighting/ShadowFilterNode.d.ts":LO,"/node_modules/@types/three/src/nodes/lighting/ShadowNode.d.ts":zO,"/node_modules/@types/three/src/nodes/lighting/SpotLightNode.d.ts":VO,"/node_modules/@types/three/src/nodes/materialx/MaterialXNodes.d.ts":UO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_hsv.d.ts":GO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_noise.d.ts":qO,"/node_modules/@types/three/src/nodes/materialx/lib/mx_transform_color.d.ts":YO,"/node_modules/@types/three/src/nodes/math/BitcastNode.d.ts":ZO,"/node_modules/@types/three/src/nodes/math/BitcountNode.d.ts":$O,"/node_modules/@types/three/src/nodes/math/ConditionalNode.d.ts":tk,"/node_modules/@types/three/src/nodes/math/Hash.d.ts":rk,"/node_modules/@types/three/src/nodes/math/MathNode.d.ts":ak,"/node_modules/@types/three/src/nodes/math/MathUtils.d.ts":sk,"/node_modules/@types/three/src/nodes/math/OperatorNode.d.ts":lk,"/node_modules/@types/three/src/nodes/math/PackFloatNode.d.ts":dk,"/node_modules/@types/three/src/nodes/math/TriNoise3D.d.ts":pk,"/node_modules/@types/three/src/nodes/math/UnpackFloatNode.d.ts":hk,"/node_modules/@types/three/src/nodes/parsers/GLSLNodeFunction.d.ts":_k,"/node_modules/@types/three/src/nodes/parsers/GLSLNodeParser.d.ts":yk,"/node_modules/@types/three/src/nodes/pmrem/PMREMNode.d.ts":xk,"/node_modules/@types/three/src/nodes/pmrem/PMREMUtils.d.ts":Ck,"/node_modules/@types/three/src/nodes/procedural/Checker.d.ts":Tk,"/node_modules/@types/three/src/nodes/shapes/Shapes.d.ts":Dk,"/node_modules/@types/three/src/nodes/tsl/TSLBase.d.ts":kk,"/node_modules/@types/three/src/nodes/tsl/TSLCore.d.ts":jk,"/node_modules/@types/three/src/nodes/utils/ArrayElementNode.d.ts":Nk,"/node_modules/@types/three/src/nodes/utils/ConvertNode.d.ts":Fk,"/node_modules/@types/three/src/nodes/utils/CubeMapNode.d.ts":Lk,"/node_modules/@types/three/src/nodes/utils/DebugNode.d.ts":zk,"/node_modules/@types/three/src/nodes/utils/Discard.d.ts":Vk,"/node_modules/@types/three/src/nodes/utils/EquirectUV.d.ts":Uk,"/node_modules/@types/three/src/nodes/utils/EventNode.d.ts":Gk,"/node_modules/@types/three/src/nodes/utils/FlipNode.d.ts":qk,"/node_modules/@types/three/src/nodes/utils/FunctionOverloadingNode.d.ts":Yk,"/node_modules/@types/three/src/nodes/utils/JoinNode.d.ts":Zk,"/node_modules/@types/three/src/nodes/utils/LoopNode.d.ts":$k,"/node_modules/@types/three/src/nodes/utils/MatcapUV.d.ts":tA,"/node_modules/@types/three/src/nodes/utils/MaxMipLevelNode.d.ts":rA,"/node_modules/@types/three/src/nodes/utils/MemberNode.d.ts":aA,"/node_modules/@types/three/src/nodes/utils/Oscillators.d.ts":sA,"/node_modules/@types/three/src/nodes/utils/Packing.d.ts":lA,"/node_modules/@types/three/src/nodes/utils/PostProcessingUtils.d.ts":dA,"/node_modules/@types/three/src/nodes/utils/RTTNode.d.ts":pA,"/node_modules/@types/three/src/nodes/utils/ReflectorNode.d.ts":hA,"/node_modules/@types/three/src/nodes/utils/RemapNode.d.ts":_A,"/node_modules/@types/three/src/nodes/utils/RotateNode.d.ts":yA,"/node_modules/@types/three/src/nodes/utils/SampleNode.d.ts":xA,"/node_modules/@types/three/src/nodes/utils/SetNode.d.ts":CA,"/node_modules/@types/three/src/nodes/utils/SplitNode.d.ts":TA,"/node_modules/@types/three/src/nodes/utils/SpriteSheetUV.d.ts":DA,"/node_modules/@types/three/src/nodes/utils/SpriteUtils.d.ts":kA,"/node_modules/@types/three/src/nodes/utils/StorageArrayElementNode.d.ts":jA,"/node_modules/@types/three/src/nodes/utils/Timer.d.ts":NA,"/node_modules/@types/three/src/nodes/utils/TriplanarTextures.d.ts":FA,"/node_modules/@types/three/src/nodes/utils/UVUtils.d.ts":LA,"/node_modules/@types/three/src/nodes/utils/ViewportUtils.d.ts":zA,"/node_modules/@types/three/src/objects/BatchedMesh.d.ts":VA,"/node_modules/@types/three/src/objects/Bone.d.ts":UA,"/node_modules/@types/three/src/objects/ClippingGroup.d.ts":GA,"/node_modules/@types/three/src/objects/Group.d.ts":qA,"/node_modules/@types/three/src/objects/InstancedMesh.d.ts":YA,"/node_modules/@types/three/src/objects/LOD.d.ts":ZA,"/node_modules/@types/three/src/objects/Line.d.ts":$A,"/node_modules/@types/three/src/objects/LineLoop.d.ts":tj,"/node_modules/@types/three/src/objects/LineSegments.d.ts":rj,"/node_modules/@types/three/src/objects/Mesh.d.ts":aj,"/node_modules/@types/three/src/objects/Points.d.ts":sj,"/node_modules/@types/three/src/objects/Skeleton.d.ts":lj,"/node_modules/@types/three/src/objects/SkinnedMesh.d.ts":dj,"/node_modules/@types/three/src/objects/Sprite.d.ts":pj,"/node_modules/@types/three/src/renderers/WebGL3DRenderTarget.d.ts":hj,"/node_modules/@types/three/src/renderers/WebGLArrayRenderTarget.d.ts":_j,"/node_modules/@types/three/src/renderers/WebGLCubeRenderTarget.d.ts":yj,"/node_modules/@types/three/src/renderers/WebGLRenderTarget.d.ts":xj,"/node_modules/@types/three/src/renderers/WebGLRenderer.d.ts":Cj,"/node_modules/@types/three/src/renderers/common/Animation.d.ts":Tj,"/node_modules/@types/three/src/renderers/common/Attributes.d.ts":Dj,"/node_modules/@types/three/src/renderers/common/Backend.d.ts":kj,"/node_modules/@types/three/src/renderers/common/Background.d.ts":jj,"/node_modules/@types/three/src/renderers/common/BindGroup.d.ts":Nj,"/node_modules/@types/three/src/renderers/common/Binding.d.ts":Fj,"/node_modules/@types/three/src/renderers/common/Bindings.d.ts":Lj,"/node_modules/@types/three/src/renderers/common/BlendMode.d.ts":zj,"/node_modules/@types/three/src/renderers/common/Buffer.d.ts":Vj,"/node_modules/@types/three/src/renderers/common/BufferUtils.d.ts":Uj,"/node_modules/@types/three/src/renderers/common/BundleGroup.d.ts":Gj,"/node_modules/@types/three/src/renderers/common/CanvasTarget.d.ts":qj,"/node_modules/@types/three/src/renderers/common/ChainMap.d.ts":Yj,"/node_modules/@types/three/src/renderers/common/ClippingContext.d.ts":Zj,"/node_modules/@types/three/src/renderers/common/Color4.d.ts":$j,"/node_modules/@types/three/src/renderers/common/ComputePipeline.d.ts":tM,"/node_modules/@types/three/src/renderers/common/Constants.d.ts":rM,"/node_modules/@types/three/src/renderers/common/CubeRenderTarget.d.ts":aM,"/node_modules/@types/three/src/renderers/common/DataMap.d.ts":sM,"/node_modules/@types/three/src/renderers/common/Geometries.d.ts":lM,"/node_modules/@types/three/src/renderers/common/IndirectStorageBufferAttribute.d.ts":dM,"/node_modules/@types/three/src/renderers/common/Info.d.ts":pM,"/node_modules/@types/three/src/renderers/common/InspectorBase.d.ts":hM,"/node_modules/@types/three/src/renderers/common/Lighting.d.ts":_M,"/node_modules/@types/three/src/renderers/common/Pipeline.d.ts":yM,"/node_modules/@types/three/src/renderers/common/Pipelines.d.ts":xM,"/node_modules/@types/three/src/renderers/common/PostProcessing.d.ts":CM,"/node_modules/@types/three/src/renderers/common/ProgrammableStage.d.ts":TM,"/node_modules/@types/three/src/renderers/common/QuadMesh.d.ts":DM,"/node_modules/@types/three/src/renderers/common/RenderBundle.d.ts":kM,"/node_modules/@types/three/src/renderers/common/RenderBundles.d.ts":jM,"/node_modules/@types/three/src/renderers/common/RenderContext.d.ts":NM,"/node_modules/@types/three/src/renderers/common/RenderContexts.d.ts":FM,"/node_modules/@types/three/src/renderers/common/RenderList.d.ts":LM,"/node_modules/@types/three/src/renderers/common/RenderLists.d.ts":zM,"/node_modules/@types/three/src/renderers/common/RenderObject.d.ts":VM,"/node_modules/@types/three/src/renderers/common/RenderObjectPipeline.d.ts":UM,"/node_modules/@types/three/src/renderers/common/RenderObjects.d.ts":GM,"/node_modules/@types/three/src/renderers/common/RenderPipeline.d.ts":qM,"/node_modules/@types/three/src/renderers/common/Renderer.d.ts":YM,"/node_modules/@types/three/src/renderers/common/RendererUtils.d.ts":ZM,"/node_modules/@types/three/src/renderers/common/SampledTexture.d.ts":$M,"/node_modules/@types/three/src/renderers/common/Sampler.d.ts":tN,"/node_modules/@types/three/src/renderers/common/Storage3DTexture.d.ts":rN,"/node_modules/@types/three/src/renderers/common/StorageArrayTexture.d.ts":aN,"/node_modules/@types/three/src/renderers/common/StorageBufferAttribute.d.ts":sN,"/node_modules/@types/three/src/renderers/common/StorageInstancedBufferAttribute.d.ts":lN,"/node_modules/@types/three/src/renderers/common/StorageTexture.d.ts":dN,"/node_modules/@types/three/src/renderers/common/Textures.d.ts":pN,"/node_modules/@types/three/src/renderers/common/TimestampQueryPool.d.ts":hN,"/node_modules/@types/three/src/renderers/common/Uniform.d.ts":_N,"/node_modules/@types/three/src/renderers/common/UniformBuffer.d.ts":yN,"/node_modules/@types/three/src/renderers/common/UniformsGroup.d.ts":xN,"/node_modules/@types/three/src/renderers/common/XRManager.d.ts":CN,"/node_modules/@types/three/src/renderers/common/XRRenderTarget.d.ts":TN,"/node_modules/@types/three/src/renderers/common/extras/PMREMGenerator.d.ts":DN,"/node_modules/@types/three/src/renderers/common/nodes/NodeBuilderState.d.ts":kN,"/node_modules/@types/three/src/renderers/common/nodes/NodeLibrary.d.ts":jN,"/node_modules/@types/three/src/renderers/common/nodes/NodeManager.d.ts":NN,"/node_modules/@types/three/src/renderers/common/nodes/NodeSampledTexture.d.ts":FN,"/node_modules/@types/three/src/renderers/common/nodes/NodeSampler.d.ts":LN,"/node_modules/@types/three/src/renderers/common/nodes/NodeUniform.d.ts":zN,"/node_modules/@types/three/src/renderers/common/nodes/NodeUniformsGroup.d.ts":VN,"/node_modules/@types/three/src/renderers/shaders/ShaderChunk.d.ts":UN,"/node_modules/@types/three/src/renderers/shaders/ShaderLib.d.ts":GN,"/node_modules/@types/three/src/renderers/shaders/UniformsLib.d.ts":qN,"/node_modules/@types/three/src/renderers/shaders/UniformsUtils.d.ts":YN,"/node_modules/@types/three/src/renderers/webgl/WebGLAttributes.d.ts":ZN,"/node_modules/@types/three/src/renderers/webgl/WebGLBindingStates.d.ts":$N,"/node_modules/@types/three/src/renderers/webgl/WebGLBufferRenderer.d.ts":tP,"/node_modules/@types/three/src/renderers/webgl/WebGLCapabilities.d.ts":rP,"/node_modules/@types/three/src/renderers/webgl/WebGLClipping.d.ts":aP,"/node_modules/@types/three/src/renderers/webgl/WebGLEnvironments.d.ts":sP,"/node_modules/@types/three/src/renderers/webgl/WebGLExtensions.d.ts":lP,"/node_modules/@types/three/src/renderers/webgl/WebGLGeometries.d.ts":dP,"/node_modules/@types/three/src/renderers/webgl/WebGLIndexedBufferRenderer.d.ts":pP,"/node_modules/@types/three/src/renderers/webgl/WebGLInfo.d.ts":hP,"/node_modules/@types/three/src/renderers/webgl/WebGLLights.d.ts":_P,"/node_modules/@types/three/src/renderers/webgl/WebGLObjects.d.ts":yP,"/node_modules/@types/three/src/renderers/webgl/WebGLProgram.d.ts":xP,"/node_modules/@types/three/src/renderers/webgl/WebGLPrograms.d.ts":CP,"/node_modules/@types/three/src/renderers/webgl/WebGLProperties.d.ts":TP,"/node_modules/@types/three/src/renderers/webgl/WebGLRenderLists.d.ts":DP,"/node_modules/@types/three/src/renderers/webgl/WebGLShader.d.ts":kP,"/node_modules/@types/three/src/renderers/webgl/WebGLShadowMap.d.ts":jP,"/node_modules/@types/three/src/renderers/webgl/WebGLState.d.ts":NP,"/node_modules/@types/three/src/renderers/webgl/WebGLTextures.d.ts":FP,"/node_modules/@types/three/src/renderers/webgl/WebGLUniforms.d.ts":LP,"/node_modules/@types/three/src/renderers/webgl/WebGLUniformsGroups.d.ts":zP,"/node_modules/@types/three/src/renderers/webgl/WebGLUtils.d.ts":VP,"/node_modules/@types/three/src/renderers/webgl-fallback/WebGLBackend.d.ts":UP,"/node_modules/@types/three/src/renderers/webgpu/WebGPUBackend.d.ts":GP,"/node_modules/@types/three/src/renderers/webgpu/WebGPURenderer.Nodes.d.ts":qP,"/node_modules/@types/three/src/renderers/webgpu/WebGPURenderer.d.ts":YP,"/node_modules/@types/three/src/renderers/webgpu/nodes/BasicNodeLibrary.d.ts":ZP,"/node_modules/@types/three/src/renderers/webgpu/nodes/StandardNodeLibrary.d.ts":$P,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeBuilder.d.ts":tF,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeFunction.d.ts":rF,"/node_modules/@types/three/src/renderers/webgpu/nodes/WGSLNodeParser.d.ts":aF,"/node_modules/@types/three/src/renderers/webgpu/utils/WebGPUConstants.d.ts":sF,"/node_modules/@types/three/src/renderers/webxr/WebXRController.d.ts":lF,"/node_modules/@types/three/src/renderers/webxr/WebXRDepthSensing.d.ts":dF,"/node_modules/@types/three/src/renderers/webxr/WebXRManager.d.ts":pF,"/node_modules/@types/three/src/scenes/Fog.d.ts":hF,"/node_modules/@types/three/src/scenes/FogExp2.d.ts":_F,"/node_modules/@types/three/src/scenes/Scene.d.ts":yF,"/node_modules/@types/three/src/textures/CanvasTexture.d.ts":xF,"/node_modules/@types/three/src/textures/CompressedArrayTexture.d.ts":CF,"/node_modules/@types/three/src/textures/CompressedCubeTexture.d.ts":TF,"/node_modules/@types/three/src/textures/CompressedTexture.d.ts":DF,"/node_modules/@types/three/src/textures/CubeDepthTexture.d.ts":kF,"/node_modules/@types/three/src/textures/CubeTexture.d.ts":jF,"/node_modules/@types/three/src/textures/Data3DTexture.d.ts":NF,"/node_modules/@types/three/src/textures/DataArrayTexture.d.ts":FF,"/node_modules/@types/three/src/textures/DataTexture.d.ts":LF,"/node_modules/@types/three/src/textures/DepthTexture.d.ts":zF,"/node_modules/@types/three/src/textures/ExternalTexture.d.ts":VF,"/node_modules/@types/three/src/textures/FramebufferTexture.d.ts":UF,"/node_modules/@types/three/src/textures/Source.d.ts":GF,"/node_modules/@types/three/src/textures/Texture.d.ts":qF,"/node_modules/@types/three/src/textures/VideoFrameTexture.d.ts":YF,"/node_modules/@types/three/src/textures/VideoTexture.d.ts":ZF,"/node_modules/@types/three/src/utils.d.ts":$F,"/node_modules/react/package.json":tI,"/node_modules/react-dom/package.json":rI});Object.keys(gz).forEach(e=>{Ne.addExtraLib(gz[e].default,`file://${e}`),Oe.addExtraLib(gz[e].default,`file://${e}`)});var _z=({window:e})=>{let t=(0,R.useRef)(null),n=(0,R.useRef)(null),r=(0,R.useContext)(lI),i=e=>{if(n.current=e,r.currentFile){let t=ZR(r.currentFile);e.setModel(t)}e.focus(),e.addCommand(Te.CtrlCmd|we.KeyS,()=>{e.getAction(`editor.action.formatDocument`).run()})},a=(0,R.useCallback)(()=>{if(!n.current||!r.currentFile)return;let e=ZR(r.currentFile);n.current.getModel()!==e&&n.current.setModel(e)},[r.currentFile]);(0,R.useEffect)(()=>(r.on(z.EventType.FILE_CHANGED,a),()=>{r.off(z.EventType.FILE_CHANGED,a)}),[a,r]),(0,R.useEffect)(()=>{let t=()=>{n.current?.layout()};return e.on(be.EventType.ON_RESIZE,t),()=>{e.off(be.EventType.ON_RESIZE,t)}},[e]);let{run:o}=hz(async()=>{await F.ins.build()},{wait:1e3}),s=(0,R.useCallback)(async(e,t)=>{r.currentFile&&(await r.writeFile(r.currentFile.path,e),o())},[o,r]);return(0,R.useEffect)(()=>{let e=Se.create(t.current,{model:null,theme:`vs-dark`,...WR});return i(e),e.onDidChangeModelContent(t=>{s(e.getValue(),t)}),()=>{e.dispose()}},[]),(0,V.jsxs)(`div`,{className:CL.editorContainer,children:[(0,V.jsx)(vL,{}),(0,V.jsx)(`div`,{className:CL.editorWrapper,ref:t})]})},vz=``+new URL(`3D-RPQS6Ad1.svg`,import.meta.url).href,yz=`<!DOCTYPE html>\r
 <html lang="en">\r
 <head>\r
 	<meta charset="UTF-8">\r
@@ -65229,4 +65229,4 @@ ${JSON.stringify(i,null,2)}`);return t.value}}async notify(e,t,n){if(!this.check
 <\/script>\r
 </body>\r
 </html>\r
-`,bz=class extends ve{editorRoot=null;iframe=null;workspace=null;compiledCode=``;launch(e){this.workspace=new B(e.fs,this.homeDir),this.openCodeWindow(e),this.openRenderer(e),this.buildOnStart(e)}async buildOnStart(e){await I.ins.build([`${this.homeDir}/main.ts`],e.fs)}async openCodeWindow(e){let t=e.window.create({title:this.config.name,icon:this.config.icon,x:this.config.defaultWindow.x||25,y:this.config.defaultWindow.y||25,width:this.config.defaultWindow.width,height:this.config.defaultWindow.height});this.editorRoot=(0,Pe.createRoot)(await t.whenReady()),this.editorRoot.render(z.createElement(cI.Provider,{value:this.workspace},z.createElement(_z,{window:t})))}async openRenderer(e){this.iframe=document.createElement(`iframe`),(await e.window.create({title:`Render`,icon:vz,x:75,y:100,width:900,height:812}).whenReady()).appendChild(this.iframe),this.iframe.srcdoc=yz,window.addEventListener(`message`,this.handleMessage),I.ins.on(I.EventType.CODE_COMPILED,this.onCodeCompiled)}onCodeCompiled=({data:e})=>{this.compiledCode=e,this.iframe.contentWindow?.location.reload()};handleMessage=e=>{if(e.source===this.iframe.contentWindow&&e.data?.type===`PREVIEW_LOADED`){let e=this.iframe.contentWindow.document.createElement(`script`);e.type=`module`,e.text=this.compiledCode,this.iframe.contentWindow.document.body.appendChild(e)}};onExit(){this.editorRoot.unmount(),window.removeEventListener(`message`,this.handleMessage),I.ins.off(I.EventType.CODE_COMPILED,this.onCodeCompiled)}};export{bz as EditorApp};
+`,bz=class extends ye{editorRoot=null;iframe=null;workspace=null;compiledCode=``;launch(e){this.workspace=new z(e.fs,this.homeDir),this.openCodeWindow(e),this.openRenderer(e),this.buildOnStart(e)}async buildOnStart(e){await F.ins.build([`${this.homeDir}/main.ts`],e.fs)}async openCodeWindow(e){let t=e.window.create({title:this.config.name,icon:this.config.icon,x:this.config.defaultWindow.x||25,y:this.config.defaultWindow.y||25,width:this.config.defaultWindow.width,height:this.config.defaultWindow.height});this.editorRoot=(0,Fe.createRoot)(await t.whenReady()),this.editorRoot.render(R.createElement(lI.Provider,{value:this.workspace},R.createElement(_z,{window:t})))}async openRenderer(e){this.iframe=document.createElement(`iframe`),(await e.window.create({title:`Render`,icon:vz,x:75,y:100,width:900,height:812}).whenReady()).appendChild(this.iframe),this.iframe.srcdoc=yz,window.addEventListener(`message`,this.handleMessage),F.ins.on(F.EventType.CODE_COMPILED,this.onCodeCompiled)}onCodeCompiled=({data:e})=>{this.compiledCode=e,this.iframe.contentWindow?.location.reload()};handleMessage=e=>{if(e.source===this.iframe.contentWindow&&e.data?.type===`PREVIEW_LOADED`){let e=this.iframe.contentWindow.document.createElement(`script`);e.type=`module`,e.text=this.compiledCode,this.iframe.contentWindow.document.body.appendChild(e)}};onExit(){this.editorRoot.unmount(),window.removeEventListener(`message`,this.handleMessage),F.ins.off(F.EventType.CODE_COMPILED,this.onCodeCompiled)}};export{bz as EditorApp};
