@@ -14,7 +14,7 @@ import { MonacoEditorConfig, TypeScriptConfig } from "./monacoConfig.ts";
 import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace.ts";
 import { getMonacoModel } from "./utils/utils.ts";
 import { Builder, Window } from "@system";
-import { debounce } from "../../utils/utils.ts";
+import { useDebounceFn } from "ahooks";
 
 
 // 添加React类型定义配置
@@ -85,9 +85,9 @@ export const Editor: React.FC<{ window: Window }> = ({ window: win }) => {
     }, [win]);
 
 
-    const debounceCompile = useCallback(debounce(async () => {
+    const { run: debounceCompile } = useDebounceFn(async () => {
         await Builder.ins.build();
-    }, 1000), []);
+    }, { wait: 1000 });
 
     const onChange = useCallback(async (newValue: string, e: any) => {
         if (workspace.currentFile) {

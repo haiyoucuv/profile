@@ -10,14 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mediapipe/hands": "^0.4.1675469240",
     "@monaco-editor/react": "^4.7.0",
     "@tensorflow-models/hand-pose-detection": "^2.0.1",
-    "@tensorflow/tfjs": "^4.22.0",
-    "@tensorflow/tfjs-backend-webgl": "^4.22.0",
     "@types/matter-js": "^0.20.2",
     "@unocss/reset": "^66.6.7",
     "@unocss/transformer-attributify-jsx": "^66.6.7",
+    "ahooks": "^3.9.6",
     "assemblyscript": "^0.28.10",
     "classnames": "^2.5.1",
     "dat.gui": "^0.7.9",

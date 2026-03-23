@@ -1,0 +1,1 @@
+import{f as e,l as t}from"./index-BvyTisrJ.js";var n=class extends e{static icon=t.icon;static name=t.name;static id=t.id;launch(e){window.open(`https://github.com/haiyoucuv`,`_blank`),e.exit()}};export{n as GitHubApp};
