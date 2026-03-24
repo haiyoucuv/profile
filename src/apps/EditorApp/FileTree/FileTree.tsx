@@ -1,8 +1,14 @@
-import React, { FC, memo, useCallback, useEffect, useState, useMemo, useContext } from 'react';
+import React, { FC, memo, useCallback, useEffect, useState, useContext, useMemo } from 'react';
 import { EditorWorkspace, EditorWorkspaceContext } from '../utils/EditorWorkspace';
-import { Tree, TreeItem, Button, Text, Collection, TreeItemContent } from 'react-aria-components';
-import type { Selection, Key } from 'react-aria-components';
+import { Tree, TreeItem, Button, Collection, TreeItemContent } from 'react-aria-components';
+import type { Selection } from 'react-aria-components';
 import styles from './FileTree.module.less';
+
+// 导入图标资源
+import FolderCloseIcon from '../assets/icon/folder_close.svg';
+import FolderOpenIcon from '../assets/icon/folder_open.svg';
+import TsIcon from '../assets/icon/typescript.svg';
+import HtmlIcon from '../assets/icon/html.svg';
 
 interface FileNode {
     id: string; // 使用 path 作为 ID
@@ -11,11 +17,109 @@ interface FileNode {
     children?: FileNode[];
 }
 
+const getFileIcon = (name: string, isDir: boolean, isExpanded: boolean) => {
+    if (isDir) {
+        return <img src={isExpanded ? FolderOpenIcon : FolderCloseIcon} alt="folder" />;
+    }
+
+    const ext = name.split('.').pop()?.toLowerCase();
+    switch (ext) {
+        case 'ts':
+        case 'tsx':
+            return <img src={TsIcon} alt="ts" />;
+        case 'html':
+            return <img src={HtmlIcon} alt="html" />;
+        case 'js':
+        case 'jsx':
+            return '💛';
+        case 'css':
+        case 'less':
+            return '💙';
+        case 'json':
+            return '💎';
+        case 'md':
+            return '📝';
+        default:
+            return '📄';
+    }
+};
+
+interface FileTreeItemProps {
+    item: FileNode;
+    expandedKeys: Selection;
+    setContextMenu: (menu: { x: number, y: number, path: string, isDir: boolean } | null) => void;
+    handleDelete: (path: string) => void;
+    handleNewFile: (path: string) => void;
+    handleNewFolder: (path: string) => void;
+}
+
+const FileTreeItem: FC<FileTreeItemProps> = memo(({ 
+    item, 
+    expandedKeys, 
+    setContextMenu,
+}) => {
+    const isExpanded = useMemo(() => {
+        if ((expandedKeys as any) === 'all') return true;
+        if (expandedKeys instanceof Set) return expandedKeys.has(item.id);
+        // Handle Selection object from react-stately
+        if (expandedKeys && typeof (expandedKeys as any).has === 'function') {
+            return (expandedKeys as any).has(item.id);
+        }
+        return false;
+    }, [expandedKeys, item.id]);
+
+    return (
+        <TreeItem id={item.id} textValue={item.name} className={styles.treeItem}>
+            <TreeItemContent>
+                <div 
+                    className={styles.itemContent}
+                    onContextMenu={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setContextMenu({
+                            x: e.clientX,
+                            y: e.clientY,
+                            path: item.id,
+                            isDir: item.isDir
+                        });
+                    }}
+                >
+                    <div className={styles.itemMain}>
+                        {item.isDir && (
+                            <Button slot="chevron" className={styles.chevron}>
+                                {isExpanded ? '▾' : '▸'}
+                            </Button>
+                        )}
+                        {!item.isDir && <span className={styles.chevron} />}
+                        <span className={styles.icon}>
+                            {getFileIcon(item.name, item.isDir, isExpanded)}
+                        </span>
+                        <span className={styles.name}>{item.name}</span>
+                    </div>
+                </div>
+            </TreeItemContent>
+            <Collection items={item.children}>
+                {(child) => (
+                    <FileTreeItem 
+                        item={child} 
+                        expandedKeys={expandedKeys} 
+                        setContextMenu={setContextMenu}
+                        handleDelete={() => {}} // Not needed here as actions go through context menu
+                        handleNewFile={() => {}}
+                        handleNewFolder={() => {}}
+                    />
+                )}
+            </Collection>
+        </TreeItem>
+    );
+});
+
 export const FileTree: FC = memo(() => {
     const workspace = useContext(EditorWorkspaceContext);
     const [treeData, setTreeData] = useState<FileNode[]>([]);
     const [expandedKeys, setExpandedKeys] = useState<Selection>(new Set());
     const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set());
+    const [contextMenu, setContextMenu] = useState<{ x: number, y: number, path: string, isDir: boolean } | null>(null);
 
     // 递归加载目录
     const loadNodes = useCallback(async (path: string): Promise<FileNode[]> => {
@@ -23,6 +127,9 @@ export const FileTree: FC = memo(() => {
             console.log('Tree: Workspace not ready');
             return [];
         }
+        
+        await workspace.ready();
+        
         console.log('Tree: Loading path', path);
         try {
             const names = await workspace.fs.readdir(path);
@@ -34,7 +141,6 @@ export const FileTree: FC = memo(() => {
                     id: fullPath,
                     name,
                     isDir,
-                    // 如果是目录，初始化空子列表以启用 Tree 的展开功能
                     children: isDir ? [] : undefined
                 };
             }));
@@ -48,12 +154,14 @@ export const FileTree: FC = memo(() => {
     }, [workspace]);
 
     const refreshTree = useCallback(() => {
-        loadNodes('/').then(setTreeData);
-    }, [loadNodes]);
+        if (!workspace?.projectRoot) return;
+        loadNodes(workspace.projectRoot).then(setTreeData);
+    }, [loadNodes, workspace?.projectRoot]);
 
     useEffect(() => {
-        refreshTree();
-        
+        if (workspace?.projectRoot) {
+            refreshTree();
+        }
         const onStructureChanged = () => {
             refreshTree();
         };
@@ -66,16 +174,18 @@ export const FileTree: FC = memo(() => {
 
     // 处理展开加载
     const handleExpandedChange = async (keys: Selection) => {
-        // Determine which key was just expanded
-        const oldExpandedKeys = expandedKeys instanceof Set ? expandedKeys : new Set();
-        const newExpandedKeys = keys instanceof Set ? keys : new Set();
+        const isAll = (expandedKeys as any) === 'all';
+        const oldExpandedKeys = isAll ? new Set() : (expandedKeys as Set<any>);
+        
+        const isNewAll = (keys as any) === 'all';
+        const newKeysArray = isNewAll ? [] : Array.from(keys as any); 
+        const oldKeysArray = isAll ? [] : Array.from(oldExpandedKeys);
 
-        const newlyExpandedKey = Array.from(newExpandedKeys).find(key => !oldExpandedKeys.has(key));
+        const newlyExpandedKey = newKeysArray.find(key => !oldExpandedKeys.has(key));
 
         setExpandedKeys(keys);
 
         if (newlyExpandedKey) {
-            // Find the node that was just expanded
             const findAndLoadChildren = async (nodes: FileNode[], targetId: string): Promise<FileNode[]> => {
                 for (let i = 0; i < nodes.length; i++) {
                     const node = nodes[i];
@@ -89,7 +199,7 @@ export const FileTree: FC = memo(() => {
                     }
                     if (node.children) {
                         const updatedChildren = await findAndLoadChildren(node.children, targetId);
-                        if (updatedChildren !== node.children) { // If children were updated
+                        if (updatedChildren !== node.children) {
                             return [
                                 ...nodes.slice(0, i),
                                 { ...node, children: updatedChildren },
@@ -98,7 +208,7 @@ export const FileTree: FC = memo(() => {
                         }
                     }
                 }
-                return nodes; // No change
+                return nodes;
             };
 
             const updatedTreeData = await findAndLoadChildren(treeData, newlyExpandedKey as string);
@@ -116,24 +226,53 @@ export const FileTree: FC = memo(() => {
             } else {
                 await workspace?.deleteFile(path);
             }
-            // 刷新整个树
             refreshTree();
         }
     };
+
+    const handleNewFile = async (parentPath: string) => {
+        const name = window.prompt('请输入文件名:');
+        if (name && workspace) {
+            const fullPath = parentPath === '/' || parentPath === workspace.projectRoot 
+                ? `${workspace.projectRoot}/${name}` 
+                : `${parentPath}/${name}`;
+            await workspace.createFile(fullPath);
+            refreshTree();
+            const newExpanded = new Set(expandedKeys instanceof Set ? (expandedKeys as Set<any>) : []);
+            newExpanded.add(parentPath);
+            setExpandedKeys(newExpanded);
+        }
+    };
+
+    const handleNewFolder = async (parentPath: string) => {
+        const name = window.prompt('请输入文件夹名:');
+        if (name && workspace) {
+            const fullPath = parentPath === '/' || parentPath === workspace.projectRoot 
+                ? `${workspace.projectRoot}/${name}` 
+                : `${parentPath}/${name}`;
+            await workspace.fs.mkdir(fullPath);
+            refreshTree();
+            const newExpanded = new Set(expandedKeys instanceof Set ? (expandedKeys as Set<any>) : []);
+            newExpanded.add(parentPath);
+            setExpandedKeys(newExpanded);
+        }
+    };
+
+    useEffect(() => {
+        const handleClickOutside = () => setContextMenu(null);
+        window.addEventListener('click', handleClickOutside);
+        return () => window.removeEventListener('click', handleClickOutside);
+    }, []);
 
     return (
         <div className={styles.fileTree}>
             <div className={styles.header}>
                 <span>项目资源</span>
                 <div className={styles.actions}>
-                    <button onClick={() => {
-                        const name = window.prompt('请输入文件夹名:');
-                        if (name) workspace!.fs.mkdir(`/${name}`).then(refreshTree);
-                    }} title="根目录新建文件夹">📁+</button>
-                    <button onClick={() => {
-                        const name = window.prompt('请输入文件名:');
-                        if (name) workspace!.createFile(`/${name}`).then(refreshTree);
-                    }} title="根目录新建文件">📄+</button>
+                    <button onClick={refreshTree} title="刷新">🔄</button>
+                    <button onClick={() => setExpandedKeys(new Set())} title="全部折叠">📂×</button>
+                    <button onClick={() => workspace && handleNewFolder(workspace.projectRoot)} title="根目录新建文件夹">📁+</button>
+                    <button onClick={() => workspace && handleNewFile(workspace.projectRoot)} title="根目录新建文件">📄+</button>
                 </div>
             </div>
             <div className={styles.content}>
@@ -149,7 +288,6 @@ export const FileTree: FC = memo(() => {
                             if (s?.type !== 'dir') {
                                 workspace.navigate(path);
                             } else {
-                                // 文件夹再次点击切换展开状态
                                 const newExpanded = new Set(expandedKeys instanceof Set ? expandedKeys : []);
                                 if (newExpanded.has(path)) {
                                     newExpanded.delete(path);
@@ -164,30 +302,43 @@ export const FileTree: FC = memo(() => {
                     onExpandedChange={handleExpandedChange}
                     className={styles.treeRoot}
                 >
-                    {function renderItem(item: FileNode) {
-                        return (
-                             <TreeItem id={item.id} textValue={item.name} className={styles.treeItem}>
-                                <TreeItemContent>
-                                    <div className={styles.itemContent}>
-                                        <div className={styles.itemMain}>
-                                            {item.isDir && (
-                                                <Button slot="chevron" className={styles.chevron}>
-                                                    {expandedKeys !== 'all' && expandedKeys.has(item.id) ? '▾' : '▸'}
-                                                </Button>
-                                            )}
-                                            {!item.isDir && <span className={styles.chevron} />}
-                                            <span className={styles.icon}>{item.isDir ? '📁' : '📄'}</span>
-                                            <span className={styles.name}>{item.name}</span>
-                                        </div>
-                                        <Button className={styles.deleteBtn} onPress={() => handleDelete(item.id)}>×</Button>
-                                    </div>
-                                </TreeItemContent>
-                                 <Collection items={item.children}>{renderItem}</Collection>
-                             </TreeItem>
-                        );
-                    }}
+                    {(item) => (
+                        <FileTreeItem 
+                            item={item} 
+                            expandedKeys={expandedKeys} 
+                            setContextMenu={setContextMenu}
+                            handleDelete={handleDelete}
+                            handleNewFile={handleNewFile}
+                            handleNewFolder={handleNewFolder}
+                        />
+                    )}
                 </Tree>
             </div>
+            {contextMenu && (
+                <div 
+                    className={styles.contextMenu} 
+                    style={{ top: contextMenu.y, left: contextMenu.x }}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {contextMenu.isDir && (
+                        <>
+                            <div className={styles.menuItem} onClick={() => {
+                                handleNewFile(contextMenu.path);
+                                setContextMenu(null);
+                            }}>新建文件</div>
+                            <div className={styles.menuItem} onClick={() => {
+                                handleNewFolder(contextMenu.path);
+                                setContextMenu(null);
+                            }}>新建文件夹</div>
+                            <div className={styles.divider} />
+                        </>
+                    )}
+                    <div className={styles.menuItem} onClick={() => {
+                        handleDelete(contextMenu.path);
+                        setContextMenu(null);
+                    }}>删除</div>
+                </div>
+            )}
         </div>
     );
 });

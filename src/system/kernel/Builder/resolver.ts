@@ -1,6 +1,20 @@
 import { IFileSystem } from "@system";
 
-let fs: IFileSystem;
+export let fs: IFileSystem;
+export let projectRoot: string = '';
+
+async function resolveInternalPath(p: string, importerDir: string): Promise<string> {
+    let resolved = p;
+    if (p.startsWith('/')) {
+        // 如果是绝对路径，且不以 projectRoot 开头，则补上 projectRoot
+        if (projectRoot && !p.startsWith(projectRoot)) {
+            resolved = (projectRoot + '/' + p);
+        }
+    } else if (p.startsWith('./') || p.startsWith('../')) {
+        resolved = (importerDir + '/' + p);
+    }
+    return resolved.replace(/\/+/g, '/');
+}
 
 export const resolvePlugin = () => ({
     name: 'browser-resolver',
@@ -8,43 +22,42 @@ export const resolvePlugin = () => ({
         // 处理文件路径解析
         build.onResolve({ filter: /.*/ }, async (args) => {
             if (args.kind === 'entry-point') {
-                return { path: args.path, namespace: 'browser-module' };
+                const p = await resolveInternalPath(args.path, projectRoot);
+                return { path: String(p), namespace: 'vfs' };
             }
 
             if (args.kind === 'import-statement') {
-                // 如果是相对路径或绝对路径
-                if (args.path.startsWith('./') || args.path.startsWith('../') || args.path.startsWith('/')) {
-                    const importerDir = args.importer ? args.importer.split('/').slice(0, -1).join('/') : '';
-                    const resolvedPath = importerDir ? `${importerDir}/${args.path}` : args.path;
-                    
-                    // 先尝试原始路径
+                const isLocal = args.path.startsWith('./') || args.path.startsWith('../') || args.path.startsWith('/');
+                
+                if (isLocal) {
+                    const importerDir = args.importer ? args.importer.split('/').slice(0, -1).join('/') : projectRoot;
+                    const resolvedPath = await resolveInternalPath(args.path, importerDir);
+
+                    // 先尝试解析后的路径
                     if (await fs.exists(resolvedPath)) {
-                        return {
-                            path: resolvedPath,
-                            namespace: 'browser-module'
-                        };
+                        return { path: String(resolvedPath), namespace: 'vfs' };
                     }
                     
-                    // 如果找不到，尝试添加.ts后缀
-                    const resolvedPathWithTs = resolvedPath + '.ts';
-                    if (await fs.exists(resolvedPathWithTs)) {
-                        return {
-                            path: resolvedPathWithTs,
-                            namespace: 'browser-module'
-                        };
+                    // 尝试常见后缀
+                    for (const ext of ['.ts', '.tsx', '.js', '.jsx', '.css', '.less']) {
+                        if (await fs.exists(resolvedPath + ext)) {
+                            return { path: String(resolvedPath + ext), namespace: 'vfs' };
+                        }
                     }
                 }
 
-                // 如果是外部模块，直接返回原始路径，让浏览器通过importMap解析
-                return { external: true, path: args.path };
+                // 如果不是局部路径，或者是找不到的局部路径，则标记为 external
+                // 由浏览器通过 index.html 中的 importmap 处理
+                return { external: true, path: String(args.path) };
             }
 
-            // 如果无法解析，返回原始路径
-            return { path: args.path };
+            const p = await resolveInternalPath(args.path, projectRoot);
+            return { path: p };
         });
     }
 })
 
-export function initResolver(virtualFS: IFileSystem) {
+export function initResolver(virtualFS: IFileSystem, root: string = '') {
     fs = virtualFS;
+    projectRoot = root;
 }

@@ -19,27 +19,32 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
     currentDir: string = '/';
     private initPromise: Promise<void> | null = null;
     public fs: IFileSystem;
-    private rootPath: string;
+    public projectRoot: string;
 
-    constructor(fs: IFileSystem, rootPath: string) {
+    public ready() {
+        return this.initPromise;
+    }
+
+    constructor(fs: IFileSystem, projectRoot: string) {
         super();
         this.fs = fs;
-        this.rootPath = rootPath;
+        this.projectRoot = projectRoot;
         this.initPromise = this.initializeDefaultFile();
     }
 
     private get privatePath() {
-        return this.rootPath;
+        return this.projectRoot;
     }
 
     private async initializeDefaultFile() {
+        // 确保根目录存在
+        if (!(await this.fs.exists(this.projectRoot))) {
+            await this.fs.mkdir(this.projectRoot, { recursive: true });
+        }
+
         const defaultFiles = import.meta.glob([
-            "../appTemplate/**/*.ts",
-        ], {
-            import: "default",
-            eager: true,
-            query: "?raw",
-        });
+            "../appTemplate/**/*.{ts,tsx,html,css}",
+        ], { eager: true, query: '?raw', import: 'default' });
 
         // 仅在文件不存在时写入默认文件
         for (const path in defaultFiles) {

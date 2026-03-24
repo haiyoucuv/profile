@@ -86,7 +86,9 @@ export const Editor: React.FC<{ window: SystemWindow }> = ({ window: win }) => {
 
 
     const { run: debounceCompile } = useDebounceFn(async () => {
-        await Builder.ins.build();
+        if (workspace?.projectRoot) {
+            await Builder.ins.build([`${workspace.projectRoot}/index.html`], workspace.fs, workspace.projectRoot);
+        }
     }, { wait: 1000 });
 
     const onChange = useCallback(async (newValue: string, e: any) => {
