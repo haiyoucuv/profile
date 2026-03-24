@@ -21,6 +21,7 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
         title: model.title,
         icon: model.icon,
     });
+    const [isInteracting, setIsInteracting] = useState(false);
 
     const contentRef = useRef<HTMLDivElement>(null);
 
@@ -80,10 +81,28 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
         const startY = e.clientY - model.y;
 
         const handleMouseMove = (moveEvent: PointerEvent) => {
-            model.move(moveEvent.clientX - startX, moveEvent.clientY - startY);
+            setIsInteracting(true);
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            let newX = moveEvent.clientX - startX;
+            let newY = moveEvent.clientY - startY;
+
+            // 限制窗口不能完全移出屏幕
+            // 顶部不能移出屏幕（确保标题栏可见）
+            newY = Math.max(0, newY);
+            // 底部留出一点距离，确保能拖回去
+            newY = Math.min(newY, screenHeight - 40);
+
+            // 左右留出一点距离，防止完全消失
+            newX = Math.max(newX, -model.width + 100);
+            newX = Math.min(newX, screenWidth - 100);
+
+            model.move(newX, newY);
         };
 
         const handleMouseUp = () => {
+            setIsInteracting(false);
             document.removeEventListener('pointermove', handleMouseMove);
             document.removeEventListener('pointerup', handleMouseUp);
         };
@@ -103,6 +122,7 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
         const oldHeight = model.height;
 
         const handleMouseMove = (moveEvent: PointerEvent) => {
+            setIsInteracting(true);
             const deltaX = moveEvent.clientX - startX;
             const deltaY = moveEvent.clientY - startY;
 
@@ -111,15 +131,44 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
             let newWidth = oldWidth;
             let newHeight = oldHeight;
 
-            if (resizeType.includes('e')) newWidth = Math.max(200, oldWidth + deltaX);
-            if (resizeType.includes('w')) {
-                newWidth = Math.max(200, oldWidth - deltaX);
-                newX = oldX + (oldWidth - newWidth);
+            const minWidth = 200;
+            const minHeight = 200;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            if (resizeType.includes('e')) {
+                newWidth = Math.max(minWidth, oldWidth + deltaX);
+                // 限制右边界
+                if (newX + newWidth > screenWidth) {
+                    newWidth = screenWidth - newX;
+                }
             }
-            if (resizeType.includes('s')) newHeight = Math.max(200, oldHeight + deltaY);
+            if (resizeType.includes('w')) {
+                newWidth = Math.max(minWidth, oldWidth - deltaX);
+                // 限制左边界
+                let potentialX = oldX + (oldWidth - newWidth);
+                if (potentialX < 0) {
+                    potentialX = 0;
+                    newWidth = oldX + oldWidth;
+                }
+                newX = potentialX;
+            }
+            if (resizeType.includes('s')) {
+                newHeight = Math.max(minHeight, oldHeight + deltaY);
+                // 限制下边界
+                if (newY + newHeight > screenHeight) {
+                    newHeight = screenHeight - newY;
+                }
+            }
             if (resizeType.includes('n')) {
-                newHeight = Math.max(200, oldHeight - deltaY);
-                newY = oldY + (oldHeight - newHeight);
+                newHeight = Math.max(minHeight, oldHeight - deltaY);
+                // 限制上边界
+                let potentialY = oldY + (oldHeight - newHeight);
+                if (potentialY < 0) {
+                    potentialY = 0;
+                    newHeight = oldY + oldHeight;
+                }
+                newY = potentialY;
             }
 
             model.move(newX, newY);
@@ -127,6 +176,7 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
         };
 
         const handleMouseUp = () => {
+            setIsInteracting(false);
             document.removeEventListener('pointermove', handleMouseMove);
             document.removeEventListener('pointerup', handleMouseUp);
         };
@@ -135,8 +185,6 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
         document.addEventListener('pointerup', handleMouseUp);
         handleFocus();
     };
-
-    if (config.isMinimized) return null;
 
     const transform = config.isMaximized ? 'none' : `translate(${config.x}px, ${config.y}px)`;
     const width = config.isMaximized ? '100%' : `${config.width}px`;
@@ -157,6 +205,7 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
             }}
             onPointerDown={handleFocus}
         >
+            {isInteracting && <div className={styles.pointerMask} />}
             {/* Resize Handles */}
             {!config.isMaximized && !model.frameless && (['nw', 'ne', 'sw', 'se', 'n', 's', 'w', 'e'] as TResizeType[]).map(type => (
                 <div
@@ -169,9 +218,19 @@ export const WindowView: React.FC<WindowViewProps> = ({ model }) => {
             {!model.frameless && (
                 <div className={styles.titleBar} onPointerDown={handleMoveStart} onDoubleClick={handleMaximize}>
                     <div className={styles.windowControls}>
-                        <div className={classNames(styles.controlButton, styles.close)} onClick={handleClose}></div>
-                        <div className={classNames(styles.controlButton, styles.minimize)} onClick={handleMinimize}></div>
-                        <div className={classNames(styles.controlButton, styles.maximize)} onClick={handleMaximize}></div>
+                        <svg className={classNames(styles.controlButton, styles.close)} onClick={handleClose} onPointerDown={e => e.stopPropagation()} width="12" height="12" viewBox="0 0 12 12">
+                            <circle cx="6" cy="6" r="6" className={styles.bg} />
+                            <path className={styles.icon} d="M3.5 3.5L8.5 8.5M8.5 3.5L3.5 8.5" />
+                        </svg>
+                        <svg className={classNames(styles.controlButton, styles.minimize)} onClick={handleMinimize} onPointerDown={e => e.stopPropagation()} width="12" height="12" viewBox="0 0 12 12">
+                            <circle cx="6" cy="6" r="6" className={styles.bg} />
+                            <path className={styles.icon} d="M3 6H9" />
+                        </svg>
+                        <svg className={classNames(styles.controlButton, styles.maximize)} onClick={handleMaximize} onPointerDown={e => e.stopPropagation()} width="12" height="12" viewBox="0 0 12 12">
+                            <circle cx="6" cy="6" r="6" className={styles.bg} />
+                            <path className={classNames(styles.icon, styles.filled)} d="M8.5 3.5V7.5L4.5 3.5H8.5Z" />
+                            <path className={classNames(styles.icon, styles.filled)} d="M3.5 8.5V4.5L7.5 8.5H3.5Z" />
+                        </svg>
                     </div>
                     <span className={styles.title}>{config.title}</span>
                 </div>

@@ -6,9 +6,14 @@
     font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
     color-scheme: dark;
+    user-select: none;
 
   // 滚动条样式浮动
   scrollbar-width: none;
+}
+
+input, textarea, [contenteditable="true"], .selectable {
+    user-select: text;
 }
 
 html,

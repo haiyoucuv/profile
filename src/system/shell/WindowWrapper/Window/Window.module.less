@@ -85,7 +85,7 @@
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
-    height: 100vh !important;
+    height: calc(100vh - 65px) !important;
     transform: none !important;
     border-radius: 0;
   }
@@ -123,64 +123,66 @@
     .controlButton {
       width: 12px;
       height: 12px;
-      border-radius: 50%;
       border: none;
       padding: 0;
       cursor: pointer;
-      position: relative;
-
-      font-weight: bold;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &::before {
-        content: '';
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 12px;
-      }
-
-      //&:hover {
-      //  //transform: scale(1.1);
-      //}
+      display: block;
+      background: transparent;
     }
 
-    .close {
-      background: #ff5f57;
+    // SVG elements styles
+    .bg {
+      transition: fill 0.2s ease;
+    }
 
-      &:hover {
-        background: #ff4444;
+    .icon {
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      stroke: rgba(0, 0, 0, 0.5);
+      stroke-width: 1.2px;
+      stroke-linecap: round;
+      fill: none;
+      pointer-events: none;
+    }
 
-        &::before {
-          content: '×';
-        }
+    .filled {
+      stroke: none;
+      fill: rgba(0, 0, 0, 0.5);
+    }
+
+    // Traffic light colors
+    .close .bg {
+      fill: #ff5f57;
+    }
+
+    .minimize .bg {
+      fill: #ffbd2e;
+    }
+
+    .maximize .bg {
+      fill: #28c940;
+    }
+
+    // Individual button hover colors
+    .close:hover .bg {
+      fill: #ff4444;
+    }
+
+    .minimize:hover .bg {
+      fill: #ffb31a;
+    }
+
+    .maximize:hover .bg {
+      fill: #24b639;
+    }
+
+    // Global group hover icons
+    &:hover {
+      .icon {
+        opacity: 1;
       }
     }
 
-    .minimize {
-      background: #ffbd2e;
-
-      &:hover {
-        &::before {
-          content: '-';
-        }
-
-        background: #ffb31a;
-      }
-    }
-
-    .maximize {
-      background: #28c940;
-
-      &:hover {
-        &::before {
-          content: '+';
-        }
-
-        background: #24b639;
-      }
-    }
   }
 
   .title {
@@ -211,4 +213,15 @@
     border: none;
   }
 
+}
+
+.pointerMask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 9999999;
+  cursor: inherit;
+  user-select: none;
 }
