@@ -1,1 +1,0 @@
-import{f as e,s as t}from"./index-CztyGaju.js";var n=class extends e{static icon=t.icon;static name=t.name;static id=t.id;launch(e){window.open(`https://juejin.cn/user/3923497771860231`,`_blank`),e.exit()}};export{n as JueJinApp};

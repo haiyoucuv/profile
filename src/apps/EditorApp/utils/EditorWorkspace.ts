@@ -8,25 +8,23 @@ export interface VirtualFile {
     type?: string;
 }
 
-const FILE_CHANGED: unique symbol = Symbol('onFileChanged');
-const STRUCTURE_CHANGED: unique symbol = Symbol('onStructureChanged');
-const PREVIEW_READY: unique symbol = Symbol('onPreviewReady');
+export enum EditorEvent {
+    FILE_CHANGED = 'file_changed',
+    STRUCTURE_CHANGED = 'structure_changed',
+    PREVIEW_READY = 'preview_ready',
+}
 
 type EditorEvents = {
-    [FILE_CHANGED]: string | undefined;
-    [STRUCTURE_CHANGED]: string | undefined;
-    [PREVIEW_READY]: string;
+    [EditorEvent.FILE_CHANGED]: string | undefined;
+    [EditorEvent.STRUCTURE_CHANGED]: string | undefined;
+    [EditorEvent.PREVIEW_READY]: string;
 };
 
 export class EditorWorkspace extends Emittery<EditorEvents> {
 
-    static readonly EventType = {
-        FILE_CHANGED,
-        STRUCTURE_CHANGED,
-        PREVIEW_READY,
-    } as const;
+    static readonly EventType = EditorEvent;
 
-    public lastCompiledCode: string = '';
+    public lastCompiledFiles: any[] = [];
     public openedFiles: string[] = [];
 
     currentFile: VirtualFile | null = null;
@@ -42,7 +40,7 @@ export class EditorWorkspace extends Emittery<EditorEvents> {
     constructor(fs: IFileSystem, projectRoot: string) {
         super();
         this.fs = fs;
-        this.projectRoot = projectRoot;
+        this.projectRoot = projectRoot.replace(/\\/g, '/');
         this.initPromise = this.initializeDefaultFile();
     }
 
@@ -175,9 +173,14 @@ export class EditorWorkspace extends Emittery<EditorEvents> {
 
     async saveAndBuild(path: string, content: string) {
         await this.writeFile(path, content);
-        // 直接获取编译结果
-        const code = await Builder.ins.build([`${this.projectRoot}/index.html`], this.fs, this.projectRoot) as unknown as string;
-        this.lastCompiledCode = code;
+        // 直接获取编译结果 (输出为多文件数组)
+        const files = await Builder.ins.build([`${this.projectRoot}/index.html`], this.fs, this.projectRoot) as any[];
+        this.lastCompiledFiles = files;
+        
+        // 兼容旧逻辑，从中提取出给 PREVIEW_READY 的代码 (通常是 .js 代码)
+        const mainFile = files.find(f => f.path.endsWith('.js')) || files[0];
+        const code = mainFile ? mainFile.text : '';
+        
         this.emit(EditorWorkspace.EventType.PREVIEW_READY, code);
     }
 
@@ -214,6 +217,47 @@ export class EditorWorkspace extends Emittery<EditorEvents> {
     async listFiles() {
         await this.initPromise;
         return this.fs.readdir(this.currentDir);
+    }
+
+    async getAllFiles(): Promise<{ path: string, content: string, contentType: string }[]> {
+        await this.initPromise;
+        const result: { path: string, content: string, contentType: string }[] = [];
+        
+        const scan = async (dir: string) => {
+            const names = await this.fs.readdir(dir);
+            for (const name of names) {
+                const fullPath = dir === '/' ? `/${name}` : `${dir}/${name}`;
+                const state = await this.fs.stat(fullPath);
+                if (state?.type === 'dir') {
+                    await scan(fullPath);
+                } else {
+                    const content = await this.fs.readFile(fullPath);
+                    const ext = name.split('.').pop()?.toLowerCase();
+                    let contentType = 'text/plain';
+                    if (ext === 'html') contentType = 'text/html';
+                    else if (ext === 'css') contentType = 'text/css';
+                    else if (ext === 'js' || ext === 'ts' || ext === 'tsx') contentType = 'application/javascript';
+                    else if (ext === 'json') contentType = 'application/json';
+
+                    const normalizedFullPath = fullPath.replace(/\\/g, '/');
+                    const normalizedRoot = this.projectRoot.toLowerCase();
+                    let vfsPath = normalizedFullPath.toLowerCase().startsWith(normalizedRoot) 
+                        ? normalizedFullPath.slice(this.projectRoot.length) 
+                        : normalizedFullPath;
+                    
+                    if (!vfsPath.startsWith('/')) vfsPath = '/' + vfsPath;
+
+                    result.push({
+                        path: vfsPath, 
+                        content: typeof content === 'string' ? content : await (content as Blob).text(),
+                        contentType
+                    });
+                }
+            }
+        };
+
+        await scan(this.projectRoot);
+        return result;
     }
 
     get code(): string {

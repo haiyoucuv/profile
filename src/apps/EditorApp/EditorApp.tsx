@@ -6,26 +6,21 @@ import { EditorWorkspace, EditorWorkspaceContext } from "./utils/EditorWorkspace
 
 
 export class EditorApp extends VirtualApp {
-    editorRoot: Root | null = null;
     private previewWindow: SystemWindow | null = null;
     private iframe: HTMLIFrameElement | null = null;
     private workspace: EditorWorkspace | null = null;
-    private lastCompiledCode: string = '';
+    private lastCompiledFiles: any[] = [];
+    editorRoot: Root | null = null;
 
     constructor() {
         super();
     }
 
     launch(sys: SystemContext) {
-        this.workspace = new EditorWorkspace(sys.fs, this.homeDir);
+        const root = this.homeDir; // homeDir 已经是 /EditorApp（纯虚拟路径）
+        this.workspace = new EditorWorkspace(sys.fs, root);
         this.openCodeWindow(sys);
         this.openRenderer(sys);
-        this.buildOnStart(sys);
-    }
-
-    async buildOnStart(sys: SystemContext) {
-        await this.workspace?.ready();
-        await Builder.ins.build([`${this.homeDir}/index.html`], sys.fs, this.homeDir);
     }
 
     openCodeWindow(sys: SystemContext) {
@@ -37,8 +32,6 @@ export class EditorApp extends VirtualApp {
 
         win.whenReady().then((container) => {
             this.editorRoot = createRoot(container);
-            // 这里 EditorWorkspaceContext 是一个 Context 对象变量，不是类型
-            // 我们需要使用 .Provider 来包裹组件，并传入 value
             this.editorRoot.render(
                 <React.StrictMode>
                     <EditorWorkspaceContext.Provider value={this.workspace!}>
@@ -61,55 +54,140 @@ export class EditorApp extends VirtualApp {
             width: 900, height: 812,
         });
 
+        // 1. 注册 Service Worker
+        if ('serviceWorker' in navigator) {
+            try {
+                await navigator.serviceWorker.register('/previewWorker.js', { scope: '/' });
+                console.log('EditorApp: SW registered');
+            } catch (err) {
+                console.error('EditorApp: SW registration failed:', err);
+            }
+        }
+
+        // 2. 等待 SW 激活并控制页面
+        if ('serviceWorker' in navigator) {
+            await navigator.serviceWorker.ready;
+            console.log('EditorApp: SW is ready and active!');
+        }
+
+        // 3. 监听 SW 发来的 SW_READY 消息（SW 更新/重启后会发此消息）
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.onmessage = async (event) => {
+                if (event.data?.type === 'SW_READY') {
+                    console.log('EditorApp: SW_READY received, re-syncing...');
+                    await this.syncToSW();
+                    this.updatePreview();
+                }
+            };
+        }
+
+        // 4. 等待工作区初始化完成
+        await this.workspace?.ready();
+
+        // 5. 执行首次构建
+        await this.buildAndSync(sys);
+
+        // 6. 挂载 iframe 并进行首次预览
         this.previewWindow.whenReady().then((container) => {
             container.appendChild(this.iframe!);
-            this.updatePreview(sys);
+            this.updatePreview();
         });
 
-        // 监听 Workspace 的预览就绪事件
-        this.workspace?.on(EditorWorkspace.EventType.PREVIEW_READY, ({ data: code }) => {
-            this.lastCompiledCode = code;
-            this.updatePreview(sys);
-        });
-
-        // 监听文件结构变化，触发重新构建（针对 index.html 等）
-        this.workspace?.on(EditorWorkspace.EventType.STRUCTURE_CHANGED, () => {
-            this.workspace?.saveAndBuild(`${this.homeDir}/index.html`, ''); // 触发重新构建
+        // 7. 监听后续的保存构建事件
+        this.workspace?.on(EditorWorkspace.EventType.PREVIEW_READY, async () => {
+            if (this.workspace) {
+                this.lastCompiledFiles = this.workspace.lastCompiledFiles;
+                await this.syncToSW();
+                this.updatePreview();
+            }
         });
     }
 
-    async updatePreview(sys: SystemContext) {
+    /**
+     * 构建并同步到 Service Worker
+     */
+    private async buildAndSync(sys: SystemContext) {
+        const root = this.homeDir;
+        console.log('EditorApp: Building from root:', root);
+        
         try {
-            await this.workspace?.ready();
-            let html = await sys.fs.readFile(`${this.homeDir}/index.html`);
-            if (html instanceof Blob) {
-                html = await html.text();
-            }
-
-            // Strip entry script tags (any attribute order, module type)
-            html = html.replace(/<script\b[^>]*(type="module"[^>]*src="[^"]+"|src="[^"]+"[^>]*type="module")[^>]*>(<\/script>)?/gi, '');
-
-            // Inject the compiled code directly
-            if (this.lastCompiledCode) {
-                const scriptInjection = `<script type="module">\n${this.lastCompiledCode}\n</script>`;
-                if (html.includes('</body>')) {
-                    html = html.replace('</body>', `${scriptInjection}</body>`);
-                } else {
-                    html += scriptInjection;
-                }
-            }
-
-            if (this.iframe) {
-                console.log('EditorApp: Setting preview srcdoc. Length:', (html as string).length);
-                this.iframe.srcdoc = (html as string);
+            const files = await Builder.ins.build([`${root}/index.html`], sys.fs, root) as any[];
+            console.log('EditorApp: Build complete, files:', files?.length, files?.map((f: any) => f.path));
+            if (files && files.length > 0) {
+                this.lastCompiledFiles = files;
             }
         } catch (e) {
-            console.error('Failed to load index.html for preview', e);
+            console.error('EditorApp: Build failed:', e);
+        }
+
+        await this.syncToSW();
+    }
+
+    /**
+     * 将所有文件同步到 Service Worker 的虚拟文件系统
+     *
+     * 核心思路（Vite-like）：
+     * - HTML 原封不动推送给 SW（不修改 script src）
+     * - 编译后的 bundle 以"原始入口路径"为 key 存入 SW
+     *   例如：index.html 里写 <script src="./main.ts">
+     *   → SW 缓存 /main.ts → JS bundle 内容
+     *   → 浏览器请求 /preview-vfs/main.ts 时，SW 直接返回 bundle
+     */
+    private async syncToSW() {
+        if (!this.workspace) return;
+
+        // 用 registration.active 代替 controller，避免首次注册时 controller 为 null 的问题
+        const reg = await navigator.serviceWorker.ready;
+        const sw = reg.active;
+        if (!sw) {
+            console.warn('EditorApp: No active SW, cannot sync!');
+            return;
+        }
+
+        // 1. 获取所有工作区原始文件（不做任何修改）
+        const workspaceFiles = await this.workspace.getAllFiles();
+        console.log('EditorApp: Workspace files:', workspaceFiles.map(f => f.path));
+
+        // 2. 构建 SW 文件列表，同时对 index.html 的绝对路径做透明重写
+        //    将 src="/xxx" href="/xxx" → src="./xxx"，让相对路径在 /preview-vfs/ 域下正确解析
+        //    注意：只重写 VFS 内部路径（以 / 开头但不是 // 或 https:// 的）
+        const syncFiles: any[] = workspaceFiles.map(f => {
+            if (f.path === '/index.html') {
+                const rewritten = f.content
+                    // 重写 src="/xxx" 和 href="/xxx"（排除 // 开头的协议相对 URL）
+                    .replace(/(src|href)="\/(?!\/)/g, '$1="./');
+                return { ...f, content: rewritten };
+            }
+            return f;
+        });
+
+        // 3. 将编译后的产物以"原始路径"为 key 推入
+        //    esbuild 的入口是 /EditorApp/main.ts，输出 path 是 main.js
+        //    但 HTML 里写的是 src="./main.ts" 或 src="/main.ts"
+        //    所以我们把 bundle 存为 /main.ts 路径，SW 返回时指定 JS content-type
+        for (const f of this.lastCompiledFiles) {
+            const outputName = f.path.split('/').pop(); // e.g. "main.js"
+            // 把 .js 后缀变回 .ts（匹配 HTML 里的原始引用），也保留 .js 版本
+            const tsKey = '/' + outputName.replace(/\.js$/, '.ts');
+            const jsKey = '/' + outputName;
+
+            syncFiles.push({ path: tsKey, content: f.text, contentType: 'application/javascript' });
+            syncFiles.push({ path: jsKey, content: f.text, contentType: 'application/javascript' });
+        }
+
+        console.log('EditorApp: Syncing to SW. Paths:', syncFiles.map(f => f.path));
+        sw.postMessage({ type: 'UPDATE_FILES', files: syncFiles });
+        console.log('EditorApp: Sync complete.');
+    }
+
+    private updatePreview() {
+        if (this.iframe) {
+            // 加个时间戳防止缓存
+            this.iframe.src = '/preview-vfs/index.html?' + Date.now();
         }
     }
 
     onExit() {
         this.editorRoot?.unmount();
     }
-
 }
