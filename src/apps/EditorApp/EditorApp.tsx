@@ -9,7 +9,8 @@ export class EditorApp extends VirtualApp {
     private previewWindow: SystemWindow | null = null;
     private iframe: HTMLIFrameElement | null = null;
     private workspace: EditorWorkspace | null = null;
-    private lastCompiledFiles: any[] = [];
+    // 编译后的文件，以 VFS 路径（/main.ts, /main.js 等）为 key
+    private compiledFileMap: Map<string, { content: string; contentType: string }> = new Map();
     editorRoot: Root | null = null;
 
     constructor() {
@@ -17,8 +18,7 @@ export class EditorApp extends VirtualApp {
     }
 
     launch(sys: SystemContext) {
-        const root = this.homeDir; // homeDir 已经是 /EditorApp（纯虚拟路径）
-        this.workspace = new EditorWorkspace(sys.fs, root);
+        this.workspace = new EditorWorkspace(sys.fs, this.homeDir);
         this.openCodeWindow(sys);
         this.openRenderer(sys);
     }
@@ -58,131 +58,118 @@ export class EditorApp extends VirtualApp {
         if ('serviceWorker' in navigator) {
             try {
                 await navigator.serviceWorker.register('/previewWorker.js', { scope: '/' });
-                console.log('EditorApp: SW registered');
+                await navigator.serviceWorker.ready;
+                console.log('EditorApp: SW ready (proxy mode).');
             } catch (err) {
                 console.error('EditorApp: SW registration failed:', err);
             }
         }
 
-        // 2. 等待 SW 激活并控制页面
-        if ('serviceWorker' in navigator) {
-            await navigator.serviceWorker.ready;
-            console.log('EditorApp: SW is ready and active!');
-        }
+        // 2. 监听来自 SW 的 FETCH_FILE 请求（纯代理模式核心）
+        navigator.serviceWorker.onmessage = async (event) => {
+            if (event.data?.type !== 'FETCH_FILE') return;
 
-        // 3. 监听 SW 发来的 SW_READY 消息（SW 更新/重启后会发此消息）
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.onmessage = async (event) => {
-                if (event.data?.type === 'SW_READY') {
-                    console.log('EditorApp: SW_READY received, re-syncing...');
-                    await this.syncToSW();
-                    this.updatePreview();
-                }
-            };
-        }
+            const { path, } = event.data;
+            const port = event.ports[0];
 
-        // 4. 等待工作区初始化完成
+            try {
+                const result = await this.resolveFile(path);
+                port.postMessage(result);
+            } catch (e: any) {
+                port.postMessage({ error: e.message || String(e) });
+            }
+        };
+
+        // 3. 等待工作区初始化完成
         await this.workspace?.ready();
 
-        // 5. 执行首次构建
-        await this.buildAndSync(sys);
+        // 4. 执行首次构建
+        await this.buildFiles(sys);
 
-        // 6. 挂载 iframe 并进行首次预览
+        // 5. 挂载 iframe 并进行首次预览
         this.previewWindow.whenReady().then((container) => {
             container.appendChild(this.iframe!);
             this.updatePreview();
         });
 
-        // 7. 监听后续的保存构建事件
+        // 6. 监听后续构建事件
         this.workspace?.on(EditorWorkspace.EventType.PREVIEW_READY, async () => {
             if (this.workspace) {
-                this.lastCompiledFiles = this.workspace.lastCompiledFiles;
-                await this.syncToSW();
+                await this.updateCompiledMap(this.workspace.lastCompiledFiles);
                 this.updatePreview();
             }
         });
     }
 
     /**
-     * 构建并同步到 Service Worker
+     * 构建并更新编译产物 Map
      */
-    private async buildAndSync(sys: SystemContext) {
+    private async buildFiles(sys: SystemContext) {
         const root = this.homeDir;
         console.log('EditorApp: Building from root:', root);
-        
         try {
             const files = await Builder.ins.build([`${root}/index.html`], sys.fs, root) as any[];
-            console.log('EditorApp: Build complete, files:', files?.length, files?.map((f: any) => f.path));
-            if (files && files.length > 0) {
-                this.lastCompiledFiles = files;
-            }
+            console.log('EditorApp: Build complete:', files?.map((f: any) => f.path));
+            await this.updateCompiledMap(files || []);
         } catch (e) {
             console.error('EditorApp: Build failed:', e);
         }
-
-        await this.syncToSW();
     }
 
     /**
-     * 将所有文件同步到 Service Worker 的虚拟文件系统
-     *
-     * 核心思路（Vite-like）：
-     * - HTML 原封不动推送给 SW（不修改 script src）
-     * - 编译后的 bundle 以"原始入口路径"为 key 存入 SW
-     *   例如：index.html 里写 <script src="./main.ts">
-     *   → SW 缓存 /main.ts → JS bundle 内容
-     *   → 浏览器请求 /preview-vfs/main.ts 时，SW 直接返回 bundle
+     * 将编译结果更新到 compiledFileMap
+     * 以 /main.ts 和 /main.js 为 key，方便 resolveFile 查找
      */
-    private async syncToSW() {
-        if (!this.workspace) return;
-
-        // 用 registration.active 代替 controller，避免首次注册时 controller 为 null 的问题
-        const reg = await navigator.serviceWorker.ready;
-        const sw = reg.active;
-        if (!sw) {
-            console.warn('EditorApp: No active SW, cannot sync!');
-            return;
-        }
-
-        // 1. 获取所有工作区原始文件（不做任何修改）
-        const workspaceFiles = await this.workspace.getAllFiles();
-        console.log('EditorApp: Workspace files:', workspaceFiles.map(f => f.path));
-
-        // 2. 构建 SW 文件列表，同时对 index.html 的绝对路径做透明重写
-        //    将 src="/xxx" href="/xxx" → src="./xxx"，让相对路径在 /preview-vfs/ 域下正确解析
-        //    注意：只重写 VFS 内部路径（以 / 开头但不是 // 或 https:// 的）
-        const syncFiles: any[] = workspaceFiles.map(f => {
-            if (f.path === '/index.html') {
-                const rewritten = f.content
-                    // 重写 src="/xxx" 和 href="/xxx"（排除 // 开头的协议相对 URL）
-                    .replace(/(src|href)="\/(?!\/)/g, '$1="./');
-                return { ...f, content: rewritten };
-            }
-            return f;
-        });
-
-        // 3. 将编译后的产物以"原始路径"为 key 推入
-        //    esbuild 的入口是 /EditorApp/main.ts，输出 path 是 main.js
-        //    但 HTML 里写的是 src="./main.ts" 或 src="/main.ts"
-        //    所以我们把 bundle 存为 /main.ts 路径，SW 返回时指定 JS content-type
-        for (const f of this.lastCompiledFiles) {
-            const outputName = f.path.split('/').pop(); // e.g. "main.js"
-            // 把 .js 后缀变回 .ts（匹配 HTML 里的原始引用），也保留 .js 版本
+    private async updateCompiledMap(files: any[]) {
+        this.compiledFileMap.clear();
+        for (const f of files) {
+            const outputName = f.path.split('/').pop(); // "main.js"
             const tsKey = '/' + outputName.replace(/\.js$/, '.ts');
             const jsKey = '/' + outputName;
+            this.compiledFileMap.set(tsKey, { content: f.text, contentType: 'application/javascript' });
+            this.compiledFileMap.set(jsKey, { content: f.text, contentType: 'application/javascript' });
+        }
+        console.log('EditorApp: compiledFileMap updated:', Array.from(this.compiledFileMap.keys()));
+    }
 
-            syncFiles.push({ path: tsKey, content: f.text, contentType: 'application/javascript' });
-            syncFiles.push({ path: jsKey, content: f.text, contentType: 'application/javascript' });
+    /**
+     * SW 代理的核心：按路径查找文件内容
+     * 优先返回编译产物，其次从工作区 VFS 读取原始文件
+     */
+    private async resolveFile(path: string): Promise<{ content: string; contentType: string }> {
+        console.log('EditorApp: SW requested:', path);
+
+        // 1. 优先查编译产物（/main.ts → compiled bundle）
+        const compiled = this.compiledFileMap.get(path);
+        if (compiled) {
+            return compiled;
         }
 
-        console.log('EditorApp: Syncing to SW. Paths:', syncFiles.map(f => f.path));
-        sw.postMessage({ type: 'UPDATE_FILES', files: syncFiles });
-        console.log('EditorApp: Sync complete.');
+        // 2. 从工作区 VFS 读取原始文件
+        if (!this.workspace) throw new Error('Workspace not available');
+        const fullPath = `${this.workspace.projectRoot}${path}`;
+        const exists = await this.workspace.fs.exists(fullPath);
+        if (!exists) throw new Error(`File not found: ${path}`);
+
+        const content = await this.workspace.fs.readFile(fullPath);
+        const text = typeof content === 'string' ? content : await (content as Blob).text();
+        
+        const ext = path.split('.').pop()?.toLowerCase();
+        let contentType = 'text/plain';
+        if (ext === 'html') {
+            // 对 HTML 的绝对路径做透明重写
+            const rewritten = text.replace(/(src|href)="\/(?!\/)/g, '$1="./');
+            return { content: rewritten, contentType: 'text/html' };
+        }
+        if (ext === 'css') contentType = 'text/css';
+        else if (ext === 'json') contentType = 'application/json';
+        else if (ext === 'js' || ext === 'ts' || ext === 'tsx') contentType = 'application/javascript';
+
+        return { content: text, contentType };
     }
 
     private updatePreview() {
         if (this.iframe) {
-            // 加个时间戳防止缓存
             this.iframe.src = '/preview-vfs/index.html?' + Date.now();
         }
     }
