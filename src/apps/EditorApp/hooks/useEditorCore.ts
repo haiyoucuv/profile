@@ -13,7 +13,7 @@ export const useEditorCore = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const workspace = useContext(EditorWorkspaceContext);
-    
+
     // 用于存储每个文件的视图状态（光标位置、滚动位置等）
     const viewStates = useRef<Map<string, editor.ICodeEditorViewState>>(new Map());
     const activePathRef = useRef<string | null>(null);
@@ -44,7 +44,7 @@ export const useEditorCore = () => {
         const model = getMonacoModel(workspace.currentFile);
         if (editorIns.getModel() !== model) {
             editorIns.setModel(model);
-            
+
             // 3. 恢复新文件的状态
             const savedState = viewStates.current.get(newPath);
             if (savedState) {
@@ -103,7 +103,7 @@ export const useEditorCore = () => {
             contentDisposable.dispose();
             editorIns.dispose();
         };
-    }, [workspace]); // 依赖 workspace 确保实例匹配
+    }, [debounceCompile, workspace]); // 依赖 workspace 确保实例匹配
 
     // 2. 响应 Workspace 的文件切换事件
     useEffect(() => {
