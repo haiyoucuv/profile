@@ -3,6 +3,7 @@ import { createRoot, Root } from "react-dom/client";
 import { Editor } from "./Editor.tsx";
 import React from "react";
 import { EditorWorkspace, EditorWorkspaceContext, WorkspaceEvent } from "./utils/EditorWorkspace.ts";
+import { extractScriptEntries, buildEntryOutputMap, rewriteHtmlForPreview } from "./utils/htmlParser.ts";
 
 // MIME 类型映射
 const CONTENT_TYPE_MAP: Record<string, string> = {
@@ -104,7 +105,10 @@ export class EditorApp extends VirtualApp {
 
         // 4. 监听后续保存/构建事件
         this.workspace!.on(WorkspaceEvent.PREVIEW_READY, async () => {
-            await this.updateCompiledMap(this.workspace!.lastCompiledFiles);
+            const ws = this.workspace!;
+            const htmlRaw = await ws.fs.readFile(`${ws.projectRoot}/index.html`) as string;
+            const entries = extractScriptEntries(htmlRaw, ws.projectRoot, ws.projectRoot);
+            await this.updateCompiledMap(entries, ws.lastCompiledFiles, htmlRaw);
             this.updatePreview();
         });
     }
@@ -114,8 +118,19 @@ export class EditorApp extends VirtualApp {
     private async build(sys: SystemContext) {
         const root = this.homeDir;
         try {
-            const files = await Builder.ins.build([`${root}/index.html`], sys.fs, root);
-            await this.updateCompiledMap(files);
+            // 1. 读取 index.html，提取所有 module script 入口
+            const htmlPath = `${root}/index.html`;
+            const htmlRaw = await sys.fs.readFile(htmlPath) as string;
+            const entries = extractScriptEntries(htmlRaw, root, root);
+
+            if (entries.length === 0) {
+                console.warn('[EditorApp] No script entries found in index.html');
+                return;
+            }
+
+            // 2. 一次 Builder 调用（splitting 自动处理共享 chunk）
+            const files = await Builder.ins.build(entries, sys.fs, root);
+            await this.updateCompiledMap(entries, files, htmlRaw);
         } catch (e) {
             console.error('[EditorApp] Build failed:', e);
         }
@@ -123,30 +138,45 @@ export class EditorApp extends VirtualApp {
 
     /**
      * 将编译产物写入 compiledFileMap
-     * 同时用 .ts 和 .js 作为 key，适配 HTML 两种常见写法
+     * key 为 /dist/xxx.js（包括 chunks），同时缓存改写后的 HTML
      */
-    private async updateCompiledMap(files: OutputFile[]) {
+    private async updateCompiledMap(
+        entries: string[],
+        files: OutputFile[],
+        htmlRaw: string
+    ) {
         this.compiledFileMap.clear();
+
+        // 所有输出文件以 /dist/ 为 key 存储
         for (const f of files) {
-            const name = f.path.split('/').pop()!; // "main.js"
-            const entry = { content: f.text, contentType: 'application/javascript' };
-            this.compiledFileMap.set(`/${name}`, entry);   // /main.js
-            this.compiledFileMap.set(`/${name.replace(/\.js$/, '.ts')}`, entry); // /main.ts
+            const name = f.path.startsWith('dist/') ? f.path.slice(5) : f.path.split('/').pop()!;
+            this.compiledFileMap.set(`/dist/${name}`, {
+                content: f.text,
+                contentType: 'application/javascript',
+            });
         }
+
+        // 构建入口→输出名映射，用于 HTML 改写
+        const entryMap = buildEntryOutputMap(entries, files, this.homeDir);
+        const rewrittenHtml = rewriteHtmlForPreview(htmlRaw, entryMap, this.homeDir, this.homeDir);
+        this.compiledFileMap.set('/index.html', { content: rewrittenHtml, contentType: 'text/html' });
+
+        console.log('[EditorApp] compiledFileMap:', Array.from(this.compiledFileMap.keys()));
     }
 
     // ── SW 文件代理 ──────────────────────────────
 
     /**
      * SW 代理核心：按 VFS 路径返回文件内容
-     * 优先返回编译产物（bundle），其次从 IndexedDB VFS 读取原始文件
+     * 优先查 compiledFileMap（包含改写后的 HTML 和所有编译产物），
+     * 其次从 IndexedDB VFS 读取原始源文件
      */
     private async resolveFile(path: string): Promise<{ content: string; contentType: string }> {
-        // 优先：编译产物（/main.ts / /main.js → bundle）
+        // 1. 优先查编译产物（改写后的 HTML / dist/*.js / chunks）
         const compiled = this.compiledFileMap.get(path);
         if (compiled) return compiled;
 
-        // 回退：从 VFS 读取原始文件
+        // 2. 回退：从 VFS 读取原始文件（CSS、图片、JSON 等静态资源）
         const ws = this.workspace;
         if (!ws) throw new Error('Workspace not available');
 
@@ -155,17 +185,8 @@ export class EditorApp extends VirtualApp {
 
         const raw = await ws.fs.readFile(fullPath);
         const text = typeof raw === 'string' ? raw : await (raw as Blob).text();
-        const contentType = extToContentType(path);
 
-        // HTML：将绝对路径转为相对路径，使 SW 能正确拦截
-        if (path.endsWith('.html')) {
-            return {
-                content: text.replace(/(src|href)="\/(?!\/)/g, '$1="./'),
-                contentType,
-            };
-        }
-
-        return { content: text, contentType };
+        return { content: text, contentType: extToContentType(path) };
     }
 
     // ── 预览刷新 ─────────────────────────────────

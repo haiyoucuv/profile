@@ -4,16 +4,26 @@ import { resolvePlugin, initResolver, fs as resolverFs } from './resolver.ts';
 import { FileSystem, IFileSystem } from "@system";
 
 export interface OutputFile {
+    /** 输出文件的虚拟路径，如 dist/main.js、dist/chunk-abc123.js */
     path: string;
+    /** 编译后的文件文本内容 */
     text: string;
 }
 
+/**
+ * 底层编译器（纯粹的 JS/TS 编译，不处理 HTML）
+ *
+ * 职责边界：
+ * - 接受一组 .ts/.tsx/.js 入口路径
+ * - 通过 esbuild-wasm 打包，启用 code splitting
+ * - 返回所有输出文件（包括 shared chunks）
+ *
+ * HTML 解析、入口提取等应用层逻辑由调用方负责。
+ */
 export class Builder {
 
     private static _ins: Builder = new Builder();
-    static get ins() {
-        return this._ins;
-    }
+    static get ins() { return this._ins; }
 
     private buildQueue: Promise<OutputFile[]> = Promise.resolve([]);
     private running = false;
@@ -25,81 +35,34 @@ export class Builder {
     }
 
     /**
-     * 从 HTML 里提取 type="module" 脚本的 src 属性
-     */
-    private extractScriptEntries(html: string): string[] {
-        const regex = /<script\b([^>]*?)>/gi;
-        const entries: string[] = [];
-        let match;
-        while ((match = regex.exec(html)) !== null) {
-            const attrs = match[1];
-            if (attrs.includes('type="module"')) {
-                const src = /src="([^"]+)"/.exec(attrs);
-                if (src) entries.push(src[1]);
-            }
-        }
-        return entries;
-    }
-
-    /**
-     * 构建虚拟文件系统中的项目
-     * @param entryPoints - 入口文件路径列表（支持 .html 自动解析入口）
-     * @param fs - 虚拟文件系统实例
-     * @param projectRoot - 项目根路径（VFS 绝对路径，如 /EditorApp）
+     * 编译一组 JS/TS 入口文件
+     * @param entryPoints 入口路径列表（VFS 绝对路径，如 /EditorApp/main.ts）
+     * @param fs          虚拟文件系统
+     * @param projectRoot 项目根路径（用于 outbase 计算和 resolver 初始化）
      */
     async build(
-        entryPoints: string[] = ['/main.ts'],
+        entryPoints: string[],
         fs: IFileSystem = FileSystem,
         projectRoot: string = ''
     ): Promise<OutputFile[]> {
+        if (entryPoints.length === 0) return [];
+
         const root = projectRoot.replace(/\\/g, '/');
 
         const currentBuild = this.buildQueue.then(async () => {
             await this.start();
             initResolver(fs, root);
 
-            let finalEntryPoints = entryPoints;
-
-            // 如果入口是 HTML，解析其中的 module script 作为真正的编译入口
-            if (entryPoints.length === 1 && entryPoints[0].endsWith('.html')) {
-                const htmlPath = entryPoints[0];
-                const htmlDir = htmlPath.split('/').slice(0, -1).join('/');
-
-                try {
-                    const htmlContent = await resolverFs.readFile(htmlPath) as string;
-                    const scripts = this.extractScriptEntries(htmlContent);
-
-                    if (scripts.length > 0) {
-                        finalEntryPoints = scripts.map(src => {
-                            const p = src.replace(/\\/g, '/');
-                            // 绝对路径：/main.ts → {root}/main.ts
-                            if (p.startsWith('/')) return `${root}${p}`.replace(/\/+/g, '/');
-                            // 相对路径：./main.ts → {htmlDir}/main.ts
-                            return `${htmlDir}/${p}`.replace(/\/+/g, '/');
-                        });
-                    } else {
-                        // 没有显式入口则尝试找同目录的 main.ts
-                        const defaultEntry = `${htmlDir}/main.ts`.replace(/\/+/g, '/');
-                        if (await resolverFs.exists(defaultEntry)) {
-                            finalEntryPoints = [defaultEntry];
-                        } else {
-                            console.warn('[Builder] No entry found in HTML and no fallback main.ts.');
-                            return [];
-                        }
-                    }
-                } catch (e) {
-                    console.error('[Builder] Failed to parse HTML entry:', e);
-                }
-            }
-
             const result = await esbuild.build({
-                entryPoints: finalEntryPoints,
+                entryPoints,
                 bundle: true,
                 write: false,
-                format: 'esm',
+                format: 'esm',       // splitting 要求 ESM 格式
                 target: 'esnext',
                 sourcemap: false,
-                outfile: 'main.js',
+                splitting: true,      // 开启代码分割，共享模块自动提取为 chunk
+                outdir: 'dist',       // splitting 要求 outdir，不能用 outfile
+                outbase: root,        // 以项目根为基准计算输出路径，避免深层目录结构
                 loader: { '.ts': 'ts', '.tsx': 'tsx', '.css': 'css', '.less': 'css' },
                 plugins: [
                     resolvePlugin(),
@@ -130,7 +93,6 @@ export class Builder {
             return result.outputFiles as OutputFile[];
         });
 
-        // 确保异常不会阻塞后续构建
         this.buildQueue = currentBuild.catch(e => {
             console.error('[Builder] Build failed:', e);
             return [];

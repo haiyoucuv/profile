@@ -1,5 +1,5 @@
-import { IFileSystem, Builder } from '@system';
 import type { OutputFile } from '@system';
+import { Builder, IFileSystem } from '@system';
 import { createContext } from 'react';
 import Emittery from 'emittery';
 
@@ -86,10 +86,13 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
             }
         }
 
-        // 3. 打开默认文件（main.ts）
+        // 3. 打开默认文件（main.ts）——直接内联，避免调用 openFile()（会 await initPromise，导致死锁）
         const defaultPath = `${this.projectRoot}/main.ts`;
         if (await this.fs.exists(defaultPath)) {
-            await this.openFile(defaultPath);
+            const content = await this.fs.readFile(defaultPath) as string;
+            this.currentFile = { path: defaultPath, content, language: 'typescript' };
+            this.openedFiles = [defaultPath];
+            this.emit(WorkspaceEvent.FILE_CHANGED, defaultPath);
         }
     }
 
@@ -133,11 +136,20 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
         this.emit(WorkspaceEvent.STRUCTURE_CHANGED, path);
     }
 
-    async createFile(name?: string) {
+    async createFile(pathOrName?: string) {
         await this.initPromise;
-        const existing = await this.fs.readdir(this.projectRoot);
-        const fileName = name ?? `file${existing.length + 1}.ts`;
-        const newPath = `${this.projectRoot}/${fileName}`;
+        let newPath: string;
+        if (!pathOrName) {
+            // 无参数：自动在项目根下生成文件名
+            const existing = await this.fs.readdir(this.projectRoot);
+            newPath = `${this.projectRoot}/file${existing.length + 1}.ts`;
+        } else if (pathOrName.startsWith('/')) {
+            // 完整 VFS 路径（FileTree 传来的）
+            newPath = pathOrName;
+        } else {
+            // 只传了文件名
+            newPath = `${this.projectRoot}/${pathOrName}`;
+        }
         await this.fs.writeFile(newPath, '');
         this.emit(WorkspaceEvent.STRUCTURE_CHANGED, newPath);
         await this.openFile(newPath);
@@ -172,12 +184,11 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
     /** 保存文件并触发编译 */
     async saveAndBuild(path: string, content: string) {
         await this.writeFile(path, content);
-        const files = await Builder.ins.build(
+        this.lastCompiledFiles = await Builder.ins.build(
             [`${this.projectRoot}/index.html`],
             this.fs,
             this.projectRoot
         );
-        this.lastCompiledFiles = files;
         this.emit(WorkspaceEvent.PREVIEW_READY, undefined);
     }
 
@@ -196,6 +207,20 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
             if (a.isDir !== b.isDir) return a.isDir ? -1 : 1;
             return a.name.localeCompare(b.name);
         });
+    }
+
+    /**
+     * 导航到路径：若是目录则切换当前目录，若是文件则打开
+     * FileTree 组件通过 onAction 调用此方法
+     */
+    async navigate(path: string) {
+        await this.initPromise;
+        const stat = await this.fs.stat(path);
+        if (stat?.type === 'dir') {
+            this.emit(WorkspaceEvent.STRUCTURE_CHANGED, path);
+        } else {
+            await this.openFile(path);
+        }
     }
 }
 
