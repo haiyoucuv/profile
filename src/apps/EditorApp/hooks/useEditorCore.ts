@@ -4,6 +4,7 @@ import { useDebounceFn } from "ahooks";
 import { EditorWorkspace, EditorWorkspaceContext } from "../utils/EditorWorkspace";
 import { getMonacoModel } from "../utils/utils";
 import { MonacoEditorConfig } from "../monacoConfig";
+import { useMonacoTypes } from "./useMonacoTypes";
 
 /**
  * 核心编辑器逻辑 Hooks
@@ -13,6 +14,7 @@ export const useEditorCore = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
     const workspace = useContext(EditorWorkspaceContext);
+    const { triggerATA } = useMonacoTypes();
 
     // 用于存储每个文件的视图状态（光标位置、滚动位置等）
     const viewStates = useRef<Map<string, editor.ICodeEditorViewState>>(new Map());
@@ -44,6 +46,7 @@ export const useEditorCore = () => {
         const model = getMonacoModel(workspace.currentFile);
         if (editorIns.getModel() !== model) {
             editorIns.setModel(model);
+            triggerATA(workspace.currentFile.content); // 切换文件后也触发 ATA
 
             // 3. 恢复新文件的状态
             const savedState = viewStates.current.get(newPath);
@@ -68,10 +71,11 @@ export const useEditorCore = () => {
 
         editorRef.current = editorIns;
 
-        // 设置初始 Model
+        // 设置初始 Model，并触发初始 ATA（确保已有 import 立即获取类型）
         if (workspace.currentFile) {
             const model = getMonacoModel(workspace.currentFile);
             editorIns.setModel(model);
+            triggerATA(workspace.currentFile.content);
         }
 
         editorIns.focus();
@@ -89,7 +93,9 @@ export const useEditorCore = () => {
 
         // 监听内容变更
         const contentDisposable = editorIns.onDidChangeModelContent(() => {
-            debounceCompile(editorIns.getValue());
+            const code = editorIns.getValue();
+            debounceCompile(code);
+            triggerATA(code);   // 解析 import，动态拉取缺失的 .d.ts 类型
         });
 
         // 使用 ResizeObserver 监听容器大小变化
@@ -103,7 +109,7 @@ export const useEditorCore = () => {
             contentDisposable.dispose();
             editorIns.dispose();
         };
-    }, [debounceCompile, workspace]); // 依赖 workspace 确保实例匹配
+    }, [debounceCompile, triggerATA, workspace]); // 依赖 workspace 确保实例匹配
 
     // 2. 响应 Workspace 的文件切换事件
     useEffect(() => {

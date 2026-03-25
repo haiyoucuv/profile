@@ -1,38 +1,58 @@
 import { typescript } from 'monaco-editor';
-import { useEffect } from 'react';
-import { TypeScriptConfig } from "../monacoConfig";
+import { useEffect, useRef, useCallback } from 'react';
+import { setupTypeAcquisition } from '@typescript/ata';
+import ts from 'typescript';
+import { TypeScriptConfig } from '../monacoConfig';
 
-/**
- * 是否已经完成初始化，Monaco 的类型注入是全局的，只需运行一次
- */
 let initialized = false;
 
+function initMonaco() {
+    if (initialized) return;
+    initialized = true;
+    typescript.typescriptDefaults.setCompilerOptions(TypeScriptConfig);
+    typescript.typescriptDefaults.setEagerModelSync(true);
+}
+
+function createATA() {
+    return setupTypeAcquisition({
+        projectName: 'EditorApp',
+        typescript: ts,
+        logger: console,
+        delegate: {
+            receivedFile: (code: string, path: string) => {
+                console.log('[ATA]', path);
+                typescript.typescriptDefaults.addExtraLib(code, `file://${path}`);
+                typescript.javascriptDefaults.addExtraLib(code, `file://${path}`);
+            },
+            errorMessage: (msg: string, err: Error) => console.warn('[ATA]', msg, err),
+            started: () => console.log('[ATA] Fetching types...'),
+            finished: (vfs: Map<string, string>) => console.log(`[ATA] Done. ${vfs.size} files.`),
+        },
+    });
+}
+
+/**
+ * useMonacoTypes
+ *
+ * 返回 triggerATA(code)，内置 1.5s 防抖，
+ * 防止每次按键都触发大量并发请求导致 ERR_INSUFFICIENT_RESOURCES。
+ */
 export const useMonacoTypes = () => {
+    const ataRef = useRef<ReturnType<typeof createATA> | null>(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
     useEffect(() => {
-        if (initialized) return;
-        initialized = true;
-
-        console.log('Monaco: Initializing type system...');
-
-        // 配置 TypeScript 编译选项
-        typescript.typescriptDefaults.setCompilerOptions({
-            ...TypeScriptConfig,
-        });
-
-        // 加载项目相关的定义文件 (React, Three.js 等)
-        const types: Record<string, any> = import.meta.glob(
-            [
-                '/node_modules/{react,react-dom}/**/*.{d.ts,json}',
-                '/node_modules/@types/{react,react-dom}/**/*.{d.ts,json}',
-                '/node_modules/@types/three/**/*.{d.ts,json}',
-            ],
-            { eager: true, query: '?raw' }
-        )
-
-        Object.keys(types).forEach((path) => {
-            const content = (types[path] as any).default || types[path];
-            typescript.typescriptDefaults.addExtraLib(content, `file://${path}`)
-            typescript.javascriptDefaults.addExtraLib(content, `file://${path}`)
-        })
+        initMonaco();
+        ataRef.current = createATA();
     }, []);
+
+    /** 防抖版 triggerATA：1.5s 内多次调用只执行最后一次 */
+    const triggerATA = useCallback((code: string) => {
+        if (timerRef.current) clearTimeout(timerRef.current);
+        timerRef.current = setTimeout(() => {
+            ataRef.current?.(code);
+        }, 1500);
+    }, []);
+
+    return { triggerATA };
 };

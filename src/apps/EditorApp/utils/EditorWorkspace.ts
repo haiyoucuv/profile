@@ -38,6 +38,18 @@ type WorkspaceEvents = {
 // EditorWorkspace
 // ──────────────────────────────────────────────
 
+/** 根据文件扩展名返回 Monaco 语言标识符 */
+function extToLanguage(path: string): string {
+    const ext = path.split('.').pop()?.toLowerCase() ?? '';
+    const map: Record<string, string> = {
+        ts: 'typescript', tsx: 'typescript',
+        js: 'javascript', jsx: 'javascript',
+        html: 'html', css: 'css', less: 'less',
+        json: 'json', md: 'markdown',
+    };
+    return map[ext] ?? 'plaintext';
+}
+
 export class EditorWorkspace extends Emittery<WorkspaceEvents> {
 
     static readonly EventType = WorkspaceEvent;
@@ -90,7 +102,7 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
         const defaultPath = `${this.projectRoot}/main.ts`;
         if (await this.fs.exists(defaultPath)) {
             const content = await this.fs.readFile(defaultPath) as string;
-            this.currentFile = { path: defaultPath, content, language: 'typescript' };
+            this.currentFile = { path: defaultPath, content, language: extToLanguage(defaultPath) };
             this.openedFiles = [defaultPath];
             this.emit(WorkspaceEvent.FILE_CHANGED, defaultPath);
         }
@@ -107,7 +119,7 @@ export class EditorWorkspace extends Emittery<WorkspaceEvents> {
         this.currentFile = {
             path,
             content,
-            language: ext === 'tsx' ? 'typescript' : ext === 'css' ? 'css' : 'typescript',
+            language: extToLanguage(path),
         };
 
         if (!this.openedFiles.includes(path)) {
