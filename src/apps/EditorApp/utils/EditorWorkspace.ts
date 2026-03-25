@@ -1,4 +1,4 @@
-import { IFileSystem } from '@system';
+import { IFileSystem, Builder } from '@system';
 import Emittery from 'emittery';
 
 export interface VirtualFile {
@@ -8,12 +8,26 @@ export interface VirtualFile {
     type?: string;
 }
 
-export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
+const FILE_CHANGED: unique symbol = Symbol('onFileChanged');
+const STRUCTURE_CHANGED: unique symbol = Symbol('onStructureChanged');
+const PREVIEW_READY: unique symbol = Symbol('onPreviewReady');
 
-    static EventType = {
-        FILE_CHANGED: Symbol('onFileChanged'),
-        STRUCTURE_CHANGED: Symbol('onStructureChanged'),
-    }
+type EditorEvents = {
+    [FILE_CHANGED]: string | undefined;
+    [STRUCTURE_CHANGED]: string | undefined;
+    [PREVIEW_READY]: string;
+};
+
+export class EditorWorkspace extends Emittery<EditorEvents> {
+
+    static readonly EventType = {
+        FILE_CHANGED,
+        STRUCTURE_CHANGED,
+        PREVIEW_READY,
+    } as const;
+
+    public lastCompiledCode: string = '';
+    public openedFiles: string[] = [];
 
     currentFile: VirtualFile | null = null;
     currentDir: string = '/';
@@ -65,6 +79,7 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
                 content: content as string,
                 language: 'typescript'
             };
+            this.openedFiles = [defaultPath];
             this.emit(EditorWorkspace.EventType.FILE_CHANGED, defaultPath);
         }
     }
@@ -104,7 +119,36 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
                 content: content as string,
                 language: 'typescript'
             };
+
+            // 如果不在已打开列表中，则添加
+            if (!this.openedFiles.includes(path)) {
+                this.openedFiles.push(path);
+            }
+
             this.emit(EditorWorkspace.EventType.FILE_CHANGED, path);
+            this.emit(EditorWorkspace.EventType.STRUCTURE_CHANGED, path);
+        }
+    }
+
+    async closeFile(path: string) {
+        await this.initPromise;
+        const index = this.openedFiles.indexOf(path);
+        if (index !== -1) {
+            this.openedFiles.splice(index, 1);
+
+            // 如果关闭的是当前选中的文件
+            if (this.currentFile?.path === path) {
+                if (this.openedFiles.length > 0) {
+                    // 自动选择下一个或前一个标签
+                    const nextIndex = Math.min(index, this.openedFiles.length - 1);
+                    await this.openFile(this.openedFiles[nextIndex]);
+                } else {
+                    this.currentFile = null;
+                    this.emit(EditorWorkspace.EventType.FILE_CHANGED, undefined);
+                }
+            }
+
+            this.emit(EditorWorkspace.EventType.STRUCTURE_CHANGED, path);
         }
     }
 
@@ -129,12 +173,20 @@ export class EditorWorkspace extends Emittery<{ [key: symbol]: any }> {
         }
     }
 
+    async saveAndBuild(path: string, content: string) {
+        await this.writeFile(path, content);
+        // 直接获取编译结果
+        const code = await Builder.ins.build([`${this.projectRoot}/index.html`], this.fs, this.projectRoot) as unknown as string;
+        this.lastCompiledCode = code;
+        this.emit(EditorWorkspace.EventType.PREVIEW_READY, code);
+    }
+
     async navigate(path: string) {
         await this.initPromise;
         const state = await this.fs.stat(path);
         if (state && state.type === 'dir') {
             this.currentDir = path;
-            this.emit(EditorWorkspace.EventType.FILE_CHANGED);
+            this.emit(EditorWorkspace.EventType.FILE_CHANGED, undefined);
         } else {
             await this.openFile(path);
         }

@@ -66,14 +66,16 @@ export class EditorApp extends VirtualApp {
             this.updatePreview(sys);
         });
 
-        Builder.ins.on(Builder.EventType.CODE_COMPILED, (event: any) => {
-            const code = typeof event === 'string' ? event : (event.data || '');
+        // 监听 Workspace 的预览就绪事件
+        this.workspace?.on(EditorWorkspace.EventType.PREVIEW_READY, ({ data: code }) => {
             this.lastCompiledCode = code;
             this.updatePreview(sys);
         });
 
-        // 监听文件变化，如果是 index.html 则重新刷新预览
-        this.workspace?.on(EditorWorkspace.EventType.STRUCTURE_CHANGED, () => this.updatePreview(sys));
+        // 监听文件结构变化，触发重新构建（针对 index.html 等）
+        this.workspace?.on(EditorWorkspace.EventType.STRUCTURE_CHANGED, () => {
+            this.workspace?.saveAndBuild(`${this.homeDir}/index.html`, ''); // 触发重新构建
+        });
     }
 
     async updatePreview(sys: SystemContext) {
@@ -108,7 +110,6 @@ export class EditorApp extends VirtualApp {
 
     onExit() {
         this.editorRoot?.unmount();
-        Builder.ins.clearListeners();
     }
 
 }
